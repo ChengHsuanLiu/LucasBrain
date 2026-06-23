@@ -23,6 +23,25 @@ aliases: [CCL, 銅箔基板]
   - **M10**：下一代最高速材料，搭配 Q+ 布。
 
 ## 核心發現 (Core Findings)
+### 高階高速 CCL 材料世代與規格對比
+根據業界資料（如 `[[20260506_155908_image.jpeg]]`），高頻高速 CCL 材料之世代與耗損等級對比如下：
+
+| 規格/世代 | 100G | 400G、800G (飛線) | 800G、1.6T | 1.6T~ |
+| :--- | :--- | :--- | :--- | :--- |
+| **材料耗損等級** | Very low loss | Ultra low loss | Extreme Ultra low loss | **Super low loss** |
+| **Df 值** | 0.005 ~ 0.006 | ~0.003 | ~0.002 | ~0.001 |
+| **頻率** | 13Ghz (NRZ) | 13Ghz (PAM4) | 28Ghz (PAM4) | 56Ghz (PAM4) |
+| **材料設計** | PPO | PPO + Low K Glass | PPO + LowK / LowK2 Glass | PPO + 碳氫樹脂 + Q/LK3/LK2 Glass |
+| **平均單價 (每張)** | ~NT$1,000 | **NT$1,000 ~ 2,000** | **NT$2,000 ~ 3,000 / 3,500 ~ 4,000** | NT$4,000 ~ 5,000 / 10,000 |
+| **代表型號** | 松下 M6 | 松下 M7 | 松下 M8 | 松下 M9Q / M9Q HF |
+| **同業競爭/產品儲備** | TU883<br>IT 968/968G<br>EM-528/626<br>Synamic 6/6N<br>DS7409DV (N) | ThunderClad 3+/3/2SP/2A<br>IT988G<br>EM-528K/EM-890K<br>Synamic 8GN<br>DS7409DJG (N) | ThunderClad 4SN/4SR<br>IT998GSE/2<br>EM-892K/K2<br>Synamic 9GN<br>DS7409DQN/N2/T2 | ThunderClad 5<br>IT999GSE3<br>EM-896K3<br>Synamic 10GQ<br>DS7409DYQ/L2/N |
+
+### CCL 樹脂與填料相關術語釐清
+根據配方與製程規範（如 `[[20260609_222133_image.jpeg]]`），相關專業術語定義如下：
+*   **樹脂用量 (200~300 g/sqm)**：指**有機樹脂材料總和**（含基礎樹脂如 PPO/HC/環氧等本體、硬化劑、有機阻燃劑），**不含**無機填料（如球型 $\text{SiO}_2$、$\text{Al(OH)}_3$ 等）與玻纖布。
+*   **樹脂組合物 (Resin Composition)**：指**完整配方**，**包含**有機樹脂本體、硬化劑、阻燃劑、以及無機填料與矽烷等所有添加物。
+*   **清漆 (Varnish)**：指**樹脂組合物 + 溶劑**形成的液態混合物，用於含浸玻纖布，**包含**填料。
+*   **RC 樹脂含量 (Prepreg 規格 53% / 70%)**：指烘烤後殘留在玻纖布上的**固形分重量 $\div$ Prepreg 總重**，**包含**填料。
 
 ## 關鍵洞察 (Key Insights)
 
@@ -135,6 +154,8 @@ aliases: [CCL, 銅箔基板]
 - `[[20260505_020729_file.pdf]]` - M8 及 M9 材料對應樹脂及二代布用量變化調研報告
 - `[[20260505_200531_file (2).pdf]]` - 國泰期貨特化產業更新報告
 - `[[20260505_200316_file.pdf]]` - 永光 (1711) 電子化學品轉骨與在地化分析報告
+- `[[20260506_155908_image.jpeg]]` - 高階高速 CCL 材料代際對比表
+- `[[20260609_222133_image.jpeg]]` - CCL 樹脂與填料術語說明
 
 
 

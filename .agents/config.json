@@ -1,0 +1,21 @@
+{
+  "autoExecutionPolicy": "CASCADE_COMMANDS_AUTO_EXECUTION_EAGER",
+  "settings": {
+    "autoExecutionPolicy": "CASCADE_COMMANDS_AUTO_EXECUTION_EAGER",
+    "antigravity.agent.terminal.autoExecutionPolicy": "always",
+    "antigravity.agent.terminal.confirmCommands": false
+  },
+  "permissions": {
+    "allow": [
+      "command(python)",
+      "command(python.*)",
+      "command(python .*)",
+      "command(powershell)",
+      "command(powershell.*)",
+      "command(powershell .*)",
+      "command(bash)",
+      "command(bash.*)",
+      "command(bash .*)"
+    ]
+  }
+}
