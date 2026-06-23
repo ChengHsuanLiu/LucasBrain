@@ -1,0 +1,1013 @@
+--- PAGE 1 ---
+MediaTek
+NT$3,860.00 - HIGH CONVICTION OUTPERFORM
+Financials
+Year to 31 December 24A 25A 26SP 27SP 28SP
+Revenue (NT$m) 530,586 595,966 637,567 1,057,400 1,850,099
+Rev forecast change (%) - - (0.3) (0.4) 35.0
+Net profit (NT$m) 106,387 105,319 102,356 213,139 444,796
+NP forecast change (%) - - (0.3) (0.3) 38.0
+EPS (NT$) 66.92 66.16 64.30 133.89 279.40
+SP/consensus (27) (EPS%) - - 100 120 168
+EPS growth (% YoY) 38.0 (1.1) (2.8) 108.2 108.7
+PE (x) 57.7 58.3 60.0 28.8 13.8
+Dividend yield (%) 1.4 1.4 1.0 2.1 4.3
+ROE (%) 31.3 29.3 27.0 45.9 63.6
+Net cash per share (NT$) 120.84 140.72 131.66 204.46 351.40
+Source: SinoPac
+This research report is prepared for and distributed by CLSA (as defined in important disclosures) pursuant to a research products agreement between CLSA Limited and SinoPac 
+Securities Investment Service Corporation. Please contact your usual CLSA contact if you would like to discuss. CLSA and SinoPac Securities Investment Service Corporation do 
+22 May 2026
+Taiwan
+Technology
+Reuters 2454.TW
+Bloomberg 2454 TT
+Priced on 22 May 2026
+Taiwan Wtd @ 42,268.0
+12M hi/lo NT$3,880.00/1,145.00
+12M price target NT$5,922.00
+±% potential +53%
+Shares in issue 1,589.7m
+Free float (est.) 87.1%
+Market cap US$180.9bn
+3M ADV US$821.0m
+Foreign s'holding 56.1%
+Major shareholders
+Vanguard Group 4.3%
+BlackRock Inc 3.9%
+SinoPac analysts:
+Astoria Chen, SinoPac
+astoria.chen@cl-sec.com
++886 223 268162
+Stock performance (%)
+1M 3M 12M
+Absolute 68.2 108.1 191.3
+Relative 50.7 65.4 49.4
+Abs (US$) 68.2 108.2 178.1
+Source: Bloomberg
+No turning back
+Now at the centre of Google’s TPU strategy
+Recent TPU roadmap changes suggest Google is no longer treating MediaTek as 
+merely an alternative supplier. Instead, it appears to be increasingly positioned at 
+the centre of Google’s next-generation TPU strategy, while Broadcom’s role 
+becomes more complementary. We believe the market is not yet fully reflecting 
+this strategic shift, and after raising our 2028 EPS forecast by 38%, we are now 
+68% above consensus. We lift our TP from NT$4,500 to NT$5,922 and reiterate 
+High Conviction Outperform.
+Critical strategy changes in TPU v9 supply chains
+Google recently cancelled Pumafish (Broadcom's original TPU v9) after the project 
+had kicked off only around a month, and replaced it with a new one, Whalefish. 
+Whalefish, is more like a version of ‘Sunfish Ultra’, which puts two Sunfish (TPU 8i)
+together. This implies Broadcom's v9 is likely to stay at 3nm with HBM3e, while 
+MediaTek's v9 (Humufish, aka A5922) will migrate to 2nm with HBM4e.
+No longer merely an alternative solution for Google 
+We believe Google’s latest TPU strategy marks a meaningful shift in positioning 
+between MediaTek and Broadcom. While MediaTek’s project was previously viewed 
+by the market as a secondary program with uncertain volume, we now see it 
+increasingly becoming the core platform within Google’s roadmap, with Broadcom’s 
+solution taking on a more backup or less strategic role. Reflecting this shift and our 
+supply chain checks, we raise our 2028 Humufish shipment forecast to 2.4m units 
+(from 1.6m) and increase our previously conservative ASP assumption to US$15k, 
+leading to US$36bn revenue contribution, or 63% of total sales in 2028SP.
+Potential inflection points in smartphone
+Our checks suggest MediaTek is working on supplying modified D9500 for 
+Samsung’s Galaxy S27 FE. However, the project is still being verified by Samsung 
+with fairly demanding requirements, and final market share will depend on the 
+results. We currently do not factor in any Samsung contribution but see potential 
+upside if the project enters mass production.
+Earnings revisions and valuations
+We raise our 2028 EPS forecast by 38% to reflect the higher TPU contribution, 
+bringing our TP to a Street high of NT$5,922 (up from NT$4,500), still based on 30x 
+2H27-1H28SP PE. Reiterate High Conviction Outperform.
+
+--- PAGE 2 ---
+No turning back MediaTek - HC O-PF
+22 May 2026 2
+Financials at a glance
+Year to 31 December 2024A 2025A 2026SP (% YoY) 2027SP 2028SP
+Profit & Loss (NT$m)
+Revenue 530,586 595,966 637,567 7 1,057,400 1,850,099
+Cogs (ex -D&A) (246,264) (289,911) (320,110) (564,002) (1,034,498)
+Gross Profit (ex -D&A) 284,322 306,054 317,458 3.7 493,399 815,600
+SG&A and other expenses (160,974) (179,610) (190,707) (229,429) (260,490)
+Op Ebitda 123,348 126,444 126,751 0.2 263,969 555,110
+Depreciation/amortisation (20,936) (22,974) (25,701) (34,603) (50,280)
+Op Ebit 102,412 103,470 101,050 (2.3) 229,366 504,830
+Net interest inc/(exp) 10,696 10,167 10,561 3.9 11,000 11,000
+Other non -Op items 6,410 11,251 8,118 (27.8) 8,400 8,400
+Profit before tax 119,519 124,888 119,728 (4.1) 248,766 524,230
+Taxation (12,378) (18,770) (16,549) (34,827) (78,635)
+Profit after tax 107,141 106,118 103,179 (2.8) 213,939 445,596
+Minority interest (754) (798) (822) (800) (800)
+Net profit 106,387 105,319 102,356 (2.8) 213,139 444,796
+Adjusted profit 106,387 105,319 102,356 (2.8) 213,139 444,796
+Cashflow  (NT$m) 2024A 2025A 2026SP (% YoY) 2027SP 2028SP
+Operating profit 102,412 103,470 101,050 (2.3) 229,366 504,830
+Depreciation/amortisation 20,936 22,974 25,701 11.9 34,603 50,280
+Working capital changes 12,624 22,540 (39,115) (54,371) (115,180)
+Other items 20,082 13,808 370 (97.3) (17,427) (61,235)
+Net operating cashflow 156,055 162,793 88,006 (45.9) 192,171 378,696
+Capital expenditure (13,787) (15,059) (16,745) (17,582) (18,461)
+Free cashflow 142,268 147,734 71,261 (51.8) 174,589 360,234
+M&A/Others (22,141) (22,695) (1,000) (1,000) (1,000)
+Net investing cashflow (35,928) (37,754) (17,745) (18,582) (19,461)
+Increase in loans (1,260) 60 4,000 6,566.7 4,000 4,000
+Dividends (87,551) (86,070) (85,169) (61,414) (127,883)
+Net equity raised/other (1,309) (1,665) 350 350 350
+Net financing cashflow (90,119) (87,675) (80,819) (57,064) (123,533)
+Incr/(decr) in net cash 30,008 37,364 (10,558) 116,525 235,701
+Exch rate movements 8,292 (5,770) 2,315 3,397 1,470
+Balance sheet (NT$m) 2024A 2025A 2026SP (% YoY) 2027SP 2028SP
+Cash & equivalents 203,696 235,290 227,047 (3.5) 346,969 584,141
+Accounts receivable 51,770 68,597 73,385 7 121,709 212,950
+Other current assets 79,693 82,746 89,821 8.6 144,143 248,614
+Fixed assets 56,917 60,427 60,159 (0.4) 62,660 64,146
+Investments 186,915 191,058 198,284 3.8 198,798 199,573
+Intangible assets 82,257 80,262 80,262 0 80,262 80,262
+Other non -current assets 36,619 25,404 36,646 44.3 32,890 31,647
+Total assets 697,868 743,785 765,606 2.9 987,430 1,421,333
+Short -term debt 8,919 4,481 8,655 93.2 10,685 11,940
+Accounts payable 40,777 48,710 53,836 10.5 93,191 168,878
+Other current liabs 217,207 250,159 217,587 (13) 228,317 232,021
+Long-term debt/CBs 2,681 6,795 8,795 29.4 10,795 12,795
+Provisions/other LT liabs 23,228 24,444 49,730 103.4 64,994 98,618
+Shareholder funds 347,560 370,178 387,986 4.8 540,430 858,063
+Minorities/other equity 57,495 39,017 39,017 0 39,017 39,017
+Total liabs & equity 697,868 743,785 765,606 2.9 987,430 1,421,333
+Ratio analysis 2024A 2025A 2026SP (% YoY) 2027SP 2028SP
+Revenue growth (% YoY) 22.4 12.3 7.0 65.8 75.0
+Ebitda margin (%) 23.2 21.2 19.9 25.0 30.0
+Ebit margin (%) 19.3 17.4 15.8 21.7 27.3
+Net profit growth (%) 38.2 (1.0) (2.8) 108.2 108.7
+Op cashflow growth (% YoY) (6.0) 4.3 (45.9) 118.4 97.1
+Capex/sales (%) 2.6 2.5 2.6 1.7 1.0
+Net debt/equity (%) (47.4) (54.7) (49.1) (56.2) (62.4)
+Net debt/Ebitda (x) - - - - -
+ROE (%) 31.3 29.3 27.0 45.9 63.6
+ROIC (%) 143.6 259.2 199.2 208.7 240.5
+Source: SinoPac
+
+--- PAGE 3 ---
+No turning back MediaTek - HC O-PF
+22 May 2026 3
+Figure 1
+TPU roadmap
+TPU TPU 8t TPU 8i TPU 9t? TPU 9i? TPU 9i?
+Code name Zebrafish (A5921) Sunfish Humufish (A5922) Pumafish (Cancelled) Whalefish
+(Sunfish Ultra?)
+Design Service Google + MediaTek Broadcom Google + MediaTek Broadcom Broadcom
+Compute die N3*1 N3*2 N2*4 N2? N3*4
+Other logic die na na N3*4 TBD na
+I/O die N4*1 N4*1 N3*4 N3? N4*2?
+HBM HBM3e *6 HBM3e *8 HBM4e *12 HBM4/4e HBM3e *16
+Packaging CoWoS-S CoWoS-L EMIB-T CoWoS-L CoWoS-L
+MP schedule 4Q26 2H26 4Q27/1Q28 Cancelled 2027?
+Source: SinoPac 
+Figure 2
+Quarterly P&L
+(NT$m) 1Q26 2Q26SP 3Q26SP 4Q26SP 1Q27SP 2Q27SP 3Q27SP 4Q27SP 2025 2026SP 2027SP 2028SP
+Sales 149,151 145,022 136,826 206,569 238,457 278,966 283,626 256,351 595,966 637,567 1,057,400 1,850,099
+Gross profit 69,055 66,737 63,008 92,956 106,369 119,733 121,746 110,946 283,080 291,757 458,795 765,321
+Opex 46,165 45,682 45,153 53,708 52,461 58,583 58,143 60,242 179,610 190,707 229,429 260,490
+Operating profit 22,891 21,056 17,855 39,248 53,909 61,150 63,603 50,704 103,470 101,050 229,366 504,830
+Non-OP 4,129 4,850 4,850 4,850 4,850 4,850 4,850 4,850 21,418 18,679 19,400 19,400
+Pretax profit 27,019 25,906 22,705 44,098 58,759 66,000 68,453 55,554 124,888 119,728 248,766 524,230
+Net profit 24,154 21,820 19,099 37,283 50,333 56,560 58,670 47,576 105,319 102,356 213,139 444,796
+EPS (NT$) 15.17 13.71 12.00 23.42 31.62 35.53 36.85 29.89 66.16 64.30 133.89 279.40
+Growth
+Sales QoQ (1%) (3%) (6%) 51% 15% 17% 2% (10%)
+Sales YoY (3%) (4%) (4%) 38% 60% 92% 107% 24% 12% 7% 66% 75%
+EPS QoQ 5% (10%) (12%) 95% 35% 12% 4% (19%)
+EPS YoY (18%) (22%) (24%) 63% 108% 159% 207% 28% (1%) (3%) 108% 109%
+Margin
+Gross margin 46.3% 46.0% 46.0% 45.0% 44.6% 42.9% 42.9% 43.3% 47.5% 45.8% 43.4% 41.4%
+Opex 31.0% 31.5% 33.0% 26.0% 22.0% 21.0% 20.5% 23.5% 30.1% 29.9% 21.7% 14.1%
+OP margin 15.3% 14.5% 13.0% 19.0% 22.6% 21.9% 22.4% 19.8% 17.4% 15.8% 21.7% 27.3%
+Non-OP 2.8% 3.3% 3.5% 2.3% 2.0% 1.7% 1.7% 1.9% 3.6% 2.9% 1.8% 1.0%
+Net margin 16.2% 15.0% 14.0% 18.0% 21.1% 20.3% 20.7% 18.6% 17.7% 16.1% 20.2% 24.0%
+Source: SinoPac 
+Figure 3
+Forecast revisions
+2026SP 2027SP 2028SP
+(NT$m) old new % ch old new % ch old new % ch
+Revenue 639,783 637,567 0% 1,061,356 1,057,400 0% 1,370,919 1,850,099 35%
+Gross profit 292,753 291,757 0% 460,717 458,795 0% 606,122 765,321 26%
+Opex 191,283 190,707 0% 230,618 229,429 (1%) 249,891 260,490 4%
+Operating profit 101,470 101,050 0% 230,100 229,366 0% 356,231 504,830 42%
+Pretax profit 120,149 119,728 0% 249,500 248,766 0% 375,631 524,230 40%
+Tax expense 16,612 16,549 0% 34,930 34,827 0% 52,588 78,635 50%
+Net profit 102,714 102,356 0% 213,770 213,139 0% 322,243 444,796 38%
+EPS (NT$) 64.52 64.30 0% 134.28 133.89 0% 202.42 279.40 38%
+Margin
+Gross margin 45.8% 45.8% 43.4% 43.4% 44.2% 41.4%
+Operating margin 15.9% 15.8% 21.7% 21.7% 26.0% 27.3%
+Tax rate 13.8% 13.8% 14.0% 14.0% 14.0% 15.0%
+Net margin 16.1% 16.1% 20.1% 20.2% 23.5% 24.0%
+Source: SinoPac 
+
+--- PAGE 4 ---
+No turning back MediaTek - HC O-PF
+22 May 2026 4
+Figure 4
+Sales mix assumptions
+Sales (NT$m) 2025 2026SP 2027SP 2028SP
+Mobile phone 328,429 265,168 268,267 300,670
+Smart edge platforms 238,642 345,136 766,170 1,525,504
+Power IC & Others 28,895 27,263 22,964 23,925
+Total 595,966 637,567 1,057,400 1,850,099
+YoY 2025 2026SP 2027SP 2028SP
+Mobile phone 8% (19%) 1% 12%
+Smart edge platforms 21% 45% 122% 99%
+Power IC & Others (5%) (6%) (16%) 4%
+Total 12% 7% 66% 75%
+Sales mix 2025 2026SP 2027SP 2028SP
+Mobile phone 55% 42% 25% 16%
+Smart edge platforms 40% 54% 72% 82%
+Power IC & Others 5% 4% 2% 1%
+Total 100% 100% 100% 100%
+Source: SinoPac 
+Figure 5
+Target price change
+Target PE (x) Valuation period EPS (NT$) Target Price (NT$)
+Old 30 2H27-1H28SP 151.46 4,500
+New 30 2H27-1H28SP 197.06 5,922
+Source: SinoPac 
+Figure 6
+QFII holdings
+Source: SinoPac
+40
+63
+36
+65
+57
+69
+56
+0
+10
+20
+30
+40
+50
+60
+70
+80
+Foreign investors hold 56%
+
+--- PAGE 5 ---
+No turning back MediaTek - HC O-PF
+22 May 2026 5
+Figure 7 Figure 8
+Forward PE Forward PB
+Source: SinoPac Source: SinoPac
+Investment thesis
+We are seeing greater visibility into MediaTek's TPU business, with Google asking it 
+to pull forward the schedule. Lukewarm smartphone demand and sustained margin 
+pressure are likely to remain key near-term drags, and we believe the market could 
+react negatively if China’s weekly sell-out data shows a disappointing trend at the 
+beginning of 2026, which is likely to create an entry point. However, we expect 
+investor focus to increasingly shift towards the company’s long-term opportunity 
+in AI semiconductors, and we view the current valuation as undemanding compared 
+with ASIC peers (trading at 30-55x).
+Catalysts
+1) Higher-than-expected GPM, 2) market share gain in the high-end smartphone 
+segment, 3) smoother verification process for TPUs.
+Valuation details
+We use PE as our valuation methodology as IC design fabless companies typically 
+deliver higher growth, and we believe the market will focus primarily on its earnings 
+outlook. We have previously used a historical PE range to value MediaTek based on 
+our evaluation of the company's product cycle at the time. Our valuation is about 
++2sd of its five-year average to reflect robust EPS growth driven by better smart 
+edge business and higher TPU forecasts.
+Investment risks
+1) Worse-than-expected smartphone demand globally; 2) a greater-than-expected 
+impact from share loss in the smartphone SoC market; 3) higher wafer prices.
+
+--- PAGE 6 ---
+No turning back MediaTek - HC O-PF
+22 May 2026 6
+Detailed financials
+Profit & Loss (NT$m)
+Year to 31 December 2022A 2023A 2024A 2025A 2026SP 2027SP 2028SP
+Revenue 548,796 433,446 530,586 595,966 637,567 1,057,400 1,850,099
+Cogs (ex -D&A) (262,912) (207,879) (246,264) (289,911) (320,110) (564,002) (1,034,498)
+Gross Profit (ex -D&A) 285,884 225,567 284,322 306,054 317,458 493,399 815,600
+Research & development costs (116,875) (111,385) (131,993) (148,306) (158,315) (190,426) (216,207)
+Selling & marketing expenses (14,240) (14,424) (17,090) (20,448) (19,469) (22,943) (26,049)
+Other SG&A (13,002) (9,759) (11,891) (10,856) (12,923) (16,060) (18,234)
+Other Op Expenses ex -D&A - - 0 0 - - -
+Op Ebitda 141,768 90,000 123,348 126,444 126,751 263,969 555,110
+Depreciation/amortisation (14,980) (18,200) (20,936) (22,974) (25,701) (34,603) (50,280)
+Op Ebit 126,788 71,800 102,412 103,470 101,050 229,366 504,830
+Interest income 3,218 7,308 11,150 10,819 11,396 12,000 12,000
+Interest expense (371) (399) (453) (652) (836) (1,000) (1,000)
+Net interest inc/(exp) 2,847 6,908 10,696 10,167 10,561 11,000 11,000
+Associates/investments 6,061 7,763 7,573 5,804 7,296 8,000 8,000
+Forex/other income (728) (186) (1,551) 664 (84) 0 0
+Asset sales/other cash items - - - 0 - 0 0
+Provisions/other non -cash items 592 497 463 4,782 906 400 400
+Asset revaluation/Exceptional items - - (74) - - - -
+Profit before tax 135,561 86,782 119,519 124,888 119,728 248,766 524,230
+Taxation (16,936) (9,591) (12,378) (18,770) (16,549) (34,827) (78,635)
+Profit after tax 118,625 77,191 107,141 106,118 103,179 213,939 445,596
+Preference dividends - - - - - - -
+Profit for period 118,625 77,191 107,141 106,118 103,179 213,939 445,596
+Minority interest (484) (212) (754) (798) (822) (800) (800)
+Net profit 118,141 76,979 106,387 105,319 102,356 213,139 444,796
+Extraordinaries/others 0 0 0 0 0 0 0
+Profit avail to ordinary shares 118,141 76,979 106,387 105,319 102,356 213,139 444,796
+Dividends (116,141) (120,981) (87,551) (86,070) (85,169) (61,414) (127,883)
+Retained profit 2,000 (44,003) 18,836 19,250 17,187 151,725 316,913
+Adjusted profit 118,141 76,979 106,387 105,319 102,356 213,139 444,796
+EPS  (NT$) 74.6 48.5 66.9 66.2 64.3 133.9 279.4
+Adj EPS [pre excep]  (NT$) 74.6 48.5 66.9 66.2 64.3 133.9 279.4
+Core EPS  (NT$) 74.6 48.5 66.9 66.2 64.3 133.9 279.4
+DPS  (NT$) 76.0 55.0 54.0 53.5 38.6 80.3 167.6
+Profit & loss ratios
+Year to 31 December 2022A 2023A 2024A 2025A 2026SP 2027SP 2028SP
+Growth (%)
+Revenue growth (% YoY) 11.2 (21.0) 22.4 12.3 7.0 65.8 75.0
+Ebitda growth (% YoY) 19.5 (36.5) 37.1 2.5 0.2 108.3 110.3
+Ebit growth (% YoY) 17.4 (43.4) 42.6 1.0 (2.3) 127.0 120.1
+Net profit growth (%) 6.0 (34.8) 38.2 (1.0) (2.8) 108.2 108.7
+EPS growth (% YoY) 5.7 (35.0) 38.0 (1.1) (2.8) 108.2 108.7
+Adj EPS growth (% YoY) 5.7 (35.0) 38.0 (1.1) (2.8) 108.2 108.7
+DPS growth (% YoY) 4.1 (27.6) (1.8) (0.9) (27.9) 108.2 108.7
+Core EPS growth (% YoY) 5.7 (35.0) 38.0 (1.1) (2.8) 108.2 108.7
+Margins (%)
+Gross margin (%) 52.1 52.0 53.6 51.4 49.8 46.7 44.1
+Ebitda margin (%) 25.8 20.8 23.2 21.2 19.9 25.0 30.0
+Ebit margin (%) 23.1 16.6 19.3 17.4 15.8 21.7 27.3
+Net profit margin (%) 21.5 17.8 20.1 17.7 16.1 20.2 24.0
+Core profit margin 21.5 17.8 20.1 17.7 16.1 20.2 24.0
+Op cashflow margin 26.3 38.3 29.4 27.3 13.8 18.2 20.5
+Returns (%)
+ROE (%) 29.9 20.7 31.3 29.3 27.0 45.9 63.6
+ROA (%) 17.5 10.3 13.8 12.2 11.5 22.5 35.6
+ROIC (%) 59.7 47.8 143.6 259.2 199.2 208.7 240.5
+ROCE (%) 42.0 27.9 49.6 55.7 53.0 102.3 177.8
+Other key ratios (%)
+Effective tax rate (%) 12.5 11.1 10.4 15.0 13.8 14.0 15.0
+Ebitda/net int exp (x) - - - - - - -
+Exceptional or extraord. inc/PBT (%) - - - - - - -
+Dividend payout (%) 101.9 113.4 80.7 80.9 60.0 60.0 60.0
+Source: SinoPac
+
+--- PAGE 7 ---
+No turning back MediaTek - HC O-PF
+22 May 2026 7
+Balance sheet (NT$m)
+Year to 31 December 2022A 2023A 2024A 2025A 2026SP 2027SP 2028SP
+Cash & equivalents 147,502 165,396 203,696 235,290 227,047 346,969 584,141
+Accounts receivable 56,666 60,641 51,770 68,597 73,385 121,709 212,950
+Inventories 70,703 43,220 58,414 67,235 74,310 128,631 233,103
+Other current assets 18,643 16,438 21,279 15,512 15,512 15,512 15,512
+Current assets 293,515 285,695 335,160 386,633 390,254 612,821 1,045,705
+Fixed assets 53,862 53,291 56,917 60,427 60,159 62,660 64,146
+Investments 137,087 166,892 186,915 191,058 198,284 198,798 199,573
+Goodwill 0 0 0 0 0 0 0
+Other intangible assets 73,455 81,245 82,257 80,262 80,262 80,262 80,262
+Other non -current assets 50,481 47,916 36,619 25,404 36,646 32,890 31,647
+Total assets 608,399 635,038 697,868 743,785 765,606 987,430 1,421,333
+Short term loans/OD 6,569 7,826 8,919 4,481 8,655 10,685 11,940
+Accounts payable 21,518 38,779 40,777 48,710 53,836 93,191 168,878
+Accrued expenses - - - - - - -
+Taxes payable 0 0 0 0 0 0 0
+Other current liabs 113,484 185,394 217,207 250,159 217,587 228,317 232,021
+Current liabilities 141,570 231,999 266,902 303,350 280,078 332,193 412,839
+Long -term debt/leases/other 863 4,605 2,681 6,795 8,795 10,795 12,795
+Convertible bonds - - - - - - -
+Provisions/other LT liabs 22,907 24,229 23,228 24,444 49,730 64,994 98,618
+Total liabilities 165,341 260,833 292,812 334,590 338,603 407,982 524,253
+Share capital 15,994 15,996 16,017 16,039 15,919 15,919 15,919
+Retained earnings 286,689 212,670 210,599 219,519 227,211 358,342 631,495
+Reserves/others 109,244 104,133 120,945 134,620 144,855 166,169 210,649
+Shareholder funds 411,927 332,800 347,560 370,178 387,986 540,430 858,063
+Minorities/other equity 31,131 41,406 57,495 39,017 39,017 39,017 39,017
+Total equity 443,058 374,205 405,055 409,195 427,003 579,448 897,080
+Total liabs & equity 608,399 635,038 697,868 743,785 765,606 987,430 1,421,333
+Total debt 7,432 12,431 11,600 11,276 17,451 21,481 24,736
+Net debt (140,070) (152,965) (192,095) (224,014) (209,596) (325,489) (559,405)
+Adjusted EV 5,866,898 5,846,063 5,812,295 5,763,403 5,773,244 5,656,121 5,421,024
+BVPS  (NT$) 260.1 209.7 218.6 232.5 243.7 339.5 539.0
+Balance sheet ratios
+Year to 31 December 2022A 2023A 2024A 2025A 2026SP 2027SP 2028SP
+Key ratios
+Current ratio (x) 2.1 1.2 1.3 1.3 1.4 1.8 2.5
+Growth in total assets (% YoY) (7.9) 4.4 9.9 6.6 2.9 29.0 43.9
+Growth in capital employed (% YoY) (1.9) (27.7) (8.8) (11.5) 18.6 16.8 35.1
+Net debt to operating cashflow (x) - - - - - - -
+Gross debt to operating cashflow (x) 0.1 0.1 0.1 0.1 0.2 0.1 0.1
+Gross debt to Ebitda (x) 0.1 0.1 0.1 0.1 0.1 0.1 0.0
+Net debt/Ebitda (x) - - - - - - -
+Gearing
+Net debt/equity (%) (31.6) (40.9) (47.4) (54.7) (49.1) (56.2) (62.4)
+Gross debt/equity (%) 1.7 3.3 2.9 2.8 4.1 3.7 2.8
+Interest cover (x) 350.5 198.1 250.5 175.3 134.5 241.4 516.8
+Debt cover (x) 19.5 13.4 13.5 14.4 5.0 8.9 15.3
+Net cash per share  (NT$) 88.4 96.4 120.8 140.7 131.7 204.5 351.4
+Working capital analysis
+Inventory days 94.6 92.0 69.4 73.3 74.7 61.9 60.9
+Debtor days 40.7 49.4 38.7 36.9 40.6 33.7 33.0
+Creditor days 42.7 48.7 54.3 52.2 54.1 44.8 44.1
+Working capital/Sales (%) 2.0 (24.0) (23.8) (24.8) (17.0) (5.3) 3.3
+Capital employed analysis
+Sales/Capital employed (%) 183.6 200.6 269.2 341.8 308.3 437.8 566.9
+EV/Capital employed (%) 1,963.2 2,705.9 2,949.0 3,305.5 2,792.0 2,341.9 1,661.0
+Working capital/Capital employed (%) 3.7 (48.1) (64.2) (84.6) (52.3) (23.0) 18.6
+Fixed capital/Capital employed (%) 18.0 24.7 28.9 34.7 29.1 25.9 19.7
+Other ratios (%)
+PB (x) 14.8 18.4 17.7 16.6 15.8 11.4 7.2
+EV/Ebitda (x) 41.4 65.0 47.1 45.6 45.5 21.4 9.8
+EV/OCF (x) 40.6 35.2 37.2 35.4 65.6 29.4 14.3
+EV/FCF (x) 44.8 37.3 40.9 39.0 81.0 32.4 15.0
+EV/Sales (x) 10.7 13.5 11.0 9.7 9.1 5.3 2.9
+Capex/depreciation (%) 146.8 84.8 109.8 112.9 116.6 111.3 106.2
+Source: SinoPac
+
+--- PAGE 8 ---
+No turning back MediaTek - HC O-PF
+22 May 2026 8
+Cashflow  (NT$m)
+Year to 31 December 2022A 2023A 2024A 2025A 2026SP 2027SP 2028SP
+Operating profit 126,788 71,800 102,412 103,470 101,050 229,366 504,830
+Operating adjustments (8,163) 5,391 4,729 2,648 2,129 (15,427) (59,235)
+Depreciation/amortisation 14,980 18,200 20,936 22,974 25,701 34,603 50,280
+Working capital changes (11,886) 111,800 12,624 22,540 (39,115) (54,371) (115,180)
+Interest paid / other financial expenses (3,281) (6,471) (3,938) (5,994) (3,759) (4,000) (4,000)
+Tax paid - - - - - - -
+Other non -cash operating items 26,145 (34,628) 19,292 17,154 2,000 2,000 2,000
+Net operating cashflow 144,583 166,091 156,055 162,793 88,006 192,171 378,696
+Capital expenditure (13,622) (9,325) (13,787) (15,059) (16,745) (17,582) (18,461)
+Free cashflow 130,961 156,767 142,268 147,734 71,261 174,589 360,234
+Acq/inv/disposals (18,783) (35,885) (23,387) (23,169) - - -
+Int, invt & associate div (5,129) 16,464 1,246 475 (1,000) (1,000) (1,000)
+Net investing cashflow (37,535) (28,746) (35,928) (37,754) (17,745) (18,582) (19,461)
+Increase in loans (48,575) (2,328) (1,260) 60 4,000 4,000 4,000
+Dividends (116,141) (120,981) (87,551) (86,070) (85,169) (61,414) (127,883)
+Net equity raised/others 8,435 4,740 (1,309) (1,665) 350 350 350
+Net financing cashflow (156,280) (118,569) (90,119) (87,675) (80,819) (57,064) (123,533)
+Incr/(decr) in net cash (49,232) 18,776 30,008 37,364 (10,558) 116,525 235,701
+Exch rate movements 13,030 (883) 8,292 (5,770) 2,315 3,397 1,470
+Opening cash 183,705 147,502 165,396 203,696 235,290 227,047 346,969
+Closing cash 147,502 165,396 203,696 235,290 227,047 346,969 584,141
+OCF PS  (NT$) 91.3 104.7 98.2 102.3 55.3 120.7 237.9
+FCF PS  (NT$) 82.7 98.8 89.5 92.8 44.8 109.7 226.3
+Cashflow ratio analysis
+Year to 31 December 2022A 2023A 2024A 2025A 2026SP 2027SP 2028SP
+Growth (%)
+Op cashflow growth (% YoY) 207.0 14.9 (6.0) 4.3 (45.9) 118.4 97.1
+FCF growth (% YoY) 334.9 19.7 (9.2) 3.8 (51.8) 145.0 106.3
+Capex growth (%) (19.8) (31.5) 47.8 9.2 11.2 5.0 5.0
+Other key ratios (%)
+Capex/sales (%) 2.5 2.2 2.6 2.5 2.6 1.7 1.0
+Capex/op cashflow (%) 9.4 5.6 8.8 9.3 19.0 9.1 4.9
+Operating cashflow payout ratio (%) 83.3 52.6 55.0 52.3 69.8 66.5 70.5
+Cashflow payout ratio (%) 80.3 72.8 56.1 52.9 96.8 32.0 33.8
+Free cashflow payout ratio (%) 88.7 77.2 61.5 58.3 119.5 35.2 35.5
+DuPont analysis
+Year to 31 December 2022A 2023A 2024A 2025A 2026SP 2027SP 2028SP
+Ebit margin (%) 23.1 16.6 19.3 17.4 15.8 21.7 27.3
+Asset turnover (x) 0.9 0.7 0.8 0.8 0.8 1.2 1.5
+Interest burden (x) 1.1 1.2 1.2 1.2 1.2 1.1 1.0
+Tax burden (x) 0.9 0.9 0.9 0.8 0.9 0.9 0.9
+Return on assets (%) 17.5 10.3 13.8 12.2 11.5 22.5 35.6
+Leverage (x) 1.4 1.5 1.7 1.8 1.8 1.7 1.6
+ROE (%) 29.9 20.7 31.3 29.3 27.0 45.9 63.6
+EVA® analysis
+Year to 31 December 2022A 2023A 2024A 2025A 2026SP 2027SP 2028SP
+Ebit adj for tax 110,948 63,864 91,806 87,919 87,082 197,255 429,106
+Average invested capital 185,847 133,693 63,926 33,920 43,710 94,504 178,438
+ROIC (%) 59.7 47.8 143.6 259.2 199.2 208.7 240.5
+Cost of equity (%) 9.4 9.4 9.4 9.4 9.4 9.4 9.4
+Cost of debt (adj for tax) 1.4 1.4 1.4 1.3 1.4 1.4 1.3
+Weighted average cost of capital (%) 9.3 9.3 9.3 9.3 9.3 9.3 9.3
+EVA/IC (%) 50.4 38.5 134.3 249.9 190.0 199.5 231.2
+EVA  (NT$m) 93,716 51,467 85,878 84,774 83,030 188,493 412,562
+Source: SinoPac
+
+--- PAGE 9 ---
+Important disclosures MediaTek - HC O-PF
+22 May 2026 9
+Research subscriptions
+To change your report distribution requirements, please contact your CLSA sales representative or email us at cib@clsa.com.
+You can also fine-tune your Research Alert email preferences at https:/ /www.clsa.com/member/tools/email_alert/.
+Companies mentioned
+MediaTek (2454 TT - NT$3,860.00 - HIGH CONVICTION OUTPERFORM)¹
+Alphabet (N-R)
+Broadcom (AVGO US - US$414.14 - O-PF)²
+Samsung Electronics (005930 KS - ₩293,000 - O-PF)³
+¹ Covered by SinoPac; ² Covered by CLSA Americas; ³ Covered by CLSA
+Analyst certification 
+The analyst(s) of this report hereby certify that the views expressed in this research report accurately reflect my/our 
+own personal views about the securities and/or the issuers and that no part of my/our compensation was, is, or will 
+be directly or indirectly related to the specific recommendation or views contained in this research report.
+Important disclosures 
+Recommendation history of MediaTek Inc 2454 TT
+Date Rec Target Date Rec Target
+LATEST HC O-PF 5,922.00 26 Jul 2024 O-PF 1,370.00
+03 May 2026 HC O-PF 4,500.00 28 Jun 2024 O-PF 1,246.00
+04 Feb 2026 HC O-PF 2,454.00 26 Apr 2024 BUY 1,246.00
+21 Jan 2026 HC O-PF 2,000.00 23 Apr 2024 BUY 1,270.00
+04 Dec 2025 O-PF 1,700.00 26 Feb 2024 BUY 1,276.00
+06 Oct 2025 HLD 1,400.00 31 Jan 2024 U-PF 980.00
+30 Jul 2025 HLD 1,381.00 01 Jan 2024 SELL 952.00
+27 May 2025 HLD 1,250.00 30 Nov 2023 O-PF 991.00
+08 Feb 2025 HLD 1,350.00 29 Oct 2023 O-PF 860.00
+31 Oct 2024 HLD 1,300.00 23 Oct 2023 U-PF 840.00
+Note: At 6pm (HKT) on 28 June 2024, we changed our ratings to Outperform (O-PF), Hold (HLD) and Underperform 
+(U-PF); and on 16 December 2024, we added the ratings: High-Conviction Outperform (HC O-PF) and High-Conviction 
+Underperform (HC U-PF). Please see Key to CLSA/SinoPac investment rankings below for details. Source: CLSA, 
+SinoPac
+
+--- PAGE 10 ---
+Important disclosures MediaTek - HC O-PF
+22 May 2026 10
+Recommendation history of Samsung Electronics Co Ltd 005930 KS
+Date Rec Target Date Rec Target
+10 May 2026 O-PF 400,000.00 16 Dec 2024 O-PF 77,000.00
+30 Apr 2026 O-PF 340,000.00 22 Nov 2024 O-PF 80,000.00
+07 Apr 2026 O-PF 320,000.00 08 Oct 2024 O-PF 85,000.00
+08 Mar 2026 O-PF 290,000.00 06 Sep 2024 O-PF 100,000.00
+29 Jan 2026 O-PF 260,000.00 29 Aug 2024 O-PF 110,000.00
+08 Jan 2026 O-PF 220,000.00 05 Jul 2024 O-PF 120,000.00
+09 Dec 2025 O-PF 160,000.00 28 Jun 2024 O-PF 113,000.00
+19 Nov 2025 O-PF 150,000.00 04 Jun 2024 BUY 113,000.00
+30 Oct 2025 O-PF 145,000.00 05 Apr 2024 BUY 120,000.00
+10 Oct 2025 O-PF 125,000.00 27 Jul 2023 BUY 100,000.00
+31 Jul 2025 O-PF 90,000.00 07 Jul 2023 BUY 95,000.00
+31 Jan 2025 O-PF 73,000.00 05 Jun 2023 BUY 93,000.00
+08 Jan 2025 O-PF 75,000.00 26 May 2023 BUY 88,000.00
+Note: At 6pm (HKT) on 28 June 2024, we changed our ratings to Outperform (O-PF), Hold (HLD) and Underperform 
+(U-PF); and on 16 December 2024, we added the ratings: High-Conviction Outperform (HC O-PF) and High-Conviction 
+Underperform (HC U-PF). Please see Key to CLSA investment rankings below for details. Source: CLSA
+Recommendation history of Broadcom Ltd AVGO US
+Date Rec Target Date Rec Target
+19 May 2026 O-PF 605.00 22 Sep 2025 O-PF 415.00
+05 Jan 2026 O-PF 425.00 26 Aug 2025 O-PF 330.00
+Note: At 6pm (HKT) on 28 June 2024, we changed our ratings to Outperform (O-PF), Hold (HLD) and Underperform 
+(U-PF); and on 16 December 2024, we added the ratings: High-Conviction Outperform (HC O-PF) and High-Conviction 
+Underperform (HC U-PF). Please see Key to CLSA investment rankings below for details. Source: CLSA
+
+--- PAGE 11 ---
+Important disclosures MediaTek - HC O-PF
+22 May 2026 11
+This research report is prepared for and distributed by CLSA pursuant 
+to a research products agreement between CLSA Limited and SinoPac 
+Securities Investment Service Corporation (SinoPac). SinoPac has 
+confirmed to CLSA Limited that the opinions expressed are based on 
+information it believes to be fair, accurate and complete and obtained 
+through reliable public or other non-confidential sources at the time 
+made.
+CLSA in this research report refers to CLSA Limited, CLSA 
+Americas, LLC, CLSA Australia Pty Ltd, CLSA India Private Limited, PT 
+CLSA Sekuritas Indonesia (a securities company licensed and 
+supervised by Financial Services Authority (Otoritas Jasa Keuangan)), 
+CLSA Securities Japan Co., Ltd., CLSA Securities Korea Ltd., CLSA 
+Securities Malaysia Sdn. Bhd., CLSA Philippines, Inc, CLSA Singapore 
+Pte Ltd, CLSA Securities (Thailand) Limited, CLSA (UK), CLSA Europe 
+B.V. and/or their respective affiliates (collectively, CLSA). 
+The analyst(s) whose name appears in this research report is not 
+registered or qualified as a research analyst with the Financial 
+Industry Regulatory Authority (FINRA) and may not be an associated 
+person of CLSA and, therefore, may not be subject to applicable 
+restrictions under FINRA Rules on communications with a subject 
+company, public appearances and trading securities held by a research 
+analyst account.
+Any opinions or estimates herein reflect the judgment of the 
+analyst(s) at the date of this report and are subject to change at any 
+time without notice.  This report has been distributed by CLSA 
+employing appropriate expertise, and in the belief that it is impartial, 
+independent, clear, fair and not misleading. The information set forth 
+herein was obtained from sources believed to be reliable, but has not 
+been independently verified by CLSA nor SinoPac. Therefore, except 
+for any obligation under applicable rules neither CLSA nor SinoPac 
+guarantees its accuracy. Additional and supporting information is 
+available upon request.
+This report is for information purposes only and it does not 
+constitute or contain, and should not be considered as an offer or 
+invitation to sell, or any solicitation or invitation of any offer to 
+subscribe for or purchase any securities in any jurisdiction and 
+recipient of this report must make its own independent decisions 
+regarding any securities or financial instruments mentioned herein. 
+This is not intended to provide professional, investment or any other 
+type of advice or recommendation and does not take into account the 
+particular investment objectives, financial situation or needs of 
+individual recipients. Before acting on any information in this report, 
+you should consider whether it is suitable for your particular 
+circumstances and, if appropriate, seek professional advice, including 
+legal or tax advice. Investments involve risks, and investors should 
+exercise prudence and their own judgement in making investment 
+decisions. The value of any investment or income may go down as 
+well as up, and investors may not get back the full (or any) amount 
+invested.  Investments that are denominated in foreign currencies 
+may fluctuate in value as a result of exposure to movements of 
+exchange rate. Past performance is not necessarily a guide to future 
+performance or liquidity. CLSA and/or SinoPac do/does not accept 
+any responsibility and cannot be held liable for any person’s use of or 
+reliance on the information and opinions contained herein. To the 
+extent permitted by applicable securities laws and regulations, CLSA 
+and/or SinoPac accept(s) no liability whatsoever for any direct or 
+consequential loss arising from the use of this report or its contents. 
+SinoPac may rely on information barriers, such as “Chinese Walls” 
+to control the flow of information within the areas, units, divisions, 
+groups, or affiliates of SinoPac.  Meanwhile, CLSA maintains 
+independence and integrity of its Research department, by having its 
+Corporate Finance, Sales Trading, Asset Management and Research 
+business lines distinct from one another. This means that CLSA’s 
+Research department is not part of and does not report to CLSA's 
+Corporate Finance department, CLSA’s Sales and Trading business or 
+Asset Management business. Accordingly, neither the Corporate 
+Finance department, the Sales and Trading department nor the Asset 
+Management department supervises or controls the activities of 
+CLSA’s research analysts. CLSA’s research analysts report to the 
+management of the Research department, who in turn report to 
+CLSA’s senior management. CLSA has put in place a number of 
+internal controls designed to manage conflicts of interest that may 
+arise as a result of CLSA engaging in Corporate Finance, Sales and 
+Trading, Asset Management and Research activities. Some examples 
+of these controls include: the use of information barriers and other 
+controls designed to ensure that confidential information is only 
+shared on a “need to know” basis and in compliance with CLSA’s 
+Chinese Wall policies and procedures; measures designed to ensure 
+that interactions that may occur among CLSA’s Research personnel, 
+Corporate Finance, Asset Management, and Sales and Trading 
+personnel, CLSA’s financial product issuers and CLSA’s research 
+analysts do not compromise the integrity and independence of CLSA’s 
+research.
+Subject to any applicable laws and regulations at any given time, 
+CLSA, SinoPac, their respective affiliates or officers, directors or 
+employees may have used the information contained herein before or 
+after publication and may have positions in, or may from time to time 
+purchase or sell or have an interest or a material interest in any of the 
+securities mentioned or related securities, or may currently or in 
+future have or have had a business or financial relationship with, or 
+may provide or have provided corporate finance/capital markets 
+and/or other services to, the entities referred to herein, their advisors 
+and/or any other connected parties. As a result, you should be aware 
+that CLSA and/or SinoPac and/or their respective affiliates, officers, 
+directors or employees may have one or more conflicts of interest. 
+Regulations or market practice of some jurisdictions/markets 
+prescribe certain disclosures to be made for certain actual, potential 
+or perceived conflicts of interests relating to research reports. Details 
+of the disclosable interest can be found in certain reports as required 
+by the relevant rules and regulation and the full details are available 
+at http://www.clsa.com/member/research_disclosures/. Disclosures 
+therein include the position of CLSA only. Unless specified otherwise, 
+CLSA and SinoPac did not receive any compensation or other benefits 
+from the subject company, covered in this report, or from any third 
+party. For CITICS disclosure about specific companies mentioned 
+herein, please access: 
+https://www.clsa.com/member/research_disclosures_citics/. For 
+SinoPac disclosure about specific companies mentioned herein, 
+please access: 
+https://www.clsa.com/member/research_disclosures_sinopac/.  If 
+investors have any difficulty accessing this website, please contact 
+webadmin@clsa.com/login.enquiry@clsa.com. If you require 
+disclosure information on previous dates, please contact 
+compliance_hk@clsa.com.
+Neither analysts nor their household members or associates may 
+have a financial interest in, or be an officer, director or advisory board 
+member of companies covered by the analyst unless disclosed herein. 
+In circumstances where an analyst has a pre-existing holding in any 
+securities under coverage, those holdings are grandfathered and the 
+analyst is prohibited from trading such securities. 
+As analyst(s) of this report, I/we hereby certify that the views 
+expressed in this research report accurately reflect my/our own 
+personal views about the securities and/or the issuers and that no 
+part of my/our compensation was, is, or will be directly or indirectly 
+related to the specific recommendation or views contained in this 
+report.. The analyst/s also state/s and confirm/s that he/she/they 
+has/have not been subject to any outside influence in connection with 
+this research report. In addition, the analysts included herein attest 
+that they were not in possession of any material, non-public 
+information regarding the subject company that has securities listed 
+in the relevant jurisdiction(s) at the time of publication of this report. 
+Save from the disclosure below (if any), the analyst(s) is/are not aware 
+of any material conflict of interest.  For full disclosure of interest for 
+all companies covered in this report, please refer to 
+http://www.clsa.com/member/research_disclosures/ and 
+https://www.clsa.com/member/research_disclosures_sinopac/ for 
+details.
+SinoPac and/or its affiliates has received compensation for 
+providing non-investment banking services (e.g. brokerage 
+services/asset management services) for the following companies in 
+the past 12 months: MediaTek Inc
+Key to CLSA/SinoPac investment rankings: From 16 December 
+2024: High-Conviction Outperform (HC O-PF): Strong conviction that 
+a top-quartile stock (by expected return in analyst’s coverage) will 
+outperform and total stock return (TSR) expected to exceed or be 
+equal to 10%; Outperform (O-PF): TSR expected to exceed or be equal 
+to 10%; Hold (HLD): TSR expected to be below 10% but more than or 
+equal to negative 10%; Underperform (U-PF): TSR expected to be 
+
+--- PAGE 12 ---
+Important disclosures MediaTek - HC O-PF
+22 May 2026 12
+below negative 10%; High-Conviction Underperform (HC U-PF): 
+Strong conviction that a bottom-quartile stock (by expected return in 
+analyst’s coverage) will underperform and total stock return expected 
+to be below negative 10%. TSR is up/downside to 12-month target 
+price plus dividend. From 6pm (HK time) on 28 June 2024 and up to 
+16 December 2024: Outperform (O-PF): TSR expected to exceed or 
+be equal to 10%; Hold (HLD): TSR expected to be below 10% but more 
+than or equal to negative 10%; Underperform (U-PF): TSR expected 
+to be below negative 10%. Up to 6pm (HK time) on 28 June 2024: 
+BUY: Total stock return (including dividends) expected to exceed 
+20%; O-PF (aka ACCUMULATE): Total expected return below 20% 
+but exceeding market return; U-PF (aka REDUCE): Total expected 
+return positive but below market return; SELL: Total return expected 
+to be negative. For relative performance, we benchmarked the 12-
+month total forecast return (including dividends) for the stock against 
+the 12-month forecast return (including dividends) for the market on 
+which the stock trades.
+For purposes of regulatory disclosure only, our High-Conviction 
+Outperform and Outperform ratings fall into a buy rating category; 
+our Hold rating falls into a hold rating category; and our High-
+Conviction Underperform and Underperform ratings fall into a sell 
+rating category. 
+For a history of the recommendation, price targets and disclosure 
+information for companies mentioned in this report please write to: 
+CLSA Group Compliance, 18/F, One Pacific Place, 88 Queensway, 
+Hong Kong. EVA® is a registered trademark of Stern, Stewart & Co. 
+"CL" in charts and tables stands for CLSA estimates, “CS” for CITIC 
+Securities estimates and “SP” stands for SinoPac estimates, unless 
+otherwise noted in the source. 
+Charts and tables sourced to CLSA or SinoPac in this report may 
+include data extracted from CLSA or SinoPac’s automated databases, 
+which derive their original data from a range of sources. These can 
+include: companies; analyst estimates/calculations; local exchanges 
+and/or third-party data or market pricing providers such as 
+Bloomberg, FactSet or IBES. Additional information on data sources 
+for specific charts or tables can be obtained by contacting the 
+publishing analysts.
+This report is subject to and incorporates the terms and conditions 
+of use set out on the www.clsa.com website 
+(https://www.clsa.com/disclaimer.html and 
+https://www.clsa.com/terms-and-conditions-of use/) and the 
+references to “publication/communication” or “Publications” thereof 
+shall include this report. Neither this report nor any portion hereof 
+may be reprinted, sold, resold, copied, reproduced, distributed, 
+redistributed, published, republished, displayed, posted or 
+transmitted in any form or media or by any means without the written 
+consent of CLSA.  This report has been produced for private 
+circulation to professional, institutional and/or wholesale clients only, 
+and may not be distributed to retail investors. The information, 
+opinions and estimates herein are not directed at, or intended for 
+distribution to or use by, any person or entity in any jurisdiction where 
+doing so would be contrary to law or regulation or which would 
+subject CLSA and/or SinoPac to any additional registration or 
+licensing requirement within such jurisdiction. The information and 
+statistical data (for private or public companies) herein have been 
+obtained from sources CLSA and/or SinoPac believe to be reliable. 
+Such information has not been independently verified by CLSA and/or 
+SinoPac.  CLSA and/or SinoPac together with their respective 
+directors, officers, employees and other representatives 
+(Representatives) make no representation or warranty as to the 
+fairness, adequacy, accuracy, completeness or correctness of the 
+contents of this research, including views and company information. 
+None of the CLSA, SinoPac and their respective Representatives 
+undertake any obligation to update the information contained herein. 
+None of CLSA, SinoPac and their respective Representatives shall be 
+liable for any damages, losses, or other consequences arising from the 
+use or reliance on the information herein. 
+The replication of any third party views in this report should not 
+be treated necessarily as an indication that CLSA and/or SinoPac 
+agrees with or concurs with such views. None of CLSA and/or 
+SinoPac, their respective affiliates and their respective directors, 
+officers, employees, advisers and representatives makes any 
+representation or warranty, express or implied, as to and no reliance 
+should be placed on, the fairness, accuracy, completeness or 
+correctness of such data or information contained herein or any 
+statement made in this report. Any opinions or estimates herein 
+reflect the judgment of the analyst(s) at the date of this report and are 
+subject to change at any time without notice. Where any part of the 
+information, opinions or estimates contained herein reflects the views
+and opinions of a sales person or a non-analyst, such views and 
+opinions may not correspond to the published view of CLSA and/or 
+SinoPac. Any price target given in the report may be projected from 
+one or more valuation models and hence any price target may be 
+subject to the inherent risk of the selected model as well as other 
+external risk factors. Where the publication does not contain ratings, 
+the material should not be construed as research but is offered as 
+factual commentary. It is not intended to, nor should it be used to 
+form an investment opinion about the non-rated companies.
+You should make your own independent evaluation of the 
+relevance, adequacy, and correctness of information contained in this 
+report and conduct such investigations as you deem necessary, 
+including making inquiries with the company and obtaining 
+independent financial or investment advice before making critical 
+decisions. You shall not use or rely on the contents of the information 
+herein for any purpose. You shall apply caution when using this report 
+at your own risk. You shall assume full responsibility for any 
+interpretations, decisions, or actions taken based on the information 
+provided and assume all risks associated with the use of this report, 
+and releases CLSA, SinoPac, their respective affiliates and 
+Representatives from any liability arising from such use. You shall be 
+solely responsible for any losses incurred.
+Please be aware that artificial intelligence (AI) may be utilized in 
+connection with research, analysis and reporting activities and such 
+use may range from superficial (e.g., auxiliary data processing) to 
+material (e.g., primary analysis or inclusion of AI-generated content 
+contained herein). This report contained herein may contain AI 
+generated content and may contain inaccuracies, omissions, 
+misstatement, or misinterpretations due to AI’s inherent limitations. 
+CLSA and/or SinoPac together with their respective Representatives 
+may or may not have reviewed, edited, or approved such research 
+report contained herein.
+The report contained herein is strictly prohibited from being used, 
+in whole or in part, for the purpose of training AI system, including 
+but not limited to machine learning models or any other AI related 
+development, whether for commercial, public or broad use or 
+distribution purposes, unless with the prior written consent of CLSA. 
+The report provided herein is intended solely for informational 
+purposes and is not designed or authorized for integration with or use 
+within any AI tools or systems by the report user. The report user shall 
+not, under any circumstances, incorporate, feed, or utilize the content 
+of the report directly or indirectly into any AI applications, models or 
+algorithms. By accessing information herein, you agree to abide by 
+these restrictions and CLSA reserves the right to enforce these terms 
+and pursue remedies for unauthorized use.
+Any disputes related to this report shall be governed by the laws 
+of Hong Kong and to the non-exclusive jurisdiction of the courts of 
+Hong Kong in connection with any suite, action or proceeding arising 
+out of or in connection with this material. In the event any of the 
+provisions in these General Disclaimer shall be held to be 
+unenforceable, that provision shall be enforced to the maximum 
+extent permissible to reflect the intention underlying the 
+unenforceable term, and the remainder of these General Disclaimer 
+shall be unimpaired.
+This research report is prepared and distributed for and on behalf 
+of CLSA (for research compiled by non-US analyst(s)) in the United 
+States by CLSA Americas, LLC (to its customers); in Australia by CLSA 
+Australia Pty Ltd (ABN 53 139 992 331/AFSL License No: 350159); 
+in Hong Kong by CLSA Limited (Incorporated in Hong Kong with 
+limited liability); in India by CLSA India Private Limited, (Address: 8/F, 
+Dalamal House, Nariman Point, Mumbai 400021. Tel No: +91-22-
+66505050; CIN: U67120MH1994PTC083118; SEBI Registration No: 
+INZ000001735 as Stock Broker, INM000010619 as Merchant Banker 
+and INH00000113 as Research Analyst; in Indonesia by PT CLSA 
+Sekuritas Indonesia (a securities company licensed and supervised by 
+Financial Services Authority (Otoritas Jasa Keuangan)); in Japan by 
+CLSA Securities Japan Co. Ltd.; in Korea by CLSA Securities Korea 
+Ltd.; in Malaysia by CLSA Securities Malaysia Sdn. Bhd.; in the 
+Philippines by CLSA Philippines Inc; in Singapore by CLSA Singapore 
+
+--- PAGE 13 ---
+Important disclosures MediaTek - HC O-PF
+22 May 2026 13
+Pte Ltd and solely to persons who qualify as an "Institutional 
+Investor", "Accredited Investor" or "Expert Investor" MDDI (P) 
+035/11/2025; in Thailand by CLSA Securities (Thailand) Limited; and 
+in the European Economic Area (‘EEA”) by CLSA Europe BV and in the 
+United Kingdom by CLSA (UK).  
+China Hong Kong: This research report is distributed by CLSA 
+Limited. This research report is distributed in Hong Kong only to 
+professional investors (as defined in the Securities and Futures 
+Ordinance (Chapter 571 of the Laws of Hong Kong) and any rules 
+promulgated thereunder) and may not be distributed to retail 
+investors. Recipients should contact Matthew Overy, Tel: +852 2600 
+8315 of CLSA Limited in respect of any matters arising from, or in 
+connection with, the analysis or report.
+Australia: This report has been prepared for and on behalf of CLSA 
+pursuant to a research products agreement between CLSA Limited 
+and SinoPac. SinoPac does not hold an Australian financial services 
+license and relies on licensing relief as a Foreign Financial Services 
+Provider, limited to distribution to Australian “wholesale” investors 
+only. If you are an Australian investor, you represent and continue to 
+represent on an ongoing basis, that you are a wholesale investor and 
+if you cease being a wholesale investor, please contact us 
+immediately. CLSA Australia Pty Limited has not been involved in the 
+preparation of this document. Therefore, recommendations of 
+SinoPac in this document should not be regarded as recommendations 
+of CLSA Australia Pty Limited. CLSA Australia Pty Limited does not 
+take any responsibility for, and to the maximum extent permitted by 
+law disclaims any liability for, the content of this document. 
+CLSA Australia Pty Ltd (“CAPL”) (ABN 53 139 992 331/AFS 
+License No: 350159) is regulated by the Australian Securities and 
+Investments Commission (“ASIC”) and is a Market Participant of ASX 
+Limited and Cboe Australia Pty Ltd. This material does not take into 
+account the specific investment objectives, financial situation or 
+particular needs of the recipient. The recipient of this material must 
+not distribute it to any third party without the prior written consent 
+of CAPL. For the purposes of this paragraph the term "wholesale 
+client" has the meaning given in section 761G of the Corporations Act 
+2001. CAPL’s research coverage universe spans listed securities 
+across the ASX All Ordinaries index, securities listed on offshore 
+markets, unlisted issuers and investment products which Research 
+management deem to be relevant to the investor base from time to 
+time. CAPL seeks to cover companies of relevance to its domestic and 
+international investor base across a variety of sectors.
+India: CLSA India Private Limited, incorporated in November 1994 
+provides equity brokerage services (SEBI Registration No: 
+INZ000001735), research services (SEBI Registration No: 
+INH000001113) and merchant banking services (SEBI Registration 
+No.INM000010619) to global institutional investors, pension funds 
+and corporates. CLSA and its associates may have debt holdings in the 
+subject company. Further, CLSA and its associates, in the past 12 
+months, may have received compensation for non-investment 
+banking services and/or non-securities related services from the 
+subject company. For further details of “associates” of CLSA India 
+please contact Compliance-India@clsa.com. Registration granted by 
+SEBI and certification from NISM in no way guarantee performance 
+of CLSA India Private Limited or provide any assurance of returns to 
+investors. Compliance officer & Grievance officer: Neeta Sanghavi, 
+Tel: 22 6650 5050. Email address of Compliance officer and 
+Grievance cell: compliance-india@clsa.com.
+Singapore: This report is distributed in Singapore by CLSA 
+Singapore Pte Ltd to institutional investors, accredited investors or 
+expert investors (each as defined under the Financial Advisers 
+Regulations) only. Singapore recipients should contact CLSA 
+Singapore Pte Ltd, 80 Raffles Place, #18-01, UOB Plaza 1, Singapore 
+048624, Tel: +65 6416 7888, in respect of any matters arising from, 
+or in connection with, the analysis or report.  By virtue of your status 
+as an institutional investor, accredited investor or expert investor, 
+CLSA Singapore Pte Ltd is exempted from complying with certain 
+requirements under the Financial Advisers Act 2001, the Financial 
+Advisers Regulations and the relevant Notices and Guidelines issued 
+thereunder (as disclosed in Part C of the Securities Dealing Services –
+Singapore Annex of the CLSA terms of business), in respect of any 
+financial advisory services that CLSA Singapore Pte Ltd may provide 
+to you. MDDI (P) 035/11/2025.
+United States of America: This research report has been prepared 
+for and on behalf of CLSA pursuant to a research products agreement 
+between CLSA Limited and SinoPac. Where any section is compiled 
+by non-US analyst(s), it is distributed into the United States in one of 
+two ways: 1) by CLSA Americas, LLC, as third party research, or 2) by 
+CLSA (except CLSA Americas, LLC) solely to persons who qualify as 
+"Major US Institutional Investors" as defined in Rule 15a-6 under the 
+Securities and Exchange Act of 1934 and who deal with CLSA 
+Americas, LLC. However, the delivery of this research report to any 
+person in the United States shall not be deemed a recommendation 
+to effect any transactions in the securities discussed herein or an 
+endorsement of any opinion expressed herein. Any recipient of this 
+research in the United States wishing to effect a transaction in any 
+security mentioned herein should do so by contacting CLSA Americas, 
+LLC. For Trades, information or any other forms of transactions or 
+communications that are routed or processed outside the CLSA 
+group’s system, CLSA Americas, LLC is not acting as 15a-6 Agent and 
+such activity should not be considered the liability of CLSA Americas, 
+LLC or any other members of CLSA group.
+Canada: This research report has been prepared for and on behalf 
+of CLSA pursuant to a research products agreement between CLSA 
+Limited and SinoPac. The delivery of this research report to any 
+person in Canada shall not be deemed a recommendation to effect 
+any transactions in the securities discussed herein or an endorsement 
+of any opinion contained herein.
+The United Kingdom: This document is a marketing 
+communication. It has not been prepared in accordance with the legal 
+requirements designed to promote the independence of investment 
+research, and is not subject to any prohibition on dealing ahead of the 
+dissemination of investment research. The document is disseminated 
+in the UK by CLSA (UK) and directed at persons having professional 
+experience in matters relating to investments, as defined in the 
+relevant applicable local regulations. Any investment activity to which 
+it relates is only available to such persons. If you do not have 
+professional experience in matters relating to investments you should 
+not rely on this document. CLSA (UK) is authorised and regulated by 
+the Financial Conduct Authority.
+The European Economic Area (‘EEA”): Research is distributed  by 
+CLSA Europe BV, authorised and regulated by the Netherlands 
+Authority for Financial Markets.
+Malaysia: This publication is distributed by CLSA Securities 
+Malaysia Sdn Bhd (CLSA Malaysia) and is intended solely for persons 
+with sufficient knowledge and experience in investment. The 
+information contained herein pertains exclusively to those with such 
+expertise, and any investment decisions based on it should only be 
+undertaken by such persons. If a person lacks knowledge, experience, 
+or qualifications in investment matters, please refrain from relying on 
+this document. Malaysia recipients should contact CLSA Securities 
+Malaysia Sdn Bhd, Suite 21-01, Level 21, Menara Generali, 27 Jalan 
+Sultan Ismail, 50250 Kuala Lumpur,  Tel: +603 20567888, in respect 
+of any matters arising from, or in connection with, the analysis or 
+report.
+CLSA Malaysia’s research coverage universe spans listed 
+securities across the FBM KLCI Index, securities listed on offshore 
+markets, unlisted issuers and investment products which Research 
+management deem to be relevant to the investor base from time to 
+time. CLSA Malaysia seeks to cover companies of relevance to its 
+domestic and international investor base across a variety of sectors.
+Korea: This research report has been prepared for informational 
+purposes only; it does not constitute an offer or a solicitation of an 
+offer to buy or sell any securities or other financial instruments. The 
+information and data contained in this report have been obtained 
+from sources we consider reliable; however, we make no 
+representation that the information provided in this report is accurate 
+or complete, and it should not be relied on as such. The recipient of 
+this report should use his/her independent judgment regarding the 
+sale or purchase of any securities or financial instruments mentioned 
+herein. We disclaim any liability whatsoever for any direct or 
+consequential loss arising from any use of this report or its contents. 
+This report is for our clients only. 
+For all other jurisdiction-specific disclaimers please refer to 
+https://www.clsa.com/disclaimer.html . The analysts/contributors to 
+this report may be employed by any relevant CLSA entity or SinoPac, 
+which is different from the entity that distributes the report in the 
+respective jurisdictions. © 2026 CLSA Limited and/or SinoPac 
+
+--- PAGE 14 ---
+Important disclosures MediaTek - HC O-PF
+22 May 2026 14
+Securities Investment Service Corporation.
+Investment in the securities market is subject to 
+market risks. Read all the related documents carefully 
+before investing.

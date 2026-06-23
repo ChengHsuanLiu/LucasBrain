@@ -1,0 +1,101 @@
+Total extracted files: 37
+
+File: 20260505_021202_file.pdf.txt (size=112143 bytes)
+  Companies: 台光電, 敘豐, 聯亞
+
+File: 20260505_200315_file.pdf.txt (size=16385 bytes)
+  Companies: 智邦
+
+File: 20260505_200356_file.docx.txt (size=55 bytes) - ERROR/EMPTY FILE
+File: 20260505_200400_file.txt (size=123009 bytes)
+
+File: 20260505_200440_file.pdf.txt (size=22573 bytes)
+  Companies: 聯電
+
+File: 20260505_200504_file.pdf.txt (size=6177 bytes)
+  Companies: 雙鍵, 台光電, 三晃, 中華化, 東材
+
+File: 20260505_200531_file (1).pdf.txt (size=10751 bytes)
+
+File: 20260505_200910_file.docx.txt (size=55 bytes) - ERROR/EMPTY FILE
+File: 20260505_200911_file (1).docx.txt (size=55 bytes) - ERROR/EMPTY FILE
+File: 20260505_200911_file.docx.txt (size=61 bytes) - ERROR/EMPTY FILE
+File: 20260505_200913_file.pdf.txt (size=4357 bytes)
+  Companies: 仁新醫藥
+
+File: 20260525_003206_file (2).pdf.txt (size=60715 bytes)
+  Companies: 雙鍵
+
+File: 20260525_003206_file.pptx.txt (size=55 bytes) - ERROR/EMPTY FILE
+File: 20260525_003703_file.pdf.txt (size=13621 bytes)
+  Companies: 聯鈞, 聯亞, 上詮, 波若威, 華星光, 光聖
+  Industries: 矽晶圓
+
+File: 20260525_004412_file.pdf.txt (size=13621 bytes)
+  Companies: 聯鈞, 聯亞, 上詮, 波若威, 華星光, 光聖
+  Industries: 矽晶圓
+
+File: 20260525_004550_file.pdf.txt (size=16335 bytes)
+  Companies: 聯電, 聯鈞, 智邦, 聯亞, 上詮, 波若威
+  Industries: 矽晶圓
+
+File: 20260525_004608_file.pdf.txt (size=3819 bytes)
+  Companies: 台光電, 台燿, 南亞, 景碩, 金像電
+  Industries: ABF載板
+
+File: 20260525_004610_file.pdf.txt (size=10230 bytes)
+  Companies: 國巨, 禾伸堂, 華新科
+
+File: 20260525_004628_file.pdf.txt (size=13468 bytes)
+  Companies: 禾伸堂, 華新科
+
+File: 20260525_004631_file.pdf.txt (size=56669 bytes)
+  Companies: 聯發科
+
+File: 20260526_124153_file.pdf.txt (size=70383 bytes)
+  Companies: 創意, 聯發科, 愛普, 穎崴, 聯電, 上詮, 精材
+
+File: 20260526_124213_file.pdf.txt (size=29193 bytes)
+  Companies: 敘豐
+
+File: 20260526_165156_file.pdf.txt (size=6865 bytes)
+
+File: 20260526_165159_file.pdf.txt (size=4175 bytes)
+
+File: 20260527_081853_file.pdf.txt (size=163449 bytes)
+  Companies: 聯發科
+
+File: 20260527_081907_file.pdf.txt (size=46277 bytes)
+  Companies: 穎崴, 敘豐
+
+File: 20260527_081927_file.pdf.txt (size=48915 bytes)
+  Companies: 弘塑, 敘豐
+
+File: 20260529_082112_file.pdf.txt (size=61057 bytes)
+  Companies: 創意, 聯發科, 愛普, 穎崴, 聯電, 上詮, 精材
+
+File: 20260529_082209_file.pdf.txt (size=47435 bytes)
+  Companies: 國巨, 廣達, 群創, 敘豐, 智邦, 聯亞, 臻鼎-KY, 緯穎, 精材, 金像電
+
+File: 20260530_180931_file.pdf.txt (size=50384 bytes)
+  Companies: 雙鍵, 奇鈦科, 永光, 弘塑
+
+File: 20260601_172010_file.pdf.txt (size=4161 bytes)
+  Companies: 聯發科, 南亞
+
+File: 20260601_172011_file (1).pdf.txt (size=2162 bytes)
+
+File: 20260601_172011_file.pdf.txt (size=11816 bytes)
+  Companies: 創意, 台光電, 廣達, 聯發科, 智邦, 波若威, 南亞, 緯穎
+
+File: 20260608_082819_file.pdf.txt (size=6354 bytes)
+  Companies: 禾伸堂, 順達, 緯穎
+
+File: 20260611_112917_file.pdf.txt (size=17786 bytes)
+
+File: 20260615_140128_file.pdf.txt (size=11571 bytes)
+  Companies: 晶技
+
+File: 20260618_104357_file.pdf.txt (size=9238 bytes)
+  Companies: 山太士
+  Industries: 矽晶圓

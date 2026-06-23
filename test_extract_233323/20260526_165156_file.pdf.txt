@@ -1,0 +1,331 @@
+--- PAGE 1 ---
+Copyright©  2026 Hermes Testing Solutions Inc.
+Aiming for Excellence, 
+Persisting in Reliable Solutions.
+April 2026
+Company Profile
+--- PAGE 2 ---
+Snapshot
+Founded
+2004.09
+Chairman President
+T.C. Lin Steven Wang
+Employees (as of Mar. 2026)
+450
+Headquarter
+Hsinchu,
+Taiwan
+--- PAGE 3 ---
+Global 
+Locations
+HTSI has established a global presence 
+across Taiwan, China, Japan, Malaysia, 
+Singapore, and the United States, providing 
+timely and professional technical support 
+through localized services.
+Suzhou
+China
+Tokyo
+Kumamoto
+Japan
+Malaysia
+Singapore
+Hsinchu
+Tainan
+Taiwan
+Phoenix
+U.S.
+--- PAGE 4 ---
+Global Locations
+Hsinchu (TW) 
+Headquarter / CPC Fab
+• Daily operations, logistics planning, and R&D
+• Equipment Service Site
+• Customized Products Development
+• Probe Card Manufacture Line
+Zhudong Fab
+• SMT Manufacture Line
+• Warehouse
+Tainan (TW)
+Thin Film & Membrane Production / R&D Line
+
+--- PAGE 5 ---
+Business Portfolio
+5
+Providing one-stop solutions from probe 
+cards to cleaning materials to enhance 
+test performance.
+Probe Card & 
+Clean Materials
+Full value-added services include 
+sales(China), installation(Taiwan), and 
+technical support
+Test Equipment & 
+Engineer Service
+Develops and distributes semiconductor 
+test equipment to enhance yield and 
+provide customized solutions.
+Semiconductor Equipment 
+/ Customized Products
+--- PAGE 6 ---
+6
+• Supports 5G/6G, RF, and Filters applications
+• 100% Taiwan-made for superior quality and 
+delivery reliability
+• Exclusive patented probe card leveling for 
+stable wafer testing 
+Membrane Probe Card
+• Supports WAT, Logic, LCD Driver & 
+GaN/SiC chip testing
+• Technology transfer partnership with MJC, 
+a top 3 global probe card manufacturer
+• Custom designs for diverse product needs
+Cantilever Probe Card
+• Cobra probe card: 100% Taiwan-made
+• MEMS probe card: Partnership with MJC, 
+integrated with HTSI components for real-
+time local support
+Vertical Probe Card
+Probe Card Overview
+--- PAGE 7 ---
+Cantilever Probe Card Cantilever Probe Card Capability
+Max. pin count (pin) 3500
+Max. current (A) 30
+Max. voltage (V) 1500
+Min. pad size (um) 30*30
+Max. frequency (GHz) 2
+Max. CCC/pin (A) 2
+Min. pitch (μm) 45
+WAT
+Logic LCD-Driver
+GaN/SiC
+Device Categories 
+Features
+• 30A max current for high-power testing
+• 1500V max voltage for high-voltage devices
+• 30*30µm min pad size for fine-pitch probing
+--- PAGE 8 ---
+Vertical Probe Card
+Cobra Probe Card
+Max. pin count: 18000
+Min. pitch: 80um
+MEMS-SP (MJC)
+Max. pin count: 50000 pins
+Frequency: ~20GHz
+MEMS-V (MJC)
+Max. pin count: 15000 pins
+For PAD For Solder Bump For Cu Pillar Bump
+Minimum pitch (μm) 80~130 130 85~130
+Temperature(℃) -40 to 150 -40 to 150 -40 to 150
+Tip Diameter (μm) 7±3 72±3 35~75
+Contact force ( g /mil) 0.7 0.9 0.5
+Max OD (μm) 200 200 200
+C.C.C (A) 1.2 1.6 1.2~2
+MEMS-V Probe 50 
+Minimum pitch (μm) 50 μm (25um staggered)
+Temperature(℃) -40 to 175
+Tip Diameter (μm) 6±2
+Contact force ( g /mil) 0.75
+Max OD (μm) 100
+C.C.C (mA) 400
+--- PAGE 9 ---
+PCB
+Design
+Layout Capability
+Substrate: MLO/MLC
+MLO: 20/24/20 
+MLC: 30 layers
+Line space: 12/12
+Size: 100*100 mm
+Probe Head
+Fine pitch 50 um (Staggered 25 um)
+Force down to 0.5 g/mil
+Max. pin counts: 50,000
+From Board to Probe
+--- PAGE 10 ---
+Membrane Probe Card
+Capability
+Max. pin count (pin) 5000
+S11 (dB) <-20
+S21 (dB) >-3 
+Frequency (GHz) ~67
+Min. pitch (μm) 65
+Min. tip diameter (μm) 20
+Lifetime (MTD) 1
+• Probe mark uniformity and consistency
+• Stable contact with well-controlled contact force
+• 100% inhouse manufacturing and quick service solution
+• High-bandwidth fidelity RF measurement with low signal loss
+Features: GSG type measurement bandwidth can exceed 67GHz
+--- PAGE 11 ---
+Prober & Probe Card 
+Sales/ Service 
+*Source: Y2025, openPR
+Area Prober
+Field Eng. NPI Eng. Probe Card 
+FAE
+North + MI 75 12 12
+Central 31 0 0
+South 29 0 0
+Total 135 12 12
+• Sales
+• PM/ Rebuild/ FAE for 
+CPC & VPC
+Prober
+• Sales/ Leasing Biz
+• Prober Service & Support, 
+CIP, etc.
+• Quarterly/ Annual PM
+Probe Card
+*as of Mar. 2026
+--- PAGE 12 ---
+HTSI Load Board
+Overview
+--- PAGE 13 ---
+Design Resource
+13
+⚫ Load board design location:  Hsinchu 
+⚫ Numbers of Load board design designers (simulation…etc.) and design capacity
+Function 2026 H1(now) 2026 H2 2027
+PCB/ST Design 10+3 16+3 35+3
+SI / PI 2 3 3
+FAE 3 3 4
+Total 18 25 45
+⚫ Design tools used: Allegro (Layout) ; OrCAD Capture(Schematic) ;  Ansys (SI / PI)
+--- PAGE 14 ---
+PCB design SPEC
+Item SPEC
+最小間距 (Min Pitch) 0.28 mm
+完成板尺寸 (Finished Board Size) 560*710 mm
+層數 (Layer Count) 106 layer
+板厚 (Board Thickness) 1~8 mm
+板曲板翘 (Warp and Twist) 2 mil/inch
+平坦度 (Flatness) 25 um/per inch
+最小镭射鑽孔尺寸(Minimum Laser Drill size) 4 mil
+最大縱横比(鐳射孔) (Maximum Aspect Ratio(laser drill)) 0.8
+金厚(Gold Thickness((um)) 3~ 10 u”
+最小線寬/線距(mil )(Minimum line width/line spacing) 2.5/2.5 mil
+最大背鑽殘桿mil (Stub) 12 mil
+最大縱横比(通孔) Maximum Aspect Ratio(thru) 45:1
+14*Discussed by case 
+--- PAGE 15 ---
+15
+
+--- PAGE 16 ---
+ATE PlatformExperiences
+16
+Platform
+Teradyne Advantest CHROMA YTEC YOGOKAWA Acco Sigurd
+Ultraflex V93K Exa C3650 V50 ST6730 STS8200 MAP
+Ultraflex Plus V93K_DD C3680 S100_7D_by 8
+J750EX T5375 C3380
+J750HD T5377
+ND3
+ND4
+Material
+EM827 N4000-13 Megtron_6
+Megtron_7 RO4350B Meteorwave 2000
+Meteorwave 4000 TU883 TU865
+TU933 FR4_HTG FR5
+PCB  Material
+--- PAGE 17 ---
+Simulation Experiences
+17
+Simulation Item
+Simulation item
+• TDR
+• S-parameter
+• Eye Diagram
+• PDN
+• IRDROP
+Simulation tool
+• ANSYS Siwave
+• ANSYS HFSS
+• ANSYS Electronics Desktop
+Simulation interface
+• USB3
+• HDMI
+• DDR4
+• TYPE-C
+⚫ Required Documents for PCB Simulation: 
+＊
+  .sp＊
+  .inc
+--- PAGE 18 ---
+18
+IQC-進料檢驗
+ Printer-My700
+Mounter-Siplace X 4S
+Reflow-HF326
+ Inspection
+In
+Process
+Quality
+Control
+IPQC-製程品質管控
+Final
+Quality
+Control
+FQC-成品品質管控
+Outgoing
+Quality
+Control
+OQC-成品品質管控
+ICT-SPEA 4080L
+ DIP二次焊接、組裝
+DIP一次焊接、組裝
+超音波清洗製程
+Electrical test-電性測試
+ 包裝入庫
+Stiffener、配件組裝
+烤箱烘烤
+SMT Process (Applicable for ODM/OEM)
+--- PAGE 19 ---
+4080L Large Board Flying Probe Tester
+TechSpecs
+Max measurable voltagevoltage ±100 V
+Max Contactable area 710x662mm
+Min. Pad size 30 µm (in ultra-accurate probing configuration) 
+Min. Pitch 160 µm
+Resonance Frequency >50
+Max Warpage@ fullspeed[µm] <10
+Damping Ratio [%] 0.5
+--- PAGE 20 ---
+20
+Outgoing
+Quality
+Control
+OQC-成品品質管控
+包裝入庫
+IQC-進料檢驗
+高週波烙鐵
+導通絕緣測試
+Electrical test-電性測試
+BGA Rework Station
+鐵板燒
+導通絕緣測試
+Electrical test-電性測試
+分析問題、判斷解決方式
+選擇解決工具與方式
+重工後復測異常與判斷是否全檢
+烤箱烘烤
+Repair Process
+--- PAGE 21 ---
+How We Support Your Success
+Collaborative Engineering Support
+Design, simulation, and 
+manufacturing of custom ATE. 
+(VPC/CPC/LB/BIB/EVB).
+Engineering & Assembly Services
+Gerber review, stack-up consulting, 
+and layout optimization.
+High-precision SMT assembly for 
+prototyping and production.
+Non-Destructive IC Analysis
+Advanced 3D X-Ray inspection for 
+internal IC structure analysis and 
+defect detection.
+21
+
+--- PAGE 22 ---
+THANKS

@@ -1,0 +1,301 @@
+--- PAGE 1 ---
+2026年PCB 產業簡報
+、
+1
+--- PAGE 2 ---
+簡報大綱
+• AI GPU、ASIC PCB/CCL供需概況及潛在受惠供應商。
+• 載板產業供需概況及潛在受惠設備供應鏈。
+2026~2027年 AI GPU、 ASIC規格升級趨勢
+• 銅箔、玻纖布供需概況。
+• 樹酯供需概況。
+PCB上游材料產業概況
+2
+--- PAGE 3 ---
+CSP CAPEX
+131.8
+118
+91.4
+72.2
+200
+140 135
+185
+200
+190
+145
+190
+0
+50
+100
+150
+200
+250
+Amazon Microsoft Meta Google
+USD bn
+2025 Jan-26 Apr-26
+3
+--- PAGE 4 ---
+PCB Supplier CAPEX
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+勝宏 滬電 金像電 臻鼎 定穎
+NT$Billions
+2025 2026F 4
+--- PAGE 5 ---
+CCL supplier capacity expansion
+14.5 14.5 14.5
+1.6 1.6 1.6
+1 1.1 1.8
+5.5 6.15
+9.45
+2.3
+2.9
+3.8
+0
+5
+10
+15
+20
+25
+30
+35
+2025 2026F 2027F
+Mn sheets/month
+TUC
+EMC
+Doosan
+Panasonic
+Shengyi
+5
+--- PAGE 6 ---
+ NVIDIA VR200 NVL144、AWS Trainium 3、Google TPU v8i(Sunfish)、v8t(Zebrafish)搭配Low 
+Dk/Low Dk 2玻纖布、HVLP4銅箔，玻纖布、銅箔、樹酯…..等原物料供應吃緊，且目前CCL產能供不
+應求，帶動CCL漲價。
+ 台光電2026Q1針對M6以下、M7規格CCL板材調漲產品報價15~20%，但仍無法完全反映原物料成
+本上漲壓力，也規劃針對M7以上規格CCL調漲產品報價。
+ Panasonic 2026年5月1日調漲CCL 20~30%、Prepreg 15~20%、FCCL 10%。
+ 台燿2026年4月25日調漲CCL 20~40%。
+ 儘管在HLC/HDI 產能緊缺下，PCB廠有能力將成本漲價轉嫁給終端客戶，但仍會落後約1個季度左
+右，毛利率短期面臨壓力。
+2026~2027年AI GPU、ASIC採用M8以上 CCL
+6
+--- PAGE 7 ---
+NVIDIA Vera Rubin
+GB200 NVL72 GB300 NVL72 VR200 NVL144 VR300 NVL576
+Substrate Ibiden(100%) Ibiden(85%)
+欣興(15%)
+Ibiden(70%)
+欣興(25%)
+景碩(5%)
+Ibiden
+欣興
+景碩
+臻鼎
+SEMCO
+CCL-Compute Tray Doosan (100%) 
+M8+LDK+HVLP3
+Doosan (100%)
+M8+LDK+HVLP3 
+Doosan (100%) 
+M8+LDK(TGI)+HVLP4(Circ
+uit Foil Luxembourg)
+LDK/LDK2+HVL
+P4?(預計不會採
+用M9Q)
+CCL-Switch Tray 台光電(100%) 生益(70%)、台光電
+(30%)
+生益(65%)、台光電(35%)
+M8.5+LDK2+HVLP4
+LDK2+HVLP4?(
+預計不會採用
+M9Q)
+PCB-Compute Tray 勝宏 (70%)
+欣興 (30%)
+勝宏 (70%)
+欣興 (20%)
+定穎 (10%)
+(6階HDI)
+勝宏 (60%)
+欣興 (20%)
+定穎 (10%)
+臻鼎(10%)
+PCB-Switch Tray 勝宏 (50%)
+滬電 (40%)
+TTM (10%)
+7
+--- PAGE 8 ---
+NVIDIA Vera Rubin
+GB200 NVL72 GB300 NVL72 VR200 NVL144 VR300 
+NVL576
+CCL-Rubin CPX 台光電(100%)
+M8.5+LDK2+HVLP4
+CCL-CX9 台光電(100%)
+M8.5+LDK2+HVLP4
+CCL-Midplane 台光電(100%)
+M8.5+LDK2+HVLP4
+CCL-LPU30 台光電(50%)、斗山(50%)
+M9+Q-glass+HVLP4
+8
+--- PAGE 9 ---
+ASIC
+TPU v8t 
+Zebrafish
+TPU v8i
+Sunfish
+TPU v9
+Humufish
+AWS Trainium
+3
+AWS Trainium
+4
+層數 36 HLC+HDI 44 HLC+HDI HLC+HDI 26 HLC+HDI HLC+HDI
+CCL規格 M8.5+M4
+Low Dk2
+HVLP4
+M8.5+M4
+Low Dk2
+HVLP4
+M9Q? M8
+Low Dk
+HVLP4
+M8.5?
+Low Dk2?
+HVLP4
+CCL供應商 台光電(70%)
+Panasonic(30%)
+台光電(70%)
+Panasonic(30%)
+台光電
+斗山?
+台光電(70%)
+台燿(30%)
+台光電
+台燿
+PCB供應商 勝宏
+滬電
+TTM
+Lincstech
+ISU
+高技
+定穎
+臻鼎
+勝宏
+滬電
+金像電
+TTM
+Lincstech
+ISU
+高技
+? 金像電
+生益
+高技
+臻鼎
+?
+9
+--- PAGE 10 ---
+多核心層/內埋式載板設計
+10
+--- PAGE 11 ---
+多核心層載板設計
+11
+--- PAGE 12 ---
+Glass core substrate
+12
+--- PAGE 13 ---
+TSMC CoWoS
+13
+• CoWoS-S • CoWoS-L
+
+--- PAGE 14 ---
+CoWoS-L Process Flow-1
+14
+--- PAGE 15 ---
+CoWoS-L Process Flow-2
+15
+--- PAGE 16 ---
+TSMC CoPoS
+16
+--- PAGE 17 ---
+EMIB-T先進封裝
+17
+--- PAGE 18 ---
+EMIB-T 設備供應鏈
+18
+TORAY ASMPT 鈦昇 長廣 群翊/偉勝 揚博
+Process Die bonding 電鍍、被動
+元件SMT
+Laser 
+marking、
+Plasma 
+clean/etchin
+g、檢測(驗
+證中)
+Lamination 
+壓膜
+Coating塗佈
+Curing烘烤
+表面濕製程
+--- PAGE 19 ---
+Agentic AI帶動ABF載板產能更加吃緊
+• NVIDIA Vera CPU、Google Axion CPU、AMD Epyc Turin......等，皆採
+用台積電N3製程。
+• Agentic AI需要更多的工具調用、任務編排，CPU需求大幅提升，過往訓
+練伺服器機櫃CPU、GPU配比1:8，未來逐步往1:1靠攏。
+Agentic AI帶動CPU需求大幅成長
+• 台南Fab18 P9 2027上半年量產、亞利桑那州Fab 21 P2 2027下半年量產、
+日本JASM Fab2 2028年量產，以及既有N5陸續轉換N3。
+TSMC加碼擴充N3產能
+19
+--- PAGE 20 ---
+Nittobo產能擴充計畫
+• 新熔爐、一般玻璃爐產能轉換。
+Japan: Fukushima /Fukuyama Enterprise Center 紗廠
+• 後處理treatment設備擴充，改善玻璃纖維與樹脂之間的界面結合力、
+提高機械強度、電氣性能以及加工性能。
+Japan: Fukushima Enterprise Center 布廠
+• T-glass、NE-glass融爐設備擴充。
+Taiwan: NITTOBO ASIA Glass Fiber Co., Ltd.(Chiayi)
+• 織布製程委外南亞，2027年20%產能由南亞代工。
+織布製程委外代工
+20
+--- PAGE 21 ---
+2026~2027 年Low CTE玻纖布持續供不應求
+21
+--- PAGE 22 ---
+台系玻纖布供應鏈概況
+台玻
+• Low CTE玻纖布已通過客
+戶認證，開始少量出貨，
+主要用於ASIC產品。
+• 桃園廠、鹿港廠改建案預
+計將投入新台幣42億元，
+擴充Low Dk 2玻纖布、
+Low CTE玻纖布產能。
+• 中國房地產市場景氣仍低
+迷，恐持續稀釋特殊玻纖
+布業務獲利成長的貢獻
+富喬
+• 2025Q4 Low CTE玻纖布
+已通過部分客戶認證，開
+始少量出貨
+• 2026年台灣廠區E-glass移
+至大陸東莞生產，轉為生
+產Low Dk/Low Dk2、
+Low CTE玻纖布
+建榮
+• T-glass直接由Nittobo技
+轉至台灣產線，嘉義福隆
+玻纖新增NE-glass、T-
+glass玻纖紗熔爐。
+• T-glass已通過客戶認證，
+2026Q2開始放量出貨。
+22

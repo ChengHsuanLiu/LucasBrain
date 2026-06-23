@@ -1,0 +1,1 @@
+Error extracting PPTX: Bad offset for central directory

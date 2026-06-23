@@ -1,0 +1,189 @@
+--- PAGE 1 ---
+ 
+ 
+ 
+EDN CAPITAL  
+艾德恩資產內部參考資料 
+電腦展+產業近況更新                              日期：2026/06/07 
+產業 目標價 潛在漲(跌)幅 研究員 
+電腦展   林劭宇 
+ 
+◆ 結論： 
+1. 這次內容有有部分跟凱威去 GTC 展場差不多就沒特別寫進去 
+2. 整場看下來水冷還是最有成長性的，電源因為明年 Power rack 開始放量也會有明顯成長。績優股目前推薦水冷
+3017、6805；電源 3665、3211；ODM 6669、8210、2059、3026，剛好崩盤給機會。 
+ 
+◆ 公司簡介＆現況： 
+1. 8 卡 Rubin HGX 架構 
+a. 層數：跟前一代一樣分成上下兩層，上層放 CPU Tray 下層放 GPU Tray，總共 2U。 
+b. 傳輸：整櫃 scale up 連接方式會用 NV Switch tray 去連接。Scale out 部分基本會延續前一代用 CXP
+去連 
+c. 散熱：由於晶片功耗提升 2300w，氣冷方案比例會相較於前一代減少。水冷方案 QD GPU 層從前一代
+的 16 組變成 20 組，同時還要算上背板 Manifold 的 2 組；CPU 層目測約 8 組 QD 加 Manifold 兩
+顆。(顆就*2) 
+i. DIMM Cold plate 主要用在 CPU 是 Intel 或 AMD 的時候，因為 Vera 的 DIMM 是用 Socamm
+不是用 R Dimm，前者用整塊 CP 壓上去散熱就好。 
+
+--- PAGE 2 ---
+ 
+ 
+ 
+EDN CAPITAL  
+艾德恩資產內部參考資料 
+d. Power：由於大部分改成水冷架構，POWER 也改採用 Power shelf 型式，整體層數取決於客戶要單櫃
+塞幾台。 
+ 
+ 
+2. NV Rack 
+a. VR200 整體架構跟 GB300 差不多，除了 Tray 內變成 cableless 跟 Fanless 以外，比較有變化的是
+power 的改變，Power 分成兩種型式，一種是放在 Rack 上 4 層的 110kw 的 Power shelf；另一種是
+外置 Power rack 的版本，NV 公規的版本是 660kw 的 power rack。 
+ 
+i. 傳統放在 Rack 上的就是天花板拉 Power whip 連接市電 AC 進去 Power shlef，power shelf 會
+把 400 多 V 的 AC 轉換成 50/48V DC 透過 Busbar 去傳給 compute tray 跟 switch tray。Power 
+rack 傳電則是改成天花板那端的電先傳到 Power rack，然後再把 800V 或+-400V 的電傳到 IT 
+Rack 上的 DCDC Shelf 去進行降壓，再透過 Busbar 傳配電到每個 Tray。 
+甲、 Busbar 從 GB300 的 1400A 升級到 5000A、Power Whip 從 60A 升級到 100A。 
+ii. Power rack 台達、光寶、VRT 架構都設定的不太一樣。台達就標準的 3U 110kw power shelf+5
+顆 80kw 4U BBU 為一個單位，總共 6 層剛好 660kw；光寶是 2 個 55KW 的 power shelf 層配
+BBU 層為一個單位，總共 8 層所以有 880KW 的量，1/4 是備源。 
+iii. Power whip 參考台達電的架構總共是 1 個單位 2 條，所以一個 Power rack 總共有 12 條，加上
+要連到 IT Rack 上的 DCDC Shelf 有 6 條，共 18 條。原本 gb300 只有 8 條。 
+b. 水冷上差異比較多是 QD 數量跟改成 Fanless，還有 inner manifold 改變。 
+i. VR200 的 CP 因為取消鍍金單價相比於 GB300 會降，但因為 inner manifold 改成盲插 QD 設
+計、模組化的水冷可以快速插入，同時也多了 layer 結構，單價相比上一代的 inner manifold 有
+提升，3017 有提到下一代也會做這一塊的生意，足以彌補 CP 單價掉的狀況。 
+ii. 左右用 MQDB04，中間用 MQDB03，Manifold 用 UQD 08。 
+c. Midplane 上面跟針跟凱威算的差不多，總共 1768 針，有 18 個 Tray 所以一櫃 31824 針，最近有提到
+
+--- PAGE 3 ---
+ 
+ 
+ 
+EDN CAPITAL  
+艾德恩資產內部參考資料 
+Rubin ultra 不一定會用 kyber，但其實不管是 Oberon 或是 Kyber 都有機會從 paladin 改成
+Pogopin。 
+ 
+3. AMD 
+a. MI450/M455 
+i. MI450 主要是客製化版本，公版是 MI455，Helios 的架構是 9+6+9，總共 72 張 GPU+18 顆
+CPU。 
+ii. 傳輸：Switch tray 的公版是用博通的 TH6，一樣用 4 根背板的 cable cartridge。 
+iii. Power：整櫃用 6 層的 72kw power shelf，450 系列的整櫃 TDP 大概 240kw。AMD 跟 NV 陣
+營選擇不一樣，AMD 選擇是 Super cap 優先於 BBU，NV 是因為在 Power shelf 上本身就有一些
+supercap 的架構在裡面，所以傾向用 BBU。 
+甲、 BUSBAR 是用 4000A 的水冷 Busbar。 
+iv. 散熱：不同於 NV 架構，AMD 方案仍有採用風扇，大概有 20%的熱是風扇解的。散熱預期客戶
+會使用 IN ROW，in rack 的 CDU 會需要 8U 高。 
+v. 目前客戶主要最大就 META 跟 OAI，oracle 跟 msft 也有興趣，但主要先把 META 做好。 
+vi. 目前 MI455 預期明年有機會 150 萬顆，大概 2W 多櫃的需求。利多 6669 
+vii. 6669、SMIC 算是這是展場唯一有展 MI455 的 ODM，神達也只展 MI355。 
+甲、 6669 也有展跟 Ayar lab、GUC 合作的全光 Rack 方案，雷射放在外部，Scale up 走左右邊
+拉出去做 node to node 連接。GUC 不是唯一合作的晶片廠商，客戶想用誰就用誰。光纖整
+櫃用 512 條，一個 Tray 用到 16 個 OE。一櫃功耗在 320~640kw。 
+viii. MI500 系列對標 Rubin ultra，廣發說會是兩側放 Compute rack 中間夾 switch rack 變巨胖櫃，
+利多 8210/2059。 
+ 
+ 
+
+--- PAGE 4 ---
+ 
+ 
+ 
+EDN CAPITAL  
+艾德恩資產內部參考資料 
+4. 水冷各家狀況 
+a. 上到 VR200 單櫃 TDP 已經走到 220KW 左右，參考各家說法下一代 IN ROW CDU 的採用率會開始顯
+著提高，因為 Sidecar 的解熱能力大部分都停在 200kw 左右，雖然也有可以支援 VR200 的 Sidecar 如
+2308 研發的 260kw 跟 8996 的 350kw，但因為水對氣導致單櫃佔的空間很大，也只能 1 對 1，預期
+In row CDU 在下一代會有一定的滲透率。 
+i. 高力展出 350kw 的 Sidecar，應對 VR200 的櫃子解熱，也是透過 SMCI 出，之前 Sidecar 主力出
+貨 150~200kw。上到 IN ROW 之後裡面通常都會放板式熱交換器，公司用自己的也有一定機率
+出售給其他做 IN Row 的同業。 
+甲、 公司同時也展出 50kw 的 RDHX，主要用在解水冷板沒辦法解的小部分的熱，像 SSD、網卡
+之類的，直接放在 IT Rack 後面。 
+ii. 元鈦科展出 4Mw 的 IN Row CDU，是目前全球解熱最大的，這台是 For Rubin ultra 的。目前出
+貨的主要是 2.5MW，已經出貨 20 幾台，手上還有 50 幾台的訂單要出。Pump 1+1 備援。版式
+熱交換器買國外廠的 
+iii. 台達電展出 260kw 的 sidecar、3MW 的 AC IN Row CDU、2.4MW For HVDC 直流電的 In 
+Row CDU。Sidecar 時期台達電份額是全市場最大的。In Row 部分去年台達做 10 幾億，今年 q1
+就有這水準，照一台 10 萬美金左右去算 q1 就有大概 300 台，預期在 In Row 市場仍是大頭。 
+iv. 雙鴻展出 2Mw 的 In RoW CDU，公司今年主力出貨這台，板式熱交換器買國外場的，先前公司
+預期今年出 300 台。 
+ 
+5. 電源 
+a. 目前 Power 架構正在從 Power shelf in rack 往 Power rack 配合 DCDC Shelf 走。Power rack 的傳輸
+電的方式前面也提及，電源廠在這次電腦展都有提及一個概念是 IT Rack 如果本身能承受 800V 的電
+壓，就不需要 Power shelf、dcdc shelf 去支援，但仍需經歷幾個階段 
+i. 目前 GB300/VR200 時期供電：外部中壓電網>傳統灰區變壓器>傳統中央 AC UPS>天花板 AC 
+Busway >AC Whips（415V/480V AC）>power shelf in IT Rack 變壓降壓成 48V/50V > 
+48V/50V 透過 Rack Busbar 分配到各 Tray>Tray 上的 PDU 降壓成 12V> 板上 VRM 把 12V 降
+成 GPU 可以用的 0.8V/1V。 
+甲、 傳統灰區變壓器是由幾噸重的鐵芯跟線圈組成 
+ii. VR200 開始的 Power Rack 階段：外部中壓電網>傳統灰區變壓器>傳統中央 AC UPS>天花板 
+AC Busway >AC Whips（415V/480V AC）>HVDC 的 Power shelf 變壓市電成+-400V DC 或
+市 800V DC > DCDC Shelf 降壓成 48/50V > 48V/50V 透過 Rack Busbar 分配到各 Tray >Tray
+上的 PDU 降壓成 12V> 板上 VRM 把 12V 降成 GPU 可以用的 0.8V/1V。OCP 的+-400V 跟 NV
+的 800V 架構都有在跑，預期下半年有機會開始出貨。 
+甲、 HVDC 方案在 2027/2028 年採用率持續提高，SA 預期 2028 年會是頂峰，因為 2029 年會
+進入下一階段，受惠的有電源廠、BUSBAR、Power whip 供應廠商。 
+iii. 第三階段(Rubin ultra 有機會開始採用)：跟前面兩個階段的傳輸類似，但 HVDC 上的高壓直流會
+直接傳進 tray 上的 PDB，讓他可以把 800V 直接降到 48V/50V，再進行後續供電。 
+甲、 這部分由於 HVDC 開始直接連接到 Compute tray 上，每個連接預期都是用 DC Whip 去
+連，因此用量如果是 Oberon 就是 27 條，Kyber 就是 72 條，受惠 3665。 
+乙、 電源模組要求更大，沒意外也是英飛凌做，這部分也是 2351 之後的看點。 
+--- PAGE 5 ---
+ 
+ 
+ 
+EDN CAPITAL  
+艾德恩資產內部參考資料 
+ 
+iv. 第四階段(>2028 年)：原本在白區(IT Rack 區域)的 HVDC 全部移到灰區，併集合成一個 MW-
+scale rectifiers，外部中壓電網從 34.5KV 的電被傳統灰區變壓器壓成 480V 的 AC 之後，會傳給
+MW-scale rectifiers 弄成 800V DC，然後他透過灰區的天花板 BUSWAY 延伸到白區，直接傳電
+到 IT Rack 上。 
+甲、 此階段不會再有 Power rack，但會有 battery rack，裡面包含 DCDC distribution、BBU 機
+架、Supercap。因此 BBU 廠商在未來轉型是最不受影響的，3211 這些的長線故事還在。 
+乙、 但因為 PSU 不再需要，的確會影響 2308 這塊的生意。 
+ 
+
+--- PAGE 6 ---
+ 
+ 
+ 
+EDN CAPITAL  
+艾德恩資產內部參考資料 
+v. 最後就是走到 SST(>2029 年)，前面如果還看得懂的話會產生一個疑問是，那為什麼 MW-scale 
+rectifiers 不直接把外部中壓電網的電直接降壓變壓還要透過一個傳統很笨重的灰區變壓器降一次
+壓？那是因為還沒有可商業化半導體可以撐過 34.5KV 的電。所以 SST 才會出來 
+甲、 SST 出現就是可以直接從中壓電網>SST>800V 電直接到灰區，SST 組成是靠一堆 3300V 或
+更高 V 的 SIC Mosfet 去串聯扛中壓電。這也是 2351 之後的一大注意點 
+乙、 台達電目前有小量出貨一些，自己做整機不外包，可以做到 2.5MW，但 VRT 的人說沒有
+6MW 以上沒有商業價值。 
+丙、 目前 1~2 年內看不到 SST 普及的狀況，一個是法規也還沒完善。 
+丁、 跟第四階段大概率是併存，畢竟舊的 DC 就是有安裝了灰區變壓器，MW-scale rectifiers 具
+備一定的成本效應跟穩定性。 
+戊、 SIC 缺貨是那個階段可以關注的題材。 
+ 
+b. Power Rack 
+i. 光寶展了三台，330kw、660kw、1.2MW。330KW 放 4 層一層 110KW，所以總共 440KW，也
+是一樣有備援所以比較多；660KW 跟其他家不一樣是他做水冷的，跟前面一樣做 880KW；
+1.2MW 下面放滿 PSU，上面放 BBU。沒展給 AWS 用的 1.5MW。 
+ii. VRT 展兩櫃，一櫃 Power rack(800kw)、一櫃 power center(1.62MW)，說後者可以放在灰區走
+Busway 進去白區供電。 
+ 
+c. 電容部分，問了一下各家電源廠，確實在 18.3kw 就會是 3 相式供電，所以有 3 個 LLC，因此 NP0 的
+數量會翻 3 倍。 
+i. 網路上查 LLC 定義會是 2 個電感 1 個電容，那個電容只是一個符號的定義，實務上會需要很多顆
+電容並聯，這也是為什麼一顆 5.5KW PSU 需要 70~100 顆左右的 NP0。 
+ii. 這次都把 Rubin 的母板蓋起來，所以都看不到裡面的電容。 
+ 
+--- PAGE 7 ---
+ 
+ 
+ 
+EDN CAPITAL  
+艾德恩資產內部參考資料 
+下圖：台達電方案                                          下圖：HVDC 背後連接 ACwhip 以及 DCwhip 

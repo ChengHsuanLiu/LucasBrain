@@ -1,0 +1,130 @@
+--- PAGE 1 ---
+20260601 NVIDIA GTC 2026 MEMO 統一投顧 張榮森 
+一、 代理式 AI（Agentic AI）時代的降臨與全新運算模式 
+• 軟體開發典範轉移：AI 已從生成式 AI 演進至具備實用生產力的代理式 AI (Agentic AI)。全球約有 3000 至 
+4000 萬名軟體開發者，GitHub 的程式碼提交量 (Commits) 在 2023 年為 3 億次，2024 年達 4 億次，2025 
+年為 5 億次，而在 2026 年前幾個月內更飆升了近三倍。 
+• 「算力即營收」的經濟規模：這項轉變讓原先 3 兆美元的薪資能創造出高達 9 兆美元的生產價值，大幅推升了企
+業對 AI 運算 (Token 產出) 的獲利需求，直接帶動運算需求的爆發。 
+• 全新的運算架構：過往的「應用程式 + 作業系統」已轉變為「模型 + 代理框架 (Harness) + 工具與技能 + 執
+行環境 (Runtime)」的解耦分散式系統。 
+• CUDA-X 函式庫化身代理工具：代理 AI 現在能直接呼叫 NVIDIA 豐富的 CUDA-X 函式庫作為其解決問題的工
+具，包含 cuDF (資料處理)、cuOpt (決策最佳化)、QDSS (稀疏求解器)、AI-Q (智慧路由與知識工作流)、
+NeMo、PhysicsNeMo (高保真 AI 物理模型)、CUDA-Q (量子運算) 以及 Parabricks (基因體學) 等。 
+ 
+二、 Vera Rubin 進入全面量產與 NVIDIA DSX AI 工廠平台 
+• Vera Rubin 全面量產：專為代理式工作負載設計的多機櫃 (POD) 系統 Vera Rubin 已全面量產。其供應鏈規模
+是前一代 Grace Blackwell 的兩倍，在台積電等 150 家台灣供應鏈夥伴協助下，單一機櫃的組裝時間從過去的 2 
+小時大幅縮減至 5 分鐘。相較於 Grace Blackwell 平台，Vera Rubin 帶來了 10 倍的系統級代理運算吞吐量。 
+• 平台硬體配置：  
+o Vera Rubin NVL72：處理思考與情境理解，擁有高達 6 兆個電晶體。 
+o Groq 3 LPX (LPU30)：專為極低延遲推論設計，提供 40 PB/s 的 SRAM 頻寬。 
+o Vera BlueField-4 STX 儲存系統：內建硬體級安全防護。搭載 NVIDIA DOCA 軟體 (Vault、Argus、
+Flow)，可提供比現有方案快 1000 倍的執行時期威脅偵測，並能以高達 800Gb/s 的速度執行網路與檔
+案存取策略。 
+
+--- PAGE 2 ---
+o Spectrum-X Ethernet Photonics (Spectrum-6 SPX)：全球首款配備 200Gb/s SerDes 及共封裝光學 
+(CPO) 的乙太網路交換器。能源效率提升 5 倍、AI 正常運作時間延長 5 倍、部署時間縮短 1.3 倍，為
+百萬級 GPU AI 工廠奠定網路基礎。 
+ 
+Vera rubin, Groq LPX, Vera CPU, STX, Networking CPO 
+  
+Vera rubin, Vera CPU 托盤, DPU 儲存托盤 
+ 
+LPX, Vera rubin switch, 乙太網路 Switch 托盤 
+
+--- PAGE 3 ---
+ 
+ 
+• NVIDIA DSX AI 工廠平台：為應對動輒投資數百億美元的 1 GW 級距別 AI 工廠，NVIDIA 提供完整的基礎設施
+軟硬體方案。  
+o DSX MaxLPS：結合 45°C 液冷與機櫃內最佳化技術，能在相同的電力預算下增加高達 40% 的 GPU 部
+署量，實現最低的 Token 成本。 
+o DSX Sim：高保真度的數位孿生模擬層，可在硬體進場前驗證設計。 
+o DSX Flex：使 AI 工廠能根據電網訊號動態調節負載。 
+
+--- PAGE 4 ---
+ 
+三、 專為 AI 代理設計的 CPU — NVIDIA Vera 
+• Vera CPU：有別於過往為人類設計的 CPU，Vera 是專為講求超低延遲與極快反應的代理式 AI 設計。目前已有
+包括紐約證交所、Anthropic、OpenAI 等機構採用。 
+• 規格與效能突破：  
+o 具備 88 顆 Olympus 核心，單執行緒效能(IPC)極高，每時脈週期可抓取與解碼 10 個指令。 
+o 領先業界搭載 LPDDR5X 記憶體，提供高達 1.2 TB/s 頻寬，峰值記憶體延遲比 x86 降低 40%。 
+o 晶片內核心通訊採無邊界限制的互連架構，提供 3.6 TB/s 頻寬；透過第二代 NVLink-C2C 技術，CPU 
+與 GPU 間具備 1.8 TB/s 一致性頻寬。 
+o 整體代理沙盒執行效能比 x86 處理器快 1.8 倍。在 SQL 資料庫處理快了 3 倍；在紐約證券交易所的即
+時串流處理速度更是提升了 6 倍。 
+
+--- PAGE 5 ---
+ 
+  
+  
+
+--- PAGE 6 ---
+  
+ 
+ 
+
+--- PAGE 7 ---
+四、 企業 AI 代理工具包與開源模型 
+• 企業專屬工具：NVIDIA 推出 Agent Toolkit，包含開放的 NemoClaw 藍圖，以及確保企業安全與隱私防護的 
+OpenShell 執行環境。 
+• Cadence 晶片設計應用：透過 NVIDIA OpenShell 與代理技術，Cadence 推出的 ChipStack 超級代理，能自
+主執行 RTL 驗證與回歸測試，將原本耗時數週的工程週期縮短至「幾小時內」 ，速度提升高達 40 倍。 
+ 
+• Nemotron 3 Ultra 模型發布：專為長時運行的代理打造。具備 5,550 億參數，採用結合 SSM 與混合專家系統 
+(MoE) 的架構。推論速度提升高達 5 倍，且成本比同級開放邊緣模型低 30%。 
+ 
+五、 重塑 Windows PC 體驗與 RTX Spark 平台 
+• NVIDIA RTX Spark 超級晶片：NVIDIA 與微軟合作，在 40 年後首度徹底重新定義 PC，將其從單純的工具轉變
+為個人的 AI 隊友。 
+• 硬體規格：  
+o 採 TSMC 3 奈米製程，封裝 700 億個電晶體。 
+o 搭載具備 6,144 個 CUDA 核心的 Blackwell RTX GPU (支援 FP4 第五代 Tensor 核心)，以及與聯發科 
+(MediaTek) 合作設計的 20 核心 Grace CPU。 
+
+--- PAGE 8 ---
+o 提供 128GB 統一記憶體，具備 1 Petaflop 的驚人 AI 運算能力。 
+• 實機效能表現：能流暢渲染 90GB 的超大型 3D 場景、剪輯 12K 4:2:2 影片、在本地端運行具備 100 萬 
+Token 上下文的 1,200 億參數大型語言模型，並能以 1440p 解析度與超過 100 FPS 的高幀率執行 3A 遊戲大
+作。Adobe Photoshop 與 Premiere 的 AI 與繪圖運算將獲得高達 2 倍的速度提升。 
+• 產品設計與上市時間：筆電產品螢幕尺寸介於 14 到 16 吋，最薄處僅 14 毫米，重量約 3 磅，搭配 OLED 顯
+示器與全天候電池續航。預計於今年秋季由 ASUS、Dell、HP 等大廠推出。 
+• DGX Station for Windows 桌邊超級電腦：專為企業開發者設計，搭載 GB300 Grace Blackwell Ultra Desktop 
+超級晶片(包含 72 核心 Grace CPU)，可配置高達 748GB 記憶體。其具備 20 Petaflops FP4 效能，並支援 
+800Gb/s 的 ConnectX-8 SuperNIC，能單機運行 1 兆參數的頂級 AI 模型，預計今年第四季問世。 
+ 
+ 
+
+--- PAGE 9 ---
+ 
+ 
+  
+ 
+ 
+
+--- PAGE 10 ---
+六、 實體 AI (Physical AI) 模型與參考平台 
+• NVIDIA Cosmos 3 模型：全球首款針對物理 AI 打造的完全開源全能模型。採用「混合 Transformer」架構，
+結合視覺推論、世界生成與動作預測。依照體積效能區分為 Cosmos 3 Super、Nano 以及即將推出的 Edge 版
+本。 
+• 自駕車與 Alpamayo 2：推出為機器計程車設計的開放推理模型 Alpamayo 2。透過 DRIVE Hyperion 平台，鴻
+海計畫於 2028 年在高雄推行 Level 4 機器計程車服務；Uber 將在慕尼黑部署；VinFast 鎖定東南亞市場；
+HUMAIN 則負責佈局沙烏地阿拉伯。 
+• Isaac GR00T 參考人形機器人：專為學術與前沿研究設計的軟硬體一體機。  
+o 物理規格：與 Unitree 合作，站立高度將近 6 呎 (約 180 公分)，重量 150 磅。全身具備 31 個自由
+度，搭配 Sharpa 觸覺五指手 (雙手共 22 個自由度)，總計 75 個自由度。 
+o 強大動能與運算：手臂扭力高達 120 Nm，腿部高達 360 Nm；手臂額定負載為 7 公斤，峰值可達 15 
+公斤。內建 Jetson AGX Thor T5000 運算平台 (含 Blackwell GPU，算力達 2070 TFLOPS，14 核 
+Arm CPU 及 128GB 記憶體)。 
+o 配備與續航：配備 140 度水平及 102 度垂直廣角頭戴立體攝影機；搭載 15Ah (0.972kWh) 電池，可運
+作約 3 小時。預計將於 2026 年末由 Unitree 提供。 
+ 
+ 
+ 
+
+--- PAGE 11 ---
+ 
+ 

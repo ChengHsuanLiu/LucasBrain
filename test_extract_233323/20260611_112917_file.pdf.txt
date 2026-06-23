@@ -1,0 +1,350 @@
+--- PAGE 1 ---
+Revision 20201123
+NORYL  RESIN N190X
+REGION ASIA
+DESCRIPTION
+NORYL  N190X resin is a non-reinforced blend of polyphenylene ether (PPE) + high impact polystyrene (HIPS). This injection moldable grade contains non-
+brominated, non-chlorinated flame retardant and carries a UL94 flame rating of 5VA at 3mm and V0 at 1.5mm along with a UL746C Outdoor Suitability
+rating of F1. NORYL N190X resin offers strong electrical performance, low moisture absorption, dimensional stability, and hydrolytical stability. This
+material is an excellent candidate for indoor and outdoor electrical enclosure, wall plate / switch, connector, and solar / photovoltaic junction box
+applications.
+TYPICAL PROPERTY VALUES
+PROPERTIES TYPICAL VALUES UNITS TEST METHODS
+MECHANICAL
+Tensile Stress, yld, Type I, 50 mm/min 60 MPa ASTM D 638
+Tensile Stress, brk, Type I, 50 mm/min 47 MPa ASTM D 638
+Tensile Strain, yld, Type I, 50 mm/min 3.6 % ASTM D 638
+Tensile Strain, brk, Type I, 50 mm/min 9 % ASTM D 638
+Tensile Modulus, 50 mm/min 2580 MPa ASTM D 638
+Flexural Stress, yld, 1.3 mm/min, 50 mm span 98 MPa ASTM D790
+Flexural Stress, yld, 2.6 mm/min, 100 mm span 91 MPa ASTM D790
+Flexural Modulus, 1.3 mm/min, 50 mm span 2500 MPa ASTM D790
+Flexural Modulus, 2.6 mm/min, 100 mm span 2300 MPa ASTM D790
+Hardness, Rockwell R 120 - ASTM D 785
+Taber Abrasion, CS-17, 1 kg 76 mg/1000cy ASTM D1044
+Tensile Stress, yield, 50 mm/min 58 MPa ISO 527
+Tensile Stress, break, 50 mm/min 50 MPa ISO 527
+Tensile Strain, yield, 50 mm/min 3.2 % ISO 527
+Tensile Strain, break, 50 mm/min 9.2 % ISO 527
+Tensile Modulus, 1 mm/min 2600 MPa ISO 527
+Flexural Stress, yield, 2 mm/min 87 MPa ISO 178
+Flexural Modulus, 2 mm/min 2350 MPa ISO 178
+IMPACT
+Izod Impact, unnotched, 23°C 720 J/m ASTM D4812
+Izod Impact, unnotched, -30°C 100 J/m ASTM D4812
+Izod Impact, notched, 23°C 293 J/m ASTM D 256
+Instrumented Dart Impact Energy @ peak, 23°C 50 J ASTM D3763
+Izod Impact, notched 80*10*4 +23°C 20 kJ/m² ISO 180/1A
+Charpy Impact, notched, 23°C 20 kJ/m² ISO 179/2C
+THERMAL
+Vicat Softening Temp, Rate B/50 104 °C ASTM D 1525
+HDT, 0.45 MPa, 3.2 mm, unannealed 95 °C ASTM D 648
+HDT, 1.82 MPa, 3.2mm, unannealed 78 °C ASTM D 648
+HDT, 1.82 MPa, 6.4 mm, unannealed 86 °C ASTM D 648
+CTE, -40°C to 40°C, flow 7.7E-05 1/°C ASTM E831
+CTE, -40°C to 40°C, xflow 8.1E-05 1/°C ASTM E831
+Thermal Conductivity 0.24 W/m-°C ASTM C177
+Vicat Softening Temp, Rate B/120 107 °C ISO 306
+HDT/Bf, 0.45 MPa Flatw 80*10*4 sp=64mm 95 °C ISO 75/Bf
+HDT/Af, 1.8 MPa Flatw 80*10*4 sp=64mm 82 °C ISO 75/Af
+Relative Temp Index, Elec 95 °C UL 746B
+Relative Temp Index, Mech w/impact 80 °C UL 746B
+Relative Temp Index, Mech w/o impact 95 °C UL 746B
+PHYSICAL
+Specific Gravity 1.13 - ASTM D792
+Water Absorption, (23°C/24hrs) 0.08 % ASTM D570
+Mold Shrinkage, flow, 3.2 mm 0.5 – 0.7 % SABIC method
+Melt Flow Rate, 250°C/10.0 kgf 19.3 g/10 min ASTM D1238
+Melt Volume Rate, MVR at 280°C/5.0 kg 23 cm³/10 min ISO 1133
+ELECTRICAL
+Volume Resistivity 1.8E+16 Ohm-cm ASTM D257
+Dielectric Strength, in oil, 3.2 mm 19.2 kV/mm ASTM D149
+Relative Permittivity, 100 Hz 2.74 - ASTM D150
+Relative Permittivity, 100 kHz 2.6 - ASTM D150
+Dissipation Factor, 100 Hz 0.013 - ASTM D150
+Dissipation Factor, 100 kHz 0.0055 - ASTM D150
+High Voltage Arc Track Rate {PLC} 4 PLC Code UL 746A
+Comparative Tracking Index (UL) {PLC} 1 PLC Code UL 746A
+High Amp Arc Ignition (HAI), PLC 0 ≥6 mm UL 746A
+High Amp Arc Ignition (HAI), PLC 2 ≥1.5 mm UL 746A
+Hot-Wire Ignition (HWI), PLC 1 ≥6 mm UL 746A
+Hot-Wire Ignition (HWI), PLC 2 ≥1.5 mm UL 746A
+Arc Resistance, Tungsten {PLC} 7 PLC Code ASTM D495
+FLAME CHARACTERISTICS 
+UL Yellow Card Link E207780-100110158 - -
+UL Yellow Card Link 2 E45587-100110159 - -
+UL Recognized, 94-5VA Flame Class Rating ≥3 mm UL 94
+UL Recognized, 94HB Flame Class Rating ≥1 mm UL 94
+UL Recognized, 94V-0 Flame Class Rating ≥1.5 mm UL 94
+Glow Wire Flammability Index, 1.0 mm 960 °C IEC 60695-2-12
+Glow Wire Flammability Index, 2.0 mm 960 °C IEC 60695-2-12
+Glow Wire Flammability Index, 3.0 mm 960 °C IEC 60695-2-12
+Glow Wire Ignitability Temperature, 1.0 mm 800 °C IEC 60695-2-13
+Glow Wire Ignitability Temperature, 2.0 mm 775 °C IEC 60695-2-13
+Glow Wire Ignitability Temperature, 3.0 mm 775 °C IEC 60695-2-13
+UV-light, water exposure/immersion F1 - UL 746C
+Oxygen Index (LOI) 39 % ASTM D2863
+INJECTION MOLDING
+Drying Temperature 75 – 80 °C
+Drying Time 3 – 4 hrs
+Drying Time (Cumulative) 8 hrs
+Maximum Moisture Content 0.02 %
+Melt Temperature 250 – 275 °C
+Nozzle Temperature 250 – 275 °C
+Front - Zone 3 Temperature 240 – 275 °C
+Middle - Zone 2 Temperature 225 – 270 °C
+Rear - Zone 1 Temperature 215 – 265 °C
+Mold Temperature 55 – 75 °C
+Back Pressure 0.3 – 0.7 MPa
+Screw Speed 20 – 100 rpm
+Shot to Cylinder Size 30 – 70 %
+Vent Depth 0.038 – 0.051 mm
+(1) UL Ratings shown on the technical datasheet might not cover the full range of thicknesses and colors. For details, please see the UL Yellow Card.
+DISCLAIMER
+Any sale by SABIC, its subsidiaries and affiliates (each a “seller”), is made exclusively under seller’s standard conditions of sale (available upon request) unless agreed
+otherwise in writing and signed on behalf of the seller. While the information contained herein is given in good faith, SELLER MAKES NO WARRANTY, EXPRESS OR IMPLIED,
+INCLUDING MERCHANTABILITY AND NONINFRINGEMENT OF INTELLECTUAL PROPERTY, NOR ASSUMES ANY LIABILITY, DIRECT OR INDIRECT, WITH RESPECT TO THE
+PERFORMANCE, SUITABILITY OR FITNESS FOR INTENDED USE OR PURPOSE OF THESE PRODUCTS IN ANY APPLICATION. Each customer must determine the suitability of seller
+materials for the customer’s particular use through appropriate testing and analysis. No statement by seller concerning a possible use of any product, service or design is
+intended, or should be construed, to grant any license under any patent or other intellectual property right.
+™
+™
+(1)
+(1)
+(1)
+(1)
+© 2020 Copyright by SABIC. All rights reserved
+--- PAGE 2 ---
+PROPERTIES TYPICAL VALUES UNITS TEST METHODS
+Revision 20201123
+NORYL  RESIN N190X
+REGION ASIA
+DESCRIPTION
+NORYL  N190X resin is a non-reinforced blend of polyphenylene ether (PPE) + high impact polystyrene (HIPS). This injection moldable grade contains non-
+brominated, non-chlorinated flame retardant and carries a UL94 flame rating of 5VA at 3mm and V0 at 1.5mm along with a UL746C Outdoor Suitability
+rating of F1. NORYL N190X resin offers strong electrical performance, low moisture absorption, dimensional stability, and hydrolytical stability. This
+material is an excellent candidate for indoor and outdoor electrical enclosure, wall plate / switch, connector, and solar / photovoltaic junction box
+applications.
+TYPICAL PROPERTY VALUES
+PROPERTIES TYPICAL VALUES UNITS TEST METHODS
+MECHANICAL
+Tensile Stress, yld, Type I, 50 mm/min 60 MPa ASTM D 638
+Tensile Stress, brk, Type I, 50 mm/min 47 MPa ASTM D 638
+Tensile Strain, yld, Type I, 50 mm/min 3.6 % ASTM D 638
+Tensile Strain, brk, Type I, 50 mm/min 9 % ASTM D 638
+Tensile Modulus, 50 mm/min 2580 MPa ASTM D 638
+Flexural Stress, yld, 1.3 mm/min, 50 mm span 98 MPa ASTM D790
+Flexural Stress, yld, 2.6 mm/min, 100 mm span 91 MPa ASTM D790
+Flexural Modulus, 1.3 mm/min, 50 mm span 2500 MPa ASTM D790
+Flexural Modulus, 2.6 mm/min, 100 mm span 2300 MPa ASTM D790
+Hardness, Rockwell R 120 - ASTM D 785
+Taber Abrasion, CS-17, 1 kg 76 mg/1000cy ASTM D1044
+Tensile Stress, yield, 50 mm/min 58 MPa ISO 527
+Tensile Stress, break, 50 mm/min 50 MPa ISO 527
+Tensile Strain, yield, 50 mm/min 3.2 % ISO 527
+Tensile Strain, break, 50 mm/min 9.2 % ISO 527
+Tensile Modulus, 1 mm/min 2600 MPa ISO 527
+Flexural Stress, yield, 2 mm/min 87 MPa ISO 178
+Flexural Modulus, 2 mm/min 2350 MPa ISO 178
+IMPACT
+Izod Impact, unnotched, 23°C 720 J/m ASTM D4812
+Izod Impact, unnotched, -30°C 100 J/m ASTM D4812
+Izod Impact, notched, 23°C 293 J/m ASTM D 256
+Instrumented Dart Impact Energy @ peak, 23°C 50 J ASTM D3763
+Izod Impact, notched 80*10*4 +23°C 20 kJ/m² ISO 180/1A
+Charpy Impact, notched, 23°C 20 kJ/m² ISO 179/2C
+THERMAL
+Vicat Softening Temp, Rate B/50 104 °C ASTM D 1525
+HDT, 0.45 MPa, 3.2 mm, unannealed 95 °C ASTM D 648
+HDT, 1.82 MPa, 3.2mm, unannealed 78 °C ASTM D 648
+HDT, 1.82 MPa, 6.4 mm, unannealed 86 °C ASTM D 648
+CTE, -40°C to 40°C, flow 7.7E-05 1/°C ASTM E831
+CTE, -40°C to 40°C, xflow 8.1E-05 1/°C ASTM E831
+Thermal Conductivity 0.24 W/m-°C ASTM C177
+Vicat Softening Temp, Rate B/120 107 °C ISO 306
+HDT/Bf, 0.45 MPa Flatw 80*10*4 sp=64mm 95 °C ISO 75/Bf
+HDT/Af, 1.8 MPa Flatw 80*10*4 sp=64mm 82 °C ISO 75/Af
+Relative Temp Index, Elec 95 °C UL 746B
+Relative Temp Index, Mech w/impact 80 °C UL 746B
+Relative Temp Index, Mech w/o impact 95 °C UL 746B
+PHYSICAL
+Specific Gravity 1.13 - ASTM D792
+Water Absorption, (23°C/24hrs) 0.08 % ASTM D570
+Mold Shrinkage, flow, 3.2 mm 0.5 – 0.7 % SABIC method
+Melt Flow Rate, 250°C/10.0 kgf 19.3 g/10 min ASTM D1238
+Melt Volume Rate, MVR at 280°C/5.0 kg 23 cm³/10 min ISO 1133
+ELECTRICAL
+Volume Resistivity 1.8E+16 Ohm-cm ASTM D257
+Dielectric Strength, in oil, 3.2 mm 19.2 kV/mm ASTM D149
+Relative Permittivity, 100 Hz 2.74 - ASTM D150
+Relative Permittivity, 100 kHz 2.6 - ASTM D150
+Dissipation Factor, 100 Hz 0.013 - ASTM D150
+Dissipation Factor, 100 kHz 0.0055 - ASTM D150
+High Voltage Arc Track Rate {PLC} 4 PLC Code UL 746A
+Comparative Tracking Index (UL) {PLC} 1 PLC Code UL 746A
+High Amp Arc Ignition (HAI), PLC 0 ≥6 mm UL 746A
+High Amp Arc Ignition (HAI), PLC 2 ≥1.5 mm UL 746A
+Hot-Wire Ignition (HWI), PLC 1 ≥6 mm UL 746A
+Hot-Wire Ignition (HWI), PLC 2 ≥1.5 mm UL 746A
+Arc Resistance, Tungsten {PLC} 7 PLC Code ASTM D495
+FLAME CHARACTERISTICS 
+UL Yellow Card Link E207780-100110158 - -
+UL Yellow Card Link 2 E45587-100110159 - -
+UL Recognized, 94-5VA Flame Class Rating ≥3 mm UL 94
+UL Recognized, 94HB Flame Class Rating ≥1 mm UL 94
+UL Recognized, 94V-0 Flame Class Rating ≥1.5 mm UL 94
+Glow Wire Flammability Index, 1.0 mm 960 °C IEC 60695-2-12
+Glow Wire Flammability Index, 2.0 mm 960 °C IEC 60695-2-12
+Glow Wire Flammability Index, 3.0 mm 960 °C IEC 60695-2-12
+Glow Wire Ignitability Temperature, 1.0 mm 800 °C IEC 60695-2-13
+Glow Wire Ignitability Temperature, 2.0 mm 775 °C IEC 60695-2-13
+Glow Wire Ignitability Temperature, 3.0 mm 775 °C IEC 60695-2-13
+UV-light, water exposure/immersion F1 - UL 746C
+Oxygen Index (LOI) 39 % ASTM D2863
+INJECTION MOLDING
+Drying Temperature 75 – 80 °C
+Drying Time 3 – 4 hrs
+Drying Time (Cumulative) 8 hrs
+Maximum Moisture Content 0.02 %
+Melt Temperature 250 – 275 °C
+Nozzle Temperature 250 – 275 °C
+Front - Zone 3 Temperature 240 – 275 °C
+Middle - Zone 2 Temperature 225 – 270 °C
+Rear - Zone 1 Temperature 215 – 265 °C
+Mold Temperature 55 – 75 °C
+Back Pressure 0.3 – 0.7 MPa
+Screw Speed 20 – 100 rpm
+Shot to Cylinder Size 30 – 70 %
+Vent Depth 0.038 – 0.051 mm
+(1) UL Ratings shown on the technical datasheet might not cover the full range of thicknesses and colors. For details, please see the UL Yellow Card.
+DISCLAIMER
+Any sale by SABIC, its subsidiaries and affiliates (each a “seller”), is made exclusively under seller’s standard conditions of sale (available upon request) unless agreed
+otherwise in writing and signed on behalf of the seller. While the information contained herein is given in good faith, SELLER MAKES NO WARRANTY, EXPRESS OR IMPLIED,
+INCLUDING MERCHANTABILITY AND NONINFRINGEMENT OF INTELLECTUAL PROPERTY, NOR ASSUMES ANY LIABILITY, DIRECT OR INDIRECT, WITH RESPECT TO THE
+PERFORMANCE, SUITABILITY OR FITNESS FOR INTENDED USE OR PURPOSE OF THESE PRODUCTS IN ANY APPLICATION. Each customer must determine the suitability of seller
+materials for the customer’s particular use through appropriate testing and analysis. No statement by seller concerning a possible use of any product, service or design is
+intended, or should be construed, to grant any license under any patent or other intellectual property right.
+™
+™
+(1)
+(1)
+(1)
+(1)
+© 2020 Copyright by SABIC. All rights reserved
+--- PAGE 3 ---
+PROPERTIES TYPICAL VALUES UNITS TEST METHODS
+Revision 20201123
+NORYL  RESIN N190X
+REGION ASIA
+DESCRIPTION
+NORYL  N190X resin is a non-reinforced blend of polyphenylene ether (PPE) + high impact polystyrene (HIPS). This injection moldable grade contains non-
+brominated, non-chlorinated flame retardant and carries a UL94 flame rating of 5VA at 3mm and V0 at 1.5mm along with a UL746C Outdoor Suitability
+rating of F1. NORYL N190X resin offers strong electrical performance, low moisture absorption, dimensional stability, and hydrolytical stability. This
+material is an excellent candidate for indoor and outdoor electrical enclosure, wall plate / switch, connector, and solar / photovoltaic junction box
+applications.
+TYPICAL PROPERTY VALUES
+PROPERTIES TYPICAL VALUES UNITS TEST METHODS
+MECHANICAL
+Tensile Stress, yld, Type I, 50 mm/min 60 MPa ASTM D 638
+Tensile Stress, brk, Type I, 50 mm/min 47 MPa ASTM D 638
+Tensile Strain, yld, Type I, 50 mm/min 3.6 % ASTM D 638
+Tensile Strain, brk, Type I, 50 mm/min 9 % ASTM D 638
+Tensile Modulus, 50 mm/min 2580 MPa ASTM D 638
+Flexural Stress, yld, 1.3 mm/min, 50 mm span 98 MPa ASTM D790
+Flexural Stress, yld, 2.6 mm/min, 100 mm span 91 MPa ASTM D790
+Flexural Modulus, 1.3 mm/min, 50 mm span 2500 MPa ASTM D790
+Flexural Modulus, 2.6 mm/min, 100 mm span 2300 MPa ASTM D790
+Hardness, Rockwell R 120 - ASTM D 785
+Taber Abrasion, CS-17, 1 kg 76 mg/1000cy ASTM D1044
+Tensile Stress, yield, 50 mm/min 58 MPa ISO 527
+Tensile Stress, break, 50 mm/min 50 MPa ISO 527
+Tensile Strain, yield, 50 mm/min 3.2 % ISO 527
+Tensile Strain, break, 50 mm/min 9.2 % ISO 527
+Tensile Modulus, 1 mm/min 2600 MPa ISO 527
+Flexural Stress, yield, 2 mm/min 87 MPa ISO 178
+Flexural Modulus, 2 mm/min 2350 MPa ISO 178
+IMPACT
+Izod Impact, unnotched, 23°C 720 J/m ASTM D4812
+Izod Impact, unnotched, -30°C 100 J/m ASTM D4812
+Izod Impact, notched, 23°C 293 J/m ASTM D 256
+Instrumented Dart Impact Energy @ peak, 23°C 50 J ASTM D3763
+Izod Impact, notched 80*10*4 +23°C 20 kJ/m² ISO 180/1A
+Charpy Impact, notched, 23°C 20 kJ/m² ISO 179/2C
+THERMAL
+Vicat Softening Temp, Rate B/50 104 °C ASTM D 1525
+HDT, 0.45 MPa, 3.2 mm, unannealed 95 °C ASTM D 648
+HDT, 1.82 MPa, 3.2mm, unannealed 78 °C ASTM D 648
+HDT, 1.82 MPa, 6.4 mm, unannealed 86 °C ASTM D 648
+CTE, -40°C to 40°C, flow 7.7E-05 1/°C ASTM E831
+CTE, -40°C to 40°C, xflow 8.1E-05 1/°C ASTM E831
+Thermal Conductivity 0.24 W/m-°C ASTM C177
+Vicat Softening Temp, Rate B/120 107 °C ISO 306
+HDT/Bf, 0.45 MPa Flatw 80*10*4 sp=64mm 95 °C ISO 75/Bf
+HDT/Af, 1.8 MPa Flatw 80*10*4 sp=64mm 82 °C ISO 75/Af
+Relative Temp Index, Elec 95 °C UL 746B
+Relative Temp Index, Mech w/impact 80 °C UL 746B
+Relative Temp Index, Mech w/o impact 95 °C UL 746B
+PHYSICAL
+Specific Gravity 1.13 - ASTM D792
+Water Absorption, (23°C/24hrs) 0.08 % ASTM D570
+Mold Shrinkage, flow, 3.2 mm 0.5 – 0.7 % SABIC method
+Melt Flow Rate, 250°C/10.0 kgf 19.3 g/10 min ASTM D1238
+Melt Volume Rate, MVR at 280°C/5.0 kg 23 cm³/10 min ISO 1133
+ELECTRICAL
+Volume Resistivity 1.8E+16 Ohm-cm ASTM D257
+Dielectric Strength, in oil, 3.2 mm 19.2 kV/mm ASTM D149
+Relative Permittivity, 100 Hz 2.74 - ASTM D150
+Relative Permittivity, 100 kHz 2.6 - ASTM D150
+Dissipation Factor, 100 Hz 0.013 - ASTM D150
+Dissipation Factor, 100 kHz 0.0055 - ASTM D150
+High Voltage Arc Track Rate {PLC} 4 PLC Code UL 746A
+Comparative Tracking Index (UL) {PLC} 1 PLC Code UL 746A
+High Amp Arc Ignition (HAI), PLC 0 ≥6 mm UL 746A
+High Amp Arc Ignition (HAI), PLC 2 ≥1.5 mm UL 746A
+Hot-Wire Ignition (HWI), PLC 1 ≥6 mm UL 746A
+Hot-Wire Ignition (HWI), PLC 2 ≥1.5 mm UL 746A
+Arc Resistance, Tungsten {PLC} 7 PLC Code ASTM D495
+FLAME CHARACTERISTICS 
+UL Yellow Card Link E207780-100110158 - -
+UL Yellow Card Link 2 E45587-100110159 - -
+UL Recognized, 94-5VA Flame Class Rating ≥3 mm UL 94
+UL Recognized, 94HB Flame Class Rating ≥1 mm UL 94
+UL Recognized, 94V-0 Flame Class Rating ≥1.5 mm UL 94
+Glow Wire Flammability Index, 1.0 mm 960 °C IEC 60695-2-12
+Glow Wire Flammability Index, 2.0 mm 960 °C IEC 60695-2-12
+Glow Wire Flammability Index, 3.0 mm 960 °C IEC 60695-2-12
+Glow Wire Ignitability Temperature, 1.0 mm 800 °C IEC 60695-2-13
+Glow Wire Ignitability Temperature, 2.0 mm 775 °C IEC 60695-2-13
+Glow Wire Ignitability Temperature, 3.0 mm 775 °C IEC 60695-2-13
+UV-light, water exposure/immersion F1 - UL 746C
+Oxygen Index (LOI) 39 % ASTM D2863
+INJECTION MOLDING
+Drying Temperature 75 – 80 °C
+Drying Time 3 – 4 hrs
+Drying Time (Cumulative) 8 hrs
+Maximum Moisture Content 0.02 %
+Melt Temperature 250 – 275 °C
+Nozzle Temperature 250 – 275 °C
+Front - Zone 3 Temperature 240 – 275 °C
+Middle - Zone 2 Temperature 225 – 270 °C
+Rear - Zone 1 Temperature 215 – 265 °C
+Mold Temperature 55 – 75 °C
+Back Pressure 0.3 – 0.7 MPa
+Screw Speed 20 – 100 rpm
+Shot to Cylinder Size 30 – 70 %
+Vent Depth 0.038 – 0.051 mm
+(1) UL Ratings shown on the technical datasheet might not cover the full range of thicknesses and colors. For details, please see the UL Yellow Card.
+DISCLAIMER
+Any sale by SABIC, its subsidiaries and affiliates (each a “seller”), is made exclusively under seller’s standard conditions of sale (available upon request) unless agreed
+otherwise in writing and signed on behalf of the seller. While the information contained herein is given in good faith, SELLER MAKES NO WARRANTY, EXPRESS OR IMPLIED,
+INCLUDING MERCHANTABILITY AND NONINFRINGEMENT OF INTELLECTUAL PROPERTY, NOR ASSUMES ANY LIABILITY, DIRECT OR INDIRECT, WITH RESPECT TO THE
+PERFORMANCE, SUITABILITY OR FITNESS FOR INTENDED USE OR PURPOSE OF THESE PRODUCTS IN ANY APPLICATION. Each customer must determine the suitability of seller
+materials for the customer’s particular use through appropriate testing and analysis. No statement by seller concerning a possible use of any product, service or design is
+intended, or should be construed, to grant any license under any patent or other intellectual property right.
+™
+™
+(1)
+(1)
+(1)
+(1)
+© 2020 Copyright by SABIC. All rights reserved

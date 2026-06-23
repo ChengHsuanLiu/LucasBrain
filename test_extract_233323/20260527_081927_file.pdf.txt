@@ -1,0 +1,733 @@
+--- PAGE 1 ---
+Key Data  _____________________________________ 
+GS Forecast  __________________________________ 
+GS Factor Profile  ______________________________ 
+Source: Company data, Goldman Sachs Research estimates. 
+See disclosures for details.
+Market	cap:	NT$90.5bn 	/	$2.9bn
+Enterprise	value:	NT$92.2bn	/	$2.9bn
+3m	ADTV:	NT$2.7bn	/	$85.0mn
+Taiwan
+Taiwan	Semiconductor
+M&A	Rank:	3
+Leases	incl.	in	net	debt	&	EV ?:	Yes
+12/25 12/26E 12/27E 12/28E
+Revenue	(NT$	mn)	New 6,514.5 8,721.7 12,955.4 18,047.5
+Revenue	(NT$	mn)	Old 6, 514.5 8,638.1 13,105.9 15,031.6
+EBITDA	(NT$	mn) 1,766.2 1,994.6 4,066.7 6,633.8
+EPS	(NT$)	New 45.45 62.23 105.80 173.71
+EPS	(NT$)	Old 45.45 61.52 114.27 141.24
+P/E	(X) 29.7 50.1 29.4 17.9
+P/B	(X) 8.3 22.9 17.4 12.7
+Dividend	yield	(%) 3.4 2.0 3.5 5.7
+CROCI	(%) 49.1 13.3 47.0 70.2
+3/26 6/26E 9/26E 12/26E
+EPS	(NT$) 16.11 9.13 14.11 22.88
+3131.TWO	relative	to	Asia	ex.	Japan	Coverage
+3131.TWO	relative	to	Taiwan	Semiconductor
+Gr owt h
+Financial	Returns
+Multiple
+Integrated
+Percentile 20th 40th 60th 80th 100th
+GPTC hosted its 2Q26 analyst meeting on May 26, 2026. 
+Management provided updates on 2026-2028 demand and 
+capacity outlook, growth drivers across next-generation advanced 
+packaging, and GM dynamics. Most notably, management for the 
+firs
+t time laid out a multi-year demand and capacity framework 
+extending through 2028, with demand guided to grow at a ~45% 
+CAGR and capacity at a ~50% CAGR, reinforcing our view that 
+GPTC remains in an extended structural upcycle well beyond 2027. 
+On the back of stronger demand visibility and higher GM uplift from 
+3D packaging mix shift, we revise our 2026E-28E estimates by 
+1.2%/-7.4%/23% and raise our 12m TP to NT$4,500 (from 
+NT$4,000) based on 35x of 2H27-1H28E EPS (from 2027E 
+previously). With 45% implied upside, we reiterate our Buy rating on 
+GPTC.  
+New capacity & demand guidance points to multi-year tightness 
+Management laid out its first explicit multi-year demand and 
+capacity outlook through 2028 at this meeting, with demand guided 
+to grow at a 45% CAGR and capacity expansion at a slightly faster 
+~50% CAGR, reaffirming GPT C’s previous capacity expansion plan. 
+With GPTC’s Phase 2 fab having now entered production, annual 
+capacity is on track to reach ~200 units in 2026, with another c.100 
+units of capacity scheduled to come online by end-2027 and total 
+annual output stepping up to ~450 units by 2028. The multi-year 
+ramp is also supported by a significant hea dcount expansion 
+(already up to 350 employees as of May 2026 vs. 250 in end of 
+2025) alongside an ongoing transition toward higher 
+self-production. Importantly, management noted that current 
+capacity remains insufficient e ven after the Phase 2 ramp, with 
+demand supported by multiple growth drivers, including 2.5D 
+advanced packaging, 3D IC, panel-level packaging (PLP), HBM, and 
+Co-Packaged Optics (CPO). Overall, we reiterate our view that GPTC 
+is moving beyond a single 2.5D-driven upcycle, with successive 
+3131.TWO 12m	Price	Target:	 NT$4,500.00 Price:	NT$3,115.00 Upside:	 44.5%
+Grand Process Technology Corp. (3131.TWO)
+Capacity expansion accelerates on stronger 2027/2028 demand visibility; reiterate 
+Buy; TP up to NT$4,500
+26 May 2026 | 10:35PM CST
+Goldman Sachs does and seeks to do business with companies covered in its research reports. As a result, investors 
+should be aware that the firm ma y have a conflict of interest that could affect the objectivity of this report. 
+Investors should consider this report as only a single factor in making their investment decision. For Reg AC 
+certifica tion and other important disclosures, see the Disclosure Appendix, or go to 
+www.gs.com/research/hedge.html
+. Analysts employed by non-US affiliates are not registered/qualified as research 
+analysts with FINRA in the U.S. 
+Evelyn Yu 
++886(2)2730-4187 | evelyn.yu@gs.com
+Goldman Sachs (Asia) L.L.C., Taipei Branch 
+Bruce Lu 
++886(2)2730-4185 | bruce.lu@gs.com
+Goldman Sachs (Asia) L.L.C., Taipei Branch 
+Ryan Huang, CFA 
++886(2)2730-4084 | ryan.huang@gs.com
+Goldman Sachs (Asia) L.L.C., Taipei Branch
+Equity Research
+BUY
+e92c7a75ab8b4efbba794e6b187208c8
+--- PAGE 2 ---
+Ratios & Valuation  __________________________________________ 
+Growth & Margins (%)  ______________________________________ 
+Price Performance  __________________________________________ 
+Source: FactSet. Price as of 26 May 2026 close. 
+12/25 12/26E 12/27E 12/28E
+P/E	(X) 29.7 50.1 29.4 17.9
+P/B	(X) 8.3 22.9 17.4 12.7
+FCF	yield	(%) 4.2 (0.2) 3.4 4.7
+EV/EBITDAR	(X) 22.5 46.3 22.5 13.6
+EV/EBITDA	(excl.	leases)	(X) 22.5 46.3 22.5 13.6
+CROCI	(%) 49.1 13.3 47.0 70.2
+ROE	(%) 28.6 41.7 67.6 82.3
+Net	debt/equity	(%) 5.9 41.9 8.3 (10.4)
+Net	debt/equity	(excl.	leases)	(%) 5.9 41.9 8.3 (10.4)
+Interest	cover	(X) 35.5 30.5 64.6 106.8
+Days	inventory	outst,	sales 156.5 185.2 162.0 137.4
+Receivable	days 37.7 43.5 39.7 39.1
+Days	payable	outstanding 154.1 192.7 213.1 216.3
+DuPont	ROE	(%) 27.8 45.6 59.2 70.9
+Turnover	(X) 0.5 0.6 0.8 0.9
+Leverage	(X) 2.7 3.7 3.2 2.9
+Gross	cash	invested	(ex	cash)	(NT$)5 ,948.6 6, 805.4 6, 992.6 7, 927.9
+Average	capital	employed	(NT$)4 ,199.8 5, 345.0 5, 650.5 6, 038.1
+BVPS	(NT$) 163.26 136.01 178.85 245.03
+12/25 12/26E 12/27E 12/28E
+Total	revenue	growth 59.9 33.9 48.5 39.3
+EBITDA	growth 76.8 12.9 103.9 63.1
+EPS	growth 56.2 36.9 70.0 64.2
+DPS	growth 108.9 36.9 70.0 64.2
+EBIT	margin 25.1 21.1 30.1 35.8
+EBITDA	margin 27.1 22.9 31.4 36.8
+Net	income	margin 20.4 20.8 23.9 28.1
+3131.TWO	(NT$) Taiwan	SE	Weighted	Index
+Jul -25 Oct-25 Jan-26 Apr-26
+1,000
+2,000
+3,000
+4,000
+5,000
+6,000
+10,000
+20,000
+30,000
+40,000
+50,000
+60,000
+3m 6m 12m
+Absolute 75.0% 113.4% 159.6%
+Rel.	to	the	Taiwan	SE	Weighted	Index 42.4% 34.4% 28.4%
+26 May 2026   2
+Goldman Sachs
+Income Statement (NT$ mn)  ________________________________ 
+Balance Sheet (NT$ mn)  ____________________________________ 
+Cash Flow (NT$ mn)  ________________________________________ 
+Source: Company data, Goldman Sachs Research estimates.
+12/25 12/26E 12/27E 12/28E
+Total	revenue 6,514.5 8,721.7 12,955.4 18,047.5
+Cost	of	goods	sold (3,833.1) (5,451.6) (7,247.9) (9,453.5)
+SG&A (699.7) (842.8) (999.2) (1,142.6)
+R&D (345.3) (588.8) (808.3) (998.3)
+Other	operating	inc./(exp.) -- -- -- --
+EBITDA 1,766.21 ,994.6 4,066.76 ,633.8
+Depreciation	&	amortization (129.8) (156.1) (166.7) (180.6)
+EBIT 1,636.51 ,838.5 3,900.0 6,453.1
+Net	interest	inc./(exp.) 19.7 18.8 20.3 20.3
+Income/(loss)	from	associates -- 2.7 -- --
+Pre- tax	profit 1,689.82 ,274.0 3,92 0.3 6,473.4
+Provision	for	taxes (364.8) (465.6) (829.2) (1,398.3)
+Minority	interest2 .4 1.8 -- --
+Preferred	dividends -- -- -- --
+Net	inc.	(pre- excep t ionals) 1 ,327.4 1,810.2 3,091.25 ,075.1
+Post-tax	exceptionals -- -- -- --
+Net	inc.	(post-exceptionals) 1 ,327.4 1,810.2 3,091.25 ,075.1
+EPS	(basic,	pre-except)	(NT$) 45.456 2 .23 105.80 173.71
+EPS	(diluted,	pre-except)	(NT$) 45.456 2.23 105.80 173.71
+EPS	(basic,	post-except)	(NT$) 45.456 2 .23 105.80 173.71
+EPS	(diluted,	post-except)	(NT$) 45.456 2 .23 105.80 173.71
+DPS	(NT$) 46.19 63.25 107.53 176.54
+Div.	payout	ratio	(%) 101.6 101.6 101.6 101.6
+12/25 12/26E 12/27E 12/28E
+Cash	&	cash	equivalents 2,544.6 972.7 2,203.6 3,382.4
+Accounts	receivable 767.4 1,312.8 1,502.9 2,365.6
+Inventory 3,113.5 5,738.2 5,761.2 7,831.3
+Other	current	assets 3,348.4 3,479.3 3,479.3 3,479.3
+Total	current	assets 9,774.0 11,502.9 12,947.0 17,058.6
+Net	PP&E 2,204.7 2,368.1 2,540.7 2,780.6
+Net	intangibles 355.0 305.3 326.0 345.5
+Total	investments 314.3 463.8 463.8 463.8
+Other	long-term	assets 294.0 213.7 213.7 213.7
+Total	assets 12,942.1 14,853 .9 16,491.3 20,862.2
+Accounts	payable 1,697.7 4,058.4 4,404.4 6,801.8
+Short-term	debt 100.0 0.0 0.0 0.0
+Short-term	lease	liabilities -- -- -- --
+Other	current	liabilities 3,481.3 3,983.9 4,023.9 4,063.9
+Total	current	liabilities 5,279.0 8,042.4 8,428. 3 10,865.7
+Long-term	debt 2,724.7 2,639.2 2,639.2 2,639.2
+Long-term	lease	liabilities -- -- -- --
+Other	long-term	liabilities 168.6 198.6 198.6 198.6
+Total	long-term	liabilities 2,893.3 2, 837.7 2,83 7.7 2,83 7.7
+Total	liabilities 8,172.3 10,880.1 11,266.1 13 ,703.5
+Preferred	shares --- -- -- -
+Total	common	equity 4,737.9 3,944.7 5,196.2 7,129.6
+Minority	interest 31.9 29.1 2 9.1 2 9.1
+Total	liabilities	&	equity 12,942.1 14,853 .9 16,491.3 20,862.2
+Net	debt,	adjusted 280.1 1,666.5 435.5 (743.3)
+12/25 12/26E 12/27E 12/28E
+Net	income 1,327.4 1,810.2 3,091.2 5,075.1
+D&A	add-back 129.8 156.1 166.7 180.6
+Minority	interest	add-back (2.4) (1.8) -- --
+Net	(inc)/dec	working	capital (668.4) (809.3) 132.8 (535.3)
+Other	operating	cash	flow 1, 034.3 (1,103.4) -- --
+Cash	flow	from	operations 1,820.75 1 .7 3,390.7 4,720.4
+Capital	expenditures (143.7) (250.2) (320.0) (400.0)
+Acquisitions -- -- -- --
+Divestitures -- -- -- --
+Others (2,045.3) 104.0 -- --
+Cash	flow	from	investing ( 2,189.0)( 146.1)( 3 20.0)( 4 00.0)
+Repayment	of	lease	liabilities -- -- -- --
+Dividends	paid	(common	&	pref) (642.8) (1,349.0) (1,839.7) (3,141.6)
+Inc/(dec)	in	debt 1,363.6 (131.5) -- --
+Other	financing	cash	flows ( 792.9) 3.0 0.0 0.0
+Cash	flow	from	financing ( 72.1)( 1,477.6)( 1,839.7)( 3 , 141.6)
+Total	cash	flow (44 0.4) ( 1,572.0) 1,230.9 1,178.8
+Free	cash	flow 1, 677.0 (198.4) 3,070.7 4,320.4
+Grand Process Technology Corp. 
+(3131.TWO) 
+Rating since Jun 25, 2025
+BUY
+Grand Process Technology Corp. (3131.TWO)
+e92c7a75ab8b4efbba794e6b187208c8
+--- PAGE 3 ---
+waves of advanced packaging — SoIC, PLP , CPO — extending its growth runway well into  
+2028 and beyond. Net net, we now model GPTC’s revenue to grow 34%/49%/39% YoY 
+in 2026E-2028E (vs. 33%/52%/15% YoY previously). 
+3D IC to drive next phase of growth 
+On 3D IC, management reiterated that GPTC will remain the major 3D IC wet clean 
+equipment supplier, anchored by its technology leadership vs. local peers. While some 
+degree of second-sourcing is to be expected as the technology matures, we continue to 
+view SoIC as a key driver of content value uplift through 2027/2028, underpinned by 
+rapid industry capacity expansion and structurally higher equipment ASP vs. CoWoS. 
+Management characterized 3D packaging as the fastest-growing segment, with 2026 
+marking the year of initial volume production and 2027/2028 set to see a materially 
+stronger revenue contribution as 3D IC adoption a
+ ccelerates. Furthermore, management 
+also highlighted that 3D IC wet clean equipment enjoys structurally higher GM vs. 
+2.5D wet clean equipment, providing a more favorable product mix tailwind to overall 
+corporate GM through 2028. Overall, we view GPTC as a key beneficiar
+ y of SoIC, and 
+project SoIC to a ccount for c.50% of GPTC’s equipment revenue in 2027E-28E, with CPO 
+and future generations of AI chips to drive broader SoIC adoption. 
+GM expansion ahead on outsourcing ratio reduction and product mix shift 
+We see a clear path for GPTC’s GM to trend meaningfully higher through 2026-28, 
+supported by 1) outsourcing ratio reduction — with GPTC’s Phase 2 fab now entering 
+production, in-house manufacturing capacity is set to expand materially, enabling lower 
+outsourcing ratio into 2027. 2) product mix shift towards higher-complexity 
+equipment — 3D IC, panel level-packaging, and CPO brings not only higher dollar 
+content value but also a richer underlying margin profile, as mor
+ e demanding wet clean 
+processes command both stronger pricing and higher GM. Net net, we now model GM to 
+reach 37.5%/44.1%/47.6% in 2026E-28E (vs. 37.3%/43.4%/46.1% previously), with the 
+bulk of GM expansion concentrated in 2027 as the in-house production transition 
+matures and the 3D IC/PLP product mix a
+ ccelerates.  
+Exhibit 1: GPTC’s revenue growth outlook Exhibit 2: GPTC’s margin trend 
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+70%
+80%
+ -
+ 2,000
+ 4,000
+ 6,000
+ 8,000
+ 10,000
+ 12,000
+ 14,000
+ 16,000
+ 18,000
+ 20,000
+2024 2025 2026E 2027E 2028E
+(NT$mn)
+Equipment Manufacturing Chemical Materials Software Sales
+Equipment Sales Agency Other YoY (%, RHS)
+10%
+15%
+20%
+25%
+30%
+35%
+40%
+45%
+50%
+2024 2025 2026E 2027E 2028E
+GM OpM
+Source: Company data, Goldman Sachs Global Investment Research Source: Company data, Goldman Sachs Global Investment Research
+26 May 2026   3
+Goldman Sachs Grand Process Technology Corp. (3131.TWO)
+e92c7a75ab8b4efbba794e6b187208c8
+--- PAGE 4 ---
+Earnings changes, valuation and risks 
+Forecast changes 
+We revise our 2026E-28E EPS by 1.2%/-7.4%/23.0% mainly as we factor in 1) stronger 
+2028 demand/capacity outlook, 2) higher GM on more favorable product mix and lower 
+outsourcing ratio, and 3) higher opex on head count expansion.  
+Maintain Buy with 12m TP revised up to NT$4,500 from NT$4,000 prior 
+Following our upward earnings revisions, we raise our 12-month TP to NT$4,500 (from 
+NT$4,000 previously). Our 12-month TP is based on a target P/E multiple of 35x 
+(unchanged) applied to our FY2H27E-1H28E EPS (rolled over from 2027E on stronger 
+demand visibility). Our 35x target P/E continues to be based on an avg. fwd P/E during 
+the CoWoS ramp-up in mid-2024 to 2025. Our new TP implies 44.5% upside from 
+current levels, and we maintain our Buy rating on GPTC. 
+Exhibit 3: Earnings revisions 
+2026E 2027E 2028E
+(NT$mn) Old New Diff (%) Old New Diff (%) Old New Diff (%)
+Revenue 8,638 8,722 1.0% 13,106 12,955 -1.1% 15,032 18,048 20.1%
+Gross profit 3,221 3,270 1.5% 5, 684 5,708 0.4% 6,936 8,594 23.9%
+Op. income 1,810 1,839 1.6% 4,010 3,900 -2.7% 5,041 6,453 28.0%
+Net income 1,789 1,810 1.2% 3,339 3,091 -7.4% 4,127 5,075 23.0%
+EPS (NT$) 61.52 62.23 1.2% 114.27 105.80 -7.4% 141.24 173.71 23.0%
+GM 37.3% 37.5% 0.2% 43.4% 44.1% 0.7% 46.1% 47.6% 1.5%
+OpM 21.0% 21.1% 0.1% 30.6% 30.1% -0.5% 33.5% 35.8% 2.2%
+NM 20.7% 20.8% 0.0% 25.5% 23.9% -1.6% 27.5% 28.1% 0.7%
+2Q26E 3Q26E 4Q26E
+(NT$mn) Old New Diff (%) Old New Diff (%) Old New Diff (%)
+Revenue 1,821 1,828 0.4% 2,295 2,308 0.5% 2,925 2,989 2.2%
+Gross profit 653 657 0.7% 865 875 1.2% 1,164 1,199 3.0%
+Op. income 306 307 0.2% 496 501 0.9% 798 821 2.9%
+Net income 267 267 0.0% 409 412 0.7% 651 669 2.7%
+EPS (NT$) 9.13 9.13 0.0% 14.01 14.11 0.7% 22.27 22.88 2.7%
+GM 35.8% 35.9% 0.1% 37.7% 37.9% 0.2% 39.8% 40.1% 0.3%
+OpM 16.8% 16.8% 0.0% 21.6% 21.7% 0.1% 27.3% 27.5% 0.2%
+NM 14.6% 14.6% -0.1% 17.8% 17.9% 0.0% 22.2% 22.4% 0.1%
+Source: Company data, Goldman Sachs Global Investment Research
+26 May 2026   4
+Goldman Sachs Grand Process Technology Corp. (3131.TWO)
+e92c7a75ab8b4efbba794e6b187208c8
+--- PAGE 5 ---
+Exhibit 4: GPTC’s P&L overview 
+1Q26 2Q26E 3Q26E 4Q26E 1Q27E 2Q27E 3Q27E 4Q27E 2026E 2027E 2028E
+P&L
+Revenue 1,596 1,828 2,308 2,989 2,925 3,210 3,406 3,414 8,722 12,955 18,048
+Gross profit 539 657 875 1,199 1,215 1,384 1,526 1,582 3,270 5,708 8,594
+Operating profit 210 307 501 821 792 930 1,053 1,125 1,839 3,900 6,453
+Net income 463 267 412 669 628 725 840 898 1,810 3,091 5,075
+EPS (NT$) 16.11 9.13 14.11 22.88 21. 51 24.80 28.74 30.75 62.23 105.80 173.71
+Margins (%)
+GM 33.8% 35.9% 37.9% 40.1% 41.6% 43. 1% 44.8% 46.3% 37.5% 44.1% 47.6%
+OpM 13.2% 16.8% 21.7% 27.5% 27.1% 29.0% 30.9% 33.0% 21.1% 30.1% 35.8%
+NM 29.0% 14.6% 17.9% 22.4% 21.5% 22. 6% 24.7% 26.3% 20.8% 23.9% 28.1%
+YoY (%)
+Revenue 28.7% 12.2% 54.5% 39.0% 83.2% 75.6% 47.6% 14.2% 33.9% 48.5% 39.3%
+Gross profit 6.5% -0.7% 43.8% 32.4% 125.4% 110.5% 74.4% 32. 0% 22.0% 74.5% 50.6%
+Operating profit -24.2% -24.5% 57.7% 29.2% 277.2% 202.7% 110.5% 37.0% 12.3% 112.1% 65.5%
+Net income 81.3% 29.5% 35.6% 18.9% 35.8% 171.6% 103.7% 34. 4% 36.4% 70.8% 64.2%
+EPS 84.3%
+29.5% 35.6% 18.8% 33.5% 171. 6% 103.7% 34.4% 36.9% 70.0% 64.2%
+QoQ (%)
+Revenue -25.7% 14.5% 26.2% 29.5% -2.1% 9.8% 6.1% 0.2%
+Gross profit -40.4% 21.9% 33. 2% 37.0% 1.4% 13.8% 10.3% 3.6%
+Operating profit -67.0% 46.3% 62.9% 64.0% -3.5% 17.4% 13.3% 6.8%
+Net income -17.7% -42.3% 54. 5% 62.2% -6.0% 15.3% 15.9% 7.0%
+EPS -
+16.4% -43.3% 54.5% 62. 2% -6.0% 15.3% 15.9% 7.0%
+Source: Company data, Goldman Sachs Global Investment Research
+Exhibit 5: Taiex vs. GPTC Exhibit 6: Forward P/E 
+0
+500
+1,000
+1,500
+2,000
+2,500
+3,000
+3,500
+0
+3,000
+6,000
+9,000
+12,000
+15,000
+18,000
+21,000
+24,000
+27,000
+30,000
+33,000
+36,000
+39,000
+42,000
+45,000
+48,000
+May-16 May-18 May-20 May-22 May-24 May-26
+Taiex GPTC (RHS, NT$)
+15x
+25x
+35x
+45x
+55x
+0
+500
+1,000
+1,500
+2,000
+2,500
+3,000
+3,500
+4,000
+4,500
+5,000
+May-16 May-18 May-20 May-22 May-24 May-26
+Price (NT$)
+Source: TEJ Source: TEJ
+26 May 2026   5
+Goldman Sachs Grand Process Technology Corp. (3131.TWO)
+e92c7a75ab8b4efbba794e6b187208c8
+--- PAGE 6 ---
+Investment Thesis - GPTC (3131.TWO) 
+GPTC is one of the premier suppliers of semiconductor wet processing equipment, 
+primarily utilized in back-end advanced packaging processes. The company 
+manufactures semiconductor wet processing equipment, including metal etching 
+equipment and single-wafer cleaning equipment, as well as providing engineering and 
+installation services to semiconductor manufacturers. GPTC is the main CoWoS wet 
+clean equipment provider and has 50% of market share at TSMC and near 100% of 
+market share at ASE/SPIL. GPTC is also the sole provider for SoIC wet clean equipment at 
+TSMC given its leading technology versus local peers.  
+We favor GPTC as we expect its revenue/earnings CAGR to further a
+ ccelerate to 
+40%/56% in 2025-28E, driven by 1) continued advanced packaging capacity expansion, 
+and 2) equipment ASP increase amid rising advanced packaging (e.g. SoIC, CPO, FOPLP) 
+technology complexity. The company is now trading below its AI cycle (2023-2025) 
+average forward P/E of 29x; however, with proliferation of advanced packaging into 
+non-AI application and increasing ASP thanks to rising technology complexity, we 
+continue to see upside potential to its revenue and earnings growth and maintain a Buy 
+rating on the name. 
+Price Target Risks and Methodology - GPTC (3131.TWO) 
+Valuation: We are Buy rated on GPTC. Our 12m TP of NT$4,500 is based on a target P/E 
+multiple of 35x (based on avg. fwd P/E during the CoWoS ramp-up in mid-2024 to 2025) 
+applied to our FY2H27E-1H28E EPS. 
+Key risks to our views: 1) softer AI/HPC demand, 2) slower adoption of new advanced 
+packaging technologies, and 3) intensifying competition.
+Exhibit 7: Forward P/B Exhibit 8: P/B vs. ROE 
+10x
+13x
+16x
+19x
+22x
+0
+500
+1,000
+1,500
+2,000
+2,500
+3,000
+3,500
+4,000
+May-16 May-18 May-20 May-22 May-24 May-26
+Price (NT$)
+0.0
+2.0
+4.0
+6.0
+8.0
+10.0
+12.0
+0%
+5%
+10%
+15%
+20%
+25%
+30%
+35%
+40%
+Mar-16 Mar-18 Mar-20 Mar-22 Mar-24 Mar-26
+ROE (LHS) Fwd P/B (RHS)
+Source: TEJ Source: TEJ
+26 May 2026   6
+Goldman Sachs Grand Process Technology Corp. (3131.TWO)
+e92c7a75ab8b4efbba794e6b187208c8
+--- PAGE 7 ---
+Disclosure Appendix 
+Reg AC 
+We, Evelyn Yu, Bruce Lu and Ryan Huang, CFA, hereby certify that all of the views expressed in this report accurately reflect our personal views about 
+the subject company or companies and its or their securities. We also certify that no part of our compensation was, is or will be, dir ectly or indirectly, 
+related to the specific r ecommendations or views expressed in this report. 
+Unless otherwise stated, the individuals listed on the cover page of this report are analysts in Goldman Sachs’ Global Investment R esearch division. 
+Contributing Authors: Evelyn Yu Goldman Sachs (Asia) L.L.C., Taipei Branch, Bruce Lu Goldman Sachs (Asia) L.L.C., Taipei Branch, Ryan Huang, CFA 
+Goldman Sachs (Asia) L.L.C., Taipei Branch. 
+Unless otherwise stated, the individuals listed in the Contributing Authors disclosure of this report are analysts in Goldman Sa chs’ Global Investment 
+Research division. 
+GS Factor Profile 
+The Goldman Sachs Factor Profile provides investment context for a stock by comparing key attributes to the market (i.e. our universe of rated stocks) 
+and its sector peers. The four key attributes depicted are: Growth, Financial Returns, Multiple (e.g. valuation) and Integrated (a c omposite of Growth, 
+Financial Returns and Multiple). Growth, Financial Returns and Multiple are calculated by using normalized ranks for specific metrics f or each stock. The 
+normalized ranks for the metrics are then averaged and converted into percentiles for the relevant attribute. The precise calcula tion of each metric may 
+vary depending on the fiscal y ear, industry and region, but the standard approach is as follows: 
+Growth is based on a stock’s forward-looking sales growth, EBITDA growth and EPS growth (for financial s tocks, only EPS and sales growth), with a 
+higher percentile indicating a higher growth company. Financial Returns is based on a stock’s forward-looking ROE, ROCE and CROCI (for financial 
+stocks, only ROE), with a higher percentile indicating a company with higher financial r eturns. Multiple is based on a stock’s forward-looking P/E, P/B, 
+price/dividend (P/D), EV/EBITDA, EV/FCF and EV/Debt Adjusted Cash Flow (DACF) (for financial s tocks, only P/E, P/B and P/D), with a higher percentile 
+indicating a stock trading at a higher multiple. The Integrated percentile is calculated as the average of the Growth percentile, Financial Returns 
+percentile and (100% - Multiple percentile). 
+Financial Returns and Multiple use the Goldman Sachs analyst forecasts at the fiscal y
+ ear-end at least three quarters in the future. Growth uses inputs 
+for the fiscal y ear at least seven quarters in the future compared with the year at least three quarters in the future (on a per-share basis for all metrics). 
+For a more detailed description of how we calculate the GS Factor Profile, please c ontact your GS representative.  
+M&A Rank 
+Across our global coverage, we examine stocks using an M&A framework, considering both qualitative factors and quantitative factors (which may vary 
+across sectors and regions) to incorporate the potential that certain companies could be acquired. We then assign a M&A rank as a means of sc oring 
+companies under our rated coverage from 1 to 3, with 1 representing high (30%-50%) probability of the company becoming an acquisition targ et, 2 
+representing medium (15%-30%) probability and 3 representing low (0%-15%) probability. For companies ranked 1 or 2, in line with our s tandard 
+departmental guidelines we incorporate an M&A component into our target price. M&A rank of 3 is considered immaterial and theref ore does not 
+factor into our price target, and may or may not be discussed in research. 
+Quantum 
+Quantum is Goldman Sachs’ proprietary database providing access to detailed financial statement histories, forecasts and ratios. It can be used for 
+in-depth analysis of a single company, or to make comparisons between companies in differ ent sectors and markets.  
+Disclosures 
+The rating(s) for Grand Plastic Technology Corp. is/are relative to the other companies in its/their coverage universe: ASE Technology Holding, 
+ASE Technology Holding (ADR), All Ring Tech Co., Aspeed, GlobalWafers Co., Grand Plastic Technology Corp., Hon Precision, King Y uan Electronics Co., 
+MPI Corp., MediaTek, Novatek Microelectronics, Parade Technologies Ltd., Realtek Semiconductor Corp., Silergy Corp., TSMC, TSMC (ADR), Unit ed 
+Microelectronics Corp., United Microelectronics Corp. (ADR), Vanguard International Corp., Winway Technology Co., uPI  
+Company-specific regulatory disclosures 
+The following disclosures relate to relationships between The Goldman Sachs Group, Inc. (with its affiliates, “Goldman Sachs”) and companies covered 
+by Goldman Sachs Global Investment Research and referred to in this research. 
+Goldman Sachs beneficially o wned 1% or more of common equity (excluding positions managed by affiliates and business units not required to be 
+aggregated under US securities law) as of the month end preceding this report: Grand Plastic Technology Corp. (NT$3,115.00) 
+Distribution of ratings/investment banking relationships 
+Goldman Sachs Investment Research global Equity coverage universe 
+As of April 1, 2026, Goldman Sachs Global Investment Research had investment ratings on 3,074 equity securities. Goldman Sachs assigns stocks as 
+Buys and Sells on various regional Investment Lists; stocks not so assigned are deemed Neutral. Such assignments equate to Buy, Hold and Sell f or the 
+purposes of the above disclosure required by the FINRA Rules. See ‘Ratings, Coverage universe and related definitions ’ below. The Investment Banking 
+Relationships chart reflec ts the percentage of subject companies within each rating category for whom Goldman Sachs has provided investment 
+banking services within the previous twelve months.     
+Rating Distribution Investment Banking Relationships
+Buy Hold Sell Buy Hold Sell
+Global 50% 34% 16% 65% 60% 45%
+26 May 2026   7
+Goldman Sachs Grand Process Technology Corp. (3131.TWO)
+e92c7a75ab8b4efbba794e6b187208c8
+--- PAGE 8 ---
+Price target and rating history chart(s) 
+Target price history table(s) 
+Grand Plastic Technology Corp. (3131.TWO) 
+Price targets shown in table(s) are unadjusted for corporate actions. 
+Regulatory disclosures 
+Disclosures required by United States laws and regulations 
+See company-specific regulatory disclosures above for any of the following disclosures required as to companies referred to in this report: manager or 
+co-manager in a pending transaction; 1% or other ownership; compensation for certain services; types of client relationships; manag ed/co-managed 
+public offerings in prior periods; dir ectorships; for equity securities, market making and/or specialist role. Goldman Sachs trades or may trade as a 
+principal in debt securities (or in related derivatives) of issuers discussed in this report.  
+The following are additional required disclosures: Ownership and material conflic ts of interest: Goldman Sachs policy prohibits its analysts, 
+professionals reporting to analysts and members of their households from owning securities of any company in the analyst’s area of c overage.  Analyst 
+compensation:  Analysts are paid in part based on the profitability of Goldman Sa chs, which includes investment banking revenues.  Analyst as office r 
+or director: Goldman Sachs policy generally prohibits its analysts, persons reporting to analysts or members of their households from serving as an 
+offic er, director or advisor of any company in the analyst’s area of coverage.  Non-U.S. Analysts:  Non-U.S. analysts may not be associated persons of 
+Goldman Sachs & Co. LLC and therefore may not be subject to FINRA Rule 2241 or FINRA Rule 2242 restrictions on communications with a subjec t 
+company, public appearances and trading in securities covered by the analysts.  
+Distribution of ratings: See the distribution of ratings disclosure above.  Price chart: See the price chart, with changes of ratings and price targets in 
+prior periods, above, or, if electronic format or if with respect to multiple companies which are the subject of this report, on the Goldman Sa chs website 
+at https://www.gs.com/research/hedge.html.   
+Additional disclosures required under the laws and regulations of jurisdictions other than the United States 
+The following disclosures are those required by the jurisdiction indicated, except to the extent already made above pursuant to United States laws and 
+regulations. Australia: Goldman Sachs Australia Pty Ltd and its affilia tes are not authorised deposit-taking institutions (as that term is defined in the 
+Banking Act 1959 (Cth)) in Australia and do not provide banking services, nor carry on a banking business, in Australia. This resear ch, and any access to 
+it, is intended only for “wholesale clients” within the meaning of the Australian Corporations Act, unless otherwise agreed by Goldman Sa chs. In 
+producing research reports, members of Global Investment Research of Goldman Sachs Australia may attend site visits and other meetings hos ted by 
+the companies and other entities which are the subject of its research reports. In some instances the costs of such site visits or meetings ma y be met in 
+part or in whole by the issuers concerned if Goldman Sachs Australia considers it is appropriate and reasonable in the specific cir cumstances relating to 
+the site visit or meeting. To the extent that the contents of this document contains any financial pr oduct advice, it is general advice only and has been 
+prepared by Goldman Sachs without taking into a ccount a client’s objectives, financial situation or needs. A client should, before acting on any such 
+advice, consider the appropriateness of the advice having regard to the client’s own objectives, financial situa tion and needs. A copy of certain 
+Goldman Sachs Australia and New Zealand disclosure of interests and a copy of Goldman Sachs’ Australian Sell-Side Research Independenc e Policy 
+Statement are available at: https://www.goldmansachs.com/disclosures/australia-new-zealand/index.html.  Brazil: Disclosure information in relation 
+to CVM Resolution n. 20 is available at https://www.gs.com/worldwide/brazil/area/gir/index.html. Where applicable, the Brazil-registered analyst 
+primarily responsible for the content of this research report, as defined in Ar ticle 20 of CVM Resolution n. 20, is the first author named at the beginning 
+of this report, unless indicated otherwise at the end of the text.  Canada: This information is being provided to you for information purposes only and is 
+not, and under no circumstances should be construed as, an advertisement, offering or solicita tion by Goldman Sachs & Co. LLC for purchasers of 
+Date of report T arget price (NT$) Closing price (NT$)
+04-May-26 4,000.00 3,065.00
+20-Apr-26 4,500.00 3,210.00
+24-Mar-26 3,500.00 2,420.00
+12-Mar-26 2,400.00 1,940.00
+03-Mar-26 2,200.00 1,690.00
+04-Nov-25 1,800.00 1,480.00
+05-Aug-25 1,900.00 1,390.00
+25-Jun-25 2,000.00 1,750.00
+26 May 2026   8
+Goldman Sachs Grand Process Technology Corp. (3131.TWO)
+e92c7a75ab8b4efbba794e6b187208c8
+--- PAGE 9 ---
+securities in Canada to trade in any Canadian security. Goldman Sachs & Co. LLC is not registered as a dealer in any jurisdiction in Canada under 
+applicable Canadian securities laws and generally is not permitted to trade in Canadian securities and may be prohibited from selling c ertain securities 
+and products in certain jurisdictions in Canada. If you wish to trade in any Canadian securities or other products in Canada please c ontact Goldman 
+Sachs Canada Inc., an affilia te of The Goldman Sachs Group Inc., or another registered Canadian dealer.  Hong Kong: Further information on the 
+securities of covered companies referred to in this research may be obtained on request from Goldman Sachs (Asia) L.L.C.  India: Further information 
+on the subject company or companies referred to in this research may be obtained from Goldman Sachs (India) Securities Private Limit ed, Research 
+Analyst - SEBI Registration Number INH000001493, 10th Floor, Ascent-Worli, Sudam Kalu Ahire Marg, Worli, Mumbai-400 025, India, C orporate 
+Identity Number U74140MH2006FTC160634, Phone +91 22 6616 9000, Fax +91 22 6616 9001. Goldman Sachs may beneficially o wn 1% or more of 
+the securities (as such term is defined in clause 2 (h) the Indian Securities C ontracts (Regulation) Act, 1956) of the subject company or companies 
+referred to in this research report. Investment in securities market are subject to market risks. Read all the related documents car efully before investing. 
+Registration granted by SEBI and certifica tion from NISM in no way guarantee performance of the intermediary or provide any assurance of returns to 
+investors. Goldman Sachs (India) Securities Private Limited compliance offic er and investor grievance contact details can be found at: 
+https://www.goldmansachs.com/worldwide/india/documents/Grievance-Redressal-and-Escalation-Matrix.pdf, and a copy of the annual audit 
+compliance report can be found at this link: https://publishing.gs.com/content/site/india-annual-compliance-report.html.  Japan: See below.  Korea: 
+This research, and any a ccess to it, is intended only for “professional investors” within the meaning of the Financial Services and Capital Markets Act, 
+unless otherwise agreed by Goldman Sachs. Further information on the subject company or companies referred to in this research ma y be obtained 
+from Goldman Sachs (Asia) L.L.C., Seoul Branch.  New Zealand: Goldman Sachs New Zealand Limited and its affilia tes are neither “registered banks” nor 
+“deposit takers” (as defined in the R eserve Bank of New Zealand Act 1989) in New Zealand. This research, and any access to it, is intended for 
+“wholesale clients” (as defined in the Financial A dvisers Act 2008) unless otherwise agreed by Goldman Sachs. A copy of certain Goldman Sachs 
+Australia and New Zealand disclosure of interests is available at: https://www.goldmansachs.com/disclosures/australia-new-zealand/index.html.  
+Russia: Research reports distributed in the Russian Federation are not advertising as defined in the R ussian legislation, but are information and analysis 
+not having product promotion as their main purpose and do not provide appraisal within the meaning of the Russian legislation on appr aisal activity. 
+Research reports do not constitute a personalized investment recommendation as defined in R ussian laws and regulations, are not addressed to a 
+specific client, and ar e prepared without analyzing the financial circumstances, investment profiles or risk profiles of clients. Goldman Sachs assumes no 
+responsibility for any investment decisions that may be taken by a client or any other person based on this research report.  Singapore: Goldman Sachs 
+(Singapore) Pte. (Company Number: 198602165W), which is regulated by the Monetary Authority of Singapore, a ccepts legal responsibility for this 
+research, and should be contacted with respect to any matters arising from, or in connection with, this research.  Taiwan: This material is for reference 
+only and must not be reprinted without permission. Investors should carefully consider their own investment risk. Investment results ar e the 
+responsibility of the individual investor.  United Kingdom: Persons who would be categorized as retail clients in the United Kingdom, as such term is 
+defined in the rules of the Financial C onduct Authority, should read this research in conjunction with prior Goldman Sachs research on the covered 
+companies referred to herein and should refer to the risk warnings that have been sent to them by Goldman Sachs International. A c opy of these risks 
+warnings, and a glossary of certain financial t erms used in this report, are available from Goldman Sachs International on request.   
+European Union and United Kingdom: Disclosure information in relation to Article 6 (2) of the European Commission Delegated Regulation (EU) 
+(2016/958) supplementing Regulation (EU) No 596/2014 of the European Parliament and of the Council (including as that Delegated R egulation is 
+implemented into United Kingdom domestic law and regulation following the United Kingdom’s departure from the European Union and the E uropean 
+Economic Area) with regard to regulatory technical standards for the technical arrangements for objective presentation of investment 
+recommendations or other information recommending or suggesting an investment strategy and for disclosure of particular interests or indica
+ tions of 
+conflic ts of interest is available at https://www.gs.com/disclosures/europeanpolicy.html  which states the European Policy for Managing Conflicts of 
+Interest in Connection with Investment Research.   
+Japan: Goldman Sachs Japan Co., Ltd. is a Financial Instrument Dealer registered with the Kanto Financial Bureau under registration number Kinsho 69, 
+and a member of Japan Securities Dealers Association, Financial Futures Association of Japan Type II Financial Instruments Firms Associa tion, and 
+Investment Management Association of Japan. Sales and purchase of equities are subject to commission pre-determined with clients plus c onsumption 
+tax. See company-specific disclosur es as to any applicable disclosures required by Japanese stock exchanges, the Japanese Securities Dealers 
+Association or the Japanese Securities Finance Company.   
+Ratings, coverage universe and related definitions 
+Buy (B), Neutral (N), Sell (S) Analysts recommend stocks as Buys or Sells for inclusion on various regional Investment Lists. Being assigned a Buy or Sell 
+on an Investment List is determined by a stock’s total return potential relative to its coverage universe. Any stock not assigned as a B uy or a Sell on an 
+Investment List with an active rating (i.e., a  stock that is not Rating Suspended, Not Rated, Early-Stage Biotech, Coverage Suspended or Not C overed), is 
+deemed Neutral. Each region manages Regional Conviction Lists, which are selected from Buy rated stocks on the respective region ’s Investment Lists 
+and represent investment recommendations focused on the size of the total return potential and/or the likelihood of the realization of the r eturn across 
+their respective areas of coverage.  The addition or removal of stocks from such Conviction Lists are managed by the Investment R eview Committee or 
+other designated committee in each respective region and do not represent a change in the analysts’ investment rating for such s tocks.    
+Total return potential represents the upside or downside differ ential between the current share price and the price target, including all paid or 
+anticipated dividends, expected during the time horizon associated with the price target. Price targets are required for all cov ered stocks. The total 
+return potential, price target and associated time horizon are stated in each report adding or reiterating an Investment List membership .  
+Coverage Universe: A list of all stocks in each coverage universe is available by primary analyst, stock and coverage universe at 
+https://www.gs.com/research/hedge.html.    
+Not Rated (NR). The investment rating, target price and earnings estimates (where relevant) are removed pursuant to Goldman Sachs policy when 
+Goldman Sachs is acting in an advisory capacity in a merger or in a strategic transaction involving this company, when there are leg al, regulatory or 
+policy constraints due to Goldman Sachs’ involvement in a transaction, and in certain other circumstances. Early-Stage Biotech (ES). An investment 
+rating and a target price are not assigned pursuant to Goldman Sachs policy when this company has neither a drug, treatment or medical de vice that 
+has passed a Phase II clinical trial nor a license to distribute a post-Phase II drug, treatment or medical device.  Rating Suspended (RS). Goldman Sachs 
+Research has suspended the investment rating and price target for this stock, because there is not a sufficient f undamental basis for determining an 
+investment rating or target price. The previous investment rating and target price, if any, are no longer in effec t for this stock and should not be relied 
+upon.  Coverage Suspended (CS). Goldman Sachs has suspended coverage of this company.  Not Covered (NC). Goldman Sachs does not cover this 
+company.  
+Global product; distributing entities 
+Goldman Sachs Global Investment Research produces and distributes research products for clients of Goldman Sachs on a global basis. Analysts based 
+in Goldman Sachs offic es around the world produce research on industries and companies, and research on macroeconomics, currencies, commodities 
+and portfolio strategy. This research is disseminated in Australia by Goldman Sachs Australia Pty Ltd (ABN 21 006 797 897); in Br azil by Goldman Sachs 
+do Brasil Corretora de Títulos e Valores Mobiliários S.A.; Public Communication Channel Goldman Sachs Brazil: 0800 727 5764 and / or 
+contatogoldmanbrasil@gs.com. Available Weekdays (except holidays), from 9am to 6pm. Canal de Comunicação com o Público Goldman Sa chs Brasil: 
+0800 727 5764 e/ou contatogoldmanbrasil@gs.com. Horário de funcionamento: segunda-feira à sexta-feira (exceto feriados), das 9h às 18h; in C anada 
+by Goldman Sachs & Co. LLC; in Hong Kong by Goldman Sachs (Asia) L.L.C.; in India by Goldman Sachs (India) Securities Private Lt d.; in Japan by 
+26 May 2026   9
+Goldman Sachs Grand Process Technology Corp. (3131.TWO)
+e92c7a75ab8b4efbba794e6b187208c8
+--- PAGE 10 ---
+Goldman Sachs Japan Co., Ltd.; in the Republic of Korea by Goldman Sachs (Asia) L.L.C., Seoul Branch; in New Zealand by Goldman Sachs New Zealand 
+Limited; in Russia by OOO Goldman Sachs; in Singapore by Goldman Sachs (Singapore) Pte. (Company Number: 198602165W); and in the Unit ed States 
+of America by Goldman Sachs & Co. LLC. Goldman Sachs International has approved this research in connection with its distribution in the Unit ed 
+Kingdom.  
+Goldman Sachs International (“GSI”), authorised by the Prudential Regulation Authority (“PRA ”) and regulated by the Financial Conduc t Authority 
+(“FCA ”) and the PRA, has approved this research in connection with its distribution in the United Kingdom. 
+European Economic Area: Goldman Sachs Bank Europe SE (“GSBE”) is a credit institution incorporated in Germany and, within the Single Supervisory 
+Mechanism, subject to direct prudential supervision by the European Central Bank and in other respects supervised by German Feder al Financial 
+Supervisory Authority (Bundesanstalt für Finanzdienstleistungsaufsicht, BaFin) and Deutsche Bundesbank and disseminates research within the 
+European Economic Area.  
+General disclosures 
+This research is for our clients only. Other than disclosures relating to Goldman Sachs, this research is based on current public information that we 
+consider reliable, but we do not represent it is accurate or complete, and it should not be relied on as such. The information, opinions, es timates and 
+forecasts contained herein are as of the date hereof and are subject to change without prior notifica tion. We seek to update our research as 
+appropriate, but various regulations may prevent us from doing so. Other than certain industry reports published on a periodic basis, the larg e majority 
+of reports are published at irregular intervals as appropriate in the analyst’s judgment. 
+Goldman Sachs conducts a global full-service, integrated investment banking, investment management, and brokerage business. We ha ve investment 
+banking and other business relationships with a substantial percentage of the companies covered by Global Investment Research. Goldman Sa chs & Co. 
+LLC, the United States broker dealer, is a member of SIPC (https://www.sipc.org).  
+Our salespeople, traders, and other professionals may provide oral or written market commentary or trading strategies to our clients and principal 
+trading desks that reflec t opinions that are contrary to the opinions expressed in this research. Our asset management area, principal trading desks and 
+investing businesses may make investment decisions that are inconsistent with the recommendations or views expressed in this resear ch. 
+The analysts named in this report may have from time to time discussed with our clients, including Goldman Sachs salespersons and tr aders, or may 
+discuss in this report, trading strategies that reference catalysts or events that may have a near-term impact on the market pric e of the equity securities 
+discussed in this report, which impact may be directionally counter to the analyst’s published price target expectations for such s tocks. Any such 
+trading strategies are distinct from and do not affec t the analyst’s fundamental equity rating for such stocks, which rating reflects a stock’s return 
+potential relative to its coverage universe as described herein. 
+We and our affilia tes, officers, directors, and employees will from time to time have long or short positions in, act as principal in, and buy or sell, the 
+securities or derivatives, if any, referred to in this research, unless otherwise prohibited by regulation or Goldman Sachs polic y.  
+The views attributed to third party presenters at Goldman Sachs arranged conferences, including individuals from other parts of Goldman Sa chs, do not 
+necessarily reflec t those of Global Investment Research and are not an official view of Goldman Sachs. 
+Any third party referenced herein, including any salespeople, traders and other professionals or members of their household, may ha ve positions in the 
+products mentioned that are inconsistent with the views expressed by analysts named in this report. 
+This research is not an offer t o sell or the solicitation of an offer to buy any security in any jurisdiction where such an offer or solicitation would be illegal. 
+It does not constitute a personal recommendation or take into a ccount the particular investment objectives, financial situations, or needs of individual 
+clients. Clients should consider whether any advice or recommendation in this research is suitable for their particular circumstanc es and, if appropriate, 
+seek professional advice, including tax advice. The price and value of investments referred to in this research and the income fr om them may fluctuate. 
+Past performance is not a guide to future performance, future returns are not guaranteed, and a loss of original capital may occur . Fluctuations in 
+exchange rates could have adverse effec ts on the value or price of, or income derived from, certain investments.  
+Certain transactions, including those involving futures, options, and other derivatives, give rise to substantial risk and are not suitable f or all investors. 
+Investors should review current options and futures disclosure documents which are available from Goldman Sachs sales representa tives or at 
+https://www.theocc.com/about/publications/character-risks.jsp and https://www.goldmansachs.com/disclosures/cftc_fcm_disclosures. Transaction 
+costs may be significant in option s trategies calling for multiple purchase and sales of options such as spreads. Supporting documentation will be 
+supplied upon request.  
+Differing L evels of Service provided by Global Investment Research: The level and types of services provided to you by Goldman Sachs Global 
+Investment Research may vary as compared to that provided to internal and other external clients of GS, depending on various fac tors including your 
+individual preferences as to the frequency and manner of receiving communication, your risk profile and in vestment focus and perspective (e.g., 
+marketwide, sector specific, long t erm, short term), the size and scope of your overall client relationship with GS, and legal and regulatory constraints.  
+As an example, certain clients may request to receive notifica tions when research on specific securities is published, and certain clients may request 
+that specific da ta underlying analysts’ fundamental analysis available on our internal client websites be delivered to them electronically through data 
+feeds or otherwise. No change to an analyst’s fundamental research views (e.g., ratings, price targets, or material changes to earnings es timates for 
+equity securities), will be communicated to any client prior to inclusion of such information in a research report broadly dissemina ted through 
+electronic publication to our internal client websites or through other means, as necessary, to all clients who are entitled to r eceive such reports. 
+All research reports are disseminated and available to all clients simultaneously through electronic publication to our internal client w ebsites. Not all 
+research content is redistributed to our clients or available to third-party aggregators, nor is Goldman Sachs responsible for the r edistribution of our 
+research by third party aggregators. For research, models or other data related to one or more securities, markets or asset classes (including r elated 
+services) that may be available to you, please contact your GS representative or go to https://research.gs.com. 
+Disclosure information is also available at https://www.gs.com/research/hedge.html or from Research Compliance, 200 West Street, New York, NY 
+10282. 
+© 2026 Goldman Sachs.  
+You are permitted to store, display, analyze, modify, reformat, and print the information made available to you via this service only f or your own use.  
+You may not resell or reverse engineer this information to calculate or develop any index for disclosure and/or marketing or crea te any other derivative 
+works or commercial product(s), data or offering(s) without the expr ess written consent of Goldman Sachs. You are not permitted to publish, transmit, 
+or otherwise reproduce this information, in whole or in part, in any format to any third party without the express written consent of Goldman Sa chs. 
+This foregoing restriction includes, without limitation, using, extracting, downloading or retrieving this information, in whole or in par t, to train or 
+finetune a ma chine learning or artificial intelligence system, or to provide or reproduce this information, in whole or in part, as a prompt or input to any 
+such system. 
+26 May 2026   10
+Goldman Sachs Grand Process Technology Corp. (3131.TWO)
+e92c7a75ab8b4efbba794e6b187208c8

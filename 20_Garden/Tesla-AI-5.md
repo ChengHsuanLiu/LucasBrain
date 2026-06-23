@@ -1,0 +1,49 @@
+---
+type: industry
+title: "Tesla-AI-5"
+created: 2026-06-22
+updated: 2026-06-22
+review_by: 2026-09-22
+tags: [investment/target, tesla-ai-5]
+source_type: manual_note
+source_asset: Various
+aliases: [Tesla AI 5, AI5]
+---
+
+# Tesla-AI-5
+
+## 摘要 (Summary)
+- **第五代自研 AI 晶片 (AI 5)**：Tesla 自研的自動駕駛與 AI 核心晶片，主要部署於自動輔助駕駛系統 (ADAS / FSD)、無人計程車 (Robotaxi)、人形機器人 (Optimus) 以及資料中心算力集群 (Dojo)。
+- **晶片結構與先進封裝**：
+  - 晶片規格可能採 Mono die 或 Single die 設計。
+  - 設計規格強大，對先進封裝與後端設計的需求巨大。
+
+## 核心發現 (Core Findings)
+
+## 關鍵洞察 (Key Insights)
+
+## 第二層思考 (Second-Level Thinking)
+
+## 第一性原理分析 (First Principles Analysis)
+
+## 近期的產業未來趨勢與重要時間軸 (例如: 產品換代、材料升級及其時間軸)
+- **自研晶片與外部協力綁定**：
+  - 雖然 Tesla 擁有自主設計前端晶片的能力，但出於資源配置與效率考量，會將晶片的後端設計 (Back-end design) 委外。
+  - 客戶出貨展望巨大，是未來二到三年全球最大的客製化晶片專案之一。
+
+## 產業主要上中下游廠商 (各公司分別負責什麼部分，預估今明年 EPS 多少?)
+- **上游/晶片後端設計服務**：
+  - `[[3443創意]]` (3443)：被邀請進入 Tesla AI5 專案進行後端設計與綁定。AI5 TK1 於 2026 年 4 月在台積電 Tape-out，預計 2H27 量產 (MP)；AI5 TK2 案子的毛利率估為 20%，產能上修至 250 萬。預估 2026/2027 EPS 為 `90-125 / 200 元`。預計最快 2028 年 AI5 放量，將帶領 Tesla 成為創意第一大客戶。
+- **中游/晶圓代工與封裝**：
+  - `[[TSMC]]`：先進製程製造與 3D/CoWoS 先進封裝。
+- **下游/終端系統**：
+  - Tesla (特斯拉)：自用，部署於 Model 3/Y/S/X 智慧座艙與自駕晶片，以及機器人工廠。
+
+## 產業主要用途以及客戶有誰?
+- 特斯拉 (Tesla)。
+
+## 相關概念連結 (Related Concepts)
+
+## 原始文件及連結 (Original Document)
+- `[[20260620_213639_text.md]]` - 創意 3443 專案營收與毛利分析
+- `[[20260622_145237_text.md]]` - 創意 GUC 法說 Q&A 與 AI5/ADAS 設計

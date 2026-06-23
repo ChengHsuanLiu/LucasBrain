@@ -1,0 +1,191 @@
+--- PAGE 1 ---
+Copyright©  2026 Hermes Testing Solutions Inc.
+Aiming for Excellence, 
+Persisting in Reliable Solutions.
+April 2026
+Company Profile
+--- PAGE 2 ---
+Snapshot
+Founded
+2004.09
+Chairman President
+T.C. Lin Steven Wang
+Employees (as of Mar. 2026)
+450
+Headquarter
+Hsinchu,
+Taiwan
+--- PAGE 3 ---
+Global 
+Locations
+HTSI has established a global presence 
+across Taiwan, China, Japan, Malaysia, 
+Singapore, and the United States, providing 
+timely and professional technical support 
+through localized services.
+Suzhou
+China
+Tokyo
+Kumamoto
+Japan
+Malaysia
+Singapore
+Hsinchu
+Tainan
+Taiwan
+Phoenix
+U.S.
+--- PAGE 4 ---
+Global Locations
+Hsinchu (TW) 
+Headquarter / CPC Fab
+• Daily operations, logistics planning, and R&D
+• Equipment Service Site
+• Customized Products Development
+• Probe Card Manufacture Line
+Zhudong Fab
+• SMT Manufacture Line
+• Warehouse
+Tainan (TW)
+Thin Film & Membrane Production / R&D Line
+
+--- PAGE 5 ---
+Business Portfolio
+5
+Providing one-stop solutions from probe 
+cards to cleaning materials to enhance 
+test performance.
+Probe Card & 
+Clean Materials
+Full value-added services include 
+sales(China), installation(Taiwan), and 
+technical support
+Test Equipment & 
+Engineer Service
+Develops and distributes semiconductor 
+test equipment to enhance yield and 
+provide customized solutions.
+Semiconductor Equipment 
+/ Customized Products
+--- PAGE 6 ---
+6
+• Supports 5G/6G, RF, and Filters applications
+• 100% Taiwan-made for superior quality and 
+delivery reliability
+• Exclusive patented probe card leveling for 
+stable wafer testing 
+Membrane Probe Card
+• Supports WAT, Logic, LCD Driver & 
+GaN/SiC chip testing
+• Technology transfer partnership with MJC, 
+a top 3 global probe card manufacturer
+• Custom designs for diverse product needs
+Cantilever Probe Card
+• Cobra probe card: 100% Taiwan-made
+• MEMS probe card: Partnership with MJC, 
+integrated with HTSI components for real-
+time local support
+Vertical Probe Card
+Probe Card Overview
+--- PAGE 7 ---
+Cantilever Probe Card Cantilever Probe Card Capability
+Max. pin count (pin) 3500
+Max. current (A) 30
+Max. voltage (V) 1500
+Min. pad size (um) 30*30
+Max. frequency (GHz) 2
+Max. CCC/pin (A) 2
+Min. pitch (μm) 45
+WAT
+Logic LCD-Driver
+GaN/SiC
+Device Categories 
+Features
+• 30A max current for high-power testing
+• 1500V max voltage for high-voltage devices
+• 30*30µm min pad size for fine-pitch probing
+--- PAGE 8 ---
+Vertical Probe Card
+Cobra Probe Card
+Max. pin count: 18000
+Min. pitch: 80um
+MEMS-SP (MJC)
+Max. pin count: 50000 pins
+Frequency: ~20GHz
+MEMS-V (MJC)
+Max. pin count: 15000 pins
+For PAD For Solder Bump For Cu Pillar Bump
+Minimum pitch (μm) 80~130 130 85~130
+Temperature(℃) -40 to 150 -40 to 150 -40 to 150
+Tip Diameter (μm) 7±3 72±3 35~75
+Contact force ( g /mil) 0.7 0.9 0.5
+Max OD (μm) 200 200 200
+C.C.C (A) 1.2 1.6 1.2~2
+MEMS-V Probe 50 
+Minimum pitch (μm) 50 μm (25um staggered)
+Temperature(℃) -40 to 175
+Tip Diameter (μm) 6±2
+Contact force ( g /mil) 0.75
+Max OD (μm) 100
+C.C.C (mA) 400
+--- PAGE 9 ---
+PCB
+Design
+Layout Capability
+Substrate: MLO/MLC
+MLO: 20/24/20 
+MLC: 30 layers
+Line space: 12/12
+Size: 100*100 mm
+Probe Head
+Fine pitch 50 um (Staggered 25 um)
+Force down to 0.5 g/mil
+Max. pin counts: 50,000
+From Board to Probe
+--- PAGE 10 ---
+Membrane Probe Card
+Capability
+Max. pin count (pin) 5000
+S11 (dB) <-20
+S21 (dB) >-3 
+Frequency (GHz) ~67
+Min. pitch (μm) 65
+Min. tip diameter (μm) 20
+Lifetime (MTD) 1
+• Probe mark uniformity and consistency
+• Stable contact with well-controlled contact force
+• 100% inhouse manufacturing and quick service solution
+• High-bandwidth fidelity RF measurement with low signal loss
+Features: GSG type measurement bandwidth can exceed 67GHz
+--- PAGE 11 ---
+Prober & Probe Card 
+Sales/ Service 
+*Source: Y2025, openPR
+Area Prober
+Field Eng. NPI Eng. Probe Card 
+FAE
+North + MI 75 12 12
+Central 31 0 0
+South 29 0 0
+Total 135 12 12
+• Sales
+• PM/ Rebuild/ FAE for 
+CPC & VPC
+Prober
+• Sales/ Leasing Biz
+• Prober Service & Support, 
+CIP, etc.
+• Quarterly/ Annual PM
+Probe Card
+*as of Mar. 2026
+--- PAGE 12 ---
+Rework Station
+Oven Printer Mounter
+Reflow Cleaning
+Surface Mount Technology
+Introduction (1/2)
+--- PAGE 13 ---
+13
+
+--- PAGE 14 ---
+THANKS

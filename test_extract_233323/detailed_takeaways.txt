@@ -1,0 +1,367 @@
+==================================================
+FILE: 20260505_021202_file.pdf.txt
+==================================================
+
+--- COMPANY: 台光電 ---
+  * EMC 2383.TW 40.8                         -                                     -                                     -                                     100.7                                 -                                     CCL for PCB Midplane
+  * EMC 2383.TW 488                          -                                     -                                     -                                     1,188                                 -                                     CCL for PCB Midplane
+
+--- COMPANY: 敘豐 ---
+  * Go dman Sachs & Co. LLC and therefore may not be subject to F NRA Ru e 2241 or F NRA Ru e 2242 restr ct ons on commun cat ons w th a subjec t
+
+--- COMPANY: 聯亞 ---
+  * Landmark 3081.TWO 4.6                           2.3                                     6.1                                      7.1                                      14.4                                    73.4                                    CW laser
+  * Landmark 3081.TWO 14                            7                                         19                                       22                                       44                                       225                                     CW laser
+
+==================================================
+FILE: 20260505_200315_file.pdf.txt
+==================================================
+
+--- COMPANY: 智邦 ---
+  * 台積電  + 台系供應鏈（ TSMC 、鴻海、智邦、京元電）兩邊都賺： NVIDIA CPO （ COUPE 封裝） + Broadcom ASIC + 光模組  / PCB組裝。
+
+==================================================
+FILE: 20260505_200504_file.pdf.txt
+==================================================
+
+--- COMPANY: 台光電 ---
+  * 台光電 法說會重點
+
+--- COMPANY: 雙鍵 ---
+  * 雙鍵化工 (4764)
+  * 雙鍵化工(4764) 投資分析
+  * 其擴產藍圖與雙鍵 (4764) 的高階材料爆發軌跡呈現高度正相關。
+
+==================================================
+FILE: 20260525_003206_file (2).pdf.txt
+==================================================
+
+--- COMPANY: 雙鍵 ---
+  * 股票代碼：4764
+  * 本 公 司  PT. Double Bond Chemindo
+  * 本 公 司  Double Bond Chemical Ind.
+  * 本 公 司  Double Bond Chemical
+  * 本 公 司  Double Bond Chemical
+  * DBC Group  Double Bond Chemical Global
+  * DBC Group  PT. Double Bond Chemindo
+  * Double Bond Chemical Ind.
+  * ... and 9 more matches.
+
+==================================================
+FILE: 20260525_003703_file.pdf.txt
+==================================================
+
+--- COMPANY: 聯鈞 ---
+  * 兩端裝光引擎、中間為光纖，距離最長。台廠聯鈞（3450）子
+  * 台廠暴露（VCSEL 陣列）：穩懋 (3105，全球最大 6 吋 GaAs 代工)、宏捷科、聯鈞 (3450，子公司源傑為 AOC 組裝龍頭)、全新、IET-KY
+  * 聯鈞 (3450)、達發 (6526)、Credo 主導
+  * 光纖 / FAU Corning、光聖 (6442)、聯鈞(3450)
+  * 聯鈞 (3450) — VCSEL/AOC
+
+--- COMPANY: 聯亞 ---
+  * 台廠：聯亞 (3081，矽光占比 75%，InP/GaAs )、全新 (2455，PD 磊晶)、華星光 (4979，CW laser)、環宇-KY (4991)、光環 (3234)、穩懋 (3105，VCSEL 代工)。
+  * (4971)、聯亞 (3081)
+  * 穩懋 (3105)、全新(2455)、IET-KY (4971)、聯亞
+  * (3081)、宏捷科
+  * 聯亞 (3081) — 矽光子磊晶占 75%
+
+--- COMPANY: 上詮 ---
+  * 成本。台灣供應商：上詮 （3363）、波若威 （3163）、光聖
+  * FAU / 光耦合 天孚通信、Senko、上詮 (3363)、萬潤、波若威 (3163)
+  * 關鍵台廠卡位：上詮 (3363)、波若威 (3163) 在FAU/Fiber Shuffle環節參與；日月光與致茂分享TSMC COUPE量產封測受惠。ELS由Lumentum獨家，台廠無
+  * 上詮 (3363) — FAU、MPO
+
+--- COMPANY: 波若威 ---
+  * 推薦個股：光聖(6442)、波若威(3163)、華星光(4979)
+  * 成本。台灣供應商：上詮 （3363）、波若威 （3163）、光聖
+  * 波若威（3163）
+  * FAU / 光耦合 天孚通信、Senko、上詮 (3363)、萬潤、波若威 (3163)
+  * Fiber Shuffle Corning、太辰光、波若威 (3163)
+  * 關鍵台廠卡位：上詮 (3363)、波若威 (3163) 在FAU/Fiber Shuffle環節參與；日月光與致茂分享TSMC COUPE量產封測受惠。ELS由Lumentum獨家，台廠無
+  * 波若威 (3163) — Fiber Shuffle
+  * 波若威(3163)
+
+--- COMPANY: 華星光 ---
+  * 推薦個股：光聖(6442)、波若威(3163)、華星光(4979)
+  * 台廠：聯亞 (3081，矽光占比 75%，InP/GaAs )、全新 (2455，PD 磊晶)、華星光 (4979，CW laser)、環宇-KY (4991)、光環 (3234)、穩懋 (3105，VCSEL 代工)。
+  * 直接卡位，但CW laser晶粒由華星光 (4979)、環宇-KY (4991)、光環 (3234) 間接受惠。
+  * 華星光 (4979) — CW laser
+  * 華星光(4979)
+  * 華星光 2026 年成長動能明確 ，核心來自 CW Laser 擴產 、800G
+
+--- COMPANY: 光聖 ---
+  * 推薦個股：光聖(6442)、波若威(3163)、華星光(4979)
+  * 成本。台灣供應商：上詮 （3363）、波若威 （3163）、光聖
+  * （6442）
+  * 台廠關鍵卡位：光聖 (6442) 為Google OCS光纖/FAU供應商，全球唯一掌握 6,912/13,824 芯高芯數光纖跳接線研發能力；CPO-ELS 與 FAU 產品預計 2026
+  * 光纖 / FAU Corning、光聖 (6442)、聯鈞(3450)
+  * 光聖 (6442) — 光纖跳線、ELS
+  * 光聖(6442)
+  * 光聖 2025 年 營 收105.3 億 （YoY +64.2% ） ， 毛 利 率57.74% ，EPS
+
+==================================================
+FILE: 20260525_004412_file.pdf.txt
+==================================================
+
+--- COMPANY: 聯鈞 ---
+  * 兩端裝光引擎、中間為光纖，距離最長。台廠聯鈞（3450）子
+  * 台廠暴露（VCSEL 陣列）：穩懋 (3105，全球最大 6 吋 GaAs 代工)、宏捷科、聯鈞 (3450，子公司源傑為 AOC 組裝龍頭)、全新、IET-KY
+  * 聯鈞 (3450)、達發 (6526)、Credo 主導
+  * 光纖 / FAU Corning、光聖 (6442)、聯鈞(3450)
+  * 聯鈞 (3450) — VCSEL/AOC
+
+--- COMPANY: 聯亞 ---
+  * 台廠：聯亞 (3081，矽光占比 75%，InP/GaAs )、全新 (2455，PD 磊晶)、華星光 (4979，CW laser)、環宇-KY (4991)、光環 (3234)、穩懋 (3105，VCSEL 代工)。
+  * (4971)、聯亞 (3081)
+  * 穩懋 (3105)、全新(2455)、IET-KY (4971)、聯亞
+  * (3081)、宏捷科
+  * 聯亞 (3081) — 矽光子磊晶占 75%
+
+--- COMPANY: 上詮 ---
+  * 成本。台灣供應商：上詮 （3363）、波若威 （3163）、光聖
+  * FAU / 光耦合 天孚通信、Senko、上詮 (3363)、萬潤、波若威 (3163)
+  * 關鍵台廠卡位：上詮 (3363)、波若威 (3163) 在FAU/Fiber Shuffle環節參與；日月光與致茂分享TSMC COUPE量產封測受惠。ELS由Lumentum獨家，台廠無
+  * 上詮 (3363) — FAU、MPO
+
+--- COMPANY: 波若威 ---
+  * 推薦個股：光聖(6442)、波若威(3163)、華星光(4979)
+  * 成本。台灣供應商：上詮 （3363）、波若威 （3163）、光聖
+  * 波若威（3163）
+  * FAU / 光耦合 天孚通信、Senko、上詮 (3363)、萬潤、波若威 (3163)
+  * Fiber Shuffle Corning、太辰光、波若威 (3163)
+  * 關鍵台廠卡位：上詮 (3363)、波若威 (3163) 在FAU/Fiber Shuffle環節參與；日月光與致茂分享TSMC COUPE量產封測受惠。ELS由Lumentum獨家，台廠無
+  * 波若威 (3163) — Fiber Shuffle
+  * 波若威(3163)
+
+--- COMPANY: 華星光 ---
+  * 推薦個股：光聖(6442)、波若威(3163)、華星光(4979)
+  * 台廠：聯亞 (3081，矽光占比 75%，InP/GaAs )、全新 (2455，PD 磊晶)、華星光 (4979，CW laser)、環宇-KY (4991)、光環 (3234)、穩懋 (3105，VCSEL 代工)。
+  * 直接卡位，但CW laser晶粒由華星光 (4979)、環宇-KY (4991)、光環 (3234) 間接受惠。
+  * 華星光 (4979) — CW laser
+  * 華星光(4979)
+  * 華星光 2026 年成長動能明確 ，核心來自 CW Laser 擴產 、800G
+
+--- COMPANY: 光聖 ---
+  * 推薦個股：光聖(6442)、波若威(3163)、華星光(4979)
+  * 成本。台灣供應商：上詮 （3363）、波若威 （3163）、光聖
+  * （6442）
+  * 台廠關鍵卡位：光聖 (6442) 為Google OCS光纖/FAU供應商，全球唯一掌握 6,912/13,824 芯高芯數光纖跳接線研發能力；CPO-ELS 與 FAU 產品預計 2026
+  * 光纖 / FAU Corning、光聖 (6442)、聯鈞(3450)
+  * 光聖 (6442) — 光纖跳線、ELS
+  * 光聖(6442)
+  * 光聖 2025 年 營 收105.3 億 （YoY +64.2% ） ， 毛 利 率57.74% ，EPS
+
+==================================================
+FILE: 20260525_004550_file.pdf.txt
+==================================================
+
+--- COMPANY: 聯鈞 ---
+  * 聯鈞
+
+--- COMPANY: 智邦 ---
+  * 智邦
+
+--- COMPANY: 聯亞 ---
+  * 聯亞
+
+--- COMPANY: 上詮 ---
+  * 上詮
+
+--- COMPANY: 波若威 ---
+  * 波若威
+
+==================================================
+FILE: 20260525_004608_file.pdf.txt
+==================================================
+
+--- COMPANY: 台光電 ---
+  * CCL-Switch Tray 台光電(100%) 生益(70%)、台光電
+  * 生益(65%)、台光電(35%)
+  * CCL-Rubin CPX 台光電(100%)
+  * CCL-CX9 台光電(100%)
+  * CCL-Midplane 台光電(100%)
+  * CCL-LPU30 台光電(50%)、斗山(50%)
+  * CCL供應商 台光電(70%)
+  * 台光電(70%)
+  * ... and 3 more matches.
+
+--- COMPANY: 台燿 ---
+  * 台燿(30%)
+  * 台燿
+
+--- COMPANY: 臻鼎-KY ---
+  * 勝宏 滬電 金像電 臻鼎 定穎
+  * 臻鼎
+  * 臻鼎(10%)
+  * 臻鼎
+  * 臻鼎
+
+--- COMPANY: 景碩 ---
+  * 景碩(5%)
+  * 景碩
+
+--- COMPANY: 金像電 ---
+  * 勝宏 滬電 金像電 臻鼎 定穎
+  * 金像電
+  * ? 金像電
+
+==================================================
+FILE: 20260525_004610_file.pdf.txt
+==================================================
+
+--- COMPANY: 國巨 ---
+  * 2327 國巨 262.0 19.0 16.1 11.50 13.8-15.7 16.3-18.4
+
+--- COMPANY: 禾伸堂 ---
+  * 禾伸堂(3026) Date: 2026/03/27
+  * 3026 禾伸堂 146.5 17.2 12.0 6.58 8.52 12.19 10.0 13.0
+
+--- COMPANY: 華新科 ---
+  * 2492 華新科 126.5 22.0 18.9 4.74 5.8 6.7
+
+==================================================
+FILE: 20260525_004628_file.pdf.txt
+==================================================
+
+--- COMPANY: 國巨 ---
+  * Yageo 132,930 18.8% 24,975 6% 12% 5% 2,997 800 78%
+
+--- COMPANY: 禾伸堂 ---
+  * bottleneck 在大尺寸堆疊機台，光等進機就要一年的時間（也是 3026 下一波擴廠最快要到 2H27 才
+  * 85*48=~4000 顆比較符合 3026 說法因此研究員先採用 70~100 顆的數字），單一 PSU 模組需要 3~5 顆
+  * ✓ 禾伸堂 AI 相關產能為公司的 1.35 倍大（目前假設 3026 實際月產能為 16 億顆，2Q26 AI 占比 36%），今
+  * 3026 禾伸堂 470 27.6 12.2 6.58 17.03 38.38 8.1 12.9
+
+--- COMPANY: 信昌電 ---
+  * 信昌電(6173) Date: 2026/05/22
+  * 6173 信昌電 190 22.4 11.7 3.24 8.48 16.30 -- --
+
+==================================================
+FILE: 20260526_124153_file.pdf.txt
+==================================================
+
+--- COMPANY: 上詮 ---
+  * FOCI Fiber Optic Communications Inc (3363.TWO)                 O                     (01/15/2025)                   NT$846.00
+
+==================================================
+FILE: 20260526_124213_file.pdf.txt
+==================================================
+
+--- COMPANY: 敘豐 ---
+  * and therefore may not be subject to FINRA Rule 2241 restrictions on communications with a subject company, public appearances and trading securities held by a research analyst account.
+
+==================================================
+FILE: 20260527_081907_file.pdf.txt
+==================================================
+
+--- COMPANY: 敘豐 ---
+  * Goldman Sachs & Co. LLC and therefore may not be subject to FINRA Rule 2241 or FINRA Rule 2242 restrictions on communications with a subjec t
+
+==================================================
+FILE: 20260527_081927_file.pdf.txt
+==================================================
+
+--- COMPANY: 敘豐 ---
+  * Goldman Sachs & Co. LLC and therefore may not be subject to FINRA Rule 2241 or FINRA Rule 2242 restrictions on communications with a subjec t
+
+==================================================
+FILE: 20260529_082112_file.pdf.txt
+==================================================
+
+--- COMPANY: 上詮 ---
+  * FOCI Fiber Optic Communications Inc (3363.TWO)                 O                     (01/15/2025)                   NT$815.00
+
+==================================================
+FILE: 20260529_082209_file.pdf.txt
+==================================================
+
+--- COMPANY: 國巨 ---
+  * Co Ltd, Wistron Corporation, Wiwynn Corp, Xiaomi Corp, Yageo Corp., Zhejiang Crystal-Optech Co Ltd, Zhen Ding, Zhongji Innolight Co Ltd, ZTE Corporation.
+  * Within the last 12 months, Morgan Stanley has received compensation for investment banking services from Lenovo, Wistron Corporation, Wiwynn Corp, Xiaomi Corp, Yageo Corp., Zhen Ding.
+  * Optoelectronics, Shenzhen Transsion Holdings Co Ltd, Suzhou TFC Optical Communication Co Ltd., TCL Corp., Unimicron, Wistron Corporation, Wiwynn Corp, Xiaomi Corp, Yageo Corp.,
+  * Co. Ltd., GoerTek Inc, Hon Hai Precision, Innolux, Lenovo, Lingyi Itech Guangdong Co, Quanta Computer Inc., Xiaomi Corp, Yageo Corp..
+  * Wistron Corporation, Wiwynn Corp, Xiaomi Corp, Yageo Corp., Yangtze Optical Fibre and Cable JSC Ltd, Zhen Ding, Zhongji Innolight Co Ltd.
+  * Co, Quanta Computer Inc., Xiaomi Corp, Yageo Corp., Zhen Ding.
+  * Yageo Corp. (2327.TW)                 O                     (10/28/2025)                   NT$742.00
+
+--- COMPANY: 群創 ---
+  * Innolux (3481.TW)                 E                     (04/07/2025)                   NT$46.40
+
+--- COMPANY: 智邦 ---
+  * Accton Technology Corporation (2345.TW)                 O                     (06/06/2024)                   NT$2,435.00
+
+--- COMPANY: 聯亞 ---
+  * LandMark Optoelectronics Corporation (3081.TWO)                 E                     (03/26/2026)                   NT$2,650.00
+
+--- COMPANY: 臻鼎-KY ---
+  * Zhen Ding (4958.TW)                 O                     (05/18/2026)                   NT$486.00
+
+--- COMPANY: 緯穎 ---
+  * Wiwynn Corp (6669.TW)                 O                     (11/10/2025)                   NT$4,950.00
+
+--- COMPANY: 金像電 ---
+  * Gold Circuit Electronics Ltd. (2368.TW)                 O                     (10/06/2022)                   NT$1,305.00
+
+==================================================
+FILE: 20260530_180931_file.pdf.txt
+==================================================
+
+--- COMPANY: 雙鍵 ---
+  * Double Bond Chemical Ind. Co., Ltd.
+  * 股票代碼：4764
+  * Double Bond Chemical (Thailand) Co., Ltd.董事
+  * 名稱為「Double Bond Chemical Ind. Co., Ltd.」。
+
+==================================================
+FILE: 20260601_172011_file.pdf.txt
+==================================================
+
+--- COMPANY: 台光電 ---
+  * 台光電
+  * 2383 / 6213
+
+--- COMPANY: 智邦 ---
+  * 智邦
+  * (2345)
+
+--- COMPANY: 波若威 ---
+  * 波若威
+  * (3163)
+
+--- COMPANY: 緯穎 ---
+  * 緯穎
+  * (6669)
+
+==================================================
+FILE: 20260608_082819_file.pdf.txt
+==================================================
+
+--- COMPANY: 禾伸堂 ---
+  * 3017、6805；電源 3665、3211；ODM 6669、8210、2059、3026，剛好崩盤給機會。
+
+--- COMPANY: 順達 ---
+  * 3017、6805；電源 3665、3211；ODM 6669、8210、2059、3026，剛好崩盤給機會。
+  * 架、Supercap。因此 BBU 廠商在未來轉型是最不受影響的，3211 這些的長線故事還在。
+
+--- COMPANY: 緯穎 ---
+  * 3017、6805；電源 3665、3211；ODM 6669、8210、2059、3026，剛好崩盤給機會。
+  * vi. 目前 MI455 預期明年有機會 150 萬顆，大概 2W 多櫃的需求。利多 6669
+  * vii. 6669、SMIC 算是這是展場唯一有展 MI455 的 ODM，神達也只展 MI355。
+  * 甲、 6669 也有展跟 Ayar lab、GUC 合作的全光 Rack 方案，雷射放在外部，Scale up 走左右邊
+
+==================================================
+FILE: 20260615_140128_file.pdf.txt
+==================================================
+
+--- COMPANY: 晶技 ---
+  * 晶技（3042）
+  * ▌ 近六季財報趨勢（3042.TW）
+  * 晶技（TXC Corporation）是全球最大石英振盪器、石英晶振器的最大供應商，市占率 11.7%
+  * 投資幕僚團隊 | Wallace 個人投資研究 | 晶技（3042）| 2026/04/14 | 光模組升級版
+
+==================================================
+FILE: 20260618_104357_file.pdf.txt
+==================================================
+
+--- COMPANY: 山太士 ---
+  * AMC Materials — 山太士

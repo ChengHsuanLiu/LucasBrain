@@ -1,0 +1,869 @@
+--- PAGE 1 ---
+光通訊風雲再起：矽光子與
+xPO
+的新賽局
+-
+ AI
+ 後莫爾時代
+ 光互聯
+、
+光學運算
+、
+量子科技
+ -
+合盈光電科技
+林穎毅
+前瞻技術研發中心處長
+H.P .B. Optoelectronics
+Murphy Lin 
+Deputy Director, ATRC
+
+--- PAGE 2 ---
+致敬光纖之父 高錕（Charles K. Kao）
+• 高錕 1933~2018
+– 英國國際電話電報公司 子公司 標準電話與電報有限公司 工程師
+• 1966 年劃時代論文 - “Dielectric-Fibre Surface Waveguides 
+for Optical Frequencies”
+– 首次提出「低損耗光纖」可用於長距離通訊
+– 指出光損耗可降至 20 dB/km 以下的技術目標
+– 奠定現代光通訊產業基礎
+• 2009 諾貝爾物理獎
+– 榮獲 諾貝爾物理學獎
+– 表彰其「光纖通訊技術的開創性成就」
+– 被譽為「光纖之父」
+• 歷史定位與影響
+– 開啟全球光通訊時代（Internet backbone）
+– 推動從銅線 → 光纖的革命
+– 奠定今日資料中心、AI、CPO、矽光子產業基礎
+
+--- PAGE 3 ---
+演講內容
+1. 簡述光纖通訊發展與應用場域
+– 從網際網路到晶片互連 再到全光網路
+2. 光收發模組 → 光引擎
+3. 各式光互連
+4. 理論、技術與工程之挑戰
+5. Beyond Communication
+--- PAGE 4 ---
+各式不同的光纖網路
+
+--- PAGE 5 ---
+Copper or Fiber Cable in the Big Data Centers
+Major companies like Amazon, Microsoft, and Google are expected to spend over $600 billion on infrastructure in 2026.
+--- PAGE 6 ---
+資料庫、光通訊上太空
+The global optical (laser) satellite communication market is experiencing rapid expansion, projected to grow 
+from around $0.6 billion in 2025 to over $1.5 billion by 2030, with some projections suggesting a rise to over 
+$7 billion by 2034.
+1. 合成孔徑雷達、雷射光通訊
+2. 高速與高容量無線通訊
+ THz wave
+ All-optical network
+3. 極低延遲與大量連結
+4. 有線與無線網路控制技術
+5. 非陸上多層無線系統
+ 航海通訊
+ 潛水艇通訊
+6. 時空同步技術
+ 無線同步技術
+ 原子鐘
+7. 資訊安全與可靠度
+ 量子加密
+ 電磁相容性
+8. 實際創新應用
+ 遙測
+ IoT、自動駕駛
+ 無人機應用
+衛星載體
+1. 高增益天線
+2. 各波段通訊模組：
+• C, Ku, Ka
+3. 高效率太陽能光電、
+電池與電源系統
+4. 酬載物件
+ 光學影像感測
+ 雷達
+ 光譜儀
+--- PAGE 7 ---
+Photonics electronics 
+Integration server
+Electronics server
+～50㎝ ≦5㎝Electric 
+interconnect
+Optical
+Interconnect
+Electronics
+ Photonics
+Photonic interposer
+Electrical  interposer
+LSI
+① Power consumption  1/10： ≦ 1 mW/Gbps
+② Interfacing area  1/100： ≦ 100 mm pitch optical connection 
+③ Wiring density   x 10： ≦ 20 mm pitch  optical waveguide
+Development targets
+Server rack 
+10 server boards
+ in the rack
+Integrated Photonics-Electronics Convergence System Technology
+Source: PETRA, OITDA, 2022
+~2010 2024~
+--- PAGE 8 ---
+All-Photonics Network 全光網路 APN
+全光子網路系利用矽光子技術以達到三個性能目標：低功耗、高品質和容量、更低延遲
+Step 1
+實現使用矽光子、光纖、
+類比積體電路（IC）等電
+路的整合，實現與晶片組
+外部元件的高連接速度。
+Step 2
+透過短距離光佈線直
+接互連晶片。
+Step 3
+透過光佈線在晶片內部進行核
+心間連接，實現超低功耗。
+Step 3 - 仍須發展的技術：
+• Optical Logic Circuit
+• Optical Switch
+• Optical Gateway
+• Optical Transistor
+IOWN - Innovative Optical 
+and Wireless Network
+• APN: All-Photonics 
+Network
+• DTC: Digital Twin 
+Computing
+• Cognitive Foundation®
+--- PAGE 9 ---
+光收發模組 → 光引擎
+
+--- PAGE 10 ---
+光收發模組：光源+光路+調變+光檢測
+光源：Laser / 光被動元件：Passive: microlens, guide, filter, couple, split, combine/ 光感測元件： photo 
+detector
+--- PAGE 11 ---
+各式光收發模組在各通訊領域之應用
+11
+
+--- PAGE 12 ---
+矽光子在光收發模組應用之技術路線圖
+Source: Yole, 2022
+--- PAGE 13 ---
+Transceiver → Optical Engine
+(a) TSMC-SoICTM face-to-face (F2F) technology for EIC and PIC bonding.
+(b) COUPE critical components consist of TSMC-SoICTM bond, TDV, 
+embedded micro-lens, and metal reflector.
+(c) TDV - Trench Dielectric Via 介質通孔
+tsmc COUPE - Compact Universal Photonic Engine
+緊湊型通用光子引擎
+
+--- PAGE 14 ---
+The CPO Era: Restructuring of the Value Chain
+• CPO technology shifts industry dominance from the 
+traditional “pluggable optical module" to “EPIC + CPO“
+• The term – “Transceiver” will be replaced by “optical 
+engine”.
+• As the value chain restructures, the roles of ASIC/GPU 
+design giants and advanced packaging houses become 
+increasingly crucial.
+• All manufacturers must migrate to the silicon photonics 
+platform.  Traditional production methods will gradually 
+become obsolete.(???)
+--- PAGE 15 ---
+光收發模組市場有數百多億美元 2025~2035 CAGR 9.8%
+• II-VI
+• Acacia
+• Accelink
+• Applied Optoelectronics
+• ATOP
+• Avago (FOIT)
+• Broadcom
+• Cisco
+• Coherent
+• ColorChip
+• Delta (台達)
+• Eoptolink（新易盛）
+• Finisar
+• Fujikura
+• Furukawa
+• HG-Genuine
+• Hisense (海信)
+• Hitachi Cable
+• Innolight (中際旭創)
+• GigaLight
+• Kaiam
+• Lumentum
+• Luxtera
+• Methode
+• Molex
+• NEC
+• NeoPhotonics (新飛通光電)
+• Oclaro
+• OE Solutions
+• Oplink (光聯通訊)
+• Samtec
+• Source Photonics (索爾思光電)
+• SuperXon
+• Sumitomo
+• TE Connectivity
+Vendor
+15
+--- PAGE 16 ---
+Optical Communication for Interconnect
+各式光互連
+
+--- PAGE 17 ---
+矽光子 - 操縱“光”的整合平台
+• 光的維度：波長 / 頻率、振幅、偏振、方向、波前、相位、同調、色散、軌道角動量、自旋、量子態…
+• Laser
+– 光源 (1310~1550nm)
+• Coupler 耦合器
+– 增加入射光量
+• Modulator
+– 調變光的相位
+• Waveguide & Fiber
+– 控制光的傳播
+• Photo Diode
+– 光的偵測
+• Resonator 共振
+– 增加特定波段的振幅
+• Photonics Crystal
+– 波長轉換
+• 光源：LASER, Micro LED
+– 決定光的波段
+– 連續 / 非連續
+– 同調性、強度
+• 幾何光學：鏡片、菱鏡
+– 控制光的傳播、方向、路徑、聚焦
+• 波動光學：濾鏡、光柵、DOE、SLM
+– 控制光的波段、相位、波前、干涉、繞射
+• 量子光學
+– 操縱光的疊加態、糾纏態
+Laser           Wavequide        Modulator
+Coupler         Detector
+--- PAGE 18 ---
+矽光整合
+
+--- PAGE 19 ---
+Architecture Evolution of Transceiver -> LPO -> CPO
+Feature Pluggable LPO CPO
+Power Efficiency ~15–20 pJ/bit ~8–12 pJ/bit <5 pJ/bit (target)
+Latency High (DSP 
+overhead) Low (No DSP) Very Low (Direct)
+Bandwidth Density Limited (front 
+panel) Limited Very High (chip-
+edge I/O)
+Maintainability Hot-swappable, 
+easy to service Hot-swappable Low, requires 
+board replacement
+Maturity Very mature Emerging Early stage
+--- PAGE 20 ---
+Intel: Optical Compute Interconnect (OCI)
+chiplet co-packaged with CPU
+• Intel 的OCI旨在透過在CPU、GPU和加速器之間建立高頻寬、低延遲和低功耗的光數據通道，克服傳統電氣互連的
+瓶頸。
+• Intel 採用晶片組架構，利用先進的封裝技術將不同的功能模組（CPU、GPU、PIC、I/O、記憶體控制器等）整合到
+單一封裝中。
+• 高頻寬：每個光通道可支援數百Gbps的傳輸速率，並且透過並行多通道波分複用（WDM）技術，可擴展至Tera 
+bps等級。
+• CPO（共封裝光元件）：光收發器不再獨立存在，而是與CPU/ASIC封裝在一起。
+Source: Intel, 2024
+--- PAGE 21 ---
+GlobalFoundries: Fotonix platform
+Source: Global Foundry, 2024
+
+--- PAGE 23 ---
+Microsoft: MOSAIC 
+1. 打破傳輸距離與功耗的權衡
+– 銅纜鏈路高效可靠，但傳輸距離通常小於 2 公尺。
+– 光纖鏈路則能擴展傳輸距離。
+2. 寬而慢 (Wide-and Slow, WaS) 架構
+– MOSAIC 架構並非採用少數高速通道（窄而快），而是使用數
+百個低速並行光通道。
+– 每個通道的運行速度約為 2 Gbps，可輕鬆擴展至 800 Gbps 以
+上的總容量。
+3. 核心技術 – Micro LED + Imaging Fiber + Analog 
+Backend
+– 微型 LED：超低功耗，直接調製
+– 多芯成像光纖：一根光纖中包含數千個纖芯，承載多個通道
+4. 資料中心和 AI 應用
+– 可直接替代 QSFP/OSFP 封裝。
+– 協定無關（相容於乙太網路、PCIe、CXL、NVLink）。
+– 開啟了新的設計空間：解耦記憶體、更大的 GPU 叢集、簡化
+的拓撲結構。
+(a) transmitter and (b) receiver PCB with fabricated Micro LEDs 
+and CMOS sensors (insets). (c) Fabricated TIR (total internal 
+Reflection) micro-lens array. (d) 100-channel image at the 
+output of the imaging fiber.
+MOSAIC’s high-level WaS architecture and key components.
+--- PAGE 24 ---
+Avicena: Micro Led, PD, Fiber bundle的耦合
+• 基於MicroLED的光互連
+– 採用GaN Micro LED實現晶片間和模組間互連。
+• Terabit-Class 頻寬密度
+– LightBundle
+ ：200根光纖陣列，間距30μm，耦合至光
+電偵測器陣列。每個通道的資料速率高達10 Gbit/s。
+– 在幾公尺範圍內實現10Tbit/mm²的頻寬密度。
+• 低功耗
+– 與傳統的SerDes或基於雷射的光互連相比，其功率效率
+是一項主要優勢。
+– 功率效率為0.1pJ/bit
+• 應用
+– 應用在資料中心裡的儲存系統、AI加速器互連和共封裝
+光學元件（CPO）。
+
+--- PAGE 25 ---
+tsmc’s COUPETM –with FAU 
+Fiber Array Unit
+Challenges:
+• 精密機械之精細度如
+何看齊半導體業
+• 公差匹配
+• 光耦合效率
+• 幾何光學 → 波動光
+學
+• 良率、插拔損失
+• 通道數增加
+--- PAGE 26 ---
+光收發模組生產模式轉移
+黏合 擦拭 測試 對位與耦合
+組裝 偵錯 烘烤 烘烤
+導
+入
+矽
+光
+子
+平
+台
+可自動化項目
+• 精準對位
+• 對位時間
+• 封裝時間
+• 組裝良率
+• 測試
+• .....
+PIC, Laser,
+Driver IC, Fiber
+800G 單波光收發模組 價值(美元)
+DSP*1 90
+100G EML*8 88
+Driver*2+TIA*2 32
+光器件（TOSA/ROSA） 60
+PCB/結構件/殼等其他 55
+原材料成本總和 325
+人工及加工費 85
+總成本 410
+總價（35%毛利率） 631
+800G 矽光收發模組 價值(美元)
+DSP*1 90
+CW(100mW)*2 30
+Driver*2+TIA*2 32
+矽光芯片 50
+PCB/結構件/殼等其他 50
+原材料成本總和 252
+人工及加工費 75
+總成本 327
+總價（35%毛利率） 503
+--- PAGE 27 ---
+傳統 Pluggable ➔ LPO ➔ XPO ➔ NPO ➔ CPO
+技術項目 全名 DSP 配置 光模組/光引擎
+位置
+電訊號
+距離 功耗 熱管理 維修性 交換容量 成熟度 傳輸距離 典型應用 架構設計
+理念
+傳統
+Pluggable Pluggable Optics 有完整DSP 前面板 較長 高 容易 最好 受限 成熟 長距離(電信/
+跨機房)
+FTTx、傳統
+資料中心 光電轉換介面
+LPO
+Linear-drive 
+Pluggable Optics
+線性驅動可插拔
+光模組
+無 DSP 或極
+簡 DSP 前面板 較長 降低
+30~50% 容易 好 中等 快速導入 Rack 
+  Rack 機櫃互連 將DPS功能交給
+主機
+XPO
+eXtra-dense 
+Pluggable Optics
+超高密度可插拔
+光學
+視方案而定
+(傳統DSP 
+或結合LPO 
+技術)
+前面板 較長 再降低 中等 中 高
+初期、
+2026最新規
+範
+High-density 
+Switch
+超大型資料中
+心交換機
+推升可插拔的物
+理極限
+NPO
+Near-Packaged 
+Optics
+近封裝光學
+極簡DSP 緊鄰ASIC 短
+介於LPO 
+與CPO之
+間
+尚可 中上 高 CPO前
+過渡期
+Board 
+  
+Board/ Rack 
+ Rack
+主機板互連、
+AI高速叢集
+讓光引擎緊鄰
+ASIC，為CPO鋪
+路
+CPO
+Co-Packaged 
+Optics
+共同封裝光學
+幾乎無DSP 與 Switch/ 
+ASIC共同封裝 極短 最低 困難 差 最高 逐步商業化
+Chip 
+  Chip/ 
+Board 
+  
+Board
+xPU、HBM 
+高速互連、 
+High-density 
+Switch
+將PIC與
+ASIC/xPU共 封裝
+這五種架構的演進，是AI 算力中心在面對頻寬需求暴增與功耗/散熱牆限制時，在物理距離、晶片整合度與維護成本之間所做
+的權衡與拉鋸。
+--- PAGE 28 ---
+MSA協議 Multi-Source Agreement
+MSA 協議名稱 核心主導與創始成員 針對的關鍵環節與 CPO 定位 技術規格重點
+Open CPX MSA
+CPO 與內建光學引擎的插座規格。
+專門定義光學引擎直接安裝在晶片
+（如 GPU、交換晶片）旁邊的插座
+（Socket）與機械介面。
+定義連接器的機械構造、散熱、電氣
+腳位（Pinout）等，確保不同廠商的 
+CPO 光學引擎可以相互汰換。
+OCI MSA
+（Optical Compute 
+Interconnect）
+NVIDIA、AMD、Broadcom、
+Meta、Microsoft、OpenAI
+Scale-up（機櫃內部、晶片之間）極
+短距離光學互連。旨在用光纖取代傳
+統主機板與機櫃內的銅線。
+採用 NRZ 訊號與波長分波多工
+（WDM）技術。初期為 200Gb/s，
+未來技術藍圖規劃透過增加波長擴展
+至 3.2Tbps 以上。
+XPO MSA Arista Networks 主導及各大光模組
+大廠
+Scale-out（機櫃與機櫃之間）外接
+式大型光模組。處理更長距離、更高
+頻寬的大型數據傳輸。
+支援高達 12.8 Tbps 的極致頻寬，並
+專門針對液冷資料中心設計可承受 
+400W 高功耗的整合冷板散熱規格。
+三大CPO相關的MSA協議
+• 統一尺寸、外型、電氣、光學、功率、散熱、測試、接口
+• 建立生態系、降低壟斷、加速市場普及
+• CPO標準化、Optical IO標準化
+• MSA 是光通訊產業形成「可互通、多供應商、大規模市場」的核心機制；它不是正式國際標準，但往
+往比正式標準更快速、更貼近產業落地，是光模組與未來 CPO 生態形成的關鍵。
+--- PAGE 29 ---
+Metro / Core : 100Gbps/ch WDM → 400Gbps/ch WDM → 1Tbps/ch WDM
+Switch      : Miniature and Low Power Optical Switch
+Access      : 10G-EPON → TWDM-PON
+Communication Infrastructure
+Inter-Rack : 100Gbps/cable → 400Gbps(主流部署)→ 800G(2025年)→ 1.6Tbps（2026~2027) →3.2T (2028+) 
+Inter-Board : 25Gbps/ch → 50Gbps/ch → 100Gbps/ch (2025) → 200Gbps/ch (2027+)
+                     30mW/Gbps → 8mW/Gbps → 3mW/Gbps → 1mW/Gbps (<1 pJ/bit；Future CPO 0.1~0.5pJ/bit)
+Inter-Chip : 250Gbps → 1Tbps → 4Tbps → 10Tbps (HBM3 ~819GB; HBM4 ~2+TB/s; GPU-GPU 10+Tps)
+                    2Tbps/cm2 → 10Tbps/cm2 → 30Tbps/cm2 → 100Tbps/cm2 
+                    15mW/Gbps → 5mW/Gbps → 3mW/Gbps → 1mW/Gbps
+Data Center Infrastructure
+Social Infrastructure Core Requirements
+Source: PETRA, OITDA Japan
+--- PAGE 30 ---
+30
+台灣光通訊產業生態系
+產業層次
+ 主要產品
+ 主要廠商與機構
+ 產業規模
+光纖與光纜
+光纖
+ 卓越光纖
+ $9
+億台幣
+光（電）纜
+ 大亞電線
+*
+、太平洋電線
+*
+、
+台通光電
+*
+、華新麗華、
+聯合光纖
+等
+ ~$800
+光通訊元件
+（製造、代
+理）
+光被動元件：光耦合
+器、光纖跳接線
+上詮
+*
+、大地光纖、友嘉、光元先進、光合訊、
+光紅
+建聖
+*
+、光環
+*
+、光騰國際、佳必琪、昕鈺、東典光電
+、
+波若威
+*
+、前鼎
+*
+、
+索爾思
+、統新、逢源、創威
+*
+、
+菘銓、華信
+*
+、華星
+*
+、傳承、圓宏、寬原、歐銥、聯
+合光纖、
+聯亞
+*
+、
+聯鈞
+*
+、鴻海
+*
+、曜隆等公司或部門
+~$2500
+光主動元件：
+ 雷射二
+極體
+、
+光收發模組、
+驅動
+IC
+光通訊設備
+、次系統、
+儀器、鋪設
+工程
+光放大器、
+Switch
+、
+傳輸通信設備、電信
+寬頻產品、
+ONU
+、
+OLT
+、檢測設備
+千才、
+台林通信
+*
+、台聯電訊
+*
+、
+仲琦
+*
+、
+合勤
+*
+、星通
+資訊
+*
+、亞旭電腦、捷耀、
+普萊德
+*
+、
+智邦
+*
+、等公司
+或部門
+~$3000
+學術與研發
+機構
+LED
+通訊、
+400G
+研究
+開發、教學
+台大、工研院、中山、中華電信研究所、中興、北科
+大、台科大、交大、高應大、清大
+註：*為上市櫃公司
+--- PAGE 31 ---
+光通訊、半導體、化合物半導體、光學、光電、雷射
+矽光子光通訊產業鏈
+Source: Yole, 2023
+--- PAGE 32 ---
+Theory, Technical, Engineer Challenges
+--- PAGE 33 ---
+- Packaging
+    - Process, Fabrication
+    - Design Tool, Evaluation, Automation and SiPh Platform
+Photonics and Electronics Integration Technologies
+Manufacturing Technologies
+■ Integration Technology
+    - Photonics and Electronics Monolithic Integration
+    - Light Source / Semiconductor Optical Amplifier (SOA) Integration 
+- High Temperature Operation 
+- WDM, Multichannel Integration 
+■ Device Technology
+    - Nano Photonics
+    - Ultra Miniature Modulator
+ - Nano Laser 
+- Stacking, 3D Structure
+Fundamental Technologies
+Source: PETRA, OITDA Japan, 2017
+--- PAGE 34 ---
+Real challenges
+1. Optical theory and tool issues
+– Optical EDA tool need integration
+– Optical coupling & dispersion problem
+2. High-density optical connections
+– Crosstalk problem
+3. Alignment precision
+4. Manufacturing yield & cost
+5. Thermal & lifetime stability
+6. Ecosystem integration
+– Many solution, lack of supply chain & standardization for mass adoption.
+– Lack of supply chain: Optics EDA, Testing & Inspection Equipment, High speed 
+coupling machine, high precision alignment, popular architecture
+--- PAGE 35 ---
+挑戰：矽光子 & InP之異質整合
+• Challenges：Coupling external light sources into the PIC、lighting leakage、Indium Phosphide 
+(InP) Integration、Getting light out of the PIC、Optimizing the performance of the PIC itself、
+EDA premature
+– InP（磷化銦Indium phosphide，InP）和矽與電光半導體等其他材料相結合的混合光子積體電路
+(PIC)是關鍵。
+– 材料、設計和製造方面仍然面臨著重大挑戰。
+– 要實現這些多樣化的應用，重要的是與不同材料（半導體和其他）與矽做整合。
+– 但目前最大的挑戰是發展新的製程工藝，但也得適應可能少量多樣的矽光子應用市場。
+• 調變器還是得運用鈮酸鋰、鈦酸鋇等其他材料，故有幾家公司正在開發鈮酸鋰材料平台。
+• 新創公司正在尋求第三個目標：將光源整合在晶片上。
+– 英特爾將磷化銦多層堆疊，以便將雷射、SOA整合到同一平台上。”
+– 另一種新方法是微轉印(Micro-transfer printing)，可將雷射、光放大器轉印到矽平台。
+• 會有兩個不同的參與者：矽晶圓代工廠、III-V代工晶圓。誰將成為負責整合的產業主導
+者？ 也許是在矽晶圓廠？
+--- PAGE 36 ---
+幾種光電整合(PIC)平台之比較
+Source: Yole
+--- PAGE 37 ---
+積體光電之應用領域以及合適之平台
+Source: Yole
+--- PAGE 38 ---
+Geometrical Optics Physical Optics
+• Light: Rays
+• Intensity (cd, lm)
+• Light: EM waves, Maxwell Eqs.
+• Energy: Poynting Vector 𝑺 = 𝑬 × 𝑯
+• Phase
+• Polarization, TE, TM
+• Degree of coherence)
+• Interference, diffraction
+How to Bridge??
+Optics
+Photonics
+38
+對於光的理解：From Geometrical to Physical Optics
+巨觀    微觀
+--- PAGE 39 ---
+- Beyond Communication -
+Silicon Photonics for Computing Application
+Optical Computing for AI accelerator
+--- PAGE 40 ---
+AI Industries Raise: Training & Inference
+通用型AI所需之基礎架構版圖
+--- PAGE 41 ---
+整個資通訊產業都在支援AI算力的需求
+Source: https://www.oneusefulthing.org/p/scaling-the-state-of-play-in-ai
+The Exponential Growth of Floating-point Operation for AI Need
+OpenAI 發現，自 2012 年以來，用於訓練最大 AI 
+模型的運算能力每 3.4 個月就會翻倍。
+--- PAGE 42 ---
+Analog vs. Digital Optical Computing
+Source: https://www.researching.cn/ArticlePdf/m00001/2023/50/5/0500001.pdf
+類比優點
+• 資訊密度高，無
+量化誤差。
+• 光電材料與微納
+結構設計自由度
+高。
+• 運算速度快。
+• 與深度學習演算
+法匹配。（AI接
+受近似解）
+類比缺點
+• 訊號受級聯繫統
+雜訊影響較大，
+需要開發新的容
+錯方法。
+• 特定的資訊處
+理。
+• 高運算精度要求
+系統具有高線性
+度和動態範圍。
+數位優點
+• 無級聯噪音，抗干
+擾能力強。
+• 計算結果可以方便
+地移植到現有的電
+子數位設備中進行
+儲存和處理。
+• 在同一系統下，透
+過編碼可以獲得更
+高的計算精度。
+數位缺點
+• 時間和空間解析度
+低，計算規模受到
+限制。
+• 訊號處理演算法複
+雜度高。
+• 每個編碼位元都必
+須精確計算，對系
+SNR要求較高。
+--- PAGE 43 ---
+矽光子可做為平面積體光學運算之製作技術方案
+平面整合式光學計算基本單元及相關技術方案
+平面積體光學計算主要單元：
+• 馬赫-曾德爾干涉儀陣列（MZIs）
+• 微環諧振器陣列（MRRs）
+• 波導調製器陣列（WMA）
+實現向量-矩陣乘法（VVM-MAC）或
+ONNs
+平面式類比光學運算之分類
+• 同調式
+• 非同調式
+--- PAGE 44 ---
+Benchmark: Si-Ph 光學計算/運算-推論/卷積新創公司紛起
+• Lightmatter, Lightelligence, Ayar Labs, Intel, Global Foundry, Akhetonics
+• Lightmatter 技術：
+• 2025 Lightmatter expands photonic AI interconnect deployments; cumulative funding 
+exceeds $850M, with valuation reaching approximately $4.4B.
+Lightmatter:
+• 其晶片能效是Nvidia A100的20倍，處理
+量則至少是5倍。
+• 光子處理器具有一個64×64光子矩陣向量
+乘積運算器(photonic matrix vector 
+product calculator, vector-matrix 
+multiplication, VMM)；資料可以在200 
+picoseconds於晶片內傳播。
+• 計算單元：馬赫曾德爾干涉儀(Mach Zehnder 
+Interferometer, MZI)
+• 奈米光學機電系統(nano-optical 
+electromechanical system, NOEMS)
+
+--- PAGE 45 ---
+Benchmark: 曦智科技Lightelligence推出AI加速器
+曦智科技執行長沈亦晨指出，光子晶片代表一個更快實現產業化的技術方向，因為光子晶片不依賴製程、技術
+也不受限，可用 28 奈米的電子晶片產生 7 奈米電子晶片的效果。由此可知，光子處理器的運算系統可由較傳
+統的電子設備提供支援，執行部分 AI 任務時性能甚至優於最先進的全電子系統。
+
+--- PAGE 46 ---
+諸多自由空間光學處理器及運算、微軟類比運算機器
+Source: https://www.nature.com/articles/s41467-024-45982-w
+自由空間光學處理器
+1. 大於λ/2：由繞射表面厚度、折射率調變
+單元組成
+2. 小於λ/2：由金屬結構、介電單元組成
+3. 這些自由空間處理器可以執行偏振處
+理、空間處理、通用線性變換以及波的
+光譜和時間處理。
+4. Example: 2023 Microsoft’s AIM (Analog 
+Iterative Machine) 類比疊代處理器
+
+--- PAGE 47 ---
+光纖平台類比光計算 Optical Fiber Computing
+(A)光纖平台類比光計算進展。 (B) 基於單一非線性節點和延遲線的光電 RC 的實驗裝置。 (C) RC 光電實現
+原理圖。 (D) 使用 SOA 作為非線性的全光 RC 示意圖。 (E) 使用光子積體電路作為非線性的基於延遲的 RC 
+的設定示意圖。 (F) 基於 MRR 的 RC 的實驗設定。 (G)基於DOPO產生人工伊辛自旋的原理。
+https://www.researchgate.net/figure/A-The-progresses-of-analog-optical-computing-in-the-optical-fiber-platform-
+B_fig5_365493997
+(H) 具有測量和回饋功能的相干伊辛機的設置示意
+圖。 (I) 使用 PPLN 形成時分複用脈衝 DOPO 的相
+干伊辛機示意圖。 (J)時間拉伸電光神經網路的原
+理。 (K)光子卷積加速器的工作原理。
+--- PAGE 48 ---
+矽光子量子計算（Photonic Quantum Computing）
+原理：
+以光子的偏振、相位、時間或路徑作為
+qubit，利用干涉與糾纏進行運算。
+特點：
+• 可在室溫運作，不需低溫。
+• 易於量子通訊整合。
+代表系統與廠商：
+• Quantum Computing Inc, QCI
+• Xanadu (Canada) – Borealis 系統
+• PsiQuantum (U.S.) – 矽光子平台
+• NTU / 清大褚志崧團隊
+
+--- PAGE 49 ---
+量子通訊、量子密鑰分配 QKD
+說明：
+• 量子通訊是一種藉由光的量子態（偏振、自
+旋、相位）來傳遞資訊的技術。
+• 量子密鑰分配（Quantum Key Distribution）
+• 量子隱形傳態（Quantum Teleportation）
+• 量子中繼與量子網路（Quantum Repeater）
+• 實現絕對安全的資訊傳輸
+應用：
+• 金融交易、資安
+廠商：
+• Toshiba, ID Quantique, MagiQ, Qasky, 
+Quantum XC, QuantumCTek, Qubitekk, 
+Quintessence Labs, SeQureNet
+市場趨勢 (Verified Market Research)
+• 2024：約4.8億美元 / 2030年預估26.3億美元
+• CAGR：33%
+年份 國家 / 團隊 成就
+2016 中國 – 墨子號衛星
+(Micius)
+全球首個量子衛星，實現地面
+與衛星間 QKD。
+2018 歐洲 – Quantum 
+Flagship 計畫 建立歐洲量子通訊基礎設施。
+2020 美國 – Quantum 
+Internet Blueprint 訂出量子網路國家戰略。
+2023 日本 – NICT / Toshiba 實現 500 公里量子金鑰傳
+輸。
+2023 台灣 – 清大 褚志崧團隊 以自主研發的單光子光源實現
+量子加密至通訊網路。
+2024 歐盟 – EuroQCI 計畫 構建量子安全歐洲雲網路。
+--- PAGE 50 ---
+摘要
+1. AI 與大型資料中心的爆發性成長，正讓「頻寬、功耗、散熱」成為下一世代資通訊產業的核心瓶
+頸。光互連（Optical Interconnect）正逐步從 Rack-to-Rack、Board-to-Board，發展至 Chip-to-
+Chip。
+2. 傳統可插拔光模組（Pluggable Optics）正在演進至 LPO、XPO、NPO、CPO 等新架構，代表光
+學與半導體封裝正快速整合。「Transceiver」的概念，也逐漸轉變為「Optical Engine」。
+3. Silicon Photonics（Si-Ph）不只是光通訊技術，而是一個可整合光源、調變器、波導、感測器與電
+子電路的異質整合平台（EPIC Platform）。其核心價值在於：高頻寬、低功耗、小型化、可量產，
+以及與 CMOS 製程的相容性。
+4. 矽光子的應用，也已從 Communication 擴展至：Computing（光學運算）、Sensing（感測）、
+Quantum Technology（量子科技），成為 AI 時代的重要基礎技術平台。
+5. 未來關鍵挑戰仍包括：光耦合（Coupling）、異質整合（Heterogeneous Integration）、封裝、熱
+管理、EDA 工具與量產生態系建立。
+6. 台灣雖然目前並未主導矽光子的系統規格與終端市場，但憑藉全球領先的半導體製造、封裝與供應
+鏈能力，有機會在 Si-Ph、CPO、Optical IO 與 AI Infrastructure 生態系中，期望扮演關鍵製造與整
+合角色。
+--- PAGE 51 ---
+感謝聆聽、敬請指教

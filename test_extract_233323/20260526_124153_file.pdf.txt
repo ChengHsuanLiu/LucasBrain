@@ -1,0 +1,830 @@
+--- PAGE 1 ---
+M
+ Idea
+MediaTek is working closely with Intel to enable the 2nm TPU “Humufish": On its 
+latest earnings call, MediaTek indicated for the first time that it expects 2nm ASIC to 
+enter mass production by 2027, but investors remained concerned about production 
+volumes in 2028, as Intel's EMIB-T was not proven in a large-scale ASIC project. In 
+our prior report
+, we assumed a conservative 2028 volume of 1mn units of  2nm TPU, 
+implying ~US$20bn of total AI ASIC revenue. However, our recent industry checks 
+suggest upside for next
+‑gen 2nm TPU, "Humufish", given (1) more ABF substrate 
+capacity, as we believe major EMIB substrate suppliers currently include Ibiden, 
+Unimicron, Shinko, and AT&S, and SEMCO could be added;  (2) EMIB yield at Intel 
+foundry is already high (>90%), ie yield improvement from embedding technology/
+TGV (Through Glass Via); and  (3) the rest of the supply chain is in place, including 
+bumping (PTI, etc.), silicon capacitor (
+AP Memory/Semco), and silicon bridge die 
+(from Intel's foundry). We now expect at least 2.5mn units of  2nm TPU in 2028, 
+mainly based on Intel EMIB, implying at least US$37bn of total TPU revenue (2.5mn 
+units of 2nm TPU at US$13k ASP, and 1mn units of 3nm TPU at $4.5k ASP). 
+Beyond 2nm TPU, MediaTek engages in the 1.4nm TPU v10 "Icefish", supporting 
+stronger growth from 2029 onward: Our latest supply chain checks suggest 
+MediaTek is likely to secure another TPU project (potentially v10) beyond the 
+current 2nm TPU. Although the customer may adopt a COT (customer-owned 
+tooling) model with potential dual-foundry supply (TSMC and Samsung foundry), 
+we believe MediaTek could still enjoy strong revenue/earnings growth from 2029. 
+We expect MediaTek’s gross margin for the Google TPU to decline from c.40% in 
+2026, to around 30%-35% in 2029, but operating margin may stay at 25%-30%, 
+accretive to corporate operating margin at around 20%-25%. We therefore raise our 
+intermediate growth rate for MediaTek from 9% to 12%. If MediaTek also started to 
+provide a full-rack turnkey service in 2028, there could be more revenue upside.
+Raise PT to NT$5,088: We estimate Google TPU to account for 38% and 63% of 
+MediaTek’s revenue in 2027 and 2028, making the stock one of the purest Google 
+TPU plays in Asia Tech. Our new PT of NT$5,088 implies 38x our 2027e EPS and 18x 
+our 2028e EPS. We believe the stock deserves a re-rating, given a strong TPU 
+pipeline with close to 50% revenue CAGR over 2025–28e. We believe the agentic AI 
+replacement cycle may also start in 2027 for high-end Android phones, driven by 
+Gemini Spark
+ – another option value on MediaTek. 
+                    What’s Changed                
+MediaTek (2454.TW) From To
+Price Target NT$2,988.00 NT$5,088.00
+MediaTek  | Asia Pacific
+“Target Price Up” thanks to 2nm 
+TPU volume upside; stay OW 
+We expect MediaTek to re-rate further on its strong 2nm TPU 
+design service execution. The stock remains our sector Top Pick.
+Morgan Stanley Taiwan Limited+
+Charlie Chan
+Equity Analyst
+                        Charlie.Chan@morganstanley.com                                               +886 2 2730-1725
+Daniel Yen, CFA
+Equity Analyst
+                        Daniel.Yen@morganstanley.com                                               +886 2 2730-2863
+Morgan Stanley Asia Limited+
+Daisy Dai, CFA
+Equity Analyst
+                        Daisy.Dai@morganstanley.com                                               +852 2848-7310
+Morgan Stanley Taiwan Limited+
+Tiffany Yeh
+Equity Analyst
+                        Tiffany.Yeh@morganstanley.com                                               +886 2 7712-3032
+Lucas Wang
+Research Associate
+                        Lucas.Wang@morganstanley.com                                               +886 2 2730-2875
+MediaTek (2454.TW, 2454 TT)
+ Top Pick 
+Greater China Technology Semiconductors | Taiwan
+Stock Rating Overweight
+Industry View Attractive
+Price target NT$5,088.00
+Up/downside to price target (%) 20
+Shr price, close (May 25, 2026) NT$4,245.00
+52-Week Range NT$4,245.00-
+1,130.00
+Sh out, dil, curr (mn) 1,565
+Mkt cap, curr (mn) NT$6,644,209
+EV, curr (mn) NT$6,428,680
+Avg daily trading value (mn) NT$14,268
+Fiscal Year Ending 12/25 12/26e 12/27e 12/28e
+EPS (NT$)** 62.79 70.02 133.72 280.59
+Prior EPS (NT$)** - 70.23 130.26 200.57
+EPS (NT$)§ 66.05 65.62 117.09 193.71
+Revenue, net (NT$ bn) 596.0 655.9 1,026.4 1,920.7
+ModelWare net inc (NT
+$ bn)
+99.9 111.5 213.0 446.9
+ROE (%) 24.7 27.3 44.4 65.9
+Div yld (%) 15.7 0.0 0.0 0.0
+Unless otherwise noted, all metrics are based on Morgan Stanley ModelWare 
+framework
+** = Based on consensus methodology
+§ = Consensus data is provided by Refinitiv Estimates
+e = Morgan Stanley Research estimates
+Morgan Stanley does and seeks to do business with 
+companies covered in Morgan Stanley Research. As a result, 
+investors should be aware that the firm may have a conflict of 
+interest that could affect the objectivity of Morgan Stanley 
+Research. Investors should consider Morgan Stanley 
+Research as only a single factor in making their investment 
+decision.
+For analyst certification and other important disclosures, 
+refer to the Disclosure Section, located at the end of this 
+report.
++= Analysts employed by non-U.S. affiliates are not registered 
+with FINRA, may not be associated persons of the member 
+and may not be subject to FINRA restrictions on 
+communications with a subject company, public appearances 
+and trading securities held by a research analyst account. 
+May 25, 2026 07:53 PM GMT
+
+--- PAGE 2 ---
+M
+ Idea
+2
+Strong AI ASIC upside in 2028 from 2nm TPU
+The 2nm TPU will adopt dual sourcing – both TSMC CoWoS‑L and Intel EMIB
+TSMC’s CoWoS (Chip-on-Wafer-on-Substrate) is the industry’s leading 2.5D packaging 
+solution, particularly for AI and HPC applications. Its key advantage lies in the use of a 
+high-density interposer or RDL layer, which enables extremely wide, low-latency 
+connections between logic dies and HBM stacks. This makes it well suited for bandwidth-
+intensive workloads such as GPUs and AI accelerators.
+However, these benefits come at a cost: CoWoS – particularly the silicon interposer/bridge 
+– is expensive, capacity-constrained, and subject to yield challenges, including potential 
+warpage issues at larger chip sizes. Cost and manufacturing complexity remain key trade-
+offs. As a result, we see TSMC’s CoWoS roadmap supporting only up to ~9.7x reticle size, 
+which does not appear sufficient for future AI or HPC chip designs.
+We expect MediaTek to secure a portion of CoWoS capacity for 2nm TPU to ensure 
+minimum volume production, but we believe it will use Intel’s (covered by Joseph Moore) 
+EMIB-T as the primary solution to reduce costs and scale volume in 2028, if execution 
+proceeds well.
+Exhibit 1: TSMC's roadmap for interposer size
+Source: Winway, TSMC
+Exhibit 2: Intel's EMIB can easily support larger chips  with 
+more reticles  (>12x) if its supply chain execution proceeds well
+Source: Intel
+Margin trend and full‑rack system support. In response to our question on providing 
+full-rack support during its earnings call (referencing recent Broadcom-Google 
+collaboration), MediaTek indicated it is in discussions with the customer. Management 
+expects any full‑rack system design support to materialize after 2027.
+On margin trends, management highlighted continued value addition to the customer 
+across both silicon and packaging design. As a result, ASIC should remain accretive to 
+--- PAGE 3 ---
+M
+ Idea
+Morgan Stanley Research 3
+operating margins
+ 
+Google 2nm TPU the major growth driver for MediaTek from 
+2028 
+On April 22, Google introduced TPU v8 at Google Cloud Next, featuring two purpose-built 
+architectures for training and inference: TPU 8t and TPU 8i. Our recent supply chain 
+checks across multiple companies on reticle size confirm that MediaTek’s 3nm TPU 8 
+corresponds to TPU 8t. This supports our view that MediaTek’s TPU performance should 
+be sufficient for AI training.
+According to Google’s announcement, “both chips will be generally available later this 
+year and can be used as part of Google’s AI Hypercompute,” in line with MediaTek’s 
+guidance that AI ASIC will contribute ~US$2bn of revenue in 2026 (we now assume 450-
+500k units at a US$4,500 ASP).
+In addition, our recent checks suggest that ASP for the next-generation 2nm Humufish 
+TPU, supported by MediaTek, could exceed our prior expectations, driven by an increased 
+number of main dies. For Humufish, checks across multiple sources indicate the number of 
+main dies per chip will significantly exceed Zebrafish (one compute die with one I/O die). 
+Combined with a SerDes upgrade and larger packaging size, we estimate ASP at US$12–
+15k (we now model US$13k).
+At the gross margin level, management indicated margins vary by project, which may also 
+reflect potential full-rack system support. We model 2nm TPU gross margin at c.35% (vs. 
+c.40% for 3nm TPU) given larger revenue scale, while we still expect operating margin at 
+~20–25%, above the smartphone BU’s 15–20%. 
+Exhibit 3: Our new supply chain-based Asia Google TPU volume forecasts
+k Units 2023 2024 2025e 2026e 2027e 2028e
+v5 500           2,400        250           
+v6 (Trillium) 1,000        
+v7 (Ironwood, by Broadcom) 500           2,300        500           
+v8i (Sunfish; 3nm, by Broadcom) 900           3,000        2,500        
+v8t (Zebrafish; 3nm, by MediaTek) 500           2,500        1,000        
+v9 (Humufish; 2nm, by MediaTek) 150           2,500        
+v9a (Merope; 2nm, by US design service) unknown
+v10 (Icefish; 1.4nm, by MediaTek) unknown
+Total 500           2,400        1,750         3,700         6,150         >6000
+Source: Morgan Stanley Research (e) estimates
+Exhibit 4: Our previous supply chain-based Asia Google TPU volume forecasts
+k Units 2023 2024 2025e 2026e 2027e 2028e
+v5 500           2,400        250           
+v6 (Trillium) 1,000        
+v7 (Ironwood, by Broadcom) 500           2,300        500           
+v8i (Sunfish; 3nm, by Broadcom) 900           3,000        2,500        
+v8t (Zebrafish; 3nm, by MediaTek) 500           2,500        2,000         
+v9 (Pumafish; 2nm, by Broadcom) 150           1,000        
+v10 (Humufish; 2nm, by MediaTek) 150           1,000        
+Total 500           2,400        1,750         3,700         6,300         6,500         
+Source: Morgan Stanley Research (e) estimates
+--- PAGE 4 ---
+M
+ Idea
+4
+Exhibit 5: TPU 8t and TPU 8i at a glance
+Source: Google
+Exhibit 6: Performance of Google TPU by generation
+TPU TPU v2 TPU v3TPU v4
+TPU v5eTPU v5p
+TPU v6
+TPU v7p
+TPU 8i (FP4)
+TPU 8t (FP4)
+0
+3,000
+6,000
+9,000
+12,000
+15,000
+2016 2017 2018 2019 2020 2021 2022 2023 2024 1H25 2H25 3Q26 4Q26
+Google TPU (FP8 TFLOPS)
+Source: Google, Morgan Stanley Research; Note: TPU prior than TPU v7, performance is based on FP8 
+Exhibit 7: MediaTek TPU could be used for training purposes 
+(v8t) given its smaller chip size vs. Broadcom TPU
+Source: Google
+--- PAGE 5 ---
+M
+ Idea
+Morgan Stanley Research 5
+Android AI agent phones as an emerging trend from Google 
+I/O
+Android AI agent phones – a trend to watch: Google is actively rolling out AI agents on 
+Android phones, starting with Galaxy S26 and Pixel 10 in early 2026. These agents can 
+perform multi-step tasks across apps – for example, ordering food, organizing notes, or 
+creating calendar events through direct interaction with app UIs. Over time, we expect 
+broader adoption across the Android ecosystem. Token consumption and cost remain key 
+constraints for agentic AI, and we believe on-device computing on edge devices such as 
+smartphones will help alleviate part of this cost burden.
+Google I/O 2026 – Gemini evolves into an Agentic platform: At Google I/O 2026, 
+Google repositioned Gemini from a chatbot to a proactive AI “personal agent” capable of 
+autonomously handling tasks across apps and services. Google introduced several new 
+technologies, including Gemini Spark – a persistent assistant operating in the background 
+across Workspace tools – Gemini 3.5 Flash for faster real-time interaction, and Gemini 
+Omni for advanced multimodal capabilities spanning text, audio, images, and video. The 
+company also announced AI-driven changes to Google Search and deeper Gemini 
+integration across Android, YouTube, shopping, and future XR devices, signaling a broader 
+push to embed AI as a continuously available assistant that manages workflows and 
+automates user tasks. We believe the agentic AI replacement cycle could start in 2027 
+from high-end Android phones – another option value on MediaTek. 
+Exhibit 8: Gemini transforms into 'agentic' platform 
+Source: Google 
+--- PAGE 6 ---
+M
+ Idea
+6
+Earnings estimate revisions and quarterly financials
+We raise our earnings estimates 0% for 2026,  3% for 2027, and 40% for 2028: Our 
+increased estimates mostly reflect potential better-than-expected 2nm TPU demand from 
+end-2027 and into 2028.
+Exhibit 9: MediaTek: Earnings estimate revisions
+Current Previous Current Previous Current Previous
+(NT$ mn) New 2026e Old 2026e Diff. % New 2027e Old 2027e Diff. % New 2028e Old 2028e Diff. %
+Net sales 655,906 655,906 0% 1,026,353 1,007,633 2% 1,920,744 1,403,360 37%
+Gross profit 296,244 296,244 0% 434,806 427,692 2% 743,875 583,753 27%
+Operating profit 114,462 114,475 0% 237,047 230,401 3% 513,867 362,869 42%
+Pretax income 130,461 130,754 0% 252,047 245,401 3% 528,867 377,869 40%
+Reported net income 111,518 111,810 0% 212,980 207,364 3% 446,892 319,299 40%
+Reported basic EPS 70.02 70.23 0% 133.72 130.26 3% 280.59 200.57 40%
+Reported diluted EPS 69.94 70.12 0% 133.58 130.05 3% 280.28 200.26 40%
+Margins
+Gross margin 45.2% 45.2% 42.4% 42.4% 38.7% 41.6%
+Operating margin 17.5% 17.5% 23.1% 22.9% 26.8% 25.9%
+Pretax margin 19.9% 19.9% 24.6% 24.4% 27.5% 26.9%
+Net margin 17.0% 17.0% 20.8% 20.6% 23.3% 22.8%
+Source: Morgan Stanley Research (e) estimates 
+Exhibit 10: MediaTek: Quarterly financials
+(NT$ mn) 1Q26e 2Q26e 3Q26e 4Q26e 1Q27e 2Q27e 3Q27e 4Q27e 2024 2025 2026e 2027e 2028e
+Total revenues 149,151 142,588 148,427 215,741 211,228 227,348 272,582 31 5,195 530,586 595,966 655,906 1,026,353 1,920,744
+  Q/Q Change -0.7% -4.4% 4.1% 45.4% -2.1% 7.6% 19.9% 15.6%
+  Y/Y Change -2.7% -5.2% 4.5% 43.6% 41.6% 59.4% 83.6% 46.1% 22.4% 12.3% 10 .1% 56.5% 87.1%
+Cost of Sales 80,095 77,309 81,242 121,016 120,564 130,356 157,794 182,8 32 267,200 312,886 359,662 591,547 1,176,869
+Percent of Revenues 53.7% 54.2% 54.7% 56.1% 57.1% 57.3% 57 .9% 58.0% 50.4% 52.5% 54.8% 57.6% 61.3%
+Gross Profit 69,055 65,279 67,185 94,724 90,664 96,992 114,788 132,362 2 63,386 283,080 296,244 434,806 743,875
+Gross Margin 46.3% 45.8% 45.3% 43.9% 42.9% 42.7% 42.1% 42.0% 49.6% 47.5% 4 5.2% 42.4% 38.7%
+Incremental Margin   NM   NM 33% 41%   NM 39% 39% 41% 58% 30% 22% 37% 35%
+Total Opex 46,165 44,414 44,660 46,543 47,731 48,434 50,065 51,530 160 ,974      179,610       181,783       197,759       230,009       
+Percent of Revenues 31.0% 31.1% 30.1% 21.6% 22.6% 21.3% 18 .4% 16.3% 30.3% 30.1% 27.7% 19.3% 12.0%
+R&D 38,345 38,195 38,245 38,345 39,550 39,750 39,950 40,150 131 ,993      148,306       153,130       159,400       168,090       
+Percent of Revenues 25.7% 26.8% 25.8% 17.8% 18.7% 17.5% 14 .7% 12.7% 24.9% 24.9% 23.3% 15.5% 8.8%
+General & Adm Exp. 2,805 2,655 2,705 2,805 2,900 3,000 3,300 3,500 11,891         10,856         10,969         12,700         13,900         
+Percent of Revenues 1.9% 1.9% 1.8% 1.3% 1.4% 1.3% 1.2% 1.1% 2.2% 1.8% 1.7% 1.2% 0.7 %
+Selling Expenses 5,015 3,565 3,711 5,394 5,281 5,684 6,815 7,880 17,090 20,44 8 17,684 25,659 48,019
+Percent of Revenues 3.4% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 2.5% 3.2% 3.4% 2.7% 2.5% 2.5%
+Operating Income 22,891 20,865 22,525 48,181 42,933 48,558 64,723 80,832 102 ,412 103,470 114,462 237,047 513,867
+Operating Margin 15.3% 14.6% 15.2% 22.3% 20.3% 21.4% 23.7% 25.6% 19.3% 17.4% 1 7.5% 23.1% 26.8%
+Total Non-operating Income (loss) 3,849 4,050 4,050 4,050 3,750 3,750 3, 750 3,750 17,107 16,047 15,999 15,000 15,000
+Profit Before Taxes 26,740 24,915 26,575 52,231 46,683 52,308 68,473 84,582 119 ,519 119,517 130,461 252,047 528,867
+Percent of Revenues 17.9% 17.5% 17.9% 24.2% 22.1% 23.0% 25 .1% 26.8% 22.5% 20.1% 19.9% 24.6% 27.5%
+Change vs Year Ago -23% -25% 2% 103% 75% 110% 158% 62% 37.7% 0.0% 9.2% 93.2% 109.8%
+Taxes 2,643     3,862      4,119      8,096      7,236      8,108      10,613    13,110    12,378         18,770         18,720         39,067         81,974         
+Tax Rate 9.9% 15.5% 15.5% 15.5% 15.5% 15.5% 15.5% 15.5% 10.4% 15.7% 14 .3% 15.5% 15.5%
+Minor interest 222 0 0 0 0 0 0 0 754 798 222 0 0
+Total Net Income to Parent 23,874 21,053 22,456 44,135 39,447 44 ,200 57,860 71,472 106,387 99,948 111,518 212,980 446,892
+Percent of Revenues 16.0% 14.8% 15.1% 20.5% 18.7% 19.4% 21 .2% 22.7% 20.1% 16.8% 17.0% 20.8% 23.3%
+Change vs Year Ago -18.6% -24.4% 5.4% 105.5% 65.2% 109.9% 157.7% 61.9% 38.2% -6.1% 11.6% 91.0% 109.8%
+Reported Basic EPS (NT$, TW GAAP) 14.99      13.22      14.10      27.71      24.77      27.75      36.33      44.88      66.93           62.79           70.02           133.72         280.59         
+Reported Diluted EPS (NT$, TW GAAP) 14.97      13.20      14.08      27.68      24.74      27.72      36.29      44.83      66.81           62.70           69.94           133.58         280.28         
+Source: Company data, Morgan Stanley Research (e) estimates
+--- PAGE 7 ---
+M
+ Idea
+Morgan Stanley Research 7
+Raising price target from NT$2,988 to NT$5,088
+We continue to derive our price target (our base case scenario value) from a residual 
+income model. The price target change reflects our EPS estimate revisions, which are 
+higher in outer years.  In addition to raising the intermediate growth rate to 12% (from 9%) 
+given the strong TPU pipeline, our other key valuation assumptions remain unchanged: 
+cost of equity at 9.2% (beta of 1.2, risk-free rate of 2%, and risk premium of 6%) and 
+terminal growth rate of 3.0%.
+Our bull and bear case scenario values also rise from  NT$4,100 and  NT$1,520  to NT
+$6,988 and  NT$2,588, respectively.
+Exhibit 11: MediaTek: Residual income model
+(NT$ mn) 2026e 2027e 2028e 2029e 2030e 2031e 2032e 2033e 2034e 2035e 2036e 2037e
+Total Equity 479,581     677,987     1,029,970  1,265,614  1,529,536  1,825,128  2,156,192  2,526,983  2,942,269  3,407,390  3,928,325  4,511,772  
+Net Profit 111,518 212,980 446,892 500,519 560,582 627,851 703,194 787,577 882,086 987,936 1,106,489 1,239,267
+ROAE 25.1% 36.8% 52.3% 43.6% 40.1% 37.4% 35.3% 33.6% 32.3% 31.1% 30.2% 29.4%
+Residual Income 65,041 132,354 292,420 354,383 391,214 431,812 476,808 526,851 582,626 644,880 714,433 792,193
+Spread 15.9% 27.6% 43.1% 34.4% 30.9% 28.2% 26.1% 24.4% 23.1% 21.9% 21.0% 20.2%
+Ending Equity Capital 479,581     
+PV of Forecast Period 2,634,017
+PV of Continuing Value 4,998,363
+Equity Value 8,111,960  
+No. of Shares 1,594         
+Projected Price (NT$) 5,088         
+Source: Company data, Morgan Stanley Research (e) estimates
+--- PAGE 8 ---
+M
+ Idea
+8
+Relative valuation
+We view the P/E as relatively attractive – even after the share price rally – given strong AI 
+demand. Although MediaTek faces smartphone headwinds in 2026, we believe it is time to 
+look beyond 2026; we think this margin pressure is fully priced in, while TPU upside is not. 
+We believe the stock should trade more than +1SD above its historical average, supported 
+by strong TPU demand. Our new price target of NT$5,088 implies 38x 2027e EPS. 
+Exhibit 12: MediaTek: One-year forward P/E trend   
+Minus one SD: 12x
+Avg: 18x
+Plus one SD: 23x
+0
+5
+10
+15
+20
+25
+30
+35
+40
+2006 2007 2008 2009 2010 2011 2012 2013 2014 2015 2016 2017 2018 2019 20 20 2021 2022 2023 2024 2025 2026
+(x)
+MediaTek One-year Forward P/E
+Source: Company data, FactSet, Morgan Stanley Research
+--- PAGE 9 ---
+M
+ Idea
+Morgan Stanley Research 9
+Risk Reward - MediaTek (2454.TW)
+NT$5,088.00
+Base case, residual income model. Key assumptions: cost of equity 9.2%, intermediate growthrate 12.0%, terminal growth rate 3.0%.
+Morgan Stanley EstimatesMean
+Consensus Price Target DistributionNT$1,751.00 NT$5,500.00
+Source: Reﬁnitiv, Morgan Stanley Research
+MS Rating
+▪We think MediaTek's gross margin todecline in both 2026 and 2027 as a result ofsmartphone headwinds and TPU margindilution, but strong demand from TPUshould drive earnings growth.▪Overall AI ASIC demand looks very strong,especially from Google's TPU, which shouldbeneﬁt MediaTek in the coming years.▪The AI smartphone replacement cycle isthe key wild card. AIsmartphone replacement could be too mildto pass through additional costs in Chinesesmartphones.▪Risk-reward is attractive at the currentlevel given strong TPU demand. We believethe stock could re-rate to >35x 2027e P/E,doubling from its 18x historical average since2006.
+Consensus Rating Distribution
+93%Overweight7% Equal-weight0%Underweight
+Source: Reﬁnitiv, Morgan Stanley Research
+Risk Reward Themes
+New Data Era: PositiveTechnology Diffusion: Positive
+View descriptions of Risk Rewards Themes here
+NT$6,988.00
+52x 2027e EPS
+MediaTek receives US licenses for shipmentsto all Chinese smartphone brands. Emergingmarket demand recovers to trend-linegrowth. MediaTek reaches 90% of anenlarged addressable market for 5G Androidsmartphones in 2027, including share gainsin premium smartphone models. BlendedASP rises in 2027. Better businessdevelopment in IoT, autos, enterprisenetworking chips, edge AI projects and AIASIC business, especially on Google TPUdemand.
+NT$5,088.00
+38x 2027e EPS
+MediaTek maintains around 35-40% overallshare in the Chinese smartphone market,with a share of 30-40% in 5G SoC for 2025(ex-Apple). Besides smartphones, AI ASICshould be the largest focus for the companynow. We expect a 40-50% revenue CAGRduring 2025-28. Non-smartphone businessdevelopment stays on track, including IoT,autos, enterprise networking chips, edge AIprojects and AI ASIC business.
+NT$2,588.00
+19x 2027e EPS
+Competitive pressures are worse thanexpected, with some market share loss,which hurts gross margin. Emerging marketsmartphone growth stalls. Chinesesmartphone chipset vendors show abreakthrough in 5G technologies or foundrysupply and start to take more market sharein mid-range 5G smartphone SoCs. Slownew business development in ASIC, IoT andautomotive, edge AI projects and AI ASICbusiness.
+Risk Reward – MediaTek (2454.TW) Top Pick
+AI ASIC demand likely to offset smartphone headwind; Top Pick
+PRICE TARGET
+MS PT
+NT$3,330.18
+RISK REWARD CHART
+Key:  Historical Stock Performance Current Stock Price Price Target
+Source: Reﬁnitiv, Morgan Stanley Research
+NT$4,245.00NT$4,245.00NT$4,245.00
+NT$6,988.00NT$6,988.00(+64.62%)(+64.62%)NT$6,988.00(+64.62%)
+NT$5,088.00NT$5,088.00(+19.86%)(+19.86%)NT$5,088.00(+19.86%)
+NT$2,588.00NT$2,588.00(-39.03%)(-39.03%)NT$2,588.00(-39.03%)
+MAY '25 NOV '25 MAY '26 MAY '270
+1500
+3000
+4500
+6000
+TWD
+OVERWEIGHT THESIS
+BULL CASE BASE CASE BEAR CASE
+--- PAGE 10 ---
+M
+ Idea
+10
+Drivers 2025 2026e 2027e 2028e
+Revenue from 5G Products (NT$,mn) 291,637276,362301,505341,338
+Revenue from Mid-low-end 4GProducts (NT$, mn) 4,8541,1891,1371,186
+Revenue from Growing Products(NT$, mn) 195,335300,325647,5651,498,492
+Revenue from Mature Products (NT$,mn) 34,92232,84532,85732,682
+2/5MOST3 MonthHorizon
+Market share in major smartphone brandsOverall demand from non-smartphonebusinesses, such as TVs and set-top boxesIntroduction of new products, such as SoC,smartphones, and tablets
+0-10%APAC, ex Japan, MainlandChina and India0-10%Europe ex UK80-90%Mainland China
+Source: Morgan Stanley Research EstimateView explanation of regional hierarchies here
+Source: Reﬁnitiv, FactSet, Morgan Stanley Research; 1 isthe highest favored Quintile and 5 is the least favoredQuintile
+Inst. Owners, % Active 74%
+Source: Reﬁnitiv, Morgan Stanley Research
+Edge AI proliferates smartphone replacementcycle.Smartphone demand rises in China and otherEMs.New products attract high demand, resulting inmarket share gains.Google's TPU spurs demand.
+Smartphone demand deteriorates in China andother EMs.Competition heats up, resulting in pricingcompetition.New products attract low demand, causingmarket share loss.Margin dilution is more severe.
+Morgan Stanley EstimatesMeanSource: Reﬁnitiv, Morgan Stanley Research
+FY Dec 2026e
+Sales /Revenue(NT$, mn) 601,300 673,340
+EBITDA(NT$, mn) 114,800 142,387
+Net income(NT$, mn) 94,800 115,467
+EPS(NT$) 59.10 71.99
+Risk Reward – MediaTek (2454.TW)
+KEY EARNINGS INPUTS
+INVESTMENT DRIVERS
+GLOBAL REVENUE EXPOSURE
+MS ALPHA MODELS
+RISKS TO PT/RATING
+RISKS TO UPSIDE
+RISKS TO DOWNSIDE
+OWNERSHIP POSITIONING
+MS ESTIMATES VS. CONSENSUS
+655,906
+644,918
+138,272
+127,292
+111,518
+104,845
+70.02
+65.62
+--- PAGE 11 ---
+M
+ Idea
+Morgan Stanley Research 11
+MediaTek: Financial Summary
+Income Statement Cash Flow Statement
+NT$mn (Years End Dec ) 2024 2025 2026e 2027e 2028e NT$mn (Years End Dec ) 2024 2025 2026e 2027e 2028e
+Net sales 530,586 595,966 655,906 1,026,353 1,920,744 Cash flow from Operations 156,055 162,793 30,569 180,519 326,301 
+COGS (267,200) (312,886) (359,662) (591,547) (1,176,869) Net profits 106,385 99,948 111,518 212,980 446,892 
+Gross profit 263,386 283,080 296,244 434,806 743,875 Depreciation 20,936 22,974 23,808 24,641 25,474 
+Operating expenses (160,974) (179,610) (181,783) (197,759) (230,009) Equity investment losses (income) (517) (785) 0 0 0 
+Operating income 102,412 103,470 114,462 237,047 513,867 Other adjustments 29,251 40,655 (104,758) (57,102) (146,065)
+Non-operating income 17,107 16,047 15,999 15,000 15,000 Cash flow from Investing (35,928) (37,754) (69,831) (107,690) (252,931)
+Pre-tax income 119,519 119,517 130,461 252,047 528,867 Capex (13,787) (15,059) (5,000) (5,000) (5,000)
+Income tax (12,378) (18,770) (18,720) (39,067) (81,974) Change of LT Investment (14,226) (9,851) 0 0 0 
+Net income (excl. emp. bonus) 133,925 125,933 139,676 266,225 558,615 Change of ST Investment 283 (69) 0 0 0 
+Employee Bonus Expense 26,785 25,187 27,935 53,245 111,723 Other adjustments (8,198) (12,775) (64,831) (102,690) (247,931)
+Net income (incl. emp. bonus) 106,387 99,948 111,518 212,980 446,892 Cash flow from financing (90,119) (87,675) (64,940) (39,215) (120,384)
+Adj.wtd.avg.shrs( m) 1,589 1,592 1,593 1,593 1,593 Increase in L/T debt 0 60 50,000 50,000 50,000 
+Reported EPS (NT$) 66.93 62.79 70.02 133.72 280.59 Increase in S/T debt (1,260) 0 0 0 0 
+Diluted EPS (NT$) 66.81 62.70 69.94 133.58 280.28 Cash Dividend Paid (87,551) (86,070) (114,940) (89,215) (170,384)
+EPS for Consensus (NT$) 66.81 62.70 69.94 133.58 280.28 Dir& Emp Bonus Paid 0 0 0 0 0 
+Issuance of stock 0 0 0 0 0 
+Other adjustments (1,309) (1,665) 0 0 0 
+Exchange rate adjustment 0 0 0 0 0 
+Net change in cash 30,008 37,364 -104,203 33,614 -47,013
+Balance Sheet Financial Ratios
+NT$mn (Years End Dec ) 2024 2025 2026e 2027e 2028e 2024 2025 2026e 2027e 2028e
+Cash 203,696 235,290 131,087 164,701 117,688 Growth(%)
+Mkt Securities 15,928 12,419 12,419 12,419 12,419 Turnover 22.4 12.3 10.1 56.5 87.1
+AR/NR 44,713 62,121 77,978 122,019 228,349 Operating profits 42.6 1.0 10.6 107.1 116.8
+Inventory 58,414 67,235 91,508 150,506 299,428 Pretax profits 37.7 0.0 9.2 93.2 109.8
+Other 28,274 20,392 13,520 21,156 39,592 Net profits 38.8 -6.0 10.9 90.6 109.8
+Current Assets 351,025 397,456 326,512 470,800 697,476 EPS 38.1 -6.1 11.5 91.0 109.8
+Long-term investments 169,970 168,912 168,912 168,912 168,912 Margins (%)
+Fixed assets 56,917 60,427 65,427 70,427 75,427 Gross Margin 49.6 47.5 45.2 42.4 38.7
+Other assets 119,955 116,990 181,821 284,511 532,442 Operating Margin 19.3 17.4 17.5 23.1 26.8
+Total Assets 697,868 743,785 742,672 994,650 1,474,256 Pretax Margin 22.5 20.1 19.9 24.6 27.5
+S/T borrowings 940 940 940 940 940 Net Profit 20.1 16.8 17.0 20.8 23.3
+AP/NP 40,777 48,710 59,763 98,294 195,555 Return (%)
+Other ST liabilities 225,186 253,700 171,148 186,189 216,552 ROAA 16.0 13.9 15.0 24.5 36.2 
+LT debt 2,681 6,795 6,795 6,795 6,795 ROAE 27.3 24.5 25.1 36.8 52.3 
+Other LT liabilities 23,228 24,444 24,444 24,444 24,444 Gearing (%)
+Total Liabilities 292,812 334,590 263,091 316,663 444,287 Net Debt/Equity (50.1) (57.3) (27.1) (24.2) (11.3)
+Common shares 16,017 16,039 16,039 16,039 16,039 Liabilities/Equity 72.3 81.8 54.9 46.7 43.1 
+Retained earning 331,543 354,139 465,657 678,637 1,125,529 Ratios (X)
+Other shareholders' equity 57,495 39,017 (2,115) (16,689) (111,599) Current ratio 1.3 1.3 1.4 1.6 1.7 
+Total Equity 405,055 409,195 479,581 677,987 1,029,970 Quick ratio 0.9 1.0 0.9 1.0 0.8 
+Total Liab. & Shrhldr's Equity 697,868 743,785 742,672 994,650 1,474 ,256 Others
+AR/NR Turnover (days) 43 43 43 43 43
+Inventory Turnover (days) 92 92 92 92 92
+e = Morgan Stanley Research Estimates AP Turnover (days) 60 60 60 60 60
+Source: Morgan Stanley Research, Company Data Cash Conversion (days) 75 75 75 75 75
+--- PAGE 12 ---
+M
+ Idea
+12
+Risk Reward Reference     links
+    1. View explanation of Options Probabilities methodology -    
+Options_Probabilities_Exhibit_Link.pdf  
+    2. View descriptions of Risk Rewards Themes -    RR_Themes_Exhibit_Link.pdf  
+    3. View explanation of regional hierarchies -    GEG_Exhibit_Link.pdf  
+    4. View explanation of Theme/Exposure methodology -    
+ESG_Sustainable_Solutions_External_Link.pdf  
+    5. View explanation of HERS methodology -    ESG_HERS_External_Link.pdf  
+--- PAGE 13 ---
+M
+ Idea
+Morgan Stanley Research 13
+Disclosure Section
+The information and opinions in Morgan Stanley Research were prepared or are disseminated by Morgan Stanley Asia Limited (which accepts the responsibility for its contents) and/or Morgan 
+Stanley Asia (Singapore) Pte. (Registration number 199206298Z) and/or Morgan Stanley Asia (Singapore) Securities Pte Ltd (Registration number 200008434H), regulated by the Monetary 
+Authority of Singapore (which accepts legal responsibility for its contents and should be contacted with respect to any matters arising from, or in connection with, Morgan Stanley Research), 
+and/or Morgan Stanley Taiwan Limited and/or Morgan Stanley & Co International plc, Seoul Branch, and/or Morgan Stanley Australia Limited (A.B.N. 67 003 734 576, holder of Australian financial 
+services license No. 233742, which accepts responsibility for its contents), and/or Morgan Stanley Wealth Management Australia Pty Ltd (A.B.N. 19 009 145 555, holder of Australian financial 
+services license No. 240813, which accepts responsibility for its contents), and/or Morgan Stanley India Company Private Limited having Corporate Identification No (CIN) 
+U22990MH1998PTC115305, regulated by the Securities and Exchange Board of India (“SEBI”) and holder of licenses as a Research Analyst (SEBI Registration No. INH000001105); Stock Broker 
+(SEBI Stock Broker Registration No. INZ000244438), Merchant Banker (SEBI Registration No. INM000011203), and depository participant with National Securities Depository Limited (SEBI 
+Registration No. IN-DP-NSDL-567-2021) having registered office at Altimus, Level 39 & 40, Pandurang Budhkar Marg, Worli, Mumbai 400018, India; Telephone no. +91-22-61181000; Compliance 
+Officer Details: Mr. Tejarshi Hardas, Tel. No.: +91-22-61181000 or Email: tejarshi.hardas@morganstanley.com; Grievance officer details: Mr. Tejarshi Hardas, Tel. No.: +91-22-61181000 or Email: 
+msic-compliance@morganstanley.com which accepts the responsibility for its contents and should be contacted with respect to any matters arising from, or in connection with, Morgan Stanley 
+Research, and their affiliates (collectively, "Morgan Stanley"). Morgan Stanley India Company Private Limited (MSICPL) may use AI tools in providing research services. All recommendations 
+contained herein are made by the duly qualified research analysts.
+For important disclosures, stock price charts and equity rating histories regarding companies that are the subject of this report, please see the Morgan Stanley Research Disclosure Website 
+at www.morganstanley.com/eqr/disclosures/webapp/generalresearch, or contact your investment representative or Morgan Stanley Research at 1585 Broadway, (Attention: Research 
+Management), New York, NY, 10036 USA.
+For valuation methodology and risks associated with any recommendation, rating or price target referenced in this research report, please contact the Client Support Team as follows: US/Canada 
++1 800 303-2495; Hong Kong +852 2848-5999; Latin America +1 718 754-5444 (U.S.); London +44 (0)20-7425-8169; Singapore +65 6834-6860; Sydney +61 (0)2-9770-1505; Tokyo +81 
+(0)3-6836-9000.  Alternatively you may contact your investment representative or Morgan Stanley Research at 1585 Broadway, (Attention: Research Management), New York, NY 10036 USA.
+Analyst Certification
+The following analysts hereby certify that their views about the companies and their securities discussed in this report are accurately expressed and that they have not received and will not 
+receive direct or indirect compensation in exchange for expressing specific recommendations or views in this report: Charlie Chan; Daisy Dai, CFA; Tiffany Yeh; Daniel Yen, CFA.
+.
+Global Research Conflict Management Policy
+Morgan Stanley Research has been published in accordance with our conflict management policy, which is available at www.morganstanley.com/institutional/research/conflictpolicies. A 
+Portuguese version of the policy can be found at www.morganstanley.com.br
+Important Regulatory Disclosures on Subject Companies
+As of April 30, 2026, Morgan Stanley beneficially owned 1% or more of a class of common equity securities of the following companies covered in Morgan Stanley Research: ACM Research 
+Inc, Advanced Micro-Fabrication Equipment Inc, Advanced Wireless Semiconductor Co, Alchip Technologies Ltd, AllRing Tech Co., AP Memory Technology Corp, ASE Technology Holding Co. 
+Ltd., ASMPT Ltd, Aspeed Technology, Cambricon Technology Corporation, Global Unichip Corp, GlobalWafers Co Ltd, Gudeng Precision, Hon Precision, Hua Hong Semiconductor Ltd, JCET 
+Group Co Ltd, King Yuan Electronics Co Ltd, Macronix International Co Ltd, Montage Technology Co Ltd, MPI Corporation, Nanya Technology Corp., NAURA Technology Group Co Ltd, Novatek, 
+Nuvoton Technology Corporation, Phison Electronics Corp, Realtek Semiconductor, SG Micro Corp., Shanghai Fudan Microelectronics, Silergy Corp., Silicon Motion, TSMC, UMC, Vanguard 
+International Semiconductor, WIN Semiconductors Corp, Winbond Electronics Corp, WPG Holdings, WT Microelectronics Co. Ltd..
+Within the last 12 months, Morgan Stanley managed or co-managed a public offering (or 144A offering) of securities of Montage Technology Co Ltd.
+Within the last 12 months, Morgan Stanley has received compensation for investment banking services from ASMPT Ltd, Montage Technology Co Ltd.
+In the next 3 months, Morgan Stanley expects to receive or intends to seek compensation for investment banking services from Advanced Micro-Fabrication Equipment Inc, Alchip Technologies 
+Ltd, AP Memory Technology Corp, ASE Technology Holding Co. Ltd., ASMedia Technology Inc, ASMPT Ltd, Espressif Systems, GigaDevice Semiconductor Beijing Inc, GlobalWafers Co Ltd, 
+Gudeng Precision, Himax Technologies Inc, Hua Hong Semiconductor Ltd, Iluvatar CoreX Semiconductor Co., Ltd., Innoscience, King Yuan Electronics Co Ltd, Macronix International Co Ltd, 
+MediaTek, Montage Technology Co Ltd, Novatek, Phison Electronics Corp, Powerchip Semiconductor Manufacturing Co, Realtek Semiconductor, Shenzhen Longsys Electronics Co Ltd, Silergy 
+Corp., Silicon Motion, TSMC, UMC, Universal Scientific Ind. (Shanghai), Vanguard International Semiconductor, Winbond Electronics Corp, WPG Holdings, WT Microelectronics Co. Ltd..
+Within the last 12 months, Morgan Stanley has received compensation for products and services other than investment banking services from ASE Technology Holding Co. Ltd., King Yuan 
+Electronics Co Ltd, MediaTek, Nanya Technology Corp., Novatek, Nuvoton Technology Corporation, Realtek Semiconductor, Silicon Motion, SMIC, TSMC, UMC, Universal Scientific Ind. 
+(Shanghai), Winbond Electronics Corp, WT Microelectronics Co. Ltd..
+Within the last 12 months, Morgan Stanley has provided or is providing investment banking services to, or has an investment banking client relationship with, the following company: Advanced 
+Micro-Fabrication Equipment Inc, Alchip Technologies Ltd, AP Memory Technology Corp, ASE Technology Holding Co. Ltd., ASMedia Technology Inc, ASMPT Ltd, Espressif Systems, GigaDevice 
+Semiconductor Beijing Inc, GlobalWafers Co Ltd, Gudeng Precision, Himax Technologies Inc, Hua Hong Semiconductor Ltd, Iluvatar CoreX Semiconductor Co., Ltd., Innoscience, King Yuan 
+Electronics Co Ltd, Macronix International Co Ltd, MediaTek, Montage Technology Co Ltd, Novatek, Phison Electronics Corp, Powerchip Semiconductor Manufacturing Co, Realtek 
+Semiconductor, Shenzhen Longsys Electronics Co Ltd, Silergy Corp., Silicon Motion, TSMC, UMC, Universal Scientific Ind. (Shanghai), Vanguard International Semiconductor, Winbond 
+Electronics Corp, WPG Holdings, WT Microelectronics Co. Ltd..
+Within the last 12 months, Morgan Stanley has either provided or is providing non-investment banking, securities-related services to and/or in the past has entered into an agreement to provide 
+services or has a client relationship with the following company: ASE Technology Holding Co. Ltd., King Yuan Electronics Co Ltd, MediaTek, Montage Technology Co Ltd, Nanya Technology 
+Corp., Novatek, Nuvoton Technology Corporation, Realtek Semiconductor, Silicon Motion, SMIC, TSMC, UMC, Universal Scientific Ind. (Shanghai), Winbond Electronics Corp, WT 
+Microelectronics Co. Ltd..
+Morgan Stanley & Co. LLC makes a market in the securities of ACM Research Inc, Himax Technologies Inc, Silicon Motion.
+The equity research analysts or strategists principally responsible for the preparation of Morgan Stanley Research have received compensation based upon various factors, including quality 
+of research, investor client feedback, stock picking, competitive factors, firm revenues and overall investment banking revenues. Equity Research analysts' or strategists' compensation is not 
+linked to investment banking or capital markets transactions performed by Morgan Stanley or the profitability or revenues of particular trading desks.
+Morgan Stanley and its affiliates do business that relates to companies/instruments covered in Morgan Stanley Research, including market making, providing liquidity, fund management, 
+--- PAGE 14 ---
+M
+ Idea
+14
+commercial banking, extension of credit, investment services and investment banking. Morgan Stanley sells to and buys from customers the securities/instruments of companies covered in 
+Morgan Stanley Research on a principal basis. Morgan Stanley may have a position in the debt of the Company or instruments discussed in this report. Morgan Stanley trades or may trade 
+as principal in the debt securities (or in related derivatives) that are the subject of the debt research report.
+Certain disclosures listed above are also for compliance with applicable regulations in non-US jurisdictions.
+STOCK RATINGS
+Morgan Stanley uses a relative rating system using terms such as Overweight, Equal-weight, Not-Rated or Underweight (see definitions below). Morgan Stanley does not assign ratings of Buy, 
+Hold or Sell to the stocks we cover. Overweight, Equal-weight, Not-Rated and Underweight are not the equivalent of buy, hold and sell.  Investors should carefully read the definitions of all 
+ratings used in Morgan Stanley Research. In addition, since Morgan Stanley Research contains more complete information concerning the analyst's views, investors should carefully read Morgan 
+Stanley Research, in its entirety, and not infer the contents from the rating alone.  In any case, ratings (or research) should not be used or relied upon as investment advice.  An investor's decision 
+to buy or sell a stock should depend on individual circumstances (such as the investor's existing holdings) and other considerations.
+Global Stock Ratings Distribution
+(as of April 30, 2026)
+The Stock Ratings described below apply to Morgan Stanley's Fundamental Equity Research and do not apply to Debt Research produced by the Firm.
+For disclosure purposes only (in accordance with FINRA requirements), we include the category headings of Buy, Hold, and Sell alongside our ratings of Overweight, Equal-weight, Not-Rated 
+and Underweight. Morgan Stanley does not assign ratings of Buy, Hold or Sell to the stocks we cover. Overweight, Equal-weight, Not-Rated and Underweight are not the equivalent of buy, 
+hold, and sell but represent recommended relative weightings (see definitions below). To satisfy regulatory requirements, we correspond Overweight, our most positive stock rating, with a 
+buy recommendation; we correspond Equal-weight and Not-Rated to hold and Underweight to sell recommendations, respectively.
+Coverage Universe Investment Banking Clients (IBC) Other Material Investment Services 
+Clients (MISC)
+Stock Rating 
+Category Count % of               Total Count % of               Total IBC% of Rating               
+Category Count % of Total Other 
+MISC
+Overweight/Buy 1546 42% 467 51% 30% 709 44%
+Equal-weight/Hold 1568 43% 358 39% 23% 715 44%
+Not-Rated/Hold 4 0% 0 0% 0% 1 0%
+Underweight/Sell 555 15% 84 9% 15% 202 12%
+Total 3,673 909 1627
+Data include common stock and ADRs currently assigned ratings. Investment Banking Clients are companies from whom Morgan Stanley received investment banking compensation in the 
+last 12 months. Due to rounding off of decimals, the percentages provided in the "% of total" column may not add up to exactly 100 percent.
+Analyst Stock Ratings
+Overweight (O). The stock's total return is expected to exceed the average total return of the analyst's industry (or industry team's) coverage universe, on a risk-adjusted basis, over the next 
+12-18 months.
+Equal-weight (E). The stock's total return is expected to be in line with the average total return of the analyst's industry (or industry team's) coverage universe, on a risk-adjusted basis, over 
+the next 12-18 months.
+Not-Rated (NR). Currently the analyst does not have adequate conviction about the stock's total return relative to the average total return of the analyst's industry (or industry team's) coverage 
+universe, on a risk-adjusted basis, over the next 12-18 months.
+Underweight (U). The stock's total return is expected to be below the average total return of the analyst's industry (or industry team's) coverage universe, on a risk-adjusted basis, over the next 
+12-18 months.
+Unless otherwise specified, the time frame for price targets included in Morgan Stanley Research is 12 to 18 months.
+Analyst Industry Views
+Attractive (A): The analyst expects the performance of his or her industry coverage universe over the next 12-18 months to be attractive vs. the relevant broad market benchmark, as indicated 
+below.
+In-Line (I): The analyst expects the performance of his or her industry coverage universe over the next 12-18 months to be in line with the relevant broad market benchmark, as indicated below.
+Cautious (C): The analyst views the performance of his or her industry coverage universe over the next 12-18 months with caution vs. the relevant broad market benchmark, as indicated below.
+Benchmarks for each region are as follows: North America - S&P 500; Latin America - relevant MSCI country index or MSCI Latin America Index; Europe - MSCI Europe; Japan - TOPIX; Asia - 
+relevant MSCI country index or MSCI sub-regional index or MSCI AC Asia Pacific ex Japan Index.
+Stock Price, Price Target and Rating History (See Rating Definitions)
+--- PAGE 15 ---
+M
+ Idea
+Morgan Stanley Research 15
+Important Disclosures for Morgan Stanley Smith Barney LLC Customers
+Important disclosures regarding any material conflict of interest that can reasonably be expected to have influenced Morgan Stanley Smith Barney LLC's choice of a third-party research provider 
+or the subject company of a third-party research report, are available on the Morgan Stanley Wealth Management disclosure website at www.morganstanley.com/online/researchdisclosures. 
+For Morgan Stanley specific disclosures, you may refer to https://www.morganstanley.com/eqr/disclosures/webapp/generalresearch.
+Each Morgan Stanley research report is reviewed and approved on behalf of Morgan Stanley Smith Barney LLC. This review and approval is conducted by the same person who reviews the 
+research report on behalf of Morgan Stanley. This could create a conflict of interest.
+Other Important Disclosures
+Morgan Stanley Research policy is to update research reports as and when the Research Analyst and Research Management deem appropriate, based on developments with the issuer, the 
+sector, or the market that may have a material impact on the research views or opinions stated therein. In addition, certain Research publications are intended to be updated on a regular periodic 
+basis   (weekly/monthly/quarterly/annual) and will ordinarily be updated with that frequency, unless  the Research Analyst and Research Management determine that a different publication 
+schedule is appropriate based on current conditions.
+Morgan Stanley is not acting as a municipal advisor and the opinions or views contained herein are not intended to be, and do not constitute, advice within the meaning of Section 975 of the 
+Dodd-Frank Wall Street Reform and Consumer Protection Act.
+Morgan Stanley produces an equity research product called a "Tactical Idea." Views contained in a "Tactical Idea" on a particular stock may be contrary to the recommendations or views expressed 
+in research on the same stock. This may be the result of differing time horizons, methodologies, market events, or other factors. For all research available on a particular stock, please contact 
+your sales representative or go to Matrix at http://www.morganstanley.com/matrix.
+Morgan Stanley Research is provided to our clients through our proprietary research portal on Matrix and also distributed electronically by Morgan Stanley to clients. Certain, but not all, Morgan 
+Stanley Research products are also made available to clients through third-party vendors or redistributed to clients through alternate electronic means as a convenience. For access to all 
+available Morgan Stanley Research, please contact your sales representative or go to Matrix at http://www.morganstanley.com/matrix.
+Any access and/or use of Morgan Stanley Research is subject to Morgan Stanley's Terms of Use (http://www.morganstanley.com/terms.html). By accessing and/or using Morgan Stanley 
+Research, you are indicating that you have read and agree to be bound by our Terms of Use (http://www.morganstanley.com/terms.html). In addition you consent to Morgan Stanley processing 
+your personal data and using cookies in accordance with our Privacy Policy and our Global Cookies Policy (http://www.morganstanley.com/privacy_pledge.html), including for the purposes of 
+setting your preferences and to collect readership data so that we can deliver better and more personalized service and products to you. To find out more information about how Morgan Stanley 
+processes personal data, how we use cookies and how to reject cookies see our Privacy Policy and our Global Cookies Policy (http://www.morganstanley.com/privacy_pledge.html). Please use 
+the provided link to review the Terms and Conditions and Most Important Terms and Conditions for Morgan Stanley India Company Private Limited (https://www.morganstanley.com/assets/
+pdfs/about-us-global-offices/india/Terms_and_conditions.pdf) and the following link to review the audit report ( https://ny.matrix.ms.com/eqr/research/webapp/researchdocs/
+MSICPL_Morgan_Stanley_Research_Audit_Report.pdf).
+If you do not agree to our Terms of Use and/or if you do not wish to provide your consent to Morgan Stanley processing your personal data or using cookies please do not access our research.
+--- PAGE 16 ---
+M
+ Idea
+16
+Morgan Stanley Research does not provide individually tailored investment advice. Morgan Stanley Research has been prepared without regard to the circumstances and objectives of those 
+who receive it. Morgan Stanley recommends that investors independently evaluate particular investments and strategies, and encourages investors to seek the advice of a financial adviser. 
+The appropriateness of an investment or strategy will depend on an investor's circumstances and objectives. The securities, instruments, or strategies discussed in Morgan Stanley Research 
+may not be suitable for all investors, and certain investors may not be eligible to purchase or participate in some or all of them. Morgan Stanley Research is not an offer to buy or sell or the 
+solicitation of an offer to buy or sell any security/instrument or to participate in any particular trading strategy. The value of and income from your investments may vary because of changes 
+in interest rates, foreign exchange rates, default rates, prepayment rates, securities/instruments prices, market indexes, operational or financial conditions of companies or other factors. There 
+may be time limitations on the exercise of options or other rights in securities/instruments transactions. Past performance is not necessarily a guide to future performance. Estimates of future 
+performance are based on assumptions that may not be realized. If provided, and unless otherwise stated, the closing price on the cover page is that of the primary exchange for the subject 
+company's securities/instruments.
+The fixed income research analysts, strategists or economists principally responsible for the preparation of Morgan Stanley Research have received compensation based upon various factors, 
+including quality, accuracy and value of research, firm profitability or revenues (which include fixed income trading and capital markets profitability or revenues), client feedback and competitive 
+factors. Fixed Income Research analysts', strategists' or economists' compensation is not linked to investment banking or capital markets transactions performed by Morgan Stanley or the 
+profitability or revenues of particular trading desks.
+The "Important Regulatory Disclosures on Subject Companies" section in Morgan Stanley Research lists all companies mentioned where Morgan Stanley owns 1% or more of a class of common 
+equity securities of the companies.  For all other companies mentioned in Morgan Stanley Research, Morgan Stanley may have an investment of less than 1% in securities/instruments or 
+derivatives of securities/instruments of companies and may trade them in ways different from those discussed in Morgan Stanley Research. Employees of Morgan Stanley not involved in the 
+preparation of Morgan Stanley Research may have investments in securities/instruments or derivatives of securities/instruments of companies mentioned and may trade them in ways different 
+from those discussed in Morgan Stanley Research. Derivatives may be issued by Morgan Stanley or associated persons.
+With the exception of information regarding Morgan Stanley, Morgan Stanley Research is based on public information. Morgan Stanley makes every effort to use reliable, comprehensive 
+information, but we make no representation that it is accurate or complete.  We have no obligation to tell you when opinions or information in Morgan Stanley Research change apart from 
+when we intend to discontinue equity research coverage of a subject company. Facts and views presented in Morgan Stanley Research have not been reviewed by, and may not reflect information 
+known to, professionals in other Morgan Stanley business areas, including investment banking personnel.
+Morgan Stanley Research personnel may participate in company events such as site visits and are generally prohibited from accepting payment by the company of associated expenses unless 
+pre-approved by authorized members of Research management.
+Morgan Stanley may make investment decisions that are inconsistent with the recommendations or views in this report.
+To our readers based in Taiwan or trading in Taiwan securities/instruments: Information on securities/instruments that trade in Taiwan is distributed by Morgan Stanley Taiwan Limited ("MSTL").  
+Such information is for your reference only.  The reader should independently evaluate the investment risks and is solely responsible for their investment decisions.  Morgan Stanley Research 
+may not be distributed to the public media or quoted or used by the public media without the express written consent of Morgan Stanley.  Any non-customer reader within the scope of Article 
+7-1 of the Taiwan Stock Exchange Recommendation Regulations accessing and/or receiving Morgan Stanley Research is not permitted to provide Morgan Stanley Research to any third party 
+(including but not limited to related parties, affiliated companies and any other third parties) or engage in any activities regarding Morgan Stanley Research which may create or give the 
+appearance of creating a conflict of interest. Information on securities/instruments that do not trade in Taiwan is for informational purposes only and is not to be construed as a recommendation 
+or a solicitation to trade in such securities/instruments.  MSTL may not execute transactions for clients in these securities/instruments.
+Certain information in Morgan Stanley Research was sourced by employees of the Shanghai Representative Office of Morgan Stanley Asia Limited for the use of Morgan Stanley Asia Limited.
+Morgan Stanley is not incorporated under PRC law and the research in relation to this report is conducted outside the PRC.  Morgan Stanley Research does not constitute an offer to sell or 
+the solicitation of an offer to buy any securities in the PRC.  PRC investors shall have the relevant qualifications to invest in such securities and shall be responsible for obtaining all relevant 
+approvals, licenses, verifications and/or registrations from the relevant governmental authorities themselves. Neither this report nor any part of it is intended as, or shall constitute, provision 
+of any consultancy or advisory service of securities investment as defined under PRC law. Such information is provided for your reference only.
+Morgan Stanley Research is disseminated in Brazil by Morgan Stanley C.T.V.M. S.A. located at Av. Brigadeiro Faria Lima, 3600, 6th floor, São Paulo - SP, Brazil; and is regulated by the Comissão 
+de Valores Mobiliários; in Mexico by Morgan Stanley México, Casa de Bolsa, S.A. de C.V which is regulated by Comision Nacional Bancaria y de Valores. Paseo de los Tamarindos 90, Torre 1, 
+Col. Bosques de las Lomas Floor 29, 05120 Mexico City; in Japan by Morgan Stanley MUFG Securities Co., Ltd. and, for Commodities related research reports only, Morgan Stanley Capital Group 
+Japan Co., Ltd; in Hong Kong by Morgan Stanley Asia Limited (which accepts responsibility for its contents) and by Morgan Stanley Bank Asia Limited; in Singapore by Morgan Stanley Asia 
+(Singapore) Pte. (Registration number 199206298Z) and/or Morgan Stanley Asia (Singapore) Securities Pte Ltd (Registration number 200008434H), regulated by the Monetary Authority of 
+Singapore (which accepts legal responsibility for its contents and should be contacted with respect to any matters arising from, or in connection with, Morgan Stanley Research) and by Morgan 
+Stanley Bank Asia Limited, Singapore Branch (Registration number T14FC0118J); in Australia to "wholesale clients" within the meaning of the Australian Corporations Act by Morgan Stanley 
+Australia Limited A.B.N. 67 003 734 576, holder of Australian financial services license No. 233742, which accepts responsibility for its contents; in Australia to "wholesale clients" and "retail 
+clients" within the meaning of the Australian Corporations Act by Morgan Stanley Wealth Management Australia Pty Ltd (A.B.N. 19 009 145 555, holder of Australian financial services license 
+No. 240813, which accepts responsibility for its contents; in Korea by Morgan Stanley & Co International plc, Seoul Branch; in India by Morgan Stanley India Company Private Limited having 
+Corporate Identification No (CIN) U22990MH1998PTC115305, regulated by the Securities and Exchange Board of India (“SEBI”) and holder of licenses as a Research Analyst (SEBI Registration 
+No. INH000001105); Stock Broker (SEBI Stock Broker Registration No. INZ000244438), Merchant Banker (SEBI Registration No. INM000011203), and depository participant with National 
+Securities Depository Limited (SEBI Registration No. IN-DP-NSDL-567-2021) having registered office at Altimus, Level 39 & 40, Pandurang Budhkar Marg, Worli, Mumbai 400018, India; 
+Telephone no. +91-22-61181000; Compliance Officer Details: Mr. Tejarshi Hardas, Tel. No.: +91-22-61181000 or Email: tejarshi.hardas@morganstanley.com; Grievance officer details: Mr. Tejarshi 
+Hardas, Tel. No.: +91-22-61181000 or Email: msic-compliance@morganstanley.com. Morgan Stanley India Company Private Limited (MSICPL) may use AI tools in providing research services. 
+All recommendations contained herein are made by the duly qualified research analysts; in Canada by Morgan Stanley Canada Limited; in Germany and the European Economic Area where 
+required by Morgan Stanley Europe S.E., authorised and regulated by Bundesanstalt fuer Finanzdienstleistungsaufsicht (BaFin) under the reference number 149169; in the US by Morgan Stanley 
+& Co. LLC, which accepts responsibility for its contents. Morgan Stanley & Co. International plc, authorized by the Prudential Regulation Authority and regulated by the Financial Conduct 
+Authority and the Prudential Regulation Authority, disseminates in the UK research that it has prepared, and research which has been prepared by any of its affiliates, only to persons who (i) 
+are investment professionals falling within Article 19(5) of the Financial Services and Markets Act 2000 (Financial Promotion) Order 2005 (as amended, the “Order”); (ii) are persons who are 
+high net worth entities falling within Article 49(2)(a) to (d) of the Order; or (iii) are persons to whom an invitation or inducement to engage in investment activity (within the meaning of section 
+21 of the Financial Services and Markets Act 2000, as amended) may otherwise lawfully be communicated or caused to be communicated. RMB Morgan Stanley Proprietary Limited is a member 
+of the JSE Limited and A2X (Pty) Ltd. RMB Morgan Stanley Proprietary Limited is a joint venture owned equally by Morgan Stanley International Holdings Inc. and RMB Investment Advisory 
+(Proprietary) Limited, which is wholly owned by FirstRand Limited. The information in Morgan Stanley Research is being disseminated by Morgan Stanley Saudi Arabia, regulated by the Capital 
+--- PAGE 17 ---
+M
+ Idea
+Morgan Stanley Research 17
+Market Authority in the Kingdom of Saudi Arabia, and is directed at Sophisticated investors only.
+Morgan Stanley Hong Kong Securities Limited is the liquidity provider/market maker for securities of ASMPT Ltd, Hua Hong Semiconductor Ltd listed on the Stock Exchange of Hong Kong 
+Limited. An updated list can be found on HKEx website: http://www.hkex.com.hk.
+The information in Morgan Stanley Research is being communicated by Morgan Stanley & Co. International plc (DIFC Branch), regulated by the Dubai Financial Services Authority (the DFSA) 
+or by Morgan Stanley & Co. International plc (ADGM Branch), regulated by the Financial Services Regulatory Authority Abu Dhabi (the FSRA), and is directed at Professional Clients only, as 
+defined by the DFSA or the FSRA, respectively. The financial products or financial services to which this research relates will only be made available to a customer who we are satisfied meets 
+the regulatory criteria of a Professional Client. A distribution of the different MS Research ratings or recommendations, in percentage terms for Investments in each sector covered, is available 
+upon request from your sales representative.
+The information in Morgan Stanley Research is being communicated by Morgan Stanley & Co. International plc (QFC Branch), regulated by the Qatar Financial Centre Regulatory Authority 
+(the QFCRA), and is directed at business customers and market counterparties only and is not intended for Retail Customers as defined by the QFCRA.
+As required by the Capital Markets Board of Turkey, investment information, comments and recommendations stated here, are not within the scope of investment advisory activity. Investment 
+advisory service is provided exclusively to persons based on their risk and income preferences by the authorized firms. Comments and recommendations stated here are general in nature. These 
+opinions may not fit to your financial status, risk and return preferences. For this reason, to make an investment decision by relying solely to this information stated here may not bring about 
+outcomes that fit your expectations.
+The trademarks and service marks contained in Morgan Stanley Research are the property of their respective owners. Third-party data providers make no warranties or representations relating 
+to the accuracy, completeness, or timeliness of the data they provide and shall not have liability for any damages relating to such data. The Global Industry Classification Standard (GICS) was 
+developed by and is the exclusive property of MSCI and S&P.
+Morgan Stanley Research, or any portion thereof may not be reprinted, sold or redistributed without the written consent of Morgan Stanley.
+Indicators and trackers referenced in Morgan Stanley Research may not be used as, or treated as, a benchmark under Regulation EU 2016/1011, or any other similar framework.
+The issuers and/or fixed income products recommended or discussed in certain fixed income research reports may not be continuously followed. Accordingly, investors should regard those 
+fixed income research reports as providing stand-alone analysis and should not expect continuing analysis or additional reports relating to such issuers and/or individual fixed income products.
+Morgan Stanley may hold, from time to time, material financial and commercial interests regarding the company subject to the Research report.
+Registration granted by SEBI and certification from the National Institute of Securities Markets (NISM) in no way guarantee performance 
+of the intermediary or provide any assurance of returns to investors. Investment in securities market are subject to market risks. Read 
+all the related documents carefully before investing.
+INDUSTRY COVERAGE: Greater China Technology Semiconductors
+Company (Ticker) Rating (As Of) Price* (05/25/2026)             
+Charlie Chan
+ACM Research Inc (ACMR.O)                 O                     (03/07/2023)                   US$73.35
+Advanced Micro-Fabrication Equipment Inc (688012.SS)                 O                     (11/06/2023)                   Rmb485.30
+Advanced Wireless Semiconductor Co (8086.TWO)                 U                     (07/14/2025)                   NT$163.00
+Alchip Technologies Ltd (3661.TW)                 O                     (05/14/2021)                   NT$4,900.00
+ASE Technology Holding Co. Ltd. (3711.TW)                 O                     (09/15/2024)                   NT$617.00
+Cambricon Technology Corporation (688256.SS)                 O                     (04/27/2026)                   Rmb1,406.50
+Global Unichip Corp (3443.TW)                 O                     (07/27/2024)                   NT$5,310.00
+GlobalWafers Co Ltd (6488.TWO)                 E                     (05/19/2026)                   NT$788.00
+Gudeng Precision (3680.TWO)                 O                     (11/25/2025)                   NT$595.00
+Hua Hong Semiconductor Ltd (1347.HK)                 E                     (03/12/2026)                   HK$130.10
+Iluvatar CoreX Semiconductor Co., Ltd. (9903.HK)                 O                     (04/27/2026)                   HK$487.00
+King Yuan Electronics Co Ltd (2449.TW)                 O                     (03/03/2023)                   NT$317.00
+Maxscend Microelectronics Co Ltd (300782.SZ)                 U                     (01/11/2021)                   Rmb123.22
+MediaTek (2454.TW)                 O                     (11/28/2025)                   NT$4,245.00
+MetaX Integrated Circuits (688802.SS)                 E                     (04/27/2026)                   Rmb754.10
+Nanya Technology Corp. (2408.TW)                 E                     (03/20/2026)                   NT$296.00
+NAURA Technology Group Co Ltd (002371.SZ)                 O                     (11/06/2023)                   Rmb698.19
+OmniVision Integrated Circuits Group Inc (603501.SS)                 E                     (11/17/2025)                   Rmb108.94
+Phison Electronics Corp (8299.TWO)                 E                     (02/25/2026)                   NT$2,480.00
+SG Micro Corp. (300661.SZ)                 E                     (11/03/2025)                   Rmb118.60
+Silergy Corp. (6415.TW)                 U                     (05/19/2026)                   NT$618.00
+SMIC (0981.HK)                 O                     (10/21/2025)                   HK$79.85
+TSMC (2330.TW)                 O                     (02/07/2022)                   NT$2,310.00
+UMC (2303.TW)                 O                     (05/19/2026)                   NT$125.00
+Vanguard International Semiconductor (5347.TWO)                 E                     (01/14/2026)                   NT$168.50
+WIN Semiconductors Corp (3105.TWO)                 U                     (07/14/2025)                   NT$543.00
+--- PAGE 18 ---
+M
+ Idea
+18
+Daisy Dai, CFA
+ASMPT Ltd (0522.HK)                 O                     (07/24/2025)                   HK$184.60
+China Resources Microelectronics Limited (688396.SS)                 U                     (03/02/2026)                   Rmb66.20
+Elan Microelectronics Corp (2458.TW)                 O                     (10/03/2025)                   NT$163.50
+Empyrean Technology Co Ltd (301269.SZ)                 E                     (01/17/2025)                   Rmb125.04
+Hangzhou Silan Microelectronics Co. Ltd. (600460.SS)                 U                     (08/25/2025)                   Rmb34.19
+Innoscience (2577.HK)                 E                     (10/13/2025)                   HK$67.45
+JCET Group Co Ltd (600584.SS)                 E                     (01/16/2026)                   Rmb80.17
+Shanghai Fudan Microelectronics (1385.HK)                 O                     (03/07/2025)                   HK$37.60
+SICC Co Ltd (688234.SS)                 O                     (03/20/2026)                   Rmb160.31
+StarPower Semiconductor Ltd (603290.SS)                 E                     (05/14/2026)                   Rmb139.56
+Unigroup Guoxin Microelectronics Co Ltd (002049.SZ)                 U                     (01/10/2023)                   Rmb85.02
+Universal Scientific Ind. (Shanghai) (601231.SS)                 O                     (11/05/2025)                   Rmb42.20
+Yangjie Technology (300373.SZ)                 O                     (06/10/2022)                   Rmb95.24
+Daniel Yen, CFA
+AP Memory Technology Corp (6531.TW)                 O                     (07/11/2025)                   NT$1,055.00
+ASMedia Technology Inc (5269.TW)                 U                     (10/03/2025)                   NT$1,535.00
+Aspeed Technology (5274.TWO)                 O                     (06/09/2025)                   NT$17,725.00
+Egis Technology Inc (6462.TWO)                 E                     (01/28/2026)                   NT$155.00
+Espressif Systems (688018.SS)                 O                     (05/15/2023)                   Rmb186.11
+GigaDevice Semiconductor Beijing Inc (603986.SS)                 O                     (05/15/2025)                   Rmb515.60
+Macronix International Co Ltd (2337.TW)                 O                     (09/18/2025)                   NT$152.50
+Montage Technology Co Ltd (6809.HK)                 O                     (03/18/2026)                   HK$471.80
+Montage Technology Co Ltd (688008.SS)                 O                     (03/18/2026)                   Rmb284.08
+Novatek (3034.TW)                 U                     (02/04/2026)                   NT$489.00
+Nuvoton Technology Corporation (4919.TW)                 U                     (11/10/2025)                   NT$219.00
+Parade Technologies Ltd (4966.TWO)                 E                     (01/30/2026)                   NT$818.00
+Powerchip Semiconductor Manufacturing Co (6770.TW)                 O                     (10/27/2025)                   NT$67.60
+Realtek Semiconductor (2379.TW)                 E                     (01/30/2026)                   NT$583.00
+Shenzhen Goodix Technology Co Ltd (603160.SS)                 U                     (07/14/2025)                   Rmb67.96
+Winbond Electronics Corp (2344.TW)                 E                     (03/20/2026)                   NT$128.50
+WPG Holdings (3702.TW)                 O                     (03/16/2026)                   NT$123.50
+WT Microelectronics Co. Ltd. (3036.TW)                 O                     (01/27/2026)                   NT$301.50
+Duan Liu
+Dosilicon Co Ltd (688110.SS)                 U                     (09/06/2024)                   Rmb166.60
+Shenzhen Longsys Electronics Co Ltd (301308.SZ)                 E                     (02/25/2026)                   Rmb565.50
+Tiffany Yeh
+AllRing Tech Co. (6187.TWO)                 O                     (09/23/2025)                   NT$1,210.00
+FOCI Fiber Optic Communications Inc (3363.TWO)                 O                     (01/15/2025)                   NT$846.00
+Himax Technologies Inc (HIMX.O)                 E                     (02/04/2026)                   US$21.04
+Hon Precision (7769.TW)                 O                     (04/17/2026)                   NT$7,645.00
+MPI Corporation (6223.TWO)                 O                     (04/17/2026)                   NT$6,200.00
+Silicon Motion (SIMO.O)                 O                     (05/06/2024)                   US$276.14
+WinWay Technology Co Ltd (6515.TW)                 O                     (04/17/2026)                   NT$8,850.00
+Stock Ratings are subject to change. Please see latest research for each company.
+* Historical prices are not split adjusted.
+© 2026 Morgan Stanley

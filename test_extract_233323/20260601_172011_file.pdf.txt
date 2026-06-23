@@ -1,0 +1,1302 @@
+--- PAGE 1 ---
+GTC TAIPEI @ COMPUTEX 2026
+黃仁勳
+ GTC Taipei
+演講重點摘要與分析
+深度解構「
+AI 
+五層蛋糕架構」：
+全球三層產業鏈佈局與台美股投資戰略導覽
+發佈日期：
+2026 
+ 年
+ 6 
+月
+ 1 
+日
+全球財經早知道
+ ‧ 
+操盤贏家筆記整理
+FOR PROFESSIONAL INVESTORS ONLY ‧ 
+ 內部研究資料
+掃碼訂閱最新財經消息
+--- PAGE 2 ---
+核心宣言：
+AI 
+邁入產出
+ GDP 
+ 與利潤的時代
+宣告「有用
+ AI
+」時代正式到來，由生成式
+ AI
+、推理模型與自主代理共同驅動
+"AI is now a profit generator. AI is now a GDP 
+generator."
+「
+AI 
+現在是利潤引擎，是
+ GDP 
+ 引擎。」
+—
+黃仁勳
+ Jensen Huang, GTC Taipei @ COMPUTEX 2026
+生成式
+ AI
+超越單純的對話互動，轉向多模態內容產出與物理
+世界模擬，為創意與設計產業帶來直接的生產力躍
+升。
+Generative AI
+推理模型
+具備深度邏輯分析與複雜問題解決能力的推理引擎
+，能理解科學、金融與物理定律，實現高價值的決
+策支援。
+Reasoning Models
+自主代理
+被定義為「未來十年的應用模式」，
+AI 
+代理能獨立
+執行工作流，從根本上改變企業營運與軟體服務的
+價值鏈。
+Autonomous Agents
+核心邏輯：
+ 運算能力即收入
+ (Compute is Revenue)
+ 關鍵要素：
+ 能源供應決定
+ AI 
+產出上限
+ 轉型目標：
+ 從研發實驗室走向大規模商業變現
+掃碼訂閱最新財經消息
+資料來源：
+NVIDIA GTC Taipei @ COMPUTEX 2026 
+ 演講內容整理
+*
+本報告僅供參考，不構成任何投資建議，投資人應獨立判斷風險。
+--- PAGE 3 ---
+AI 
+五層蛋糕架構：產業全景視圖
+定義從底層電力供應到頂層價值產出的完整發展藍圖
+第五層：應用
+(Applications)
+第四層：模型
+ (Models)
+第三層：基礎設施
+ (Infra)
+第二層：晶片
+ (Chips)
+第一層：能源
+ (Energy)
+架構層次
+ 核心功能與產業價值說明
+應用
+ (Applications)
+LAYER 5 
+-
+ TOP
+產生實際經濟價值，包含藥物研發、機器人控制、自駕車平台與企業自主
+代理服務。
+模型
+ (Models)
+LAYER 4
+AI 
+的大腦，具備理解語言、生物、化學、物理與金融等多模態資訊的推論
+能力。
+基礎設施
+ (Infra)
+LAYER 3
+AI 
+工廠
+ (AI Factory)
+ ，涵蓋土地、配電系統、液冷散熱、機房、網通設備與
+雲端平台。
+晶片
+ (Chips)
+LAYER 2
+將電力轉換為運算能力，核心包含
+GPU
+ 、
+HBM 
+高頻寬記憶體、以及高速互
+連技術。
+能源
+ (Energy)
+LAYER 1 
+-
+ BOTTOM
+AI 
+智慧產出的根本基礎。黃仁勳強調：「電力供應決定了所有
+AI 
+算力的產
+出上限」。
+核心觀點：
+AI 
+產業已完成從
+「硬體組裝」
+向
+「端到端系統堆疊」
+的轉型，能源效率將成為未來競爭
+力關鍵。
+掃碼訂閱最新財經消息
+資料來源：
+NVIDIA GTC Taipei @ COMPUTEX 2026 
+ 演講內容整理
+*
+本報告僅供參考，不構成任何投資建議，投資人應獨立判斷風險。
+--- PAGE 4 ---
+重大發布：
+Vera Rubin 
+ 平台正式全面量產
+史上最大規模產品發布：聚焦
+ 10 
+ 倍效能提升與台灣供應鏈戰略價值
+推論每瓦效能
+10
+ 倍提升
+每
+ Token 
+ 成本
+10
+ 倍降低
+Vera Rubin 
+ 五大架構套件
+核心組件
+ 規格與關鍵效能指標
+NVL72
+Rubin 
+ 系統
+搭載
+ 72 
+顆
+ Rubin GPU + 36 
+ 顆
+ Vera CPU
+ ，支援超大規模
+推論
+Vera CPU
+處理器
+88 
+ 核心、
+1.2TB/s LPDDR5X 
+ 頻寬、
+3.6TB/s 
+ 晶片上
+Fabric
+Groq 3 LPX
+推論加速
+ 專為極速
+ LLM 
+推論優化，大幅降低延遲
+Spectrum
+ -
+6
+乙太網路
+ SPX Ethernet
+ ，支援全球首款
+ 200Gb/s SerDes 
+ 交換器
+BlueField
+ -
+4
+DPU
+ STX 
+版本，整合先進儲存安全與資料處理功能
+台灣有史以來最大規模發布
+台灣夥伴數量
+150+
+全球生產工廠
+350+
+零件總數
+~200 
+ 萬個
+供應鏈規模為前代
+ Grace Blackwell 
+ 的兩倍。黃仁勳強調：「
+Vera Rubin 
+ 是台灣
+重新發明電腦產業的里程碑。」
+Spectrum
+ -
+X Ethernet Photonics
+全球首款量產
+ 200Gb/s SerDes 
+ 乙太網路交換器
+整合共封裝光學
+ (CPO) 
+ 技術，顯著降低傳輸能耗
+首批採用者：
+CoreWeave, Lambda, Oracle Cloud
+與台積電、日月光密切合作先進封裝與光電整合
+掃碼訂閱最新財經消息
+資料來源：
+NVIDIA GTC Taipei @ COMPUTEX 2026 
+ 演講內容整理
+*
+本報告僅供參考，不構成任何投資建議，投資人應獨立判斷風險。
+--- PAGE 5 ---
+重新定義
+ PC
+ ：
+RTX Spark AI PC 
+ 晶片重磅登場
+詳述與聯發科合作研發的
+ RTX Spark 
+ 效能，以及
+ Dell
+ 、
+ASUS 
+等品牌如何透過此晶片推動
+ Windows 
+ 生態系變革。
+NEXT
+-
+GEN AI PC ARCHITECTURE
+NVIDIA RTX Spark (N1 / N1X)
+聯發科
+ (MediaTek) 
+ 共同研發
+ ‧ 
+整合式
+ SoC 
+ 架構
+1
+ Petaflop AI Performance
+核心技術規格
+ (Technical Specifications)
+CPU 
+架構
+20 
+ 核心
+ Grace CPU (Arm
+ -
+based)
+GPU 
+架構
+NVIDIA Blackwell RTX GPU
+高速互連
+NVLink Chip
+ -
+to
+ -
+Chip 
+ 連結
+軟體相容性
+100% CUDA 
+ 完整支援
+效能突破：
+為
+ Windows 
+ 筆記型電腦帶來前所未有的本地端
+ AI 
+運算力，大幅超越現有
+ NPU 
+ 方案
+。
+生態系與合作夥伴
+Dell
+ Lenovo
+ ASUS
+ MSI
+Adobe 
+ 重構優化：
+Photoshop 
+ 與
+ Premiere 
+ 專屬優化，
+AI 
+圖形處理速度提升
+ 2 
+倍
+。
+DESKTOP SUPERCOMPUTER
+ NVIDIA DGX Station for Windows
+全球首款桌面級
+ AI 
+超級電腦，搭載多顆
+ RTX Spark 
+ 晶片，支援本地端
+執行兆參數
+ (1 Trillion Parameters) 
+ 大型模型。
+ 1,000B Parameters Support
+掃碼訂閱最新財經消息
+資料來源：
+NVIDIA GTC Taipei @ COMPUTEX 2026 
+ 演講內容整理
+*
+本報告僅供參考，不構成任何投資建議，投資人應獨立判斷風險。
+--- PAGE 6 ---
+未來十年應用模式：
+NVIDIA Agent Toolkit
+剖析自主代理框架與企業級執行環境，開啟
+ AI 
+代理創造全新運算市場之門
+自主代理被定義為「未來十年的應用模式」
+黃仁勳宣告
+ AI 
+代理將創造全新
+ CPU 
+市場。由大型語言模型、代理框架
+ (Harness) 
+ 與企業執行環境構成三位一體的應用生態。
+Nemotron 3 Ultra
+核心架構
+550B 
+ 參數混合專家模型
+ (MoE)
+效能表現
+推論速度提升
+ 5 
+倍
+成本優勢
+比主流開源模型降低約
+ 30%
+企業級推論優化
+NVIDIA OpenShell
+安全沙盒
+隔離執行環境，防止代理行為失控
+政策執行
+內建企業級合規與政策治理框架
+跨平台運行
+支援主流企業平台與混合雲部署
+治理與安全性核心
+NVIDIA Agent Skills
+能力整合
+深度整合
+ CUDA
+-
+X 
+高效能程式庫
+分發通路
+透過
+ Claude Code 
+ 與
+ Hermes Skills Hub 
+ 提供
+開發工具
+提供
+ Agent Harness 
+ 代理開發套件
+生態系與市場擴展
+贏家觀點
+：
+ 自主代理將由「對話型
+ AI
+」轉向「行動型
+ AI
+」。
+NVIDIA 
+透過
+ Nemotron 
+ 提供大腦，
+OpenShell 
+ 提供防護罩，
+Agent Skills 
+ 提供工具箱，
+ 此完整框架將顯著降低企業導入
+ AI 
+代
+理的技術門檻，並推動
+ CPU 
+ 市場從傳統運算轉向代理推論協作
+。
+掃碼訂閱最新財經消息
+資料來源：
+NVIDIA GTC Taipei @ COMPUTEX 2026 
+ 演講內容整理
+*
+本報告僅供參考，不構成任何投資建議，投資人應獨立判斷風險。
+--- PAGE 7 ---
+物理世界
+ AI 
+與機器人：
+Cosmos 3 
+ 與
+ Isaac GR00T
+全模態物理模型結合開放式人形機器人參考設計，為自動駕駛與實體
+ AI 
+奠定基礎推理能力
+NVIDIA Cosmos 3
+物理世界
+ AI 
+模型
+ ／
+ Omnimodel 
+ 全模態架構
+全模態（
+Omnimodel
+ ）架構
+，採用混合變換器（
+Mixture
+ -
+of
+ -
+Transformers
+ ）設計，整合多感知模態資訊
+能從
+任意視角
+理解與模擬物理世界，具備空間感知與場景重建能力
+從遙操作、模擬與
+重投影影片
+學習物理規律，無需大量標注資料
+為自動駕駛與機器人提供
+底層物理推理引擎
+，可進行反事實場景預測
+自動駕駛
+ 機器人控制
+ 工業數位孿生
+ 物理場景生成
+NVIDIA Isaac GR00T 
+ 參考人形機器人
+全球首款開放式人形機器人參考設計
+ ／
+ Jetson Thor 
+ 平台
+全球首款開放式人形機器人參考設計
+，定義硬體與軟體開放標準
+基於
+ NVIDIA Jetson Thor
+ 平台：
+2,070 FP4 TFLOPS
+ ，運算力較
+ Orin 
+ 提升
+ 7.5 
+ 倍
+，能效提升
+ 3.5 
+ 倍
+搭配
+ Isaac GR00T 
+ 框架
+，支援遙操作示範學習、強化學習與模擬訓練
+開放標準促進機器人生態系碎片化整合，降低開發者進入門檻
+Jetson Thor
+ Isaac GR00T
+ COMPUTEX 
+金獎
+ 開放標準
+核心應用場景
+DRIVE Hyperion
+Alpamayo 2 Super 
+ 開放推理模型，
+搭配
+ AlpaGym 
+ 強化學習與
+OmniDreams 
+ 場景生成
+工業製造
+數位孿生工廠模擬，
+Cosmos 3 
+ 物理
+推理支援生產流程優化與品質預測
+人形機器人
+GR00T 
+ 框架從遙操作示範學習，加
+速機器人技能獲取，降低訓練資料需
+求
+科學模擬
+物理世界模型支援藥物研發、材料科
+學與氣候模擬等科學計算場景
+COMPUTEX 2026 
+ 金獎：
+NVIDIA Jetson Thor
+2,070 FP4 TFLOPS 
+ ／
+ 運算力
+ 7.5
+ ×
+ ／
+ 能效
+ 3.5
+ ×（
+ vs. Jetson Orin
+ ）
+—
+成為實體
+ AI 
+邊緣部署的標竿平台
+掃碼訂閱最新財經消息
+資料來源：
+NVIDIA GTC Taipei @ COMPUTEX 2026 
+ 演講內容整理
+*
+本報告僅供參考，不構成任何投資建議，投資人應獨立判斷風險。
+--- PAGE 8 ---
+產業鏈上游分析：
+AI 
+晶片與半導體供應鏈
+聚焦半導體上游設備與
+ IC 
+設計之戰略價值
+GPU 
+ 設計龍頭
+NVIDIA Vera Rubin
+台灣
+ 150+ 
+ 夥伴、全球
+ 350+ 
+ 工廠共同生產，史上規模最大發布
+。
+記憶體成本激增
++435% HBM 
+ 佔比
+Vera Rubin BOM 
+ 成本中，記憶體佔比從
+ 9% 
+ 跳升至
+ 26%
+ 。
+光通訊革命
+200Gb/s CPO
+Spectrum
+ -
+X 
+整合共封裝光學，為全球首款量產高性能網路交
+換器。
+產業類別
+ 美股標的
+ 台股標的
+ 演講關聯與關鍵數據
+GPU 
+ 設計
+ NVIDIA (NVDA)
+ —
+ Vera Rubin 
+ 核心設計；
+RTX Spark 
+ 晶片架構核心。
+晶圓代工
+ —
+ 台積電
+ (2330)
+ Vera Rubin 
+ 唯一代工夥伴；先進製程需求因
+ AI 
+推論需求爆發。
+HBM 
+記憶體
+ SK Hynix (HXAIY)
+ Micron (MU)
+ 南亞科
+ (2408)
+ Vera Rubin NVL72 
+ 需求帶動；記憶體成本佔比顯著提升。
+先進封裝
+ —
+ 台積電
+ (2330)
+ 日月光
+ (3711)
+ CoWoS 
+ 技術支撐
+ RTX Spark (CPU+GPU) 
+ 異質整合封裝。
+CPO 
+ 光通訊
+Coherent (COHR)
+Lumentum (LITE)
+訊芯
+ (6451)
+ 波若威
+ (3163)
+ Spectrum
+ -
+X CPO 
+量產受益者；解決
+ AI 
+工廠高速傳輸瓶頸。
+投資觀察重點：
+Vera Rubin 
+ 產能釋放與
+ HBM 
+供應鏈彈性
+掃碼訂閱最新財經消息
+資料來源：
+NVIDIA GTC Taipei @ COMPUTEX 2026 
+ 演講內容整理
+*
+本報告僅供參考，不構成任何投資建議，投資人應獨立判斷風險。
+--- PAGE 9 ---
+產業鏈上游關鍵標的：台美股投資觀察
+聚焦
+ Vera Rubin 
+ 與
+ RTX Spark 
+ 核心供應鏈之戰略配置
+核心運算與
+ IC 
+設計
+聯發科
+ MediaTek
+ 2454.TW
+RTX Spark 
+ 核心開發夥伴，整合
+ Blackwell GPU 
+ 與
+ 20 
+ 核
+ Grace CPU
+ 。
+AI PC 
+效能
+ 1 Petaflop
+智原
+ Faraday
+ 3035.TW
+受益於
+ DRIVE Hyperion Halos OS 
+ 架構下的
+ ASIC 
+客製化需求。
+先進封裝與
+ ABF 
+基板
+日月光投控
+ ASE
+ 3711.TW
+Vera Rubin 
+ 與
+ RTX Spark 
+ 異質整合封裝主要合作夥伴。
+欣興
+ Unimicron
+ 3037.TW
+Rubin 
+ 架構零件數倍增，推升大面積、高層數
+ ABF 
+基板需求。
+PCB 
+ 成本成長
+ 233%
+半導體製程設備
+ (US)
+ASML
+ ASML.US
+先進製程核心設備供應商，支撐台積電
+2nm/3nm 
+ 量產
+ Rubin 
+ 晶片。
+應用材料
+ AMAT
+ AMAT.US
+受惠於全球
+ 350+ 
+ 工廠同步生產
+ Vera Rubin 
+ 的產線擴張需求。
+關鍵材料與
+ HBM 
+記憶體
+美光
+ Micron
+ MU.US
+Vera Rubin NVL72 
+ 記憶體需求暴增，
+BOM 
+成本佔比跳升至
+ 26%
+ 。
+HBM 
+需求成長
+ 435%
+台光電
+ / 
+聯茂
+ 2383 / 6213
+高階
+ CCL 
+材料供應商，受惠於
+ Spectrum
+ -
+X 200G 
+高速傳輸需求。
+投資分析觀點：
+Vera Rubin 
+ 涉及近
+ 200 
+ 萬個零件，台灣供應鏈夥伴超過
+ 150 
+ 家，上游半導體族群將受惠於「異質整合」與「精密製造」之高度門檻。
+掃碼訂閱最新財經消息
+資料來源：
+NVIDIA GTC Taipei @ COMPUTEX 2026 
+ 演講內容整理
+*
+本報告僅供參考，不構成任何投資建議，投資人應獨立判斷風險。
+--- PAGE 10 ---
+產業鏈中游分析：
+AI 
+系統整合與基礎設施
+聚焦
+ Vera Rubin NVL72 
+ 全球代工版圖與
+ AI 
+工廠節能散熱關鍵技術
+AI 
+伺服器與系統組裝
+美股標的
+ US STOCKS
+Super Micro (SMCI)
+台股標的
+ TW STOCKS
+廣達
+ (2382)
+ 鴻海
+ (2317)
+ 緯穎
+ (6669)
+緯創
+ (3231)
+ 英業達
+ (2356)
+競爭優勢
+Vera Rubin NVL72 
+ 核心代工夥伴，具備高度系統
+整合能力，受惠於
+ DGX Station 
+ 製造外包趨勢。
+熱能管理與電力系統
+美股標的
+ US STOCKS
+Vertiv (VRT)
+ Eaton (ETN)
+台股標的
+ TW STOCKS
+台達電
+ (2308)
+ 奇鋐
+ (3017)
+ 雙鴻
+ (3217)
+競爭優勢
+Vera Rubin 100% 
+ 液冷化，冷卻系統產值成長
+ 10 
+倍以上；台達電主導
+ AI 
+工廠
+ 48V/54V 
+ 電源規範。
+網路設備與雲端工廠
+美股標的
+ US STOCKS
+Arista (ANET)
+ CoreWeave
+ Oracle (ORCL)
+台股標的
+ TW STOCKS
+智邦
+ (2345)
+ 中磊
+ (5388)
+ 中華電信
+ (2412)
+競爭優勢
+Spectrum
+ -
+X 200G SerDes 
+ 交換器首批出貨夥伴
+；
+DSX 
+框架支援雲端原生運算，推動光通訊升級
+。
+分析師觀點：
+ 隨著
+ Vera Rubin 
+ 平台功耗大幅上升，
+液冷散熱
+ (Vertiv, 
+ 奇鋐
+)
+ 與
+ 高階電源管理
+ (
+台達電
+)
+ 的技術門檻將成為中游利潤分化的關鍵，其毛利表現預期優於純系統組裝業務。
+掃碼訂閱最新財經消息
+資料來源：
+NVIDIA GTC Taipei @ COMPUTEX 2026 
+ 演講內容整理
+*
+本報告僅供參考，不構成任何投資建議，投資人應獨立判斷風險。
+--- PAGE 11 ---
+產業鏈中游關鍵標的：
+AI 
+工廠與雲端服務
+分析電力、散熱及
+ CSP 
+在
+ AI 
+工廠架構下的成長潛力與技術部署
+電力與散熱：基礎設施核心
+台達電
+ 2308.TW
+AI 
+工廠電力基礎設施領導者。提供從高壓配電至伺服器電源的全方位方案。
+●
+ 蛋糕第一層（
+Energy
+ ）關鍵標的
+奇鋐
+ 3017.TW
+Vera Rubin 100% 
+ 液冷系統主要供應商。受惠於
+ Rubin NVL72 
+ 散熱需求大幅提升。
+●
+ 液冷散熱滲透率隨
+ Rubin 
+ 量產爆發
+Vertiv
+ VRT.US
+全球資料中心電源與散熱管理龍頭。與
+NVIDIA 
+深度合作定義
+ AI 
+工廠規格。
+●
+ 全球
+ AI 
+資料中心擴建最大受益者
+雲端服務與
+ AI 
+工廠架構
+超大型雲端
+ (CSP)
+ MSFT / ORCL / AMZN
+Azure 
+ 率先部署
+ Vera Rubin
+ ；
+Oracle Cloud 
+ 整合
+ Spectrum
+ -
+X 
+網路。轉向「運算即
+收入」模式。
+●
+ AI 
+基礎設施之主要資本支出來源
+CoreWeave
+ CRWV.US (Pre
+ -
+IPO)
+AI 
+原生雲端先驅，首批採用
+ DSX 
+框架。專注於
+ NVIDIA 
+全堆疊運算資源出租。
+●
+ 專業
+ AI 
+雲端服務標竿
+NVIDIA DSX
+：
+AI 
+工廠專屬框架
+DSX MaxLPS 
+ 技術可在相同電力預算下，多提供
+ 40% GPU
+ 算力。
+DSX OS 
+採開源
+策略，旨在統一全球
+ AI 
+工廠軟體棧。
+ 核心價值：提升算力密度與電力能效
+贏家觀點
+：
+AI 
+工廠不再僅是資料中心，而是「智慧產出引擎」。電力（台達電）與散熱（奇鋐、
+Vertiv
+ ）具備極高護城河，是中游最具防禦性且具備高成長潛力的標的。
+掃碼訂閱最新財經消息
+資料來源：
+NVIDIA GTC Taipei @ COMPUTEX 2026 
+ 演講內容整理
+*
+本報告僅供參考，不構成任何投資建議，投資人應獨立判斷風險。
+--- PAGE 12 ---
+產業鏈下游分析：
+AI 
+應用場景與軟體生態
+探討
+ AI PC 
+消費端、內容創作、自動駕駛與企業
+ AaaS 
+ 之落地價值
+內容創作與消費端
+Adobe 
+ 深度整合
+Photoshop 
+ 與
+ Premiere 
+ 重新架構支援
+ RTX Spark
+ ，
+AI 
+處理速
+度提升
+ 2 
+倍。
+RTX Spark 
+ 生態系
+與聯發科合作，為筆電帶來
+ 1 petaflop 
+ 效能，
+Dell
+ 、
+Lenovo
+、
+ASUS 
+已啟動製造。
+企業
+ AaaS 
+ 與自主代理
+Agent Toolkit 
+ 框架
+定義未來十年應用模式，透過
+ Nemotron 3 Ultra 
+ 提供高效率
+、低成本之代理服務。
+企業級治理
+ (OpenShell)
+提供安全沙盒與政策執行框架，加速
+ AI 
+代理於企業核心業務
+之部署。
+自動駕駛與實體
+ AI
+DRIVE Hyperion 
+ 平台
+整合
+ Halos OS
+ ，
+Alpamayo 2 Super 
+ 成為全球自駕標準推理模
+型。
+Isaac GR00T 
+ 人形機器人
+首款開放式參考設計，基於
+ Jetson Thor 
+ 平台，定義機器人軟
+硬體標準。
+下游應用場景關鍵投資標的
+應用領域
+ 美股標的
+ (US)
+ 台股標的
+ (TW)
+ 演講關聯重點
+AI PC / 
+內容創作
+ADBE (Adobe)
+ MSFT (Microsoft)
+ DELL (Dell)
+ 2357 
+ 華碩
+ 2353 
+ 宏碁
+ 2377 
+ 微星
+ RTX Spark 
+ 生態
+企業
+ AaaS / 
+ 代理
+CRM (Salesforce)
+ NOW (ServiceNow)
+ MSFT (Microsoft)
+ 2453 
+ 凌群
+ 6214 
+ 精誠
+ Agent Toolkit
+自駕與機器人
+TSLA (Tesla)
+ GOOGL (Waymo)
+ MBLY (Mobileye)
+ 2049 
+ 上銀
+ 2308 
+ 台達電
+ 2454 
+ 聯發科
+ Cosmos 3 / GR00T
+掃碼訂閱最新財經消息
+資料來源：
+NVIDIA GTC Taipei @ COMPUTEX 2026 
+ 演講內容整理
+*
+本報告僅供參考，不構成任何投資建議，投資人應獨立判斷風險。
+--- PAGE 13 ---
+台灣生態系：重新發明電腦產業的關鍵基地
+戰略夥伴深化合作，亞太研發中心「
+Constellation
+ 」落腳台北
+全球最強供應鏈同盟
+高峰對話：重新定義運算架構
+與台積電魏哲家、廣達林百里等
+ 30 
+多位
+ CEO 
+共進晚宴，感謝台灣夥伴協力「
+重新發明電腦產業」。
+Vera Rubin 
+ 核心製造基地
+包含台積電、聯發科等
+ 150+ 
+ 台灣關鍵夥伴，共同驅動史上最大規模產品發布
+，零組件需求量達
+ Blackwell 
+ 兩倍。
+AI PC 
+策略聯盟
+與聯發科深度整合
+ RTX Spark 
+ 晶片，協同
+ ASUS
+、
+MSI
+、
+GIGABYTE 
+等品牌廠
+重構
+ Windows 
+ 生態系。
+「台灣是
+ AI 
+革命的震央，沒有台灣的供應鏈，就沒有今天的
+ NVIDIA
+。」
+NVIDIA Constellation 
+ 研發中心
+選址台北北投士林科技園區
+ (BSTP)
+定位為亞太區最大
+ AI 
+研發中心，緊鄰台灣硬體聚落，加速硬軟體協同開發
+(Co
+ -
+Design)
+ 。
+規模與時程規劃
+可容納
+ 4,000 
+ 名員工
+ 2026 
+ 年底動工
+ 2030 
+ 年正式啟用
+基礎設施訴求：電力即糧食
+黃仁勳向政府喊話：
+AI 
+員工需要大量的電力供應。穩定電力是維持研發中心競
+爭力的首要前提。
+「
+AI 
+員工如同人類需要米飯，需要電力；台灣需要更大量的電力來支持
+ AI 
+工
+廠。」
+STRATEGY INSIGHT
+ NVIDIA 
+透過
+ Constellation
+ 中心將台灣地位從「代工重鎮」提升至「
+全球
+ AI 
+研發心臟
+」
+ 強化台美科技戰略同盟
+掃碼訂閱最新財經消息
+資料來源：
+NVIDIA GTC Taipei @ COMPUTEX 2026 
+ 演講內容整理
+*
+本報告僅供參考，不構成任何投資建議，投資人應獨立判斷風險。
+--- PAGE 14 ---
+市場影響數據：效能躍升與成本優化指標
+彙整
+ Vera Rubin 
+ 與
+ RTX Spark 
+ 關鍵數據，揭示
+ AI 
+規模化之經濟效益
+Vera Rubin 
+ 每瓦效能
+10
+ 倍提升
+相較於
+ Grace Blackwell 
+ 架構之推論效率
+每
+ Token 
+ 推論成本
+10
+ 倍降低
+加速生成式
+ AI 
+大規模商業應用落地
+RTX Spark AI 
+ 效能
+1.0
+ Petaflop
+Windows 
+ 筆記型電腦首度實現之運算量級
+邊緣運算與軟體架構效能指標
+Jetson Thor 
+ 運算力
+ (vs Orin)
+ 7.5x 
+ 提升
+Jetson Thor 
+ 能效比
+ (vs Orin)
+ 3.5x 
+ 提升
+Nemotron 3 Ultra 
+ 推論速度
+ 5x 
+ 提升
+Nemotron 3 Ultra 
+ 模型成本
+ ~30% 
+ 降低
+VERA RUBIN BOM 
+ 結構變化
++435%
+ 記憶體價值成長
+HBM 
+記憶體成本佔比從
+ 9% 
+ 躍升至
+ 26%
+反映
+ AI 
+硬體架構由運算核心向儲存頻寬轉移
+台灣供應鏈夥伴數
+ 150+ 
+ 企業
+ 全球
+ Vera Rubin 
+ 生產工廠
+ 350+ 
+ 座
+ Vera Rubin 
+ 零件總數
+ 近
+ 2,000,000 
+ 個
+掃碼訂閱最新財經消息
+資料來源：
+NVIDIA GTC Taipei @ COMPUTEX 2026 
+ 演講內容整理
+*
+本報告僅供參考，不構成任何投資建議，投資人應獨立判斷風險。
+--- PAGE 15 ---
+總結：運算力即收入與投資展望
+掌握「運算力即收入」核心邏輯，佈局
+ AI 
+代理與物理
+ AI 
+長線趨勢
+演講核心金句
+「
+AI 
+現在是利潤引擎，是
+ GDP 
+ 引擎。」
+—
+強調
+ AI 
+從技術實驗轉向實際經濟產出
+「運算能力即收入
+ (Compute is 
+revenue)
+ 。」
+—
+基礎設施投入直接轉化為企業與國家財富
+「自主代理是未來十年的應用模式。」
+—
+定義從
+ LLM 
+到自主行動的技術典範轉移
+產業長期趨勢
+自主代理
+ (AI Agents)
+從簡單對話轉向複雜任務自動化，帶動企業級
+軟體架構重組與推論算力需求爆發。
+物理世界
+ AI (Physical AI)
+Cosmos 3 
+ 與
+ Isaac GR00T 
+ 將
+ AI 
+引入實體世界
+，人形機器人與自動駕駛成為下一個兆級市場
+。
+能源與主權
+ AI
+電力供應成為
+ AI 
+發展的物理上限。國家級
+ AI 
+工廠建設將推動區域化供應鏈與基礎設施需求
+。
+贏家
+投資配置
+上游：核心硬體與封裝
+聚焦
+ Vera Rubin 
+ 供應鏈、台積電
+ CoWoS 
+ 產能及
+ HBM3e/4 
+ 記
+憶體漲價效益。
+標的：
+NVDA, TSMC, SK Hynix, 
+ 聯發科
+中游：基礎設施與散熱
+Vera Rubin 100% 
+ 液冷化推動散熱產業升級，
+AI 
+工廠電力設備
+需求穩健增長。
+標的：
+Vertiv, 
+ 鴻海
+, 
+廣達
+, 
+奇鋐
+, 
+台達電
+下游：應用與
+ PC 
+換機潮
+RTX Spark 
+ 推動
+ Windows AI PC 
+ 換機與企業級
+ AaaS 
+ 代理工具
+部署。
+標的：
+MSFT, ADBE, Dell, ASUS, 
+ 技嘉
+資料來源：
+NVIDIA GTC Taipei @ COMPUTEX 2026 
+ 演講內容整理
+*
+本報告僅供參考，不構成任何投資建議，投資人應獨立判斷風險。
+掃碼訂閱最新財經消息

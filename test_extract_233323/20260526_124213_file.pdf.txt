@@ -1,0 +1,406 @@
+--- PAGE 1 ---
+ 
+See important disclosures, including any required research certifications, beginning on page 3 
+ 
+ 
+Taiwan Information Technology 
+ 
+ 
+Background: Ta Liang Technology is a PCB routing and drilling machine 
+maker serving PCB manufacturers, with high-end Charge-Coupled Devices 
+(CCDs) commanding more than 2x the ASP of regular machines. The 
+company operates production facilities in Taoyuan, Lianshui, and Nanjing, 
+with a combined monthly capacity of c.300 units. CCDs are primarily 
+adopted for back-drilling, though through-hole precision demand is 
+increasingly emerging as an incremental growth driver. Ta Liang is also 
+launching a patent-protected PCB inner layer thickness metrology (TM) 
+machine to complement CCDs at an ideal TM:CCD ratio of 1:8, while 
+additionally serving the semiconductor industry with metrology, AOI, and 
+automation solutions. 
+ 
+Highlights: Ta Liang and Schmoll (not listed, Germany) are the only 
+machine makers globally owning in-house controllers, creating a strong 
+technology moat in the CCD market. Ta Liang continues to gain share from 
+Schmoll through competitive pricing, solid brand recognition among PCB 
+makers, and favourable domestic policy tailwinds supporting China-made 
+equipment. In standard drilling and routing, Chinese competitors Vega CNC 
+(not listed) and Hans Laser (002008 CH, NR) hold significantly larger 
+capacity, though the competitive landscape in this segment has remained 
+relatively stable. The patent-protected TM machine, which bundles 
+naturally with CCDs, provides an additional lever to deepen customer 
+relationships and reinforce share gains in the high-end segment. 
+ 
+Looking ahead, we see multiple growth catalysts supporting Ta Liang's 
+growth trajectory. Demand for CCDs is expanding beyond back-drilling into 
+through-hole processes where precision requirements are increasing, while 
+the TM machine serves as a natural bundle driver to further accelerate 
+CCD adoption and deepen wallet share per customer. CCDs carry high 
+ASPs and deliver more than double the margins of regular machines, 
+driving a favourable product mix shift alongside steady growth in regular 
+machine demand underpinned by PCB makers’ expanding capex cycle. 
+Reflecting strong commercial momentum, Ta Liang has secured orders at 
+full capacity through 2026, with near-term upside from outsourced capacity 
+additions of c.50 incremental units for regular machines and a potential 
+expansion from the current single working shift to a maximum of three 
+shifts in Nan Jing Plant. 
+ 
+Valuation: The stock is trading at 108x PER and 23x PBR for 2025 (vs. its 
+PBR range of 1-10x prior to 2026), reflecting the market’s recognition of Ta 
+Liang’s high-end product transition and earnings upside potential from 
+CCDs and TM machine. 
+ 
+ 
+25 May 2026 
+ 
+ 
+ 
+   
+ 
+ 
+  
+ 
+ 
+  
+  
+ 
+ 
+High-precision moat in PCB machines 
+ 
+ 
+➢ Sole Chinese PCB machine maker with an in-house CCD controller 
+➢ Capacity fully booked through 2026 
+➢ TM machine bundles drive deeper wallet share from customers  
+   
+ 
+ Share price performance 
+ 
+ 
+ 
+ 
+ 
+ 
+Source: FactSet, Daiwa forecasts 
+TaLiangTechnology(3167TT)
+Targetprice:n.a.
+Shareprice(22May):TWD831.00| Up/downside:-
+ShengCheng
+(886)287586253
+sheng.cheng@daiwacm-cathay.com.tw
+AllanWang
+(886)287586249
+allan.wang@daiwacm-cathay.com.tw
+May-25 Aug-25 Nov-25 Feb-26 May-26
+0
+225
+450
+675
+900
+50
+188
+325
+463
+600
+Ta Liang (LHS)Relative to TWSE Index (RHS)
+(TWD) (%)
+12-monthrange 85.50-861.00
+Marketcap(USDbn) 2.34
+3mavgdailyturnover(USDm) 48.80
+--- PAGE 2 ---
+ 
+2 
+ 
+ Ta Liang Technology (3167 TT): 25 May 2026 
+Ta Liang: quarterly and annual P&L statement 
+  2024 2025  2022 2023 2024 2025 
+(TWDm) 1Q 2Q 3Q 4Q 1Q 2Q 3Q 4Q          
+Net revenue 399 490 721 989 844 1,271 1,415 1,549  2,370 1,292 2,599 5,078 
+COGS -332 -350 -496 -670 -555 -777 -861 -897  -1,774 -965 -1,849 -3,089 
+Gross profit 67 140 225 319 289 494 554 652  596 327 751 1,989 
+Operating expenses -124 -131 -178 -246 -193 -247 -263 -370  -489 -373 -679 -1,073 
+Operating profit -57 9 47 74 96 247 291 282  107 -46 72 916 
+Non-operating profit 36 14 5 21 22 -4 5 31  257 64 77 54 
+Pre-tax profit -21 23 52 94 119 243 296 313  363 18 149 971 
+Income taxes 5 3 -9 -23 -29 -68 -81 -77  -50 -5 -24 -255 
+Net profit -16 26 43 72 90 175 215 236  313 13 124 716 
+Net EPS (TWD) -0.19 0.31 0.52 0.81 1.02 1.98 2.43 2.67  3.91 0.16 1.41 8.11               
+              
+Operating Ratios              
+Gross margin 16.8% 28.5% 31.2% 32.3% 34.3% 38.9% 39.1% 42.1%  25.1% 25.3% 28.9% 39.2% 
+Operating margin -14.4% 1.7% 6.6% 7.4% 11.4% 19.4% 20.6% 18.2%  4.5% -3.6% 2.8% 18.0% 
+Pre-tax margin -5.3% 4.7% 7.3% 9.5% 14.1% 19.1% 20.9% 20.2%  15.3% 1.4% 5.7% 19.1% 
+Net margin -4.0% 5.2% 6.0% 7.2% 10.7% 13.8% 15.2% 15.2%  13.2% 1.0% 4.8% 14.1%               
+              
+YoY (%)              
+Net revenue 55% 91% 134% 110% 112% 159% 96% 57%  -47% -45% 101% 95% 
+Gross profit 106% 117% 186% 110% 333% 253% 146% 104%  -48% -45% 129% 165% 
+Operating profit 68% -143% -352% 177% - 2789% 513% 284%  -81% -143% -256% 1171% 
+Pre-tax profit -24% 84% 726% 248% - 956% 464% 232%  -36% -95% 726% 553% 
+Net profit -30% 337% 367% 245% - 585% 396% 230%  -29% -96% 870% 476%               
+              
+QoQ (%)              
+Net revenue -15% 23% 47% 37% -15% 51% 11% 9%      
+Gross profit -56% 109% 61% 42% -9% 71% 12% 18%      
+Operating profit - - 455% 55% 31% 156% 18% -3%      
+Pre-tax profit - - 128% 80% 26% 105% 22% 6%      
+Net profit - - 69% 65% 26% 95% 23% 10%           
+Source: Company 
+ 
+Ta Liang: 1-year forward PER  Ta Liang: 2023-2023 CCD shipments and orders 
+ 
+ 
+ 
+Source: TEJ, Bloomberg  Source: Company 
+ 
+Ta Liang: product portfolio  Ta Liang: production and service sites 
+ 
+ 
+ 
+Source: Company   Source: Company 
+ 
+ 
+ 
+0
+400
+800
+1,200
+1,600
+2,000
+May-19
+Nov-19
+May-20
+Nov-20
+May-21
+Nov-21
+May-22
+Nov-22
+May-23
+Nov-23
+May-24
+Nov-24
+May-25
+Nov-25
+May-26
+Share price 8x 20x 32x 50x
+(TWD)
+72 169
+501
+139
+456
+205
+0
+200
+400
+600
+800
+1,000
+2023 2024 2025 2026E
+(Units: units)
+Shipped Confirmed On-going
+
+--- PAGE 3 ---
+ 
+3 
+ 
+ Ta Liang Technology (3167 TT): 25 May 2026 
+Important Disclosures and Disclaimer 
+ 
+ 
+ 
+ 
+This publication is produced by Daiwa Securities Group Inc. and/or its non-U.S. affiliates, and distributed by Daiwa Securities Group Inc. and/or its non-U.S. affiliates, except to the extent expressly 
+provided herein. This publication and the contents hereof are intended for information purposes only, and may be subject to change without further notice. Any use, disclosure, distribution, 
+dissemination, copying, printing or reliance on this publication for any other purpose without our prior consent or approval is strictly prohibited. Neither Daiwa Securities Group Inc. nor any of its 
+respective parent, holding, subsidiaries or affiliates, nor any of its respective directors, officers, servants and employees, represent nor warrant the accuracy or completeness of the information 
+contained herein or as to the existence of other facts which might be significant, and will not accept any responsibility or liability whatsoever for any use of or reliance upon this publication or any 
+of the contents hereof. Neither this publication, nor any content hereof, constitute, or are to be construed as, an offer or solicitation of an offer to buy or sell any of the securities or investments 
+mentioned herein in any country or jurisdiction nor, unless expressly provided, any recommendation or investment opinion or advice. Any view, recommendation, opinion or advice expressed in 
+this publication may not necessarily reflect those of Daiwa Securities Group Inc., and/or its affiliates nor any of its respective directors, officers, servants and employees except where the publication 
+states otherwise. This research report is not to be relied upon by any person in making any investment decision or otherwise advising with respect to, or dealing in, the securities mentioned, as it 
+does not take into account the specific investment objectives, financial situation and particular needs of any person. 
+Daiwa Securities Group Inc., its subsidiaries or affiliates, or its or their respective directors, officers and employees from time to time have trades as principals, or have positions in, or have other 
+interests in the securities of the company under research including market making activities, derivatives in respect of such securities or may have also performed investment banking and other 
+services for the issuer of such securities. Daiwa Securities Group Inc., its subsidiaries or affiliates do and seek to do business with the company(s) covered in this research report. Therefore, 
+investors should be aware that a conflict of interest may exist. The following are additional disclosures. 
+Ownership of Securities 
+For “Ownership of Securities” information, please visit BlueMatrix disclosure link at https://daiwa3.bluematrix.com/sellside/Disclosures.action. 
+Investment Banking Relationship 
+For “Investment Banking Relationship”, please visit BlueMatrix disclosure link at https://daiwa3.bluematrix.com/sellside/Disclosures.action. 
+Daiwa Securities Co. Ltd. and Daiwa Securities Group Inc.  
+Daiwa Securities Co. Ltd. is a subsidiary of Daiwa Securities Group Inc. 
+Investment Banking Relationship 
+Within the preceding 12 months, Daiwa Capital Markets Hong Kong Limited has lead-managed public offerings and/or secondary offerings of the equities or relevant securities of the following 
+companies: Beijing Geekplus Technology Co Ltd (2590 HK), WeRide Inc (800 HK/ WRD US) and SEYOND (2665 HK). 
+*Subsidiaries of Daiwa Securities Group Inc. for the purposes of this section shall mean any one or more of: Daiwa Capital Markets Hong Kong Limited (大和資本市場香港有限公司), Daiwa Capital 
+Markets Singapore Limited, Daiwa Capital Markets Australia Limited, Daiwa-Cathay Capital Markets Co., Ltd., Daiwa Securities Capital Markets Korea Co., Ltd. 
+Within the last 12 months, the subsidiaries and/or affiliates of Daiwa Securities Group Inc. * has received compensation for investment banking services from NH Investment & Securities Co Ltd (005940 
+KS), E-Mart Inc (139480 KS), Samsung Securities Co Ltd (016360 KS), KT Corporation (030200 KS) and Hyundai Department Store Co Ltd (069960 KS). 
+ 
+Hong Kong  
+This research is distributed in Hong Kong by Daiwa Capital Markets Hong Kong Limited ( 大和資本市場香港有限公司 ) (“DHK”) which is regulated by the Hong Kong Securities and Futures 
+Commission. Recipients of this research in Hong Kong may contact DHK in respect of any matter arising from or in connection with this research. 
+Investment Banking Relationship 
+Within the preceding 12 months, Daiwa Capital Markets Hong Kong Limited has lead-managed public offerings and/or secondary offerings of the equities or relevant securities of the following 
+companies: Beijing Geekplus Technology Co Ltd (2590 HK), WeRide Inc (800 HK/ WRD US) and SEYOND (2665 HK). 
+Within the preceding 12 months, Daiwa Capital Markets Hong Kong Limited has received compensation for investment banking services from -. 
+Relevant Relationship (DHK) 
+DHK may from time to time have an individual employed by or associated with it serves as an officer of any of the companies under its research coverage. 
+ 
+ 
+ 
+ 
+ 
+ 
+Singapore 
+This research is distributed in Singapore by Daiwa Capital Markets Singapore Limited and it may only be distributed in Singapore to accredited investors, expert investors and institutional investors 
+as defined in the Financial Advisers Regulations of Singapore and the Securities and Futures Act 2001 of Singapore, both as amended from time to time. By virtue of distribution to these category 
+of investors, Daiwa Capital Markets Singapore Limited and its representatives are not required to comply with Section 45 of the Financial Advisers Act 2001 of Singapore (Section 45 relates to 
+disclosure of Daiwa Capital Markets Singapore Limited’s interest and/or any associated or connected person’s interest in securities). Recipients of this research in Singapore may contact Daiwa 
+Capital Markets Singapore Limited in respect of any matter arising from or in connection with this research. 
+ 
+Australia 
+This research is distributed in Australia by Daiwa Capital Markets Australia Limited and it may only be distributed in Australia to wholesale investors within the meaning of the Corporations Act. 
+Recipients of this research in Australia may contact Daiwa Capital Markets Stockbroking Limited in respect of any matter arising from or in connection with the research. 
+ 
+Taiwan 
+This research is solely for reference and not intended to provide tailored investment recommendations.  This research is distributed in Taiwan by Daiwa-Cathay Capital Markets Co., Ltd. and it 
+may only be distributed in Taiwan to specific customers who have signed recommendation contracts with Daiwa-Cathay Capital Markets Co., Ltd. and non-customers including (i) professional 
+institutional investors, (ii) TWSE or TPEx listed companies, upstream and downstream vendors, and specialists that offer or seek advice, and (iii) potential customers with an actual need for 
+business development in accordance with the Operational Regulations Governing Securities Firms Recommending Trades in Securities to Customers.  Recipients of this research including non-
+customer recipients of this research shall not provide it to others or engage in any activities in connection with this research which may involve conflicts of interests.  Neither Daiwa-Cathay Capital 
+Markets Co., Ltd. nor its personnel who writes or reviews the research report has any conflict of interest in this research.  Since Daiwa-Cathay Capital Markets Co., Ltd. does not operate brokerage 
+trading business in foreign markets, this research is prepared on a “without recommendation” to any foreign securities basis and Daiwa-Cathay Capital Markets Co., Ltd. does not accept 
+orders from customers to trade in such foreign securities.  Recipients of this research shall carefully judge their own investment risk and take full responsibility for the results of any resulting 
+investments in the companies and/or sectors featured in this research. Without the prior written permission of Daiwa-Cathay Capital Markets Co., Ltd., recipients of this research are prohibited 
+from disclosing the research to the media, reprinting the research, or quoting from the research to other parties.  Recipients of this research in Taiwan may contact Daiwa-Cathay Capital Markets 
+Co., Ltd. in respect of any matter arising from or in connection with the research. 
+ 
+Thailand 
+This research is distributed to only institutional investors in Thailand. This report is provided to you for informational purposes only. Information contained herein is not intended to be, and shall not 
+be construed as, an offer or an invitation for subscription or purchase of securities in Thailand. This document has not been and will not be registered with, or approved by, the Office of the 
+Securities and Exchange Commission of Thailand. As neither Daiwa Securities Group Inc. nor any of its subsidiaries or affiliates, nor any of the foregoing entities’ respective directors, officers, 
+servants and employees are licensed to carry on any securities business in Thailand, this document is intended to be read by the addressee who is an institutional investor only and may not be 
+circulated or distributed, whether directly or indirectly, to the public or any members of the public in Thailand, unless to the extent permitted by applicable laws and regulations. 
+This report is prepared by analysts who are employed by Daiwa Securities Group Inc. and/or its non-U.S. affiliates. Neither Daiwa Securities Group Inc. nor any of its subsidiaries or affiliates, nor 
+any of the foregoing entities’ respective directors, officers, servants and employees accept any liability whatsoever for any direct or consequential loss arising from any use of this research or its 
+contents. 
+The information and opinions contained herein have been compiled or arrived at from sources believed to be reliable. However, neither Daiwa Securities Group Inc. nor any of its subsidiaries or 
+affiliates, nor any of the foregoing entities’ respective directors, officers, servants and employees make any representation or warranty, express or implied, as to their accuracy or completeness. 
+Expressions of opinion herein are subject to change without notice. The use of any information, forecasts and opinions contained in this report shall be at the sole discretion and risk of the user. 
+Daiwa Securities Group Inc., its subsidiaries and affiliates and their respective directors, officers, servants and employees may have positions and financial interest in securities mentioned in this 
+research. Daiwa Securities Group Inc. and its subsidiaries and affiliates may from time to time perform investment banking or other services for, or solicit investment banking or other business 
+from, any entity mentioned in this research. Therefore, investors should be aware of conflict of interest that may affect the objectivity of this research. 
+ 
+United Kingdom 
+These materials constitute independent research for the purposes of the Financial Conduct Authority (“FCA”) Conduct of Business Rules. These materials have been produced by Daiwa Securities 
+Co. Ltd (“DSCL”) and/or its affiliates and are distributed by Daiwa Capital Markets Europe Limited (“DCME”) to persons classified as (i) eligible counterparties; and (ii) professional clients for the 
+purposes of the Conduct of Business Rules of the FCA. These materials should not be disseminated to any retail clients in the United Kingdom. DCME is authorised and regulated by the FCA and 
+is a member of the London Stock Exchange. DCME’s FCA registration number is 124490 and the FCA's registered address is 25 The North Colonnade, London, E14 5HS.  
+DCME makes no representation as to the completeness, accuracy or timeliness of any of the materials produced by DSCL, and does not accept any liability for any losses, costs, liabilities or 
+expenses which may arise directly or indirectly from any use of, or reliance on the materials. 
+DCME and/or its affiliates may, from time to time, to the extent permitted by law, participate or invest in, or be mandated in respect of transactions with the issuer(s) referred to in the materials 
+prepared by DSCL, perform services for or solicit business from such issuers, and/or have a position or effect transactions in a particular issuer’s securities and/or may have acted as an underwriter 
+during the past twelve months in respect of a particular issuer of its securities. DCME does not review DSCL’s materials prior to publication on DCME’s platforms and has no influence over its 
+content. DCME has in place organisational arrangements for the prevention and avoidance of conflicts of interest, including information barriers to control the flow of information between the private 
+and public sides of the firm. A summary of DCME’s conflict management policies are available at http://www.uk.daiwacm.com/about-us/corporate-governance-regulatory.  
+DSCL’s materials are distributed by DCME only as permitted by law. The materials are not directed to, or intended for distribution to or use by, any person or entity located in any jurisdiction where 
+such distribution, publication, availability or use would be contrary to law or regulation or would subject DCME to any regulation or licensing requirement within such jurisdiction. 
+--- PAGE 4 ---
+ 
+4 
+ 
+ Ta Liang Technology (3167 TT): 25 May 2026 
+  
+ 
+Germany 
+Research reports are produced by Daiwa Securities Co. Ltd. and/or its affiliates and are distributed by Daiwa Capital Markets Deutschland GmbH in the European Union. Daiwa Capital Markets 
+Deutschland GmbH is authorised and regulated by Bundesanstalt für Finanzdienstleistungsaufsicht (“BaFin“) under the reference number 149361. Daiwa Capital Markets Deutschland GmbH and 
+its affiliates may, from time to time, to the extent permitted by law, participate or invest in, or be mandated in respect of, other financing transactions with the issuer(s) of the securities referred to 
+herein (the “Securities”), perform services for or solicit business from such issuers, and/or have a position or effect transactions in the Securities or options thereof. 
+This publication is intended for investors who are Professional Clients or Eligible Counterparties in the European Union within the meaning of Directive 2014/65/EU (“MiFID II”) and should therefore 
+not be distributed to Retail Clients in the European Union. 
+Daiwa Capital Markets Deutschland GmbH has in place organisational arrangements for the identification, prevention and management of conflicts of interest. Information regarding our conflict 
+management are available at: https://www.de.daiwacm.com/policies/ 
+Additional disclosures regarding specific company names and related financial instruments are available at: https://daiwa3.bluematrix.com/sellside/Disclosures.action. 
+ 
+Bahrain 
+This research material is distributed in Bahrain by Daiwa Capital Markets Europe Limited, Bahrain Branch, regulated by The Central Bank of Bahrain and holds Investment Business Firm – Category 
+2 license and having its official place of business at the Bahrain World Trade Centre, South Tower, 7th floor, P.O. Box 30069, Manama, Kingdom of Bahrain. Tel No. +973 17534452 Fax No. +973 
+535113 
+ 
+United States 
+This research is distributed into the United States directly by Daiwa Capital Markets Hong Kong Limited (DCMHK) and in certain cases indirectly by Daiwa Capital Markets America Inc. (DCMA), 
+a U.S. Securities and Exchange Commission registered broker-dealer and FINRA member firm, exclusively to “major U.S. institutional investors”, as defined under Rule 15a-6 promulgated under 
+the U.S. Securities Exchange Act of 1934, as amended, and as interpreted by the staff of the U.S. Securities and Exchange Commission (SEC). Where this is co-branded research published by 
+Daiwa’s partners in collaboration with other parties not affiliated with Daiwa, this research is distributed in the United States by DCMHK only. This report is not an offer to sell or the solicitation of 
+any offer to buy securities. U.S. customers wishing to effect transactions in any designated investment discussed in this report should do so through a qualified salesperson of DCMA. Non-U.S. 
+customers wishing to effect transactions in any designated investment discussed in this report should contact a Daiwa entity in their local jurisdiction. The securities or other investment products 
+discussed in this report may not be eligible for sale in some jurisdictions. 
+Analysts employed outside the U.S., as specifically indicated elsewhere in this report, are not registered as research analysts with FINRA.  These analysts may not be associated persons of DCMA, 
+and therefore may not be subject to FINRA Rule 2241 restrictions on communications with a subject company, public appearances and trading securities held by a research analyst account. 
+ADDITIONAL IMPORTANT DISCLOSURES CAN BE FOUND AT: 
+https://daiwa3.bluematrix.com/sellside/Disclosures.action 
+Ownership of Securities 
+For “Ownership of Securities” information please visit BlueMatrix disclosure link at https://daiwa3.bluematrix.com/sellside/Disclosures.action.  
+Investment Banking Relationships 
+For “Investment Banking Relationships” please visit BlueMatrix disclosure link at https://daiwa3.bluematrix.com/sellside/Disclosures.action.  
+DCMA Market Making 
+For “DCMA Market Making” please visit BlueMatrix disclosure link at https://daiwa3.bluematrix.com/sellside/Disclosures.action. 
+ 
+Research Analyst Conflicts 
+For updates on “Research Analyst Conflicts” please visit BlueMatrix disclosure link at https://daiwa3.bluematrix.com/sellside/Disclosures.action. The principal research analysts who prepared this 
+report have no financial interest in securities of the issuers covered in the report, are not (nor are any members of their household) an officer, director or advisory board member of the issuer(s) 
+covered in the report, and are not aware of any material relevant conflict of interest involving the analyst or DCMA, and did not receive any compensation from the issuer during the past 12 months 
+except as noted: no exceptions. 
+ 
+Research Analyst Certification 
+For updates on “Research Analyst Certification” and “Rating System” please visit BlueMatrix disclosure link at https://daiwa3.bluematrix.com/sellside/Disclosures.action. The views about any and 
+all of the subject securities and issuers expressed in this Research Report accurately reflect the personal views of the research analyst(s) primarily responsible for this report (or the views of the 
+firm producing the report if no individual analyst is named on the report); and no part of the compensation of such analyst (or no part of the compensation of the firm if no individual analyst is named 
+on the report) was, is, or will be directly or indirectly related to the specific recommendations or views contained in this Research Report. 
+ 
+The following explains the rating system in the report as compared to relevant local indices, unless otherwise stated, based on the beliefs of the author of the report. 
+"1": the security could outperform the local index by more than 15% over the next 12 months. 
+"2": the security is expected to outperform the local index by 5-15% over the next 12 months. 
+"3": the security is expected to perform within 5% of the local index (better or worse) over the next 12 months. 
+"4": the security is expected to underperform the local index by 5-15% over the next 12 months. 
+"5": the security could underperform the local index by more than 15% over the next 12 months. 
+ 
+Disclosure of investment ratings  
+Rating Percentage of total 
+Buy* 73.51% 
+Hold** 19.39% 
+Sell***   7.10% 
+Source: Daiwa 
+Notes: data is for single-branded Daiwa research in Asia (ex Japan) and correct as of 31 March 2026. 
+* comprised of Daiwa’s Buy and Outperform ratings. 
+** comprised of Daiwa’s Hold ratings. 
+*** comprised of Daiwa’s Underperform and Sell ratings. 
+ 
+Additional information may be available upon request. 
+ 
+Japan - Notification items pursuant to Article 37 of the Financial Instruments and Exchange Law 
+(This Notification is only applicable to where report is distributed by Daiwa Securities Co. Ltd.)    
+If you decide to enter into a business arrangement with our company based on the information described in this report, we ask you to pay close attention to the following items.  
+• In addition to the purchase price of a financial instrument, our company will collect a trading commission* for each transaction as agreed beforehand with you. Since commissions may be 
+included in the purchase price or may not be charged for certain transactions, we recommend that you confirm the commission for each transaction. In some cases, our company also may 
+charge a maximum of ¥2 million per year as a standing proxy fee for our deposit of your securities, if you are a non-resident.  
+• For derivative and margin transactions etc., our company may require collateral or margin requirements in accordance with an agreement made beforehand with you. Ordinarily in such cases, 
+the amount of the transaction will be in excess of the required collateral or margin requirements**.  
+• There is a risk that you will incur losses on your transactions due to changes in the market price of financial instruments based on fluctuations in interest rates, exchange rates, stock prices, real 
+estate prices, commodity prices, and others. In addition, depending on the content of the transaction, the loss could exceed the amount of the collateral or margin requirements.  
+• There may be a difference between bid price etc. and ask price etc. of OTC derivatives handled by our company.  
+• Before engaging in any trading, please thoroughly confirm accounting and tax treatments regarding your trading in financial instruments with such experts as certified public accountants.  
+*  The amount of the trading commission cannot be stated here in advance because it will be determined between our company and you based on current market conditions and the content of 
+each transaction etc. 
+**  The ratio of margin requirements etc. to the amount of the transaction cannot be stated here in advance because it will be determined between our company and you based on current market 
+conditions and the content of each transaction etc.  
+When making an actual transaction, please be sure to carefully read the materials presented to you prior to the execution of agreement, and to take responsibility for your own decisions regarding 
+the signing of the agreement with our company. 
+ Corporate Name:  Daiwa Securities Co. Ltd.  
+ Registered:  Financial Instruments Business Operator, Chief of Kanto Local Finance Bureau (Kin-sho) No.108  
+ Memberships:  Japan Securities Dealers Association, The Financial Futures Association of Japan, Japan Investment Advisers Association,  
+  Type II Financial Instruments Firms Association, Japan Security Token Offering Association 
+ 
+ 
+ 
+ 
