@@ -72,6 +72,8 @@ Garden 與 Stocks 筆記必須遵守：
 
 當 Lucas 在這個 vault 說「幫我整理」時，預設意思是：整理 `00_Inbox/` 中的各類型文件，步驟如下:
 
+0. 我允許你自由使用 python, bash, git 的指令操作，除非牽扯到重大的風險行為 ex. 刪除檔案或改動我自己的設定檔，不然盡量不要再一直問我可不可以做了。
+
 1. **查看`00_Inbox/`的檔案** 一次看一個檔案即可。
 
 ### 1.1 多格式檔案預處理規則 (Pre-process)
@@ -94,6 +96,8 @@ Garden 與 Stocks 筆記必須遵守：
 
 6. **在 `log.md` 尾端追加紀錄**，格式：`## [YYYY-MM-DD] ingest | 檔案名稱 | 影響的 Stocks 及 Garden`
 
+7. **完成後，主動詢問主人要不要 git commit (你自己決定一個簡短總結當作 commit 名稱)跟 git push。**
+
 | 使用者語意 | 主要任務檔 |
 |---|---|
 | `幫我整理`、`run ingest`、`整理筆記`、`清洗 Inbox` | `.agent/tasks/ingest.md` |
@@ -110,6 +114,7 @@ Garden 與 Stocks 筆記必須遵守：
 | `memo [topic]` | `.agent/tasks/memo.md` |
 
 執行整理、匯入或索引任務時，先讀任務檔，不要只靠記憶。
+
 
 ## 投資與市場分析偏好
 
