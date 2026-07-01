@@ -44,6 +44,7 @@ source_asset: 20260611_133924_image.jpeg
 ---
 
 ## 🗺️ 產業鏈地圖與廠商財務比對 (Supply Chain & Financials)
+### 📌 產業鏈廠商與供應鏈細節 (Supply Chain Details)
 * **[請填寫產業上下游廠商清單]**
 
 ---
