@@ -8,6 +8,7 @@ tags: [investment/target, mlcc]
 source_type: manual_note
 source_asset: Various
 aliases: [MLCC, 被動元件]
+
 ---
 
 # 被動元件/MLCC

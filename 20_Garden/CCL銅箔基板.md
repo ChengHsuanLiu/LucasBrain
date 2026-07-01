@@ -5,6 +5,7 @@ created: 2026-06-22
 updated: 2026-07-02
 review_by: 2026-09-22
 tags: [industry/ccl, technology/high-speed]
+
 ---
 
 # CCL 銅箔基板

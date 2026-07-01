@@ -8,6 +8,7 @@ tags: [investment/target, tesla-ai-5]
 source_type: manual_note
 source_asset: Various
 aliases: [Tesla AI 5, AI5]
+
 ---
 
 # Tesla-AI-5

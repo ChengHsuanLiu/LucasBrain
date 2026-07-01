@@ -8,6 +8,7 @@ tags: [investment/target, googlecpu]
 source_type: manual_note
 source_asset: Various
 aliases: [Google CPU, Axion, TPU]
+
 ---
 
 # GoogleCPU

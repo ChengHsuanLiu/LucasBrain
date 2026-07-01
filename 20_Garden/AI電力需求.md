@@ -7,6 +7,7 @@ review_by: 2026-09-24
 tags: [ai/power, compute/constraints, tokenomics]
 source_type: image_capture
 source_asset: 20260611_133924_image.jpeg
+
 ---
 
 # AI電力與算力需求瓶頸 (Tokenomics)

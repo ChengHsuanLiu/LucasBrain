@@ -8,6 +8,7 @@ tags: [investment/target]
 source_type: manual_note
 source_asset: Various
 aliases: [ABF, 載板, 增層載板]
+
 ---
 
 # IC 載板
