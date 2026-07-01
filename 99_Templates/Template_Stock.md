@@ -12,7 +12,7 @@ review_by: YYYY-MM-DD
 tags: [investment/target, industry/subcategory]
 aliases: [[股票名稱]]
 current_price: 0.0 # 每日自動更新
-forward_pe: 0.0 # 依據 [收盤價 / 2027預估平均 EPS] 自動計算
+forward_pe: 0.0 # 依據 [收盤價 / 明年度 (N+1年) 預估平均 EPS] 自動計算
 valuation_rating: "HOLD" # 系統自動判定：ADD (<25) | HOLD (25~35) | SELL (>35)
 ---
 
@@ -21,7 +21,7 @@ valuation_rating: "HOLD" # 系統自動判定：ADD (<25) | HOLD (25~35) | SELL 
 ## 🎯 投資建議與核心結論 (Summary)
 * **核心論點**：
   - [條列出本檔公司的投資價值、護城河、核心結論與展望，例如：特用化學品進口替代地位]
-* **評價裁決 (Valuation)**：`HOLD` (更新日期：YYYY-MM-DD，收盤股價：0.0 元，2027 預估 P/E：0.0x，原因：由收盤股價與 2027 預估平均 EPS 自動推算判定。門檻：<25 為 ADD/BUY，25~35 為 HOLD，>35 為 SELL)
+* **評價裁決 (Valuation)**：`HOLD` (更新日期：YYYY-MM-DD，收盤股價：0.0 元，[N+1年] 預估 P/E：0.0x，原因：由收盤股價與 [N+1年] 預估平均 EPS 自動推算判定。門檻：<25 為 ADD/BUY，25~35 為 HOLD，>35 為 SELL)
 * **操作裁決 (Tactical)**：`Wait for Setup` (當前股價：0.0 元，關鍵防守價位：[如月線/前低]，策略：[如回測均線分批布局/逢高分批獲利結清/靜待帶量突破])
 
 ### 📊 財務數據與 EPS 預估比對
