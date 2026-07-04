@@ -34,6 +34,15 @@ aliases: [玻璃基板, TGV, CoPoS]
 ---
 
 ## 🗺️ 產業鏈地圖與廠商財務比對 (Supply Chain & Financials)
+### 📌 CoPoS 核心設備供應鏈 (CoPoS Equipment Supply Chain)
+* **曝光與塗佈設備 (Lithography & Coating)**: Canon (FPA-5525iV LF2), SUSS (DSC310s Gen4, ACS310 Gen2), TEL (LITHIUS Pro SQ3), SCREEN (LM-3000), Scientech (面板級解離層塗佈).
+* **金屬化與鍍銅設備 (Metallization & Plating)**: Applied Materials, KLA-Tencor, 力鼎精密, Lam Research (SABRE 3D FP 鍍銅, Quaros FP UBM蝕刻).
+* **研磨、雷射與壓合製程 (Grinding, Laser & Lamination)**: DISCO (研磨與雷射加工), Nitto (Frame Mount & UV Erasing), LINTEC (Lamination & De-taping), KNS (APTURA WP), ASMPT (Firebird XQ), Shibaura (TFC-6600-WB/TFC-6500-WB), 萬潤 (填膠設備).
+* **濕製程設備 (Wet Process)**: 弘塑, 辛耘 (CoPoS重要受惠台廠).
+* **烘烤與熱處理 (Baking & Heat)**: 印能 (BPO-60A), KE (450A & 450A-HT), 志聖 (HOMOL-AP31, HP-AP31, CSL-A300PL).
+* **模封與回焊設備 (Molding & Reflow)**: TOWA, YAMADA, SEMIGEAR, Heller.
+* **量測與檢測 (Metrology & Inspection)**: 倍利科 (V5P310 Pro Glass 玻璃 AXI 檢測設備與 V5300 Macro AOI), 晶彩科技 (Overlay 量測), 威克半導體 (3D輪廓與尺寸量測), 大量 (與日本 KOBELCO 合作之 Bevel Inspection 與 Bonding Shift 量測), 致茂, 家登, 均華, 亞亞, 佳宸, 禾鏵.
+
 | 產業位置 | 推薦個股/廠商 | 主要角色與供應材料 (簡述) | 2026E EPS | 2027E EPS | 關鍵合作 / 競爭格局 |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **上游玻璃與特用材料** | 康寧 (Corning) | 供應面板級 (Panel level) 玻璃。 | 待補充 | 待補充 | 詳見下方細節 |
