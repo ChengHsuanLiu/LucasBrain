@@ -39,10 +39,11 @@
   * **`30_Projects/Garden_Reports/`**：產業深入研究報告（命名為 `{當天日期}_{產業名稱}_產業研報.md`）。
   * **`30_Projects/Invest_Timeline/`**：存放投資重點時間軸報告（命名為 `{當天日期}_投資時間軸.md`）。
 * **`98_Archives/`**：已處理完成的原始素材與歷史報告存檔區，細分目錄如下：
-  * **`98_Archives/Expert_Meetings/`**：存放專家會議與專家訪談相關的原始檔案。
-  * **`98_Archives/Research_Report/`**：存放各券商與研究機構出具的正式法人研報。
-  * **`98_Archives/Stock_Meeting_Memo/`**：存放單一個股法說會、私訪、股東會等非正式會議紀要（Memo）。
-  * **`98_Archives/Fund_Company_Memo/`**：存放其他投信/投資公司的晨會紀錄或多個股討論紀要。
+  * **`98_Archives/Expert_Meetings/`**：專家會議與專家訪談相關的原始檔案（如：南亞專家會議、CCL產業專家會議）。
+  * **`98_Archives/Research_Report/`**：各券商與研究機構出具的正式法人研報（如：摩根士丹利台積電報告、統一證券CCL研究報告、HSBC聯發科研究報告、大和證券MLCC產業報告）。
+  * **`98_Archives/Stock_Memo/`**：單一個股法說會、私訪、股東會等非正式會議紀要與 Memo（如：4764雙鍵股東會memo、2383台光電memo、2330台積電法說memo）。
+  * **`98_Archives/Fund_Company_Memo/`**：其他投信/投資公司的討論內容，通常標題與「會議紀錄」相關，內容是多位講者分別針對不同個股或市場的看法。
+  * **`98_Archives/Others/`**：其他無明確分類歸屬的素材檔案均存放於此。
 * **`99_Templates/`**：存放 Stock/Industry 範本、系統指令、工作流與腳本。
 
 ### 2. Obsidian 筆記規範
@@ -95,7 +96,7 @@
 * **補齊 WikiLinks**：自動為文中出現的廠商加上雙中括號連結。
 
 #### 步驟 4：歸檔 raw file (Archive)
-將 `00_Inbox/` 中處理完畢的檔案分類移動至 `98_Archives/` 對應的四個分類資料夾（`Expert_Meetings/`、`Research_Report/`、`Stock_Meeting_Memo/`、`Fund_Company_Memo/`）。無法明確歸類者，保留在 `98_Archives/` 根目錄下。
+將 `00_Inbox/` 中處理完畢的檔案分類移動至 `98_Archives/` 對應的分類資料夾（`Expert_Meetings/`、`Research_Report/`、`Stock_Memo/`、`Fund_Company_Memo/`、`Others/`）。無法明確歸類者，移動至 `Others/` 資料夾下。
 
 #### 步驟 5：更新統計目錄 (Index)
 更新 [index.md](file:///c:/Users/User/Desktop/LucasBrain/index.md) 的個股/產業最新統計數量與最近更新時間。

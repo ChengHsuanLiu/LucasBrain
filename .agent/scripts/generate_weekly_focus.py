@@ -55,7 +55,6 @@ def extract_core_points(filepath):
             for line in sub_block.split('\n'):
                 line = line.strip()
                 if (line.startswith('-') or line.startswith('*')) and "核心論點" not in line and "評價裁決" not in line and "操作裁決" not in line:
-                    # Clean up markdown bold markers or links for simple display
                     clean_line = re.sub(r'[\*\#\`]', '', line)
                     clean_line = clean_line.lstrip('-* ').strip()
                     if clean_line:
@@ -64,6 +63,40 @@ def extract_core_points(filepath):
                             break
                             
     return "; ".join(points) if points else "基本面追蹤中。"
+
+def extract_detailed_reasons(content, is_sell):
+    if is_sell:
+        return "估值偏高且收盤價跌破 5MA", "估值偏高且收盤價跌破 5MA"
+        
+    ma_reasons = []
+    bias_reasons = []
+    
+    # 1. Parse MA reasons
+    m_ma = re.search(r'^\s*[\-\*]\s+\*\*均線評分\*\*.*?\n(.*?(?=\n(?:[\-\*]\s+\*\*|\Z|##|###)))', content, re.MULTILINE | re.DOTALL)
+    if m_ma:
+        block_ma = m_ma.group(1)
+        for line in block_ma.split('\n'):
+            line = line.strip()
+            if line.startswith('-') or line.startswith('*'):
+                clean = re.sub(r'[\*\#\`]', '', line).lstrip('-* ').strip()
+                if clean:
+                    ma_reasons.append(clean)
+                    
+    # 2. Parse Bias reasons
+    m_bias = re.search(r'^\s*[\-\*]\s+\*\*乖離率評分\*\*.*?\n(.*?(?=\n(?:[\-\*]\s+\*\*|\Z|##|###)))', content, re.MULTILINE | re.DOTALL)
+    if m_bias:
+        block_bias = m_bias.group(1)
+        for line in block_bias.split('\n'):
+            line = line.strip()
+            if line.startswith('-') or line.startswith('*'):
+                clean = re.sub(r'[\*\#\`]', '', line).lstrip('-* ').strip()
+                if clean:
+                    bias_reasons.append(clean)
+                    
+    ma_reasons_str = "；".join(ma_reasons) if ma_reasons else "均線狀態正常"
+    bias_reasons_str = "；".join(bias_reasons) if bias_reasons else "無乖離扣分項"
+    
+    return ma_reasons_str, bias_reasons_str
 
 def generate_weekly_report(target_date=None):
     if target_date is None:
@@ -111,6 +144,7 @@ def generate_weekly_report(target_date=None):
         price = 0.0
         pe = "待補充"
         tactical = "Wait for Setup"
+        score_raw = "MA: 0 / Bias: 100"
         
         for line in yaml_text.split('\n'):
             line = line.strip()
@@ -129,6 +163,32 @@ def generate_weekly_report(target_date=None):
                     pe = pe_raw
             elif line.startswith("tactical_action:"):
                 tactical = line.split(":", 1)[1].strip().strip('"').strip("'")
+            elif line.startswith("tactical_score:"):
+                score_raw = line.split(":", 1)[1].strip().strip('"').strip("'")
+                
+        # Parse scores
+        ma_score = 0
+        bias_score = 100
+        m_score = re.match(r'MA:\s*(-?\d+)\s*/\s*Bias:\s*(-?\d+)', score_raw)
+        if m_score:
+            ma_score = int(m_score.group(1))
+            bias_score = int(m_score.group(2))
+            
+        # Parse ratings from tactical_action
+        ma_rating = "均線評分普通"
+        bias_rating = "乖離率評分佳"
+        is_sell = False
+        if tactical == "SELL":
+            ma_rating = "SELL"
+            bias_rating = "SELL"
+            is_sell = True
+        else:
+            parts = tactical.split('|')
+            if len(parts) >= 2:
+                ma_rating = parts[0].strip()
+                bias_rating = parts[1].strip()
+            elif len(parts) == 1:
+                ma_rating = parts[0].strip()
                 
         # Parse EPS
         eps = parse_target_eps(fp, target_year)
@@ -137,13 +197,21 @@ def generate_weekly_report(target_date=None):
         # Extract 2 core points
         summary_points = extract_core_points(fp)
         
+        # Extract detailed reasons
+        ma_reasons, bias_reasons = extract_detailed_reasons(content, is_sell)
+        
         stock_info = {
             "ticker": ticker,
             "name": name,
             "price": price,
             "eps": eps_str,
             "pe": pe,
-            "tactical": tactical.replace("|", "\\|"), # Escape vertical bar for markdown table
+            "ma_rating": ma_rating,
+            "ma_score": ma_score,
+            "ma_reasons": ma_reasons,
+            "bias_rating": bias_rating,
+            "bias_score": bias_score,
+            "bias_reasons": bias_reasons,
             "summary": summary_points,
             "filepath": fp
         }
@@ -187,15 +255,55 @@ def generate_weekly_report(target_date=None):
     report.append("> [!TIP]")
     report.append("> 此區域列出估值偏低、具安全邊際，且長期基本面與催化劑（Catalysts）確立的加碼標的 (Valuation Rating 為 **ADD**)。")
     report.append("")
-    report.append("### 📌 加碼個股清單表")
-    report.append(f"| 股票代號 / 名稱 | 評價裁決 (Valuation) | 操作裁決 (Tactical) | 當前股價 (元) | {target_year}年 預估 EPS | Forward P/E | 投資簡述與核心利多 (So What?) |")
-    report.append("| :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
     
-    if add_stocks:
-        for s in add_stocks:
-            report.append(f"| `[[{s['ticker']}{s['name']}]]` | `ADD` | `{s['tactical']}` | {s['price']} | {s['eps']} | {s['pe']}x | {s['summary']} |")
+    # Category 1: 動能趨勢股 (均線評分佳)
+    report.append("### 📈 1. 動能趨勢股")
+    report.append("> [!NOTE]")
+    report.append("> **篩選條件**：Valuation 為 **ADD** 且 **均線評分佳**，乖離率不限。")
+    report.append("")
+    report.append(f"| 股票代號 / 名稱 | 評價裁決 | 均線評級 / 分數 (MA) | 乖離評級 / 分數 (Bias) | 當前股價 (元) | {target_year}年 預估 EPS | Forward P/E | 投資簡述與核心利多 (So What?) |")
+    report.append("| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
+    
+    trend_stocks = [s for s in add_stocks if s["ma_rating"] == "均線評分佳"]
+    if trend_stocks:
+        for s in trend_stocks:
+            report.append(f"| `[[{s['ticker']}{s['name']}]]` | `ADD` | `{s['ma_rating']} ({s['ma_score']}分) <br> 原因：{s['ma_reasons']}` | `{s['bias_rating']} ({s['bias_score']}分) <br> 原因：{s['bias_reasons']}` | {s['price']} | {s['eps']} | {s['pe']}x | {s['summary']} |")
     else:
-        report.append("| [無符合個股] | | | | | | |")
+        report.append("| [無符合個股] | | | | | | | |")
+        
+    report.append("")
+    
+    # Category 2: 均線整理股 (均線評分普通)
+    report.append("### ⏳ 2. 均線整理股")
+    report.append("> [!NOTE]")
+    report.append("> **篩選條件**：Valuation 為 **ADD** 且 **均線評分普通**，乖離率不限。")
+    report.append("")
+    report.append(f"| 股票代號 / 名稱 | 評價裁決 | 均線評級 / 分數 (MA) | 乖離評級 / 分數 (Bias) | 當前股價 (元) | {target_year}年 預估 EPS | Forward P/E | 投資簡述與核心利多 (So What?) |")
+    report.append("| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
+    
+    consolidation_stocks = [s for s in add_stocks if s["ma_rating"] == "均線評分普通"]
+    if consolidation_stocks:
+        for s in consolidation_stocks:
+            report.append(f"| `[[{s['ticker']}{s['name']}]]` | `ADD` | `{s['ma_rating']} ({s['ma_score']}分) <br> 原因：{s['ma_reasons']}` | `{s['bias_rating']} ({s['bias_score']}分) <br> 原因：{s['bias_reasons']}` | {s['price']} | {s['eps']} | {s['pe']}x | {s['summary']} |")
+    else:
+        report.append("| [無符合個股] | | | | | | | |")
+        
+    report.append("")
+    
+    # Category 3: 左側機會股 (均線評分差)
+    report.append("### 🔍 3. 左側機會股")
+    report.append("> [!NOTE]")
+    report.append("> **篩選條件**：Valuation 為 **ADD** 且 **均線評分差**，乖離率不限。")
+    report.append("")
+    report.append(f"| 股票代號 / 名稱 | 評價裁決 | 均線評級 / 分數 (MA) | 乖離評級 / 分數 (Bias) | 當前股價 (元) | {target_year}年 預估 EPS | Forward P/E | 投資簡述與核心利多 (So What?) |")
+    report.append("| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
+    
+    opportunity_stocks = [s for s in add_stocks if s["ma_rating"] == "均線評分差"]
+    if opportunity_stocks:
+        for s in opportunity_stocks:
+            report.append(f"| `[[{s['ticker']}{s['name']}]]` | `ADD` | `{s['ma_rating']} ({s['ma_score']}分) <br> 原因：{s['ma_reasons']}` | `{s['bias_rating']} ({s['bias_score']}分) <br> 原因：{s['bias_reasons']}` | {s['price']} | {s['eps']} | {s['pe']}x | {s['summary']} |")
+    else:
+        report.append("| [無符合個股] | | | | | | | |")
         
     report.append("")
     report.append("### 🔍 加碼個股重點剖析")
@@ -215,14 +323,14 @@ def generate_weekly_report(target_date=None):
     report.append("> 此區域列出估值偏高、短期乖離率過大，或基本面/供應鏈地位出現警訊的個股 (Valuation Rating 為 **SELL**)。")
     report.append("")
     report.append("### 📌 減碼/避開個股清單表")
-    report.append(f"| 股票代號 / 名稱 | 評價裁決 (Valuation) | 操作裁決 (Tactical) | 當前股價 (元) | {target_year}年 預估 EPS | Forward P/E | 潛在利空與防守退場點 (So What?) |")
-    report.append("| :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
+    report.append(f"| 股票代號 / 名稱 | 評價裁決 | 均線評級 / 分數 (MA) | 乖離評級 / 分數 (Bias) | 當前股價 (元) | {target_year}年 預估 EPS | Forward P/E | 潛在利空與防守退場點 (So What?) |")
+    report.append("| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
     
     if sell_stocks:
         for s in sell_stocks:
-            report.append(f"| `[[{s['ticker']}{s['name']}]]` | `SELL` | `{s['tactical']}` | {s['price']} | {s['eps']} | {s['pe']}x | {s['summary']} |")
+            report.append(f"| `[[{s['ticker']}{s['name']}]]` | `SELL` | `{s['ma_rating']} ({s['ma_score']}分) <br> 原因：{s['ma_reasons']}` | `{s['bias_rating']} ({s['bias_score']}分) <br> 原因：{s['bias_reasons']}` | {s['price']} | {s['eps']} | {s['pe']}x | {s['summary']} |")
     else:
-        report.append("| [無符合個股] | | | | | | |")
+        report.append("| [無符合個股] | | | | | | | |")
         
     report.append("")
     report.append("### 🔍 避開/減碼個股重點剖析")
