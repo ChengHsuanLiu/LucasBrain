@@ -1,3 +1,4 @@
+import os
 import urllib.request
 import urllib.parse
 import json
@@ -33,17 +34,34 @@ def date_to_quarter(date_str):
         return date_str
 
 def fetch_financial_table(stock_id):
+    # Try loading token from credentials.json
+    token = None
+    try:
+        cred_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "credentials.json")
+        if os.path.exists(cred_path):
+            with open(cred_path, 'r', encoding='utf-8') as f:
+                cred = json.load(f)
+                token = cred.get("finmind_token")
+    except:
+        pass
+
     url = "https://api.finmindtrade.com/api/v4/data"
     params = {
         "dataset": "TaiwanStockFinancialStatements",
         "start_date": "2024-01-01",
         "data_id": stock_id
     }
-    
+    if token:
+        params["token"] = token
+        
     query_string = urllib.parse.urlencode(params)
     full_url = f"{url}?{query_string}"
     
-    req = urllib.request.Request(full_url, headers={'User-Agent': 'Mozilla/5.0'})
+    headers = {'User-Agent': 'Mozilla/5.0'}
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+        
+    req = urllib.request.Request(full_url, headers=headers)
     try:
         with urllib.request.urlopen(req) as response:
             res_data = json.loads(response.read().decode('utf-8'))
