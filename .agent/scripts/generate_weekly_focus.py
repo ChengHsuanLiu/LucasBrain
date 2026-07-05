@@ -75,6 +75,32 @@ def extract_detailed_reasons(content, is_sell):
     def is_deduction(text):
         # Match negative numbers other than -0 (e.g. -10, -15, -20)
         return bool(re.search(r'-\s*[1-9]\d*', text))
+        
+    def clean_and_format_reason(text):
+        # Remove (追加扣分 -15) or similar
+        text = re.sub(r'\(\s*追加扣分\s*-\s*\d+\s*\)', '(追加扣分)', text)
+        # Remove (-10) or similar
+        text = re.sub(r'\(\s*-\s*\d+\s*\)', '', text)
+        # Remove (+50) or similar
+        text = re.sub(r'\(\s*\+\s*\d+\s*\)', '', text)
+        # Clean up spaces around commas and double spaces
+        text = re.sub(r'\s+,\s*', ', ', text)
+        text = re.sub(r'\s+', ' ', text).strip()
+        
+        if "股價偏離" in text:
+            # Match (10.1%) or similar
+            pct_match = re.search(r'\(\s*(\d+(?:\.\d+)?%)\s*\)', text)
+            if pct_match:
+                pct_str = pct_match.group(0)
+                text = text.replace(pct_str, "")
+                text = re.sub(r'\s+,\s*', ', ', text)
+                text = re.sub(r'\s+', ' ', text).strip()
+                if "追加扣分" in text:
+                    text = text.replace("(追加扣分)", f"{pct_str} (追加扣分)")
+                else:
+                    text = f"{text} {pct_str}"
+                text = re.sub(r'\s+', ' ', text).strip()
+        return text
     
     # 1. Parse MA reasons
     m_ma = re.search(r'^\s*[\-\*]\s+\*\*均線評分\*\*.*?\n(.*?(?=\n(?:[\-\*]\s+\*\*|\Z|##|###)))', content, re.MULTILINE | re.DOTALL)
@@ -85,7 +111,7 @@ def extract_detailed_reasons(content, is_sell):
             if line.startswith('-') or line.startswith('*'):
                 clean = re.sub(r'[\*\#\`]', '', line).lstrip('-* ').strip()
                 if clean and is_deduction(clean):
-                    ma_reasons.append(clean)
+                    ma_reasons.append(clean_and_format_reason(clean))
                     
     # 2. Parse Bias reasons
     m_bias = re.search(r'^\s*[\-\*]\s+\*\*乖離率評分\*\*.*?\n(.*?(?=\n(?:[\-\*]\s+\*\*|\Z|##|###)))', content, re.MULTILINE | re.DOTALL)
@@ -96,7 +122,7 @@ def extract_detailed_reasons(content, is_sell):
             if line.startswith('-') or line.startswith('*'):
                 clean = re.sub(r'[\*\#\`]', '', line).lstrip('-* ').strip()
                 if clean and is_deduction(clean):
-                    bias_reasons.append(clean)
+                    bias_reasons.append(clean_and_format_reason(clean))
                     
     ma_reasons_str = "；".join(ma_reasons) if ma_reasons else "無扣分項"
     bias_reasons_str = "；".join(bias_reasons) if bias_reasons else "無扣分項"
@@ -284,7 +310,7 @@ def generate_weekly_report(target_date=None):
         for s in trend_stocks:
             ma_cell = format_rating_cell(s["ma_rating"], s["ma_score"], s["ma_reasons"])
             bias_cell = format_rating_cell(s["bias_rating"], s["bias_score"], s["bias_reasons"])
-            report.append(f"| `[[{s['ticker']}{s['name']}]]` | `ADD` | {ma_cell} | {bias_cell} | {s['price']:.1f} | {s['eps']} | {s['pe']} | {s['summary']} |")
+            report.append(f"| [[{s['ticker']}{s['name']}|{s['ticker']}<br>{s['name']}]] | `ADD` | {ma_cell} | {bias_cell} | {s['price']:.1f} | {s['eps']} | {s['pe']} | {s['summary']} |")
     else:
         report.append("| [無符合個股] | | | | | | | |")
         
@@ -303,7 +329,7 @@ def generate_weekly_report(target_date=None):
         for s in consolidation_stocks:
             ma_cell = format_rating_cell(s["ma_rating"], s["ma_score"], s["ma_reasons"])
             bias_cell = format_rating_cell(s["bias_rating"], s["bias_score"], s["bias_reasons"])
-            report.append(f"| `[[{s['ticker']}{s['name']}]]` | `ADD` | {ma_cell} | {bias_cell} | {s['price']:.1f} | {s['eps']} | {s['pe']} | {s['summary']} |")
+            report.append(f"| [[{s['ticker']}{s['name']}|{s['ticker']}<br>{s['name']}]] | `ADD` | {ma_cell} | {bias_cell} | {s['price']:.1f} | {s['eps']} | {s['pe']} | {s['summary']} |")
     else:
         report.append("| [無符合個股] | | | | | | | |")
         
@@ -322,7 +348,7 @@ def generate_weekly_report(target_date=None):
         for s in opportunity_stocks:
             ma_cell = format_rating_cell(s["ma_rating"], s["ma_score"], s["ma_reasons"])
             bias_cell = format_rating_cell(s["bias_rating"], s["bias_score"], s["bias_reasons"])
-            report.append(f"| `[[{s['ticker']}{s['name']}]]` | `ADD` | {ma_cell} | {bias_cell} | {s['price']:.1f} | {s['eps']} | {s['pe']} | {s['summary']} |")
+            report.append(f"| [[{s['ticker']}{s['name']}|{s['ticker']}<br>{s['name']}]] | `ADD` | {ma_cell} | {bias_cell} | {s['price']:.1f} | {s['eps']} | {s['pe']} | {s['summary']} |")
     else:
         report.append("| [無符合個股] | | | | | | | |")
         
@@ -351,7 +377,7 @@ def generate_weekly_report(target_date=None):
         for s in sell_stocks:
             ma_cell = format_rating_cell(s["ma_rating"], s["ma_score"], s["ma_reasons"])
             bias_cell = format_rating_cell(s["bias_rating"], s["bias_score"], s["bias_reasons"])
-            report.append(f"| `[[{s['ticker']}{s['name']}]]` | `SELL` | {ma_cell} | {bias_cell} | {s['price']:.1f} | {s['eps']} | {s['pe']} | {s['summary']} |")
+            report.append(f"| [[{s['ticker']}{s['name']}|{s['ticker']}<br>{s['name']}]] | `SELL` | {ma_cell} | {bias_cell} | {s['price']:.1f} | {s['eps']} | {s['pe']} | {s['summary']} |")
     else:
         report.append("| [無符合個股] | | | | | | | |")
         
@@ -387,8 +413,13 @@ def generate_weekly_report(target_date=None):
         processed_md = re.sub(r'\[!WARNING\]', r'⚡ **警告**', processed_md)
         processed_md = re.sub(r'\[!CAUTION\]', r'🛑 **注意**', processed_md)
         
-        # Remove markdown backticks and [[ ]] brackets around stock codes/names for PDF rendering
-        processed_md = re.sub(r'`?\[\[([^\]]+)\]\]`?', r'\1', processed_md)
+        # Remove markdown backticks and [[ ]] brackets around stock codes/names for PDF rendering, keeping the alias if present
+        def clean_links(match):
+            text = match.group(1)
+            if '|' in text:
+                return text.split('|', 1)[1]
+            return text
+        processed_md = re.sub(r'`?\[\[([^\]]+)\]\]`?', clean_links, processed_md)
         
         html_body = markdown.markdown(processed_md, extensions=['tables', 'fenced_code'])
         
@@ -451,28 +482,28 @@ def generate_weekly_report(target_date=None):
                 overflow: hidden;
                 border: 1px solid #e2e8f0;
             }}
-            th:nth-child(1), td:nth-child(1) {{ width: 10%; }} /* 股票 */
-            th:nth-child(2), td:nth-child(2) {{ width: 6%; text-align: center; }} /* 評價 */
-            th:nth-child(3), td:nth-child(3) {{ width: 23%; }} /* 均線評級 */
-            th:nth-child(4), td:nth-child(4) {{ width: 23%; }} /* 乖離評級 */
+            th:nth-child(1), td:nth-child(1) {{ width: 8%; }} /* 股票 */
+            th:nth-child(2), td:nth-child(2) {{ width: 5%; text-align: center; }} /* 評價 */
+            th:nth-child(3), td:nth-child(3) {{ width: 21%; }} /* 均線評級 */
+            th:nth-child(4), td:nth-child(4) {{ width: 21%; }} /* 乖離評級 */
             th:nth-child(5), td:nth-child(5) {{ width: 8%; text-align: right; }} /* 當前股價 */
-            th:nth-child(6), td:nth-child(6) {{ width: 7%; text-align: right; }} /* 27EPS(F) */
-            th:nth-child(7), td:nth-child(7) {{ width: 6%; text-align: right; }} /* FP/E */
-            th:nth-child(8), td:nth-child(8) {{ width: 17%; }} /* 投資簡述 */
+            th:nth-child(6), td:nth-child(6) {{ width: 6%; text-align: right; }} /* 27EPS(F) */
+            th:nth-child(7), td:nth-child(7) {{ width: 5%; text-align: right; }} /* FP/E */
+            th:nth-child(8), td:nth-child(8) {{ width: 26%; }} /* 投資簡述 */
             
             th {{
                 background-color: #1e293b;
                 color: #ffffff;
                 font-weight: 600;
                 text-align: left;
-                padding: 8px 10px;
+                padding: 4px 6px;
                 border: 1px solid #475569;
             }}
             th:nth-child(2) {{ text-align: center; }}
             th:nth-child(5), th:nth-child(6), th:nth-child(7) {{ text-align: right; }}
             
             td {{
-                padding: 8px 10px;
+                padding: 4px 6px;
                 border: 1px solid #cbd5e1;
             }}
             tr:nth-child(even) {{
