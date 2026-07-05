@@ -16,7 +16,7 @@ aliases: [週度投資建議, 週報-2026-07-05]
 > [!NOTE]
 > **篩選條件**：Valuation 為 **ADD** 且 **均線評分佳**，乖離率不限。
 
-| 股票 | 評價 | 均線評級 | 乖離評級 | 當前股價 (元) | 2027EPS(F) | FP/E | 投資簡述 |
+| 股票 | 評價 | 均線評級 | 乖離評級 | 當前股價 (元) | 27EPS(F) | FP/E | 投資簡述 |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | `[[1303南亞]]` | `ADD` | <span style="color: #dc2626; font-weight: bold;">均線評分佳 (120分)</span> | <span style="color: #16a34a; font-weight: bold;">乖離率評分差 (45分)</span> <div style="font-size: 8.5pt; color: #000000; margin-top: 4px; line-height: 1.3;">原因：<br>股價偏離 5MA (10.1%) 超過 5% (-10)<br>股價偏離 20MA (42.9%) 超過 25% (-15)<br>股價偏離 60MA (85.3%) 超過 40% (-15)<br>股價偏離 5MA (10.1%) 超過 10% (追加扣分 -15)</div> | 197.0 | 20.00 | 9.8x | 5月營運自結亮眼，本業轉折確立：; 5M26 自結單月稅前盈餘達 37.53 億元（+672.79% YoY，且尚未認列南亞科、台塑化等權益法損益），創下波段新高，主因 AI 帶動電子級材料價量齊揚，本業大幅跳升。 |
 | `[[2303聯電]]` | `ADD` | <span style="color: #dc2626; font-weight: bold;">均線評分佳 (120分)</span> | <span style="color: #dc2626; font-weight: bold;">乖離率評分佳 (85分)</span> <div style="font-size: 8.5pt; color: #000000; margin-top: 4px; line-height: 1.3;">原因：<br>股價偏離 60MA (48.6%) 超過 40% (-15)</div> | 170.5 | 9.75 | 17.5x | 明年 EPS 突破 10.0 元，高毛利產品雙引擎起飛：; 晨會共識預估 2027 年 EPS 可達 10 元以上。其核心驅動力在於：專攻矽光子的 TFLN（薄膜鈮酸鋰）產線毛利率高達 70% 以上；矽光子中介層 (Interposer) 產品毛利率高達 60% 以上，大幅優化聯電的獲利結構與淨利表現。 |
@@ -34,7 +34,7 @@ aliases: [週度投資建議, 週報-2026-07-05]
 > [!NOTE]
 > **篩選條件**：Valuation 為 **ADD** 且 **均線評分普通**，乖離率不限。
 
-| 股票 | 評價 | 均線評級 | 乖離評級 | 當前股價 (元) | 2027EPS(F) | FP/E | 投資簡述 |
+| 股票 | 評價 | 均線評級 | 乖離評級 | 當前股價 (元) | 27EPS(F) | FP/E | 投資簡述 |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | `[[2472立隆電]]` | `ADD` | <span style="color: #b45309; font-weight: bold;">均線評分普通 (70分)</span> <div style="font-size: 8.5pt; color: #000000; margin-top: 4px; line-height: 1.3;">原因：<br>股價低於 1 條均線 (-10)</div> | <span style="color: #dc2626; font-weight: bold;">乖離率評分佳 (85分)</span> <div style="font-size: 8.5pt; color: #000000; margin-top: 4px; line-height: 1.3;">原因：<br>股價偏離 60MA (50.4%) 超過 40% (-15)</div> | 425.0 | 19.55 | 21.7x | 獨家台系供應商地位：為 NVIDIA Vera/Rubin 先進 GPU 主板 SP-CAP 的唯一台系合格供應商。; 產業新規格大商機：AI 超級機櫃與 800V HVDC 架構帶動大容量鋁質電容與大型超級電容需求爆發，面臨嚴重供給缺口。 |
 | `[[3673TPK宸鴻]]` | `ADD` | <span style="color: #b45309; font-weight: bold;">均線評分普通 (60分)</span> <div style="font-size: 8.5pt; color: #000000; margin-top: 4px; line-height: 1.3;">原因：<br>均線 4 條上彎 (+40), 2 條下彎 (-20)</div> | <span style="color: #dc2626; font-weight: bold;">乖離率評分佳 (100分)</span> | 82.4 | 4.35 | 18.9x | 設備自研與團隊優勢：在 TGV 製程中，有一段核心製程設備為自研自製。此技術源於 TPK 併購的「油田」公司自動化部門，具備設備自主改裝與整合能力。; 技術開發早：TGV 先進封裝技術已於 1-2 年前啟動研發，目前以台灣為核心生產基地，全力對接台系封測龍頭。 |
@@ -45,7 +45,7 @@ aliases: [週度投資建議, 週報-2026-07-05]
 > [!NOTE]
 > **篩選條件**：Valuation 為 **ADD** 且 **均線評分差**，乖離率不限. 
 
-| 股票 | 評價 | 均線評級 | 乖離評級 | 當前股價 (元) | 2027EPS(F) | FP/E | 投資簡述 |
+| 股票 | 評價 | 均線評級 | 乖離評級 | 當前股價 (元) | 27EPS(F) | FP/E | 投資簡述 |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | `[[2344華邦電]]` | `ADD` | <span style="color: #16a34a; font-weight: bold;">均線評分差 (-10分)</span> <div style="font-size: 8.5pt; color: #000000; margin-top: 4px; line-height: 1.3;">原因：<br>股價低於 3 條均線 (-30)<br>均線 4 條上彎 (+40), 2 條下彎 (-20)</div> | <span style="color: #dc2626; font-weight: bold;">乖離率評分佳 (100分)</span> | 184.5 | 45.00 | 4.1x | 記憶體與 IPD 雙重題材：除了傳統 DRAM/NOR Flash 迎來漲價循環外，公司成功切入高毛利的 IPD (整合被動元件/矽電容) 代工，接獲三星電機 (SEMCO) 高達 10 億美元 的矽電容大訂單，展現強大成長動能。; IPD 技術代際領先：華邦電的 IPD 矽電容技術領先競爭同業 [[6531愛普]] 達 兩代 以上，在 Edge 端 AI 與先進封裝領域具有極佳的競爭力。 |
 | `[[3037欣興]]` | `ADD` | <span style="color: #16a34a; font-weight: bold;">均線評分差 (0分)</span> <div style="font-size: 8.5pt; color: #000000; margin-top: 4px; line-height: 1.3;">原因：<br>股價低於 2 條均線 (-20)<br>均線 4 條上彎 (+40), 2 條下彎 (-20)</div> | <span style="color: #dc2626; font-weight: bold;">乖離率評分佳 (100分)</span> | 969.0 | 50.49 | 19.2x | 轉移低效能 BT 產能，聚焦高階 ABF：; 公司計劃於 2026 年底前裁減台灣廠至少 15% 的 BT 產能（主要是低毛利的 WBCSP 載板），中長期目標是裁減 40-50% 的 BT 產能並轉移訂單，將產線和資源轉向毛利率及能見度更高的 ABF 載板，此舉有助於優化整體毛利與產品結構。 |
@@ -81,7 +81,7 @@ aliases: [週度投資建議, 週報-2026-07-05]
 > 此區域列出估值偏高、短期乖離率過大，或基本面/供應鏈地位出現警訊的個股 (Valuation Rating 為 **SELL**)。
 
 ### 📌 減碼/避開個股清單表
-| 股票 | 評價 | 均線評級 | 乖離評級 | 當前股價 (元) | 2027EPS(F) | FP/E | 潛在利空 |
+| 股票 | 評價 | 均線評級 | 乖離評級 | 當前股價 (元) | 27EPS(F) | FP/E | 潛在利空 |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | `[[1711.TW永光]]` | `SELL` | <span style="color: #b45309; font-weight: bold;">均線評分普通 (70分)</span> <div style="font-size: 8.5pt; color: #000000; margin-top: 4px; line-height: 1.3;">原因：<br>股價低於 1 條均線 (-10)<br>均線 5 條上彎 (+50), 1 條下彎 (-10)</div> | <span style="color: #dc2626; font-weight: bold;">乖離率評分佳 (100分)</span> | 45.7 | 0.83 | 54.8x | 傳統染料大廠轉骨半導體：公司為亞洲最大染料廠，目前正加速向半導體電子化學品轉型。電子化學品營收佔比預計由 2025 年的 24% 逐年提升至 2028 年的 43%，成為長期獲利的核心驅動。; 光阻切入台積電鏈：自研光阻劑 (Photoresist) 已成功打入 [[台積電]] 12 吋晶圓廠實現在地化供應，同時作為日系大廠之在地代工合作夥伴，客戶黏著度高。光阻新產線預估於 2026 年 完工投產。 |
 | `[[2383台光電]]` | `SELL` | <span style="color: #dc2626; font-weight: bold;">均線評分佳 (120分)</span> | <span style="color: #dc2626; font-weight: bold;">乖離率評分佳 (90分)</span> <div style="font-size: 8.5pt; color: #000000; margin-top: 4px; line-height: 1.3;">原因：<br>股價偏離 5MA (8.1%) 超過 5% (-10)</div> | 6080.0 | 167.50 | 36.3x | NVIDIA 供應鏈霸主 (SemiAnalysis 報告)：; 2H26 起台光電（EMC）將超越 Doosan 成為 NVIDIA 最大高階 CCL 供應商。在 VR NVL72 中，台光電獨佔 Rosalind (NVSwitch)、Orchid (CX-9)、Bluefield-4、以及 Midplane (Compute Tray) 板卡，使得單櫃 CCL 產值（1.51x Doosan）呈爆發性增長，合計拿走 Nvidia 高階 CCL 採購價值的 50-60%。 |

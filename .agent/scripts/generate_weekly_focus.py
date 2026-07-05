@@ -276,7 +276,7 @@ def generate_weekly_report(target_date=None):
     report.append("> [!NOTE]")
     report.append("> **篩選條件**：Valuation 為 **ADD** 且 **均線評分佳**，乖離率不限。")
     report.append("")
-    report.append(f"| 股票 | 評價 | 均線評級 | 乖離評級 | 當前股價 (元) | {target_year}EPS(F) | FP/E | 投資簡述 |")
+    report.append(f"| 股票 | 評價 | 均線評級 | 乖離評級 | 當前股價 (元) | {str(target_year)[2:]}EPS(F) | FP/E | 投資簡述 |")
     report.append("| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
     
     trend_stocks = [s for s in add_stocks if s["ma_rating"] == "均線評分佳"]
@@ -295,7 +295,7 @@ def generate_weekly_report(target_date=None):
     report.append("> [!NOTE]")
     report.append("> **篩選條件**：Valuation 為 **ADD** 且 **均線評分普通**，乖離率不限。")
     report.append("")
-    report.append(f"| 股票 | 評價 | 均線評級 | 乖離評級 | 當前股價 (元) | {target_year}EPS(F) | FP/E | 投資簡述 |")
+    report.append(f"| 股票 | 評價 | 均線評級 | 乖離評級 | 當前股價 (元) | {str(target_year)[2:]}EPS(F) | FP/E | 投資簡述 |")
     report.append("| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
     
     consolidation_stocks = [s for s in add_stocks if s["ma_rating"] == "均線評分普通"]
@@ -314,7 +314,7 @@ def generate_weekly_report(target_date=None):
     report.append("> [!NOTE]")
     report.append("> **篩選條件**：Valuation 為 **ADD** 且 **均線評分差**，乖離率不限. ")
     report.append("")
-    report.append(f"| 股票 | 評價 | 均線評級 | 乖離評級 | 當前股價 (元) | {target_year}EPS(F) | FP/E | 投資簡述 |")
+    report.append(f"| 股票 | 評價 | 均線評級 | 乖離評級 | 當前股價 (元) | {str(target_year)[2:]}EPS(F) | FP/E | 投資簡述 |")
     report.append("| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
     
     opportunity_stocks = [s for s in add_stocks if s["ma_rating"] == "均線評分差"]
@@ -344,7 +344,7 @@ def generate_weekly_report(target_date=None):
     report.append("> 此區域列出估值偏高、短期乖離率過大，或基本面/供應鏈地位出現警訊的個股 (Valuation Rating 為 **SELL**)。")
     report.append("")
     report.append("### 📌 減碼/避開個股清單表")
-    report.append(f"| 股票 | 評價 | 均線評級 | 乖離評級 | 當前股價 (元) | {target_year}EPS(F) | FP/E | 潛在利空 |")
+    report.append(f"| 股票 | 評價 | 均線評級 | 乖離評級 | 當前股價 (元) | {str(target_year)[2:]}EPS(F) | FP/E | 潛在利空 |")
     report.append("| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
     
     if sell_stocks:
@@ -400,7 +400,7 @@ def generate_weekly_report(target_date=None):
         <style>
             @page {{
                 size: a4;
-                margin: 2cm;
+                margin: 1.2cm;
             }}
             body {{
                 font-family: "Microsoft JhengHei", "Segoe UI", system-ui, sans-serif;
@@ -442,24 +442,37 @@ def generate_weekly_report(target_date=None):
             }}
             table {{
                 width: 100%;
+                table-layout: fixed;
                 border-collapse: collapse;
                 margin-top: 15px;
                 margin-bottom: 20px;
-                font-size: 9pt;
+                font-size: 8.5pt;
                 border-radius: 6px;
                 overflow: hidden;
                 border: 1px solid #e2e8f0;
             }}
+            th:nth-child(1), td:nth-child(1) {{ width: 10%; }} /* 股票 */
+            th:nth-child(2), td:nth-child(2) {{ width: 6%; text-align: center; }} /* 評價 */
+            th:nth-child(3), td:nth-child(3) {{ width: 23%; }} /* 均線評級 */
+            th:nth-child(4), td:nth-child(4) {{ width: 23%; }} /* 乖離評級 */
+            th:nth-child(5), td:nth-child(5) {{ width: 8%; text-align: right; }} /* 當前股價 */
+            th:nth-child(6), td:nth-child(6) {{ width: 7%; text-align: right; }} /* 27EPS(F) */
+            th:nth-child(7), td:nth-child(7) {{ width: 6%; text-align: right; }} /* FP/E */
+            th:nth-child(8), td:nth-child(8) {{ width: 17%; }} /* 投資簡述 */
+            
             th {{
                 background-color: #1e293b;
                 color: #ffffff;
                 font-weight: 600;
                 text-align: left;
-                padding: 10px 12px;
+                padding: 8px 10px;
                 border: 1px solid #475569;
             }}
+            th:nth-child(2) {{ text-align: center; }}
+            th:nth-child(5), th:nth-child(6), th:nth-child(7) {{ text-align: right; }}
+            
             td {{
-                padding: 10px 12px;
+                padding: 8px 10px;
                 border: 1px solid #cbd5e1;
             }}
             tr:nth-child(even) {{
