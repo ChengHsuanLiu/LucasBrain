@@ -70,6 +70,7 @@
 | `recall [主題]` / `brief [主題]` | 提取特定概念的歷史紀要與簡報 | `.agent/tasks/recall.md` / `brief.md` |
 | `gaps` | 尋找個股或產業鏈的資訊缺口 | `.agent/tasks/gaps.md` |
 | `challenge [[Note]]` | 挑戰既有投資假設並尋找漏洞 | `.agent/tasks/challenge.md` |
+| `重新分類封存檔案` | 重新對 `98_Archives/` 底下所有子資料夾與檔案進行分類評估 | `.agent/tasks/reclassify_archives.md` |
 
 ---
 
