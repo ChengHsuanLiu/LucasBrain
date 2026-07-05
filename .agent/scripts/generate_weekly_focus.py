@@ -355,10 +355,154 @@ def generate_weekly_report(target_date=None):
     report.append("* **下週重要時間點**：[填寫重大事件，如法說會、解盲時間等]")
     report.append("")
     
+    md_text = "\n".join(report)
     with open(dest_filepath, 'w', encoding='utf-8') as f:
-        f.write("\n".join(report))
+        f.write(md_text)
         
     print(f"Generated Weekly Focus report at: {dest_filepath}")
+    
+    # Generate PDF
+    dest_filepath_pdf = os.path.join(dest_dir, f"{target_date}_Weekly_Focus.pdf")
+    try:
+        import markdown
+        from reportlab.pdfbase import pdfmetrics
+        from reportlab.pdfbase.ttfonts import TTFont
+        from xhtml2pdf import pisa
+        
+        # Register Chinese font
+        font_path = r"C:\Windows\Fonts\msjh.ttc"
+        font_name = "MSJH"
+        if os.path.exists(font_path):
+            try:
+                pdfmetrics.registerFont(TTFont(font_name, font_path))
+            except:
+                simsun_path = r"C:\Windows\Fonts\simsun.ttc"
+                if os.path.exists(simsun_path):
+                    try:
+                        pdfmetrics.registerFont(TTFont("SimSun", simsun_path))
+                        font_name = "SimSun"
+                    except:
+                        pass
+        
+        # Pre-process markdown to handle github alerts elegantly in PDF
+        processed_md = md_text
+        processed_md = re.sub(r'\[!NOTE\]', r'🔔 **備註**', processed_md)
+        processed_md = re.sub(r'\[!TIP\]', r'💡 **提示**', processed_md)
+        processed_md = re.sub(r'\[!IMPORTANT\]', r'⚠️ **重要**', processed_md)
+        processed_md = re.sub(r'\[!WARNING\]', r'⚡ **警告**', processed_md)
+        processed_md = re.sub(r'\[!CAUTION\]', r'🛑 **注意**', processed_md)
+        
+        html_body = markdown.markdown(processed_md, extensions=['tables', 'fenced_code'])
+        
+        # Complete HTML with styling
+        html_content = f"""
+        <html>
+        <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <style>
+            @page {{
+                size: a4;
+                margin: 2cm;
+                margin-bottom: 2.5cm;
+                @frame footer {{
+                    -pdf-frame-content: footerContent;
+                    bottom: 1cm;
+                    margin-left: 2cm;
+                    margin-right: 2cm;
+                    height: 1cm;
+                }}
+            }}
+            body {{
+                font-family: {font_name}, sans-serif;
+                font-size: 10pt;
+                line-height: 1.6;
+                color: #1e293b;
+            }}
+            h1 {{
+                font-size: 18pt;
+                color: #0f172a;
+                text-align: center;
+                margin-bottom: 20px;
+                padding-bottom: 10px;
+                border-bottom: 2px solid #3b82f6;
+            }}
+            h2 {{
+                font-size: 13pt;
+                color: #1e3a8a;
+                margin-top: 25px;
+                margin-bottom: 12px;
+                padding-bottom: 5px;
+                border-bottom: 1px solid #e2e8f0;
+            }}
+            h3 {{
+                font-size: 11pt;
+                color: #0f766e;
+                margin-top: 15px;
+                margin-bottom: 8px;
+            }}
+            p, ul, ol {{
+                margin-bottom: 10px;
+            }}
+            li {{
+                margin-bottom: 5px;
+            }}
+            table {{
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 12px;
+                margin-bottom: 12px;
+                font-size: 8pt;
+            }}
+            th {{
+                background-color: #1e293b;
+                color: #ffffff;
+                font-weight: bold;
+                text-align: left;
+                padding: 6px;
+                border: 1px solid #475569;
+            }}
+            td {{
+                padding: 6px;
+                border: 1px solid #cbd5e1;
+            }}
+            tr:nth-child(even) {{
+                background-color: #f8fafc;
+            }}
+            blockquote {{
+                background-color: #f8fafc;
+                border-left: 4px solid #3b82f6;
+                padding: 8px 12px;
+                margin: 12px 0;
+                color: #475569;
+            }}
+            code {{
+                font-family: monospace;
+                background-color: #f1f5f9;
+                padding: 2px 4px;
+                border-radius: 4px;
+                font-size: 9pt;
+            }}
+        </style>
+        </head>
+        <body>
+        <div id="footerContent" align="center" style="font-family: {font_name}; font-size: 8pt; color: #94a3b8;">
+            LucasBrain 投資週報 | 頁碼 <pdf:pagenumber/> / <pdf:pagecount/>
+        </div>
+        {html_body}
+        </body>
+        </html>
+        """
+        
+        with open(dest_filepath_pdf, "wb") as pdf_file:
+            pisa_status = pisa.CreatePDF(html_content, dest=pdf_file)
+            
+        if not pisa_status.err:
+            print(f"Generated Weekly Focus PDF at: {dest_filepath_pdf}")
+        else:
+            print("Failed to generate PDF.")
+    except Exception as e:
+        print(f"Failed to generate PDF: {e}")
+        
     return dest_filepath
 
 if __name__ == "__main__":
