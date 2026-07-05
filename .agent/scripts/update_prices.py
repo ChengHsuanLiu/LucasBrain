@@ -193,31 +193,31 @@ def analyze_technical(prices, valuation_rating):
         ma_score += 20
         ma_reasons.append("短期均線 (5/10/20/60MA) 均呈上彎 (+20)")
         
-    # C. 股價是否底於 5ma, 10ma, 20ma, 60ma, 120ma, 240ma，每低於一條均線扣 5 分
+    # C. 股價是否底於 5ma, 10ma, 20ma, 60ma, 120ma, 240ma，每低於一條均線扣 10 分
     below_cnt = 0
     for p in periods:
         if close < mas[p]:
-            ma_score -= 5
+            ma_score -= 10
             below_cnt += 1
     if below_cnt > 0:
-        ma_reasons.append(f"股價低於 {below_cnt} 條均線 (-{below_cnt * 5})")
+        ma_reasons.append(f"股價低於 {below_cnt} 條均線 (-{below_cnt * 10})")
         
-    # D. 每條均線若上彎各加 5 分，每下彎一條扣 5 分
+    # D. 每條均線若上彎各加 10 分，每下彎一條扣 10 分
     up_cnt = 0
     down_cnt = 0
     for p in periods:
         if slopes[p] == "上彎":
-            ma_score += 5
+            ma_score += 10
             up_cnt += 1
         else:
-            ma_score -= 5
+            ma_score -= 10
             down_cnt += 1
-    ma_reasons.append(f"均線 {up_cnt} 條上彎 (+{up_cnt * 5}), {down_cnt} 條下彎 (-{down_cnt * 5})")
+    ma_reasons.append(f"均線 {up_cnt} 條上彎 (+{up_cnt * 10}), {down_cnt} 條下彎 (-{down_cnt * 10})")
     
     # MA Rating mapping
-    if ma_score >= 70:
+    if ma_score >= 80:
         ma_rating = "均線評分佳"
-    elif 50 < ma_score < 70:
+    elif 50 < ma_score < 80:
         ma_rating = "均線評分普通"
     else:
         ma_rating = "均線評分差"
