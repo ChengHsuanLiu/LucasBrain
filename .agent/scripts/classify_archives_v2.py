@@ -155,6 +155,9 @@ for src_filepath, filename in all_files:
          any(kw in filename_lower for kw in ["研究報告", "投顧", "大摩", "大華", "凱基", "元大", "統一", "國泰", "報告", "ubs", "morgan stanley", "hsbc", "daikwa", "daiwa", "大和", "大和證券", "券商", "美林", "野村", "瑞銀", "麥格理", "高盛", "花旗", "滙豐", "micron", "ccl", "top pick", "research"]) or \
          any(kw in content_lower for kw in ["研究報告", "投顧", "目標價", "評等", "買進", "kgi", "morgan stanley", "大摩", "目標價", "ubs", "hsbc", "券商", "global research", "equity research", "top pick", "overweight", "target price", "estimates", "forecast"]):
         category = "Research_Report"
+        # If it is classified as Research_Report but is not a pdf file, redirect it to Stock_Memo
+        if ext != ".pdf":
+            category = "Stock_Memo"
         
     dest_dir = categories[category]
     dest_filepath = os.path.join(dest_dir, filename)
