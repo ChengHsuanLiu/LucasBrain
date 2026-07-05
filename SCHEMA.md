@@ -72,6 +72,7 @@
 | `challenge [[Note]]` | 挑戰既有投資假設並尋找漏洞 | `.agent/tasks/challenge.md` |
 | `重新分類封存檔案` | 重新對 `98_Archives/` 底下所有子資料夾與檔案進行分類評估 | `.agent/tasks/reclassify_archives.md` |
 | `gagp` | 快速執行 git add、commit 與 push | `.agent/tasks/gagp.md` |
+| `g WeeklyFocus` | 生成週度投資建議與持股追蹤報告 | `.agent/tasks/generate_weekly_focus.md` |
 
 ---
 
