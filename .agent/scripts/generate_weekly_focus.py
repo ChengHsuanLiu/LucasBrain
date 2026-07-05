@@ -370,19 +370,13 @@ def generate_weekly_report(target_date=None):
         from xhtml2pdf import pisa
         
         # Register Chinese font
-        font_path = r"C:\Windows\Fonts\msjh.ttc"
-        font_name = "MSJH"
+        font_path = r"C:\Windows\Fonts\kaiu.ttf"
+        font_name = "BiauKai"
         if os.path.exists(font_path):
             try:
                 pdfmetrics.registerFont(TTFont(font_name, font_path))
-            except:
-                simsun_path = r"C:\Windows\Fonts\simsun.ttc"
-                if os.path.exists(simsun_path):
-                    try:
-                        pdfmetrics.registerFont(TTFont("SimSun", simsun_path))
-                        font_name = "SimSun"
-                    except:
-                        pass
+            except Exception as e:
+                print(f"Failed to register BiauKai: {e}")
         
         # Pre-process markdown to handle github alerts elegantly in PDF
         processed_md = md_text
@@ -493,13 +487,25 @@ def generate_weekly_report(target_date=None):
         </html>
         """
         
-        with open(dest_filepath_pdf, "wb") as pdf_file:
-            pisa_status = pisa.CreatePDF(html_content, dest=pdf_file)
-            
-        if not pisa_status.err:
-            print(f"Generated Weekly Focus PDF at: {dest_filepath_pdf}")
-        else:
-            print("Failed to generate PDF.")
+        try:
+            with open(dest_filepath_pdf, "wb") as pdf_file:
+                pisa_status = pisa.CreatePDF(html_content, dest=pdf_file)
+            if not pisa_status.err:
+                print(f"Generated Weekly Focus PDF at: {dest_filepath_pdf}")
+            else:
+                print("Failed to generate PDF.")
+        except PermissionError:
+            import time
+            timestamp = int(time.time())
+            fallback_pdf = os.path.join(dest_dir, f"{target_date}_Weekly_Focus_{timestamp}.pdf")
+            print(f"Warning: {dest_filepath_pdf} is locked by another program (e.g., PDF Reader).")
+            print(f"Attempting to write to fallback path: {fallback_pdf}")
+            with open(fallback_pdf, "wb") as pdf_file:
+                pisa_status = pisa.CreatePDF(html_content, dest=pdf_file)
+            if not pisa_status.err:
+                print(f"Generated Weekly Focus PDF at: {fallback_pdf}")
+            else:
+                print("Failed to generate fallback PDF.")
     except Exception as e:
         print(f"Failed to generate PDF: {e}")
         
