@@ -123,7 +123,7 @@ def get_historical_prices_fallback(ticker):
     return []
 
 # ==========================================
-# 3. Moving Average & Scoring Core
+# 3. Moving Average & Double Scoring Core
 # ==========================================
 def calculate_ma(prices, period, index=-1):
     if len(prices) < period:
@@ -140,9 +140,14 @@ def analyze_technical(prices, valuation_rating):
             "close": prices[-1] if prices else 0.0,
             "mas": {p: 0.0 for p in [5, 10, 20, 60, 120, 240]},
             "slopes": {p: "下彎" for p in [5, 10, 20, 60, 120, 240]},
-            "score": 0,
-            "rating": "技術面普通",
-            "reasons": ["歷史 K 線數據不足 242 天，無法評估均線"]
+            "ma_score": 0,
+            "ma_rating": "均線評分差",
+            "ma_reasons": ["歷史 K 線數據不足 242 天，無法評估均線"],
+            "bias_score": 0,
+            "bias_rating": "乖離率評分差",
+            "bias_reasons": ["歷史 K 線數據不足 242 天，無法評估乖離"],
+            "score_str": "MA: 0 / Bias: 0",
+            "rating": "均線評分差 | 乖離率評分差"
         }
         
     close = prices[-1]
@@ -158,88 +163,121 @@ def analyze_technical(prices, valuation_rating):
         slopes[p] = "上彎" if ma_today > ma_prev else "下彎"
         
     if valuation_rating == "SELL":
-        # Rule 2: SELL rating &跌破 5ma ➡️ 直接警示並評斷為 SELL
+        # Valuation is SELL &跌破 5ma ➡️ 直接警示並評斷為 SELL
         if close < mas[5]:
             return {
                 "close": close,
                 "mas": mas,
                 "slopes": slopes,
-                "score": 0,
-                "rating": "SELL",
-                "reasons": [f"估值偏高 (SELL) 且收盤價跌破 5MA {mas[5]:.2f}"]
+                "ma_score": 0,
+                "ma_rating": "均線評分差",
+                "ma_reasons": [f"估值偏高且收盤價跌破 5MA {mas[5]:.2f}"],
+                "bias_score": 0,
+                "bias_rating": "乖離率評分差",
+                "bias_reasons": [f"估值偏高且收盤價跌破 5MA {mas[5]:.2f}"],
+                "score_str": "MA: 0 / Bias: 0",
+                "rating": "SELL"
             }
-        else:
-            return {
-                "close": close,
-                "mas": mas,
-                "slopes": slopes,
-                "score": 50,
-                "rating": "技術面普通",
-                "reasons": ["估值偏高 (SELL) 但仍維持在 5MA 之上"]
-            }
-            
-    # Rule 3: ADD/HOLD scoring mechanism
-    score = 0
-    reasons = []
+
+    # 1. MA Score (base = 0)
+    ma_score = 0
+    ma_reasons = []
     
-    # A. 5ma上彎且股價 > 5ma (+30分)
+    # A. 5ma上彎且股價 > 5ma (+40分)
     if slopes[5] == "上彎" and close > mas[5]:
-        score += 30
-        reasons.append("5MA 上彎且股價高於 5MA (+30)")
+        ma_score += 40
+        ma_reasons.append("5MA 上彎且股價高於 5MA (+40)")
         
-    # B. 短期均線 5ma, 10ma, 20ma, 60ma 均上彎(+10分)
+    # B. 短期均線 5ma, 10ma, 20ma, 60ma 均上彎(+20分)
     if slopes[5] == "上彎" and slopes[10] == "上彎" and slopes[20] == "上彎" and slopes[60] == "上彎":
-        score += 10
-        reasons.append("短期均線 (5/10/20/60MA) 均呈上彎 (+10)")
+        ma_score += 20
+        ma_reasons.append("短期均線 (5/10/20/60MA) 均呈上彎 (+20)")
         
     # C. 股價是否底於 5ma, 10ma, 20ma, 60ma, 120ma, 240ma，每低於一條均線扣 5 分
-    below_count = 0
+    below_cnt = 0
     for p in periods:
         if close < mas[p]:
-            score -= 5
-            below_count += 1
-    if below_count > 0:
-        reasons.append(f"股價低於 {below_count} 條均線 (-{below_count * 5})")
+            ma_score -= 5
+            below_cnt += 1
+    if below_cnt > 0:
+        ma_reasons.append(f"股價低於 {below_cnt} 條均線 (-{below_cnt * 5})")
         
     # D. 每條均線若上彎各加 5 分，每下彎一條扣 5 分
-    up_count = 0
-    down_count = 0
+    up_cnt = 0
+    down_cnt = 0
     for p in periods:
         if slopes[p] == "上彎":
-            score += 5
-            up_count += 1
+            ma_score += 5
+            up_cnt += 1
         else:
-            score -= 5
-            down_count += 1
-    reasons.append(f"均線 {up_count} 條上彎 (+{up_count * 5}), {down_count} 條下彎 (-{down_count * 5})")
+            ma_score -= 5
+            down_cnt += 1
+    ma_reasons.append(f"均線 {up_cnt} 條上彎 (+{up_cnt * 5}), {down_cnt} 條下彎 (-{down_cnt * 5})")
     
-    # E. 股價乖離 20ma 不超過 20%，加 10 分
-    bias_20 = abs((close - mas[20]) / mas[20])
-    if bias_20 <= 0.20:
-        score += 10
-        reasons.append(f"股價偏離 20MA {bias_20 * 100:.1f}%，在 20% 以內 (+10)")
-        
-    # F. 股價乖離 5ma 不超過 5%，加 10 分
-    bias_5 = abs((close - mas[5]) / mas[5])
-    if bias_5 <= 0.05:
-        score += 10
-        reasons.append(f"股價偏離 5MA {bias_5 * 100:.1f}%，在 5% 以內 (+10)")
-        
-    # Score mapping
-    if score > 80:
-        rating = "技術面佳"
-    elif 50 <= score <= 80:
-        rating = "技術面普通"
+    # MA Rating mapping
+    if ma_score >= 70:
+        ma_rating = "均線評分佳"
+    elif 50 < ma_score < 70:
+        ma_rating = "均線評分普通"
     else:
-        rating = "技術面差"
+        ma_rating = "均線評分差"
         
+    # 2. Bias Score (base = 100)
+    bias_score = 100
+    bias_reasons = []
+    
+    bias_5 = abs(close - mas[5]) / mas[5]
+    bias_20 = abs(close - mas[20]) / mas[20]
+    bias_60 = abs(close - mas[60]) / mas[60]
+    
+    # B. 股價乖離 5ma 超過 5%，扣 10 分
+    if bias_5 > 0.05:
+        bias_score -= 10
+        bias_reasons.append(f"股價偏離 5MA ({bias_5*100:.1f}%) 超過 5% (-10)")
+        
+    # C. 股價乖離 20ma 超過 25%，扣 15 分
+    if bias_20 > 0.25:
+        bias_score -= 15
+        bias_reasons.append(f"股價偏離 20MA ({bias_20*100:.1f}%) 超過 25% (-15)")
+        
+    # D. 股價乖離 60ma 超過 40%，扣 15 分
+    if bias_60 > 0.40:
+        bias_score -= 15
+        bias_reasons.append(f"股價偏離 60MA ({bias_60*100:.1f}%) 超過 40% (-15)")
+        
+    # E. 股價乖離 5ma 超過 10%，再扣 15 分
+    if bias_5 > 0.10:
+        bias_score -= 15
+        bias_reasons.append(f"股價偏離 5MA ({bias_5*100:.1f}%) 超過 10% (追加扣分 -15)")
+        
+    # F. 股價乖離 5ma 超過 15%，再扣 20 分
+    if bias_5 > 0.15:
+        bias_score -= 20
+        bias_reasons.append(f"股價偏離 5MA ({bias_5*100:.1f}%) 超過 15% (追加扣分 -20)")
+        
+    # Bias Rating mapping
+    if bias_score >= 70:
+        bias_rating = "乖離率評分佳"
+    elif 50 < bias_score < 70:
+        bias_rating = "乖離率評分普通"
+    else:
+        bias_rating = "乖離率評分差"
+        
+    score_str = f"MA: {ma_score} / Bias: {bias_score}"
+    rating_str = f"{ma_rating} | {bias_rating}"
+    
     return {
         "close": close,
         "mas": mas,
         "slopes": slopes,
-        "score": score,
-        "rating": rating,
-        "reasons": reasons
+        "ma_score": ma_score,
+        "ma_rating": ma_rating,
+        "ma_reasons": ma_reasons,
+        "bias_score": bias_score,
+        "bias_rating": bias_rating,
+        "bias_reasons": bias_reasons,
+        "score_str": score_str,
+        "rating": rating_str
     }
 
 # ==========================================
@@ -295,12 +333,11 @@ def update_stock_file(filepath, current_price, forward_pe, rating, target_year, 
     yaml_lines = yaml_text.split('\n')
     new_yaml_lines = []
     
-    score_str = str(ma_info["score"]) if ma_info["rating"] != "SELL" else "0"
     keys_to_update = {
         "current_price": str(current_price),
         "forward_pe": f"{forward_pe:.2f}" if isinstance(forward_pe, (float, int)) else f'"{forward_pe}"',
         "valuation_rating": f'"{rating}"',
-        "tactical_score": score_str,
+        "tactical_score": f'"{ma_info["score_str"]}"',
         "tactical_action": f'"{ma_info["rating"]}"'
     }
     keys_found = {k: False for k in keys_to_update}
@@ -343,7 +380,7 @@ def update_stock_file(filepath, current_price, forward_pe, rating, target_year, 
     if ma_info["rating"] == "SELL":
         tactical_line = f"* **操作裁決 (Tactical)**：`SELL` (當前股價：{current_price} 元，警示原因：估值偏高且收盤價跌破 5MA {ma_info['mas'][5]:.1f})"
     else:
-        tactical_line = f"* **操作裁決 (Tactical)**：`{ma_info['rating']}` (當前股價：{current_price} 元，技術面評分：{ma_info['score']} 分，均線狀態：5MA={ma_info['mas'][5]:.1f}({ma_info['slopes'][5]}), 20MA={ma_info['mas'][20]:.1f}({ma_info['slopes'][20]}), 60MA={ma_info['mas'][60]:.1f}({ma_info['slopes'][60]}))"
+        tactical_line = f"* **操作裁決 (Tactical)**：`{ma_info['rating']}` (當前股價：{current_price} 元，均線評分：{ma_info['ma_score']} 分，乖離率評分：{ma_info['bias_score']} 分)"
         
     body_text, count_tac = re.subn(
         r'^\s*[\-\*]\s+\*\*操作裁決.*?\*\*：.*$',
@@ -352,7 +389,6 @@ def update_stock_file(filepath, current_price, forward_pe, rating, target_year, 
         flags=re.MULTILINE
     )
     if count_tac == 0:
-        # Fallback if tactical note doesn't exist
         m_val_pos = re.search(r'^\s*[\-\*]\s+\*\*評價裁決.*?\*\*：.*$', body_text, re.MULTILINE)
         if m_val_pos:
             pos = m_val_pos.end()
@@ -438,14 +474,21 @@ def update_stock_file(filepath, current_price, forward_pe, rating, target_year, 
         shareholding_text += f"| {r['date']} | {r['ratio_400']} | {r['ratio_1000']} | {r['trend']} |\n"
         
     # E. Build Technical Analysis Section
-    reasons_bullets = "\n".join([f"  - {reason}" for reason in ma_info["reasons"]])
+    ma_reasons_bullets = "\n".join([f"  - {reason}" for reason in ma_info["ma_reasons"]])
+    bias_reasons_bullets = "\n".join([f"  - {reason}" for reason in ma_info["bias_reasons"]])
+    
     tech_title = "### 📈 技術面與均線分析 (Technical Analysis)"
     tech_text = f"{tech_title}\n"
     tech_text += f"* **當前收盤價**：{current_price} 元\n"
     tech_text += f"* **均線價格與斜率**：\n"
     for p in [5, 10, 20, 60, 120, 240]:
         tech_text += f"  - {p}MA: {ma_info['mas'][p]:.2f} ({ma_info['slopes'][p]})\n"
-    tech_text += f"* **技術評分加扣分項** (總分：{ma_info['score']} 分，評為 **{ma_info['rating']}**)：\n{reasons_bullets}\n"
+        
+    if ma_info["rating"] == "SELL":
+        tech_text += f"* **技術評分警示** (評為 **SELL**)：\n{ma_reasons_bullets}\n"
+    else:
+        tech_text += f"* **均線評分** (總分：{ma_info['ma_score']} 分，評為 **{ma_info['ma_rating']}**)：\n{ma_reasons_bullets}\n"
+        tech_text += f"* **乖離率評分** (總分：{ma_info['bias_score']} 分，評為 **{ma_info['bias_rating']}**)：\n{bias_reasons_bullets}\n"
     
     # F. Replace/Insert sections cleanly
     p_match = re.search(r'^\s*---\s*\n*##\s*📦\s*主要產品', body_text, re.MULTILINE)
@@ -457,7 +500,6 @@ def update_stock_file(filepath, current_price, forward_pe, rating, target_year, 
         fin_match = re.search(r'###\s*📊\s*財務數據與\s*EPS\s*預估比對', body_text)
         if fin_match:
             body_before = body_text[:pos].rstrip()
-            # Lossless regex removal with corrected lookahead
             body_before = re.sub(r'###\s*👥\s*籌碼面與大戶持股.*?(?=\n(?:##|###|---)|\Z)', '', body_before, flags=re.DOTALL)
             body_before = re.sub(r'###\s*📈\s*技術面與均線分析.*?(?=\n(?:##|###|---)|\Z)', '', body_before, flags=re.DOTALL)
             body_before = body_before.rstrip()
@@ -522,7 +564,7 @@ if __name__ == "__main__":
             forward_pe = "待補充"
             valuation_rating = "HOLD"
             
-        # 4. Perform Moving Average and Scoring Analysis
+        # 4. Perform Moving Average and Double Scoring Analysis
         ma_info = analyze_technical(prices, valuation_rating)
         
         # 5. Extract TDCC weekly data for this ticker
@@ -532,7 +574,7 @@ if __name__ == "__main__":
         ok = update_stock_file(fp, current_price, forward_pe, valuation_rating, target_year, ma_info, tdcc_info)
         if ok:
             success_cnt += 1
-            print(f"Updated {filename}: Price={current_price}, {target_year}E EPS={avg_target_eps}, PE={forward_pe}, Valuation={valuation_rating}, Tactical={ma_info['rating']}({ma_info['score']} pts)")
+            print(f"Updated {filename}: Price={current_price}, {target_year}E EPS={avg_target_eps}, PE={forward_pe}, Valuation={valuation_rating}, Tactical={ma_info['rating']}")
         else:
             fail_cnt += 1
             
