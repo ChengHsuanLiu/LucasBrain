@@ -40,7 +40,7 @@
   * **`30_Projects/Invest_Timeline/`**：存放投資重點時間軸報告（命名為 `{當天日期}_投資時間軸.md`）。
 * **`98_Archives/`**：已處理完成的原始素材與歷史報告存檔區，細分目錄如下：
   * **`98_Archives/Expert_Meetings/`**：專家會議與專家訪談相關的原始檔案（如：南亞專家會議、CCL產業專家會議）。
-  * **`98_Archives/Research_Report/`**：各券商與研究機構出具的正式法人研報（如：摩根士丹利台積電報告、統一證券CCL研究報告、HSBC聯發科研究報告、大和證券MLCC產業報告）。
+  * **`98_Archives/Research_Report/`**：各券商與研究機構出具的正式法人研報（如：摩根士丹利台積電報告、統一證券CCL研究報告、HSBC聯發科研究報告、大和證券MLCC產業報告）通常是 pdf 檔案，如果不是 pdf 檔案的可以放去 Stock_Memo。
   * **`98_Archives/Stock_Memo/`**：單一個股法說會、私訪、股東會等非正式會議紀要與單一個股 Memo（如：4764雙鍵股東會memo、2383台光電memo、2330台積電法說memo）。
   * **`98_Archives/Fund_Company_Memo/`**：其他投信/投資公司的討論內容，通常標題與「會議紀錄」相關，內容通常是針對多個不同股票或市場的看法。
   * **`98_Archives/Others/`**：其他無明確分類歸屬的素材檔案均存放於此。
@@ -71,6 +71,7 @@
 | `gaps` | 尋找個股或產業鏈的資訊缺口 | `.agent/tasks/gaps.md` |
 | `challenge [[Note]]` | 挑戰既有投資假設並尋找漏洞 | `.agent/tasks/challenge.md` |
 | `重新分類封存檔案` | 重新對 `98_Archives/` 底下所有子資料夾與檔案進行分類評估 | `.agent/tasks/reclassify_archives.md` |
+| `gagp` | 快速執行 git add、commit 與 push | `.agent/tasks/gagp.md` |
 
 ---
 
@@ -107,7 +108,8 @@
 `## [YYYY-MM-DD] ingest | 檔案名稱 | 影響的 Stocks 及 Garden`
 
 #### 步驟 7：版本管理與回報 (Commit & Push)
-完成後，主動為 Lucas 整理本次 commit 的簡短標題，詢問是否執行 `git commit` 與 `git push`。
+* **回報檔案變化**：在回報整理成果時，必須清楚列出 `10_Stocks/` 或 `20_Garden/` 底下的檔案有什麼變化（例如新增了哪些重點、修改了哪些數據或段落等）。
+* **版本管理**：主動為 Lucas 整理本次 commit 的簡短標題，詢問是否執行 `git commit` 與 `git push`。
 
 ---
 
