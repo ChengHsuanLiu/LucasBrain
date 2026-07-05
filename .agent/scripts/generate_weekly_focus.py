@@ -71,6 +71,11 @@ def extract_detailed_reasons(content, is_sell):
     ma_reasons = []
     bias_reasons = []
     
+    # Helper to check if line represents a deduction
+    def is_deduction(text):
+        # Match negative numbers other than -0 (e.g. -10, -15, -20)
+        return bool(re.search(r'-\s*[1-9]\d*', text))
+    
     # 1. Parse MA reasons
     m_ma = re.search(r'^\s*[\-\*]\s+\*\*均線評分\*\*.*?\n(.*?(?=\n(?:[\-\*]\s+\*\*|\Z|##|###)))', content, re.MULTILINE | re.DOTALL)
     if m_ma:
@@ -79,7 +84,7 @@ def extract_detailed_reasons(content, is_sell):
             line = line.strip()
             if line.startswith('-') or line.startswith('*'):
                 clean = re.sub(r'[\*\#\`]', '', line).lstrip('-* ').strip()
-                if clean:
+                if clean and is_deduction(clean):
                     ma_reasons.append(clean)
                     
     # 2. Parse Bias reasons
@@ -90,11 +95,11 @@ def extract_detailed_reasons(content, is_sell):
             line = line.strip()
             if line.startswith('-') or line.startswith('*'):
                 clean = re.sub(r'[\*\#\`]', '', line).lstrip('-* ').strip()
-                if clean:
+                if clean and is_deduction(clean):
                     bias_reasons.append(clean)
                     
-    ma_reasons_str = "；".join(ma_reasons) if ma_reasons else "均線狀態正常"
-    bias_reasons_str = "；".join(bias_reasons) if bias_reasons else "無乖離扣分項"
+    ma_reasons_str = "；".join(ma_reasons) if ma_reasons else "無扣分項"
+    bias_reasons_str = "；".join(bias_reasons) if bias_reasons else "無扣分項"
     
     return ma_reasons_str, bias_reasons_str
 
@@ -240,7 +245,7 @@ def generate_weekly_report(target_date=None):
             
         label_html = f'<span style="color: {color}; font-weight: bold;">{rating_label} ({score}分)</span>'
         
-        if reasons:
+        if reasons and reasons != "無扣分項":
             norm_reasons = reasons.replace(';', '；')
             reasons_list = [r.strip() for r in norm_reasons.split('；') if r.strip()]
             reasons_formatted = "<br>".join(reasons_list)
