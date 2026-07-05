@@ -365,17 +365,7 @@ def generate_weekly_report(target_date=None):
     dest_filepath_pdf = os.path.join(dest_dir, f"{target_date}_Weekly_Focus.pdf")
     try:
         import markdown
-        from reportlab.pdfbase import pdfmetrics
-        from reportlab.pdfbase.ttfonts import TTFont
-        from xhtml2pdf import pisa
-        
-        # Register Chinese font
-        from reportlab.pdfbase.cidfonts import UnicodeCIDFont
-        font_name = "MSung-Light"
-        try:
-            pdfmetrics.registerFont(UnicodeCIDFont(font_name))
-        except Exception as e:
-            print(f"Failed to register MSung-Light: {e}")
+        import subprocess
         
         # Pre-process markdown to handle github alerts elegantly in PDF
         processed_md = md_text
@@ -396,66 +386,65 @@ def generate_weekly_report(target_date=None):
             @page {{
                 size: a4;
                 margin: 2cm;
-                margin-bottom: 2.5cm;
-                @frame footer {{
-                    -pdf-frame-content: footerContent;
-                    bottom: 1cm;
-                    margin-left: 2cm;
-                    margin-right: 2cm;
-                    height: 1cm;
-                }}
             }}
             body {{
-                font-family: {font_name};
-                font-size: 10pt;
+                font-family: "Microsoft JhengHei", "Segoe UI", system-ui, sans-serif;
+                font-size: 11pt;
                 line-height: 1.6;
                 color: #1e293b;
+                background-color: #ffffff;
             }}
             h1 {{
-                font-size: 18pt;
+                font-size: 22pt;
                 color: #0f172a;
                 text-align: center;
-                margin-bottom: 20px;
-                padding-bottom: 10px;
-                border-bottom: 2px solid #3b82f6;
+                margin-bottom: 25px;
+                padding-bottom: 12px;
+                border-bottom: 3px solid #3b82f6;
+                font-weight: 700;
             }}
             h2 {{
-                font-size: 13pt;
+                font-size: 15pt;
                 color: #1e3a8a;
-                margin-top: 25px;
-                margin-bottom: 12px;
-                padding-bottom: 5px;
-                border-bottom: 1px solid #e2e8f0;
+                margin-top: 30px;
+                margin-bottom: 15px;
+                padding-bottom: 6px;
+                border-bottom: 1px solid #cbd5e1;
+                font-weight: 600;
             }}
             h3 {{
-                font-size: 11pt;
+                font-size: 12pt;
                 color: #0f766e;
-                margin-top: 15px;
-                margin-bottom: 8px;
+                margin-top: 20px;
+                margin-bottom: 10px;
+                font-weight: 600;
             }}
             p, ul, ol {{
-                margin-bottom: 10px;
+                margin-bottom: 12px;
             }}
             li {{
-                margin-bottom: 5px;
+                margin-bottom: 6px;
             }}
             table {{
                 width: 100%;
                 border-collapse: collapse;
-                margin-top: 12px;
-                margin-bottom: 12px;
-                font-size: 8pt;
+                margin-top: 15px;
+                margin-bottom: 20px;
+                font-size: 9pt;
+                border-radius: 6px;
+                overflow: hidden;
+                border: 1px solid #e2e8f0;
             }}
             th {{
                 background-color: #1e293b;
                 color: #ffffff;
-                font-weight: bold;
+                font-weight: 600;
                 text-align: left;
-                padding: 6px;
+                padding: 10px 12px;
                 border: 1px solid #475569;
             }}
             td {{
-                padding: 6px;
+                padding: 10px 12px;
                 border: 1px solid #cbd5e1;
             }}
             tr:nth-child(even) {{
@@ -464,47 +453,62 @@ def generate_weekly_report(target_date=None):
             blockquote {{
                 background-color: #f8fafc;
                 border-left: 4px solid #3b82f6;
-                padding: 8px 12px;
-                margin: 12px 0;
+                padding: 10px 15px;
+                margin: 15px 0;
                 color: #475569;
+                border-radius: 0 4px 4px 0;
             }}
             code {{
-                font-family: {font_name};
+                font-family: "Consolas", "Microsoft JhengHei", monospace;
                 background-color: #f1f5f9;
-                padding: 2px 4px;
+                color: #0f172a;
+                padding: 2px 5px;
                 border-radius: 4px;
-                font-size: 9pt;
+                font-size: 9.5pt;
+                border: 1px solid #e2e8f0;
             }}
         </style>
         </head>
         <body>
-        <div id="footerContent" align="center" style="font-family: {font_name}; font-size: 8pt; color: #94a3b8;">
-            LucasBrain 投資週報 | 頁碼 <pdf:pagenumber/> / <pdf:pagecount/>
-        </div>
         {html_body}
         </body>
         </html>
         """
         
+        # Save HTML temporarily
+        temp_html_path = os.path.join(dest_dir, f"{target_date}_Weekly_Focus_temp.html")
+        with open(temp_html_path, "w", encoding="utf-8") as f:
+            f.write(html_content)
+            
+        edge_path = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+        
+        def run_edge_print(output_pdf):
+            cmd = [
+                edge_path,
+                "--headless",
+                "--disable-gpu",
+                "--no-pdf-header-footer",
+                f"--print-to-pdf={output_pdf}",
+                temp_html_path
+            ]
+            subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
         try:
-            with open(dest_filepath_pdf, "wb") as pdf_file:
-                pisa_status = pisa.CreatePDF(html_content, dest=pdf_file)
-            if not pisa_status.err:
-                print(f"Generated Weekly Focus PDF at: {dest_filepath_pdf}")
-            else:
-                print("Failed to generate PDF.")
+            run_edge_print(dest_filepath_pdf)
+            print(f"Generated Weekly Focus PDF at: {dest_filepath_pdf}")
         except PermissionError:
             import time
             timestamp = int(time.time())
             fallback_pdf = os.path.join(dest_dir, f"{target_date}_Weekly_Focus_{timestamp}.pdf")
             print(f"Warning: {dest_filepath_pdf} is locked by another program (e.g., PDF Reader).")
             print(f"Attempting to write to fallback path: {fallback_pdf}")
-            with open(fallback_pdf, "wb") as pdf_file:
-                pisa_status = pisa.CreatePDF(html_content, dest=pdf_file)
-            if not pisa_status.err:
-                print(f"Generated Weekly Focus PDF at: {fallback_pdf}")
-            else:
-                print("Failed to generate fallback PDF.")
+            run_edge_print(fallback_pdf)
+            print(f"Generated Weekly Focus PDF at: {fallback_pdf}")
+            
+        # Clean up temp HTML
+        if os.path.exists(temp_html_path):
+            os.remove(temp_html_path)
+            
     except Exception as e:
         print(f"Failed to generate PDF: {e}")
         
