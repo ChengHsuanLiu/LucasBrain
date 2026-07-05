@@ -163,7 +163,7 @@ def generate_weekly_report(target_date=None):
             elif line.startswith("forward_pe:"):
                 pe_raw = line.split(":", 1)[1].strip().strip('"').strip("'")
                 try:
-                    pe = f"{float(pe_raw):.2f}x"
+                    pe = f"{float(pe_raw):.1f}x"
                 except:
                     pe = pe_raw
             elif line.startswith("tactical_action:"):
@@ -276,7 +276,7 @@ def generate_weekly_report(target_date=None):
     report.append("> [!NOTE]")
     report.append("> **篩選條件**：Valuation 為 **ADD** 且 **均線評分佳**，乖離率不限。")
     report.append("")
-    report.append(f"| 股票代號 / 名稱 | 評價裁決 | 均線評級 / 分數 (MA) | 乖離評級 / 分數 (Bias) | 當前股價 (元) | {target_year}年 預估 EPS | Forward P/E | 投資簡述與核心利多 (So What?) |")
+    report.append(f"| 股票 | 評價 | 均線評級 | 乖離評級 | 當前股價 (元) | {target_year}EPS(F) | FP/E | 投資簡述 |")
     report.append("| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
     
     trend_stocks = [s for s in add_stocks if s["ma_rating"] == "均線評分佳"]
@@ -284,7 +284,7 @@ def generate_weekly_report(target_date=None):
         for s in trend_stocks:
             ma_cell = format_rating_cell(s["ma_rating"], s["ma_score"], s["ma_reasons"])
             bias_cell = format_rating_cell(s["bias_rating"], s["bias_score"], s["bias_reasons"])
-            report.append(f"| `[[{s['ticker']}{s['name']}]]` | `ADD` | {ma_cell} | {bias_cell} | {s['price']} | {s['eps']} | {s['pe']}x | {s['summary']} |")
+            report.append(f"| `[[{s['ticker']}{s['name']}]]` | `ADD` | {ma_cell} | {bias_cell} | {s['price']:.1f} | {s['eps']} | {s['pe']} | {s['summary']} |")
     else:
         report.append("| [無符合個股] | | | | | | | |")
         
@@ -295,7 +295,7 @@ def generate_weekly_report(target_date=None):
     report.append("> [!NOTE]")
     report.append("> **篩選條件**：Valuation 為 **ADD** 且 **均線評分普通**，乖離率不限。")
     report.append("")
-    report.append(f"| 股票代號 / 名稱 | 評價裁決 | 均線評級 / 分數 (MA) | 乖離評級 / 分數 (Bias) | 當前股價 (元) | {target_year}年 預估 EPS | Forward P/E | 投資簡述與核心利多 (So What?) |")
+    report.append(f"| 股票 | 評價 | 均線評級 | 乖離評級 | 當前股價 (元) | {target_year}EPS(F) | FP/E | 投資簡述 |")
     report.append("| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
     
     consolidation_stocks = [s for s in add_stocks if s["ma_rating"] == "均線評分普通"]
@@ -303,7 +303,7 @@ def generate_weekly_report(target_date=None):
         for s in consolidation_stocks:
             ma_cell = format_rating_cell(s["ma_rating"], s["ma_score"], s["ma_reasons"])
             bias_cell = format_rating_cell(s["bias_rating"], s["bias_score"], s["bias_reasons"])
-            report.append(f"| `[[{s['ticker']}{s['name']}]]` | `ADD` | {ma_cell} | {bias_cell} | {s['price']} | {s['eps']} | {s['pe']}x | {s['summary']} |")
+            report.append(f"| `[[{s['ticker']}{s['name']}]]` | `ADD` | {ma_cell} | {bias_cell} | {s['price']:.1f} | {s['eps']} | {s['pe']} | {s['summary']} |")
     else:
         report.append("| [無符合個股] | | | | | | | |")
         
@@ -312,9 +312,9 @@ def generate_weekly_report(target_date=None):
     # Category 3: 左側機會股 (均線評分差)
     report.append("### 🔍 3. 左側機會股")
     report.append("> [!NOTE]")
-    report.append("> **篩選條件**：Valuation 為 **ADD** 且 **均線評分差**，乖離率不限。")
+    report.append("> **篩選條件**：Valuation 為 **ADD** 且 **均線評分差**，乖離率不限. ")
     report.append("")
-    report.append(f"| 股票代號 / 名稱 | 評價裁決 | 均線評級 / 分數 (MA) | 乖離評級 / 分數 (Bias) | 當前股價 (元) | {target_year}年 預估 EPS | Forward P/E | 投資簡述與核心利多 (So What?) |")
+    report.append(f"| 股票 | 評價 | 均線評級 | 乖離評級 | 當前股價 (元) | {target_year}EPS(F) | FP/E | 投資簡述 |")
     report.append("| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
     
     opportunity_stocks = [s for s in add_stocks if s["ma_rating"] == "均線評分差"]
@@ -322,7 +322,7 @@ def generate_weekly_report(target_date=None):
         for s in opportunity_stocks:
             ma_cell = format_rating_cell(s["ma_rating"], s["ma_score"], s["ma_reasons"])
             bias_cell = format_rating_cell(s["bias_rating"], s["bias_score"], s["bias_reasons"])
-            report.append(f"| `[[{s['ticker']}{s['name']}]]` | `ADD` | {ma_cell} | {bias_cell} | {s['price']} | {s['eps']} | {s['pe']}x | {s['summary']} |")
+            report.append(f"| `[[{s['ticker']}{s['name']}]]` | `ADD` | {ma_cell} | {bias_cell} | {s['price']:.1f} | {s['eps']} | {s['pe']} | {s['summary']} |")
     else:
         report.append("| [無符合個股] | | | | | | | |")
         
@@ -344,14 +344,14 @@ def generate_weekly_report(target_date=None):
     report.append("> 此區域列出估值偏高、短期乖離率過大，或基本面/供應鏈地位出現警訊的個股 (Valuation Rating 為 **SELL**)。")
     report.append("")
     report.append("### 📌 減碼/避開個股清單表")
-    report.append(f"| 股票代號 / 名稱 | 評價裁決 | 均線評級 / 分數 (MA) | 乖離評級 / 分數 (Bias) | 當前股價 (元) | {target_year}年 預估 EPS | Forward P/E | 潛在利空與防守退場點 (So What?) |")
+    report.append(f"| 股票 | 評價 | 均線評級 | 乖離評級 | 當前股價 (元) | {target_year}EPS(F) | FP/E | 潛在利空 |")
     report.append("| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
     
     if sell_stocks:
         for s in sell_stocks:
             ma_cell = format_rating_cell(s["ma_rating"], s["ma_score"], s["ma_reasons"])
             bias_cell = format_rating_cell(s["bias_rating"], s["bias_score"], s["bias_reasons"])
-            report.append(f"| `[[{s['ticker']}{s['name']}]]` | `SELL` | {ma_cell} | {bias_cell} | {s['price']} | {s['eps']} | {s['pe']}x | {s['summary']} |")
+            report.append(f"| `[[{s['ticker']}{s['name']}]]` | `SELL` | {ma_cell} | {bias_cell} | {s['price']:.1f} | {s['eps']} | {s['pe']} | {s['summary']} |")
     else:
         report.append("| [無符合個股] | | | | | | | |")
         
