@@ -370,13 +370,12 @@ def generate_weekly_report(target_date=None):
         from xhtml2pdf import pisa
         
         # Register Chinese font
-        font_path = r"C:\Windows\Fonts\kaiu.ttf"
-        font_name = "BiauKai"
-        if os.path.exists(font_path):
-            try:
-                pdfmetrics.registerFont(TTFont(font_name, font_path))
-            except Exception as e:
-                print(f"Failed to register BiauKai: {e}")
+        from reportlab.pdfbase.cidfonts import UnicodeCIDFont
+        font_name = "MSung-Light"
+        try:
+            pdfmetrics.registerFont(UnicodeCIDFont(font_name))
+        except Exception as e:
+            print(f"Failed to register MSung-Light: {e}")
         
         # Pre-process markdown to handle github alerts elegantly in PDF
         processed_md = md_text
@@ -407,7 +406,7 @@ def generate_weekly_report(target_date=None):
                 }}
             }}
             body {{
-                font-family: {font_name}, sans-serif;
+                font-family: {font_name};
                 font-size: 10pt;
                 line-height: 1.6;
                 color: #1e293b;
@@ -470,7 +469,7 @@ def generate_weekly_report(target_date=None):
                 color: #475569;
             }}
             code {{
-                font-family: monospace;
+                font-family: {font_name};
                 background-color: #f1f5f9;
                 padding: 2px 4px;
                 border-radius: 4px;
