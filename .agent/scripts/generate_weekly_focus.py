@@ -227,6 +227,30 @@ def generate_weekly_report(target_date=None):
     
     # Generate content matching weekly focus template
     report = []
+    # Format rating cell helper
+    def format_rating_cell(rating_label, score, reasons):
+        if "佳" in rating_label:
+            color = "#dc2626"
+        elif "普通" in rating_label:
+            color = "#b45309"
+        elif "差" in rating_label:
+            color = "#16a34a"
+        else:
+            color = "#1e293b"
+            
+        label_html = f'<span style="color: {color}; font-weight: bold;">{rating_label} ({score}分)</span>'
+        
+        if reasons:
+            norm_reasons = reasons.replace(';', '；')
+            reasons_list = [r.strip() for r in norm_reasons.split('；') if r.strip()]
+            reasons_formatted = "<br>".join(reasons_list)
+            reasons_html = f'<div style="font-size: 8.5pt; color: #000000; margin-top: 4px; line-height: 1.3;">原因：<br>{reasons_formatted}</div>'
+            return f"{label_html} {reasons_html}"
+        else:
+            return label_html
+
+    # Generate content matching weekly focus template
+    report = []
     report.append("---")
     report.append("type: weekly_report")
     report.append(f"date: {date_hyphen}")
@@ -237,21 +261,7 @@ def generate_weekly_report(target_date=None):
     report.append("")
     report.append(f"# 🧭 LucasBrain 週度投資決策與持股追蹤 ({date_hyphen})")
     report.append("")
-    report.append("> [!NOTE]")
-    report.append(f"> * **出具日期**：{date_hyphen}")
-    report.append("> * **當前市場位階**：[如：高檔震盪/回檔修正/起漲突破]")
-    report.append("> * **本週策略主軸**：[如：防守型配置/伺機加碼高階電子/避開估值過高個股]")
-    report.append("")
-    report.append("---")
-    report.append("")
-    report.append("## 📊 一、 本週大盤宏觀簡評 & 產業風向 (Market Outlook)")
-    report.append("* **大盤看法**：[簡述本週加權指數/美股主要指數趨勢]")
-    report.append("* **產業最關鍵變動 (So What?)**：")
-    report.append("  - **[產業A，如：CCL銅箔基板]**：[例如：上游玻纖布漲價順利轉嫁，帶動高階 CCL 廠重估。]")
-    report.append("")
-    report.append("---")
-    report.append("")
-    report.append("## 🟢 二、 建議加碼 / 逢低佈局區 (Add Focus)")
+    report.append("## 一、 建議加碼 / 逢低佈局區 (Add Focus)")
     report.append("> [!TIP]")
     report.append("> 此區域列出估值偏低、具安全邊際，且長期基本面與催化劑（Catalysts）確立的加碼標的 (Valuation Rating 為 **ADD**)。")
     report.append("")
@@ -267,7 +277,9 @@ def generate_weekly_report(target_date=None):
     trend_stocks = [s for s in add_stocks if s["ma_rating"] == "均線評分佳"]
     if trend_stocks:
         for s in trend_stocks:
-            report.append(f"| `[[{s['ticker']}{s['name']}]]` | `ADD` | `{s['ma_rating']} ({s['ma_score']}分) <br> 原因：{s['ma_reasons']}` | `{s['bias_rating']} ({s['bias_score']}分) <br> 原因：{s['bias_reasons']}` | {s['price']} | {s['eps']} | {s['pe']}x | {s['summary']} |")
+            ma_cell = format_rating_cell(s["ma_rating"], s["ma_score"], s["ma_reasons"])
+            bias_cell = format_rating_cell(s["bias_rating"], s["bias_score"], s["bias_reasons"])
+            report.append(f"| `[[{s['ticker']}{s['name']}]]` | `ADD` | {ma_cell} | {bias_cell} | {s['price']} | {s['eps']} | {s['pe']}x | {s['summary']} |")
     else:
         report.append("| [無符合個股] | | | | | | | |")
         
@@ -284,7 +296,9 @@ def generate_weekly_report(target_date=None):
     consolidation_stocks = [s for s in add_stocks if s["ma_rating"] == "均線評分普通"]
     if consolidation_stocks:
         for s in consolidation_stocks:
-            report.append(f"| `[[{s['ticker']}{s['name']}]]` | `ADD` | `{s['ma_rating']} ({s['ma_score']}分) <br> 原因：{s['ma_reasons']}` | `{s['bias_rating']} ({s['bias_score']}分) <br> 原因：{s['bias_reasons']}` | {s['price']} | {s['eps']} | {s['pe']}x | {s['summary']} |")
+            ma_cell = format_rating_cell(s["ma_rating"], s["ma_score"], s["ma_reasons"])
+            bias_cell = format_rating_cell(s["bias_rating"], s["bias_score"], s["bias_reasons"])
+            report.append(f"| `[[{s['ticker']}{s['name']}]]` | `ADD` | {ma_cell} | {bias_cell} | {s['price']} | {s['eps']} | {s['pe']}x | {s['summary']} |")
     else:
         report.append("| [無符合個股] | | | | | | | |")
         
@@ -301,7 +315,9 @@ def generate_weekly_report(target_date=None):
     opportunity_stocks = [s for s in add_stocks if s["ma_rating"] == "均線評分差"]
     if opportunity_stocks:
         for s in opportunity_stocks:
-            report.append(f"| `[[{s['ticker']}{s['name']}]]` | `ADD` | `{s['ma_rating']} ({s['ma_score']}分) <br> 原因：{s['ma_reasons']}` | `{s['bias_rating']} ({s['bias_score']}分) <br> 原因：{s['bias_reasons']}` | {s['price']} | {s['eps']} | {s['pe']}x | {s['summary']} |")
+            ma_cell = format_rating_cell(s["ma_rating"], s["ma_score"], s["ma_reasons"])
+            bias_cell = format_rating_cell(s["bias_rating"], s["bias_score"], s["bias_reasons"])
+            report.append(f"| `[[{s['ticker']}{s['name']}]]` | `ADD` | {ma_cell} | {bias_cell} | {s['price']} | {s['eps']} | {s['pe']}x | {s['summary']} |")
     else:
         report.append("| [無符合個股] | | | | | | | |")
         
@@ -311,14 +327,14 @@ def generate_weekly_report(target_date=None):
         for s in add_stocks[:5]: #剖析前5檔
             report.append(f"* **`[[{s['ticker']}{s['name']}]]`**：")
             report.append(f"  - **核心驅動因子**：{s['summary']}")
-            report.append("  - **操作防守建議**：[均線與乖離率評估，建議於均線支撐附近分批布局。]")
+            report.append("  - **估值與操作空間**：[建議於均線支撐附近分批布局。]")
     else:
         report.append("* [無個股剖析資料]")
         
     report.append("")
     report.append("---")
     report.append("")
-    report.append("## 🔴 三、 建議減碼 / 避開防守區 (Sell / Avoid Focus)")
+    report.append("## 二、 建議減碼 / 避開防守區 (Sell / Avoid Focus)")
     report.append("> [!CAUTION]")
     report.append("> 此區域列出估值偏高、短期乖離率過大，或基本面/供應鏈地位出現警訊的個股 (Valuation Rating 為 **SELL**)。")
     report.append("")
@@ -328,7 +344,9 @@ def generate_weekly_report(target_date=None):
     
     if sell_stocks:
         for s in sell_stocks:
-            report.append(f"| `[[{s['ticker']}{s['name']}]]` | `SELL` | `{s['ma_rating']} ({s['ma_score']}分) <br> 原因：{s['ma_reasons']}` | `{s['bias_rating']} ({s['bias_score']}分) <br> 原因：{s['bias_reasons']}` | {s['price']} | {s['eps']} | {s['pe']}x | {s['summary']} |")
+            ma_cell = format_rating_cell(s["ma_rating"], s["ma_score"], s["ma_reasons"])
+            bias_cell = format_rating_cell(s["bias_rating"], s["bias_score"], s["bias_reasons"])
+            report.append(f"| `[[{s['ticker']}{s['name']}]]` | `SELL` | {ma_cell} | {bias_cell} | {s['price']} | {s['eps']} | {s['pe']}x | {s['summary']} |")
     else:
         report.append("| [無符合個股] | | | | | | | |")
         
@@ -338,21 +356,10 @@ def generate_weekly_report(target_date=None):
         for s in sell_stocks:
             report.append(f"* **`[[{s['ticker']}{s['name']}]]`**：")
             report.append(f"  - **核心風險因子**：{s['summary']}")
-            report.append("  - **操作防守建議**：[估值偏高，若股價破線跌破關鍵均線建議果斷避開。]")
+            report.append("  - **操作防守建議**：[若股價破線跌破關鍵均線建議果斷避開。]")
     else:
         report.append("* [無個股剖析資料]")
         
-    report.append("")
-    report.append("---")
-    report.append("")
-    report.append("## 🤝 四、 關聯產業鏈動態與動能觀察 (Sector Momentum)")
-    report.append("* **動能轉強產業**：[填寫轉強產業，如：CCL銅箔基板]")
-    report.append("* **動能轉弱產業**：[填寫轉弱產業]")
-    report.append("")
-    report.append("---")
-    report.append("")
-    report.append("## 📅 五、 下週關鍵催化劑與重大時間軸 (Upcoming Catalysts)")
-    report.append("* **下週重要時間點**：[填寫重大事件，如法說會、解盲時間等]")
     report.append("")
     
     md_text = "\n".join(report)
@@ -374,6 +381,9 @@ def generate_weekly_report(target_date=None):
         processed_md = re.sub(r'\[!IMPORTANT\]', r'⚠️ **重要**', processed_md)
         processed_md = re.sub(r'\[!WARNING\]', r'⚡ **警告**', processed_md)
         processed_md = re.sub(r'\[!CAUTION\]', r'🛑 **注意**', processed_md)
+        
+        # Remove markdown backticks and [[ ]] brackets around stock codes/names for PDF rendering
+        processed_md = re.sub(r'`?\[\[([^\]]+)\]\]`?', r'\1', processed_md)
         
         html_body = markdown.markdown(processed_md, extensions=['tables', 'fenced_code'])
         
@@ -493,17 +503,32 @@ def generate_weekly_report(target_date=None):
             ]
             subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
-        try:
-            run_edge_print(dest_filepath_pdf)
-            print(f"Generated Weekly Focus PDF at: {dest_filepath_pdf}")
-        except PermissionError:
+        # Test if the file is writable
+        is_locked = False
+        if os.path.exists(dest_filepath_pdf):
+            try:
+                with open(dest_filepath_pdf, "r+b") as f:
+                    pass
+            except PermissionError:
+                is_locked = True
+                
+        if not is_locked:
+            try:
+                run_edge_print(dest_filepath_pdf)
+                print(f"Generated Weekly Focus PDF at: {dest_filepath_pdf}")
+            except Exception as e:
+                print(f"Failed to generate PDF: {e}")
+        else:
             import time
             timestamp = int(time.time())
             fallback_pdf = os.path.join(dest_dir, f"{target_date}_Weekly_Focus_{timestamp}.pdf")
             print(f"Warning: {dest_filepath_pdf} is locked by another program (e.g., PDF Reader).")
             print(f"Attempting to write to fallback path: {fallback_pdf}")
-            run_edge_print(fallback_pdf)
-            print(f"Generated Weekly Focus PDF at: {fallback_pdf}")
+            try:
+                run_edge_print(fallback_pdf)
+                print(f"Generated Weekly Focus PDF at: {fallback_pdf}")
+            except Exception as e:
+                print(f"Failed to generate fallback PDF: {e}")
             
         # Clean up temp HTML
         if os.path.exists(temp_html_path):
