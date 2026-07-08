@@ -1,16 +1,18 @@
 """
 共用股價/均線/籌碼計算模組。
 
-被 update_prices.py 與 generate_stock_report.py 共用，避免同一套均線/乖離率
-計算邏輯各自維護一份、規則逐漸不同步的問題。
+被 update_prices.py、generate_stock_report.py、generate_weekly_focus.py 共用，
+避免同一套均線/乖離率計算邏輯或筆記解析邏輯各自維護一份、規則逐漸不同步的問題。
 
 分層原則：
 - fetch_* / download_*  : 純資料抓取 (Yahoo Finance 股價、TDCC 籌碼)
 - calculate_ma / compute_ma_metrics : 純計算 (均線值、斜率、乖離率%、52週高低)，不含評等門檻
 - compute_tactical_score : 唯一一套評分/評等規則 (MA Score / Bias Score -> tactical_action)，
   消費 compute_ma_metrics() 的輸出，不重新計算均線
+- parse_target_eps : 唯一一套從個股筆記「財務數據與 EPS 預估比對」表格解析目標年度 EPS 的邏輯
 """
 import json
+import re
 import urllib.request
 import io
 import csv
@@ -426,3 +428,35 @@ def compute_tactical_score(ma_metrics, valuation_rating):
         "score_str": score_str,
         "rating": rating_str
     }
+
+
+# ==========================================
+# 5. Note Parsing Helpers
+# ==========================================
+def parse_target_eps(filepath, target_year):
+    """從個股筆記的「財務數據與 EPS 預估比對」表格中，取出指定年度所有並列估計值的平均。"""
+    try:
+        with open(filepath, 'r', encoding='utf-8', errors='replace') as f:
+            content = f.read()
+    except Exception as e:
+        print(f"Failed to read {filepath}: {e}")
+        return None
+
+    eps_values = []
+    for line in content.split('\n'):
+        line = line.strip()
+        if line.startswith('|'):
+            cols = [c.strip() for c in line.split('|')]
+            if len(cols) >= 5:
+                year = cols[2].strip()
+                eps_val = cols[3].strip()
+                if year == str(target_year):
+                    nums = re.findall(r'(\d+(?:\.\d+)?)', eps_val)
+                    if nums:
+                        floats = [float(n) for n in nums]
+                        avg_val = sum(floats) / len(floats)
+                        eps_values.append(avg_val)
+
+    if eps_values:
+        return sum(eps_values) / len(eps_values)
+    return None

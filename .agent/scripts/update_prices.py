@@ -9,40 +9,11 @@ from lib.stock_metrics import (
     get_historical_prices_fallback,
     compute_ma_metrics,
     compute_tactical_score,
+    parse_target_eps,
 )
 
 # ==========================================
-# 1. Target EPS Parser from Note Tables
-# ==========================================
-def parse_target_eps(filepath, target_year):
-    try:
-        with open(filepath, 'r', encoding='utf-8', errors='replace') as f:
-            content = f.read()
-    except Exception as e:
-        print(f"Failed to read {filepath}: {e}")
-        return None
-
-    eps_values = []
-    for line in content.split('\n'):
-        line = line.strip()
-        if line.startswith('|'):
-            cols = [c.strip() for c in line.split('|')]
-            if len(cols) >= 5:
-                year = cols[2].strip()
-                eps_val = cols[3].strip()
-                if year == str(target_year):
-                    nums = re.findall(r'(\d+(?:\.\d+)?)', eps_val)
-                    if nums:
-                        floats = [float(n) for n in nums]
-                        avg_val = sum(floats) / len(floats)
-                        eps_values.append(avg_val)
-
-    if eps_values:
-        return sum(eps_values) / len(eps_values)
-    return None
-
-# ==========================================
-# 2. Lossless Markdown Note Rewriter
+# 1. Lossless Markdown Note Rewriter
 # ==========================================
 def update_stock_file(filepath, current_price, forward_pe, rating, target_year, ma_info, tdcc_info):
     try:
@@ -248,7 +219,7 @@ def update_stock_file(filepath, current_price, forward_pe, rating, target_year, 
     return True
 
 # ==========================================
-# 3. Main Orchestrator
+# 2. Main Orchestrator
 # ==========================================
 if __name__ == "__main__":
     stock_dir = r"c:\Users\User\Desktop\LucasBrain\10_Stocks"

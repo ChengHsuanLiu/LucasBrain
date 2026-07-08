@@ -819,18 +819,49 @@ def main():
         temp_html_path = os.path.join(output_dir, f"{ticker}_temp.html")
         with open(temp_html_path, "w", encoding="utf-8") as f:
             f.write(html_content)
-            
+
+        import pathlib
+        import tempfile
+        import time
+        temp_html_uri = pathlib.Path(temp_html_path).resolve().as_uri()
+
+        if os.path.exists(pdf_path):
+            os.remove(pdf_path)
+
         edge_path = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
-        cmd = [
-            edge_path,
-            "--headless",
-            "--disable-gpu",
-            "--no-pdf-header-footer",
-            f"--print-to-pdf={pdf_path}",
-            temp_html_path
-        ]
-        subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        
+        with tempfile.TemporaryDirectory(prefix="edge_pdf_profile_") as edge_profile_dir:
+            cmd = [
+                edge_path,
+                "--headless",
+                "--disable-gpu",
+                f"--user-data-dir={edge_profile_dir}",
+                "--no-pdf-header-footer",
+                f"--print-to-pdf={pdf_path}",
+                temp_html_uri
+            ]
+            subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+            # msedge.exe's headless print-to-pdf writes the PDF asynchronously and can
+            # exit (subprocess.run returns) before the file is fully flushed to disk.
+            # Deleting the source HTML right after subprocess.run() used to race that
+            # write: the still-running render would then fail to find the (already
+            # deleted) HTML and bake an ERR_FILE_NOT_FOUND page into the PDF instead of
+            # the report. Wait for the PDF to appear and its size to stabilize first.
+            deadline = time.time() + 20
+            last_size = -1
+            stable_checks = 0
+            while time.time() < deadline:
+                if os.path.exists(pdf_path):
+                    size = os.path.getsize(pdf_path)
+                    if size > 0 and size == last_size:
+                        stable_checks += 1
+                        if stable_checks >= 2:
+                            break
+                    else:
+                        stable_checks = 0
+                    last_size = size
+                time.sleep(0.5)
+
         if os.path.exists(temp_html_path):
             os.remove(temp_html_path)
             

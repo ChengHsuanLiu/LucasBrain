@@ -3,31 +3,8 @@ import re
 import sys
 from datetime import datetime
 
-def parse_target_eps(filepath, target_year):
-    try:
-        with open(filepath, 'r', encoding='utf-8', errors='replace') as f:
-            content = f.read()
-    except Exception as e:
-        return None
-        
-    eps_values = []
-    for line in content.split('\n'):
-        line = line.strip()
-        if line.startswith('|'):
-            cols = [c.strip() for c in line.split('|')]
-            if len(cols) >= 5:
-                year = cols[2].strip()
-                eps_val = cols[3].strip()
-                if year == str(target_year):
-                    nums = re.findall(r'(\d+(?:\.\d+)?)', eps_val)
-                    if nums:
-                        floats = [float(n) for n in nums]
-                        avg_val = sum(floats) / len(floats)
-                        eps_values.append(avg_val)
-                        
-    if eps_values:
-        return sum(eps_values) / len(eps_values)
-    return None
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from lib.stock_metrics import parse_target_eps
 
 def extract_core_points(filepath):
     try:
@@ -482,7 +459,10 @@ def generate_weekly_report(target_date=None):
     try:
         import markdown
         import subprocess
-        
+        import pathlib
+        import tempfile
+        import time
+
         # Pre-process markdown to handle github alerts elegantly in PDF
         processed_md = md_text
         processed_md = re.sub(r'\[!NOTE\]', r'🔔 **備註**', processed_md)
@@ -646,18 +626,43 @@ def generate_weekly_report(target_date=None):
             f.write(html_content)
             
         edge_path = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
-        
+        temp_html_uri = pathlib.Path(temp_html_path).resolve().as_uri()
+
         def run_edge_print(output_pdf):
-            cmd = [
-                edge_path,
-                "--headless",
-                "--disable-gpu",
-                "--no-pdf-header-footer",
-                f"--print-to-pdf={output_pdf}",
-                temp_html_path
-            ]
-            subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
- 
+            if os.path.exists(output_pdf):
+                os.remove(output_pdf)
+            with tempfile.TemporaryDirectory(prefix="edge_pdf_profile_") as edge_profile_dir:
+                cmd = [
+                    edge_path,
+                    "--headless",
+                    "--disable-gpu",
+                    f"--user-data-dir={edge_profile_dir}",
+                    "--no-pdf-header-footer",
+                    f"--print-to-pdf={output_pdf}",
+                    temp_html_uri
+                ]
+                subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+                # msedge.exe's headless print-to-pdf writes the PDF asynchronously and can
+                # exit before the file is fully flushed to disk. Wait for it to appear and
+                # its size to stabilize before returning, otherwise the caller may delete
+                # the source HTML (temp_html_path) while the still-running render is trying
+                # to read it, baking an ERR_FILE_NOT_FOUND page into the PDF instead.
+                deadline = time.time() + 20
+                last_size = -1
+                stable_checks = 0
+                while time.time() < deadline:
+                    if os.path.exists(output_pdf):
+                        size = os.path.getsize(output_pdf)
+                        if size > 0 and size == last_size:
+                            stable_checks += 1
+                            if stable_checks >= 2:
+                                break
+                        else:
+                            stable_checks = 0
+                        last_size = size
+                    time.sleep(0.5)
+
         # Test if the file is writable
         is_locked = False
         if os.path.exists(dest_filepath_pdf):
@@ -666,7 +671,7 @@ def generate_weekly_report(target_date=None):
                     pass
             except PermissionError:
                 is_locked = True
-                
+
         if not is_locked:
             try:
                 run_edge_print(dest_filepath_pdf)
@@ -674,16 +679,6 @@ def generate_weekly_report(target_date=None):
             except Exception as e:
                 print(f"Failed to generate PDF: {e}")
         else:
-            import time
-            timestamp = int(time.time())
-        if not is_locked:
-            try:
-                run_edge_print(dest_filepath_pdf)
-                print(f"Generated Weekly Focus PDF at: {dest_filepath_pdf}")
-            except Exception as e:
-                print(f"Failed to generate PDF: {e}")
-        else:
-            import time
             timestamp = int(time.time())
             fallback_pdf = os.path.join(dest_dir, f"{target_date}_Weekly_Focus_{timestamp}.pdf")
             print(f"Warning: {dest_filepath_pdf} is locked by another program (e.g., PDF Reader).")
@@ -693,7 +688,7 @@ def generate_weekly_report(target_date=None):
                 print(f"Generated Weekly Focus PDF at: {fallback_pdf}")
             except Exception as e:
                 print(f"Failed to generate fallback PDF: {e}")
-            
+
         # Clean up temp HTML
         if os.path.exists(temp_html_path):
             os.remove(temp_html_path)
