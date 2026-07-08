@@ -137,11 +137,14 @@ def generate_weekly_report(target_date=None):
     date_obj = datetime.strptime(target_date, "%Y%m%d")
     date_hyphen = date_obj.strftime("%Y-%m-%d")
     
+    current_time_str = datetime.now().strftime("%H%M")
+    filename_prefix = f"{target_date}{current_time_str}_Lucas_Weekly_Focus"
+    
     stock_dir = r"c:\Users\User\Desktop\LucasBrain\10_Stocks"
     dest_dir = r"c:\Users\User\Desktop\LucasBrain\30_Projects\Weekly_Focus"
     os.makedirs(dest_dir, exist_ok=True)
     
-    dest_filepath = os.path.join(dest_dir, f"{target_date}_Weekly_Focus.md")
+    dest_filepath = os.path.join(dest_dir, f"{filename_prefix}.md")
     
     target_year = date_obj.year + 1 # Next year PE
     
@@ -156,6 +159,10 @@ def generate_weekly_report(target_date=None):
             continue
         ticker = m.group(1).strip()
         name = m.group(2).strip()
+        
+        # Only process Taiwan stocks (purely numeric ticker)
+        if not ticker.isdigit():
+            continue
         
         # Read frontmatter
         try:
@@ -249,7 +256,7 @@ def generate_weekly_report(target_date=None):
         
         if rating == "ADD":
             add_stocks.append(stock_info)
-        elif rating == "SELL":
+        elif rating == "SELL" and tactical == "SELL":
             sell_stocks.append(stock_info)
             
     # Sort by ticker
@@ -280,6 +287,57 @@ def generate_weekly_report(target_date=None):
         else:
             return label_html
 
+    # Format and truncate summary helper (150 chars max, wraps each reason to its own line)
+    def format_summary(raw_summary):
+        if not raw_summary:
+            return "基本面追蹤中。"
+        # Standardize punctuation (preserve float decimal points by not replacing '.')
+        cleaned = raw_summary.replace('; ', '；').replace(';', '；').replace(':', '：')
+        parts = []
+        for p in re.split(r'[；。：\n]', cleaned):
+            p = p.strip()
+            if p:
+                parts.append(p)
+                
+        formatted = ""
+        for part in parts:
+            if not part:
+                continue
+            if formatted:
+                next_line = formatted + "<br>" + part
+            else:
+                next_line = part
+                
+            # Check length of the visible text content (excluding HTML tags)
+            visible_len = len(next_line.replace("<br>", ""))
+            if visible_len > 150:
+                current_visible_len = len(formatted.replace("<br>", ""))
+                allowed = 150 - current_visible_len - 3  # 3 for "..."
+                if allowed > 0:
+                    if formatted:
+                        formatted += "<br>" + part[:allowed] + "..."
+                    else:
+                        formatted = part[:147] + "..."
+                else:
+                    formatted += "..."
+                break
+            else:
+                formatted = next_line
+        return formatted
+
+    # Format detailed points as nested list items
+    def format_detailed_points(raw_summary):
+        if not raw_summary or raw_summary == "基本面追蹤中。":
+            return "  - 基本面追蹤中。"
+        cleaned = raw_summary.replace('；', ';').replace('; ', ';')
+        parts = [p.strip() for p in cleaned.split(';') if p.strip()]
+        bullets = []
+        for p in parts:
+            p = re.sub(r'[：:]$', '', p).strip()
+            if p:
+                bullets.append(f"  - {p}")
+        return "\n".join(bullets)
+
     # Generate content matching weekly focus template
     report = []
     report.append("---")
@@ -290,7 +348,7 @@ def generate_weekly_report(target_date=None):
     report.append(f"aliases: [週度投資建議, 週報-{date_hyphen}]")
     report.append("---")
     report.append("")
-    report.append(f"# 🧭 LucasBrain 週度投資決策與持股追蹤 ({date_hyphen})")
+    report.append(f"# {target_date}-Lucas每周AI選股")
     report.append("")
     report.append("## 一、 建議加碼 / 逢低佈局區 (Add Focus)")
     report.append("> [!TIP]")
@@ -310,7 +368,8 @@ def generate_weekly_report(target_date=None):
         for s in trend_stocks:
             ma_cell = format_rating_cell(s["ma_rating"], s["ma_score"], s["ma_reasons"])
             bias_cell = format_rating_cell(s["bias_rating"], s["bias_score"], s["bias_reasons"])
-            report.append(f"| [[{s['ticker']}{s['name']}|{s['ticker']}<br>{s['name']}]] | `ADD` | {ma_cell} | {bias_cell} | {s['price']:.1f} | {s['eps']} | {s['pe']} | {s['summary']} |")
+            summary_cell = format_summary(s["summary"])
+            report.append(f"| [[{s['ticker']}{s['name']}|{s['ticker']}<br>{s['name']}]] | `ADD` | {ma_cell} | {bias_cell} | {s['price']:.1f} | {s['eps']} | {s['pe']} | {summary_cell} |")
     else:
         report.append("| [無符合個股] | | | | | | | |")
         
@@ -329,7 +388,8 @@ def generate_weekly_report(target_date=None):
         for s in consolidation_stocks:
             ma_cell = format_rating_cell(s["ma_rating"], s["ma_score"], s["ma_reasons"])
             bias_cell = format_rating_cell(s["bias_rating"], s["bias_score"], s["bias_reasons"])
-            report.append(f"| [[{s['ticker']}{s['name']}|{s['ticker']}<br>{s['name']}]] | `ADD` | {ma_cell} | {bias_cell} | {s['price']:.1f} | {s['eps']} | {s['pe']} | {s['summary']} |")
+            summary_cell = format_summary(s["summary"])
+            report.append(f"| [[{s['ticker']}{s['name']}|{s['ticker']}<br>{s['name']}]] | `ADD` | {ma_cell} | {bias_cell} | {s['price']:.1f} | {s['eps']} | {s['pe']} | {summary_cell} |")
     else:
         report.append("| [無符合個股] | | | | | | | |")
         
@@ -348,17 +408,26 @@ def generate_weekly_report(target_date=None):
         for s in opportunity_stocks:
             ma_cell = format_rating_cell(s["ma_rating"], s["ma_score"], s["ma_reasons"])
             bias_cell = format_rating_cell(s["bias_rating"], s["bias_score"], s["bias_reasons"])
-            report.append(f"| [[{s['ticker']}{s['name']}|{s['ticker']}<br>{s['name']}]] | `ADD` | {ma_cell} | {bias_cell} | {s['price']:.1f} | {s['eps']} | {s['pe']} | {s['summary']} |")
+            summary_cell = format_summary(s["summary"])
+            report.append(f"| [[{s['ticker']}{s['name']}|{s['ticker']}<br>{s['name']}]] | `ADD` | {ma_cell} | {bias_cell} | {s['price']:.1f} | {s['eps']} | {s['pe']} | {summary_cell} |")
     else:
         report.append("| [無符合個股] | | | | | | | |")
         
     report.append("")
     report.append("### 🔍 加碼個股重點剖析")
     if add_stocks:
+        first = True
         for s in add_stocks[:5]: #剖析前5檔
-            report.append(f"* **`[[{s['ticker']}{s['name']}]]`**：")
-            report.append(f"  - **核心驅動因子**：{s['summary']}")
-            report.append("  - **估值與操作空間**：[建議於均線支撐附近分批布局。]")
+            if not first:
+                report.append("")
+                report.append("---")
+                report.append("")
+            first = False
+            report.append(f"#### 🏢 [[{s['ticker']}{s['name']}]]")
+            report.append("* **核心驅動因子**：")
+            report.append(format_detailed_points(s['summary']))
+            report.append("* **估值與操作空間**：")
+            report.append("  - 建議於均線支撐附近分批布局。")
     else:
         report.append("* [無個股剖析資料]")
         
@@ -377,17 +446,26 @@ def generate_weekly_report(target_date=None):
         for s in sell_stocks:
             ma_cell = format_rating_cell(s["ma_rating"], s["ma_score"], s["ma_reasons"])
             bias_cell = format_rating_cell(s["bias_rating"], s["bias_score"], s["bias_reasons"])
-            report.append(f"| [[{s['ticker']}{s['name']}|{s['ticker']}<br>{s['name']}]] | `SELL` | {ma_cell} | {bias_cell} | {s['price']:.1f} | {s['eps']} | {s['pe']} | {s['summary']} |")
+            summary_cell = format_summary(s["summary"])
+            report.append(f"| [[{s['ticker']}{s['name']}|{s['ticker']}<br>{s['name']}]] | `SELL` | {ma_cell} | {bias_cell} | {s['price']:.1f} | {s['eps']} | {s['pe']} | {summary_cell} |")
     else:
         report.append("| [無符合個股] | | | | | | | |")
         
     report.append("")
     report.append("### 🔍 避開/減碼個股重點剖析")
     if sell_stocks:
+        first = True
         for s in sell_stocks:
-            report.append(f"* **`[[{s['ticker']}{s['name']}]]`**：")
-            report.append(f"  - **核心風險因子**：{s['summary']}")
-            report.append("  - **操作防守建議**：[若股價破線跌破關鍵均線建議果斷避開。]")
+            if not first:
+                report.append("")
+                report.append("---")
+                report.append("")
+            first = False
+            report.append(f"#### 🏢 [[{s['ticker']}{s['name']}]]")
+            report.append("* **核心風險因子**：")
+            report.append(format_detailed_points(s['summary']))
+            report.append("* **操作防守建議**：")
+            report.append("  - 若股價破線跌破關鍵均線建議果斷避開。")
     else:
         report.append("* [無個股剖析資料]")
         
@@ -400,7 +478,7 @@ def generate_weekly_report(target_date=None):
     print(f"Generated Weekly Focus report at: {dest_filepath}")
     
     # Generate PDF
-    dest_filepath_pdf = os.path.join(dest_dir, f"{target_date}_Weekly_Focus.pdf")
+    dest_filepath_pdf = os.path.join(dest_dir, f"{filename_prefix}.pdf")
     try:
         import markdown
         import subprocess
@@ -413,6 +491,14 @@ def generate_weekly_report(target_date=None):
         processed_md = re.sub(r'\[!WARNING\]', r'⚡ **警告**', processed_md)
         processed_md = re.sub(r'\[!CAUTION\]', r'🛑 **注意**', processed_md)
         
+        # Locate frontmatter block at the start of the markdown and replace it with styled HTML for PDF
+        frontmatter_match = re.match(r'^---\n(.*?)\n---', processed_md, re.DOTALL)
+        if frontmatter_match:
+            yaml_lines = frontmatter_match.group(1).strip().split('\n')
+            formatted_meta = "<br>".join([line.strip() for line in yaml_lines if line.strip()])
+            meta_html = f'<div class="pdf-metadata">{formatted_meta}</div>'
+            processed_md = processed_md.replace(frontmatter_match.group(0), meta_html, 1)
+            
         # Remove markdown backticks and [[ ]] brackets around stock codes/names for PDF rendering, keeping the alias if present
         def clean_links(match):
             text = match.group(1)
@@ -464,6 +550,15 @@ def generate_weekly_report(target_date=None):
                 margin-top: 20px;
                 margin-bottom: 10px;
                 font-weight: 600;
+            }}
+            h4 {{
+                font-size: 11.5pt;
+                color: #1e3a8a;
+                margin-top: 18px;
+                margin-bottom: 8px;
+                font-weight: 600;
+                border-left: 3px solid #3b82f6;
+                padding-left: 8px;
             }}
             p, ul, ol {{
                 margin-bottom: 12px;
@@ -517,6 +612,17 @@ def generate_weekly_report(target_date=None):
                 color: #475569;
                 border-radius: 0 4px 4px 0;
             }}
+            .pdf-metadata {{
+                font-size: 7.5pt;
+                color: #a1a1aa;
+                border: none;
+                border-top: 1px solid #e2e8f0;
+                border-bottom: 1px solid #e2e8f0;
+                padding: 6px 0;
+                background-color: transparent;
+                margin-bottom: 20px;
+                line-height: 1.5;
+            }}
             code {{
                 font-family: "Consolas", "Microsoft JhengHei", monospace;
                 background-color: #f1f5f9;
@@ -535,7 +641,7 @@ def generate_weekly_report(target_date=None):
         """
         
         # Save HTML temporarily
-        temp_html_path = os.path.join(dest_dir, f"{target_date}_Weekly_Focus_temp.html")
+        temp_html_path = os.path.join(dest_dir, f"{filename_prefix}_temp.html")
         with open(temp_html_path, "w", encoding="utf-8") as f:
             f.write(html_content)
             
@@ -551,7 +657,7 @@ def generate_weekly_report(target_date=None):
                 temp_html_path
             ]
             subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-
+ 
         # Test if the file is writable
         is_locked = False
         if os.path.exists(dest_filepath_pdf):
@@ -561,6 +667,15 @@ def generate_weekly_report(target_date=None):
             except PermissionError:
                 is_locked = True
                 
+        if not is_locked:
+            try:
+                run_edge_print(dest_filepath_pdf)
+                print(f"Generated Weekly Focus PDF at: {dest_filepath_pdf}")
+            except Exception as e:
+                print(f"Failed to generate PDF: {e}")
+        else:
+            import time
+            timestamp = int(time.time())
         if not is_locked:
             try:
                 run_edge_print(dest_filepath_pdf)

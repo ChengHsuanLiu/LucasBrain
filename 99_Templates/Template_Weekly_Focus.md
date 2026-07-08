@@ -6,7 +6,7 @@ tags: [investment/weekly-focus, portfolio/rebalancing]
 aliases: [週度投資建議, 週報-YYYY-MM-DD]
 ---
 
-# 🧭 Lucas 週度投資決策 (YYYY-MM-DD)
+# YYYYMMDD-Lucas每周AI選股
 
 ## 一、 建議加碼 / 逢低佈局區 (Add Focus)
 > [!TIP]

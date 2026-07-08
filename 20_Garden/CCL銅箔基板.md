@@ -17,6 +17,11 @@ tags: [industry/ccl, technology/high-speed]
   - **NVIDIA 供應鏈大洗牌與產值爆發**：
     - 2026-07-02 SemiAnalysis 報告證實，台光電（EMC）受惠於 VR NVL72 世代將大舉採用其 Orchid (CX-9)、Bluefield-4、Midplane (Compute Tray) 與 Rosalind (NVSwitch) 等板卡，單櫃 CCL 價值大增至 23,895 美元（1.51x Doosan），將於 2H26 徹底超越 Doosan 成為 Nvidia 最大 CCL 供應商。
     - 在整體單櫃高階 CCL 價值上，GB300 僅為約 10,800 美元（Doosan  Bianca 佔 8,640 美元），而 VR NVL72 則翻倍至 39,771 美元（Doosan 15,876 美元，台光電 23,895 美元），呈現 3.6 倍的暴增！
+  - **NVIDIA 晶片與機架架構重大延期與調整 (2026-07-06)**：
+    - **Kyber 延期至 2028**：SemiAnalysis 揭露 Kyber NVL144 機架因 PCB Midplane 製造難度極高，延期超過 12 個月至 2028 年；且 NVL576（通過 CPO 連接 8 個 Oberon 機架）因 CPO 技術瓶頸，亦可能延遲或限制於小批量生產。
+    - **NVL72x2 及 4-die Rubin Ultra 取消**：背靠背架構因 CSP 反對其奇特設計與運維負擔而遭取消；4-die 版 Rubin Ultra 被取消，僅保留 2-die 版本（性能約為一半）。Nvidia 將改為大幅銷售 Oberon Rubin/Rubin Ultra 機架以彌補出貨缺口。
+    - **材料用量結構影響**：M10 (原定於 Kyber Midplane 導入) 的放量時程隨之推遲，但 Oberon Racks 增量出貨將拉動現有 M8/M9 板材需求，對台光電、台燿與南亞等 M8/M9 原料/CCL 供應鏈有利。
+    - **ASIC 追趕窗口**：Nvidia 在 Rubin Ultra 世代缺乏縱向擴充解決方案，為 AMD MI500X 及 Google TPUv8i Broadfly 等競爭對手提供了關鍵的追趕空窗期。
   - **南亞成功切入 NVIDIA AVL 清單**：
     - 南亞的 M7/M8 材料已通過 Nvidia 電氣與可靠性認證並列入核准清單（AVL），預計將作為 Rosalind (NVSwitch) 與 Orchid 9 (CX-9) 的第二水源，大幅拉動其 NPG-199HK2 與 NPG-199K 材料。此外，其高階 M10 正在 Kyber Midplane 進行打樣認證。
   - **通用伺服器 PCIe 6.0 換代與調漲**：
@@ -177,6 +182,7 @@ tags: [industry/ccl, technology/high-speed]
 * **[2026-06-20]** `[產業動態]` 專家會證實頭部大廠（建滔、生益）對上游原物料（玻纖布/樹脂/銅箔）掌控力強，稼動率能滿載，而二線廠聯茂、騰輝因拿料能力弱，稼動率受限在 70-75% 上限。生益已切入 Nvidia 供應鏈，M8/M9 高階產量達 100 萬張/月。
 * **[2026-06-25]** `[個股調升]` 統一與國票因法說自結大好及平台換代，上調聯茂 2027 年 EPS 預估至 16.49 - 20.20 元。
 * **[2026-07-02]** `[供應鏈重組]` SemiAnalysis 披露台光電在 VR NVL72 高階 CCL 單櫃價值比重達 Doosan 的 1.51 倍，將在 2H26 確立 Nvidia 最大 CCL 供應商地位。
+* **[2026-07-06]** `[架構調整]` SemiAnalysis 揭露 Nvidia Kyber NVL144 因 PCB Midplane 製造難度延期至 2028 年，NVL72x2 與 4-die Rubin Ultra 取消，CPO NVSwitch 延至 Feynman。M10 材料在 Kyber Midplane 的放量延後，但 Oberon Rubin (M8/M9) 需求獲得大幅拉動。
 * **[2026-07-02]** `[二線認證]` 南亞 M7/M8 材料通過 Nvidia 驗證並列入 AVL 清單，做為 NVSwitch 與 CX-9 第二水源，且 M10 於 Kyber Midplane 打樣認證。
 * **[2026Q3]** `[出貨放量]` 德宏開始交貨石英布給台光，實際單月交貨 25 萬米（良率 50% 下）。
 * **[2026Q3]** `[產能爬坡]` 雙鍵 HC 樹脂出貨，國精化 2 條新產線開出，累積產能達 2,100 噸/年。
