@@ -228,3 +228,8 @@
 - 更新 `[[AI電力需求]]` 產業頁面：導入 NVIDIA Vera Rubin/Helios 機櫃出貨量與 CBU(機櫃電源/匯流排)供應商情報（Panasonic/Delta/Flex，客戶為Google/Meta/AWS），標記待查證項目。
 - 一份使用者個人期貨部位與權重明細報告 (20260708_220648_file.pdf) 因屬個人帳戶部位快照、不含公司基本面研究內容，未寫入任何個股頁面，僅歸檔至 `98_Archives/Others/`；已於回報中提醒使用者確認是否需要另建持股追蹤機制。
 - 完成 5 個原始檔案歸檔（3 個至 `98_Archives/Stock_Memo/`，2 個至 `98_Archives/Others/`），並更新 `index.md` 個股數量統計 (78→80檔) 與最後更新時間。
+
+## [2026-07-09] script | update_prices.py 改用 FinMind 為主要股價來源，修正敘豐股票代號錯誤 | 影響 [[3485敘豐]]
+- `.agent/scripts/lib/stock_metrics.py` 新增 `fetch_historical_prices_finmind()`，改為台股/上櫃股票優先透過 FinMind (付費 Backer 方案) `TaiwanStockPrice` 抓取股價，Yahoo Finance 降級為備援來源（中國/香港等非台股掛牌代號則維持原 Yahoo 邏輯）。
+- 排查長期抓不到股價的 `6686敘豐.md` 時發現該股票代號本身是錯的：FinMind `TaiwanStockInfo` 資料庫查無 6686，比對公司名稱確認敘豐正確代號為 **3485**。已更正檔名為 `3485敘豐.md`、frontmatter ticker 欄位，並更新 `index.md` 連結。
+- 重跑 `update_prices.py` 驗證：全體 80 檔個股股價/均線/籌碼更新成功率由 79/80 提升至 **80/80**。

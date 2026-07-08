@@ -77,8 +77,35 @@ def fetch_historical_prices(symbol):
     return []
 
 
+def fetch_historical_prices_finmind(ticker, credentials_path=CREDENTIALS_PATH):
+    """透過 FinMind TaiwanStockPrice 抓取近2年收盤價 (付費 Backer 方案)，涵蓋 TWSE 與
+    TPEx(上櫃) 掛牌股票，data_id 為不含任何交易所後綴的純數字代號。"""
+    from datetime import datetime, timedelta
+    start_date = (datetime.now() - timedelta(days=760)).strftime("%Y-%m-%d")
+    try:
+        records = _finmind_request("TaiwanStockPrice", ticker, start_date, credentials_path)
+        if not records:
+            return []
+        records.sort(key=lambda r: r.get("date", ""))
+        return [r["close"] for r in records if r.get("close") is not None]
+    except Exception as e:
+        print(f"Warning: Failed to fetch price history from FinMind for {ticker}: {e}")
+        return []
+
+
 def get_historical_prices_fallback(ticker):
     ticker = ticker.strip()
+
+    # FinMind (Backer 付費方案) 為台股/上櫃股票的主要股價來源，比 Yahoo Finance 的非官方
+    # chart API 更穩定、對中小型/冷門標的覆蓋更完整。中國(.SH)/香港(.HK) 等非台股掛牌
+    # 代號 FinMind 無資料，維持走下方 Yahoo Finance 的原有邏輯。
+    bare_ticker = ticker.split(".")[0]
+    is_foreign_listing = any(suffix in ticker for suffix in (".SH", ".HK", ".SS"))
+    if bare_ticker.isdigit() and not is_foreign_listing:
+        prices = fetch_historical_prices_finmind(bare_ticker)
+        if prices:
+            return prices
+
     if ticker.isdigit():
         prices = fetch_historical_prices(f"{ticker}.TW")
         if prices:
