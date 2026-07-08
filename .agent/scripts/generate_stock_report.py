@@ -2,9 +2,15 @@ import os
 import re
 import sys
 import glob
-import json
-import urllib.request
 from datetime import datetime, timedelta
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from lib.stock_metrics import (
+    get_historical_prices_fallback,
+    compute_ma_metrics,
+    fetch_tdcc_history_finmind,
+    parse_tdcc_from_stock_note,
+)
 
 def get_arg_ticker():
     if len(sys.argv) < 2:
@@ -13,184 +19,7 @@ def get_arg_ticker():
     return sys.argv[1].strip()
 
 # ==========================================
-# 1. Yahoo Finance Data Fetcher & Calculator
-# ==========================================
-def fetch_yahoo_prices(ticker):
-    for suffix in [".TW", ".TWO"]:
-        symbol = f"{ticker}{suffix}"
-        url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?range=2y&interval=1d"
-        try:
-            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-            with urllib.request.urlopen(req, timeout=10) as response:
-                data = json.loads(response.read().decode('utf-8'))
-                result = data.get('chart', {}).get('result')
-                if result and len(result) > 0:
-                    r = result[0]
-                    timestamps = r.get('timestamp', [])
-                    quote = r.get('indicators', {}).get('quote', [{}])[0]
-                    close_prices = quote.get('close', [])
-                    clean_prices = []
-                    for ts, pr in zip(timestamps, close_prices):
-                        if pr is not None:
-                            clean_prices.append(pr)
-                    if clean_prices:
-                        return clean_prices, symbol
-        except Exception:
-            continue
-    return [], None
-
-def calculate_ma_metrics(prices):
-    if not prices:
-        return {}
-    current_price = prices[-1]
-    
-    # 52w high and low (approx. 250 trading days)
-    recent_250 = prices[-250:] if len(prices) >= 250 else prices
-    high_52w = max(recent_250)
-    low_52w = min(recent_250)
-    
-    mas = [5, 10, 20, 60, 120, 240]
-    metrics = {}
-    for ma in mas:
-        if len(prices) >= ma:
-            ma_val = sum(prices[-ma:]) / ma
-            ma_prev = sum(prices[-ma-1:-1]) / ma if len(prices) >= ma+1 else ma_val
-            slope = "上彎" if ma_val >= ma_prev else "下彎"
-            bias = (current_price - ma_val) / ma_val * 100
-            dist = current_price - ma_val
-            metrics[ma] = {
-                "val": ma_val,
-                "slope": slope,
-                "bias": bias,
-                "dist": dist
-            }
-        else:
-            metrics[ma] = {
-                "val": 0.0,
-                "slope": "無數據",
-                "bias": 0.0,
-                "dist": 0.0
-            }
-    metrics["current_price"] = current_price
-    metrics["high_52w"] = high_52w
-    metrics["low_52w"] = low_52w
-    return metrics
-
-# ==========================================
-# 2. FinMind TDCC Data Fetcher
-# ==========================================
-def fetch_tdcc_history(ticker):
-    # Try loading token from credentials.json
-    token = None
-    try:
-        cred_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "credentials.json")
-        if os.path.exists(cred_path):
-            with open(cred_path, 'r', encoding='utf-8') as f:
-                cred = json.load(f)
-                token = cred.get("finmind_token")
-    except Exception as e:
-        print(f"Warning: Failed to load FinMind token: {e}")
-
-    # Go back 70 days to get about 10 weeks of data to ensure at least 7 weeks (Fridays)
-    start_date = (datetime.now() - timedelta(days=70)).strftime("%Y-%m-%d")
-    url = f"https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockHoldingSharesPer&data_id={ticker}&start_date={start_date}"
-    if token:
-        url += f"&token={token}"
-        
-    try:
-        headers = {'User-Agent': 'Mozilla/5.0'}
-        if token:
-            headers["Authorization"] = f"Bearer {token}"
-        req = urllib.request.Request(url, headers=headers)
-        with urllib.request.urlopen(req, timeout=15) as response:
-            res_data = json.loads(response.read().decode('utf-8'))
-            data_list = res_data.get('data', [])
-            if not data_list:
-                return []
-            
-            # Group records by date
-            records_by_date = {}
-            for item in data_list:
-                d = item.get('date')
-                if not d:
-                    continue
-                if d not in records_by_date:
-                    records_by_date[d] = []
-                records_by_date[d].append(item)
-            
-            # Calculate ratios for each date
-            history = []
-            for date in sorted(records_by_date.keys(), reverse=True):
-                rows = records_by_date[date]
-                ratio_400 = 0.0
-                ratio_1000 = 0.0
-                people_400 = 0
-                
-                for row in rows:
-                    level_str = str(row.get('HoldingSharesLevel', ''))
-                    try:
-                        level = int(level_str)
-                    except ValueError:
-                        continue
-                    percent = float(row.get('percent', 0.0))
-                    people = int(row.get('people', 0))
-                    
-                    if level == 15:
-                        ratio_1000 = percent
-                        ratio_400 += percent
-                        people_400 += people
-                    elif level in [12, 13, 14]:
-                        ratio_400 += percent
-                        people_400 += people
-                
-                history.append({
-                    "date": date,
-                    "ratio_400": ratio_400,
-                    "ratio_1000": ratio_1000,
-                    "people_400": people_400
-                })
-            return history
-    except Exception as e:
-        print(f"Warning: Failed to fetch TDCC history from FinMind: {e}")
-        return []
-
-def parse_tdcc_from_stock_note(stock_content):
-    lines = stock_content.split('\n')
-    started = False
-    table_lines = []
-    for line in lines:
-        if line.startswith('###') and "籌碼面" in line:
-            started = True
-            continue
-        if started:
-            if line.startswith('##') or (line.startswith('###') and "籌碼面" not in line):
-                break
-            if '|' in line:
-                table_lines.append(line)
-    
-    history = []
-    for line in table_lines:
-        cols = [c.strip() for c in line.split('|')]
-        if len(cols) >= 4:
-            date_str = cols[1].strip()
-            if re.match(r'\d{4}-\d{2}-\d{2}', date_str):
-                p400_str = cols[2].replace('%', '').strip()
-                p1000_str = cols[3].replace('%', '').strip()
-                try:
-                    ratio_400 = float(p400_str)
-                    ratio_1000 = float(p1000_str)
-                    history.append({
-                        "date": date_str,
-                        "ratio_400": ratio_400,
-                        "ratio_1000": ratio_1000,
-                        "people_400": "-"
-                    })
-                except ValueError:
-                    continue
-    return history
-
-# ==========================================
-# 3. Parsing helper for markdown
+# 1. Parsing helper for markdown
 # ==========================================
 def extract_section_content(content, keywords):
     lines = content.split('\n')
@@ -267,20 +96,21 @@ def main():
         
     # 2. Fetch prices from Yahoo Finance
     print("Fetching prices from Yahoo Finance...")
-    prices, symbol = fetch_yahoo_prices(ticker)
+    prices = get_historical_prices_fallback(ticker)
     if not prices:
         print("Error: Could not retrieve prices from Yahoo Finance.")
         sys.exit(1)
-        
-    metrics = calculate_ma_metrics(prices)
+
+    metrics = compute_ma_metrics(prices)
     curr_price = metrics["current_price"]
-    
+
     # 3. Fetch TDCC history
     print("Parsing TDCC history from stock note...")
     tdcc_history = parse_tdcc_from_stock_note(stock_content)
     if len(tdcc_history) < 7:
         print("Stock note contains insufficient TDCC data (< 7 weeks). Fetching from FinMind...")
-        fm_history = fetch_tdcc_history(ticker)
+        tdcc_start_date = (datetime.now() - timedelta(days=70)).strftime("%Y-%m-%d")
+        fm_history = fetch_tdcc_history_finmind(ticker, tdcc_start_date)
         if fm_history:
             # Merge to preserve all historical data and ensure we have at least 7 weeks
             merged = {}
