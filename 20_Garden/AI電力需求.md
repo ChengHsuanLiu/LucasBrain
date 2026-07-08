@@ -2,7 +2,7 @@
 type: industry
 title: AI電力與算力需求瓶頸 (Tokenomics)
 created: 2026-06-24
-updated: 2026-06-24
+updated: 2026-07-09
 review_by: 2026-09-24
 tags: [ai/power, compute/constraints, tokenomics]
 source_type: image_capture
@@ -46,6 +46,11 @@ source_asset: 20260611_133924_image.jpeg
 ## 🗺️ 產業鏈地圖與廠商財務比對 (Supply Chain & Financials)
 ### 📌 產業鏈廠商與供應鏈細節 (Supply Chain Details)
 * **[請填寫產業上下游廠商清單]**
+* **[2026-07-08] NVIDIA Rubin/Helios機櫃電源供應鏈情報**：
+  - Vera Rubin 平台總量看46k racks(機櫃)。
+  - Helios 2026年每個月出貨1500櫃。
+  - CBU(機櫃電源/匯流排相關組件)供應商：Panasonic已拿到訂單，其他競爭者包括Delta、Flex，主要供應對象為Google、Meta、AWS，預估2027年進入量產(MP)。
+  - 待查證：CBU確切定義(推測為機櫃電源匯流排/Bus Bar Unit相關組件)與台廠對應受惠標的尚待進一步查證。
 
 ---
 
@@ -67,3 +72,4 @@ source_asset: 20260611_133924_image.jpeg
 - `[[20260611_133924_image.jpeg]]` - Citadel Securities Tokenomics 報告 (Page 1)
 - `[[20260611_133924_image (1).jpeg]]` - Citadel Securities Tokenomics 報告 (Page 2)
 - `[[20260611_133924_image (2).jpeg]]` - Silicon Data LLM Token 支出指數趨勢圖
+- `[[20260708_205105_text.md]]` - Vera Rubin/Helios機櫃出貨量與CBU供應商情報 (2026-07-08)
