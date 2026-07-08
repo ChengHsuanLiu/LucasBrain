@@ -255,3 +255,9 @@
 - 新增 `.agent/scripts/generate_daily_report.py`，目前完成規劃四大區塊中的「一、大盤情況」，產出 `30_Projects/Daily_Report/{日期}_DailyReport.md`+PDF；新增 `.agent/tasks/generate_daily_report.md` 工作流文件與 SCHEMA.md 指令映射（`g DailyReport`）。後續三階段（四、個股買賣訊號／三、大戶籌碼整合／二、族群強度掃描）將依序疊加進同一份報告。
 - 抽出第三個共用模組 `.agent/scripts/lib/report_pdf.py`（`render_markdown_to_pdf()`），將 `generate_stock_report.py`、`generate_weekly_focus.py` 原本各自維護的 Markdown→PDF 邏輯（frontmatter/emoji清理、GS研報風格CSS、Edge headless列印含非同步寫檔race condition防護）統一改為呼叫此共用函式；`generate_weekly_focus.py` 透過 `extra_css` 參數保留其專屬的表格欄寬與換頁規則。三份報告產生器均已重跑驗證PDF正常產出。
 - 新增 `20_Garden/概念股FPE合理區間.md`：依現有概念Wiki的成員股清單自動彙整，供使用者手動填入各概念股族群的Forward P/E合理區間（下緣/中緣/上緣），作為後續「四、個股買賣訊號」目標價估算的資料來源。
+- 修正 `.agent/scripts/update_prices.py` 的空白行疊加 bug：`update_stock_file()` 每次改寫筆記時，因區段重組邏輯未歸一化既有空白行，導致每刷新一次筆記結尾（技術面分析區塊後）就多疊一行空白，長期累積成數十行空白。已修正並對全部80檔個股筆記做一次性歸一化清理。
+
+## [2026-07-09] fix | 仲恩生醫股票代號更正 (6962→7729) | 影響 [[7729仲恩生醫]]、[[6696仁新醫藥]]
+- 使用者指出仲恩生醫代號誤植，經比對 FinMind `TaiwanStockInfo` 資料庫核實：6962 實際對應完全不相關的另一家公司，仲恩生醫正確代號為 **7729**。
+- 重新命名筆記為 `7729仲恩生醫.md`，更正 frontmatter/H1 標題，並修正筆記中先前（2026-07-08 ingest 時）誤判來源文件標題「7729」才是錯誤代號的說法。同步更新 `index.md` 與 `6696仁新醫藥.md` 的 WikiLink。
+- 因代號錯誤，`update_prices.py` 長期抓取的是錯誤公司（6962）的股價/均線/籌碼資料；已用正確代號重新抓取（收盤價 74.9 元，取代先前錯誤的 37.25 元）。
