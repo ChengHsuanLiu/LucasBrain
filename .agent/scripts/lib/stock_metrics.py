@@ -12,6 +12,7 @@
 - parse_target_eps : 唯一一套從個股筆記「財務數據與 EPS 預估比對」表格解析目標年度 EPS 的邏輯
 """
 import json
+import os
 import re
 import urllib.request
 import io
@@ -19,6 +20,35 @@ import csv
 
 MA_PERIODS = [5, 10, 20, 60, 120, 240]
 CREDENTIALS_PATH = r"C:\Users\User\Desktop\LucasBrain\.agent\credentials.json"
+
+
+def _load_finmind_token(credentials_path=CREDENTIALS_PATH):
+    """唯一一處讀取 FinMind token 的邏輯，供所有 FinMind API 呼叫共用。"""
+    try:
+        if os.path.exists(credentials_path):
+            with open(credentials_path, 'r', encoding='utf-8') as cf:
+                return json.load(cf).get("finmind_token")
+    except Exception as e:
+        print(f"Warning: Failed to load FinMind token: {e}")
+    return None
+
+
+def _finmind_request(dataset, data_id, start_date, credentials_path=CREDENTIALS_PATH, timeout=15):
+    """呼叫 FinMind v4 API 並回傳 data list，統一 token/header 組裝與錯誤處理。"""
+    token = _load_finmind_token(credentials_path)
+    url = f"https://api.finmindtrade.com/api/v4/data?dataset={dataset}&data_id={data_id}&start_date={start_date}"
+    if token:
+        url += f"&token={token}"
+
+    headers = {'User-Agent': 'Mozilla/5.0'}
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+
+    req = urllib.request.Request(url, headers=headers)
+    with urllib.request.urlopen(req, timeout=timeout) as response:
+        res_data = json.loads(response.read().decode('utf-8'))
+        return res_data.get('data', [])
+
 
 # ==========================================
 # 1. Yahoo Finance Historical Price Fetcher
@@ -132,69 +162,50 @@ def download_and_parse_tdcc():
 
 
 def fetch_tdcc_history_finmind(ticker, start_date, credentials_path=CREDENTIALS_PATH):
-    """透過 FinMind API 逐檔查詢籌碼歷史 (需 token，用於補足單檔多週歷史，非每日全市場批次)。"""
-    import os
-    token = None
+    """透過 FinMind API 逐檔查詢籌碼歷史 (付費 Backer 方案，用於個股研報等需要保證
+    最近 N 週資料完整性的場景；每日全市場批次更新請用 download_and_parse_tdcc)。"""
     try:
-        if os.path.exists(credentials_path):
-            with open(credentials_path, 'r', encoding='utf-8') as cf:
-                cred = json.load(cf)
-                token = cred.get("finmind_token")
-    except Exception as e:
-        print(f"Warning: Failed to load FinMind token: {e}")
+        data_list = _finmind_request("TaiwanStockHoldingSharesPer", ticker, start_date, credentials_path)
+        if not data_list:
+            return []
 
-    url = f"https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockHoldingSharesPer&data_id={ticker}&start_date={start_date}"
-    if token:
-        url += f"&token={token}"
+        records_by_date = {}
+        for item in data_list:
+            d = item.get('date')
+            if not d:
+                continue
+            records_by_date.setdefault(d, []).append(item)
 
-    try:
-        headers = {'User-Agent': 'Mozilla/5.0'}
-        if token:
-            headers["Authorization"] = f"Bearer {token}"
-        req = urllib.request.Request(url, headers=headers)
-        with urllib.request.urlopen(req, timeout=15) as response:
-            res_data = json.loads(response.read().decode('utf-8'))
-            data_list = res_data.get('data', [])
-            if not data_list:
-                return []
+        history = []
+        for date in sorted(records_by_date.keys(), reverse=True):
+            rows = records_by_date[date]
+            ratio_400 = 0.0
+            ratio_1000 = 0.0
+            people_400 = 0
 
-            records_by_date = {}
-            for item in data_list:
-                d = item.get('date')
-                if not d:
-                    continue
-                records_by_date.setdefault(d, []).append(item)
+            for row in rows:
+                # FinMind's HoldingSharesLevel is a share-count range label (e.g. "400,001-600,000",
+                # "more than 1,000,001"), NOT the numeric tier code (12-15) used by TDCC's free
+                # OpenData CSV in download_and_parse_tdcc(). 400張=400,000股, 1000張=1,000,000股.
+                level_label = str(row.get('HoldingSharesLevel', '')).strip()
+                percent = float(row.get('percent', 0.0))
+                people = int(row.get('people', 0))
 
-            history = []
-            for date in sorted(records_by_date.keys(), reverse=True):
-                rows = records_by_date[date]
-                ratio_400 = 0.0
-                ratio_1000 = 0.0
-                people_400 = 0
+                if level_label == 'more than 1,000,001':
+                    ratio_1000 = percent
+                    ratio_400 += percent
+                    people_400 += people
+                elif level_label in ('400,001-600,000', '600,001-800,000', '800,001-1,000,000'):
+                    ratio_400 += percent
+                    people_400 += people
 
-                for row in rows:
-                    try:
-                        level = int(str(row.get('HoldingSharesLevel', '')))
-                    except ValueError:
-                        continue
-                    percent = float(row.get('percent', 0.0))
-                    people = int(row.get('people', 0))
-
-                    if level == 15:
-                        ratio_1000 = percent
-                        ratio_400 += percent
-                        people_400 += people
-                    elif level in [12, 13, 14]:
-                        ratio_400 += percent
-                        people_400 += people
-
-                history.append({
-                    "date": date,
-                    "ratio_400": ratio_400,
-                    "ratio_1000": ratio_1000,
-                    "people_400": people_400
-                })
-            return history
+            history.append({
+                "date": date,
+                "ratio_400": ratio_400,
+                "ratio_1000": ratio_1000,
+                "people_400": people_400
+            })
+        return history
     except Exception as e:
         print(f"Warning: Failed to fetch TDCC history from FinMind: {e}")
         return []
@@ -460,3 +471,72 @@ def parse_target_eps(filepath, target_year):
     if eps_values:
         return sum(eps_values) / len(eps_values)
     return None
+
+
+# ==========================================
+# 6. FinMind Financial Statements (季度財報，付費 Backer 方案)
+# ==========================================
+def _date_to_quarter_label(date_str):
+    try:
+        year, month = date_str.split('-')[0], date_str.split('-')[1]
+        m = int(month)
+        q = 1 if m <= 3 else 2 if m <= 6 else 3 if m <= 9 else 4
+        return f"{year}Q{q} (實)"
+    except Exception:
+        return date_str
+
+
+def fetch_financial_statements(ticker, start_date, credentials_path=CREDENTIALS_PATH):
+    """透過 FinMind TaiwanStockFinancialStatements 抓取季度財報原始數據，
+    回傳依日期排序 (由舊到新) 的 [{date, quarter_label, revenue, gross_profit, operating_income, eps}] 列表。"""
+    try:
+        records = _finmind_request("TaiwanStockFinancialStatements", ticker, start_date, credentials_path)
+        if not records:
+            return []
+
+        by_date = {}
+        for r in records:
+            d = r.get('date')
+            t = r.get('type')
+            v = r.get('value')
+            by_date.setdefault(d, {})[t] = v
+
+        quarters = []
+        for d in sorted(by_date.keys()):
+            data = by_date[d]
+            revenue = data.get('Revenue', 0.0) or 0.0
+            gross_profit = data.get('GrossProfit', 0.0) or 0.0
+            operating_income = data.get('OperatingIncome', 0.0) or 0.0
+            eps = data.get('EPS', 0.0) or 0.0
+            quarters.append({
+                "date": d,
+                "quarter_label": _date_to_quarter_label(d),
+                "revenue": revenue,
+                "gross_profit": gross_profit,
+                "operating_income": operating_income,
+                "eps": eps,
+            })
+        return quarters
+    except Exception as e:
+        print(f"Warning: Failed to fetch financial statements from FinMind: {e}")
+        return []
+
+
+def format_financial_table(quarterly_records, quarters=5):
+    """把 fetch_financial_statements() 的原始資料格式化為個股研報用的季度財報 Markdown 表格，僅取最近 N 季。"""
+    if not quarterly_records:
+        return None
+
+    recent = quarterly_records[-quarters:] if len(quarterly_records) >= quarters else quarterly_records
+
+    lines = ["| 季度 | 營收 (億元) | 毛利率 (%) | 營業利益率 (%) | EPS (元) | 備註 / 營運重點說明 |",
+             "| :--- | :--- | :--- | :--- | :--- | :--- |"]
+    for q in recent:
+        revenue_hundred_millions = q["revenue"] / 100000000.0
+        gp_margin = (q["gross_profit"] / q["revenue"] * 100.0) if q["revenue"] else 0.0
+        op_margin = (q["operating_income"] / q["revenue"] * 100.0) if q["revenue"] else 0.0
+        lines.append(
+            f"| **{q['quarter_label']}** | {revenue_hundred_millions:.2f} | {gp_margin:.2f}% | "
+            f"{op_margin:.2f}% | {q['eps']:.2f} | (FinMind 財報自動抓取) |"
+        )
+    return "\n".join(lines)

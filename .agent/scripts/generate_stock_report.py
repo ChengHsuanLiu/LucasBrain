@@ -10,7 +10,12 @@ from lib.stock_metrics import (
     compute_ma_metrics,
     fetch_tdcc_history_finmind,
     parse_tdcc_from_stock_note,
+    fetch_financial_statements,
+    format_financial_table,
 )
+
+TDCC_MIN_WEEKS = 5
+FINANCIAL_MIN_QUARTERS = 5
 
 def get_arg_ticker():
     if len(sys.argv) < 2:
@@ -104,23 +109,24 @@ def main():
     metrics = compute_ma_metrics(prices)
     curr_price = metrics["current_price"]
 
-    # 3. Fetch TDCC history
-    print("Parsing TDCC history from stock note...")
-    tdcc_history = parse_tdcc_from_stock_note(stock_content)
-    if len(tdcc_history) < 7:
-        print("Stock note contains insufficient TDCC data (< 7 weeks). Fetching from FinMind...")
-        tdcc_start_date = (datetime.now() - timedelta(days=70)).strftime("%Y-%m-%d")
-        fm_history = fetch_tdcc_history_finmind(ticker, tdcc_start_date)
-        if fm_history:
-            # Merge to preserve all historical data and ensure we have at least 7 weeks
-            merged = {}
-            for item in fm_history:
-                merged[item["date"]] = item
-            for item in tdcc_history:
-                if item["date"] not in merged:
-                    merged[item["date"]] = item
-            tdcc_history = [merged[d] for d in sorted(merged.keys(), reverse=True)]
-    
+    # 3. Fetch TDCC history — FinMind (Backer 付費方案) 為主要來源，確保取到最近 5 週資料
+    print("Fetching TDCC shareholding history from FinMind (last 5+ weeks)...")
+    tdcc_start_date = (datetime.now() - timedelta(days=70)).strftime("%Y-%m-%d")
+    tdcc_history = fetch_tdcc_history_finmind(ticker, tdcc_start_date)
+    if len(tdcc_history) < TDCC_MIN_WEEKS:
+        print(f"FinMind returned only {len(tdcc_history)} weeks; merging with note history as backup...")
+        note_history = parse_tdcc_from_stock_note(stock_content)
+        merged = {item["date"]: item for item in note_history}
+        for item in tdcc_history:
+            merged[item["date"]] = item
+        tdcc_history = [merged[d] for d in sorted(merged.keys(), reverse=True)]
+
+    # 3b. Fetch quarterly financial statements from FinMind — 確保取到最近 5 季實際財報
+    print("Fetching quarterly financial statements from FinMind (last 5+ quarters)...")
+    financial_start_date = (datetime.now() - timedelta(days=730)).strftime("%Y-%m-%d")
+    financial_records = fetch_financial_statements(ticker, financial_start_date)
+    financial_table_finmind = format_financial_table(financial_records, quarters=FINANCIAL_MIN_QUARTERS)
+
     # 4. Extract sections from note
     print("Extracting business details from stock note...")
     summary_sect = extract_section_content(stock_content, ["投資建議", "Summary"])
@@ -143,13 +149,13 @@ def main():
     
     if len(tdcc_history) >= 2:
         latest = tdcc_history[0]
-        oldest = tdcc_history[min(6, len(tdcc_history)-1)]
+        oldest = tdcc_history[min(TDCC_MIN_WEEKS - 1, len(tdcc_history)-1)]
         change_400 = latest["ratio_400"] - oldest["ratio_400"]
         change_1000 = latest["ratio_1000"] - oldest["ratio_1000"]
         latest_date_str = latest["date"]
-        
-        # Build TDCC markdown table
-        for i in range(min(7, len(tdcc_history))):
+
+        # Build TDCC markdown table (最近 5 週)
+        for i in range(min(TDCC_MIN_WEEKS, len(tdcc_history))):
             curr = tdcc_history[i]
             if i < len(tdcc_history) - 1:
                 prev = tdcc_history[i+1]
@@ -181,8 +187,8 @@ def main():
     # Determine lights
     # Chip light
     if change_1000 > 1.0:
-        chip_light = f"🟢 綠燈 ➡️ 大戶近六週持股比例顯著增加 (+{change_1000:.2f} pp)，主力資金持續吸籌建倉。"
-        chip_pass = "🟢 通過 (大戶持股比例近六週顯著增加，主力加碼力道強)"
+        chip_light = f"🟢 綠燈 ➡️ 大戶近五週持股比例顯著增加 (+{change_1000:.2f} pp)，主力資金持續吸籌建倉。"
+        chip_pass = "🟢 通過 (大戶持股比例近五週顯著增加，主力加碼力道強)"
     elif change_1000 >= -3.0:
         chip_light = f"🟡 黃燈 ➡️ 大戶持股比例呈現區間震盪 ({change_1000:.2f} pp)，籌碼目前處於沉澱整理期。"
         chip_pass = "🟡 中性 (大戶持股高檔震盪整理，尚未見大額加碼動作)"
@@ -191,8 +197,8 @@ def main():
             chip_light = f"🟡 黃燈 ➡️ 大戶持股比例短期稀釋 ({change_1000:.2f} pp)，主因公司現增/私募定價股權調整，籌碼屬定價期壓盤。"
             chip_pass = "🟡 中性 (增資定價期籌碼因權益分拆稀釋，靜待定價完成)"
         else:
-            chip_light = f"🔴 紅燈 ➡️ 大戶持股比例近六週顯著流失 ({change_1000:.2f} pp)，需注意主力高檔減碼套現風險。"
-            chip_pass = "🔴 未通過 (大戶持股近六週流失，籌碼渙散)"
+            chip_light = f"🔴 紅燈 ➡️ 大戶持股比例近五週顯著流失 ({change_1000:.2f} pp)，需注意主力高檔減碼套現風險。"
+            chip_pass = "🔴 未通過 (大戶持股近五週流失，籌碼渙散)"
             
     # Technical light
     ma5 = metrics[5]
@@ -496,32 +502,33 @@ def main():
     report.append(f"* **2027E 全年 EPS**：預估 **{eps_27} 元**")
     report.append(f"* **2028E 全年 EPS**：預估 **{eps_28} 元**")
     report.append("")
-    report.append("### 📌 近六季與未來預估財報數據")
-    
-    # Process EPS / Revenue Table
-    has_quarterly_data = False
-    quarter_rows = []
-    for line in eps_ratio_sect.split('\n'):
-        if "|" in line and ("Q" in line or "年" in line) and "日期" not in line and "銷貨" not in line:
-            cols = [c.strip() for c in line.split('|')]
-            if len(cols) >= 6:
-                quarter_rows.append(line)
-                has_quarterly_data = True
-                
-    if has_quarterly_data:
-        # Use existing table headers
-        report.append("| 季度 | 營收 (億元/百萬) | 毛利率 (%) | 營業利益率 (%) | EPS (元) | 備註 / 營運重點說明 |")
-        report.append("| :--- | :--- | :--- | :--- | :--- | :--- |")
-        for row in quarter_rows[:12]:
-            report.append(row)
+    report.append("### 📌 近五季與未來預估財報數據")
+
+    if financial_table_finmind:
+        # 優先來源：FinMind 實際季報 (Backer 付費方案)
+        report.append(financial_table_finmind)
     else:
-        # Placeholder Table
-        report.append("| 季度 | 營收 (億元) | 毛利率 (%) | 營業利益率 (%) | EPS (元) | 備註 / 營運重點說明 |")
-        report.append("| :--- | :--- | :--- | :--- | :--- | :--- |")
-        report.append(f"| **2025Q1 (實)** | - | - | - | - | 穩定增長 |")
-        report.append(f"| **2026Q1 (實)** | - | - | - | - | 穩定增長 |")
-        report.append(f"| **2026E (估)**  | - | - | - | {eps_26} | 調價與出貨放量 |")
-        report.append(f"| **2027E (估)**  | - | - | - | {eps_27} | 產能與訂單爆發年 |")
+        # 備援來源：個股筆記中既有的季度表格
+        quarter_rows = []
+        for line in eps_ratio_sect.split('\n'):
+            if "|" in line and ("Q" in line or "年" in line) and "日期" not in line and "銷貨" not in line:
+                cols = [c.strip() for c in line.split('|')]
+                if len(cols) >= 6:
+                    quarter_rows.append(line)
+
+        if quarter_rows:
+            report.append("| 季度 | 營收 (億元/百萬) | 毛利率 (%) | 營業利益率 (%) | EPS (元) | 備註 / 營運重點說明 |")
+            report.append("| :--- | :--- | :--- | :--- | :--- | :--- |")
+            for row in quarter_rows[:FINANCIAL_MIN_QUARTERS]:
+                report.append(row)
+        else:
+            # Placeholder Table
+            report.append("| 季度 | 營收 (億元) | 毛利率 (%) | 營業利益率 (%) | EPS (元) | 備註 / 營運重點說明 |")
+            report.append("| :--- | :--- | :--- | :--- | :--- | :--- |")
+            report.append(f"| **2025Q1 (實)** | - | - | - | - | 穩定增長 |")
+            report.append(f"| **2026Q1 (實)** | - | - | - | - | 穩定增長 |")
+            report.append(f"| **2026E (估)**  | - | - | - | {eps_26} | 調價與出貨放量 |")
+            report.append(f"| **2027E (估)**  | - | - | - | {eps_27} | 產能與訂單爆發年 |")
         
     report.append("")
     report.append("* **新版模型重點說明**：")
@@ -559,8 +566,8 @@ def main():
     report.append("### 📌 大戶持股核心數據")
     report.append(f"* **400張以上大戶比例**：`{tdcc_history[0]['ratio_400']:.2f}` % (統計日期：{latest_date_str})")
     report.append(f"* **1000張以上大戶比例**：`{tdcc_history[0]['ratio_1000']:.2f}` % (統計日期：{latest_date_str})")
-    report.append(f"* **400張大戶近六週變動**：`{change_400:+.2f}` pp (相較六週前)")
-    report.append(f"* **1000張大戶近六週變動**：`{change_1000:+.2f}` pp (相較六週前)")
+    report.append(f"* **400張大戶近五週變動**：`{change_400:+.2f}` pp (相較五週前)")
+    report.append(f"* **1000張大戶近五週變動**：`{change_1000:+.2f}` pp (相較五週前)")
     report.append("")
     report.append("### 📌 TDCC 持股分布週度追蹤表格")
     report.append("| 資料日期 | 400張+(gr.12+) | 1000張+(L15) | 週變動 (400張 / 1000張) | 籌碼訊號 / 大戶動向 |")
@@ -570,9 +577,9 @@ def main():
     report.append("")
     report.append("* **籌碼判讀核心觀察**：")
     if change_1000 > 1.0:
-        report.append(f"  - 近六週大戶持股比例呈現強勁的吸籌態勢（1000張大戶增加 {change_1000:.2f} pp），顯示主力在大規模建倉。")
+        report.append(f"  - 近五週大戶持股比例呈現強勁的吸籌態勢（1000張大戶增加 {change_1000:.2f} pp），顯示主力在大規模建倉。")
     else:
-        report.append(f"  - 大戶比例近六週出現分拆與稀釋變動（1000張大戶變化 {change_1000:.2f} pp），主要受到現增與私募案等股權分配結構調整影響，屬於募資定價期壓盤，並非散戶化籌碼渙散。")
+        report.append(f"  - 大戶比例近五週出現分拆與稀釋變動（1000張大戶變化 {change_1000:.2f} pp），主要受到現增與私募案等股權分配結構調整影響，屬於募資定價期壓盤，並非散戶化籌碼渙散。")
     report.append("* **多空籌碼注意事項**：")
     report.append("  - 後續需關注募資案塵埃落定後大戶持股比例是否回升，警示線設定在整體大戶持股比率若跌破 45-50% 則中線籌碼轉弱。")
     report.append("")
