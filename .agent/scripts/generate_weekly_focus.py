@@ -4,7 +4,7 @@ import sys
 from datetime import datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from lib.stock_metrics import parse_target_eps
+from lib.stock_metrics import parse_target_eps, refresh_stock_data
 from lib.report_pdf import render_markdown_to_pdf
 
 def extract_core_points(filepath):
@@ -511,18 +511,9 @@ def generate_weekly_report(target_date=None):
 
     return dest_filepath
 
-def refresh_price_data():
-    """Weekly Focus 讀的是每檔筆記裡 update_prices.py 寫入的均線/乖離率評分快照，
-    自己不會重算——若不先跑一次更新，產出的週報會用到舊資料。因此每次生成前，
-    一律先刷新全體個股的價格/技術面/籌碼面，確保資料是當下最新的。"""
-    import subprocess
-    update_script = os.path.join(os.path.dirname(os.path.abspath(__file__)), "update_prices.py")
-    print("Refreshing price/technical/chip data for all stocks before generating Weekly Focus...")
-    subprocess.run([sys.executable, update_script], check=True)
-    print("Refresh complete. Generating Weekly Focus report...\n")
-
-
 if __name__ == "__main__":
     t_date = sys.argv[1] if len(sys.argv) > 1 else None
-    refresh_price_data()
+    print("Refreshing price/technical/chip data for all stocks before generating Weekly Focus...")
+    refresh_stock_data()
+    print("Refresh complete. Generating Weekly Focus report...\n")
     generate_weekly_report(t_date)

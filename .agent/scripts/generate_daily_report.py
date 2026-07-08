@@ -1,14 +1,15 @@
 """
-生成盤後大盤日報 (DailyReport - 一、大盤情況)。
+生成盤後大盤日報 (DailyReport - 一、大盤情況 + 四、資料庫個股買進/賣出訊號)。
 
 用法：
     python generate_daily_report.py [YYYY-MM-DD]
 
-若不帶日期參數，預設抓最新一個交易日的資料。目前僅實作「一、大盤情況」區塊
-(指數/成交量/技術指標/融資/三大法人/外資期貨)，其餘區塊(族群強度/大戶整合/
-個股買賣訊號)將於後續階段加入同一份報告。
+若不帶日期參數，預設抓最新一個交易日的資料。目前已實作「一、大盤情況」與
+「四、資料庫個股買進/賣出訊號」區塊，其餘區塊(族群強度/大戶籌碼整合)將於
+後續階段加入同一份報告。
 """
 import os
+import re
 import sys
 from datetime import datetime, timedelta
 
@@ -29,9 +30,15 @@ from lib.market_data import (
     fetch_foreign_futures_position,
     INDEX_MA_PERIODS,
 )
+from lib.stock_signals import (
+    load_concept_fpe_table,
+    compute_stock_signal,
+    BUY_EXPECTED_VALUE_THRESHOLD,
+)
 from lib.report_pdf import render_markdown_to_pdf
 
 OUTPUT_DIR = r"C:\Users\User\Desktop\LucasBrain\30_Projects\Daily_Report"
+STOCK_DIR = r"C:\Users\User\Desktop\LucasBrain\10_Stocks"
 
 
 def fmt_pct(v, decimals=2):
@@ -169,6 +176,83 @@ def build_futures_section():
     return lines
 
 
+def build_stock_signals_section():
+    lines = ["### 四、資料庫個股買進/賣出訊號", ""]
+
+    concept_table = load_concept_fpe_table()
+    target_year = datetime.now().year + 1
+
+    files = [os.path.join(STOCK_DIR, f) for f in os.listdir(STOCK_DIR) if f.endswith('.md')]
+    results = []
+    for fp in files:
+        filename = os.path.basename(fp)
+        m = re.match(r'^([0-9]+(?:\.[a-zA-Z0-9]+)?)(.*?)\.md$', filename)
+        if not m:
+            continue
+        ticker, name = m.group(1).strip(), m.group(2).strip()
+        sig = compute_stock_signal(ticker, fp, target_year, concept_table)
+        if sig:
+            sig["name"] = name
+            results.append(sig)
+
+    buy_list = sorted(
+        (r for r in results if r["signal"] == "BUY"),
+        key=lambda r: r["expected_value_pct"], reverse=True
+    )
+    sell_list = sorted(
+        (r for r in results if r["signal"].startswith("SELL")),
+        key=lambda r: r["expected_value_pct"] if r["expected_value_pct"] is not None else 999
+    )
+
+    lines.append(f"#### 買進訊號（期望值 > {BUY_EXPECTED_VALUE_THRESHOLD:.0f}%）")
+    lines.append("")
+    if buy_list:
+        lines.append("| 股票 | 現價 | 目標價 | 期望值 | 均線評分 | 乖離評分 | 提醒 |")
+        lines.append("| :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
+        for r in buy_list:
+            alert_str = "；".join(r["alerts"]) if r["alerts"] else "-"
+            lines.append(
+                f"| {r['ticker']}{r['name']} | {r['current_price']:.2f} | {r['target_price']:.2f} | "
+                f"{r['expected_value_pct']:+.1f}% | {r['ma_rating']} | {r['bias_rating']} | {alert_str} |"
+            )
+    else:
+        lines.append("*今日無符合門檻的買進訊號。*")
+    lines.append("")
+
+    lines.append("#### 賣出/減碼訊號")
+    lines.append("")
+    if sell_list:
+        lines.append("| 股票 | 現價 | 目標價 | 期望值 | 均線評分 | 乖離評分 | 觸發原因 |")
+        lines.append("| :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
+        sell_reason_labels = {
+            "SELL_逢高減碼": "期望值<30%，逢高減碼",
+            "SELL_跌破5MA": "跌破5日線且期望值<60%",
+            "SELL_乖離過熱": "乖離率評分過低，逢高減碼",
+        }
+        for r in sell_list:
+            target_price_str = f"{r['target_price']:.2f}" if r['target_price'] is not None else "待補充"
+            ev_str = f"{r['expected_value_pct']:+.1f}%" if r['expected_value_pct'] is not None else "待補充"
+            reason_str = sell_reason_labels.get(r["signal"], r["signal"])
+            lines.append(
+                f"| {r['ticker']}{r['name']} | {r['current_price']:.2f} | {target_price_str} | "
+                f"{ev_str} | {r['ma_rating']} | {r['bias_rating']} | {reason_str} |"
+            )
+    else:
+        lines.append("*今日無觸發賣出/減碼條件的個股。*")
+    lines.append("")
+
+    no_fpe_cnt = sum(1 for r in results if r["fpe_range"] is None)
+    lines.append(
+        f"> **註**：目標價 = 隔年({target_year})預估EPS × 所屬概念股FPE中緣（同屬多個概念取平均，"
+        f"見 `[[概念股FPE合理區間]]`）；期望值 = (目標價/現價 - 1)。"
+        f"目前資料庫 {len(results)} 檔個股中有 {no_fpe_cnt} 檔缺EPS預估或概念分類，"
+        f"標記為「待補充」，未納入買賣訊號判定。"
+    )
+    lines.append("")
+
+    return lines
+
+
 def generate_report():
     today_str = datetime.now().strftime("%Y-%m-%d")
     report = []
@@ -198,6 +282,10 @@ def generate_report():
     report.extend(build_margin_section(taiex_date))
     report.extend(build_institutional_section())
     report.extend(build_futures_section())
+
+    report.append('<div class="step-page-break"></div>')
+    report.append("")
+    report.extend(build_stock_signals_section())
 
     filename_stem = f"{today_str.replace('-', '')}_DailyReport"
     os.makedirs(OUTPUT_DIR, exist_ok=True)

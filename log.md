@@ -266,3 +266,9 @@
 - 使用者已為原「尚未歸類到任何概念的個股」表格中的19檔個股補上產業分類建議。將其中3檔（3450聯鈞、4979華星光、6182合晶）併入既有的 [[光通訊-矽光子]]／[[矽晶圓]] 分類成員清單。
 - 其餘8個分類（[[記憶體]]、[[PCB]]、[[散熱元件]]、[[BBU電源]]、[[封裝測試]]、[[高速傳輸]]、[[設備]]、[[生技醫療]]）在 `20_Garden/` 尚無對應頁面，代表 00_Inbox 還沒收到過這些產業的研究素材，已依 `Template_Industry` 建立空白佔位頁面（含目前資料庫成員個股清單，內容待後續 ingest 補完），並在主表中新增對應列（FPE區間留空待填寫）。
 - 更新 `index.md` 產業清單與統計數字（12→20個產業筆記）。
+
+## [2026-07-09] feat | DailyReport 新增「四、資料庫個股買進/賣出訊號」，抽出第三處 refresh_price_data 重複 | 影響 [[SCHEMA]]
+- 新增 `.agent/scripts/lib/stock_signals.py`：解析 `概念股FPE合理區間.md` 主表（`load_concept_fpe_table`/`get_fpe_range_for_ticker`，個股同屬多個概念時取FPE平均），計算目標價（隔年預估EPS × 概念FPE中緣）與期望值%（目標價/現價-1），並疊加5日線站上狀態（`compute_5ma_cross_status`：首日站上/貼近5日線隨時可能跌破）與5日線扣抵值判斷（`compute_five_day_deduction`：現價 vs 5日前收盤價，判斷5MA是否有望轉為上彎）。
+- `compute_stock_signal()` 整合以上訊號，依規則判定 BUY（期望值>60%）／SELL_逢高減碼（期望值<30%）／SELL_跌破5MA（跌破5日線且期望值<60%）／SELL_乖離過熱（乖離率評分<70）／HOLD／待補充（缺EPS或概念分類）。
+- `generate_daily_report.py` 新增 `build_stock_signals_section()`，掃描全庫80檔個股輸出買進/賣出訊號表格，並已產出並驗證 2026-07-09 當日報告（測試發現2344華邦電因筆記內DRAM超級週期EPS估值（40-50元）推算目標價達900元、期望值+434%，屬於既有筆記資料本身的極端估值假設，非程式邏輯錯誤）。
+- 發現 `refresh_price_data()`/`refresh_price_data(ticker)` 在 `generate_stock_report.py`、`generate_weekly_focus.py` 中的 subprocess 呼叫邏輯重複，抽成 `lib/stock_metrics.py` 的共用函式 `refresh_stock_data(ticker=None)`，兩份呼叫端已改用共用函式並驗證正常運作。

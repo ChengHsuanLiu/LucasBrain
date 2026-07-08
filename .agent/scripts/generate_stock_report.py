@@ -12,6 +12,7 @@ from lib.stock_metrics import (
     parse_tdcc_from_stock_note,
     fetch_financial_statements,
     format_financial_table,
+    refresh_stock_data,
 )
 from lib.report_pdf import render_markdown_to_pdf
 
@@ -54,20 +55,11 @@ def extract_subsection_content(content, start_kw, end_kw=None):
             started = True
     return '\n'.join(sub_lines).strip()
 
-def refresh_price_data(ticker):
-    """在產生個股研報前，先刷新該檔股票筆記裡的價格/均線/籌碼快照 (valuation_rating 等
-    仍是讀取筆記裡由 update_prices.py 寫入的評等，若不先刷新可能與報告內即時抓取的
-    股價/TDCC/財報資料不同步)。只刷新這一檔，不動其他79檔，比全庫刷新快很多。"""
-    import subprocess
-    update_script = os.path.join(os.path.dirname(os.path.abspath(__file__)), "update_prices.py")
-    print(f"Refreshing price/technical/chip data for {ticker} before generating report...")
-    subprocess.run([sys.executable, update_script, ticker], check=True)
-    print("Refresh complete.\n")
-
-
 def main():
     ticker = get_arg_ticker()
-    refresh_price_data(ticker)
+    print(f"Refreshing price/technical/chip data for {ticker} before generating report...")
+    refresh_stock_data(ticker)
+    print("Refresh complete.\n")
 
     # 1. Locate stock markdown file
     stocks_dir = "c:/Users/User/Desktop/LucasBrain/10_Stocks"

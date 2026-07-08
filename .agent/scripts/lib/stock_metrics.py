@@ -14,6 +14,8 @@
 import json
 import os
 import re
+import subprocess
+import sys
 import urllib.request
 import io
 import csv
@@ -48,6 +50,22 @@ def _finmind_request(dataset, data_id, start_date, credentials_path=CREDENTIALS_
     with urllib.request.urlopen(req, timeout=timeout) as response:
         res_data = json.loads(response.read().decode('utf-8'))
         return res_data.get('data', [])
+
+
+# ==========================================
+# 0. Shared Refresh Trigger
+# ==========================================
+def refresh_stock_data(ticker=None):
+    """呼叫 update_prices.py 刷新個股筆記中的價格/均線/籌碼快照 (frontmatter)。
+    ticker=None 時刷新全庫約80檔；帶入單一 ticker 只刷新該檔，供
+    generate_stock_report.py/generate_weekly_focus.py/generate_daily_report.py 共用，
+    避免各自維護一份相同的 subprocess 呼叫邏輯。"""
+    scripts_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    update_script = os.path.join(scripts_dir, "update_prices.py")
+    args = [sys.executable, update_script]
+    if ticker:
+        args.append(ticker)
+    subprocess.run(args, check=True)
 
 
 # ==========================================
