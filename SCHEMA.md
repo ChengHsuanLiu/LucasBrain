@@ -74,6 +74,7 @@
 | `重新分類封存檔案` | 重新對 `98_Archives/` 底下所有子資料夾與檔案進行分類評估 | `.agent/tasks/reclassify_archives.md` |
 | `gagp` | 快速執行 git add、commit 與 push | `.agent/tasks/gagp.md` |
 | `g WeeklyFocus` | 生成週度投資建議與持股追蹤報告 | `.agent/tasks/generate_weekly_focus.md` |
+| `更新大戶持股` | 將大戶券商庫存截圖萃取為結構化快照，更新籌碼追蹤資料庫 | `.agent/tasks/update_whale_positions.md` |
 
 ---
 

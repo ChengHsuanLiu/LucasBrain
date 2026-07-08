@@ -233,3 +233,19 @@
 - `.agent/scripts/lib/stock_metrics.py` 新增 `fetch_historical_prices_finmind()`，改為台股/上櫃股票優先透過 FinMind (付費 Backer 方案) `TaiwanStockPrice` 抓取股價，Yahoo Finance 降級為備援來源（中國/香港等非台股掛牌代號則維持原 Yahoo 邏輯）。
 - 排查長期抓不到股價的 `6686敘豐.md` 時發現該股票代號本身是錯的：FinMind `TaiwanStockInfo` 資料庫查無 6686，比對公司名稱確認敘豐正確代號為 **3485**。已更正檔名為 `3485敘豐.md`、frontmatter ticker 欄位，並更新 `index.md` 連結。
 - 重跑 `update_prices.py` 驗證：全體 80 檔個股股價/均線/籌碼更新成功率由 79/80 提升至 **80/80**。
+
+## [2026-07-09] ingest | 20260709_014030_text.md | 影響 [[4542科嶠]]
+- 整理 00_Inbox 中的 1 個文件：更新科嶠 (4542) 既有頁面，導入與 Brooks 合作模式最新確認——科嶠預計 2026年8月取得台積電自己的 vendor code，訂單預計 8-9月敲定（來源評估99%機率），8月同步籌資擴廠，超額產能委託 Brooks 代工；並補充此籌資案可能為長線買點的觀點。原始檔案歸檔至 `98_Archives/Stock_Memo/`，Inbox 已清空。
+
+## [2026-07-09] feat | 新增大戶籌碼追蹤系統 | 影響 [[大戶籌碼追蹤]]
+- 新增 `.agent/scripts/lib/whale_tracking.py`（資料存取/共識標的計算/部位變化比對）與 `.agent/scripts/track_whale_positions.py`（CLI 入口），建立 `.agent/data/whale_positions.csv` 做為大戶持股時間序列主表（非 Markdown 筆記，因需跨日期查詢疊加）。
+- 新增 `.agent/tasks/update_whale_positions.md` 工作流與 SCHEMA.md 指令映射（`更新大戶持股`）。
+- 以使用者提供的 5 位大戶（匿名代號 大戶A~E）券商庫存截圖建立首筆基準快照（2026-07-09，共55筆部位），驗證共識標的分析：3450聯鈞、2303聯電為3位大戶同時持有之最強共識標的，另有6檔為2位大戶共識。
+- `get_whale_positions_for_ticker()` / `get_consensus_stocks()` 已預留供 `generate_stock_report.py`/`generate_weekly_focus.py` 未來整合呼叫。
+
+## [2026-07-09] feat+fix | 大戶籌碼追蹤新增股票期貨帳戶(大戶F)，修正跨大戶日期比對 bug | 影響 [[大戶籌碼追蹤]]
+- 確認 `Futures_Portfolio_Report_v18_Final.pdf`（留倉日期2026-07-08）與稍早 ingest 的期貨部位報告為同一份資料，先前僅作個人帳戶快照歸檔未拆入籌碼系統；現已補建為第6位大戶「大戶F」。
+- 股票期貨代號需先解析命名規則（"小"字首=小型股票期貨、字尾數字=交割月份代碼）才能對應回實際股票：以報告自身數字反推驗證出標準契約=2,000股/口、小型契約=100股/口，並透過 FinMind `TaiwanStockInfo` 查核所有標的正確代號（含京元電子2449、南茂8150等未在既有名單中的股票）。
+- 發現並修正 `compute_position_deltas()` 的 bug：原邏輯用全體大戶的日期聯集尋找「前一次快照」，當大戶F在7/8有資料但大戶A-E只在7/9有資料時，會誤把7/8當成A-E的比較基準（實際上那天他們沒有任何資料），產生錯誤的「0→100%」假變化。已改為只採用該大戶自己實際回報過的日期。
+- 新增 `get_consensus_stocks_latest()`：改用「每位大戶各自最新一筆」而非「嚴格同一天」做共識分析，因應不同帳戶類型回報日期不同步的現實狀況，並在彙總筆記標示各筆資料實際日期。
+- 加入大戶F後，2303聯電共識強度提升至4位大戶（A/B/C/F）同時持有，為目前最強訊號；另新增2330台積電、2308台達電、2454聯發科、2327國巨等4組2位大戶共識。

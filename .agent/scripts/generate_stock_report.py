@@ -53,9 +53,21 @@ def extract_subsection_content(content, start_kw, end_kw=None):
             started = True
     return '\n'.join(sub_lines).strip()
 
+def refresh_price_data(ticker):
+    """在產生個股研報前，先刷新該檔股票筆記裡的價格/均線/籌碼快照 (valuation_rating 等
+    仍是讀取筆記裡由 update_prices.py 寫入的評等，若不先刷新可能與報告內即時抓取的
+    股價/TDCC/財報資料不同步)。只刷新這一檔，不動其他79檔，比全庫刷新快很多。"""
+    import subprocess
+    update_script = os.path.join(os.path.dirname(os.path.abspath(__file__)), "update_prices.py")
+    print(f"Refreshing price/technical/chip data for {ticker} before generating report...")
+    subprocess.run([sys.executable, update_script, ticker], check=True)
+    print("Refresh complete.\n")
+
+
 def main():
     ticker = get_arg_ticker()
-    
+    refresh_price_data(ticker)
+
     # 1. Locate stock markdown file
     stocks_dir = "c:/Users/User/Desktop/LucasBrain/10_Stocks"
     stock_filepath = None
@@ -100,7 +112,7 @@ def main():
         forward_pe = pe_match.group(1).strip()
         
     # 2. Fetch prices from Yahoo Finance
-    print("Fetching prices from Yahoo Finance...")
+    print("Fetching prices (FinMind primary, Yahoo Finance fallback)...")
     prices = get_historical_prices_fallback(ticker)
     if not prices:
         print("Error: Could not retrieve prices from Yahoo Finance.")

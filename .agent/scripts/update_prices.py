@@ -225,6 +225,16 @@ if __name__ == "__main__":
     stock_dir = r"c:\Users\User\Desktop\LucasBrain\10_Stocks"
     files = [os.path.join(stock_dir, f) for f in os.listdir(stock_dir) if f.endswith('.md')]
 
+    # Optional: pass a ticker to refresh only that one stock (e.g. called by
+    # generate_stock_report.py before producing a single-stock report), instead of
+    # the full ~80-stock sweep this script normally does.
+    target_ticker = sys.argv[1].strip() if len(sys.argv) > 1 else None
+    if target_ticker:
+        files = [fp for fp in files if os.path.basename(fp).startswith(target_ticker)]
+        if not files:
+            print(f"No stock note found for ticker {target_ticker} in 10_Stocks/.")
+            sys.exit(1)
+
     current_year = datetime.now().year
     target_year = current_year + 1
     print(f"[{datetime.now().strftime('%H:%M:%S')}] Target Year for Forward P/E: {target_year}")
