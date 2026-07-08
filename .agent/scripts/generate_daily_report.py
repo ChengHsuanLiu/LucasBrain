@@ -1,12 +1,10 @@
 """
-生成盤後大盤日報 (DailyReport - 一、大盤情況 + 四、資料庫個股買進/賣出訊號)。
+生成盤後大盤日報 (DailyReport - 一、大盤情況 + 二、族群強度 + 三、大戶籌碼 + 四、個股買賣訊號)。
 
 用法：
     python generate_daily_report.py [YYYY-MM-DD]
 
-若不帶日期參數，預設抓最新一個交易日的資料。目前已實作「一、大盤情況」與
-「四、資料庫個股買進/賣出訊號」區塊，其餘區塊(族群強度/大戶籌碼整合)將於
-後續階段加入同一份報告。
+若不帶日期參數，預設抓最新一個交易日的資料。四大區塊皆已實作完成。
 """
 import os
 import re
@@ -35,10 +33,28 @@ from lib.stock_signals import (
     compute_stock_signal,
     BUY_EXPECTED_VALUE_THRESHOLD,
 )
+from lib.whale_tracking import (
+    get_latest_snapshot_per_whale,
+    compute_position_deltas,
+    get_consensus_stocks_latest,
+)
+from lib.sector_trend import top_gaining_sectors
 from lib.report_pdf import render_markdown_to_pdf
 
 OUTPUT_DIR = r"C:\Users\User\Desktop\LucasBrain\30_Projects\Daily_Report"
 STOCK_DIR = r"C:\Users\User\Desktop\LucasBrain\10_Stocks"
+
+
+def get_tracked_tickers():
+    """回傳資料庫 10_Stocks/ 現有的個股代號集合，供大戶持股/共識標的比對是否為已追蹤個股。"""
+    tickers = set()
+    for filename in os.listdir(STOCK_DIR):
+        if not filename.endswith('.md'):
+            continue
+        m = re.match(r'^([0-9]+(?:\.[a-zA-Z0-9]+)?)', filename)
+        if m:
+            tickers.add(m.group(1))
+    return tickers
 
 
 def fmt_pct(v, decimals=2):
@@ -176,6 +192,123 @@ def build_futures_section():
     return lines
 
 
+def build_sector_trend_section():
+    lines = ["### 二、股票族群情況", ""]
+
+    lines.append("#### 當日強勢族群 Top 3（不限資料庫股票）")
+    lines.append("")
+    try:
+        today_top = top_gaining_sectors("1day", top_n=3)
+        if today_top:
+            lines.append("| 排名 | 族群 | 漲幅 |")
+            lines.append("| :--- | :--- | :--- |")
+            for i, s in enumerate(today_top, 1):
+                lines.append(f"| {i} | {s['name']} | {s['diff_percentage']:+.2f}% |")
+        else:
+            lines.append("*今日無明顯強勢族群。*")
+    except Exception as e:
+        lines.append(f"*抓取失敗 ({e})*")
+    lines.append("")
+
+    lines.append("#### 近幾日強勢族群 Top 3")
+    lines.append("")
+    for period, label in [("1week", "近1週"), ("1month", "近1月")]:
+        lines.append(f"**{label}**")
+        lines.append("")
+        try:
+            top = top_gaining_sectors(period, top_n=3)
+            if top:
+                lines.append("| 排名 | 族群 | 漲幅 |")
+                lines.append("| :--- | :--- | :--- |")
+                for i, s in enumerate(top, 1):
+                    lines.append(f"| {i} | {s['name']} | {s['diff_percentage']:+.2f}% |")
+            else:
+                lines.append(f"*{label}無明顯強勢族群。*")
+        except Exception as e:
+            lines.append(f"*抓取失敗 ({e})*")
+        lines.append("")
+
+    lines.append(
+        "> **註**：資料來源為 Statementdog 公開市場熱力圖 API，涵蓋全市場概念股標籤，"
+        "不限於本資料庫已建檔個股。"
+    )
+    lines.append("")
+
+    return lines
+
+
+def build_whale_section():
+    lines = ["### 三、主力大戶（Whale）籌碼動向", ""]
+    tracked_tickers = get_tracked_tickers()
+
+    _, latest_date_by_whale = get_latest_snapshot_per_whale()
+    lines.append("#### 各大戶當日買進/賣出重點")
+    lines.append("")
+    if not latest_date_by_whale:
+        lines.append("*尚無大戶持股資料，請先執行「更新大戶持股」。*")
+        lines.append("")
+    else:
+        for whale_id in sorted(latest_date_by_whale.keys()):
+            whale_date = latest_date_by_whale[whale_id]
+            deltas = compute_position_deltas(whale_id, whale_date)
+
+            if not deltas["prev_date"]:
+                # 首次記錄，沒有前一筆快照可比較，deltas["new"] 會把整個庫存都列為「新建倉」——
+                # 這種情況下逐檔列出並非真正的「當日重點」，只需標註尚無比較基準即可。
+                holdings_cnt = len(deltas["new"])
+                lines.append(
+                    f"* **{whale_id}**（{whale_date}）：首次記錄，尚無前次快照可比較"
+                    f"（共 {holdings_cnt} 檔持股，總市值 {deltas['total_value_now']:,.0f}）"
+                )
+                continue
+
+            highlights = []
+            for entry in deltas["new"]:
+                mark = "［已追蹤］" if entry["ticker"] in tracked_tickers else ""
+                highlights.append(f"新建倉{mark} {entry['ticker']}{entry['name']}（市值 {entry['market_value']:,.0f}）")
+            for entry in deltas["closed"]:
+                mark = "［已追蹤］" if entry["ticker"] in tracked_tickers else ""
+                highlights.append(f"出清{mark} {entry['ticker']}{entry['name']}")
+
+            top_increased = sorted(deltas["increased"], key=lambda e: e["market_value"], reverse=True)[:3]
+            for entry in top_increased:
+                mark = "［已追蹤］" if entry["ticker"] in tracked_tickers else ""
+                highlights.append(f"加碼{mark} {entry['ticker']}{entry['name']}（+{entry['shares_delta']:,.0f}股）")
+            top_decreased = sorted(deltas["decreased"], key=lambda e: e["shares_delta"])[:3]
+            for entry in top_decreased:
+                mark = "［已追蹤］" if entry["ticker"] in tracked_tickers else ""
+                highlights.append(f"減碼{mark} {entry['ticker']}{entry['name']}（{entry['shares_delta']:,.0f}股）")
+
+            summary = "；".join(highlights) if highlights else "無明顯變化"
+            lines.append(f"* **{whale_id}**（{whale_date}）：{summary}")
+        lines.append("")
+
+    lines.append("#### 共識標的（2位以上大戶同時持有）")
+    lines.append("")
+    consensus, _ = get_consensus_stocks_latest(min_whales=2)
+    if consensus:
+        lines.append("| 股票 | 大戶數 | 持有大戶 | 總市值 | 資料庫個股 |")
+        lines.append("| :--- | :--- | :--- | :--- | :--- |")
+        for c in consensus:
+            mark = "是" if c["ticker"] in tracked_tickers else "-"
+            lines.append(
+                f"| {c['ticker']}{c['name']} | {c['whale_count']} | {'、'.join(c['whale_ids'])} | "
+                f"{c['total_market_value']:,.0f} | {mark} |"
+            )
+    else:
+        lines.append("*目前無2位以上大戶同時持有的共識標的。*")
+    lines.append("")
+
+    lines.append(
+        "> **註**：大戶代號為匿名代碼（大戶A/B/C...），資料來源為使用者每日手動取得的持股快照。"
+        "各大戶回報日期可能因帳戶類型（現股/融資/股票期貨）不同而不同步，詳見上方各大戶標註日期；"
+        "「資料庫個股」欄標示該檔是否已存在於 `10_Stocks/` 現有研究筆記中。"
+    )
+    lines.append("")
+
+    return lines
+
+
 def build_stock_signals_section():
     lines = ["### 四、資料庫個股買進/賣出訊號", ""]
 
@@ -282,6 +415,14 @@ def generate_report():
     report.extend(build_margin_section(taiex_date))
     report.extend(build_institutional_section())
     report.extend(build_futures_section())
+
+    report.append('<div class="step-page-break"></div>')
+    report.append("")
+    report.extend(build_sector_trend_section())
+
+    report.append('<div class="step-page-break"></div>')
+    report.append("")
+    report.extend(build_whale_section())
 
     report.append('<div class="step-page-break"></div>')
     report.append("")

@@ -272,3 +272,9 @@
 - `compute_stock_signal()` 整合以上訊號，依規則判定 BUY（期望值>60%）／SELL_逢高減碼（期望值<30%）／SELL_跌破5MA（跌破5日線且期望值<60%）／SELL_乖離過熱（乖離率評分<70）／HOLD／待補充（缺EPS或概念分類）。
 - `generate_daily_report.py` 新增 `build_stock_signals_section()`，掃描全庫80檔個股輸出買進/賣出訊號表格，並已產出並驗證 2026-07-09 當日報告（測試發現2344華邦電因筆記內DRAM超級週期EPS估值（40-50元）推算目標價達900元、期望值+434%，屬於既有筆記資料本身的極端估值假設，非程式邏輯錯誤）。
 - 發現 `refresh_price_data()`/`refresh_price_data(ticker)` 在 `generate_stock_report.py`、`generate_weekly_focus.py` 中的 subprocess 呼叫邏輯重複，抽成 `lib/stock_metrics.py` 的共用函式 `refresh_stock_data(ticker=None)`，兩份呼叫端已改用共用函式並驗證正常運作。
+
+## [2026-07-09] feat | DailyReport 補完「三、大戶籌碼」與「二、族群強度」，四大區塊全數完成 | 影響 [[SCHEMA]]
+- 新增 `.agent/scripts/lib/sector_trend.py`：串接 Statementdog 公開熱力圖API（`https://statementdog.com/api/v1/market-trend/tw/{period}`，僅1day/1week/1month三期間可用，已用真實請求驗證回傳結構為`[{name, diff_percentage, url}]`），`top_gaining_sectors()`取漲幅前N名族群。
+- `generate_daily_report.py` 新增 `build_sector_trend_section()`（二、股票族群情況：當日/近1週/近1月漲幅前3族群，不限資料庫個股）與 `build_whale_section()`（三、主力大戶籌碼：各大戶當日買進/賣出重點、2位以上大戶共識標的、並標記是否為資料庫已追蹤個股）。
+- 開發過程中發現並修正兩個顯示bug：① 大戶標題重複顯示「大戶大戶A」（f-string多套了一層「大戶」前綴，whale_id本身已含「大戶」二字）；② 首次記錄（無前次快照可比較）時，`prev_date`為`None`卻被直接內插進句子顯示「較 None 無比較基準」——已改為在無前次快照時，改用「首次記錄，尚無前次快照可比較（共X檔持股，總市值Y）」的精簡摘要，不逐檔列出（否則因目前只有一批快照，會把整個庫存都列成「新建倉」，並非真正的當日重點）。
+- 已產出並驗證 2026-07-09 完整四區塊日報（大盤情況/族群強度/大戶籌碼/個股買賣訊號），確認PDF正常分頁。DailyReport規劃的四大功能區塊至此全數完成。
