@@ -35,6 +35,7 @@
 * **`20_Garden/`**：結構化的產業知識筆記（如 `CCL銅箔基板.md`），注重長期的產業演化與技術壁壘。
 * **`30_Projects/`**：專案報告與投資決策等可交付的完整成果，細分目錄如下：
   * **`30_Projects/Weekly_Focus/`**：存放週度投資決策與持股追蹤（命名為 `{當天日期}_Weekly_Focus.md`）。
+  * **`30_Projects/Daily_Report/`**：存放盤後大盤日報（命名為 `{當天日期}_DailyReport.md`），內容涵蓋大盤指數/技術指標/融資/三大法人/外資期貨等大盤情況，未來將擴充族群強度掃描、大戶籌碼整合、個股買賣訊號。
   * **`30_Projects/Stock_Reports/`**：個股深入研報與分析（命名為 `{當天日期}_{股票代號}{股票名稱}_個股研報.md`）。
   * **`30_Projects/Garden_Reports/`**：產業深入研究報告（命名為 `{當天日期}_{產業名稱}_產業研報.md`）。
   * **`30_Projects/Invest_Timeline/`**：存放投資重點時間軸報告（命名為 `{當天日期}_投資時間軸.md`）。
@@ -75,6 +76,7 @@
 | `gagp` | 快速執行 git add、commit 與 push | `.agent/tasks/gagp.md` |
 | `g WeeklyFocus` | 生成週度投資建議與持股追蹤報告 | `.agent/tasks/generate_weekly_focus.md` |
 | `更新大戶持股` | 將大戶券商庫存截圖萃取為結構化快照，更新籌碼追蹤資料庫 | `.agent/tasks/update_whale_positions.md` |
+| `g DailyReport` | 生成盤後大盤日報（大盤情況/族群強度/大戶整合/個股買賣訊號） | `.agent/tasks/generate_daily_report.md` |
 
 ---
 

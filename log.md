@@ -249,3 +249,9 @@
 - 發現並修正 `compute_position_deltas()` 的 bug：原邏輯用全體大戶的日期聯集尋找「前一次快照」，當大戶F在7/8有資料但大戶A-E只在7/9有資料時，會誤把7/8當成A-E的比較基準（實際上那天他們沒有任何資料），產生錯誤的「0→100%」假變化。已改為只採用該大戶自己實際回報過的日期。
 - 新增 `get_consensus_stocks_latest()`：改用「每位大戶各自最新一筆」而非「嚴格同一天」做共識分析，因應不同帳戶類型回報日期不同步的現實狀況，並在彙總筆記標示各筆資料實際日期。
 - 加入大戶F後，2303聯電共識強度提升至4位大戶（A/B/C/F）同時持有，為目前最強訊號；另新增2330台積電、2308台達電、2454聯發科、2327國巨等4組2位大戶共識。
+
+## [2026-07-09] feat | 新增盤後大盤日報 DailyReport（一、大盤情況），消除第三處 PDF 產生器重複 | 影響 [[SCHEMA]]
+- 新增 `.agent/scripts/lib/market_data.py`：抓取上市/上櫃指數OHLC（FinMind `TaiwanStockPrice`），計算5/20/60均線斜率與乖離率、KD(9,3,3)、MACD(12,26,9)、簡化版高低檔背離偵測；串接TWSE/TPEx官方Open API加總融資餘額（上市/上櫃分開加總，而非誤用FinMind的「Total」資料集——已驗證該資料集實際僅為上市數字）；抓取FinMind融資維持率、三大法人現貨買賣超（外資/投信/自營細分）、外資台指期未平倉。
+- 新增 `.agent/scripts/generate_daily_report.py`，目前完成規劃四大區塊中的「一、大盤情況」，產出 `30_Projects/Daily_Report/{日期}_DailyReport.md`+PDF；新增 `.agent/tasks/generate_daily_report.md` 工作流文件與 SCHEMA.md 指令映射（`g DailyReport`）。後續三階段（四、個股買賣訊號／三、大戶籌碼整合／二、族群強度掃描）將依序疊加進同一份報告。
+- 抽出第三個共用模組 `.agent/scripts/lib/report_pdf.py`（`render_markdown_to_pdf()`），將 `generate_stock_report.py`、`generate_weekly_focus.py` 原本各自維護的 Markdown→PDF 邏輯（frontmatter/emoji清理、GS研報風格CSS、Edge headless列印含非同步寫檔race condition防護）統一改為呼叫此共用函式；`generate_weekly_focus.py` 透過 `extra_css` 參數保留其專屬的表格欄寬與換頁規則。三份報告產生器均已重跑驗證PDF正常產出。
+- 新增 `20_Garden/概念股FPE合理區間.md`：依現有概念Wiki的成員股清單自動彙整，供使用者手動填入各概念股族群的Forward P/E合理區間（下緣/中緣/上緣），作為後續「四、個股買賣訊號」目標價估算的資料來源。

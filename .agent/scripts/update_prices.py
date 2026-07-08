@@ -206,7 +206,12 @@ def update_stock_file(filepath, current_price, forward_pe, rating, target_year, 
             body_before = re.sub(r'###\s*📈\s*技術面與均線分析.*?(?=\n(?:##|###|---)|\Z)', '', body_before, flags=re.DOTALL)
             body_before = body_before.rstrip()
 
-            new_body = body_before + "\n\n" + shareholding_text + "\n" + tech_text + "\n" + body_text[pos:]
+            # body_text[pos:] itself starts with whatever blank-line run precedes
+            # "---" (the regex's leading \s* swallows it), and that run grows by one
+            # line every time this function runs unless it's normalized back down —
+            # otherwise the blank lines accumulate forever across repeated refreshes.
+            tail = re.sub(r'^\s+', '\n\n', body_text[pos:])
+            new_body = body_before + "\n\n" + shareholding_text + "\n" + tech_text + tail
         else:
             new_body = body_text
     else:

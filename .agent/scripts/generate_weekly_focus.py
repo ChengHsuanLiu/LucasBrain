@@ -5,6 +5,7 @@ from datetime import datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib.stock_metrics import parse_target_eps
+from lib.report_pdf import render_markdown_to_pdf
 
 def extract_core_points(filepath):
     try:
@@ -455,65 +456,9 @@ def generate_weekly_report(target_date=None):
         
     print(f"Generated Weekly Focus report at: {dest_filepath}")
     
-    # Generate PDF
-    dest_filepath_pdf = os.path.join(dest_dir, f"{filename_prefix}.pdf")
-    try:
-        import markdown
-        import subprocess
-        import pathlib
-        import tempfile
-        import time
-
-        # Pre-process markdown to handle github alerts elegantly in PDF
-        processed_md = md_text
-        processed_md = re.sub(r'\[!NOTE\]', r'**註：**', processed_md)
-        processed_md = re.sub(r'\[!TIP\]', r'**提示：**', processed_md)
-        processed_md = re.sub(r'\[!IMPORTANT\]', r'**重要：**', processed_md)
-        processed_md = re.sub(r'\[!WARNING\]', r'**警示：**', processed_md)
-        processed_md = re.sub(r'\[!CAUTION\]', r'**注意：**', processed_md)
-
-        # YAML frontmatter is for machine/AI consumption only — strip it entirely from the PDF.
-        processed_md = re.sub(r'^---\n.*?\n---\n', '', processed_md, count=1, flags=re.DOTALL)
-
-        # Strip any remaining emoji for a clean, professional look — this also catches emoji
-        # embedded in note content pulled in verbatim from 10_Stocks/.
-        emoji_pattern = re.compile(
-            "[\U0001F300-\U0001FAFF\U00002300-\U000023FF\U00002B00-\U00002BFF"
-            "\U00002600-\U000026FF\U00002700-\U000027BF\U0000FE0F]+",
-            flags=re.UNICODE,
-        )
-        processed_md = emoji_pattern.sub("", processed_md)
-        processed_md = re.sub(r'[ \t]+\n', '\n', processed_md)
-
-        # Remove markdown backticks and [[ ]] brackets around stock codes/names for PDF rendering, keeping the alias if present
-        def clean_links(match):
-            text = match.group(1)
-            if '|' in text:
-                return text.split('|', 1)[1]
-            return text
-        processed_md = re.sub(r'`?\[\[([^\]]+)\]\]`?', clean_links, processed_md)
-        
-        html_body = markdown.markdown(processed_md, extensions=['tables', 'fenced_code'])
-        
-        # Complete HTML with styling
-        html_content = f"""
-        <html>
-        <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <style>
-            @page {{
-                size: a4;
-                margin: 1.9cm 1.6cm 1.8cm 1.6cm;
-            }}
-            * {{ box-sizing: border-box; }}
-            body {{
-                font-family: "Microsoft JhengHei", "Segoe UI", system-ui, sans-serif;
-                font-size: 10pt;
-                line-height: 1.65;
-                color: #1f2937;
-                background-color: #ffffff;
-            }}
-            h1 {{
+    # Generate PDF — Weekly Focus 專屬的表格欄寬與 h2 強制換頁規則以 extra_css 附加在共用樣式之後
+    weekly_focus_extra_css = """
+            h1 {
                 font-family: "Noto Serif TC", "PMingLiU", "Microsoft JhengHei", serif;
                 font-size: 20pt;
                 font-weight: 700;
@@ -522,200 +467,48 @@ def generate_weekly_report(target_date=None):
                 padding-bottom: 10px;
                 border-bottom: 2px solid #111827;
                 letter-spacing: 0.01em;
-            }}
-            h2 {{
-                font-family: "Noto Serif TC", "PMingLiU", "Microsoft JhengHei", serif;
-                font-size: 14.5pt;
-                font-weight: 700;
-                color: #111827;
-                margin-top: 4px;
-                margin-bottom: 14px;
-                padding-bottom: 8px;
-                border-bottom: 2px solid #111827;
+            }
+            h2 {
                 page-break-before: always;
                 break-before: page;
-            }}
-            h1 + h2 {{
+            }
+            h1 + h2 {
                 page-break-before: auto;
                 break-before: auto;
-            }}
-            h3 {{
-                font-size: 11pt;
-                font-weight: 700;
-                color: #111827;
-                margin-top: 20px;
-                margin-bottom: 8px;
-                padding-top: 10px;
-                border-top: 1px solid #d1d5db;
-            }}
-            h4 {{
-                font-size: 10pt;
-                color: #1f2937;
-                margin-top: 14px;
-                margin-bottom: 6px;
-                font-weight: 700;
-            }}
-            p, ul, ol {{
-                margin: 0 0 10px 0;
-            }}
-            li {{
-                margin-bottom: 4px;
-            }}
-            hr {{
-                border: none;
-                border-top: 1px solid #d1d5db;
-                margin: 16px 0;
-            }}
-            table {{
-                width: 100%;
-                table-layout: fixed;
-                border-collapse: collapse;
-                margin: 8px 0 16px 0;
-                font-size: 8pt;
-            }}
-            th:nth-child(1), td:nth-child(1) {{ width: 8%; }} /* 股票 */
-            th:nth-child(2), td:nth-child(2) {{ width: 5%; text-align: center; }} /* 評價 */
-            th:nth-child(3), td:nth-child(3) {{ width: 18%; }} /* 均線評級 */
-            th:nth-child(4), td:nth-child(4) {{ width: 18%; }} /* 乖離評級 */
-            th:nth-child(5), td:nth-child(5) {{ width: 8%; text-align: right; }} /* 當前股價 */
-            th:nth-child(6), td:nth-child(6) {{ width: 8%; text-align: right; }} /* 27EPS(F) */
-            th:nth-child(7), td:nth-child(7) {{ width: 7%; text-align: right; }} /* FP/E */
-            th:nth-child(8), td:nth-child(8) {{ width: 28%; }} /* 投資簡述 */
+            }
+            table { table-layout: fixed; font-size: 8pt; }
+            th:nth-child(1), td:nth-child(1) { width: 8%; } /* 股票 */
+            th:nth-child(2), td:nth-child(2) { width: 5%; text-align: center; } /* 評價 */
+            th:nth-child(3), td:nth-child(3) { width: 18%; } /* 均線評級 */
+            th:nth-child(4), td:nth-child(4) { width: 18%; } /* 乖離評級 */
+            th:nth-child(5), td:nth-child(5) { width: 8%; text-align: right; } /* 當前股價 */
+            th:nth-child(6), td:nth-child(6) { width: 8%; text-align: right; } /* 27EPS(F) */
+            th:nth-child(7), td:nth-child(7) { width: 7%; text-align: right; } /* FP/E */
+            th:nth-child(8), td:nth-child(8) { width: 28%; } /* 投資簡述 */
+            th { padding: 5px 6px; }
+            td { padding: 5px 6px; }
+    """
 
-            th {{
-                background: #ffffff;
-                color: #111827;
-                font-weight: 700;
-                text-align: left;
-                padding: 5px 6px;
-                border-top: 1.5px solid #111827;
-                border-bottom: 1px solid #111827;
-            }}
-            th:nth-child(2) {{ text-align: center; }}
-            th:nth-child(5), th:nth-child(6), th:nth-child(7) {{ text-align: right; }}
+    dest_filepath_pdf = os.path.join(dest_dir, f"{filename_prefix}.pdf")
+    is_locked = False
+    if os.path.exists(dest_filepath_pdf):
+        try:
+            with open(dest_filepath_pdf, "r+b") as f:
+                pass
+        except PermissionError:
+            is_locked = True
 
-            td {{
-                padding: 5px 6px;
-                border-bottom: 1px solid #e5e7eb;
-                vertical-align: top;
-            }}
-            tr:last-child td {{
-                border-bottom: 1px solid #111827;
-            }}
-            tr:nth-child(even) td {{
-                background-color: #f9fafb;
-            }}
-            blockquote {{
-                border-left: 3px solid #9ca3af;
-                padding: 3px 12px;
-                margin: 12px 0;
-                color: #4b5563;
-                font-size: 9.3pt;
-            }}
-            blockquote p {{ margin: 0; }}
-            code {{
-                font-family: "Consolas", "Microsoft JhengHei", monospace;
-                background-color: #f3f4f6;
-                color: #111827;
-                padding: 1px 4px;
-                border-radius: 2px;
-                font-size: 8.7pt;
-            }}
-            .badge {{
-                display: inline-block;
-                padding: 1px 8px;
-                border-radius: 3px;
-                font-size: 8pt;
-                font-weight: 700;
-                letter-spacing: 0.02em;
-            }}
-            .badge-green {{ color: #065f46; background: #d1fae5; }}
-            .badge-amber {{ color: #92400e; background: #fef3c7; }}
-            .badge-red {{ color: #991b1b; background: #fee2e2; }}
-        </style>
-        </head>
-        <body>
-        {html_body}
-        </body>
-        </html>
-        """
-        
-        # Save HTML temporarily
-        temp_html_path = os.path.join(dest_dir, f"{filename_prefix}_temp.html")
-        with open(temp_html_path, "w", encoding="utf-8") as f:
-            f.write(html_content)
-            
-        edge_path = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
-        temp_html_uri = pathlib.Path(temp_html_path).resolve().as_uri()
+    if not is_locked:
+        render_markdown_to_pdf(report, dest_dir, filename_prefix, extra_css=weekly_focus_extra_css)
+    else:
+        import time
+        timestamp = int(time.time())
+        fallback_stem = f"{target_date}_Weekly_Focus_{timestamp}"
+        print(f"Warning: {dest_filepath_pdf} is locked by another program (e.g., PDF Reader).")
+        print(f"Attempting to write to fallback path...")
+        render_markdown_to_pdf(report, dest_dir, fallback_stem, extra_css=weekly_focus_extra_css)
 
-        def run_edge_print(output_pdf):
-            if os.path.exists(output_pdf):
-                os.remove(output_pdf)
-            with tempfile.TemporaryDirectory(prefix="edge_pdf_profile_") as edge_profile_dir:
-                cmd = [
-                    edge_path,
-                    "--headless",
-                    "--disable-gpu",
-                    f"--user-data-dir={edge_profile_dir}",
-                    "--no-pdf-header-footer",
-                    f"--print-to-pdf={output_pdf}",
-                    temp_html_uri
-                ]
-                subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
-                # msedge.exe's headless print-to-pdf writes the PDF asynchronously and can
-                # exit before the file is fully flushed to disk. Wait for it to appear and
-                # its size to stabilize before returning, otherwise the caller may delete
-                # the source HTML (temp_html_path) while the still-running render is trying
-                # to read it, baking an ERR_FILE_NOT_FOUND page into the PDF instead.
-                deadline = time.time() + 20
-                last_size = -1
-                stable_checks = 0
-                while time.time() < deadline:
-                    if os.path.exists(output_pdf):
-                        size = os.path.getsize(output_pdf)
-                        if size > 0 and size == last_size:
-                            stable_checks += 1
-                            if stable_checks >= 2:
-                                break
-                        else:
-                            stable_checks = 0
-                        last_size = size
-                    time.sleep(0.5)
-
-        # Test if the file is writable
-        is_locked = False
-        if os.path.exists(dest_filepath_pdf):
-            try:
-                with open(dest_filepath_pdf, "r+b") as f:
-                    pass
-            except PermissionError:
-                is_locked = True
-
-        if not is_locked:
-            try:
-                run_edge_print(dest_filepath_pdf)
-                print(f"Generated Weekly Focus PDF at: {dest_filepath_pdf}")
-            except Exception as e:
-                print(f"Failed to generate PDF: {e}")
-        else:
-            timestamp = int(time.time())
-            fallback_pdf = os.path.join(dest_dir, f"{target_date}_Weekly_Focus_{timestamp}.pdf")
-            print(f"Warning: {dest_filepath_pdf} is locked by another program (e.g., PDF Reader).")
-            print(f"Attempting to write to fallback path: {fallback_pdf}")
-            try:
-                run_edge_print(fallback_pdf)
-                print(f"Generated Weekly Focus PDF at: {fallback_pdf}")
-            except Exception as e:
-                print(f"Failed to generate fallback PDF: {e}")
-
-        # Clean up temp HTML
-        if os.path.exists(temp_html_path):
-            os.remove(temp_html_path)
-            
-    except Exception as e:
-        print(f"Failed to generate PDF: {e}")
-        
     return dest_filepath
 
 def refresh_price_data():
