@@ -80,11 +80,28 @@ def calculate_ma_metrics(prices):
 # 2. FinMind TDCC Data Fetcher
 # ==========================================
 def fetch_tdcc_history(ticker):
+    # Try loading token from credentials.json
+    token = None
+    try:
+        cred_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "credentials.json")
+        if os.path.exists(cred_path):
+            with open(cred_path, 'r', encoding='utf-8') as f:
+                cred = json.load(f)
+                token = cred.get("finmind_token")
+    except Exception as e:
+        print(f"Warning: Failed to load FinMind token: {e}")
+
     # Go back 70 days to get about 10 weeks of data to ensure at least 7 weeks (Fridays)
     start_date = (datetime.now() - timedelta(days=70)).strftime("%Y-%m-%d")
     url = f"https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockHoldingSharesPer&data_id={ticker}&start_date={start_date}"
+    if token:
+        url += f"&token={token}"
+        
     try:
-        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+        headers = {'User-Agent': 'Mozilla/5.0'}
+        if token:
+            headers["Authorization"] = f"Bearer {token}"
+        req = urllib.request.Request(url, headers=headers)
         with urllib.request.urlopen(req, timeout=15) as response:
             res_data = json.loads(response.read().decode('utf-8'))
             data_list = res_data.get('data', [])
@@ -153,8 +170,6 @@ def parse_tdcc_from_stock_note(stock_content):
     
     history = []
     for line in table_lines:
-        if ':' in line or '---' in line or '週' in line or '資料日期' in line:
-            continue
         cols = [c.strip() for c in line.split('|')]
         if len(cols) >= 4:
             date_str = cols[1].strip()
@@ -263,9 +278,18 @@ def main():
     # 3. Fetch TDCC history
     print("Parsing TDCC history from stock note...")
     tdcc_history = parse_tdcc_from_stock_note(stock_content)
-    if not tdcc_history:
-        print("Stock note does not contain historical TDCC table. Fetching from FinMind...")
-        tdcc_history = fetch_tdcc_history(ticker)
+    if len(tdcc_history) < 7:
+        print("Stock note contains insufficient TDCC data (< 7 weeks). Fetching from FinMind...")
+        fm_history = fetch_tdcc_history(ticker)
+        if fm_history:
+            # Merge to preserve all historical data and ensure we have at least 7 weeks
+            merged = {}
+            for item in fm_history:
+                merged[item["date"]] = item
+            for item in tdcc_history:
+                if item["date"] not in merged:
+                    merged[item["date"]] = item
+            tdcc_history = [merged[d] for d in sorted(merged.keys(), reverse=True)]
     
     # 4. Extract sections from note
     print("Extracting business details from stock note...")
