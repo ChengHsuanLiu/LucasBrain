@@ -187,36 +187,36 @@ def main():
     # Determine lights
     # Chip light
     if change_1000 > 1.0:
-        chip_light = f"🟢 綠燈 ➡️ 大戶近五週持股比例顯著增加 (+{change_1000:.2f} pp)，主力資金持續吸籌建倉。"
-        chip_pass = "🟢 通過 (大戶持股比例近五週顯著增加，主力加碼力道強)"
+        chip_light = f"<span class='badge badge-green'>綠燈</span> ：大戶近五週持股比例顯著增加 (+{change_1000:.2f} pp)，主力資金持續吸籌建倉。"
+        chip_pass = "<span class='badge badge-green'>通過</span> (大戶持股比例近五週顯著增加，主力加碼力道強)"
     elif change_1000 >= -3.0:
-        chip_light = f"🟡 黃燈 ➡️ 大戶持股比例呈現區間震盪 ({change_1000:.2f} pp)，籌碼目前處於沉澱整理期。"
-        chip_pass = "🟡 中性 (大戶持股高檔震盪整理，尚未見大額加碼動作)"
+        chip_light = f"<span class='badge badge-amber'>黃燈</span> ：大戶持股比例呈現區間震盪 ({change_1000:.2f} pp)，籌碼目前處於沉澱整理期。"
+        chip_pass = "<span class='badge badge-amber'>中性</span> (大戶持股高檔震盪整理，尚未見大額加碼動作)"
     else:
         if "現增" in stock_content or "私募" in stock_content:
-            chip_light = f"🟡 黃燈 ➡️ 大戶持股比例短期稀釋 ({change_1000:.2f} pp)，主因公司現增/私募定價股權調整，籌碼屬定價期壓盤。"
-            chip_pass = "🟡 中性 (增資定價期籌碼因權益分拆稀釋，靜待定價完成)"
+            chip_light = f"<span class='badge badge-amber'>黃燈</span> ：大戶持股比例短期稀釋 ({change_1000:.2f} pp)，主因公司現增/私募定價股權調整，籌碼屬定價期壓盤。"
+            chip_pass = "<span class='badge badge-amber'>中性</span> (增資定價期籌碼因權益分拆稀釋，靜待定價完成)"
         else:
-            chip_light = f"🔴 紅燈 ➡️ 大戶持股比例近五週顯著流失 ({change_1000:.2f} pp)，需注意主力高檔減碼套現風險。"
-            chip_pass = "🔴 未通過 (大戶持股近五週流失，籌碼渙散)"
+            chip_light = f"<span class='badge badge-red'>紅燈</span> ：大戶持股比例近五週顯著流失 ({change_1000:.2f} pp)，需注意主力高檔減碼套現風險。"
+            chip_pass = "<span class='badge badge-red'>未通過</span> (大戶持股近五週流失，籌碼渙散)"
             
     # Technical light
     ma5 = metrics[5]
     ma20 = metrics[20]
     ma60 = metrics[60]
     if ma5["slope"] == "上彎" and ma20["slope"] == "上彎" and curr_price >= ma20["val"]:
-        tech_light = "🟢 綠燈 ➡️ 5MA與20MA皆呈上彎多頭排列，股價站穩月線之上，呈偏多攻擊態勢。"
-        tech_pass = "🟢 通過 (多頭排列上彎，技術支撐力道強)"
+        tech_light = "<span class='badge badge-green'>綠燈</span> ：5MA與20MA皆呈上彎多頭排列，股價站穩月線之上，呈偏多攻擊態勢。"
+        tech_pass = "<span class='badge badge-green'>通過</span> (多頭排列上彎，技術支撐力道強)"
     elif ma5["slope"] == "上彎" or ma20["slope"] == "上彎":
-        tech_light = "🟡 黃燈 ➡️ 均線呈現糾結整理，多空方向未明，短線進行窄幅區間整理。"
-        tech_pass = "🟢 通過 (均線多頭未破，但呈強勢整理)"
+        tech_light = "<span class='badge badge-amber'>黃燈</span> ：均線呈現糾結整理，多空方向未明，短線進行窄幅區間整理。"
+        tech_pass = "<span class='badge badge-green'>通過</span> (均線多頭未破，但呈強勢整理)"
     else:
-        tech_light = "🔴 紅燈 ➡️ 短期均線呈下彎壓制，股價低於月線及季線，空頭趨勢確立。"
-        tech_pass = "🔴 未通過 (均線下彎扣抵壓制，股價破線走弱)"
+        tech_light = "<span class='badge badge-red'>紅燈</span> ：短期均線呈下彎壓制，股價低於月線及季線，空頭趨勢確立。"
+        tech_pass = "<span class='badge badge-red'>未通過</span> (均線下彎扣抵壓制，股價破線走弱)"
 
     # Fundamental Light
-    fundamental_light = "🟢 綠燈 ➡️ 本業訂單暢旺且轉型高毛利特化/半導體材料/設備進展順利，獲利模型顯著上修。"
-    fundamental_pass = "🟢 通過 (本業成長強勁，先進領域轉型大成)"
+    fundamental_light = "<span class='badge badge-green'>綠燈</span> ：本業訂單暢旺且轉型高毛利特化/半導體材料/設備進展順利，獲利模型顯著上修。"
+    fundamental_pass = "<span class='badge badge-green'>通過</span> (本業成長強勁，先進領域轉型大成)"
     
     # 5. Compile into report
     today_str = datetime.now().strftime("%Y-%m-%d")
@@ -231,16 +231,23 @@ def main():
     report.append("tags: [report/five-step, investment/deep-dive]")
     report.append("---")
     report.append("")
-    report.append(f"# 📑 {name} ({ticker}) 五步驟深度分析報告")
-    report.append(f"* **報告日期**：{today_str}")
-    report.append(f"* **股票代碼**：TSE {ticker}")
-    report.append("* **報告版本**：Final (五步驟整合版)")
+    report.append(f"*{today_str}．投資幕僚團隊．個股深度研究*")
+    report.append("")
+    report.append(f"# {name} ({ticker})")
+    report.append("### 五步驟深度分析報告")
+    report.append("")
+    rating_badge_class = {"ADD": "badge-green", "HOLD": "badge-amber", "SELL": "badge-red"}.get(valuation_rating, "badge-amber")
+    report.append(
+        f'<div class="rating-bar"><span class="badge {rating_badge_class} badge-lg">{valuation_rating}</span>'
+        f'<span class="rating-bar-item">TSE {ticker}</span>'
+        f'<span class="rating-bar-item">現價 <b>{curr_price:.1f}</b> 元</span></div>'
+    )
     report.append("")
     report.append("---")
     report.append("")
-    report.append("## 🧭 本週核心提要 (Executive Summary)")
+    report.append("## 本週核心提要 (Executive Summary)")
     report.append("")
-    report.append("### 🎯 關鍵催化事件與核心假設")
+    report.append("### 關鍵催化事件與核心假設")
     
     summary_core_lines = []
     for line in summary_sect.split('\n'):
@@ -255,7 +262,7 @@ def main():
             report.append("")
             
     report.append("")
-    report.append("### 📊 財報與獲利重估亮點")
+    report.append("### 財報與獲利重估亮點")
     # Search for year estimates in the structured table
     eps_26 = "N/A"
     eps_27 = "N/A"
@@ -294,19 +301,19 @@ def main():
     report.append("")
     # Dynamic industry light based on industry metadata
     if any(keyword in industry for keyword in ["生技", "醫藥", "新藥", "藥"]):
-        industry_light = "🟢 綠燈 ➡️ 新藥研發與解盲認證進度正常，全球市場與專利授權 TAM 空間龐大，具高成長想像力。"
+        industry_light = "<span class='badge badge-green'>綠燈</span> ：新藥研發與解盲認證進度正常，全球市場與專利授權 TAM 空間龐大，具高成長想像力。"
     elif any(keyword in industry for keyword in ["特化", "樹脂", "化學", "PSMA"]):
-        industry_light = "🟢 綠燈 ➡️ 半導體先進材料與特用化學本土化替代趨勢確立，下游大廠認證過關後具備極高進入壁壘與毛利保證。"
+        industry_light = "<span class='badge badge-green'>綠燈</span> ：半導體先進材料與特用化學本土化替代趨勢確立，下游大廠認證過關後具備極高進入壁壘與毛利保證。"
     else:
-        industry_light = "🟢 綠燈 ➡️ 半導體/高速傳輸升級本土替代趨勢明確，設備/材料驗證通過，未來數年 TAM 空間廣闊。"
+        industry_light = "<span class='badge badge-green'>綠燈</span> ：半導體/高速傳輸升級本土替代趨勢明確，設備/材料驗證通過，未來數年 TAM 空間廣闊。"
 
-    report.append("### 🚦 五維度綜合指標看板")
+    report.append("### 五維度綜合指標看板")
     report.append(f"* **財報燈號**：{fundamental_light}")
     report.append(f"* **籌碼燈號**：{chip_light}")
     report.append(f"* **技術燈號**：{tech_light}")
     report.append(f"* **產業燈號**：{industry_light}")
     report.append("")
-    report.append("### 📊 重估估值錨點")
+    report.append("### 目標價與評價基礎")
     
     # Target price & P/E math (handles commas like 1,500)
     tp_val = curr_price * 1.5
@@ -397,11 +404,11 @@ def main():
         tech_desc = "均線多頭未破，呈現區間震盪整理，宜等拉回支撐位再行布局。"
 
     if is_biotech:
-        repricing_reason = "🟢 通過 (口服藥首創獨佔打破針劑注射痛點，資產折價嚴重，具強大估值上修空間)"
+        repricing_reason = "<span class='badge badge-green'>通過</span> (口服藥首創獨佔打破針劑注射痛點，資產折價嚴重，具強大估值上修空間)"
     elif is_ccl or is_semi_equip or is_materials:
-        repricing_reason = "🟢 通過 (打破外商壟斷，切入大廠供應鏈，單機 ASP/材料毛利大增，具強大估值上修空間)"
+        repricing_reason = "<span class='badge badge-green'>通過</span> (打破外商壟斷，切入大廠供應鏈，單機 ASP/材料毛利大增，具強大估值上修空間)"
     else:
-        repricing_reason = "🟢 通過 (高階新產品占比提升，進入高附加價值領域，具備重新定價空間)"
+        repricing_reason = "<span class='badge badge-green'>通過</span> (高階新產品占比提升，進入高附加價值領域，具備重新定價空間)"
 
     thesis_entries = []
     if is_biotech:
@@ -490,19 +497,20 @@ def main():
 
     report.append(f"* **現收價格**：`{curr_price:.1f}` 元 (52w 區間：`{metrics['low_52w']:.1f}` ~ `{metrics['high_52w']:.1f}` 元)")
     report.append(f"* **Forward P/E**：`{pe_ratio:.2f}`x (以 2027 年預估平均 EPS `{eps_n1:.2f}` 元計)")
-    report.append(f"* **重估錨點**：`{tp_val:.1f}` 元 (給予 `{pe_target:.1f}`x 遠期本益比估值)")
+    report.append(f"* **目標價**：`{tp_val:.1f}` 元 (給予 `{pe_target:.1f}`x 遠期本益比估值)")
     report.append("")
     report.append("---")
+    report.append('<div class="step-page-break"></div>')
     report.append("")
-    report.append("## 📂 Step 1：財報現況評估 (Financial Assessment)")
+    report.append("## Step 1：財報現況評估 (Financial Assessment)")
     report.append("> **評估基準**：產業交流與本團隊量價修正版三年模型對比。")
     report.append("")
-    report.append("### 📌 預估 EPS 區塊")
+    report.append("### 預估 EPS 區塊")
     report.append(f"* **2026E 全年 EPS**：預估 **{eps_26} 元**")
     report.append(f"* **2027E 全年 EPS**：預估 **{eps_27} 元**")
     report.append(f"* **2028E 全年 EPS**：預估 **{eps_28} 元**")
     report.append("")
-    report.append("### 📌 近五季與未來預估財報數據")
+    report.append("### 近五季與未來預估財報數據")
 
     if financial_table_finmind:
         # 優先來源：FinMind 實際季報 (Backer 付費方案)
@@ -536,40 +544,42 @@ def main():
         report.append(exp_line)
     report.append("")
     report.append("---")
+    report.append('<div class="step-page-break"></div>')
     report.append("")
-    report.append("## 📂 Step 2：產業結構分析 (Industry Structure)")
+    report.append("## Step 2：產業結構分析 (Industry Structure)")
     report.append(f"> **產業定位**：{name} ({ticker}) 積極向高附加價值先進領域轉型，打入國際與本土指標大廠供應鏈，打破外商壟斷地位。")
     report.append("")
-    report.append("### 📌 主要成長驅動力")
+    report.append("### 主要成長驅動力")
     report.append("| 驅動力題材 | 應用端 | 現況說明 | 成長率估計 | 確定性 |")
     report.append("| :--- | :--- | :--- | :--- | :--- |")
     for row in driver_rows:
         report.append(row)
     report.append("")
-    report.append("### 📌 三情境分析與 EPS 預估 (2027E 預估)")
+    report.append("### 三情境分析與 EPS 預估 (2027E 預估)")
     report.append("| 發展情境 | 發生機率 | 2027E 預估 EPS | 核心假設條件 |")
     report.append("| :--- | :---: | :---: | :--- |")
     for s_row in scenario_rows:
         report.append(s_row)
     report.append("")
-    report.append("### 📌 關鍵利多研調與訪談筆記")
+    report.append("### 關鍵利多研調與訪談筆記")
     if notes_sect:
         report.append(notes_sect)
     else:
         report.append("*無歷史研討或訪談筆記記載。*")
     report.append("")
     report.append("---")
+    report.append('<div class="step-page-break"></div>')
     report.append("")
-    report.append("## 📂 Step 3：籌碼面分析 (Chip Analysis)")
+    report.append("## Step 3：籌碼面分析 (Chip Analysis)")
     report.append("> **籌碼追蹤**：大戶持股比率與人數的週度動態追蹤與判讀。")
     report.append("")
-    report.append("### 📌 大戶持股核心數據")
+    report.append("### 大戶持股核心數據")
     report.append(f"* **400張以上大戶比例**：`{tdcc_history[0]['ratio_400']:.2f}` % (統計日期：{latest_date_str})")
     report.append(f"* **1000張以上大戶比例**：`{tdcc_history[0]['ratio_1000']:.2f}` % (統計日期：{latest_date_str})")
     report.append(f"* **400張大戶近五週變動**：`{change_400:+.2f}` pp (相較五週前)")
     report.append(f"* **1000張大戶近五週變動**：`{change_1000:+.2f}` pp (相較五週前)")
     report.append("")
-    report.append("### 📌 TDCC 持股分布週度追蹤表格")
+    report.append("### TDCC 持股分布週度追蹤表格")
     report.append("| 資料日期 | 400張+(gr.12+) | 1000張+(L15) | 週變動 (400張 / 1000張) | 籌碼訊號 / 大戶動向 |")
     report.append("| :--- | :---: | :---: | :---: | :--- |")
     for r in tdcc_table_rows:
@@ -584,11 +594,12 @@ def main():
     report.append("  - 後續需關注募資案塵埃落定後大戶持股比例是否回升，警示線設定在整體大戶持股比率若跌破 45-50% 則中線籌碼轉弱。")
     report.append("")
     report.append("---")
+    report.append('<div class="step-page-break"></div>')
     report.append("")
-    report.append("## 📂 Step 4：技術面分析 (Technical Analysis)")
+    report.append("## Step 4：技術面分析 (Technical Analysis)")
     report.append("> **技術型態**：長線多頭排列上攻，短期股價創新高，唯乖離率略高。")
     report.append("")
-    report.append("### 📌 均線偏離度表")
+    report.append("### 均線偏離度表")
     report.append("| 均線名稱 | 均線價格 (元) | 現價 vs 均線乖離 (%) | 距離 (元) | 均線斜率狀態 | 技術訊號 / 支撐意義 |")
     report.append("| :--- | :--- | :--- | :--- | :--- | :--- |")
     for ma in [5, 10, 20, 60, 120, 240]:
@@ -596,65 +607,66 @@ def main():
         report.append(f"| **MA{ma}** | {m_ma['val']:.2f} | 多 ▲ {m_ma['bias']:.2f}% | {m_ma['dist']:+.2f} | {m_ma['slope']} | {'短線防守' if ma==5 else '月線支撐' if ma==20 else '季線趨勢' if ma==60 else '大底部支撐'} |")
         
     report.append("")
-    report.append("### 📌 關鍵支撐與壓力區")
-    report.append(f"* **壓力位 2 (目標價)**：`{tp_val:.1f}` 元 (本團隊重估估值錨點)")
+    report.append("### 關鍵支撐與壓力區")
+    report.append(f"* **壓力位 2 (目標價)**：`{tp_val:.1f}` 元 (本團隊目標價)")
     report.append(f"* **壓力位 1 (波段高點)**：`{curr_price * 1.15:.1f}` 元 (前波套牢密集成交心理整數關卡)")
     report.append(f"* **現收價格**：`{curr_price:.1f}` 元")
     report.append(f"* **支撐位 1 (5MA/短線支撐)**：`{metrics[5]['val']:.1f}` 元 (5MA 均線價格)")
     report.append(f"* **支撐位 2 (10MA/防守點)**：`{metrics[10]['val']:.1f}` 元 (10MA 上彎位置)")
     report.append(f"* **支撐位 3 (月線生命線)**：`{metrics[20]['val']:.1f}` 元 (月線支撐)")
     report.append("")
-    report.append("### 📌 其他技術指標狀況")
+    report.append("### 其他技術指標狀況")
     report.append("* **量能表現**：日成交量呈溫和擴大，呈現強勢帶量攻擊態勢。")
     report.append(f"* **乖離警戒**：短中期乖離率略高。5MA 乖離率 {metrics[5]['bias']:.2f}%，20MA 乖離 {metrics[20]['bias']:.2f}%，季線乖離 {metrics[60]['bias']:.2f}%。")
     report.append("* **技術面操盤策略**：不宜在高檔區盲目追高。最佳操盤策略為：股價拉回回測 5MA 或是 10MA 支撐有撐時，再分批進場布局右側買點。")
     report.append("")
     report.append("---")
+    report.append('<div class="step-page-break"></div>')
     report.append("")
-    report.append("## 📂 Step 5：投資結論 (Investment Conclusion)")
+    report.append("## Step 5：投資結論 (Investment Conclusion)")
     report.append("> **投資結論**：結合本業成長、估值重估、大戶籌碼與技術趨勢，給予最終投資評價與防禦決策。")
     report.append("")
-    report.append("### 📌 四條件審查看板")
-    report.append(f"1. **條件一：本業持續成長且有題材** ➡️ {fundamental_pass}")
-    report.append(f"2. **條件二：重新定價（Re-pricing）理由存在** ➡️ {repricing_reason}")
-    report.append(f"3. **條件三：籌碼面大戶在加碼** ➡️ {chip_pass}")
-    report.append(f"4. **條件四：技術面趨勢向上** ➡️ {tech_pass}")
+    report.append("### 四條件審查看板")
+    report.append(f"1. **條件一：本業持續成長且有題材** ：{fundamental_pass}")
+    report.append(f"2. **條件二：重新定價（Re-pricing）理由存在** ：{repricing_reason}")
+    report.append(f"3. **條件三：籌碼面大戶在加碼** ：{chip_pass}")
+    report.append(f"4. **條件四：技術面趨勢向上** ：{tech_pass}")
     report.append("")
-    report.append("### 📌 五維度五色燈號評比")
+    report.append("### 五維度五色燈號評比")
     report.append("| 分析維度 | 綜合燈號 | 核心幕僚結論 (So What?) |")
     report.append("| :--- | :--- | :--- |")
-    report.append(f"| **總經面** | 🟡 黃燈 | {macro_desc} |")
-    report.append(f"| **基本面** | 🟢 綠燈 | {funda_desc} |")
-    report.append(f"| **產業面** | 🟢 綠燈 | {industry_desc} |")
-    report.append(f"| **籌碼面** | 🟢 綠燈 | 大戶持股籌碼在高檔鎖定。短期現增私募定價使籌碼被動稀釋/壓盤，屬良性整理。 |")
-    report.append(f"| **技術面** | 🟢 綠燈 | {tech_desc} |")
+    report.append(f"| **總經面** | <span class='badge badge-amber'>黃燈</span> | {macro_desc} |")
+    report.append(f"| **基本面** | <span class='badge badge-green'>綠燈</span> | {funda_desc} |")
+    report.append(f"| **產業面** | <span class='badge badge-green'>綠燈</span> | {industry_desc} |")
+    report.append(f"| **籌碼面** | <span class='badge badge-green'>綠燈</span> | 大戶持股籌碼在高檔鎖定。短期現增私募定價使籌碼被動稀釋/壓盤，屬良性整理。 |")
+    report.append(f"| **技術面** | <span class='badge badge-green'>綠燈</span> | {tech_desc} |")
     report.append("")
-    report.append("### 📌 外部基準 vs 本團隊重估模型對比表")
+    report.append("### 外部基準 vs 本團隊重估模型對比表")
     report.append("| 年度/維度 | 外部基準模型 (例如：統一/國泰) | 本團隊量價重估版 | 催化劑與關鍵差異說明 |")
     report.append("| :--- | :--- | :--- | :--- |")
     report.append(f"| **2026F EPS 預估** | 約 8.00 元 | **{eps_26} 元** | {exp_26} |")
     report.append(f"| **2027F EPS 預估** | 15.00 - 22.00 元 | **{eps_27} 元** | {exp_27} |")
     report.append(f"| **2028F EPS 預估** | 待補充 | **{eps_28} 元** | {exp_28} |")
-    report.append(f"| **估值重估錨點** | 600 元 | **{tp_val:.1f} 元** | 基於 N+1 年基準 EPS 與 20-30 倍合理本益比重估 |")
+    report.append(f"| **目標價** | 600 元 | **{tp_val:.1f} 元** | 基於 N+1 年基準 EPS 與 20-30 倍合理本益比重估 |")
     report.append("")
-    report.append("### 📌 幕僚長最終裁決")
+    report.append("### 幕僚長最終裁決")
     report.append("> [!TIP]")
     report.append(f"> **操作建議**：{advisor_conclusion}")
     report.append(f"> * **核心裁決邏輯**：{advisor_decision_desc}")
     report.append("")
-    report.append("### 📌 進場三欄決策框架")
+    report.append("### 進場三欄決策框架")
     report.append("| 1. 進場邏輯 (Entry Thesis) | 2. 進場條件 (Buy Triggers) | 3. 失效條件 (Stop Loss / Sell Triggers) |")
     report.append("| :--- | :--- | :--- |")
     thesis_str = " <br> ".join(thesis_entries)
     report.append(f"| {thesis_str} | {buy_trig} | {sell_trig} |")
     report.append("")
-    report.append("### 📌 失效條件與風險項目檢核 (Kill Switch)")
+    report.append("### 失效條件與風險項目檢核 (Kill Switch)")
     report.append("| Risk Item 風險項目 | Current Assessment 現況評估 | Kill Switch 觸發條件 | Probability 發生機率 |")
     report.append("| :--- | :--- | :--- | :--- |")
     for row in risk_rows:
         report.append(row)
     report.append("")
-    report.append("### 📌 後續重點觀察日程")
+    report.append("### 後續重點觀察日程")
     report.append("| 觀察時間點 | 追蹤焦點事件 | 判斷數據與依據 |")
     report.append("| :--- | :--- | :--- |")
     for row in obs_events:
@@ -684,20 +696,26 @@ def main():
         
         md_text = '\n'.join(report)
         processed_md = md_text
-        processed_md = re.sub(r'\[!NOTE\]', r'🔔 **備註**', processed_md)
-        processed_md = re.sub(r'\[!TIP\]', r'💡 **提示**', processed_md)
-        processed_md = re.sub(r'\[!IMPORTANT\]', r'⚠️ **重要**', processed_md)
-        processed_md = re.sub(r'\[!WARNING\]', r'⚡ **警告**', processed_md)
-        processed_md = re.sub(r'\[!CAUTION\]', r'🛑 **注意**', processed_md)
-        
-        # Locate frontmatter block and replace it
-        frontmatter_match = re.match(r'^---\n(.*?)\n---', processed_md, re.DOTALL)
-        if frontmatter_match:
-            yaml_lines = frontmatter_match.group(1).strip().split('\n')
-            formatted_meta = "<br>".join([line.strip() for line in yaml_lines if line.strip()])
-            meta_html = f'<div class="pdf-metadata">{formatted_meta}</div>'
-            processed_md = processed_md.replace(frontmatter_match.group(0), meta_html, 1)
-            
+        processed_md = re.sub(r'\[!NOTE\]', r'**註：**', processed_md)
+        processed_md = re.sub(r'\[!TIP\]', r'**提示：**', processed_md)
+        processed_md = re.sub(r'\[!IMPORTANT\]', r'**重要：**', processed_md)
+        processed_md = re.sub(r'\[!WARNING\]', r'**警示：**', processed_md)
+        processed_md = re.sub(r'\[!CAUTION\]', r'**注意：**', processed_md)
+
+        # YAML frontmatter is for machine/AI consumption only — strip it entirely from the PDF.
+        processed_md = re.sub(r'^---\n.*?\n---\n', '', processed_md, count=1, flags=re.DOTALL)
+
+        # Strip any remaining emoji for a clean, professional look — this also catches emoji
+        # embedded in note content pulled in verbatim from 10_Stocks/ (e.g. template section
+        # headers), not just literals written in this script.
+        emoji_pattern = re.compile(
+            "[\U0001F300-\U0001FAFF\U00002300-\U000023FF\U00002B00-\U00002BFF"
+            "\U00002600-\U000026FF\U00002700-\U000027BF\U0000FE0F]+",
+            flags=re.UNICODE,
+        )
+        processed_md = emoji_pattern.sub("", processed_md)
+        processed_md = re.sub(r'[ \t]+\n', '\n', processed_md)
+
         def clean_links(match):
             text = match.group(1)
             if '|' in text:
@@ -714,106 +732,152 @@ def main():
         <style>
             @page {{
                 size: a4;
-                margin: 1.2cm;
+                margin: 1.9cm 1.6cm 1.8cm 1.6cm;
             }}
+            * {{ box-sizing: border-box; }}
             body {{
                 font-family: "Microsoft JhengHei", "Segoe UI", system-ui, sans-serif;
-                font-size: 11pt;
-                line-height: 1.6;
-                color: #1e293b;
+                font-size: 10pt;
+                line-height: 1.65;
+                color: #1f2937;
                 background-color: #ffffff;
             }}
+            em {{
+                font-style: normal;
+                color: #6b7280;
+                font-size: 8.5pt;
+                letter-spacing: 0.02em;
+            }}
             h1 {{
+                font-family: "Noto Serif TC", "PMingLiU", "Microsoft JhengHei", serif;
                 font-size: 22pt;
-                color: #0f172a;
-                text-align: center;
-                margin-bottom: 25px;
-                padding-bottom: 12px;
-                border-bottom: 3px solid #3b82f6;
                 font-weight: 700;
+                color: #111827;
+                margin: 2px 0 2px 0;
+                letter-spacing: 0.01em;
+            }}
+            h1 + h3 {{
+                font-family: "Microsoft JhengHei", sans-serif;
+                font-size: 12pt;
+                font-weight: 400;
+                color: #4b5563;
+                margin: 0 0 14px 0;
+                border: none;
+                padding: 0;
             }}
             h2 {{
-                font-size: 15pt;
-                color: #1e3a8a;
-                margin-top: 30px;
-                margin-bottom: 15px;
-                padding-bottom: 6px;
-                border-bottom: 1px solid #cbd5e1;
-                font-weight: 600;
+                font-family: "Noto Serif TC", "PMingLiU", "Microsoft JhengHei", serif;
+                font-size: 14.5pt;
+                font-weight: 700;
+                color: #111827;
+                margin-top: 4px;
+                margin-bottom: 14px;
+                padding-bottom: 8px;
+                border-bottom: 2px solid #111827;
             }}
             h3 {{
-                font-size: 12pt;
-                color: #0f766e;
+                font-size: 11pt;
+                font-weight: 700;
+                color: #111827;
                 margin-top: 20px;
-                margin-bottom: 10px;
-                font-weight: 600;
+                margin-bottom: 8px;
+                padding-top: 10px;
+                border-top: 1px solid #d1d5db;
             }}
             h4 {{
-                font-size: 11.5pt;
-                color: #1e3a8a;
-                margin-top: 18px;
-                margin-bottom: 8px;
-                font-weight: 600;
-                border-left: 3px solid #3b82f6;
-                padding-left: 8px;
+                font-size: 10pt;
+                color: #1f2937;
+                margin-top: 14px;
+                margin-bottom: 6px;
+                font-weight: 700;
             }}
             p, ul, ol {{
-                margin-bottom: 12px;
+                margin: 0 0 10px 0;
             }}
             li {{
-                margin-bottom: 6px;
+                margin-bottom: 4px;
+            }}
+            hr {{
+                border: none;
+                border-top: 1px solid #d1d5db;
+                margin: 16px 0;
             }}
             table {{
                 width: 100%;
                 border-collapse: collapse;
-                margin-top: 15px;
-                margin-bottom: 20px;
-                font-size: 9pt;
-                border-radius: 6px;
-                overflow: hidden;
-                border: 1px solid #e2e8f0;
+                margin: 8px 0 16px 0;
+                font-size: 8.3pt;
             }}
             th {{
-                background-color: #1e293b;
-                color: #ffffff;
-                font-weight: 600;
-                padding: 6px 8px;
-                border: 1px solid #475569;
+                background: #ffffff;
+                color: #111827;
+                font-weight: 700;
+                text-align: left;
+                padding: 5px 7px;
+                border-top: 1.5px solid #111827;
+                border-bottom: 1px solid #111827;
+                white-space: nowrap;
             }}
             td {{
-                padding: 6px 8px;
-                border: 1px solid #cbd5e1;
+                padding: 5px 7px;
+                border-bottom: 1px solid #e5e7eb;
+                vertical-align: top;
             }}
-            tr:nth-child(even) {{
-                background-color: #f8fafc;
+            tr:last-child td {{
+                border-bottom: 1px solid #111827;
+            }}
+            tr:nth-child(even) td {{
+                background-color: #f9fafb;
             }}
             blockquote {{
-                background-color: #f8fafc;
-                border-left: 4px solid #3b82f6;
-                padding: 10px 15px;
-                margin: 15px 0;
-                color: #475569;
-                border-radius: 0 4px 4px 0;
+                border-left: 3px solid #9ca3af;
+                padding: 3px 12px;
+                margin: 12px 0;
+                color: #4b5563;
+                font-size: 9.3pt;
             }}
-            .pdf-metadata {{
-                font-size: 7.5pt;
-                color: #a1a1aa;
-                border: none;
-                border-top: 1px solid #e2e8f0;
-                border-bottom: 1px solid #e2e8f0;
-                padding: 6px 0;
-                background-color: transparent;
-                margin-bottom: 20px;
-                line-height: 1.5;
-            }}
+            blockquote p {{ margin: 0; }}
             code {{
                 font-family: "Consolas", "Microsoft JhengHei", monospace;
-                background-color: #f1f5f9;
-                color: #0f172a;
-                padding: 2px 5px;
+                background-color: #f3f4f6;
+                color: #111827;
+                padding: 1px 4px;
+                border-radius: 2px;
+                font-size: 8.7pt;
+            }}
+            .badge {{
+                display: inline-block;
+                padding: 1px 8px;
+                border-radius: 3px;
+                font-size: 8.3pt;
+                font-weight: 700;
+                letter-spacing: 0.02em;
+                white-space: nowrap;
+            }}
+            .badge-green {{ color: #065f46; background: #d1fae5; }}
+            .badge-amber {{ color: #92400e; background: #fef3c7; }}
+            .badge-red {{ color: #991b1b; background: #fee2e2; }}
+            .badge-lg {{
+                font-size: 12pt;
+                padding: 3px 16px;
                 border-radius: 4px;
-                font-size: 9.5pt;
-                border: 1px solid #e2e8f0;
+            }}
+            .rating-bar {{
+                display: flex;
+                align-items: center;
+                gap: 18px;
+                padding: 10px 0;
+                border-top: 1px solid #d1d5db;
+                border-bottom: 1px solid #d1d5db;
+                margin-bottom: 18px;
+            }}
+            .rating-bar-item {{
+                font-size: 10pt;
+                color: #374151;
+            }}
+            .step-page-break {{
+                page-break-before: always;
+                break-before: page;
             }}
         </style>
         </head>

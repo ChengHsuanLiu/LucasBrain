@@ -244,22 +244,23 @@ def generate_weekly_report(target_date=None):
     report = []
     # Format rating cell helper
     def format_rating_cell(rating_label, score, reasons):
+        # 沿用台股慣例：紅=佳(漲)、綠=差(跌)，僅由行內 style 改為統一的 badge 樣式
         if "佳" in rating_label:
-            color = "#dc2626"
+            badge_class = "badge-red"
         elif "普通" in rating_label:
-            color = "#b45309"
+            badge_class = "badge-amber"
         elif "差" in rating_label:
-            color = "#16a34a"
+            badge_class = "badge-green"
         else:
-            color = "#1e293b"
-            
-        label_html = f'<span style="color: {color}; font-weight: bold;">{rating_label} ({score}分)</span>'
-        
+            badge_class = "badge-amber"
+
+        label_html = f'<span class="badge {badge_class}">{rating_label} ({score}分)</span>'
+
         if reasons and reasons != "無扣分項":
             norm_reasons = reasons.replace(';', '；')
             reasons_list = [r.strip() for r in norm_reasons.split('；') if r.strip()]
             reasons_formatted = "<br>".join(reasons_list)
-            reasons_html = f'<div style="font-size: 8.5pt; color: #000000; margin-top: 4px; line-height: 1.3;">原因：<br>{reasons_formatted}</div>'
+            reasons_html = f'<div style="font-size: 8pt; color: #4b5563; margin-top: 4px; line-height: 1.3;">原因：<br>{reasons_formatted}</div>'
             return f"{label_html} {reasons_html}"
         else:
             return label_html
@@ -465,20 +466,25 @@ def generate_weekly_report(target_date=None):
 
         # Pre-process markdown to handle github alerts elegantly in PDF
         processed_md = md_text
-        processed_md = re.sub(r'\[!NOTE\]', r'🔔 **備註**', processed_md)
-        processed_md = re.sub(r'\[!TIP\]', r'💡 **提示**', processed_md)
-        processed_md = re.sub(r'\[!IMPORTANT\]', r'⚠️ **重要**', processed_md)
-        processed_md = re.sub(r'\[!WARNING\]', r'⚡ **警告**', processed_md)
-        processed_md = re.sub(r'\[!CAUTION\]', r'🛑 **注意**', processed_md)
-        
-        # Locate frontmatter block at the start of the markdown and replace it with styled HTML for PDF
-        frontmatter_match = re.match(r'^---\n(.*?)\n---', processed_md, re.DOTALL)
-        if frontmatter_match:
-            yaml_lines = frontmatter_match.group(1).strip().split('\n')
-            formatted_meta = "<br>".join([line.strip() for line in yaml_lines if line.strip()])
-            meta_html = f'<div class="pdf-metadata">{formatted_meta}</div>'
-            processed_md = processed_md.replace(frontmatter_match.group(0), meta_html, 1)
-            
+        processed_md = re.sub(r'\[!NOTE\]', r'**註：**', processed_md)
+        processed_md = re.sub(r'\[!TIP\]', r'**提示：**', processed_md)
+        processed_md = re.sub(r'\[!IMPORTANT\]', r'**重要：**', processed_md)
+        processed_md = re.sub(r'\[!WARNING\]', r'**警示：**', processed_md)
+        processed_md = re.sub(r'\[!CAUTION\]', r'**注意：**', processed_md)
+
+        # YAML frontmatter is for machine/AI consumption only — strip it entirely from the PDF.
+        processed_md = re.sub(r'^---\n.*?\n---\n', '', processed_md, count=1, flags=re.DOTALL)
+
+        # Strip any remaining emoji for a clean, professional look — this also catches emoji
+        # embedded in note content pulled in verbatim from 10_Stocks/.
+        emoji_pattern = re.compile(
+            "[\U0001F300-\U0001FAFF\U00002300-\U000023FF\U00002B00-\U00002BFF"
+            "\U00002600-\U000026FF\U00002700-\U000027BF\U0000FE0F]+",
+            flags=re.UNICODE,
+        )
+        processed_md = emoji_pattern.sub("", processed_md)
+        processed_md = re.sub(r'[ \t]+\n', '\n', processed_md)
+
         # Remove markdown backticks and [[ ]] brackets around stock codes/names for PDF rendering, keeping the alias if present
         def clean_links(match):
             text = match.group(1)
@@ -497,121 +503,135 @@ def generate_weekly_report(target_date=None):
         <style>
             @page {{
                 size: a4;
-                margin: 1.2cm;
+                margin: 1.9cm 1.6cm 1.8cm 1.6cm;
             }}
+            * {{ box-sizing: border-box; }}
             body {{
                 font-family: "Microsoft JhengHei", "Segoe UI", system-ui, sans-serif;
-                font-size: 11pt;
-                line-height: 1.6;
-                color: #1e293b;
+                font-size: 10pt;
+                line-height: 1.65;
+                color: #1f2937;
                 background-color: #ffffff;
             }}
             h1 {{
-                font-size: 22pt;
-                color: #0f172a;
-                text-align: center;
-                margin-bottom: 25px;
-                padding-bottom: 12px;
-                border-bottom: 3px solid #3b82f6;
+                font-family: "Noto Serif TC", "PMingLiU", "Microsoft JhengHei", serif;
+                font-size: 20pt;
                 font-weight: 700;
+                color: #111827;
+                margin: 2px 0 14px 0;
+                padding-bottom: 10px;
+                border-bottom: 2px solid #111827;
+                letter-spacing: 0.01em;
             }}
             h2 {{
-                font-size: 15pt;
-                color: #1e3a8a;
-                margin-top: 30px;
-                margin-bottom: 15px;
-                padding-bottom: 6px;
-                border-bottom: 1px solid #cbd5e1;
-                font-weight: 600;
+                font-family: "Noto Serif TC", "PMingLiU", "Microsoft JhengHei", serif;
+                font-size: 14.5pt;
+                font-weight: 700;
+                color: #111827;
+                margin-top: 4px;
+                margin-bottom: 14px;
+                padding-bottom: 8px;
+                border-bottom: 2px solid #111827;
+                page-break-before: always;
+                break-before: page;
+            }}
+            h1 + h2 {{
+                page-break-before: auto;
+                break-before: auto;
             }}
             h3 {{
-                font-size: 12pt;
-                color: #0f766e;
+                font-size: 11pt;
+                font-weight: 700;
+                color: #111827;
                 margin-top: 20px;
-                margin-bottom: 10px;
-                font-weight: 600;
+                margin-bottom: 8px;
+                padding-top: 10px;
+                border-top: 1px solid #d1d5db;
             }}
             h4 {{
-                font-size: 11.5pt;
-                color: #1e3a8a;
-                margin-top: 18px;
-                margin-bottom: 8px;
-                font-weight: 600;
-                border-left: 3px solid #3b82f6;
-                padding-left: 8px;
+                font-size: 10pt;
+                color: #1f2937;
+                margin-top: 14px;
+                margin-bottom: 6px;
+                font-weight: 700;
             }}
             p, ul, ol {{
-                margin-bottom: 12px;
+                margin: 0 0 10px 0;
             }}
             li {{
-                margin-bottom: 6px;
+                margin-bottom: 4px;
+            }}
+            hr {{
+                border: none;
+                border-top: 1px solid #d1d5db;
+                margin: 16px 0;
             }}
             table {{
                 width: 100%;
                 table-layout: fixed;
                 border-collapse: collapse;
-                margin-top: 15px;
-                margin-bottom: 20px;
-                font-size: 8.5pt;
-                border-radius: 6px;
-                overflow: hidden;
-                border: 1px solid #e2e8f0;
+                margin: 8px 0 16px 0;
+                font-size: 8pt;
             }}
             th:nth-child(1), td:nth-child(1) {{ width: 8%; }} /* 股票 */
             th:nth-child(2), td:nth-child(2) {{ width: 5%; text-align: center; }} /* 評價 */
-            th:nth-child(3), td:nth-child(3) {{ width: 21%; }} /* 均線評級 */
-            th:nth-child(4), td:nth-child(4) {{ width: 21%; }} /* 乖離評級 */
+            th:nth-child(3), td:nth-child(3) {{ width: 18%; }} /* 均線評級 */
+            th:nth-child(4), td:nth-child(4) {{ width: 18%; }} /* 乖離評級 */
             th:nth-child(5), td:nth-child(5) {{ width: 8%; text-align: right; }} /* 當前股價 */
-            th:nth-child(6), td:nth-child(6) {{ width: 6%; text-align: right; }} /* 27EPS(F) */
-            th:nth-child(7), td:nth-child(7) {{ width: 5%; text-align: right; }} /* FP/E */
-            th:nth-child(8), td:nth-child(8) {{ width: 26%; }} /* 投資簡述 */
-            
+            th:nth-child(6), td:nth-child(6) {{ width: 8%; text-align: right; }} /* 27EPS(F) */
+            th:nth-child(7), td:nth-child(7) {{ width: 7%; text-align: right; }} /* FP/E */
+            th:nth-child(8), td:nth-child(8) {{ width: 28%; }} /* 投資簡述 */
+
             th {{
-                background-color: #1e293b;
-                color: #ffffff;
-                font-weight: 600;
+                background: #ffffff;
+                color: #111827;
+                font-weight: 700;
                 text-align: left;
-                padding: 4px 6px;
-                border: 1px solid #475569;
+                padding: 5px 6px;
+                border-top: 1.5px solid #111827;
+                border-bottom: 1px solid #111827;
             }}
             th:nth-child(2) {{ text-align: center; }}
             th:nth-child(5), th:nth-child(6), th:nth-child(7) {{ text-align: right; }}
-            
+
             td {{
-                padding: 4px 6px;
-                border: 1px solid #cbd5e1;
+                padding: 5px 6px;
+                border-bottom: 1px solid #e5e7eb;
+                vertical-align: top;
             }}
-            tr:nth-child(even) {{
-                background-color: #f8fafc;
+            tr:last-child td {{
+                border-bottom: 1px solid #111827;
+            }}
+            tr:nth-child(even) td {{
+                background-color: #f9fafb;
             }}
             blockquote {{
-                background-color: #f8fafc;
-                border-left: 4px solid #3b82f6;
-                padding: 10px 15px;
-                margin: 15px 0;
-                color: #475569;
-                border-radius: 0 4px 4px 0;
+                border-left: 3px solid #9ca3af;
+                padding: 3px 12px;
+                margin: 12px 0;
+                color: #4b5563;
+                font-size: 9.3pt;
             }}
-            .pdf-metadata {{
-                font-size: 7.5pt;
-                color: #a1a1aa;
-                border: none;
-                border-top: 1px solid #e2e8f0;
-                border-bottom: 1px solid #e2e8f0;
-                padding: 6px 0;
-                background-color: transparent;
-                margin-bottom: 20px;
-                line-height: 1.5;
-            }}
+            blockquote p {{ margin: 0; }}
             code {{
                 font-family: "Consolas", "Microsoft JhengHei", monospace;
-                background-color: #f1f5f9;
-                color: #0f172a;
-                padding: 2px 5px;
-                border-radius: 4px;
-                font-size: 9.5pt;
-                border: 1px solid #e2e8f0;
+                background-color: #f3f4f6;
+                color: #111827;
+                padding: 1px 4px;
+                border-radius: 2px;
+                font-size: 8.7pt;
             }}
+            .badge {{
+                display: inline-block;
+                padding: 1px 8px;
+                border-radius: 3px;
+                font-size: 8pt;
+                font-weight: 700;
+                letter-spacing: 0.02em;
+            }}
+            .badge-green {{ color: #065f46; background: #d1fae5; }}
+            .badge-amber {{ color: #92400e; background: #fef3c7; }}
+            .badge-red {{ color: #991b1b; background: #fee2e2; }}
         </style>
         </head>
         <body>
