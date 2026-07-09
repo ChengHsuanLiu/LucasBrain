@@ -290,3 +290,9 @@
 - 融資餘額改顯示金額（億）而非張數：`lib/market_data.py` 的 `fetch_twse_margin_total()` 新增從 FinMind `TaiwanStockTotalMarginPurchaseShortSale` 的 `MarginPurchaseMoney` 列取得上市融資金額（該資料集已於先前開發階段驗證僅涵蓋上市，非真正全市場合計）；`fetch_tpex_margin_total()` 因無官方上櫃金額資料集，改用同一批 Fugle 熱力圖(上櫃)收盤價，將個股張數 x 1000股/張 x 收盤價換算加總估算（非官方精確值，屬近似）。
 - 融資餘額與維持率／三大法人現貨買賣超／外資台指期未平倉三小節合併為橫向三欄精簡排版（同樣透過 `idx-flex`），並移除三處多餘的日期顯示；三大法人/期貨金額原為元，改為億。
 - 族群強度標題改為「上市/上櫃當日強勢族群 Top3」，並依使用者要求移除資料來源附註（僅供本人閱讀，不對外發布）。
+
+## [2026-07-09] ingest | S__78102658.jpg (大戶A更新截圖) | 影響 [[大戶籌碼追蹤]]
+- 使用者確立 `00_Inbox/whales/` 為往後大戶持股截圖的固定存放位置，已在 SCHEMA.md 新增對應目錄說明與 `98_Archives/Whale_Snapshots/` 歸檔分類。
+- 本次截圖（帳號9801-0111966 林O正）持股（聯電/台積電/揚博/聯鈞/雍智科技/群聯）與已入庫的「大戶A」2026-07-09 快照高度重疊，經使用者確認為同一人同一天稍晚的更新截圖（非新大戶）：聯鈞加碼由30,000股增至40,000股，其餘5檔股數不變但價格已更新。
+- 因主表 `whale_positions.csv` 以 (date, whale_id, ticker, position_type) 去重，同日重複截圖預設會被跳過而非覆蓋——已手動移除大戶A原本6筆2026-07-09舊資料，改寫入本次6筆新資料（沿用既有 `unrealized_pnl = (market_price - cost_price) × shares`、`pnl_pct = unrealized_pnl / cost_basis × 100` 的計算慣例），並重新產生 `大戶籌碼追蹤.md` 彙總筆記，確認共識標的計算未受影響（2303聯電仍為4位大戶共識、3450聯鈞仍為3位）。
+- 原始截圖歸檔至 `98_Archives/Whale_Snapshots/20260709_S__78102658.jpg`。

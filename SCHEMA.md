@@ -31,6 +31,8 @@
 
 ### 1. 知識庫目錄定義
 * **`00_Inbox/`**：存放原始輸入、待整理的券商報告與臨時筆記。
+  * **`00_Inbox/whales/`**：專放大戶券商庫存/未實現損益截圖，執行「更新大戶持股」時處理，
+    結構化資料寫入 `.agent/data/whale_positions.csv`，原始截圖歸檔至 `98_Archives/Whale_Snapshots/`。
 * **`10_Stocks/`**：個股專屬頁面，命名格式為 `[股票代號][名稱].md` (例如 `3189景碩.md`)。
 * **`20_Garden/`**：結構化的產業知識筆記（如 `CCL銅箔基板.md`），注重長期的產業演化與技術壁壘。
 * **`30_Projects/`**：專案報告與投資決策等可交付的完整成果，細分目錄如下：
@@ -44,6 +46,7 @@
   * **`98_Archives/Research_Report/`**：各券商與研究機構出具的正式法人研報（如：摩根士丹利台積電報告、統一證券CCL研究報告、HSBC聯發科研究報告、大和證券MLCC產業報告）通常是 pdf 檔案，如果不是 pdf 檔案的可以放去 Stock_Memo。
   * **`98_Archives/Stock_Memo/`**：單一個股法說會、私訪、股東會等非正式會議紀要與單一個股 Memo（如：4764雙鍵股東會memo、2383台光電memo、2330台積電法說memo）。
   * **`98_Archives/Fund_Company_Memo/`**：其他投信/投資公司的討論內容，通常標題與「會議紀錄」相關，內容通常是針對多個不同股票或市場的看法。
+  * **`98_Archives/Whale_Snapshots/`**：大戶券商庫存/未實現損益截圖原始檔（`00_Inbox/whales/` 底下的素材），結構化後的資料寫入 `.agent/data/whale_positions.csv`，此處僅保留原始截圖存查。
   * **`98_Archives/Others/`**：其他無明確分類歸屬的素材檔案均存放於此。
 * **`99_Templates/`**：存放 Stock/Industry 範本、系統指令、工作流與腳本。
 
