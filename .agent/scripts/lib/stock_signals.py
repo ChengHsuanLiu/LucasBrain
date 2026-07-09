@@ -7,7 +7,7 @@
 - 急跌至長線支撐：現價貼近上升中的60日均線
 - 賣出提醒：跌破5日線 / 5日線下彎 / 20日線(月線)下彎
 
-`compute_stock_signal()` 疊加估值面 (隔年EPS x 概念股FPE中緣算出目標價與期望值%)，
+`compute_stock_signal()` 疊加估值面 (隔年EPS x 概念股FPE上緣算出目標價與期望值%)，
 兩種買進訊號都需要期望值門檻 + 對應技術面觸發同時成立；兩種賣出訊號則只看期望值。
 """
 import os
@@ -242,7 +242,7 @@ def extract_investment_blurb(filepath, max_len=80):
 
 def compute_stock_signal(ticker, filepath, target_year, concept_table):
     """整合單一個股的買進/賣出訊號 (估值期望值 + 技術面觸發)，回傳 dict；
-    股價資料不足(<6天)時回傳 None。"""
+    股價資料不足(<6天)時回傳 None。目標價/期望值採 FPE 上緣（樂觀情境）而非中緣計算。"""
     tech = compute_technical_signals(ticker)
     if tech is None:
         return None
@@ -254,7 +254,7 @@ def compute_stock_signal(ticker, filepath, target_year, concept_table):
     target_price = None
     expected_value_pct = None
     if target_eps is not None and target_eps > 0 and fpe_range is not None:
-        target_price = target_eps * fpe_range["mid"]
+        target_price = target_eps * fpe_range["high"]
         expected_value_pct = (target_price - current_price) / current_price * 100
 
     # valuation_rating 固定傳 "HOLD"：這裡只是借用 compute_tactical_score() 算 MA/Bias 分數，
