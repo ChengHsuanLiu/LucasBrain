@@ -163,7 +163,7 @@ tags: [report/daily, market-overview]
 * **大戶C**（2026-07-09）：尚無前次快照可比較（共 8 檔持股，總市值 957,850,000）
 * **大戶D**（2026-07-09）：尚無前次快照可比較（共 6 檔持股，總市值 610,038,000）
 * **大戶E**（2026-07-09）：尚無前次快照可比較（共 5 檔持股，總市值 395,495,300）
-* **大戶F**（2026-07-09）：<span class="flag-red">新建倉［已追蹤］ 6213聯茂（市值 13,158,000）</span>；減碼 8150南茂（<span class="num-down">-40,000股</span>）；減碼［已追蹤］ 8046南電（<span class="num-down">-10,000股</span>）；減碼［已追蹤］ 3374精材（<span class="num-down">-4,000股</span>）
+* **大戶F**（2026-07-09）：<span class="flag-red">新建倉［已追蹤］ 6213聯茂（市值 13,158,000）</span>；減碼 8150南茂（<span class="num-down">-40,000股</span>）；減碼［已追蹤］ 8046南電（<span class="num-down">-10,000股</span>）；減碼［已追蹤］ 4958臻鼎-KY（<span class="num-down">-4,000股</span>）
 
 #### <span class="text-blue">共識標的（2位以上大戶同時持有）</span>
 
@@ -196,7 +196,7 @@ tags: [report/daily, market-overview]
 
 | 股票 | 現價 | 目標價 | 期望值 | 均線 | 乖離 | 觸發原因 | 投資簡述 |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 6669緯穎 | 5040.00 | 15035.00 | <span class="num-up">+198.31%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 急跌至上升中的60日均線支撐 | 高整合 Total Solution 能力：擁有整合晶片設計（與 3443創意、世芯 合作）、光學引擎、機櫃光纖布線與散熱的完整方案。 |
+| 6669緯穎 | 5040.00 | 13216.25 | <span class="num-up">+162.23%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 急跌至上升中的60日均線支撐 | 高整合 Total Solution 能力：擁有整合晶片設計（與 3443創意、世芯 合作）、光學引擎、機櫃光纖布線與散熱的完整方案。 |
 | 3595山太士 | 2505.00 | 5565.00 | <span class="num-up">+122.16%</span> | <span class="num-up">佳</span> | <span class="num-up">佳</span> | <span class="flag-red">首日站上5日線</span><br>5日線上彎<br>急跌至上升中的60日均線支撐 | 先進封裝應力平衡獨門絕技：Balance Film 藉由平衡封裝應力而非強行壓平，解決了先進封裝與下一代 TGV 玻璃基板 debond 後釋放應力產生的 R… |
 | 4764雙鍵 | 336.00 | 673.14 | <span class="num-up">+100.34%</span> | <span class="num-up">佳</span> | <span class="num-up">佳</span> | 已站上5日線<br>5日線上彎 | 配方改質與前段加工優勢：雙鍵不只做改性，還做前置 Pre-prep 的前段部分，是台廠中極具規模的高階 CCL 樹脂供應商。 |
 | 6696仁新醫藥 | 612.00 | 1050.00 | <span class="num-up">+71.57%</span> | <span class="num-up">佳</span> | <span class="num-up">佳</span> | 已站上5日線<br>5日線上彎 | 眼科獨角獸與抗癌新星： |
@@ -214,6 +214,7 @@ tags: [report/daily, market-overview]
 | 8046南電 | 1215.00 | 1081.70 | <span class="num-down">-10.97%</span> | <span class="num-up">佳</span> | <span class="num-up">佳</span> | 期望值-11.0% < 25%，逢高減碼 |
 | 2383台光電 | 5295.00 | 5025.00 | <span class="num-down">-5.10%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值-5.1% < 25%，逢高減碼<br>期望值-5.1% < 50%，且已跌破5日線 |
 | 3363上詮 | 608.00 | 588.39 | <span class="num-down">-3.23%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值-3.2% < 25%，逢高減碼 |
+| 8210勤誠 | 1175.00 | 1174.24 | <span class="num-down">-0.06%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值-0.1% < 25%，逢高減碼<br>期望值-0.1% < 50%，且已跌破5日線 |
 | 6182合晶 | 172.50 | 195.00 | <span class="num-up">+13.04%</span> | <span class="num-up">佳</span> | <span class="num-up">佳</span> | 期望值+13.0% < 25%，逢高減碼 |
 | 6515穎崴 | 7765.00 | 8962.00 | <span class="num-up">+15.42%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+15.4% < 25%，逢高減碼<br>期望值+15.4% < 50%，且已跌破5日線 |
 | 3189景碩 | 795.00 | 924.70 | <span class="num-up">+16.31%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+16.3% < 25%，逢高減碼 |
@@ -230,4 +231,4 @@ tags: [report/daily, market-overview]
 
 </div>
 
-> **註**：目標價 = 隔年(2027)預估EPS × 所屬概念股FPE上緣（同屬多個概念取平均，見 `[[概念股FPE合理區間]]`）；期望值 = (目標價/現價 - 1)。不含非台股標的（如 .SH/.HK）。目前資料庫 82 檔個股中有 12 檔缺EPS預估或概念分類，標記為「待補充」，未納入買賣訊號判定。
+> **註**：目標價 = 隔年(2027)預估EPS × 所屬概念股FPE上緣（同屬多個概念取平均，見 `[[概念股FPE合理區間]]`）；期望值 = (目標價/現價 - 1)。不含非台股標的（如 .SH/.HK）。目前資料庫 82 檔個股中有 10 檔缺EPS預估或概念分類，標記為「待補充」，未納入買賣訊號判定。
