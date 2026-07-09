@@ -2,8 +2,8 @@
 type: industry
 title: "先進封裝 / 玻璃基板"
 created: 2026-06-22
-updated: 2026-07-09
-review_by: 2026-09-22
+updated: 2026-07-10
+review_by: 2026-10-10
 tags: [investment/target]
 source_type: manual_note
 source_asset: Various
@@ -107,6 +107,9 @@ aliases: [玻璃基板, TGV, CoPoS]
   - *TGV 設備廠競爭與最新動態*：`[[鈦昇]]` (8027) 設備偏向 Intel 陣營，其掌握之 TGV 雷射鑽孔技術受惠客戶建廠，5 月營收年增達 140%；`[[東捷]]` (8064) 具備玻璃切割技術，客戶群與鈦昇重疊，營收同步受惠成長。目前設備採購欣興等板廠仍在送樣與評估中（亦尋求與川寶代工合作）。
   - *檢測設備採購路徑*：台積電不直接生產玻璃基板，未來 TGV 檢測（如[[3055蔚華科]]）等設備的採購與合作將直接由玻璃板廠（Substrate makers）對接。
   - **[2026-07-07 更新，來源：`[[鈦昇]]` 法說Call Memo]**：客戶端(板廠)反應玻璃基板量產時程可能較機構原估(2028年)提早到2027下半年開始，設備需求同步提前拉貨；[[鈦昇]] 已掌握雷射改質+電漿蝕刻兩種技術(業界唯一)，TGV全流程最少涉及5道設備(雷射改質、ABF鑽孔、電漿擴孔、ABF移除、玻璃切割)；日本客戶TGV進度領先台灣(僅[[3481群創]])，2027下半可能出現第二大日系客戶；CPO測試平台預計2026年8月完成驗證，鎖定1.6T/3.2T應用，玻璃橋題材要到3.2T世代(2028年)才顯現價值。詳見 `[[8027鈦昇]]` 個股頁面。
+  - **[2026-07-03 更新，來源：大摩「Connecting Dots」報告]**：台積電傳出將CoPoS時程提前以應對Intel EMIB-T競爭壓力；MediaTek透過協助Google取得更多日本T-Glass供應（主力供應商Nitto Boseki，欣興與Unimicron為3nm TPU基板第二供應商），上修3nm ZebraFish TPU 2027年出貨量至300萬顆；台灣CPO供應鏈發展依原訂時程推進，GlassBridge技術目前仍屬相對邊緣/早期階段。詳見 `[[2454聯發科]]` 個股頁面。
+  - **[2026-07-03 更新，來源：花旗/高盛台積電報告]**：兩份報告皆將2027E CoWoS(含WMCM)產能預估上修至280kwpm(原250kwpm)，花旗並明確指出CoPoS將於2029年後接棒CoWoS與SoIC成為下一世代封裝技術演進方向，玻璃載板(Glass Core)對CoWoS屬互補而非取代關係，短期內混合鍵合(Hybrid Bonding)、SoIC與先進互連技術仍是未來幾年的主要差異化因子。詳見 `[[2330台積電]]` 個股頁面。
+  - **[2026-07-06/07 更新，來源：大摩「2027 CoWoS Allocation and ASIC Dynamics」與GB200/300 NVL72月度追蹤報告]**：AMD 2027年CoWoS配額暫維持240k(不排除執行風險，過去有下修紀錄)，MI455(標準版，2 compute die+12 HBM4 12hi，配Helios機櫃，客戶含Microsoft/AWS/Oracle)與MI450(Meta客製化半尺寸版，1 compute die+6 HBM4 12hi)合計出貨1.5mn顆(MI455 1mn+MI450 500k)；CPU首度導入CoWoS的Venice產能集中在OSAT廠(ASE/SPIL、Amkor、Powertech)，2027年CPU晶片出貨看增至570-600萬顆(2026年僅約100萬顆)。Google TPU方面，KYEC 3Q26營收估季增近10%(低於原估15%，因Rubin/Sunfish小幅延遲及MediaTek智慧手機SoC訂單縮減)，Sunfish出貨集中在4Q(全年96萬顆不變)，Zebrafish 4Q26放量時程不變。GB200/300 NVL72機櫃組裝方面，廣達6月營收+24%MoM/+103%YoY，2Q GB200/300機櫃出貨約6.2-6.3千台(+32%QoQ)，全年估維持約1.87萬台；緯創6月營收+11%MoM/+54%YoY(緯穎子公司貢獻+33%MoM)。大摩預估2027年Rubin晶片出貨約700萬顆、NVL72機櫃約9萬台。詳見 `[[6669緯穎]]`、`[[2317鴻海]]` 個股頁面。
 
 ---
 
@@ -115,6 +118,11 @@ aliases: [玻璃基板, TGV, CoPoS]
 ---
 
 ## 📄 原始文件與連結 (Original Documents)
+- `[[20260710_001337_file.pdf]]` - 大摩 (Morgan Stanley) AI Supply Chain：2027年CoWoS配額與ASIC動態更新 (2026-07-06)
+- `[[20260710_001329_file.pdf]]` - 大摩 (Morgan Stanley) GB200/300 NVL72機櫃月度出貨追蹤報告 (2026-07-07)
+- `[[20260710_002418_file.pdf]]` - 大摩 (Morgan Stanley) Connecting Dots：CoPoS/T-Glass/TPU/Glassbridge/FAU 供應鏈報告 (2026-07-03)
+- `[[20260710_002709_file.pdf]]` - 高盛 (Goldman Sachs) 台積電2027年CoWoS產能上修報告 (2026-07-03)
+- `[[20260710_002710_file.pdf]]` - 花旗 (Citi) 台積電技術/封裝/產能報告，CoPoS 2029年後接棒 (2026-07-03)
 - `[[20260525_004315_text.md]]` - 玻璃基板與 TGV 設備商欣興川寶對接訪談 Q&A
 - `[[20260527_072514_link.md]]` - 雷射鑽孔與 CoPoS 玻璃基板專家看法
 - `[[20260612_104231_text.md]]` - 辛耘與山太士 Balance Film 貼膜設備時程澄清報告
