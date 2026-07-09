@@ -13,7 +13,7 @@ tags: [report/daily, market-overview]
 #### 上市加權指數 (TAIEX)
 
 * **收盤價**：45,354.61（<span class="num-down">-379.80</span>，<span class="num-down">-0.83%</span>）
-* **成交量**：9,968 億（較前一日 量縮，<span class="num-down">-7.48%</span>；5日均量線 <span class="text-blue">跌破</span>，5日均量 <span class="text-blue">下彎</span>）
+* **成交量**：9,968 億（較前日 10,046億量縮 <span class="num-down">-7.48%</span>；5日均量線 <span class="num-down">跌破</span>，5日均量 <span class="num-down">下彎</span>）
 
 <div class="idx-flex" markdown="1">
 <div class="idx-col" markdown="1">
@@ -22,9 +22,9 @@ tags: [report/daily, market-overview]
 
 | 均線 | 數值 | 斜率 | 位置 | 乖離率 |
 | :--- | :--- | :--- | :--- | :--- |
-| 5MA | 45,981 | <span class="text-blue">下彎</span> | <span class="text-blue">跌破</span> | <span class="num-down">-1.36%</span> |
-| 20MA | 45,869 | 上彎 | <span class="text-blue">跌破</span> | <span class="num-down">-1.12%</span> |
-| 60MA | 42,878 | 上彎 | 漲過 | <span class="num-up">+5.78%</span> |
+| <span class="ma5-label">5MA</span> | 45,981 | <span class="num-down">下彎</span> | <span class="num-down">跌破</span> | <span class="num-down">-1.36%</span> |
+| <span class="ma20-label">20MA</span> | 45,869 | <span class="num-up">上彎</span> | <span class="num-down">跌破</span> | <span class="num-down">-1.12%</span> |
+| <span class="ma60-label">60MA</span> | 42,878 | <span class="num-up">上彎</span> | <span class="num-up">漲過</span> | <span class="num-up">+5.78%</span> |
 
 </div>
 <div class="idx-col" markdown="1">
@@ -40,7 +40,7 @@ tags: [report/daily, market-overview]
 #### 上櫃指數 (TPEx)
 
 * **收盤價**：424.99（<span class="num-up">+3.60</span>，<span class="num-up">+0.85%</span>）
-* **成交量**：2,363 億（較前一日 量縮，<span class="num-down">-2.32%</span>；5日均量線 <span class="text-blue">跌破</span>，5日均量 <span class="text-blue">下彎</span>）
+* **成交量**：2,363 億（較前日 2,220億量縮 <span class="num-down">-2.32%</span>；5日均量線 <span class="num-down">跌破</span>，5日均量 <span class="num-down">下彎</span>）
 
 <div class="idx-flex" markdown="1">
 <div class="idx-col" markdown="1">
@@ -49,9 +49,9 @@ tags: [report/daily, market-overview]
 
 | 均線 | 數值 | 斜率 | 位置 | 乖離率 |
 | :--- | :--- | :--- | :--- | :--- |
-| 5MA | 430 | <span class="text-blue">下彎</span> | <span class="text-blue">跌破</span> | <span class="num-down">-1.21%</span> |
-| 20MA | 431 | 上彎 | <span class="text-blue">跌破</span> | <span class="num-down">-1.39%</span> |
-| 60MA | 417 | 上彎 | 漲過 | <span class="num-up">+2.00%</span> |
+| <span class="ma5-label">5MA</span> | 430 | <span class="num-down">下彎</span> | <span class="num-down">跌破</span> | <span class="num-down">-1.21%</span> |
+| <span class="ma20-label">20MA</span> | 431 | <span class="num-up">上彎</span> | <span class="num-down">跌破</span> | <span class="num-down">-1.39%</span> |
+| <span class="ma60-label">60MA</span> | 417 | <span class="num-up">上彎</span> | <span class="num-up">漲過</span> | <span class="num-up">+2.00%</span> |
 
 </div>
 <div class="idx-col" markdown="1">
@@ -99,13 +99,15 @@ tags: [report/daily, market-overview]
 
 ---
 
-**大盤技術分析評分：45 分（一般）**
+<span class="text-blue">**大盤技術分析評分：45 分（一般）**</span>
+
+<span class="text-blue">下跌 < 1% 且 成交量縮，尚未恐慌</span>
 
 加分項：20MA上彎 | 60MA上彎 | 跌幅 0.83%（<1%）且成交量縮
 
 扣分項：跌幅 0.83%（<2%） | 5MA下彎 | 5MA跌破 | 20MA跌破 | KD交叉往下 | MACD交叉往下 | 成交量跌破五日均量線
 
-**大盤情況總結**
+<span class="text-blue">**大盤情況總結**</span>
 
 加權指數下跌0.83%（量縮）、櫃買指數上漲0.85%（量縮）、三大法人合計賣超350.2億、外資台指期偏空留倉 80,730 口、融資餘額增加，技術分析評分為 45 分，整體一般偏空。
 
@@ -159,7 +161,7 @@ tags: [report/daily, market-overview]
 * **大戶C**（2026-07-09）：尚無前次快照可比較（共 8 檔持股，總市值 957,850,000）
 * **大戶D**（2026-07-09）：尚無前次快照可比較（共 6 檔持股，總市值 610,038,000）
 * **大戶E**（2026-07-09）：尚無前次快照可比較（共 5 檔持股，總市值 395,495,300）
-* **大戶F**（2026-07-09）：新建倉［已追蹤］ 6213聯茂（市值 13,158,000）；減碼 8150南茂（<span class="num-down">-40,000股</span>）；減碼［已追蹤］ 8046南電（<span class="num-down">-10,000股</span>）；減碼［已追蹤］ 3374精材（<span class="num-down">-4,000股</span>）
+* **大戶F**（2026-07-09）：新建倉［已追蹤］ 6213聯茂（市值 13,158,000）；減碼 8150南茂（<span class="num-down">-40,000股</span>）；減碼［已追蹤］ 8046南電（<span class="num-down">-10,000股</span>）；減碼［已追蹤］ 4958臻鼎-KY（<span class="num-down">-4,000股</span>）
 
 #### 共識標的（2位以上大戶同時持有）
 

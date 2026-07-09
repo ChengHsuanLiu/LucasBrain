@@ -96,6 +96,9 @@ DAILY_REPORT_EXTRA_CSS = """
     .num-down { color: #15803d; font-weight: 700; }
     .flag-red { color: #dc2626; font-weight: 800; }
     .text-blue { color: #2563eb; }
+    .ma5-label { color: #f59e0b; }
+    .ma20-label { color: #7c3aed; }
+    .ma60-label { color: #0d9488; }
     .whale-consensus table th:nth-child(5),
     .whale-consensus table td:nth-child(5) {
         min-width: 100px;
@@ -156,8 +159,16 @@ def flag_red(text):
 
 
 def flag_blue(text):
-    """均線斜率下彎、或股價位置跌破均線時，用藍色標記凸顯偏弱訊號。"""
+    """大盤技術分析評分/大盤情況總結標題與觸發規則備註，統一用藍色凸顯。"""
     return f'<span class="text-blue">{text}</span>'
+
+
+def ma_label(period):
+    """均線週期標籤上色：5MA橘黃色、20MA紫色、60MA湖水綠，其餘週期不上色。"""
+    cls = {5: "ma5-label", 20: "ma20-label", 60: "ma60-label"}.get(period)
+    if not cls:
+        return f"{period}MA"
+    return f'<span class="{cls}">{period}MA</span>'
 
 
 def short_rating_badge(rating_text):
@@ -195,15 +206,17 @@ def build_index_section(title, index_id, lookback_days=200):
     prev_close = latest["close"] - spread
     change_pct = (spread / prev_close * 100) if prev_close else 0.0
     money_yi = (latest.get("money") or 0) / 1e8
+    prev_money_yi = (ohlc[-2].get("money") or 0) / 1e8 if len(ohlc) >= 2 else None
 
     lines = [f"#### {title}", ""]
     lines.append(
         f"* **收盤價**：{latest['close']:,.2f}（{colorize_signed(spread, '{:+,.2f}')}，{colorize_signed(change_pct)}）"
     )
-    vol_ma_position_str = flag_blue(vol_ma["position"]) if vol_ma["position"] == "跌破" else vol_ma["position"]
-    vol_ma_slope_str = flag_blue(vol_ma["slope"]) if vol_ma["slope"] == "下彎" else vol_ma["slope"]
+    vol_ma_position_str = colorize(vol_ma["position"], is_up=(vol_ma["position"] == "站上"))
+    vol_ma_slope_str = colorize(vol_ma["slope"], is_up=(vol_ma["slope"] == "上彎"))
+    prev_money_str = f"{prev_money_yi:,.0f}億" if prev_money_yi is not None else "N/A"
     lines.append(
-        f"* **成交量**：{money_yi:,.0f} 億（較前一日 {vol_trend}，{colorize_signed(vol_change)}；"
+        f"* **成交量**：{money_yi:,.0f} 億（較前日 {prev_money_str}{vol_trend} {colorize_signed(vol_change)}；"
         f"5日均量線 {vol_ma_position_str}，5日均量 {vol_ma_slope_str}）"
     )
     lines.append("")
@@ -219,11 +232,11 @@ def build_index_section(title, index_id, lookback_days=200):
         m = ma[p]
         b = bias[p]
         if m["val"] is None:
-            lines.append(f"| {p}MA | N/A | N/A | N/A | N/A |")
+            lines.append(f"| {ma_label(p)} | N/A | N/A | N/A | N/A |")
             continue
-        slope_str = flag_blue(m["slope"]) if m["slope"] == "下彎" else m["slope"]
-        pos_str = flag_blue(m["close_vs_ma"]) if m["close_vs_ma"] == "跌破" else m["close_vs_ma"]
-        lines.append(f"| {p}MA | {m['val']:,.0f} | {slope_str} | {pos_str} | {colorize_signed(b)} |")
+        slope_str = colorize(m["slope"], is_up=(m["slope"] == "上彎"))
+        pos_str = colorize(m["close_vs_ma"], is_up=(m["close_vs_ma"] == "漲過"))
+        lines.append(f"| {ma_label(p)} | {m['val']:,.0f} | {slope_str} | {pos_str} | {colorize_signed(b)} |")
     lines.append("")
     lines.append('</div>')
 
@@ -400,18 +413,21 @@ def build_market_overview_summary(taiex_summary, tpex_summary, stats_summary):
 
     score, tier = None, None
     if taiex_summary:
-        score, reasons = compute_market_score(taiex_summary, stats_summary)
+        score, reasons, notes = compute_market_score(taiex_summary, stats_summary)
         tier = market_score_tier(score)
         gain_reasons = [text for text, delta in reasons if delta > 0]
         loss_reasons = [text for text, delta in reasons if delta < 0]
-        lines.append(f"**大盤技術分析評分：{score} 分（{tier}）**")
+        lines.append(flag_blue(f"**大盤技術分析評分：{score} 分（{tier}）**"))
         lines.append("")
+        for note in notes:
+            lines.append(flag_blue(note))
+            lines.append("")
         lines.append(f"加分項：{' | '.join(gain_reasons) if gain_reasons else '無'}")
         lines.append("")
         lines.append(f"扣分項：{' | '.join(loss_reasons) if loss_reasons else '無'}")
         lines.append("")
 
-    lines.append("**大盤情況總結**")
+    lines.append(flag_blue("**大盤情況總結**"))
     lines.append("")
 
     if not parts:
