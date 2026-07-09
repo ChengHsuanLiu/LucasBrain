@@ -341,7 +341,9 @@ def fetch_foreign_futures_position(start_date, futures_id="TX", credentials_path
 def compute_market_score(index_summary, stats_summary):
     """以 MARKET_SCORE_BASE(80分) 為基準，依 index_summary(單一指數的漲跌%/均線/乖離/
     KD·MACD方向與背離/成交量趨勢與均量位置) 與 stats_summary(融資維持率) 逐項加減分，
-    另加一條補充規則：跌幅<1%且成交量縮+5分、漲幅>=1.5%且站上5日線+5分。
+    另加一條補充規則：跌幅<1%且成交量縮+5分；5MA乖離率介於-1.5%~0%之間+5分
+    （現價跌破5日線但缺口不到1.5%，代表只要反彈1.5%就足以站上5日線，是「隨時
+    可能收復」的訊號，並非要求當天已實際上漲1.5%）。
     回傳 (score, reasons, notes)：reasons 為 [(說明文字, 分數增減)] 依檢查順序排列；
     notes 為觸發到「其他規則」兩條補充規則時，各自附帶的一句白話解讀文字列表。"""
     score = MARKET_SCORE_BASE
@@ -408,9 +410,8 @@ def compute_market_score(index_summary, stats_summary):
         apply(f"跌幅 {abs(change_pct):.2f}%（<1%）且成交量縮", 5)
         notes.append("下跌 < 1% 且 成交量縮，尚未恐慌")
 
-    ma5 = ma.get(5)
-    if change_pct is not None and change_pct >= 1.5 and ma5 and ma5.get("close_vs_ma") == "漲過":
-        apply(f"漲幅 {change_pct:.2f}%（>=1.5%）且站上5日線", 5)
+    if bias5 is not None and -1.5 <= bias5 < 0:
+        apply(f"5MA乖離率 {bias5:+.2f}%（現價距5日線不到1.5%，上漲1.5%即可站上）", 5)
         notes.append("若上漲 1.5% 就可以漲超過五日線，可觀察震盪狀況，看是否很快站回")
 
     ratio = stats_summary.get("margin_maintenance_ratio")
