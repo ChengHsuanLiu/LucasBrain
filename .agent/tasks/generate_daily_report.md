@@ -15,7 +15,8 @@
    * 計算 5/20/60 均線(斜率/股價位置/乖離率)、KD、MACD，並偵測黃金/死亡交叉與簡化版背離。
    * 透過 TWSE/TPEx 官方 Open API 加總融資餘額（上市/上櫃分開），並抓取 FinMind 融資維持率。
    * 透過 FinMind 抓取三大法人現貨買賣超（外資/投信/自營商細分）與外資台指期未平倉。
-   * 透過 Statementdog 公開熱力圖API，抓取當日/近1週/近1月漲幅前3名的概念族群
+   * 透過 Fugle 熱力圖公開API（上市IX0001／上櫃IX0043），用個股列的市值權重加權
+     平均漲跌幅算出當日/近1週漲幅前3名產業，並列出各產業內領漲前3檔個股
      （不限資料庫既有個股）。
    * 讀取 `.agent/data/whale_positions.csv`，列出各大戶當日買進/賣出重點（首次記錄
      顯示總持股數與市值；有前次快照可比較時列出新建倉/出清/加碼/減碼前3大），彙整
@@ -41,7 +42,8 @@
 ## 🔗 共用模組
 
 * `lib/market_data.py`：大盤指數/技術指標/融資/三大法人/外資期貨的資料抓取與計算。
-* `lib/sector_trend.py`：Statementdog 公開熱力圖API的族群漲跌幅抓取與排序。
+* `lib/sector_trend.py`：Fugle 熱力圖公開API的產業漲跌幅計算（個股市值權重加權平均）
+  與族群內領漲個股排序。
 * `lib/whale_tracking.py`：大戶持股時間序列存取、部位變化比對、共識標的計算。
 * `lib/stock_signals.py`：個股目標價（隔年EPS×概念FPE）/期望值/5日線站上與扣抵值訊號計算。
 * `lib/report_pdf.py`：Markdown -> PDF 產生器，與 `generate_stock_report.py`／

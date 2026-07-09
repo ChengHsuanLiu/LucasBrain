@@ -38,7 +38,7 @@ from lib.whale_tracking import (
     compute_position_deltas,
     get_consensus_stocks_latest,
 )
-from lib.sector_trend import top_gaining_sectors
+from lib.sector_trend import top_gaining_industries_with_stocks, TWSE_SYMBOL, TPEX_SYMBOL
 from lib.report_pdf import render_markdown_to_pdf
 
 OUTPUT_DIR = r"C:\Users\User\Desktop\LucasBrain\30_Projects\Daily_Report"
@@ -192,45 +192,50 @@ def build_futures_section():
     return lines
 
 
+def _format_industry_rows(top_industries):
+    lines = ["| 排名 | 產業 | 漲跌幅 | 族群內領漲個股 |", "| :--- | :--- | :--- | :--- |"]
+    for i, ind in enumerate(top_industries, 1):
+        stocks_str = "、".join(
+            f"{s['symbol']}{s['name']}({s['change_pct']:+.2f}%)" for s in ind["top_stocks"]
+        ) or "-"
+        lines.append(f"| {i} | {ind['name']} | {ind['change_pct']:+.2f}% | {stocks_str} |")
+    return lines
+
+
 def build_sector_trend_section():
     lines = ["### 二、股票族群情況", ""]
 
-    lines.append("#### 當日強勢族群 Top 3（不限資料庫股票）")
-    lines.append("")
-    try:
-        today_top = top_gaining_sectors("1day", top_n=3)
-        if today_top:
-            lines.append("| 排名 | 族群 | 漲幅 |")
-            lines.append("| :--- | :--- | :--- |")
-            for i, s in enumerate(today_top, 1):
-                lines.append(f"| {i} | {s['name']} | {s['diff_percentage']:+.2f}% |")
-        else:
-            lines.append("*今日無明顯強勢族群。*")
-    except Exception as e:
-        lines.append(f"*抓取失敗 ({e})*")
-    lines.append("")
-
-    lines.append("#### 近幾日強勢族群 Top 3")
-    lines.append("")
-    for period, label in [("1week", "近1週"), ("1month", "近1月")]:
-        lines.append(f"**{label}**")
+    for market_label, market_symbol in [("上市", TWSE_SYMBOL), ("上櫃", TPEX_SYMBOL)]:
+        lines.append(f"#### 當日強勢族群 Top 3（{market_label}，不限資料庫股票）")
         lines.append("")
         try:
-            top = top_gaining_sectors(period, top_n=3)
+            top = top_gaining_industries_with_stocks(market_symbol, period=None)
             if top:
-                lines.append("| 排名 | 族群 | 漲幅 |")
-                lines.append("| :--- | :--- | :--- |")
-                for i, s in enumerate(top, 1):
-                    lines.append(f"| {i} | {s['name']} | {s['diff_percentage']:+.2f}% |")
+                lines.extend(_format_industry_rows(top))
             else:
-                lines.append(f"*{label}無明顯強勢族群。*")
+                lines.append("*今日無明顯強勢族群。*")
+        except Exception as e:
+            lines.append(f"*抓取失敗 ({e})*")
+        lines.append("")
+
+    lines.append("#### 近1週強勢族群 Top 3")
+    lines.append("")
+    for market_label, market_symbol in [("上市", TWSE_SYMBOL), ("上櫃", TPEX_SYMBOL)]:
+        lines.append(f"**{market_label}**")
+        lines.append("")
+        try:
+            top = top_gaining_industries_with_stocks(market_symbol, period="1w")
+            if top:
+                lines.extend(_format_industry_rows(top))
+            else:
+                lines.append(f"*{market_label}近1週無明顯強勢族群。*")
         except Exception as e:
             lines.append(f"*抓取失敗 ({e})*")
         lines.append("")
 
     lines.append(
-        "> **註**：資料來源為 Statementdog 公開市場熱力圖 API，涵蓋全市場概念股標籤，"
-        "不限於本資料庫已建檔個股。"
+        "> **註**：資料來源為 Fugle 熱力圖公開API，產業表現以個股市值權重加權平均漲跌幅計算，"
+        "涵蓋全市場個股（不限於本資料庫已建檔個股）；領漲個股僅取當期有成交量者。"
     )
     lines.append("")
 
