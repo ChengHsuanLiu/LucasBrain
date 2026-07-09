@@ -385,3 +385,8 @@
 - 討論後確認：`20_Garden/概念股FPE合理區間.md`（純粹是腳本讀取的FPE參數表，非敘事型產業知識）適合移動至 `97_Settings/`；但 `20_Garden/大戶籌碼追蹤.md` 屬於腳本每次執行就覆蓋的即時動態彙總儀表板，非規則/設定定義，建議維持留在 `20_Garden/`（未移動）。
 - 執行：將 `20_Garden/概念股FPE合理區間.md` 移至 `97_Settings/概念股FPE合理區間.md`；更新 `lib/stock_signals.py` 的 `FPE_TABLE_PATH` 常數與 `.agent/tasks/generate_daily_report.md` 內文的路徑引用；`generate_daily_report.py` 內對此檔案的引用皆為 WikiLink（依檔名解析，不受資料夾異動影響），無需修改。新增 `index.md` 的「⚙️ 系統設定 (Settings)」區塊列出兩份 97_Settings 文件；`SCHEMA.md` 新增 `97_Settings/` 目錄定義，並說明與 `20_Garden/` 的判斷依據（腳本讀取的設定/公式 vs. 敘事研究筆記 vs. 即時動態彙總）。
 - 已重新產生報告驗證：`load_concept_fpe_table()` 成功從新路徑讀取18筆概念分類資料，DailyReport「三、大戶共識標的」的目標價上緣/PROI計算不受影響，正確產出。
+
+## [2026-07-10] feat | 族群內領漲個股不足兩檔時，整個產業列不顯示 | 影響 [[SCHEMA]]
+- `_format_industry_rows()`：延續前一輪「僅列出漲幅超過產業平均者」的過濾規則，新增判斷——若一個產業經過濾後的領漲個股不足兩檔（0或1檔），該產業整列不顯示（不再顯示「-」佔位），排名依實際顯示的產業重新從1連續編號。
+- 已重新產生報告驗證：上市當日強勢族群Top3原本的「資訊服務業」（僅6214精誠一檔超過產業平均+1.93%）已整列消失，原排名3的「光電業」正確遞補為排名2；近1週上市/上櫃Top5亦有產業因同一規則被過濾，顯示筆數少於5筆但排名連續無跳號。
+- 同步更新 `.agent/tasks/generate_daily_report.md` 說明文字。

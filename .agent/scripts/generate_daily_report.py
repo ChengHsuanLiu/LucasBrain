@@ -442,15 +442,20 @@ def build_market_overview_summary(taiex_summary, tpex_summary, stats_summary):
 
 def _format_industry_rows(top_industries):
     lines = ["| 排名 | 產業 | 漲跌幅 | 族群內領漲個股 |", "| :--- | :--- | :--- | :--- |"]
-    for i, ind in enumerate(top_industries, 1):
+    rank = 0
+    for ind in top_industries:
         stock_parts = []
         for s in ind["top_stocks"]:
             if s["change_pct"] <= ind["change_pct"]:
                 continue
             pct_str = f"({s['change_pct']:+.2f}%)"
             stock_parts.append(f"{s['symbol']}**{s['name']}**{pct_str}")
-        stocks_str = " / ".join(stock_parts) or "-"
-        lines.append(f"| {i} | {ind['name']} | {colorize_signed(ind['change_pct'], bold=False)} | {stocks_str} |")
+        if len(stock_parts) < 2:
+            # 族群內領漲個股不足兩檔時，此產業不具備「族群性」上漲的說服力，整列跳過不顯示。
+            continue
+        rank += 1
+        stocks_str = " / ".join(stock_parts)
+        lines.append(f"| {rank} | {ind['name']} | {colorize_signed(ind['change_pct'], bold=False)} | {stocks_str} |")
     return lines
 
 
