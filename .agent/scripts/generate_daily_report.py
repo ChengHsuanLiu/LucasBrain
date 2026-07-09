@@ -96,6 +96,10 @@ DAILY_REPORT_EXTRA_CSS = """
     .flag-red { color: #dc2626; font-weight: 800; }
     .text-blue { color: #2563eb; }
     .text-muted { color: #4b5563; font-weight: 400; }
+    .whale-consensus table th:nth-child(5),
+    .whale-consensus table td:nth-child(5) {
+        min-width: 100px;
+    }
 """
 
 
@@ -501,8 +505,10 @@ def build_whale_section():
         ticker_filepaths = get_tracked_ticker_filepaths()
         target_year = datetime.now().year + 1
 
-        lines.append("| 股票 | 當前價格 | 大戶數 | 持有大戶 | 總市值 | 目標價上緣 | 買進/加碼提醒 | 賣出/減碼提醒 |")
-        lines.append("| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
+        lines.append('<div class="whale-consensus" markdown="1">')
+        lines.append("")
+        lines.append("| 股票 | 當前價格 | 持有大戶 | 總市值 | 目標價上緣 | 買進/加碼提醒 | 賣出/減碼提醒 |")
+        lines.append("| :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
         for c in consensus:
             ticker = c["ticker"]
             tech = None
@@ -531,10 +537,14 @@ def build_whale_section():
                     target_upper_str = f"TP {target_price_upper:,.0f}<br>(PROI {colorize_signed(proi, '{:+.0f}%')})"
 
             whale_letters = "、".join(w.replace("大戶", "") for w in c["whale_ids"])
+            whale_combined = f"{whale_letters}({c['whale_count']}位)"
+            market_value_yi = f"{c['total_market_value'] / 1e8:.1f} 億"
             lines.append(
-                f"| {ticker}<br>{c['name']} | {current_price_str} | {c['whale_count']} | {whale_letters} | "
-                f"{c['total_market_value']:,.0f} | {target_upper_str} | {buy_str} | {sell_str} |"
+                f"| {ticker}<br>{c['name']} | {current_price_str} | {whale_combined} | "
+                f"{market_value_yi} | {target_upper_str} | {buy_str} | {sell_str} |"
             )
+        lines.append("")
+        lines.append('</div>')
     else:
         lines.append("*目前無2位以上大戶同時持有的共識標的。*")
     lines.append("")
