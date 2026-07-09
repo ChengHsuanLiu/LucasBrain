@@ -642,7 +642,7 @@ def build_stock_signals_section():
                 flag_red(reason) if (r["highlight_first_day"] and "首日站上" in reason) else reason
                 for reason in r["reasons"]
             ]
-            reason_str = "；".join(reason_parts) if reason_parts else "-"
+            reason_str = "<br>".join(reason_parts) if reason_parts else "-"
             blurb = extract_investment_blurb(r["filepath"]) or "-"
             lines.append(
                 f"| {r['ticker']}{r['name']} | {r['current_price']:.2f} | {r['target_price']:.2f} | "
@@ -663,7 +663,7 @@ def build_stock_signals_section():
         for r in sell_list:
             target_price_str = f"{r['target_price']:.2f}" if r['target_price'] is not None else "待補充"
             ev_str = colorize_signed(r['expected_value_pct']) if r['expected_value_pct'] is not None else "待補充"
-            reason_str = "；".join(r["reasons"]) if r["reasons"] else "-"
+            reason_str = "<br>".join(r["reasons"]) if r["reasons"] else "-"
             lines.append(
                 f"| {r['ticker']}{r['name']} | {r['current_price']:.2f} | {target_price_str} | "
                 f"{ev_str} | {short_rating_badge(r['ma_rating'])} | {short_rating_badge(r['bias_rating'])} | {reason_str} |"
