@@ -521,10 +521,10 @@ def build_whale_section():
             if tech:
                 buy_reasons = format_5ma_strategy_reasons(tech) + format_60ma_support_reason(tech)
                 if buy_reasons:
-                    buy_str = "/".join(flag_red(text) for text, _ in buy_reasons)
+                    buy_str = "<br>".join(flag_red(text) for text, _ in buy_reasons)
                 sell_reasons = format_sell_reasons(tech)
                 if sell_reasons:
-                    sell_str = "/".join(sell_reasons)
+                    sell_str = "<br>".join(sell_reasons)
 
             target_upper_str = "-"
             filepath = ticker_filepaths.get(ticker)

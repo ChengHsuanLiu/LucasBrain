@@ -127,13 +127,13 @@ tags: [report/daily, market-overview]
 
 **上市**
 
-| 排名 | 產業 | 漲跌幅 | 族群內領漲個股 |
-| :--- | :--- | :--- | :--- |
-| 1 | 貿易百貨 | <span class="num-up" style="font-weight:400;">+3.85%</span> | 2913**農林**<span class="text-muted">(+6.82%)</span> / 2912**統一超**<span class="text-muted">(+5.47%)</span> / 2905**三商**<span class="text-muted">(+4.76%)</span> / 2911**麗嬰房**<span class="text-muted">(+4.26%)</span> / 2939**永邑-KY**<span class="text-muted">(+2.64%)</span> |
-| 2 | 金融保險 | <span class="num-up" style="font-weight:400;">+3.69%</span> | 2887**台新新光金**<span class="text-muted">(+11.67%)</span> / 2883**凱基金**<span class="text-muted">(+7.71%)</span> / 2889**國票金**<span class="text-muted">(+6.76%)</span> / 2880**華南金**<span class="text-muted">(+6.15%)</span> / 2892**第一金**<span class="text-muted">(+4.67%)</span> |
-| 3 | 資訊服務業 | <span class="num-up" style="font-weight:400;">+2.69%</span> | 6214**精誠**<span class="text-muted">(+8.71%)</span> / 2427**三商電**<span class="text-muted">(+4.12%)</span> / 4994**傳奇**<span class="text-muted">(+1.22%)</span> / 3029**零壹**<span class="text-muted">(+0.98%)</span> / 6183**關貿**<span class="text-muted">(+0.67%)</span> |
-| 4 | 橡膠工業 | <span class="num-up" style="font-weight:400;">+2.48%</span> | 2103**台橡**<span class="text-muted">(+7.71%)</span> / 2101**南港**<span class="text-muted">(+5.26%)</span> / 2102**泰豐**<span class="text-muted">(+3.81%)</span> / 2105**正新**<span class="text-muted">(+2.21%)</span> / 2108**南帝**<span class="text-muted">(+1.58%)</span> |
-| 5 | 油電燃氣業 | <span class="num-up" style="font-weight:400;">+2.14%</span> | 8926**台汽電**<span class="text-muted">(+4.11%)</span> / 6505**台塑化**<span class="text-muted">(+2.08%)</span> / 9918**欣天然**<span class="text-muted">(+1.51%)</span> / 2616**山隆**<span class="text-muted">(+1.11%)</span> / 9931**欣高**<span class="text-muted">(+0.45%)</span> |
+| 排名  | 產業    | 漲跌幅                                                         | 族群內領漲個股                                                                                                                                                                                                                                                                        |
+| :-- | :---- | :---------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | 貿易百貨  | <span class="num-up" style="font-weight:400;">+3.85%</span> | 2913**農林**<span class="text-muted">(+6.82%)</span> / 2912**統一超**<span class="text-muted">(+5.47%)</span> / 2905**三商**<span class="text-muted">(+4.76%)</span> / 2911**麗嬰房**<span class="text-muted">(+4.26%)</span> / 2939**永邑-KY**<span class="text-muted">(+2.64%)</span>    |
+| 2   | 金融保險  | <span class="num-up" style="font-weight:400;">+3.69%</span> | 2887**台新新光金**<span class="text-muted">(+11.67%)</span> / 2883**凱基金**<span class="text-muted">(+7.71%)</span> / 2889**國票金**<span class="text-muted">(+6.76%)</span> / 2880**華南金**<span class="text-muted">(+6.15%)</span> / 2892**第一金**<span class="text-muted">(+4.67%)</span> |
+| 3   | 資訊服務業 | <span class="num-up" style="font-weight:400;">+2.69%</span> | 6214**精誠**<span class="text-muted">(+8.71%)</span> / 2427**三商電**<span class="text-muted">(+4.12%)</span> / 4994**傳奇**<span class="text-muted">(+1.22%)</span> / 3029**零壹**<span class="text-muted">(+0.98%)</span> / 6183**關貿**<span class="text-muted">(+0.67%)</span>        |
+| 4   | 橡膠工業  | <span class="num-up" style="font-weight:400;">+2.48%</span> | 2103**台橡**<span class="text-muted">(+7.71%)</span> / 2101**南港**<span class="text-muted">(+5.26%)</span> / 2102**泰豐**<span class="text-muted">(+3.81%)</span> / 2105**正新**<span class="text-muted">(+2.21%)</span> / 2108**南帝**<span class="text-muted">(+1.58%)</span>         |
+| 5   | 油電燃氣業 | <span class="num-up" style="font-weight:400;">+2.14%</span> | 8926**台汽電**<span class="text-muted">(+4.11%)</span> / 6505**台塑化**<span class="text-muted">(+2.08%)</span> / 9918**欣天然**<span class="text-muted">(+1.51%)</span> / 2616**山隆**<span class="text-muted">(+1.11%)</span> / 9931**欣高**<span class="text-muted">(+0.45%)</span>      |
 
 **上櫃**
 
@@ -164,18 +164,18 @@ tags: [report/daily, market-overview]
 
 | 股票 | 當前價格 | 持有大戶 | 總市值 | 目標價上緣 | 買進/加碼提醒 | 賣出/減碼提醒 |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 2303<br>聯電 | 156.00 | A、B、C、F(4位) | 1.3 億 | TP 300<br>(PROI <span class="num-up">+92%</span>) | - | 跌破5日線/5日線下彎 |
-| 3443<br>創意 | 4340.00 | B、C、F(3位) | 3.3 億 | TP 5,745<br>(PROI <span class="num-up">+32%</span>) | - | 跌破5日線/5日線下彎 |
+| 2303<br>聯電 | 156.00 | A、B、C、F(4位) | 1.3 億 | TP 300<br>(PROI <span class="num-up">+92%</span>) | - | 跌破5日線<br>5日線下彎 |
+| 3443<br>創意 | 4340.00 | B、C、F(3位) | 3.3 億 | TP 5,745<br>(PROI <span class="num-up">+32%</span>) | - | 跌破5日線<br>5日線下彎 |
 | 3450<br>聯鈞 | 502.00 | A、B、C(3位) | 1.2 億 | TP 742<br>(PROI <span class="num-up">+48%</span>) | <span class="flag-red">5日線上彎</span> | 跌破5日線 |
 | 8299<br>群聯 | 2220.00 | A、C(2位) | 2.6 億 | - | <span class="flag-red">首日站上5日線</span> | 5日線下彎 |
-| 3653<br>健策 | 3205.00 | B、E(2位) | 2.0 億 | - | - | 跌破5日線/5日線下彎/20日線(月線)下彎 |
-| 2493<br>揚博 | 274.00 | A、C(2位) | 1.8 億 | - | - | 跌破5日線/5日線下彎 |
-| 2330<br>台積電 | 2415.00 | A、F(2位) | 1.0 億 | TP 4,290<br>(PROI <span class="num-up">+78%</span>) | - | 跌破5日線/5日線下彎 |
-| 6683<br>雍智科技 | 1725.00 | A、C(2位) | 0.9 億 | - | - | 跌破5日線/5日線下彎 |
-| 2308<br>台達電 | 1880.00 | B、F(2位) | 0.9 億 | - | - | 跌破5日線/5日線下彎/20日線(月線)下彎 |
-| 2454<br>聯發科 | 3925.00 | C、F(2位) | 0.9 億 | TP 4,941<br>(PROI <span class="num-up">+26%</span>) | - | 跌破5日線/5日線下彎/20日線(月線)下彎 |
-| 7734<br>印能科技 | 2835.00 | B、E(2位) | 0.4 億 | - | - | 跌破5日線/5日線下彎/20日線(月線)下彎 |
-| 2327<br>國巨 | 900.00 | B、F(2位) | 0.3 億 | TP 1,167<br>(PROI <span class="num-up">+30%</span>) | - | 跌破5日線/5日線下彎 |
+| 3653<br>健策 | 3205.00 | B、E(2位) | 2.0 億 | - | - | 跌破5日線<br>5日線下彎<br>20日線(月線)下彎 |
+| 2493<br>揚博 | 274.00 | A、C(2位) | 1.8 億 | - | - | 跌破5日線<br>5日線下彎 |
+| 2330<br>台積電 | 2415.00 | A、F(2位) | 1.0 億 | TP 4,290<br>(PROI <span class="num-up">+78%</span>) | - | 跌破5日線<br>5日線下彎 |
+| 6683<br>雍智科技 | 1725.00 | A、C(2位) | 0.9 億 | - | - | 跌破5日線<br>5日線下彎 |
+| 2308<br>台達電 | 1880.00 | B、F(2位) | 0.9 億 | - | - | 跌破5日線<br>5日線下彎<br>20日線(月線)下彎 |
+| 2454<br>聯發科 | 3925.00 | C、F(2位) | 0.9 億 | TP 4,941<br>(PROI <span class="num-up">+26%</span>) | - | 跌破5日線<br>5日線下彎<br>20日線(月線)下彎 |
+| 7734<br>印能科技 | 2835.00 | B、E(2位) | 0.4 億 | - | - | 跌破5日線<br>5日線下彎<br>20日線(月線)下彎 |
+| 2327<br>國巨 | 900.00 | B、F(2位) | 0.3 億 | TP 1,167<br>(PROI <span class="num-up">+30%</span>) | - | 跌破5日線<br>5日線下彎 |
 
 </div>
 
