@@ -27,7 +27,9 @@ from lib.market_data import (
     fetch_margin_maintenance_ratio,
     fetch_institutional_investors_total,
     fetch_foreign_futures_position,
+    compute_market_score,
     INDEX_MA_PERIODS,
+    MARKET_SCORE_BASE,
 )
 from lib.stock_signals import (
     load_concept_fpe_table,
@@ -256,6 +258,13 @@ def build_index_section(title, index_id, lookback_days=200):
         "spread": spread,
         "change_pct": change_pct,
         "vol_trend": vol_trend,
+        "ma": ma,
+        "bias": bias,
+        "vol_ma": vol_ma,
+        "kd_direction": kd_direction_label,
+        "macd_direction": macd_direction_label,
+        "kd_divergence": kd_divergence,
+        "macd_divergence": macd_divergence,
     }
     return lines, summary
 
@@ -290,6 +299,7 @@ def build_market_stats_section():
             prev_maint = maint[-2] if len(maint) >= 2 else None
             change_str = f"（{colorize_signed(latest_maint['ratio'] - prev_maint['ratio'], '{:+.2f}pp')}）" if prev_maint else ""
             lines.append(f"* 維持率：{latest_maint['ratio']:.2f}%{change_str}")
+            summary["margin_maintenance_ratio"] = latest_maint["ratio"]
     except Exception as e:
         lines.append(f"* 維持率：抓取失敗 ({e})")
     lines.append("")
@@ -396,6 +406,22 @@ def build_market_overview_summary(taiex_summary, tpex_summary, stats_summary):
 
     lines.append("、".join(parts) + f"，{verdict}。")
     lines.append("")
+
+    if taiex_summary:
+        score, reasons = compute_market_score(taiex_summary, stats_summary)
+        score_delta = score - MARKET_SCORE_BASE
+        lines.append(
+            f"**大盤分數（以加權指數為基準，起始 {MARKET_SCORE_BASE} 分）：{score} 分**"
+            f"（{colorize_signed(score_delta, '{:+d}')}）"
+        )
+        lines.append("")
+        if reasons:
+            for text, delta in reasons:
+                lines.append(f"* {text}：{colorize_signed(delta, '{:+d}分')}")
+        else:
+            lines.append("* 各項條件皆未觸發加減分。")
+        lines.append("")
+
     return lines
 
 

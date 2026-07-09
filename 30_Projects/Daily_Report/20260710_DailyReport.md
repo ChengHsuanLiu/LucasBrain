@@ -103,6 +103,18 @@ tags: [report/daily, market-overview]
 
 加權指數下跌0.83%（量縮）、櫃買指數上漲0.85%（量縮）、三大法人合計賣超350.2億、外資台指期偏空留倉 80,730 口、融資餘額增加，整體偏空。
 
+**大盤分數（以加權指數為基準，起始 80 分）：40 分**（<span class="num-down">-40</span>）
+
+* 跌幅 0.83%（<2%）：<span class="num-down">-5分</span>
+* 5MA下彎：<span class="num-down">-10分</span>
+* 5MA跌破：<span class="num-down">-5分</span>
+* 20MA跌破：<span class="num-down">-10分</span>
+* 20MA上彎：<span class="num-up">+5分</span>
+* 60MA上彎：<span class="num-up">+5分</span>
+* KD交叉往下：<span class="num-down">-5分</span>
+* MACD交叉往下：<span class="num-down">-5分</span>
+* 成交量跌破五日均量線：<span class="num-down">-10分</span>
+
 <div class="step-page-break"></div>
 
 ### 二、股票族群情況
@@ -127,13 +139,13 @@ tags: [report/daily, market-overview]
 
 **上市**
 
-| 排名  | 產業    | 漲跌幅                                                         | 族群內領漲個股                                                                                                                                                                                                                                                                        |
-| :-- | :---- | :---------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | 貿易百貨  | <span class="num-up" style="font-weight:400;">+3.85%</span> | 2913**農林**<span class="text-muted">(+6.82%)</span> / 2912**統一超**<span class="text-muted">(+5.47%)</span> / 2905**三商**<span class="text-muted">(+4.76%)</span> / 2911**麗嬰房**<span class="text-muted">(+4.26%)</span> / 2939**永邑-KY**<span class="text-muted">(+2.64%)</span>    |
-| 2   | 金融保險  | <span class="num-up" style="font-weight:400;">+3.69%</span> | 2887**台新新光金**<span class="text-muted">(+11.67%)</span> / 2883**凱基金**<span class="text-muted">(+7.71%)</span> / 2889**國票金**<span class="text-muted">(+6.76%)</span> / 2880**華南金**<span class="text-muted">(+6.15%)</span> / 2892**第一金**<span class="text-muted">(+4.67%)</span> |
-| 3   | 資訊服務業 | <span class="num-up" style="font-weight:400;">+2.69%</span> | 6214**精誠**<span class="text-muted">(+8.71%)</span> / 2427**三商電**<span class="text-muted">(+4.12%)</span> / 4994**傳奇**<span class="text-muted">(+1.22%)</span> / 3029**零壹**<span class="text-muted">(+0.98%)</span> / 6183**關貿**<span class="text-muted">(+0.67%)</span>        |
-| 4   | 橡膠工業  | <span class="num-up" style="font-weight:400;">+2.48%</span> | 2103**台橡**<span class="text-muted">(+7.71%)</span> / 2101**南港**<span class="text-muted">(+5.26%)</span> / 2102**泰豐**<span class="text-muted">(+3.81%)</span> / 2105**正新**<span class="text-muted">(+2.21%)</span> / 2108**南帝**<span class="text-muted">(+1.58%)</span>         |
-| 5   | 油電燃氣業 | <span class="num-up" style="font-weight:400;">+2.14%</span> | 8926**台汽電**<span class="text-muted">(+4.11%)</span> / 6505**台塑化**<span class="text-muted">(+2.08%)</span> / 9918**欣天然**<span class="text-muted">(+1.51%)</span> / 2616**山隆**<span class="text-muted">(+1.11%)</span> / 9931**欣高**<span class="text-muted">(+0.45%)</span>      |
+| 排名 | 產業 | 漲跌幅 | 族群內領漲個股 |
+| :--- | :--- | :--- | :--- |
+| 1 | 貿易百貨 | <span class="num-up" style="font-weight:400;">+3.85%</span> | 2913**農林**<span class="text-muted">(+6.82%)</span> / 2912**統一超**<span class="text-muted">(+5.47%)</span> / 2905**三商**<span class="text-muted">(+4.76%)</span> / 2911**麗嬰房**<span class="text-muted">(+4.26%)</span> / 2939**永邑-KY**<span class="text-muted">(+2.64%)</span> |
+| 2 | 金融保險 | <span class="num-up" style="font-weight:400;">+3.69%</span> | 2887**台新新光金**<span class="text-muted">(+11.67%)</span> / 2883**凱基金**<span class="text-muted">(+7.71%)</span> / 2889**國票金**<span class="text-muted">(+6.76%)</span> / 2880**華南金**<span class="text-muted">(+6.15%)</span> / 2892**第一金**<span class="text-muted">(+4.67%)</span> |
+| 3 | 資訊服務業 | <span class="num-up" style="font-weight:400;">+2.69%</span> | 6214**精誠**<span class="text-muted">(+8.71%)</span> / 2427**三商電**<span class="text-muted">(+4.12%)</span> / 4994**傳奇**<span class="text-muted">(+1.22%)</span> / 3029**零壹**<span class="text-muted">(+0.98%)</span> / 6183**關貿**<span class="text-muted">(+0.67%)</span> |
+| 4 | 橡膠工業 | <span class="num-up" style="font-weight:400;">+2.48%</span> | 2103**台橡**<span class="text-muted">(+7.71%)</span> / 2101**南港**<span class="text-muted">(+5.26%)</span> / 2102**泰豐**<span class="text-muted">(+3.81%)</span> / 2105**正新**<span class="text-muted">(+2.21%)</span> / 2108**南帝**<span class="text-muted">(+1.58%)</span> |
+| 5 | 油電燃氣業 | <span class="num-up" style="font-weight:400;">+2.14%</span> | 8926**台汽電**<span class="text-muted">(+4.11%)</span> / 6505**台塑化**<span class="text-muted">(+2.08%)</span> / 9918**欣天然**<span class="text-muted">(+1.51%)</span> / 2616**山隆**<span class="text-muted">(+1.11%)</span> / 9931**欣高**<span class="text-muted">(+0.45%)</span> |
 
 **上櫃**
 
@@ -156,7 +168,7 @@ tags: [report/daily, market-overview]
 * **大戶C**（2026-07-09）：首次記錄，尚無前次快照可比較（共 8 檔持股，總市值 957,850,000）
 * **大戶D**（2026-07-09）：首次記錄，尚無前次快照可比較（共 6 檔持股，總市值 610,038,000）
 * **大戶E**（2026-07-09）：首次記錄，尚無前次快照可比較（共 5 檔持股，總市值 395,495,300）
-* **大戶F**（2026-07-08）：首次記錄，尚無前次快照可比較（共 16 檔持股，總市值 275,143,200）
+* **大戶F**（2026-07-09）：新建倉［已追蹤］ 6213聯茂（市值 13,158,000）；減碼 8150南茂（<span class="num-down">-40,000股</span>）；減碼［已追蹤］ 8046南電（<span class="num-down">-10,000股</span>）；減碼［已追蹤］ 3374精材（<span class="num-down">-4,000股</span>）
 
 #### 共識標的（2位以上大戶同時持有）
 
@@ -187,6 +199,7 @@ tags: [report/daily, market-overview]
 
 | 股票 | 現價 | 目標價 | 期望值 | 均線評分 | 乖離評分 | 觸發原因 | 投資簡述 |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 6669緯穎 | 5040.00 | 15035.00 | <span class="num-up">+198.31%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 急跌至上升中的60日均線支撐 | 高整合 Total Solution 能力：擁有整合晶片設計（與 3443創意、世芯 合作）、光學引擎、機櫃光纖布線與散熱的完整方案。 |
 | 3595山太士 | 2505.00 | 5565.00 | <span class="num-up">+122.16%</span> | <span class="num-up">佳</span> | <span class="num-up">佳</span> | <span class="flag-red">首日站上5日線</span>；5日線上彎；急跌至上升中的60日均線支撐 | 先進封裝應力平衡獨門絕技：Balance Film 藉由平衡封裝應力而非強行壓平，解決了先進封裝與下一代 TGV 玻璃基板 debond 後釋放應力產生的 R… |
 | 4764雙鍵 | 336.00 | 673.14 | <span class="num-up">+100.34%</span> | <span class="num-up">佳</span> | <span class="num-up">佳</span> | 已站上5日線；5日線上彎 | 配方改質與前段加工優勢：雙鍵不只做改性，還做前置 Pre-prep 的前段部分，是台廠中極具規模的高階 CCL 樹脂供應商。 |
 | 6696仁新醫藥 | 612.00 | 1050.00 | <span class="num-up">+71.57%</span> | <span class="num-up">佳</span> | <span class="num-up">佳</span> | 已站上5日線；5日線上彎 | 眼科獨角獸與抗癌新星： |
@@ -199,10 +212,10 @@ tags: [report/daily, market-overview]
 | 3026禾伸堂 | 1005.00 | 755.70 | <span class="num-down">-24.81%</span> | <span class="num-up">佳</span> | <span class="num-up">佳</span> | 期望值-24.8% < 25%，逢高減碼 |
 | 8046南電 | 1215.00 | 1081.70 | <span class="num-down">-10.97%</span> | <span class="num-up">佳</span> | <span class="num-up">佳</span> | 期望值-11.0% < 25%，逢高減碼 |
 | 2383台光電 | 5295.00 | 5025.00 | <span class="num-down">-5.10%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值-5.1% < 25%，逢高減碼；期望值-5.1% < 50%且已跌破5日線 |
+| 3363上詮 | 608.00 | 588.39 | <span class="num-down">-3.23%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值-3.2% < 25%，逢高減碼 |
 | 6182合晶 | 172.50 | 195.00 | <span class="num-up">+13.04%</span> | <span class="num-up">佳</span> | <span class="num-up">佳</span> | 期望值+13.0% < 25%，逢高減碼 |
 | 6515穎崴 | 7765.00 | 8962.00 | <span class="num-up">+15.42%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+15.4% < 25%，逢高減碼；期望值+15.4% < 50%且已跌破5日線 |
 | 3189景碩 | 795.00 | 924.70 | <span class="num-up">+16.31%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+16.3% < 25%，逢高減碼 |
-| 3665貿聯 | 1865.00 | 2213.10 | <span class="num-up">+18.66%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+18.7% < 25%，逢高減碼；期望值+18.7% < 50%且已跌破5日線 |
 | 4722國精化 | 256.50 | 306.45 | <span class="num-up">+19.47%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+19.5% < 25%，逢高減碼；期望值+19.5% < 50%且已跌破5日線 |
 | 2454聯發科 | 3925.00 | 4941.21 | <span class="num-up">+25.89%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+25.9% < 50%且已跌破5日線 |
 | 8358金居 | 533.00 | 688.35 | <span class="num-up">+29.15%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+29.1% < 50%且已跌破5日線 |
@@ -213,6 +226,5 @@ tags: [report/daily, market-overview]
 | 3017奇鋐 | 2350.00 | 3263.70 | <span class="num-up">+38.88%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+38.9% < 50%且已跌破5日線 |
 | 2492華新科 | 465.50 | 675.00 | <span class="num-up">+45.01%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+45.0% < 50%且已跌破5日線 |
 | 3450聯鈞 | 502.00 | 742.50 | <span class="num-up">+47.91%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+47.9% < 50%且已跌破5日線 |
-| 2345智邦 | 2470.00 | 3691.05 | <span class="num-up">+49.44%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+49.4% < 50%且已跌破5日線 |
 
-> **註**：目標價 = 隔年(2027)預估EPS × 所屬概念股FPE上緣（同屬多個概念取平均，見 `[[概念股FPE合理區間]]`）；期望值 = (目標價/現價 - 1)。不含非台股標的（如 .SH/.HK）。目前資料庫 76 檔個股中有 6 檔缺EPS預估或概念分類，標記為「待補充」，未納入買賣訊號判定。
+> **註**：目標價 = 隔年(2027)預估EPS × 所屬概念股FPE上緣（同屬多個概念取平均，見 `[[概念股FPE合理區間]]`）；期望值 = (目標價/現價 - 1)。不含非台股標的（如 .SH/.HK）。目前資料庫 82 檔個股中有 12 檔缺EPS預估或概念分類，標記為「待補充」，未納入買賣訊號判定。

@@ -20,6 +20,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from stock_metrics import _finmind_request, calculate_ma, CREDENTIALS_PATH
 
 INDEX_MA_PERIODS = [5, 20, 60]
+MARKET_SCORE_BASE = 80
 
 
 # ==========================================
@@ -332,3 +333,78 @@ def fetch_foreign_futures_position(start_date, futures_id="TX", credentials_path
         short_oi = r.get("short_open_interest_balance_volume", 0)
         out.append({"date": r["date"], "long_oi": long_oi, "short_oi": short_oi, "net_oi": long_oi - short_oi})
     return out
+
+
+# ==========================================
+# 7. 大盤分數 (綜合漲跌/乖離/均線/動能/成交量/籌碼六大類的簡化評分)
+# ==========================================
+def compute_market_score(index_summary, stats_summary):
+    """以 MARKET_SCORE_BASE(80分) 為基準，依 index_summary(單一指數的漲跌%/均線/乖離/
+    KD·MACD方向與背離/成交量趨勢與均量位置) 與 stats_summary(融資維持率) 逐項加減分。
+    回傳 (score, reasons)，reasons 為 [(說明文字, 分數增減)] 依檢查順序排列。"""
+    score = MARKET_SCORE_BASE
+    reasons = []
+
+    def apply(text, delta):
+        nonlocal score
+        score += delta
+        reasons.append((text, delta))
+
+    change_pct = index_summary.get("change_pct")
+    if change_pct is not None and change_pct < 0:
+        decline = abs(change_pct)
+        if decline >= 5:
+            apply(f"跌幅 {decline:.2f}%（>=5%）", -10)
+        elif decline >= 2:
+            apply(f"跌幅 {decline:.2f}%（2%~5%）", -8)
+        else:
+            apply(f"跌幅 {decline:.2f}%（<2%）", -5)
+
+    bias5 = (index_summary.get("bias") or {}).get(5)
+    if bias5 is not None:
+        if bias5 > 5:
+            apply(f"5MA乖離率 {bias5:+.2f}%（>5%）", -10)
+        elif bias5 < -5:
+            apply(f"5MA乖離率 {bias5:+.2f}%（<-5%）", 5)
+
+    ma = index_summary.get("ma") or {}
+    for period, delta_down, delta_break in ((5, -10, -5), (20, -10, -10), (60, -15, -15)):
+        m = ma.get(period)
+        if not m or m.get("val") is None:
+            continue
+        if m.get("slope") == "下彎":
+            apply(f"{period}MA下彎", delta_down)
+        if m.get("close_vs_ma") == "跌破":
+            apply(f"{period}MA跌破", delta_break)
+    for period in (20, 60):
+        m = ma.get(period)
+        if m and m.get("slope") == "上彎":
+            apply(f"{period}MA上彎", 5)
+
+    if index_summary.get("kd_direction") == "交叉往下":
+        apply("KD交叉往下", -5)
+    if index_summary.get("macd_direction") == "交叉往下":
+        apply("MACD交叉往下", -5)
+    if index_summary.get("kd_divergence") == "top_bearish":
+        apply("KD高檔背離", -10)
+    if index_summary.get("macd_divergence") == "top_bearish":
+        apply("MACD高檔背離", -10)
+
+    vol_trend = index_summary.get("vol_trend")
+    if change_pct is not None and vol_trend == "量增":
+        if change_pct < 0:
+            apply("指數下跌且成交量增", -5)
+        else:
+            apply("指數上漲且成交量增", 5)
+    vol_ma = index_summary.get("vol_ma") or {}
+    if vol_ma.get("position") == "跌破":
+        apply("成交量跌破五日均量線", -10)
+
+    ratio = stats_summary.get("margin_maintenance_ratio")
+    if ratio is not None:
+        if ratio > 195:
+            apply(f"融資維持率 {ratio:.2f}%（>195%）", -10)
+        elif ratio < 180:
+            apply(f"融資維持率 {ratio:.2f}%（<180%）", 15)
+
+    return score, reasons

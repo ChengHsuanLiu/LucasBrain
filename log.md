@@ -346,3 +346,9 @@
 - **更新 `[[CoPoS與玻璃基板]]` 產業頁面**：新增大摩「AI Supply Chain: 2027 CoWoS Allocation and ASIC Dynamics」(AMD 2027 CoWoS配額240k、MI455/MI450出貨結構)、「GB200/300 NVL72月度追蹤」(廣達/緯創機櫃出貨數據)、「Connecting Dots」(CoPoS/T-Glass/FAU供應鏈全景)三份報告的時間軸摘要，並補上台積電CoWoS產能上修與CoPoS 2029接棒CoWoS/SoIC的時程判斷。
 - 兩份外電綜合整理文字檔（7/6、7/7）歸檔至 `98_Archives/Fund_Company_Memo/`；24份法人研報PDF歸檔至 `98_Archives/Research_Report/`。其中 Chroma/E Ink Holdings(8069)/Taiwan Machinery Automation(日系FA調研)/Taiwan ODM-Brands 3個月展望等報告因與現有追蹤個股關聯度較低（或已透過其他新建筆記引用其部分內容），僅作歸檔存查未逐一另建個股頁面。
 - 更新 `index.md` 個股數量統計 (82→86檔) 與最後更新時間。
+
+## [2026-07-10] feat | DailyReport 新增「大盤分數」量化評分（一、大盤情況總結） | 影響 [[SCHEMA]]
+- 新增 `lib/market_data.py` 的 `compute_market_score(index_summary, stats_summary)`：以加權指數為評分基準，80分為起始分數，依使用者提供的六大類規則逐項加減分——(1)跌幅：<2%/-5、2~5%/-8、>=5%/-10；(2)5MA乖離率：>5%/-10、<-5%/+5；(3)均線：5MA下彎-10/跌破-5，20MA下彎-10/跌破-10/上彎+5，60MA下彎-15/跌破-15/上彎+5；(4)動能指標：KD/MACD交叉往下各-5，KD/MACD高檔背離各-10；(5)成交量：指數下跌且量增-5、指數上漲且量增+5、跌破五日均量線-10；(6)籌碼：融資維持率>195%/-10、<180%/+15。回傳(score, reasons)，reasons為條列的(說明文字,分數增減)供報告逐項列出。
+- `generate_daily_report.py`：`build_index_section()` 的 summary 擴充回傳 ma/bias/vol_ma/kd·macd方向與背離等欄位供評分函式使用；`build_market_stats_section()` 補存 `margin_maintenance_ratio` 至 stats_summary；`build_market_overview_summary()` 在既有大盤總評段落後新增「大盤分數」區塊，顯示總分與相對80分基準的色彩化增減，並逐條列出每項加減分原因。
+- 已用真實資料測試驗證：首次執行時因FinMind尚未更新當日完整資料（收盤價/成交量出現空白佔位列），score計算跳過跌幅/成交量規則，重跑一次後抓到正確的前一交易日資料（加權指數-0.83%），最終算出40分（80-40），逐項核對6大類、8條觸發規則（跌幅-5、5MA下彎-10、5MA跌破-5、20MA跌破-10、20MA上彎+5、60MA上彎+5、KD交叉往下-5、MACD交叉往下-5、成交量跌破五日均量線-10）與PDF顯示皆正確；融資維持率186.67%落在180~195中性區間，正確未觸發任何加減分。
+- 同步修正 `.agent/tasks/generate_daily_report.md` 先前遺漏更新的「概念股FPE中緣」字樣為「FPE上緣」（對應稍早已在程式碼中完成但task doc忘記同步更新的變更）。
