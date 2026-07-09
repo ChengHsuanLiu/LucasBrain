@@ -89,6 +89,20 @@ def compute_volume_trend(ohlc):
     return ("量增" if today_vol > prev_vol else "量縮"), change_pct
 
 
+def compute_volume_ma(ohlc, period=5):
+    """回傳 {ma, ma_prev, slope, position}：period日均量值/前一期均量值/
+    均量斜率(上彎/下彎)/今日成交量相對均量線的位置(站上/跌破)。資料不足時回傳 slope/position 為 "無數據"。"""
+    volumes = [r["volume"] for r in ohlc]
+    n = len(volumes)
+    if n < period + 1:
+        return {"ma": None, "ma_prev": None, "slope": "無數據", "position": "無數據"}
+    ma_val = sum(volumes[-period:]) / period
+    ma_prev = sum(volumes[-period - 1:-1]) / period
+    slope = "上彎" if ma_val > ma_prev else "下彎"
+    position = "站上" if volumes[-1] > ma_val else "跌破"
+    return {"ma": ma_val, "ma_prev": ma_prev, "slope": slope, "position": position}
+
+
 def compute_kd(ohlc, period=9, k_smooth=3, d_smooth=3):
     """標準 KD 指標 (9,3,3)。回傳依日期排序的 [{date, k, d}]，前 period-1 筆因資料不足為 None。"""
     n = len(ohlc)

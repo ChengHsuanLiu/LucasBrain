@@ -17,6 +17,7 @@ from lib.market_data import (
     compute_index_ma,
     compute_bias,
     compute_volume_trend,
+    compute_volume_ma,
     compute_kd,
     compute_macd,
     detect_cross,
@@ -30,6 +31,7 @@ from lib.market_data import (
 )
 from lib.stock_signals import (
     load_concept_fpe_table,
+    get_fpe_range_for_ticker,
     compute_stock_signal,
     compute_technical_signals,
     format_5ma_strategy_reasons,
@@ -42,6 +44,7 @@ from lib.stock_signals import (
     SELL_EV_THRESHOLD_TRIM,
     SELL_EV_THRESHOLD_BREAK_5MA,
 )
+from lib.stock_metrics import parse_target_eps
 from lib.whale_tracking import (
     get_latest_snapshot_per_whale,
     compute_position_deltas,
@@ -53,8 +56,8 @@ from lib.report_pdf import render_markdown_to_pdf
 OUTPUT_DIR = r"C:\Users\User\Desktop\LucasBrain\30_Projects\Daily_Report"
 STOCK_DIR = r"C:\Users\User\Desktop\LucasBrain\10_Stocks"
 
-SECTOR_TOP_N_INDUSTRIES = 5
-SECTOR_TOP_N_STOCKS = 6
+SECTOR_TOP_N_INDUSTRIES = 3
+SECTOR_TOP_N_STOCKS = 5
 
 # 大盤情況區塊(均線/動能指標、融資/法人/期貨)用左右並排的精簡橫式排版，
 # 靠 md_in_html 擴充讓 markdown="1" 的 <div> 內容照常轉表格/清單。
@@ -90,6 +93,8 @@ DAILY_REPORT_EXTRA_CSS = """
     .num-up { color: #d6480f; font-weight: 700; }
     .num-down { color: #15803d; font-weight: 700; }
     .flag-red { color: #dc2626; font-weight: 800; }
+    .text-blue { color: #2563eb; }
+    .text-muted { color: #4b5563; font-weight: 400; }
 """
 
 
@@ -105,6 +110,18 @@ def get_tracked_tickers():
     return tickers
 
 
+def get_tracked_ticker_filepaths():
+    """回傳資料庫 10_Stocks/ 現有個股代號 -> 檔案路徑的對照，供共識標的算「目標價上緣」時查詢EPS用。"""
+    mapping = {}
+    for filename in os.listdir(STOCK_DIR):
+        if not filename.endswith('.md'):
+            continue
+        m = re.match(r'^([0-9]+(?:\.[a-zA-Z0-9]+)?)', filename)
+        if m:
+            mapping[m.group(1)] = os.path.join(STOCK_DIR, filename)
+    return mapping
+
+
 def fmt_pct(v, decimals=2):
     return f"{v:+.{decimals}f}%" if v is not None else "N/A"
 
@@ -113,22 +130,34 @@ def fmt_num(v):
     return f"{v:,.0f}" if v is not None else "N/A"
 
 
-def colorize(text, is_up):
+def colorize(text, is_up, bold=True):
     cls = "num-up" if is_up else "num-down"
-    return f'<span class="{cls}">{text}</span>'
+    style = "" if bold else ' style="font-weight:400;"'
+    return f'<span class="{cls}"{style}>{text}</span>'
 
 
-def colorize_signed(value, fmt="{:+.2f}%", flip=False):
-    """依正負號幫數字上色：預設正值(含0)用亮橘紅色、負值用綠色（本報告全篇「漲橘跌綠」慣例）。"""
+def colorize_signed(value, fmt="{:+.2f}%", flip=False, bold=True):
+    """依正負號幫數字上色：預設正值(含0)用亮橘紅色、負值用綠色（本報告全篇「漲橘跌綠」慣例）。
+    bold=False 時保留顏色但不加粗（用於族群表格等不需要粗體強調的欄位）。"""
     if value is None:
         return "N/A"
     text = fmt.format(value)
     is_up = (value >= 0) if not flip else (value < 0)
-    return colorize(text, is_up)
+    return colorize(text, is_up, bold=bold)
 
 
 def flag_red(text):
     return f'<span class="flag-red">{text}</span>'
+
+
+def flag_blue(text):
+    """均線斜率下彎、或股價位置跌破均線時，用藍色標記凸顯偏弱訊號。"""
+    return f'<span class="text-blue">{text}</span>'
+
+
+def gray_muted(text):
+    """族群內領漲個股的漲跌幅用深灰色淡化顯示，不用漲跌上色慣例（凸顯個股名稱本身）。"""
+    return f'<span class="text-muted">{text}</span>'
 
 
 def short_rating_badge(rating_text):
@@ -148,6 +177,7 @@ def build_index_section(title, index_id, lookback_days=200):
     ma = compute_index_ma(ohlc)
     bias = compute_bias(ohlc)
     vol_trend, vol_change = compute_volume_trend(ohlc)
+    vol_ma = compute_volume_ma(ohlc)
 
     kd = compute_kd(ohlc)
     macd = compute_macd(ohlc)
@@ -170,7 +200,12 @@ def build_index_section(title, index_id, lookback_days=200):
     lines.append(
         f"* **收盤價**：{latest['close']:,.2f}（{colorize_signed(spread, '{:+,.2f}')}，{colorize_signed(change_pct)}）"
     )
-    lines.append(f"* **成交量**：{money_yi:,.0f} 億（較前一日 {vol_trend}，{colorize_signed(vol_change)}）")
+    vol_ma_position_str = flag_blue(vol_ma["position"]) if vol_ma["position"] == "跌破" else vol_ma["position"]
+    vol_ma_slope_str = flag_blue(vol_ma["slope"]) if vol_ma["slope"] == "下彎" else vol_ma["slope"]
+    lines.append(
+        f"* **成交量**：{money_yi:,.0f} 億（較前一日 {vol_trend}，{colorize_signed(vol_change)}；"
+        f"5日均量線 {vol_ma_position_str}，5日均量 {vol_ma_slope_str}）"
+    )
     lines.append("")
 
     lines.append('<div class="idx-flex" markdown="1">')
@@ -186,7 +221,9 @@ def build_index_section(title, index_id, lookback_days=200):
         if m["val"] is None:
             lines.append(f"| {p}MA | N/A | N/A | N/A | N/A |")
             continue
-        lines.append(f"| {p}MA | {m['val']:,.0f} | {m['slope']} | {m['close_vs_ma']} | {colorize_signed(b)} |")
+        slope_str = flag_blue(m["slope"]) if m["slope"] == "下彎" else m["slope"]
+        pos_str = flag_blue(m["close_vs_ma"]) if m["close_vs_ma"] == "跌破" else m["close_vs_ma"]
+        lines.append(f"| {p}MA | {m['val']:,.0f} | {slope_str} | {pos_str} | {colorize_signed(b)} |")
     lines.append("")
     lines.append('</div>')
 
@@ -194,13 +231,15 @@ def build_index_section(title, index_id, lookback_days=200):
     macd_cross_label = {"golden": "黃金交叉", "dead": "死亡交叉", None: "無交叉"}[macd_cross]
     kd_div_label = {"top_bearish": "高檔背離", "bottom_bullish": "低檔背離", None: "無背離"}[kd_divergence]
     macd_div_label = {"top_bearish": "高檔背離", "bottom_bullish": "低檔背離", None: "無背離"}[macd_divergence]
+    kd_direction_label = "交叉往上" if k_list[-1] > d_list[-1] else "交叉往下"
+    macd_direction_label = "交叉往上" if dif_list[-1] > dea_list[-1] else "交叉往下"
 
     lines.append('<div class="idx-col" markdown="1">')
     lines.append("")
     lines.append("**動能指標**")
     lines.append("")
-    lines.append(f"* **KD**：K={k_list[-1]:.1f}／D={d_list[-1]:.1f}（{kd_cross_label}／{kd_div_label}）")
-    lines.append(f"* **MACD**：DIF={dif_list[-1]:.1f}／DEA={dea_list[-1]:.1f}（{macd_cross_label}／{macd_div_label}）")
+    lines.append(f"* **KD**：K={k_list[-1]:.1f}／D={d_list[-1]:.1f}（{kd_cross_label}／{kd_div_label}／{kd_direction_label}）")
+    lines.append(f"* **MACD**：DIF={dif_list[-1]:.1f}／DEA={dea_list[-1]:.1f}（{macd_cross_label}／{macd_div_label}／{macd_direction_label}）")
     lines.append("")
     lines.append('</div>')
     lines.append('</div>')
@@ -358,10 +397,12 @@ def build_market_overview_summary(taiex_summary, tpex_summary, stats_summary):
 def _format_industry_rows(top_industries):
     lines = ["| 排名 | 產業 | 漲跌幅 | 族群內領漲個股 |", "| :--- | :--- | :--- | :--- |"]
     for i, ind in enumerate(top_industries, 1):
-        stocks_str = "、".join(
-            f"{s['symbol']}{s['name']}({colorize_signed(s['change_pct'])})" for s in ind["top_stocks"]
-        ) or "-"
-        lines.append(f"| {i} | {ind['name']} | {colorize_signed(ind['change_pct'])} | {stocks_str} |")
+        stock_parts = []
+        for s in ind["top_stocks"]:
+            pct_str = gray_muted(f"({s['change_pct']:+.2f}%)")
+            stock_parts.append(f"{s['symbol']}**{s['name']}**{pct_str}")
+        stocks_str = "/".join(stock_parts) or "-"
+        lines.append(f"| {i} | {ind['name']} | {colorize_signed(ind['change_pct'], bold=False)} | {stocks_str} |")
     return lines
 
 
@@ -455,36 +496,45 @@ def build_whale_section():
     lines.append("")
     consensus, _ = get_consensus_stocks_latest(min_whales=2)
     if consensus:
-        lines.append("| 股票 | 大戶數 | 持有大戶 | 總市值 | 資料庫個股 | 買進/加碼提醒 | 賣出/減碼提醒 |")
-        lines.append("| :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
+        concept_table = load_concept_fpe_table()
+        ticker_filepaths = get_tracked_ticker_filepaths()
+        target_year = datetime.now().year + 1
+
+        lines.append("| 股票 | 當前價格 | 大戶數 | 持有大戶 | 總市值 | 目標價上緣 | 買進/加碼提醒 | 賣出/減碼提醒 |")
+        lines.append("| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
         for c in consensus:
-            mark = "是" if c["ticker"] in tracked_tickers else "-"
+            ticker = c["ticker"]
+            tech = None
+            if not is_foreign_listing(ticker):
+                tech = compute_technical_signals(ticker)
+
+            current_price_str = f"{tech['current_price']:.2f}" if tech else "-"
+
             buy_str, sell_str = "-", "-"
-            if not is_foreign_listing(c["ticker"]):
-                tech = compute_technical_signals(c["ticker"])
-                if tech:
-                    buy_reasons = format_5ma_strategy_reasons(tech) + format_60ma_support_reason(tech)
-                    if buy_reasons:
-                        buy_str = "；".join(
-                            flag_red(text) if highlight else text for text, highlight in buy_reasons
-                        )
-                    sell_reasons = format_sell_reasons(tech)
-                    if sell_reasons:
-                        sell_str = "；".join(sell_reasons)
+            if tech:
+                buy_reasons = format_5ma_strategy_reasons(tech) + format_60ma_support_reason(tech)
+                if buy_reasons:
+                    buy_str = "/".join(flag_red(text) for text, _ in buy_reasons)
+                sell_reasons = format_sell_reasons(tech)
+                if sell_reasons:
+                    sell_str = "/".join(sell_reasons)
+
+            target_upper_str = "-"
+            filepath = ticker_filepaths.get(ticker)
+            if filepath and tech and tech["current_price"]:
+                target_eps = parse_target_eps(filepath, target_year)
+                fpe_range = get_fpe_range_for_ticker(ticker, concept_table)
+                if target_eps is not None and target_eps > 0 and fpe_range is not None:
+                    target_price_upper = target_eps * fpe_range["high"]
+                    proi = (target_price_upper / tech["current_price"] - 1) * 100
+                    target_upper_str = f"TP {target_price_upper:,.0f}<br>(PROI {colorize_signed(proi, '{:+.0f}%')})"
+
             lines.append(
-                f"| {c['ticker']}{c['name']} | {c['whale_count']} | {'、'.join(c['whale_ids'])} | "
-                f"{c['total_market_value']:,.0f} | {mark} | {buy_str} | {sell_str} |"
+                f"| {ticker}<br>{c['name']} | {current_price_str} | {c['whale_count']} | {'、'.join(c['whale_ids'])} | "
+                f"{c['total_market_value']:,.0f} | {target_upper_str} | {buy_str} | {sell_str} |"
             )
     else:
         lines.append("*目前無2位以上大戶同時持有的共識標的。*")
-    lines.append("")
-
-    lines.append(
-        "> **註**：大戶代號為匿名代碼（大戶A/B/C...），資料來源為使用者每日手動取得的持股快照。"
-        "各大戶回報日期可能因帳戶類型（現股/融資/股票期貨）不同而不同步，詳見上方各大戶標註日期；"
-        "「資料庫個股」欄標示該檔是否已存在於 `10_Stocks/` 現有研究筆記中；買進/賣出提醒為純技術面訊號"
-        "（五日線戰法／急跌至長線支撐／跌破5日線／5MA下彎／20MA下彎），不含估值判斷。"
-    )
     lines.append("")
 
     return lines
@@ -590,8 +640,6 @@ def generate_report():
     report.append(f"# 宇宙資本盤後日報 {today_str}")
     report.append("### 一、大盤情況")
     report.append("")
-    report.append("---")
-    report.append("")
 
     taiex_lines, taiex_summary = build_index_section("上市加權指數 (TAIEX)", "TAIEX")
     report.extend(taiex_lines)
@@ -599,8 +647,6 @@ def generate_report():
     tpex_lines, tpex_summary = build_index_section("上櫃指數 (TPEx)", "TPEx")
     report.extend(tpex_lines)
 
-    report.append("> **註**：背離偵測為簡化版高低點比對，非嚴謹型態辨識，僅供參考，建議人工覆核。")
-    report.append("")
     report.append("---")
     report.append("")
     stats_lines, stats_summary = build_market_stats_section()

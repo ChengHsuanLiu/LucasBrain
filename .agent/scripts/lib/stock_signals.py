@@ -179,6 +179,7 @@ def compute_technical_signals(ticker):
         "five_day_strategy_trigger": above_5ma or deduction_low,
         "ma60_support": ma60_support,
         "ma5_down": ma_metrics[5]["slope"] == "下彎",
+        "ma5_up": ma_metrics[5]["slope"] == "上彎",
         "ma20_down": ma_metrics[20]["slope"] == "下彎",
     }
 
@@ -192,6 +193,8 @@ def format_5ma_strategy_reasons(tech):
         reasons.append(("已站上5日線", False))
     if tech["deduction_low"] and tech["deduction"]:
         reasons.append((f"5日線扣抵偏低現價{tech['deduction']['gap_pct']:.1f}%以內", False))
+    if tech.get("ma5_up"):
+        reasons.append(("5日線上彎", False))
     return reasons
 
 
