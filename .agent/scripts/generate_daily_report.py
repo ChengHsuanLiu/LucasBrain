@@ -529,8 +529,9 @@ def build_whale_section():
                     proi = (target_price_upper / tech["current_price"] - 1) * 100
                     target_upper_str = f"TP {target_price_upper:,.0f}<br>(PROI {colorize_signed(proi, '{:+.0f}%')})"
 
+            whale_letters = "、".join(w.replace("大戶", "") for w in c["whale_ids"])
             lines.append(
-                f"| {ticker}<br>{c['name']} | {current_price_str} | {c['whale_count']} | {'、'.join(c['whale_ids'])} | "
+                f"| {ticker}<br>{c['name']} | {current_price_str} | {c['whale_count']} | {whale_letters} | "
                 f"{c['total_market_value']:,.0f} | {target_upper_str} | {buy_str} | {sell_str} |"
             )
     else:
