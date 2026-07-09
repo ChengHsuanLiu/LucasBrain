@@ -57,6 +57,7 @@ OUTPUT_DIR = r"C:\Users\User\Desktop\LucasBrain\30_Projects\Daily_Report"
 STOCK_DIR = r"C:\Users\User\Desktop\LucasBrain\10_Stocks"
 
 SECTOR_TOP_N_INDUSTRIES = 3
+SECTOR_TOP_N_INDUSTRIES_WEEKLY = 5
 SECTOR_TOP_N_STOCKS = 5
 
 # 大盤情況區塊(均線/動能指標、融資/法人/期貨)用左右並排的精簡橫式排版，
@@ -401,7 +402,7 @@ def _format_industry_rows(top_industries):
         for s in ind["top_stocks"]:
             pct_str = gray_muted(f"({s['change_pct']:+.2f}%)")
             stock_parts.append(f"{s['symbol']}**{s['name']}**{pct_str}")
-        stocks_str = "/".join(stock_parts) or "-"
+        stocks_str = " / ".join(stock_parts) or "-"
         lines.append(f"| {i} | {ind['name']} | {colorize_signed(ind['change_pct'], bold=False)} | {stocks_str} |")
     return lines
 
@@ -425,7 +426,7 @@ def build_sector_trend_section():
             lines.append(f"*抓取失敗 ({e})*")
         lines.append("")
 
-    lines.append(f"#### 近1週強勢族群 Top{SECTOR_TOP_N_INDUSTRIES}")
+    lines.append(f"#### 近一週強勢族群 Top{SECTOR_TOP_N_INDUSTRIES_WEEKLY}")
     lines.append("")
     for market_label, market_symbol in [("上市", TWSE_SYMBOL), ("上櫃", TPEX_SYMBOL)]:
         lines.append(f"**{market_label}**")
@@ -433,12 +434,12 @@ def build_sector_trend_section():
         try:
             top = top_gaining_industries_with_stocks(
                 market_symbol, period="1w",
-                top_n_industries=SECTOR_TOP_N_INDUSTRIES, top_n_stocks=SECTOR_TOP_N_STOCKS
+                top_n_industries=SECTOR_TOP_N_INDUSTRIES_WEEKLY, top_n_stocks=SECTOR_TOP_N_STOCKS
             )
             if top:
                 lines.extend(_format_industry_rows(top))
             else:
-                lines.append(f"*{market_label}近1週無明顯強勢族群。*")
+                lines.append(f"*{market_label}近一週無明顯強勢族群。*")
         except Exception as e:
             lines.append(f"*抓取失敗 ({e})*")
         lines.append("")
