@@ -99,21 +99,15 @@ tags: [report/daily, market-overview]
 
 ---
 
+**大盤技術分析評分：40 分（弱勢）**
+
+加分項：20MA上彎 | 60MA上彎
+
+扣分項：跌幅 0.83%（<2%） | 5MA下彎 | 5MA跌破 | 20MA跌破 | KD交叉往下 | MACD交叉往下 | 成交量跌破五日均量線
+
 **大盤情況總結**
 
-加權指數下跌0.83%（量縮）、櫃買指數上漲0.85%（量縮）、三大法人合計賣超350.2億、外資台指期偏空留倉 80,730 口、融資餘額增加，整體偏空。
-
-**大盤分數（以加權指數為基準，起始 80 分）：40 分**（<span class="num-down">-40</span>）
-
-* 跌幅 0.83%（<2%）：<span class="num-down">-5分</span>
-* 5MA下彎：<span class="num-down">-10分</span>
-* 5MA跌破：<span class="num-down">-5分</span>
-* 20MA跌破：<span class="num-down">-10分</span>
-* 20MA上彎：<span class="num-up">+5分</span>
-* 60MA上彎：<span class="num-up">+5分</span>
-* KD交叉往下：<span class="num-down">-5分</span>
-* MACD交叉往下：<span class="num-down">-5分</span>
-* 成交量跌破五日均量線：<span class="num-down">-10分</span>
+加權指數下跌0.83%（量縮）、櫃買指數上漲0.85%（量縮）、三大法人合計賣超350.2億、外資台指期偏空留倉 80,730 口、融資餘額增加，技術分析評分為 40 分，整體弱勢偏空。
 
 <div class="step-page-break"></div>
 

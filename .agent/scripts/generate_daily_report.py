@@ -29,7 +29,6 @@ from lib.market_data import (
     fetch_foreign_futures_position,
     compute_market_score,
     INDEX_MA_PERIODS,
-    MARKET_SCORE_BASE,
 )
 from lib.stock_signals import (
     load_concept_fpe_table,
@@ -354,9 +353,22 @@ def build_market_stats_section():
     return lines, summary
 
 
+def market_score_tier(score):
+    """依大盤分數換算級距標籤：<=40 弱勢、40~70 一般、70~80 強勢、>80 超級強勢。"""
+    if score <= 40:
+        return "弱勢"
+    elif score < 70:
+        return "一般"
+    elif score <= 80:
+        return "強勢"
+    else:
+        return "超級強勢"
+
+
 def build_market_overview_summary(taiex_summary, tpex_summary, stats_summary):
-    """大盤情況總結：綜合指數漲跌、三大法人、外資期貨與融資變化，給一段簡短總評。"""
-    lines = ["**大盤情況總結**", ""]
+    """先給一段「大盤技術分析評分」（以加權指數為基準的量化評分＋加分/扣分項），
+    再接「大盤情況總結」段落（綜合指數漲跌/三大法人/外資期貨/融資變化＋評分與級距）。"""
+    lines = []
     parts = []
     bullish_votes = 0
     bearish_votes = 0
@@ -392,36 +404,45 @@ def build_market_overview_summary(taiex_summary, tpex_summary, stats_summary):
         total_margin_change = (margin_twse or 0) + (margin_tpex or 0)
         parts.append(f"融資餘額{'增加' if total_margin_change >= 0 else '減少'}")
 
+    score, tier = None, None
+    if taiex_summary:
+        score, reasons = compute_market_score(taiex_summary, stats_summary)
+        tier = market_score_tier(score)
+        gain_reasons = [text for text, delta in reasons if delta > 0]
+        loss_reasons = [text for text, delta in reasons if delta < 0]
+        lines.append(f"**大盤技術分析評分：{score} 分（{tier}）**")
+        lines.append("")
+        lines.append(f"加分項：{' | '.join(gain_reasons) if gain_reasons else '無'}")
+        lines.append("")
+        lines.append(f"扣分項：{' | '.join(loss_reasons) if loss_reasons else '無'}")
+        lines.append("")
+
+    lines.append("**大盤情況總結**")
+    lines.append("")
+
     if not parts:
         lines.append("*資料不足，無法產生總結。*")
         lines.append("")
         return lines
 
     if bullish_votes > bearish_votes:
-        verdict = "整體偏多"
+        verdict_suffix = "偏多"
     elif bearish_votes > bullish_votes:
-        verdict = "整體偏空"
+        verdict_suffix = "偏空"
     else:
-        verdict = "多空訊號不一"
+        verdict_suffix = None
 
-    lines.append("、".join(parts) + f"，{verdict}。")
-    lines.append("")
-
-    if taiex_summary:
-        score, reasons = compute_market_score(taiex_summary, stats_summary)
-        score_delta = score - MARKET_SCORE_BASE
-        lines.append(
-            f"**大盤分數（以加權指數為基準，起始 {MARKET_SCORE_BASE} 分）：{score} 分**"
-            f"（{colorize_signed(score_delta, '{:+d}')}）"
-        )
-        lines.append("")
-        if reasons:
-            for text, delta in reasons:
-                lines.append(f"* {text}：{colorize_signed(delta, '{:+d}分')}")
+    summary_sentence = "、".join(parts)
+    if score is not None:
+        if verdict_suffix:
+            summary_sentence += f"，技術分析評分為 {score} 分，整體{tier}{verdict_suffix}。"
         else:
-            lines.append("* 各項條件皆未觸發加減分。")
-        lines.append("")
+            summary_sentence += f"，技術分析評分為 {score} 分，整體{tier}，多空訊號不一。"
+    else:
+        summary_sentence += f"，整體{verdict_suffix}。" if verdict_suffix else "，多空訊號不一。"
 
+    lines.append(summary_sentence)
+    lines.append("")
     return lines
 
 
