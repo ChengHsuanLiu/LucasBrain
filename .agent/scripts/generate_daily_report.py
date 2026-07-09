@@ -171,7 +171,7 @@ def build_index_section(title, index_id, lookback_days=200):
     start_date = (datetime.now() - timedelta(days=lookback_days)).strftime("%Y-%m-%d")
     ohlc = fetch_index_history(index_id, start_date)
     if not ohlc:
-        return [f"### {title}", "*無法取得資料。*", ""], None
+        return [f"#### {title}", "*無法取得資料。*", ""], None
 
     latest = ohlc[-1]
     ma = compute_index_ma(ohlc)
@@ -196,7 +196,7 @@ def build_index_section(title, index_id, lookback_days=200):
     change_pct = (spread / prev_close * 100) if prev_close else 0.0
     money_yi = (latest.get("money") or 0) / 1e8
 
-    lines = [f"### {title}", ""]
+    lines = [f"#### {title}", ""]
     lines.append(
         f"* **收盤價**：{latest['close']:,.2f}（{colorize_signed(spread, '{:+,.2f}')}，{colorize_signed(change_pct)}）"
     )
@@ -690,11 +690,8 @@ def generate_report():
     report.append("tags: [report/daily, market-overview]")
     report.append("---")
     report.append("")
-    report.append(f"*{today_str}．投資幕僚團隊．盤後大盤日報*")
+    report.append(f"# 宇宙資本-盤後日報 {today_str}")
     report.append("")
-    report.append(f"# 宇宙資本盤後日報 {today_str}")
-    report.append("")
-    report.append("---")
     report.append("")
     report.append("### 一、大盤情況")
     report.append("")

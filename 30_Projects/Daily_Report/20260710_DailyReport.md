@@ -5,15 +5,12 @@ author: 投資幕僚團隊
 tags: [report/daily, market-overview]
 ---
 
-*2026-07-10．投資幕僚團隊．盤後大盤日報*
+# 宇宙資本-盤後日報 2026-07-10
 
-# 宇宙資本盤後日報 2026-07-10
-
----
 
 ### 一、大盤情況
 
-### 上市加權指數 (TAIEX)
+#### 上市加權指數 (TAIEX)
 
 * **收盤價**：45,354.61（<span class="num-down">-379.80</span>，<span class="num-down">-0.83%</span>）
 * **成交量**：9,968 億（較前一日 量縮，<span class="num-down">-7.48%</span>；5日均量線 <span class="text-blue">跌破</span>，5日均量 <span class="text-blue">下彎</span>）
@@ -40,7 +37,7 @@ tags: [report/daily, market-overview]
 </div>
 </div>
 
-### 上櫃指數 (TPEx)
+#### 上櫃指數 (TPEx)
 
 * **收盤價**：424.99（<span class="num-up">+3.60</span>，<span class="num-up">+0.85%</span>）
 * **成交量**：2,363 億（較前一日 量縮，<span class="num-down">-2.32%</span>；5日均量線 <span class="text-blue">跌破</span>，5日均量 <span class="text-blue">下彎</span>）
@@ -160,12 +157,12 @@ tags: [report/daily, market-overview]
 
 #### 各大戶當日買進/賣出重點
 
-* **大戶A**（2026-07-09）：尚無前次快照可比較（共 6 檔持股，總市值 237,755,000）
+* **大戶A**（2026-07-10）：新建倉［已追蹤］ 2327國巨（市值 13,725,000）；加碼［已追蹤］ 3450聯鈞（<span class="num-up">+5,000股</span>）
 * **大戶B**（2026-07-09）：尚無前次快照可比較（共 23 檔持股，總市值 480,676,000）
 * **大戶C**（2026-07-09）：尚無前次快照可比較（共 8 檔持股，總市值 957,850,000）
 * **大戶D**（2026-07-09）：尚無前次快照可比較（共 6 檔持股，總市值 610,038,000）
 * **大戶E**（2026-07-09）：尚無前次快照可比較（共 5 檔持股，總市值 395,495,300）
-* **大戶F**（2026-07-09）：新建倉［已追蹤］ 6213聯茂（市值 13,158,000）；減碼 8150南茂（<span class="num-down">-40,000股</span>）；減碼［已追蹤］ 8046南電（<span class="num-down">-10,000股</span>）；減碼［已追蹤］ 4958臻鼎-KY（<span class="num-down">-4,000股</span>）
+* **大戶F**（2026-07-09）：新建倉［已追蹤］ 6213聯茂（市值 13,158,000）；減碼 8150南茂（<span class="num-down">-40,000股</span>）；減碼［已追蹤］ 8046南電（<span class="num-down">-10,000股</span>）；減碼［已追蹤］ 3374精材（<span class="num-down">-4,000股</span>）
 
 #### 共識標的（2位以上大戶同時持有）
 
@@ -176,6 +173,7 @@ tags: [report/daily, market-overview]
 | 2303<br>聯電 | 156.00 | A、B、C、F (4位) | 1.3 億 | TP 300<br>(PROI <span class="num-up">+92%</span>) | - | 跌破5日線<br>5日線下彎 |
 | 3443<br>創意 | 4340.00 | B、C、F (3位) | 3.3 億 | TP 5,745<br>(PROI <span class="num-up">+32%</span>) | - | 跌破5日線<br>5日線下彎 |
 | 3450<br>聯鈞 | 502.00 | A、B、C (3位) | 1.2 億 | TP 742<br>(PROI <span class="num-up">+48%</span>) | <span class="flag-red">5日線上彎</span> | 跌破5日線 |
+| 2327<br>國巨 | 900.00 | A、B、F (3位) | 0.5 億 | TP 1,167<br>(PROI <span class="num-up">+30%</span>) | - | 跌破5日線<br>5日線下彎 |
 | 8299<br>群聯 | 2220.00 | A、C (2位) | 2.6 億 | - | <span class="flag-red">首日站上5日線</span> | 5日線下彎 |
 | 3653<br>健策 | 3205.00 | B、E (2位) | 2.0 億 | - | - | 跌破5日線<br>5日線下彎<br>20日線(月線)下彎 |
 | 2493<br>揚博 | 274.00 | A、C (2位) | 1.8 億 | - | - | 跌破5日線<br>5日線下彎 |
@@ -184,7 +182,6 @@ tags: [report/daily, market-overview]
 | 2308<br>台達電 | 1880.00 | B、F (2位) | 0.9 億 | - | - | 跌破5日線<br>5日線下彎<br>20日線(月線)下彎 |
 | 2454<br>聯發科 | 3925.00 | C、F (2位) | 0.9 億 | TP 4,941<br>(PROI <span class="num-up">+26%</span>) | - | 跌破5日線<br>5日線下彎<br>20日線(月線)下彎 |
 | 7734<br>印能科技 | 2835.00 | B、E (2位) | 0.4 億 | - | - | 跌破5日線<br>5日線下彎<br>20日線(月線)下彎 |
-| 2327<br>國巨 | 900.00 | B、F (2位) | 0.3 億 | TP 1,167<br>(PROI <span class="num-up">+30%</span>) | - | 跌破5日線<br>5日線下彎 |
 
 </div>
 
