@@ -283,3 +283,10 @@
 - 使用者提供 Fugle 熱力圖API的即時與近1週請求（上市`IX0001`／上櫃`IX0043`），其回應同時含「產業指數」列與「個股」列，個股列各自帶有官方產業分類代碼——比先前 Statementdog 只有純標籤層級的資料更完整，可同時滿足「當日強勢族群」與「族群內前三名個股」兩項原始需求（先前 Statementdog 版本只做得到前者）。
 - 重寫 `lib/sector_trend.py`：`compute_industry_performance()` 用個股列的市值權重(marketValueWeight)加權平均漲跌幅算出各產業表現（不透過另一組IX00xx產業指數代碼，避免兩套代碼系統對照的脆弱字串比對）；`INDUSTRY_CODE_MAP` 內建TWSE/TPEx官方產業分類代碼對照表（固定不變）；`top_stocks_in_industry()` 取指定產業內漲幅前N名且有成交量的個股。
 - `generate_daily_report.py` 的「二、股票族群情況」改為上市/上櫃分開列出當日與近1週前3強產業，每產業附上領漲前3檔個股（含代號、名稱、漲跌%），已驗證產出正確繁體中文與合理數據（例如上市當日綠能環保業+3.18%領漲、上櫃當日半導體業+3.50%領漲）。
+
+## [2026-07-09] style | DailyReport 版面精簡（大盤情況左右並排、金額改用億、族群標題簡化） | 影響 [[SCHEMA]]
+- 標題改為「宇宙資本盤後日報 {日期}」；加權/櫃買指數區塊移除多餘日期列，「收盤」改為「收盤價（漲跌點數，漲跌%）」，成交量改抓 FinMind `Trading_money` 欄位以「億」為單位（原為股數）。
+- `lib/report_pdf.py` 的 `render_markdown_to_pdf()` 加入 `md_in_html` markdown擴充套件，讓標註 `markdown="1"` 的 HTML區塊內的表格/清單仍會被正常轉換——藉此讓大盤指數的「均線與乖離」表格和「動能指標」清單能用 `<div class="idx-flex">` 左右並排，不再各自佔一整頁高度（已用獨立markdown()呼叫測試驗證巢狀div皆須加`markdown="1"`才會遞迴轉換，否則整段被當raw HTML跳過）。此擴充套件對既有沒有該屬性的raw HTML(如`step-page-break`)無影響。
+- 融資餘額改顯示金額（億）而非張數：`lib/market_data.py` 的 `fetch_twse_margin_total()` 新增從 FinMind `TaiwanStockTotalMarginPurchaseShortSale` 的 `MarginPurchaseMoney` 列取得上市融資金額（該資料集已於先前開發階段驗證僅涵蓋上市，非真正全市場合計）；`fetch_tpex_margin_total()` 因無官方上櫃金額資料集，改用同一批 Fugle 熱力圖(上櫃)收盤價，將個股張數 x 1000股/張 x 收盤價換算加總估算（非官方精確值，屬近似）。
+- 融資餘額與維持率／三大法人現貨買賣超／外資台指期未平倉三小節合併為橫向三欄精簡排版（同樣透過 `idx-flex`），並移除三處多餘的日期顯示；三大法人/期貨金額原為元，改為億。
+- 族群強度標題改為「上市/上櫃當日強勢族群 Top3」，並依使用者要求移除資料來源附註（僅供本人閱讀，不對外發布）。

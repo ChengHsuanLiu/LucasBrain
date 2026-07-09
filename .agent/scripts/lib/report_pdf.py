@@ -211,7 +211,9 @@ def render_markdown_to_pdf(report_lines, output_dir, filename_stem, extra_css=""
     try:
         md_text = '\n'.join(report_lines)
         processed_md = _preprocess_markdown(md_text)
-        html_body = markdown.markdown(processed_md, extensions=['tables', 'fenced_code'])
+        # md_in_html：只有明確標註 markdown="1" 的 HTML 區塊才會遞迴處理內部的 markdown 語法
+        # (例如表格)，對既有沒有該屬性的 raw HTML (如 step-page-break) 完全不影響。
+        html_body = markdown.markdown(processed_md, extensions=['tables', 'fenced_code', 'md_in_html'])
 
         html_content = f"""
         <html>

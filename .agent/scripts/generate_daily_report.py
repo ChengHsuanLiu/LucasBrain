@@ -44,6 +44,38 @@ from lib.report_pdf import render_markdown_to_pdf
 OUTPUT_DIR = r"C:\Users\User\Desktop\LucasBrain\30_Projects\Daily_Report"
 STOCK_DIR = r"C:\Users\User\Desktop\LucasBrain\10_Stocks"
 
+# 大盤情況區塊(均線/動能指標、融資/法人/期貨)用左右並排的精簡橫式排版，
+# 靠 md_in_html 擴充讓 markdown="1" 的 <div> 內容照常轉表格/清單。
+DAILY_REPORT_EXTRA_CSS = """
+    .idx-flex {
+        display: flex;
+        gap: 20px;
+        margin: 4px 0 10px 0;
+    }
+    .idx-col {
+        flex: 1;
+        min-width: 0;
+    }
+    .idx-col table {
+        font-size: 7.6pt;
+        margin: 4px 0 6px 0;
+    }
+    .idx-col th, .idx-col td {
+        padding: 3px 5px;
+    }
+    .idx-col p {
+        margin: 0 0 4px 0;
+    }
+    .idx-col ul {
+        margin: 0 0 4px 0;
+        padding-left: 16px;
+    }
+    .idx-col li {
+        margin-bottom: 2px;
+        font-size: 8.6pt;
+    }
+"""
+
 
 def get_tracked_tickers():
     """回傳資料庫 10_Stocks/ 現有的個股代號集合，供大戶持股/共識標的比對是否為已追蹤個股。"""
@@ -88,15 +120,22 @@ def build_index_section(title, index_id, lookback_days=200):
     kd_divergence = detect_simple_divergence(ohlc, k_list, lookback=20)
     macd_divergence = detect_simple_divergence(ohlc, dif_list, lookback=20)
 
+    spread = latest.get("spread") or 0.0
+    prev_close = latest["close"] - spread
+    change_pct = (spread / prev_close * 100) if prev_close else 0.0
+    money_yi = (latest.get("money") or 0) / 1e8
+
     lines = [f"### {title}", ""]
-    lines.append(f"* **日期**：{latest['date']}")
-    lines.append(f"* **收盤**：{latest['close']:,.2f}（開 {latest['open']:,.2f}／高 {latest['high']:,.2f}／低 {latest['low']:,.2f}）")
-    lines.append(f"* **成交量**：{fmt_num(latest['volume'])}（較前一日 {vol_trend}，{fmt_pct(vol_change)}）")
+    lines.append(f"* **收盤價**：{latest['close']:,.2f}（{spread:+,.2f}，{change_pct:+.2f}%）")
+    lines.append(f"* **成交量**：{money_yi:,.0f} 億（較前一日 {vol_trend}，{fmt_pct(vol_change)}）")
     lines.append("")
 
+    lines.append('<div class="idx-flex" markdown="1">')
+    lines.append('<div class="idx-col" markdown="1">')
+    lines.append("")
     lines.append("**均線與乖離**")
     lines.append("")
-    lines.append("| 均線 | 數值 | 斜率 | 股價位置 | 乖離率 |")
+    lines.append("| 均線 | 數值 | 斜率 | 位置 | 乖離率 |")
     lines.append("| :--- | :--- | :--- | :--- | :--- |")
     for p in INDEX_MA_PERIODS:
         m = ma[p]
@@ -104,90 +143,100 @@ def build_index_section(title, index_id, lookback_days=200):
         if m["val"] is None:
             lines.append(f"| {p}MA | N/A | N/A | N/A | N/A |")
             continue
-        lines.append(f"| {p}MA | {m['val']:,.1f} | {m['slope']} | {m['close_vs_ma']} | {fmt_pct(b)} |")
+        lines.append(f"| {p}MA | {m['val']:,.0f} | {m['slope']} | {m['close_vs_ma']} | {fmt_pct(b)} |")
     lines.append("")
+    lines.append('</div>')
 
     kd_cross_label = {"golden": "黃金交叉", "dead": "死亡交叉", None: "無交叉"}[kd_cross]
     macd_cross_label = {"golden": "黃金交叉", "dead": "死亡交叉", None: "無交叉"}[macd_cross]
-    kd_div_label = {"top_bearish": "高檔背離(看空)", "bottom_bullish": "低檔背離(看多)", None: "無"}[kd_divergence]
-    macd_div_label = {"top_bearish": "高檔背離(看空)", "bottom_bullish": "低檔背離(看多)", None: "無"}[macd_divergence]
+    kd_div_label = {"top_bearish": "高檔背離", "bottom_bullish": "低檔背離", None: "無背離"}[kd_divergence]
+    macd_div_label = {"top_bearish": "高檔背離", "bottom_bullish": "低檔背離", None: "無背離"}[macd_divergence]
 
+    lines.append('<div class="idx-col" markdown="1">')
+    lines.append("")
     lines.append("**動能指標**")
     lines.append("")
-    lines.append(f"* **KD**：K={k_list[-1]:.1f}／D={d_list[-1]:.1f}（{kd_cross_label}；背離：{kd_div_label}）")
-    lines.append(f"* **MACD**：DIF={dif_list[-1]:.1f}／DEA={dea_list[-1]:.1f}（{macd_cross_label}；背離：{macd_div_label}）")
+    lines.append(f"* **KD**：K={k_list[-1]:.1f}／D={d_list[-1]:.1f}（{kd_cross_label}／{kd_div_label}）")
+    lines.append(f"* **MACD**：DIF={dif_list[-1]:.1f}／DEA={dea_list[-1]:.1f}（{macd_cross_label}／{macd_div_label}）")
     lines.append("")
-    lines.append("> **註**：背離偵測為簡化版高低點比對，非嚴謹型態辨識，僅供參考，建議人工覆核。")
+    lines.append('</div>')
+    lines.append('</div>')
     lines.append("")
 
     return lines, latest["date"]
 
 
-def build_margin_section(index_date):
-    lines = ["### 融資餘額與維持率", ""]
+def build_market_stats_section():
+    """融資餘額與維持率／三大法人現貨買賣超／外資台指期未平倉，橫向三欄精簡排版。"""
+    lines = ['<div class="idx-flex" markdown="1">']
 
+    lines.append('<div class="idx-col" markdown="1">')
+    lines.append("")
+    lines.append("**融資餘額與維持率**")
+    lines.append("")
     try:
         twse = fetch_twse_margin_total()
-        lines.append(f"* **上市融資餘額**：{fmt_num(twse['today_balance'])} 張（較前日 {twse['change']:+,.0f} 張）")
+        lines.append(f"* 上市：{twse['today_money'] / 1e8:,.0f} 億（{twse['change_money'] / 1e8:+,.1f} 億）")
     except Exception as e:
-        lines.append(f"* 上市融資餘額：抓取失敗 ({e})")
-
+        lines.append(f"* 上市：抓取失敗 ({e})")
     try:
         tpex = fetch_tpex_margin_total()
-        lines.append(f"* **上櫃融資餘額**：{fmt_num(tpex['today_balance'])} 張（較前日 {tpex['change']:+,.0f} 張）")
+        lines.append(f"* 上櫃：{tpex['today_money'] / 1e8:,.0f} 億（{tpex['change_money'] / 1e8:+,.1f} 億）")
     except Exception as e:
-        lines.append(f"* 上櫃融資餘額：抓取失敗 ({e})")
-
+        lines.append(f"* 上櫃：抓取失敗 ({e})")
     try:
         start_date = (datetime.now() - timedelta(days=14)).strftime("%Y-%m-%d")
         maint = fetch_margin_maintenance_ratio(start_date)
         if maint:
             latest_maint = maint[-1]
             prev_maint = maint[-2] if len(maint) >= 2 else None
-            change_str = f"（較前日 {latest_maint['ratio'] - prev_maint['ratio']:+.2f}pp）" if prev_maint else ""
-            lines.append(f"* **融資維持率**：{latest_maint['ratio']:.2f}%{change_str}（{latest_maint['date']}）")
+            change_str = f"（{latest_maint['ratio'] - prev_maint['ratio']:+.2f}pp）" if prev_maint else ""
+            lines.append(f"* 維持率：{latest_maint['ratio']:.2f}%{change_str}")
     except Exception as e:
-        lines.append(f"* 融資維持率：抓取失敗 ({e})")
-
+        lines.append(f"* 維持率：抓取失敗 ({e})")
     lines.append("")
-    return lines
+    lines.append('</div>')
 
-
-def build_institutional_section():
-    lines = ["### 三大法人現貨買賣超", ""]
+    lines.append('<div class="idx-col" markdown="1">')
+    lines.append("")
+    lines.append("**三大法人現貨買賣超**")
+    lines.append("")
     try:
         start_date = (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d")
         inst = fetch_institutional_investors_total(start_date)
         if inst:
-            lines.append(f"* **日期**：{inst['date']}")
-            lines.append(f"* **外資**：{fmt_num(inst['foreign_net'])} 元")
-            lines.append(f"* **投信**：{fmt_num(inst['investment_trust_net'])} 元")
-            lines.append(f"* **自營商(合計)**：{fmt_num(inst['dealer_net'])} 元")
-            lines.append(f"* **三大法人合計**：{fmt_num(inst['total_net'])} 元")
+            lines.append(f"* 外資：{inst['foreign_net'] / 1e8:+,.1f} 億")
+            lines.append(f"* 投信：{inst['investment_trust_net'] / 1e8:+,.1f} 億")
+            lines.append(f"* 自營商：{inst['dealer_net'] / 1e8:+,.1f} 億")
+            lines.append(f"* 合計：{inst['total_net'] / 1e8:+,.1f} 億")
         else:
             lines.append("*無法取得資料。*")
     except Exception as e:
         lines.append(f"*抓取失敗 ({e})*")
     lines.append("")
-    return lines
+    lines.append('</div>')
 
-
-def build_futures_section():
-    lines = ["### 外資台指期未平倉", ""]
+    lines.append('<div class="idx-col" markdown="1">')
+    lines.append("")
+    lines.append("**外資台指期未平倉**")
+    lines.append("")
     try:
         start_date = (datetime.now() - timedelta(days=14)).strftime("%Y-%m-%d")
         futures = fetch_foreign_futures_position(start_date)
         if futures:
             latest = futures[-1]
             prev = futures[-2] if len(futures) >= 2 else None
-            lines.append(f"* **日期**：{latest['date']}")
-            lines.append(f"* **多單留倉**：{fmt_num(latest['long_oi'])} 口" + (f"（較前日 {latest['long_oi'] - prev['long_oi']:+,.0f} 口）" if prev else ""))
-            lines.append(f"* **空單留倉**：{fmt_num(latest['short_oi'])} 口" + (f"（較前日 {latest['short_oi'] - prev['short_oi']:+,.0f} 口）" if prev else ""))
-            lines.append(f"* **淨部位**：{latest['net_oi']:+,.0f} 口（{'偏多' if latest['net_oi'] > 0 else '偏空'}）" + (f"（較前日 {latest['net_oi'] - prev['net_oi']:+,.0f} 口）" if prev else ""))
+            lines.append(f"* 多單：{fmt_num(latest['long_oi'])} 口" + (f"（{latest['long_oi'] - prev['long_oi']:+,.0f}）" if prev else ""))
+            lines.append(f"* 空單：{fmt_num(latest['short_oi'])} 口" + (f"（{latest['short_oi'] - prev['short_oi']:+,.0f}）" if prev else ""))
+            lines.append(f"* 淨部位：{latest['net_oi']:+,.0f} 口（{'偏多' if latest['net_oi'] > 0 else '偏空'}）" + (f"（{latest['net_oi'] - prev['net_oi']:+,.0f}）" if prev else ""))
         else:
             lines.append("*無法取得資料。*")
     except Exception as e:
         lines.append(f"*抓取失敗 ({e})*")
+    lines.append("")
+    lines.append('</div>')
+
+    lines.append('</div>')
     lines.append("")
     return lines
 
@@ -206,7 +255,7 @@ def build_sector_trend_section():
     lines = ["### 二、股票族群情況", ""]
 
     for market_label, market_symbol in [("上市", TWSE_SYMBOL), ("上櫃", TPEX_SYMBOL)]:
-        lines.append(f"#### 當日強勢族群 Top 3（{market_label}，不限資料庫股票）")
+        lines.append(f"#### {market_label}當日強勢族群 Top3")
         lines.append("")
         try:
             top = top_gaining_industries_with_stocks(market_symbol, period=None)
@@ -232,12 +281,6 @@ def build_sector_trend_section():
         except Exception as e:
             lines.append(f"*抓取失敗 ({e})*")
         lines.append("")
-
-    lines.append(
-        "> **註**：資料來源為 Fugle 熱力圖公開API，產業表現以個股市值權重加權平均漲跌幅計算，"
-        "涵蓋全市場個股（不限於本資料庫已建檔個股）；領漲個股僅取當期有成交量者。"
-    )
-    lines.append("")
 
     return lines
 
@@ -403,23 +446,23 @@ def generate_report():
     report.append("")
     report.append(f"*{today_str}．投資幕僚團隊．盤後大盤日報*")
     report.append("")
-    report.append(f"# 盤後大盤日報")
+    report.append(f"# 宇宙資本盤後日報 {today_str}")
     report.append("### 一、大盤情況")
     report.append("")
     report.append("---")
     report.append("")
 
-    taiex_lines, taiex_date = build_index_section("上市加權指數 (TAIEX)", "TAIEX")
+    taiex_lines, _ = build_index_section("上市加權指數 (TAIEX)", "TAIEX")
     report.extend(taiex_lines)
 
-    tpex_lines, tpex_date = build_index_section("上櫃指數 (TPEx)", "TPEx")
+    tpex_lines, _ = build_index_section("上櫃指數 (TPEx)", "TPEx")
     report.extend(tpex_lines)
 
+    report.append("> **註**：背離偵測為簡化版高低點比對，非嚴謹型態辨識，僅供參考，建議人工覆核。")
+    report.append("")
     report.append("---")
     report.append("")
-    report.extend(build_margin_section(taiex_date))
-    report.extend(build_institutional_section())
-    report.extend(build_futures_section())
+    report.extend(build_market_stats_section())
 
     report.append('<div class="step-page-break"></div>')
     report.append("")
@@ -441,7 +484,7 @@ def generate_report():
 
     print(f"Generated Daily Report at: {output_path}")
 
-    render_markdown_to_pdf(report, OUTPUT_DIR, filename_stem)
+    render_markdown_to_pdf(report, OUTPUT_DIR, filename_stem, extra_css=DAILY_REPORT_EXTRA_CSS)
 
     return output_path
 

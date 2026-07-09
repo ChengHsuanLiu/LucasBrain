@@ -27,7 +27,8 @@ INDEX_MA_PERIODS = [5, 20, 60]
 # ==========================================
 def fetch_index_history(index_id, start_date, credentials_path=CREDENTIALS_PATH):
     """index_id: 'TAIEX' (上市加權指數) 或 'TPEx' (上櫃指數)。回傳依日期由舊到新排序的
-    [{date, open, high, low, close, volume}]。"""
+    [{date, open, high, low, close, volume, money, spread}]。money 為當日成交金額(元)，
+    spread 為 FinMind 提供的當日漲跌點數 (close - 前一日close)。"""
     records = _finmind_request("TaiwanStockPrice", index_id, start_date, credentials_path)
     records.sort(key=lambda r: r.get("date", ""))
     out = []
@@ -39,6 +40,8 @@ def fetch_index_history(index_id, start_date, credentials_path=CREDENTIALS_PATH)
             "low": r.get("min", 0.0),
             "close": r.get("close", 0.0),
             "volume": r.get("Trading_Volume", 0),
+            "money": r.get("Trading_money", 0),
+            "spread": r.get("spread", 0.0),
         })
     return out
 
@@ -185,8 +188,11 @@ def detect_simple_divergence(ohlc, indicator_values, lookback=20):
 # ==========================================
 # 4. Margin Balance (TWSE + TPEx 官方 Open API，自行加總)
 # ==========================================
-def fetch_twse_margin_total(timeout=20):
-    """加總上市個股融資今日/前日餘額 (張)，回傳 {today_balance, prev_balance, change}。"""
+def fetch_twse_margin_total(timeout=20, credentials_path=CREDENTIALS_PATH):
+    """加總上市個股融資今日/前日餘額 (張)，並透過 FinMind 官方彙總資料集取得金額(元)——
+    TWSE 官方 MI_MARGN 本身只給張數，沒有金額欄位。回傳
+    {today_balance, prev_balance, change, today_money, prev_money, change_money}
+    (money 為元，today_balance/prev_balance/change 仍為張數以供備查)。"""
     url = "https://openapi.twse.com.tw/v1/exchangeReport/MI_MARGN"
     req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
     with urllib.request.urlopen(req, timeout=timeout) as resp:
@@ -198,11 +204,32 @@ def fetch_twse_margin_total(timeout=20):
             prev_total += int(str(r.get("融資前日餘額", "0")).replace(",", "") or 0)
         except ValueError:
             continue
-    return {"today_balance": today_total, "prev_balance": prev_total, "change": today_total - prev_total}
+
+    today_money, prev_money = 0, 0
+    try:
+        start_date = (datetime.now() - timedelta(days=5)).strftime("%Y-%m-%d")
+        records = _finmind_request("TaiwanStockTotalMarginPurchaseShortSale", "", start_date, credentials_path)
+        money_records = [r for r in records if r.get("name") == "MarginPurchaseMoney"]
+        if money_records:
+            latest = max(money_records, key=lambda r: r["date"])
+            today_money = latest.get("TodayBalance", 0)
+            prev_money = latest.get("YesBalance", 0)
+    except Exception:
+        pass
+
+    return {
+        "today_balance": today_total, "prev_balance": prev_total, "change": today_total - prev_total,
+        "today_money": today_money, "prev_money": prev_money, "change_money": today_money - prev_money,
+    }
 
 
 def fetch_tpex_margin_total(timeout=20):
-    """加總上櫃個股融資餘額 (張)，回傳 {today_balance, prev_balance, change}。"""
+    """加總上櫃個股融資餘額 (張)，並估算金額(元)——TPEx官方API同樣只給張數，沒有金額
+    欄位，且FinMind的市場彙總資料集(TaiwanStockTotalMarginPurchaseShortSale)實際上只
+    涵蓋上市(已於update_prices相關開發階段驗證)，故改用同一批 Fugle 熱力圖(上櫃)的收盤價，
+    將個股張數 x 1000股/張 x 收盤價換算後加總估算金額(熱力圖查無收盤價者多為債券ETF等
+    非普通股，直接跳過不列入金額加總，僅影響極小部分)。回傳
+    {today_balance, prev_balance, change, today_money, prev_money, change_money}。"""
     url = "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_margin_balance"
     req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
     with urllib.request.urlopen(req, timeout=timeout) as resp:
@@ -214,7 +241,34 @@ def fetch_tpex_margin_total(timeout=20):
             prev_total += int(str(r.get("MarginPurchaseBalancePreviousDay", "0")).replace(",", "") or 0)
         except ValueError:
             continue
-    return {"today_balance": today_total, "prev_balance": prev_total, "change": today_total - prev_total}
+
+    today_money, prev_money = 0, 0
+    try:
+        from sector_trend import fetch_heatmap, TPEX_SYMBOL
+        heatmap_rows = fetch_heatmap(TPEX_SYMBOL, period=None)
+        price_by_symbol = {
+            r['symbol']: r.get('closePrice')
+            for r in heatmap_rows if r.get('type') == 'EQUITY' and r.get('closePrice')
+        }
+        for r in data:
+            symbol = r.get("SecuritiesCompanyCode")
+            price = price_by_symbol.get(symbol)
+            if not price:
+                continue
+            try:
+                today_lots = int(str(r.get("MarginPurchaseBalance", "0")).replace(",", "") or 0)
+                prev_lots = int(str(r.get("MarginPurchaseBalancePreviousDay", "0")).replace(",", "") or 0)
+            except ValueError:
+                continue
+            today_money += today_lots * 1000 * price
+            prev_money += prev_lots * 1000 * price
+    except Exception:
+        pass
+
+    return {
+        "today_balance": today_total, "prev_balance": prev_total, "change": today_total - prev_total,
+        "today_money": today_money, "prev_money": prev_money, "change_money": today_money - prev_money,
+    }
 
 
 def fetch_margin_maintenance_ratio(start_date, credentials_path=CREDENTIALS_PATH):
