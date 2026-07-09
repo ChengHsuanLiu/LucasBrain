@@ -96,7 +96,6 @@ DAILY_REPORT_EXTRA_CSS = """
     .num-down { color: #15803d; font-weight: 700; }
     .flag-red { color: #dc2626; font-weight: 800; }
     .text-blue { color: #2563eb; }
-    .text-muted { color: #4b5563; font-weight: 400; }
     .whale-consensus table th:nth-child(5),
     .whale-consensus table td:nth-child(5) {
         min-width: 100px;
@@ -159,11 +158,6 @@ def flag_red(text):
 def flag_blue(text):
     """均線斜率下彎、或股價位置跌破均線時，用藍色標記凸顯偏弱訊號。"""
     return f'<span class="text-blue">{text}</span>'
-
-
-def gray_muted(text):
-    """族群內領漲個股的漲跌幅用深灰色淡化顯示，不用漲跌上色慣例（凸顯個股名稱本身）。"""
-    return f'<span class="text-muted">{text}</span>'
 
 
 def short_rating_badge(rating_text):
@@ -451,7 +445,9 @@ def _format_industry_rows(top_industries):
     for i, ind in enumerate(top_industries, 1):
         stock_parts = []
         for s in ind["top_stocks"]:
-            pct_str = gray_muted(f"({s['change_pct']:+.2f}%)")
+            if s["change_pct"] <= ind["change_pct"]:
+                continue
+            pct_str = f"({s['change_pct']:+.2f}%)"
             stock_parts.append(f"{s['symbol']}**{s['name']}**{pct_str}")
         stocks_str = " / ".join(stock_parts) or "-"
         lines.append(f"| {i} | {ind['name']} | {colorize_signed(ind['change_pct'], bold=False)} | {stocks_str} |")
@@ -518,7 +514,7 @@ def build_whale_section():
                 # 這種情況下逐檔列出並非真正的「當日重點」，只需標註尚無比較基準即可。
                 holdings_cnt = len(deltas["new"])
                 lines.append(
-                    f"* **{whale_id}**（{whale_date}）：首次記錄，尚無前次快照可比較"
+                    f"* **{whale_id}**（{whale_date}）：尚無前次快照可比較"
                     f"（共 {holdings_cnt} 檔持股，總市值 {deltas['total_value_now']:,.0f}）"
                 )
                 continue
@@ -584,7 +580,7 @@ def build_whale_section():
                     target_upper_str = f"TP {target_price_upper:,.0f}<br>(PROI {colorize_signed(proi, '{:+.0f}%')})"
 
             whale_letters = "、".join(w.replace("大戶", "") for w in c["whale_ids"])
-            whale_combined = f"{whale_letters}({c['whale_count']}位)"
+            whale_combined = f"{whale_letters} ({c['whale_count']}位)"
             market_value_yi = f"{c['total_market_value'] / 1e8:.1f} 億"
             lines.append(
                 f"| {ticker}<br>{c['name']} | {current_price_str} | {whale_combined} | "
