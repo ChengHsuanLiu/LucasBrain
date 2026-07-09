@@ -285,7 +285,7 @@ def compute_stock_signal(ticker, filepath, target_year, concept_table):
                 if sell_trim:
                     reasons.append(f"期望值{expected_value_pct:+.1f}% < {SELL_EV_THRESHOLD_TRIM:.0f}%，逢高減碼")
                 if sell_break:
-                    reasons.append(f"期望值{expected_value_pct:+.1f}% < {SELL_EV_THRESHOLD_BREAK_5MA:.0f}%且已跌破5日線")
+                    reasons.append(f"期望值{expected_value_pct:+.1f}% < {SELL_EV_THRESHOLD_BREAK_5MA:.0f}%，且已跌破5日線")
             else:
                 signal = "HOLD"
 

@@ -96,12 +96,25 @@ DAILY_REPORT_EXTRA_CSS = """
     .num-down { color: #15803d; font-weight: 700; }
     .flag-red { color: #dc2626; font-weight: 800; }
     .text-blue { color: #2563eb; }
+    .text-purple { color: #9333ea; }
     .ma5-label { color: #f59e0b; }
     .ma20-label { color: #7c3aed; }
     .ma60-label { color: #0d9488; }
     .whale-consensus table th:nth-child(5),
     .whale-consensus table td:nth-child(5) {
         min-width: 100px;
+    }
+    .stock-buy-table table th:nth-child(5), .stock-buy-table table td:nth-child(5),
+    .stock-buy-table table th:nth-child(6), .stock-buy-table table td:nth-child(6),
+    .stock-sell-table table th:nth-child(5), .stock-sell-table table td:nth-child(5),
+    .stock-sell-table table th:nth-child(6), .stock-sell-table table td:nth-child(6) {
+        width: 45px;
+    }
+    .stock-buy-table table th:nth-child(1), .stock-buy-table table td:nth-child(1) {
+        min-width: 85px;
+    }
+    .stock-buy-table table th:nth-child(7), .stock-buy-table table td:nth-child(7) {
+        min-width: 160px;
     }
 """
 
@@ -159,8 +172,13 @@ def flag_red(text):
 
 
 def flag_blue(text):
-    """大盤技術分析評分/大盤情況總結標題與觸發規則備註，統一用藍色凸顯。"""
+    """大盤技術分析評分/大盤情況總結標題，以及各區塊子標題，統一用藍色凸顯。"""
     return f'<span class="text-blue">{text}</span>'
+
+
+def flag_purple(text):
+    """大盤分數觸發規則的白話解讀備註，用紫色凸顯（與藍色標題區隔）。"""
+    return f'<span class="text-purple">{text}</span>'
 
 
 def ma_label(period):
@@ -420,7 +438,7 @@ def build_market_overview_summary(taiex_summary, tpex_summary, stats_summary):
         lines.append(flag_blue(f"**大盤技術分析評分：{score} 分（{tier}）**"))
         lines.append("")
         for note in notes:
-            lines.append(flag_blue(note))
+            lines.append(flag_purple(note))
             lines.append("")
         lines.append(f"加分項：{' | '.join(gain_reasons) if gain_reasons else '無'}")
         lines.append("")
@@ -479,7 +497,7 @@ def build_sector_trend_section():
     lines = ["### 二、股票族群情況", ""]
 
     for market_label, market_symbol in [("上市", TWSE_SYMBOL), ("上櫃", TPEX_SYMBOL)]:
-        lines.append(f"#### {market_label}當日強勢族群 Top{SECTOR_TOP_N_INDUSTRIES}")
+        lines.append(f"#### {flag_blue(f'{market_label}當日強勢族群 Top{SECTOR_TOP_N_INDUSTRIES}')}")
         lines.append("")
         try:
             top = top_gaining_industries_with_stocks(
@@ -494,7 +512,7 @@ def build_sector_trend_section():
             lines.append(f"*抓取失敗 ({e})*")
         lines.append("")
 
-    lines.append(f"#### 近一週強勢族群 Top{SECTOR_TOP_N_INDUSTRIES_WEEKLY}")
+    lines.append(f"#### {flag_blue(f'近一週強勢族群 Top{SECTOR_TOP_N_INDUSTRIES_WEEKLY}')}")
     lines.append("")
     for market_label, market_symbol in [("上市", TWSE_SYMBOL), ("上櫃", TPEX_SYMBOL)]:
         lines.append(f"**{market_label}**")
@@ -520,7 +538,7 @@ def build_whale_section():
     tracked_tickers = get_tracked_tickers()
 
     _, latest_date_by_whale = get_latest_snapshot_per_whale()
-    lines.append("#### 各大戶當日買進/賣出重點")
+    lines.append(f"#### {flag_blue('各大戶當日買進/賣出重點')}")
     lines.append("")
     if not latest_date_by_whale:
         lines.append("*尚無大戶持股資料，請先執行「更新大戶持股」。*")
@@ -543,7 +561,7 @@ def build_whale_section():
             highlights = []
             for entry in deltas["new"]:
                 mark = "［已追蹤］" if entry["ticker"] in tracked_tickers else ""
-                highlights.append(f"新建倉{mark} {entry['ticker']}{entry['name']}（市值 {entry['market_value']:,.0f}）")
+                highlights.append(flag_red(f"新建倉{mark} {entry['ticker']}{entry['name']}（市值 {entry['market_value']:,.0f}）"))
             for entry in deltas["closed"]:
                 mark = "［已追蹤］" if entry["ticker"] in tracked_tickers else ""
                 highlights.append(f"出清{mark} {entry['ticker']}{entry['name']}")
@@ -561,7 +579,7 @@ def build_whale_section():
             lines.append(f"* **{whale_id}**（{whale_date}）：{summary}")
         lines.append("")
 
-    lines.append("#### 共識標的（2位以上大戶同時持有）")
+    lines.append(f"#### {flag_blue('共識標的（2位以上大戶同時持有）')}")
     lines.append("")
     consensus, _ = get_consensus_stocks_latest(min_whales=2)
     if consensus:
@@ -648,11 +666,13 @@ def build_stock_signals_section():
     )
 
     lines.append(
-        f"#### 買進訊號（五日線戰法 EV>{BUY_EV_THRESHOLD_5MA_STRATEGY:.0f}% 或 急跌至長線支撐 EV>{BUY_EV_THRESHOLD_60MA_SUPPORT:.0f}%）"
+        f"#### {flag_blue(f'買進訊號（五日線戰法 EV>{BUY_EV_THRESHOLD_5MA_STRATEGY:.0f}% 或 急跌至長線支撐 EV>{BUY_EV_THRESHOLD_60MA_SUPPORT:.0f}%）')}"
     )
     lines.append("")
     if buy_list:
-        lines.append("| 股票 | 現價 | 目標價 | 期望值 | 均線評分 | 乖離評分 | 觸發原因 | 投資簡述 |")
+        lines.append('<div class="stock-buy-table" markdown="1">')
+        lines.append("")
+        lines.append("| 股票 | 現價 | 目標價 | 期望值 | 均線 | 乖離 | 觸發原因 | 投資簡述 |")
         lines.append("| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
         for r in buy_list:
             reason_parts = [
@@ -666,16 +686,20 @@ def build_stock_signals_section():
                 f"{colorize_signed(r['expected_value_pct'])} | {short_rating_badge(r['ma_rating'])} | "
                 f"{short_rating_badge(r['bias_rating'])} | {reason_str} | {blurb} |"
             )
+        lines.append("")
+        lines.append("</div>")
     else:
         lines.append("*今日無符合門檻的買進訊號。*")
     lines.append("")
 
     lines.append(
-        f"#### 賣出/減碼訊號（期望值<{SELL_EV_THRESHOLD_TRIM:.0f}% 或 期望值<{SELL_EV_THRESHOLD_BREAK_5MA:.0f}%且跌破5日線）"
+        f"#### {flag_blue(f'賣出/減碼訊號（期望值<{SELL_EV_THRESHOLD_TRIM:.0f}% 或 期望值<{SELL_EV_THRESHOLD_BREAK_5MA:.0f}%且跌破5日線）')}"
     )
     lines.append("")
     if sell_list:
-        lines.append("| 股票 | 現價 | 目標價 | 期望值 | 均線評分 | 乖離評分 | 觸發原因 |")
+        lines.append('<div class="stock-sell-table" markdown="1">')
+        lines.append("")
+        lines.append("| 股票 | 現價 | 目標價 | 期望值 | 均線 | 乖離 | 觸發原因 |")
         lines.append("| :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
         for r in sell_list:
             target_price_str = f"{r['target_price']:.2f}" if r['target_price'] is not None else "待補充"
@@ -685,6 +709,8 @@ def build_stock_signals_section():
                 f"| {r['ticker']}{r['name']} | {r['current_price']:.2f} | {target_price_str} | "
                 f"{ev_str} | {short_rating_badge(r['ma_rating'])} | {short_rating_badge(r['bias_rating'])} | {reason_str} |"
             )
+        lines.append("")
+        lines.append("</div>")
     else:
         lines.append("*今日無觸發賣出/減碼條件的個股。*")
     lines.append("")
