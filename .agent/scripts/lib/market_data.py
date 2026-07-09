@@ -340,7 +340,8 @@ def fetch_foreign_futures_position(start_date, futures_id="TX", credentials_path
 # ==========================================
 def compute_market_score(index_summary, stats_summary):
     """以 MARKET_SCORE_BASE(80分) 為基準，依 index_summary(單一指數的漲跌%/均線/乖離/
-    KD·MACD方向與背離/成交量趨勢與均量位置) 與 stats_summary(融資維持率) 逐項加減分。
+    KD·MACD方向與背離/成交量趨勢與均量位置) 與 stats_summary(融資維持率) 逐項加減分，
+    另加一條補充規則：跌幅<1%且成交量縮+5分、漲幅>=1.5%且站上5日線+5分。
     回傳 (score, reasons)，reasons 為 [(說明文字, 分數增減)] 依檢查順序排列。"""
     score = MARKET_SCORE_BASE
     reasons = []
@@ -399,6 +400,14 @@ def compute_market_score(index_summary, stats_summary):
     vol_ma = index_summary.get("vol_ma") or {}
     if vol_ma.get("position") == "跌破":
         apply("成交量跌破五日均量線", -10)
+
+    # 7. 其他規則
+    if change_pct is not None and change_pct < 0 and abs(change_pct) < 1 and vol_trend == "量縮":
+        apply(f"跌幅 {abs(change_pct):.2f}%（<1%）且成交量縮", 5)
+
+    ma5 = ma.get(5)
+    if change_pct is not None and change_pct >= 1.5 and ma5 and ma5.get("close_vs_ma") == "漲過":
+        apply(f"漲幅 {change_pct:.2f}%（>=1.5%）且站上5日線", 5)
 
     ratio = stats_summary.get("margin_maintenance_ratio")
     if ratio is not None:
