@@ -697,6 +697,9 @@ def generate_report():
     report.append(f"*{today_str}．投資幕僚團隊．盤後大盤日報*")
     report.append("")
     report.append(f"# 宇宙資本盤後日報 {today_str}")
+    report.append("")
+    report.append("---")
+    report.append("")
     report.append("### 一、大盤情況")
     report.append("")
 
