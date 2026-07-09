@@ -21,7 +21,7 @@ from .stock_metrics import (
 )
 
 STOCK_DIR = r"C:\Users\User\Desktop\LucasBrain\10_Stocks"
-FPE_TABLE_PATH = r"C:\Users\User\Desktop\LucasBrain\20_Garden\概念股FPE合理區間.md"
+FPE_TABLE_PATH = r"C:\Users\User\Desktop\LucasBrain\97_Settings\概念股FPE合理區間.md"
 
 # 買進訊號門檻
 BUY_EV_THRESHOLD_5MA_STRATEGY = 60.0   # 五日線戰法所需期望值下限
