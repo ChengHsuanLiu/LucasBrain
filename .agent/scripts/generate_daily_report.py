@@ -715,15 +715,6 @@ def build_stock_signals_section():
         lines.append("*今日無觸發賣出/減碼條件的個股。*")
     lines.append("")
 
-    no_fpe_cnt = sum(1 for r in results if r["fpe_range"] is None)
-    lines.append(
-        f"> **註**：目標價 = 隔年({target_year})預估EPS × 所屬概念股FPE上緣（同屬多個概念取平均，"
-        f"見 `[[概念股FPE合理區間]]`）；期望值 = (目標價/現價 - 1)。不含非台股標的（如 .SH/.HK）。"
-        f"目前資料庫 {len(results)} 檔個股中有 {no_fpe_cnt} 檔缺EPS預估或概念分類，"
-        f"標記為「待補充」，未納入買賣訊號判定。"
-    )
-    lines.append("")
-
     return lines
 
 

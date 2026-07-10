@@ -229,5 +229,3 @@ tags: [report/daily, market-overview]
 | 3450聯鈞 | 502.00 | 742.50 | <span class="num-up">+47.91%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+47.9% < 50%，且已跌破5日線 |
 
 </div>
-
-> **註**：目標價 = 隔年(2027)預估EPS × 所屬概念股FPE上緣（同屬多個概念取平均，見 `[[概念股FPE合理區間]]`）；期望值 = (目標價/現價 - 1)。不含非台股標的（如 .SH/.HK）。目前資料庫 82 檔個股中有 11 檔缺EPS預估或概念分類，標記為「待補充」，未納入買賣訊號判定。
