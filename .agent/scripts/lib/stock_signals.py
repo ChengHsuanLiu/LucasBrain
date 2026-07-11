@@ -42,7 +42,8 @@ def is_foreign_listing(ticker):
 
 def load_concept_fpe_table(filepath=FPE_TABLE_PATH):
     """解析 概念股FPE合理區間.md 的主表格，回傳 [{concept, low, mid, high, members:[ticker,...]}]。
-    只讀取「## 概念股分類與現有成員」小節底下、且下/中/上緣皆已填數字的列（跳過使用者尚未填寫的列）。"""
+    只讀取「## 概念股分類與現有成員」小節底下、且下/中/上緣皆已填數字的列（跳過使用者尚未填寫的列）。
+    表格第一欄為「類型」(產業位置/題材/其他)，第二欄才是概念股分類名稱。"""
     try:
         with open(filepath, 'r', encoding='utf-8', errors='replace') as f:
             content = f.read()
@@ -63,11 +64,11 @@ def load_concept_fpe_table(filepath=FPE_TABLE_PATH):
             continue
 
         cols = [c.strip() for c in stripped.split('|')[1:-1]]
-        if len(cols) < 5 or cols[0].startswith(':') or cols[0].startswith('概念股分類'):
+        if len(cols) < 6 or cols[0].startswith(':') or cols[1].startswith('概念股分類'):
             continue
 
-        m_concept = re.search(r'\[\[([^\]|]+)', cols[0])
-        concept_key = m_concept.group(1) if m_concept else cols[0]
+        m_concept = re.search(r'\[\[([^\]|]+)', cols[1])
+        concept_key = m_concept.group(1) if m_concept else cols[1]
 
         def _to_float(s):
             try:
@@ -75,12 +76,12 @@ def load_concept_fpe_table(filepath=FPE_TABLE_PATH):
             except ValueError:
                 return None
 
-        low, mid, high = _to_float(cols[1]), _to_float(cols[2]), _to_float(cols[3])
+        low, mid, high = _to_float(cols[2]), _to_float(cols[3]), _to_float(cols[4])
         if low is None or mid is None or high is None:
             continue
 
         member_tickers = []
-        for member in cols[4].split('、'):
+        for member in cols[5].split('、'):
             m_ticker = re.match(r'^([0-9]+(?:\.[a-zA-Z]+)?)', member.strip())
             if m_ticker:
                 member_tickers.append(m_ticker.group(1))

@@ -1,13 +1,14 @@
 ---
 type: industry
+garden_type: theme
 title: "先進封裝 / 玻璃基板"
 created: 2026-06-22
-updated: 2026-07-10
-review_by: 2026-10-10
+updated: 2026-07-11
+review_by: 2026-10-11
 tags: [investment/target]
 source_type: manual_note
 source_asset: Various
-aliases: [玻璃基板, TGV, CoPoS]
+aliases: [玻璃基板, TGV, CoPoS, CoPoS與玻璃基板]
 ---
 
 # 先進封裝 / 玻璃基板

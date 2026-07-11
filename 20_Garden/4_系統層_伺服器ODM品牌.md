@@ -1,13 +1,16 @@
 ---
 type: industry
-title: "伺服器代工ODM"
+garden_type: industry
+title: "伺服器 / ODM / 品牌"
+tier: "4_系統層"
 created: 2026-07-10
-updated: 2026-07-10
-review_by: 2026-10-10
+updated: 2026-07-11
+review_by: 2026-10-11
 tags: [industry/category, industry/ai-server]
+aliases: [伺服器代工ODM]
 ---
 
-# 伺服器代工ODM
+# 伺服器 / ODM / 品牌
 
 ## 🎯 產業投資點評與核心結論 (Summary & Insights)
 * **產業 So What?（這為什麼重要）**：
@@ -51,7 +54,7 @@ tags: [industry/category, industry/ai-server]
 
 ## 🔗 相關概念與個股連結 (Related Concepts)
 * **關聯個股 (Stocks)**：`[[6669緯穎]]`、`[[2317鴻海]]`、`[[8210勤誠]]`
-* **關聯產業 (Garden)**：`[[CoPoS與玻璃基板]]`、`[[散熱元件]]`
+* **關聯產業 (Garden)**：`[[CoPoS與玻璃基板]]`、`[[4_系統層_散熱機構]]`
 
 ---
 
