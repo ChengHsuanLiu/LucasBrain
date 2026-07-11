@@ -18,6 +18,7 @@ import os
 import re
 import time
 import urllib.error
+from datetime import datetime, timedelta
 
 from .stock_metrics import _finmind_request
 
@@ -138,6 +139,40 @@ def load_screen_settings(settings_path=SETTINGS_PATH):
     return settings
 
 
+def load_liquidity_settings(settings_path=SETTINGS_PATH):
+    """讀取「流動性與市值篩選」設定項/目前值表格，回傳
+    {enabled, min_market_cap, min_avg_daily_value, lookback_days}（市值/成交金額單位為元，非億/萬）。"""
+    defaults = {
+        "enabled": True,
+        "min_market_cap": 30 * 1e8,
+        "min_avg_daily_value": 1000 * 1e4,
+        "lookback_days": 5,
+    }
+    try:
+        with open(settings_path, 'r', encoding='utf-8') as f:
+            lines = f.read().split('\n')
+    except Exception as e:
+        print(f"Warning: Failed to read liquidity settings, using defaults: {e}")
+        return defaults
+
+    rows = _parse_markdown_table(lines, lambda cols: cols[:2] == ['設定項', '目前值'])
+    settings = dict(defaults)
+    for r in rows:
+        item, value = r.get('設定項', ''), r.get('目前值', '')
+        try:
+            if item == '啟用流動性/市值篩選':
+                settings['enabled'] = value.strip().upper() == 'Y'
+            elif item == '最低市值 (億元)':
+                settings['min_market_cap'] = float(value) * 1e8
+            elif item == '最低日均成交金額 (萬元)':
+                settings['min_avg_daily_value'] = float(value) * 1e4
+            elif item == '成交量回溯交易日數':
+                settings['lookback_days'] = int(value)
+        except ValueError:
+            continue
+    return settings
+
+
 # ==========================================
 # FinMind 資料抓取 (含快取)
 # ==========================================
@@ -202,6 +237,69 @@ def fetch_stock_universe(settings=None):
         if sid not in latest_by_id or r.get("date", "") > latest_by_id[sid].get("date", ""):
             latest_by_id[sid] = r
     return sorted(latest_by_id.values(), key=lambda r: r["stock_id"])
+
+
+def fetch_market_cap_snapshot(max_lookback_calendar_days=10):
+    """回傳最近一個交易日的 {stock_id: market_value}，一次 API 呼叫抓全市場快照
+    (TaiwanStockMarketValue data_id="" 回傳當日全市場資料)。從今天往回找，直到找到
+    有資料的交易日為止 (跳過假日/週末)。"""
+    d = datetime.now()
+    for _ in range(max_lookback_calendar_days):
+        date_str = d.strftime("%Y-%m-%d")
+        records = _finmind_request_with_retry("TaiwanStockMarketValue", "", date_str)
+        if records:
+            return {r["stock_id"]: r["market_value"] for r in records if r.get("market_value") is not None}
+        d -= timedelta(days=1)
+    return {}
+
+
+def fetch_liquidity_snapshot(lookback_days=5, max_calendar_days=15):
+    """回傳近 lookback_days 個交易日的 {stock_id: 平均每日成交金額}，透過逐日呼叫
+    TaiwanStockPrice (data_id="" 回傳當日全市場資料) 累積，非交易日 (假日/週末) 自動跳過。
+    每個交易日僅需 1 次 API 呼叫，遠比逐檔查詢省下大量請求數。"""
+    totals = {}
+    counts = {}
+    collected_days = 0
+    d = datetime.now()
+    calendar_days_checked = 0
+    while collected_days < lookback_days and calendar_days_checked < max_calendar_days:
+        date_str = d.strftime("%Y-%m-%d")
+        records = _finmind_request_with_retry("TaiwanStockPrice", "", date_str)
+        if records:
+            for r in records:
+                money = r.get("Trading_money")
+                if money is None:
+                    continue
+                sid = r["stock_id"]
+                totals[sid] = totals.get(sid, 0.0) + money
+                counts[sid] = counts.get(sid, 0) + 1
+            collected_days += 1
+        d -= timedelta(days=1)
+        calendar_days_checked += 1
+    return {sid: totals[sid] / counts[sid] for sid in totals}
+
+
+def apply_liquidity_filter(universe, settings=None):
+    """依市值與日均成交金額過濾 universe，回傳 (filtered_universe, excluded_count)。
+    settings=None 時透過 load_liquidity_settings() 讀取；啟用=False 時原樣回傳不過濾。"""
+    settings = settings or load_liquidity_settings()
+    if not settings["enabled"]:
+        return universe, 0
+
+    market_caps = fetch_market_cap_snapshot()
+    avg_values = fetch_liquidity_snapshot(lookback_days=settings["lookback_days"])
+
+    filtered = []
+    for stock in universe:
+        sid = stock["stock_id"]
+        cap = market_caps.get(sid)
+        avg_value = avg_values.get(sid)
+        if cap is not None and cap < settings["min_market_cap"]:
+            continue
+        if avg_value is not None and avg_value < settings["min_avg_daily_value"]:
+            continue
+        filtered.append(stock)
+    return filtered, len(universe) - len(filtered)
 
 
 def _fetch_raw_financials(ticker, rate_limit_sec=0.15):

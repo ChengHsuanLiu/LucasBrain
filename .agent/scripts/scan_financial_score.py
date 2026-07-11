@@ -4,8 +4,9 @@
 用法：
     python scan_financial_score.py                  # 掃描全市場 (twse+tpex，約2000檔)
     python scan_financial_score.py --limit 100       # 只掃前100檔 (測試用)
-    python scan_financial_score.py --tickers 2330,3443,2454   # 只掃指定個股
+    python scan_financial_score.py --tickers 2330,3443,2454   # 只掃指定個股 (略過流動性/市值篩選)
     python scan_financial_score.py --min-score 60    # 只保留分數 >= 60 的個股於報告中
+    python scan_financial_score.py --skip-liquidity-filter   # 關閉流動性/市值篩選 (即使設定表啟用)
 
 規則依據 `40_Library/財務指標篩選機制.md` 的 10 項指標、100 分制配分表，資料來源
 FinMind 財報三表 (付費 Backer 方案)。輸出報告至 30_Projects/Financial_Screen/。
@@ -18,7 +19,7 @@ import sys
 from datetime import datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from lib.financial_screen import fetch_stock_universe, scan_market
+from lib.financial_screen import fetch_stock_universe, scan_market, apply_liquidity_filter, load_liquidity_settings
 from lib.report_pdf import render_markdown_to_pdf
 
 STOCK_DIR = r"C:\Users\User\Desktop\LucasBrain\10_Stocks"
@@ -41,13 +42,17 @@ def _fmt_score(v):
     return f"{v:g}"
 
 
-def build_report(results, tracked_tickers, min_score, universe_size):
+def build_report(results, tracked_tickers, min_score, universe_size, liquidity_excluded=0):
     today = datetime.now().strftime("%Y-%m-%d")
     lines = []
     lines.append(f"# 財務指標篩選機制 全市場掃描 ({today})")
     lines.append("")
     lines.append(f"> 依 `[[財務指標篩選機制]]` 10 項指標 100 分制規則，掃描 {universe_size} 檔上市櫃個股"
                   f"（已排除 ETF/ETN/存託憑證/金融保險業）。資料來源：FinMind 財報三表。")
+    if liquidity_excluded:
+        lines.append("")
+        lines.append(f"> 另依 `[[財務指標篩選門檻]]` 的流動性/市值篩選設定，已排除 {liquidity_excluded} 檔殭屍股"
+                      f"（市值或日均成交金額不足）。")
     lines.append("")
     if min_score is not None:
         lines.append(f"> 僅列出總分 >= {min_score} 分的個股，共 {len(results)} 檔。")
@@ -115,6 +120,7 @@ def main():
     parser.add_argument("--tickers", type=str, default=None, help="逗號分隔的個股代號清單，指定時忽略 --limit")
     parser.add_argument("--min-score", type=int, default=None, help="只在報告中保留分數 >= 此值的個股")
     parser.add_argument("--rate-limit", type=float, default=0.15, help="每次 FinMind API 呼叫間隔秒數")
+    parser.add_argument("--skip-liquidity-filter", action="store_true", help="關閉流動性/市值篩選 (即使設定表啟用)")
     args = parser.parse_args()
 
     try:
@@ -122,16 +128,28 @@ def main():
     except Exception:
         pass
 
+    liquidity_excluded = 0
     if args.tickers:
         ticker_list = [t.strip() for t in args.tickers.split(",") if t.strip()]
         universe = [{"stock_id": t, "stock_name": None} for t in ticker_list]
-        print(f"Scanning {len(universe)} specified tickers...")
+        print(f"Scanning {len(universe)} specified tickers (liquidity filter skipped)...")
     else:
         print("Fetching stock universe from FinMind...")
         universe = fetch_stock_universe()
+        print(f"Universe size (category filter only): {len(universe)}")
+
+        liquidity_settings = load_liquidity_settings()
+        if liquidity_settings["enabled"] and not args.skip_liquidity_filter:
+            print("Applying liquidity/market-cap filter (fetching market-wide snapshots)...")
+            before = len(universe)
+            universe, liquidity_excluded = apply_liquidity_filter(universe, settings=liquidity_settings)
+            print(f"  {before} -> {len(universe)} (excluded {liquidity_excluded} zombie stocks: "
+                  f"market cap < {liquidity_settings['min_market_cap']/1e8:.0f}億 or "
+                  f"avg daily value < {liquidity_settings['min_avg_daily_value']/1e4:.0f}萬)")
+
         if args.limit:
             universe = universe[:args.limit]
-        print(f"Universe size: {len(universe)}")
+        print(f"Final universe size: {len(universe)}")
 
     def progress(i, total, ticker):
         if i % 50 == 0 or i == total:
@@ -141,7 +159,7 @@ def main():
                            progress_callback=progress, universe=universe)
 
     tracked = get_tracked_tickers()
-    report_lines = build_report(results, tracked, args.min_score, len(universe))
+    report_lines = build_report(results, tracked, args.min_score, len(universe), liquidity_excluded=liquidity_excluded)
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     filename_stem = f"{datetime.now().strftime('%Y%m%d')}_財務指標篩選"
