@@ -203,7 +203,10 @@ def _cache_is_fresh(cache):
 
 
 def _finmind_request_with_retry(dataset, data_id, start_date, max_retries=3, backoff_sec=2.0):
-    """包裝 _finmind_request，遇到速率限制/暫時性錯誤時重試 (指數退避)。"""
+    """包裝 _finmind_request，遇到速率限制/暫時性錯誤時重試 (指數退避)。
+    429 (速率限制，暫時性) 才重試；402 是 FinMind 帳號當日/當期 API 總請求量配額用盡
+    (回應內容為 {"msg":"Requests reach the upper limit."})，重試無法解決，直接拋出讓
+    呼叫端提早中止，避免用剩餘配額做無意義的重試。"""
     for attempt in range(max_retries):
         try:
             return _finmind_request(dataset, data_id, start_date)
