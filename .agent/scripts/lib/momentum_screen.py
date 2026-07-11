@@ -24,10 +24,13 @@ TaiwanStockMonthRevenue，皆逐檔查詢 (單檔一次呼叫可回傳一段日�
 import time
 from datetime import datetime, timedelta
 
-from .stock_metrics import compute_ma_metrics
+from .stock_metrics import compute_ma_metrics, fetch_tdcc_history_finmind
 from .financial_screen import (
     _finmind_request_with_retry,
     _parse_markdown_table,
+    _fetch_raw_financials,
+    _build_quarterly_series,
+    _gross_margin,
     fetch_stock_universe,
     apply_liquidity_filter,
     load_screen_settings,
@@ -141,6 +144,34 @@ def fetch_revenue_history(ticker, rate_limit_sec=0.15):
     return out
 
 
+def fetch_quarterly_gross_margin(ticker, rate_limit_sec=0.15):
+    """抓取近三季平均毛利率(%)，重用 financial_screen.py 的財報三表快取與毛利率計算，
+    避免與 financial_score 重複打 API (共用同一份磁碟快取)。資料不足3季時回傳 None。"""
+    raw = _fetch_raw_financials(ticker, rate_limit_sec=rate_limit_sec)
+    quarters = _build_quarterly_series(raw)
+    if len(quarters) < 3:
+        return None
+    margins = [_gross_margin(q) for q in quarters[-3:]]
+    margins = [m for m in margins if m is not None]
+    if not margins:
+        return None
+    return sum(margins) / len(margins)
+
+
+def fetch_whale_holding_ratio(ticker, rate_limit_sec=0.15):
+    """抓取最新一期400張以上大戶持股比例(%)，重用 stock_metrics.fetch_tdcc_history_finmind
+    (FinMind TaiwanStockHoldingSharesPer)。無資料時回傳 None。"""
+    start = (datetime.now() - timedelta(days=120)).strftime("%Y-%m-%d")
+    try:
+        history = fetch_tdcc_history_finmind(ticker, start)
+    except Exception:
+        history = []
+    time.sleep(rate_limit_sec)
+    if not history:
+        return None
+    return history[0]["ratio_400"]
+
+
 # ==========================================
 # 評分邏輯
 # ==========================================
@@ -156,10 +187,13 @@ def _revenue_yoy_series(revenue_records):
     return yoy_list
 
 
-def compute_momentum_score(ticker, price_series, taiex_series, institutional_series, revenue_records, criteria):
+def compute_momentum_score(ticker, price_series, taiex_series, institutional_series, revenue_records, criteria,
+                            gross_margin_avg=None, whale_ratio_400=None):
     """計算單一個股的 momentum_score (從0累加，無上限)，回傳
     {ticker, total_score, breakdown: [...], data_complete}。
-    breakdown 每項含 {criterion, key, points_earned, passed}。"""
+    breakdown 每項含 {criterion, key, points_earned, passed}。
+    gross_margin_avg：近三季平均毛利率(%)，None表示資料不足。
+    whale_ratio_400：最新一期400張以上大戶持股比例(%)，None表示資料不足。"""
     earned = {}
 
     closes = [p["close"] for p in price_series if p["close"] is not None]
@@ -262,6 +296,24 @@ def compute_momentum_score(ticker, price_series, taiex_series, institutional_ser
     else:
         earned["revenue_accel"] = False
 
+    # 15-17. 近三季平均毛利率分層 (各門檻獨立判斷，非互斥級距)
+    if gross_margin_avg is not None:
+        earned["gross_margin_20"] = gross_margin_avg > 20
+        earned["gross_margin_35"] = gross_margin_avg > 35
+        earned["gross_margin_50"] = gross_margin_avg > 50
+    else:
+        earned["gross_margin_20"] = False
+        earned["gross_margin_35"] = False
+        earned["gross_margin_50"] = False
+
+    # 18-19. 400張以上大戶持股分層 (各門檻獨立判斷，非互斥級距)
+    if whale_ratio_400 is not None:
+        earned["whale_400_35"] = whale_ratio_400 > 35
+        earned["whale_400_50"] = whale_ratio_400 > 50
+    else:
+        earned["whale_400_35"] = False
+        earned["whale_400_50"] = False
+
     breakdown = []
     total_score = 0
     for c in criteria:
@@ -305,6 +357,8 @@ def scan_momentum_market(rate_limit_sec=0.15, progress_callback=None, universe=N
             price_series = fetch_price_history(ticker, rate_limit_sec=rate_limit_sec)
             institutional_series = fetch_institutional_flow(ticker, rate_limit_sec=rate_limit_sec)
             revenue_records = fetch_revenue_history(ticker, rate_limit_sec=rate_limit_sec)
+            gross_margin_avg = fetch_quarterly_gross_margin(ticker, rate_limit_sec=rate_limit_sec)
+            whale_ratio_400 = fetch_whale_holding_ratio(ticker, rate_limit_sec=rate_limit_sec)
             score = compute_momentum_score(
                 ticker,
                 price_series=price_series,
@@ -312,6 +366,8 @@ def scan_momentum_market(rate_limit_sec=0.15, progress_callback=None, universe=N
                 institutional_series=institutional_series,
                 revenue_records=revenue_records,
                 criteria=criteria,
+                gross_margin_avg=gross_margin_avg,
+                whale_ratio_400=whale_ratio_400,
             )
             score["name"] = stock.get("stock_name")
         except Exception as e:

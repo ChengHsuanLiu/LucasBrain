@@ -24,6 +24,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib.momentum_screen import (
     load_momentum_criteria, compute_momentum_score, fetch_taiex_history,
     fetch_price_history, fetch_institutional_flow, fetch_revenue_history,
+    fetch_quarterly_gross_margin, fetch_whale_holding_ratio,
 )
 from lib.financial_screen import fetch_stock_universe, apply_liquidity_filter, load_liquidity_settings
 from lib.stock_signals import load_concept_fpe_table
@@ -32,6 +33,8 @@ from lib.report_pdf import render_markdown_to_pdf
 STOCK_DIR = r"C:\Users\User\Desktop\LucasBrain\10_Stocks"
 OUTPUT_DIR = r"C:\Users\User\Desktop\LucasBrain\30_Projects\Momentum_Screen"
 BREADTH_THRESHOLD = 40  # 題材廣度指標：成員動能分數 >= 此值視為「該股正在動」
+CONCEPT_MIN_AVG = 60  # 題材/產業位置動能排行：平均動能分數需超過此值才列入報告
+TRACKED_MIN_SCORE = 80  # 個股動能 - 既有追蹤標的：動能分數需 >= 此值才列入報告
 
 
 def get_tracked_ticker_names():
@@ -61,7 +64,12 @@ def score_all(tickers, taiex_series, criteria, rate_limit_sec, progress_callback
             price = fetch_price_history(ticker, rate_limit_sec=rate_limit_sec)
             inst = fetch_institutional_flow(ticker, rate_limit_sec=rate_limit_sec)
             rev = fetch_revenue_history(ticker, rate_limit_sec=rate_limit_sec)
-            scores[ticker] = compute_momentum_score(ticker, price, taiex_series, inst, rev, criteria)
+            gross_margin_avg = fetch_quarterly_gross_margin(ticker, rate_limit_sec=rate_limit_sec)
+            whale_ratio_400 = fetch_whale_holding_ratio(ticker, rate_limit_sec=rate_limit_sec)
+            scores[ticker] = compute_momentum_score(
+                ticker, price, taiex_series, inst, rev, criteria,
+                gross_margin_avg=gross_margin_avg, whale_ratio_400=whale_ratio_400,
+            )
         except Exception as e:
             scores[ticker] = {"ticker": ticker, "total_score": 0, "breakdown": [],
                                "data_complete": False, "error": str(e)}
@@ -86,10 +94,12 @@ def build_concept_section(concepts, scores, ticker_names):
             "member_count": len(member_scores), "hot_count": hot_count,
             "top_ticker": top_ticker, "top_name": top_name, "top_score": top_score_obj["total_score"],
         })
+    rows = [r for r in rows if r["avg"] > CONCEPT_MIN_AVG]
     rows.sort(key=lambda r: r["avg"], reverse=True)
 
     lines = ["## 🔥 題材/產業位置動能排行", "",
-             f"> 廣度計算門檻：成員個股動能分數 >= {BREADTH_THRESHOLD} 分視為「該股正在動」。", "",
+             f"> 廣度計算門檻：成員個股動能分數 >= {BREADTH_THRESHOLD} 分視為「該股正在動」。"
+             f"只列出平均動能分數 > {CONCEPT_MIN_AVG} 分的分類。", "",
              "| 分類 | 平均動能分數 | 廣度 | 最高分成員 |",
              "| :--- | :--- | :--- | :--- |"]
     for r in rows:
@@ -106,7 +116,7 @@ def build_individual_section(scores, universe_tickers, tracked_names):
 
     tracked_ticker_set = set(tracked_names.keys())
     new_candidates = [r for r in complete if r["ticker"] not in tracked_ticker_set]
-    tracked_scored = [r for r in complete if r["ticker"] in tracked_ticker_set]
+    tracked_scored = [r for r in complete if r["ticker"] in tracked_ticker_set and r["total_score"] >= TRACKED_MIN_SCORE]
 
     lines = [f"## 🆕 個股動能 - 新發現標的（不在現有 10_Stocks/ 追蹤清單中，共 {len(new_candidates)} 檔）", "",
               "| 股票 | 動能分數 | 通過指標 |", "| :--- | :--- | :--- |"]
@@ -117,7 +127,7 @@ def build_individual_section(scores, universe_tickers, tracked_names):
         lines.append("| (無) | | |")
     lines.append("")
 
-    lines.append(f"## 📌 個股動能 - 既有追蹤標的（10_Stocks/ 已收錄，共 {len(tracked_scored)} 檔）")
+    lines.append(f"## 📌 個股動能 - 既有追蹤標的（10_Stocks/ 已收錄，動能分數 >= {TRACKED_MIN_SCORE} 分，共 {len(tracked_scored)} 檔）")
     lines.append("")
     lines.append("| 股票 | 動能分數 | 通過指標 |")
     lines.append("| :--- | :--- | :--- |")

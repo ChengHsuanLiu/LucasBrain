@@ -1,6 +1,6 @@
 <!--
 備註：本頁面檔名格式依 garden_type 而定——
-  garden_type: industry（產業位置）→ N_層級名稱_子分類名稱.md，例如 3_上游_載板PCB_CCL.md
+  garden_type: industry（產業位置）→ N_層級名稱_子分類名稱.md，例如 3_上游_CCL.md
   garden_type: theme（題材）→ 敘事性命名，不加 Tier 前綴，例如 矽光子技術.md
 分類方法論詳見 SCHEMA.md「產業分類架構：產業位置 vs. 題材」章節；成員清單與 FPE 估值區間
 統一維護於 97_Settings/概念股FPE合理區間.md，不要在本頁另外重複一份成員清單。
