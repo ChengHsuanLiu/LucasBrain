@@ -606,3 +606,13 @@
 ## [2026-07-11] feat | 新建 Template_DailyReport.md
 - Lucas 表示對現有 DailyReport 效果滿意，要求依現有格式建立範本存放於 `99_Templates/`。
 - 新建 `99_Templates/Template_DailyReport.md`：因 DailyReport 100% 由 `generate_daily_report.py` 自動產生（不像 Template_Stock.md 是給 ingest 手動/AI填寫用），此範本定位為「結構文件」——完整呈現大盤情況/股票族群/主力大戶籌碼/個股買賣訊號四大章節的欄位結構與各區塊篩選邏輯（如買進訊號EV>60%/80%門檻、賣出訊號EV<25%/50%門檻），並在每節加註資料來源與計算依據的 NOTE，供日後修改腳本時核對輸出結構，或供人快速理解報告格式而不需翻程式碼。
+
+## [2026-07-11] fix | 修正 Template_Industry.md 與現行分類架構脫節，補齊產業層級資料蒐集維度
+- Lucas 請以資深投資研究員角度評估現有 5 個模板（Template_DailyReport/Stock/Industry/Stock_Report/Weekly_Focus）在「資訊蒐集完整度」與「日常投資效益」兩個目標下的優化空間。提出的觀察：(1) Template_Industry.md 的 frontmatter 未跟上這次 session 新設計的產業位置/題材架構，是文件漂移的實際 bug；(2) 整套系統沒有持倉/部位追蹤概念；(3) financial_score/momentum_score 兩套新評分系統沒有接回既有模板，是孤島；(4) 催化劑日曆彙整從未實作；(5) Template_Stock_Report.md 的五步驟嚴謹框架套用率極低（159檔中只有1檔）；(6) 69檔佔位個股沒有「該優先研究誰」的排序機制。Lucas 選擇先處理 Template_Industry.md 的修正。
+- 修正 `99_Templates/Template_Industry.md` frontmatter：補上 `garden_type:`（industry/theme）與 `tier:` 欄位及選用說明註解，比對現有真實頁面（`3_上游_載板PCB_CCL.md`、`矽光子技術.md`）確認格式一致；檔首新增備註區塊說明 industry/theme 兩種命名慣例與分類方法論指向 SCHEMA.md、成員清單統一維護於 FPE 表不要重複記錄。
+- 依 Lucas 詢問「未來產業資料要怎麼完整蒐集」，新增 3 個結構性章節（先前完全空缺）：
+  - **📊 市場規模與循環定位**：TAM/成長率、結構性vs循環性成長的區分、目前處於循環哪個階段。
+  - **🏆 競爭格局與市占率**：不只列資料庫追蹤個股，也要交代非追蹤/海外競爭者位置，判斷台廠份額是否被稀釋。
+  - **⚠️ 風險與總體敏感度**：政策/地緣政治風險、替代技術顛覆風險、總經敏感度。
+- 順帶強化「產業深層結構與底層物理」章節：新增護城河**類型**標註（專利/資本支出門檻/客戶認證週期/製程Know-how/規模經濟），類型不同代表護城河可維持的時間不同。
+- **尚未回填既有 23 個 Garden 頁面**：本次只修正範本本身，是否要把新章節回填到既有頁面，待 Lucas 決定（工程量較大，可能需要另外排程）。
