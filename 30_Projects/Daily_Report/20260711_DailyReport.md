@@ -171,17 +171,17 @@ tags: [report/daily, market-overview]
 
 | 股票 | 當前價格 | 持有大戶 | 總市值 | 目標價上緣 | 買進/加碼提醒 | 賣出/減碼提醒 |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 2303<br>聯電 | 156.00 | A、B、C、F (4位) | 1.3 億 | TP 307<br>(PROI <span class="num-up">+97%</span>) | - | 跌破5日線<br>5日線下彎 |
+| 2303<br>聯電 | 156.00 | A、B、C、F (4位) | 1.3 億 | TP 268<br>(PROI <span class="num-up">+72%</span>) | - | 跌破5日線<br>5日線下彎 |
 | 3443<br>創意 | 4340.00 | B、C、F (3位) | 3.3 億 | TP 6,078<br>(PROI <span class="num-up">+40%</span>) | - | 跌破5日線<br>5日線下彎 |
 | 3450<br>聯鈞 | 502.00 | A、B、C (3位) | 1.2 億 | TP 742<br>(PROI <span class="num-up">+48%</span>) | <span class="flag-red">5日線上彎</span> | 跌破5日線 |
 | 2327<br>國巨 | 900.00 | A、B、F (3位) | 0.5 億 | TP 1,167<br>(PROI <span class="num-up">+30%</span>) | - | 跌破5日線<br>5日線下彎 |
 | 8299<br>群聯 | 2220.00 | A、C (2位) | 2.6 億 | - | <span class="flag-red">首日站上5日線</span> | 5日線下彎 |
 | 3653<br>健策 | 3205.00 | B、E (2位) | 2.0 億 | - | - | 跌破5日線<br>5日線下彎<br>20日線(月線)下彎 |
 | 2493<br>揚博 | 274.00 | A、C (2位) | 1.8 億 | - | - | 跌破5日線<br>5日線下彎 |
-| 2330<br>台積電 | 2415.00 | A、F (2位) | 1.0 億 | - | - | 跌破5日線<br>5日線下彎 |
+| 2330<br>台積電 | 2415.00 | A、F (2位) | 1.0 億 | TP 3,575<br>(PROI <span class="num-up">+48%</span>) | - | 跌破5日線<br>5日線下彎 |
 | 6683<br>雍智科技 | 1725.00 | A、C (2位) | 0.9 億 | - | - | 跌破5日線<br>5日線下彎 |
 | 2308<br>台達電 | 1880.00 | B、F (2位) | 0.9 億 | - | - | 跌破5日線<br>5日線下彎<br>20日線(月線)下彎 |
-| 2454<br>聯發科 | 3925.00 | C、F (2位) | 0.9 億 | TP 5,647<br>(PROI <span class="num-up">+44%</span>) | - | 跌破5日線<br>5日線下彎<br>20日線(月線)下彎 |
+| 2454<br>聯發科 | 3925.00 | C、F (2位) | 0.9 億 | TP 4,235<br>(PROI <span class="num-up">+8%</span>) | - | 跌破5日線<br>5日線下彎<br>20日線(月線)下彎 |
 | 7734<br>印能科技 | 2835.00 | B、E (2位) | 0.4 億 | - | - | 跌破5日線<br>5日線下彎<br>20日線(月線)下彎 |
 
 </div>
@@ -213,7 +213,7 @@ tags: [report/daily, market-overview]
 | 8046南電 | 1215.00 | 1081.70 | <span class="num-down">-10.97%</span> | <span class="num-up">佳</span> | <span class="num-up">佳</span> | 期望值-11.0% < 25%，逢高減碼 |
 | 2383台光電 | 5295.00 | 5025.00 | <span class="num-down">-5.10%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值-5.1% < 25%，逢高減碼<br>期望值-5.1% < 50%，且已跌破5日線 |
 | 3363上詮 | 608.00 | 588.39 | <span class="num-down">-3.23%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值-3.2% < 25%，逢高減碼 |
-| 8210勤誠 | 1175.00 | 1174.24 | <span class="num-down">-0.06%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值-0.1% < 25%，逢高減碼<br>期望值-0.1% < 50%，且已跌破5日線 |
+| 2454聯發科 | 3925.00 | 4235.33 | <span class="num-up">+7.91%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+7.9% < 25%，逢高減碼<br>期望值+7.9% < 50%，且已跌破5日線 |
 | 6182合晶 | 172.50 | 195.00 | <span class="num-up">+13.04%</span> | <span class="num-up">佳</span> | <span class="num-up">佳</span> | 期望值+13.0% < 25%，逢高減碼 |
 | 6147頎邦 | 217.00 | 246.80 | <span class="num-up">+13.73%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+13.7% < 25%，逢高減碼 |
 | 6515穎崴 | 7765.00 | 8962.00 | <span class="num-up">+15.42%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+15.4% < 25%，逢高減碼<br>期望值+15.4% < 50%，且已跌破5日線 |
@@ -223,10 +223,11 @@ tags: [report/daily, market-overview]
 | 2327國巨 | 900.00 | 1167.38 | <span class="num-up">+29.71%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+29.7% < 50%，且已跌破5日線 |
 | 6213聯茂 | 385.00 | 525.15 | <span class="num-up">+36.40%</span> | <span class="num-up">佳</span> | <span class="num-up">佳</span> | 期望值+36.4% < 50%，且已跌破5日線 |
 | 3042晶技 | 200.00 | 274.01 | <span class="num-up">+37.00%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+37.0% < 50%，且已跌破5日線 |
+| 2345智邦 | 2470.00 | 3414.30 | <span class="num-up">+38.23%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+38.2% < 50%，且已跌破5日線 |
 | 3017奇鋐 | 2350.00 | 3263.70 | <span class="num-up">+38.88%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+38.9% < 50%，且已跌破5日線 |
 | 3443創意 | 4340.00 | 6078.16 | <span class="num-up">+40.05%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+40.0% < 50%，且已跌破5日線 |
-| 2454聯發科 | 3925.00 | 5647.10 | <span class="num-up">+43.88%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+43.9% < 50%，且已跌破5日線 |
 | 2492華新科 | 465.50 | 675.00 | <span class="num-up">+45.01%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+45.0% < 50%，且已跌破5日線 |
 | 3450聯鈞 | 502.00 | 742.50 | <span class="num-up">+47.91%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+47.9% < 50%，且已跌破5日線 |
+| 2330台積電 | 2415.00 | 3575.25 | <span class="num-up">+48.04%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+48.0% < 50%，且已跌破5日線 |
 
 </div>
