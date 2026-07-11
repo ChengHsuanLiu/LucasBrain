@@ -42,6 +42,7 @@
   * **`30_Projects/Garden_Reports/`**：產業深入研究報告（命名為 `{當天日期}_{產業名稱}_產業研報.md`）。
   * **`30_Projects/Invest_Timeline/`**：存放投資重點時間軸報告（命名為 `{當天日期}_投資時間軸.md`）。
   * **`30_Projects/Whale_Tracking/`**：存放 `大戶籌碼追蹤.md`——由 `track_whale_positions.py` 每次執行覆蓋產生的大戶持股彙總儀表板，非產業知識筆記，故獨立於 `20_Garden/` 之外管理。
+  * **`30_Projects/Financial_Screen/`**：存放 `scan_financial_score.py` 產生的全市場財務指標篩選報告（命名為 `{當天日期}_財務指標篩選.md`），依 `[[財務指標篩選機制]]` 10 項指標 100 分制規則掃描全上市櫃個股，區分「新發現標的」與「既有追蹤標的評分」。
 * **`98_Archives/`**：已處理完成的原始素材與歷史報告存檔區，細分目錄如下：
   * **`98_Archives/Expert_Meetings/`**：專家會議與專家訪談相關的原始檔案（如：南亞專家會議、CCL產業專家會議）。
   * **`98_Archives/Research_Report/`**：各券商與研究機構出具的正式法人研報（如：摩根士丹利台積電報告、統一證券CCL研究報告、HSBC聯發科研究報告、大和證券MLCC產業報告）通常是 pdf 檔案，如果不是 pdf 檔案的可以放去 Stock_Memo。

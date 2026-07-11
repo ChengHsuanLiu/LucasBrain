@@ -141,6 +141,7 @@
 ## ⚙️ 系統設定 (Settings)
 - [[概念股FPE合理區間]] - 各概念股分類的FPE合理區間與成員個股，供腳本計算目標價/期望值。
 - [[大盤分數計算方式]] - DailyReport「大盤技術分析評分」的加減分規則與級距定義。
+- [[財務指標篩選門檻]] - 全市場財務指標篩選 (financial_score) 的10項指標門檻/配分參數，供 scan_financial_score.py 計算。
 
 ## 📚 外部參考資料庫 (Library)
 - [[00_總覽與快速入門]]（`40_Library/AISupplyChain網站資料/`）- 完整擷取 supply-chain-map.pages.dev 網站的 AI 供應鏈五層架構、144檔公司分類、54個關鍵技術白話說、名詞速查表與追蹤指標總表，共11個檔案。

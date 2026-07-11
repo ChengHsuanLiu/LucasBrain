@@ -525,3 +525,12 @@
 - 更新 `SCHEMA.md`：新增 `30_Projects/Whale_Tracking/` 目錄說明，並修正原本「大戶籌碼追蹤.md 仍留在 20_Garden/」的舊規則（該規則訂立於本次搬遷之前，已不適用）。
 - WikiLink 引用（`[[大戶籌碼追蹤]]`）不受影響，Obsidian 依檔名解析與資料夾無關；`index.md` 目前未列出此頁面，無需更新。
 - 已重新產生 DailyReport 驗證腳本與資料流未受影響。
+
+## [2026-07-11] feat | 新建全市場財務指標篩選模組 (financial_score)
+- Lucas 表示投資策略最終目標是打造完整選股與交易決策系統，討論了動能訊號、盤中掃描推播等方向後，確認先實作 `[[財務指標篩選機制]]` 的全市場自動化版本（該文件原本只是手動記錄的10項指標評分表，未接上資料）。
+- 新建 `.agent/scripts/lib/financial_screen.py`：透過 FinMind（Lucas 付費 Backer 方案）TaiwanStockInfo/TaiwanStockFinancialStatements/TaiwanStockBalanceSheet/TaiwanStockCashFlowsStatement 四個資料集，計算 10 項指標 100 分制的 `financial_score`。含磁碟快取（`.agent/data/financial_cache/`，7天內不重複打API，已加入 .gitignore）與速率限制重試邏輯。
+- 新建 `.agent/scripts/scan_financial_score.py`：CLI 驅動腳本，可全市場掃描（約2,089檔，已排除ETF/ETN/存託憑證/金融保險業）或指定個股測試，輸出報告至新資料夾 `30_Projects/Financial_Screen/`，並區分「新發現標的」（不在現有10_Stocks/追蹤清單）與「既有追蹤標的財務評分」兩區塊。
+- 以 2330台積電/3443創意/2454聯發科/2317鴻海 驗證計分邏輯合理（台積電本季100分滿分、聯發科營收獲利雙降僅20分，方向與既有個股筆記記錄的多空一致）。
+- **依 Lucas 要求，將門檻/配分/範圍等可調參數抽成獨立設定表** `97_Settings/財務指標篩選門檻.md`（比照 `[[概念股FPE合理區間]]` 的模式），`financial_screen.py` 改為執行時讀表計算而非寫死在程式碼中，未來調整鬆緊度或配分權重不需要改程式碼。設定表含三部分：11項指標門檻配分表（含隱藏的「指標代號」欄供程式比對）、史料不足處理原則（目前為 lenient：缺資料的指標不計入配分基準，避免新股被錯殺）、全市場掃描範圍設定（納入市場別、排除產業類別）。重構後以相同測試個股驗證分數完全一致，universe 大小亦一致 (2,089 檔)，確認等價。
+- `40_Library/財務指標篩選機制.md` 加註「實作狀態」說明，指向新設定表；`index.md` Settings 區塊新增連結；`SCHEMA.md` 新增 `30_Projects/Financial_Screen/` 目錄說明。
+- **尚未執行全市場掃描**：Lucas 選擇先確認規則設計（YoY/QoQ資料基礎、ROE計算口徑、史料不足處理方式、金融股/興櫃排除範圍等5點），確認後才會實際執行（全市場約需1.5~2小時，6000+次API呼叫）。
