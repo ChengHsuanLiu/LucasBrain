@@ -12,7 +12,7 @@ cost_price, market_price, cost_basis, market_value, unrealized_pnl, pnl_pct
 1. 將輸入快照併入 .agent/data/whale_positions.csv（主表，全歷史）。
 2. 對每位大戶計算與前一次快照的部位變化（新增/加碼/減碼/出清）。
 3. 計算當天的共識標的（預設 2 位以上大戶同時持有）。
-4. 重新產生 20_Garden/大戶籌碼追蹤.md 彙總筆記。
+4. 重新產生 30_Projects/Whale_Tracking/大戶籌碼追蹤.md 彙總筆記。
 """
 import csv
 import os

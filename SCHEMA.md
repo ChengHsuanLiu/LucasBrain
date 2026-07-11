@@ -41,6 +41,7 @@
   * **`30_Projects/Stock_Reports/`**：個股深入研報與分析（命名為 `{當天日期}_{股票代號}{股票名稱}_個股研報.md`）。
   * **`30_Projects/Garden_Reports/`**：產業深入研究報告（命名為 `{當天日期}_{產業名稱}_產業研報.md`）。
   * **`30_Projects/Invest_Timeline/`**：存放投資重點時間軸報告（命名為 `{當天日期}_投資時間軸.md`）。
+  * **`30_Projects/Whale_Tracking/`**：存放 `大戶籌碼追蹤.md`——由 `track_whale_positions.py` 每次執行覆蓋產生的大戶持股彙總儀表板，非產業知識筆記，故獨立於 `20_Garden/` 之外管理。
 * **`98_Archives/`**：已處理完成的原始素材與歷史報告存檔區，細分目錄如下：
   * **`98_Archives/Expert_Meetings/`**：專家會議與專家訪談相關的原始檔案（如：南亞專家會議、CCL產業專家會議）。
   * **`98_Archives/Research_Report/`**：各券商與研究機構出具的正式法人研報（如：摩根士丹利台積電報告、統一證券CCL研究報告、HSBC聯發科研究報告、大和證券MLCC產業報告）通常是 pdf 檔案，如果不是 pdf 檔案的可以放去 Stock_Memo。
@@ -53,7 +54,8 @@
   設定/公式，還是一篇產業研究筆記」。例如 `概念股FPE合理區間.md`（個股目標價計算
   用的FPE參數表）、`大盤分數計算方式.md`（DailyReport大盤評分的加減分規則與級距）。
   純粹由腳本產生、每次執行就覆蓋的「即時動態彙總/儀表板」（如 `大戶籌碼追蹤.md`）
-  不屬於此類，仍留在 `20_Garden/`。
+  也不屬於此類，因不是產業知識筆記而移至 `30_Projects/Whale_Tracking/` 獨立管理
+  （2026-07-11 起）。
 * **`99_Templates/`**：存放 Stock/Industry 範本、系統指令、工作流與腳本。
 
 ### 2. Obsidian 筆記規範

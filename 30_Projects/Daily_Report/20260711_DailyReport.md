@@ -196,7 +196,7 @@ tags: [report/daily, market-overview]
 
 | 股票 | 現價 | 目標價 | 期望值 | 均線 | 乖離 | 觸發原因 | 投資簡述 |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 3595山太士 | 2505.00 | 5565.00 | <span class="num-up">+122.16%</span> | <span class="num-up">佳</span> | <span class="num-up">佳</span> | <span class="flag-red">首日站上5日線</span><br>5日線上彎<br>急跌至上升中的60日均線支撐 | 先進封裝應力平衡獨門絕技：Balance Film 藉由平衡封裝應力而非強行壓平，解決了先進封裝與下一代 TGV 玻璃基板 debond 後釋放應力產生的 R… |
+| 3595山太士 | 2505.00 | 6492.50 | <span class="num-up">+159.18%</span> | <span class="num-up">佳</span> | <span class="num-up">佳</span> | <span class="flag-red">首日站上5日線</span><br>5日線上彎<br>急跌至上升中的60日均線支撐 | 先進封裝應力平衡獨門絕技：Balance Film 藉由平衡封裝應力而非強行壓平，解決了先進封裝與下一代 TGV 玻璃基板 debond 後釋放應力產生的 R… |
 | 4764雙鍵 | 336.00 | 673.14 | <span class="num-up">+100.34%</span> | <span class="num-up">佳</span> | <span class="num-up">佳</span> | 已站上5日線<br>5日線上彎 | 配方改質與前段加工優勢：雙鍵不只做改性，還做前置 Pre-prep 的前段部分，是台廠中極具規模的高階 CCL 樹脂供應商。 |
 | 6696仁新醫藥 | 612.00 | 1050.00 | <span class="num-up">+71.57%</span> | <span class="num-up">佳</span> | <span class="num-up">佳</span> | 已站上5日線<br>5日線上彎 | 眼科獨角獸與抗癌新星： |
 
@@ -217,10 +217,10 @@ tags: [report/daily, market-overview]
 | 6182合晶 | 172.50 | 195.00 | <span class="num-up">+13.04%</span> | <span class="num-up">佳</span> | <span class="num-up">佳</span> | 期望值+13.0% < 25%，逢高減碼 |
 | 6515穎崴 | 7765.00 | 8962.00 | <span class="num-up">+15.42%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+15.4% < 25%，逢高減碼<br>期望值+15.4% < 50%，且已跌破5日線 |
 | 3189景碩 | 795.00 | 924.70 | <span class="num-up">+16.31%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+16.3% < 25%，逢高減碼 |
-| 6147頎邦 | 217.00 | 255.94 | <span class="num-up">+17.95%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+17.9% < 25%，逢高減碼 |
 | 3711日月光投控 | 677.00 | 804.65 | <span class="num-up">+18.86%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+18.9% < 25%，逢高減碼 |
 | 4722國精化 | 256.50 | 306.45 | <span class="num-up">+19.47%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+19.5% < 25%，逢高減碼<br>期望值+19.5% < 50%，且已跌破5日線 |
 | 3017奇鋐 | 2350.00 | 2828.54 | <span class="num-up">+20.36%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+20.4% < 25%，逢高減碼<br>期望值+20.4% < 50%，且已跌破5日線 |
+| 6147頎邦 | 217.00 | 269.00 | <span class="num-up">+23.96%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+24.0% < 25%，逢高減碼 |
 | 8210勤誠 | 1175.00 | 1467.80 | <span class="num-up">+24.92%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+24.9% < 25%，逢高減碼<br>期望值+24.9% < 50%，且已跌破5日線 |
 | 8358金居 | 533.00 | 688.35 | <span class="num-up">+29.15%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+29.1% < 50%，且已跌破5日線 |
 | 2327國巨 | 900.00 | 1167.38 | <span class="num-up">+29.71%</span> | <span class="num-down">差</span> | <span class="num-up">佳</span> | 期望值+29.7% < 50%，且已跌破5日線 |

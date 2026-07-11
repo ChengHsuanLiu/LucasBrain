@@ -510,3 +510,18 @@
 - `97_Settings/概念股FPE合理區間.md` 該列從「其他」子表移至「題材」子表，FPE 區間維持 16/23/30 不變（目前尚無確定成員個股，Vera Rubin/Helios CBU 機櫃電源供應鏈情報中提到的 Panasonic/Delta/Flex 均非資料庫內個股，台廠對應受惠標的待後續查證）。
 - `index.md` 題材清單新增一項、其他清單移除一項，統計數字更新為 37 個產業筆記（產業位置31 + 題材5 + 其他1，僅剩生技醫療）。
 - 已重新產生 DailyReport 驗證 `load_concept_fpe_table()` 解析結果仍為 37 筆概念，無誤。
+
+## [2026-07-11] fix | 2303聯電移出 CoPoS與玻璃基板 題材（保留矽光子技術）
+- Lucas 指出 `[[2303聯電]]` 不應屬於 `[[CoPoS與玻璃基板]]` 題材，其矽光子相關業務曝險已正確歸於 `[[矽光子技術]]` 題材。
+- `97_Settings/概念股FPE合理區間.md` 的 `[[CoPoS與玻璃基板]]` 成員清單移除 2303聯電（保留其餘 10 檔成員不變）。
+- `10_Stocks/2303聯電.md` 的「關聯產業 (Garden)」欄位移除 `[[CoPoS與玻璃基板]]`，保留 `[[2_晶片層_晶圓代工]]`、`[[矽光子技術]]`。
+- `20_Garden/CoPoS與玻璃基板.md` 時間軸段落中提及 2303聯電/TFLN 調變器的敘事內容為真實歷史事件描述，非正式成員列表，予以保留不動。
+- 已重新驗證 `load_concept_fpe_table()`：2303聯電現正確匹配 2 個概念（晶圓代工、矽光子技術）。
+
+## [2026-07-11] chore | 大戶籌碼追蹤.md 從 20_Garden 移至 30_Projects/Whale_Tracking
+- Lucas 指出 `20_Garden/大戶籌碼追蹤.md` 並非產業知識筆記，要求移至新建的 `30_Projects/Whale_Tracking/` 資料夾管理。
+- 以 `git mv` 搬遷檔案；同步更新 `.agent/scripts/lib/whale_tracking.py` 的 `SUMMARY_NOTE_PATH` 常數與 `.agent/scripts/track_whale_positions.py` 的說明文字，確保未來執行腳本會寫入新路徑（腳本本身有 `os.makedirs` 會自動建立目錄，已確認）。
+- 同步更新 `.agent/tasks/update_whale_positions.md` 工作流文件中的路徑引用。
+- 更新 `SCHEMA.md`：新增 `30_Projects/Whale_Tracking/` 目錄說明，並修正原本「大戶籌碼追蹤.md 仍留在 20_Garden/」的舊規則（該規則訂立於本次搬遷之前，已不適用）。
+- WikiLink 引用（`[[大戶籌碼追蹤]]`）不受影響，Obsidian 依檔名解析與資料夾無關；`index.md` 目前未列出此頁面，無需更新。
+- 已重新產生 DailyReport 驗證腳本與資料流未受影響。

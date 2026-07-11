@@ -17,7 +17,7 @@ import os
 from collections import defaultdict
 
 DATA_PATH = r"C:\Users\User\Desktop\LucasBrain\.agent\data\whale_positions.csv"
-SUMMARY_NOTE_PATH = r"C:\Users\User\Desktop\LucasBrain\20_Garden\大戶籌碼追蹤.md"
+SUMMARY_NOTE_PATH = r"C:\Users\User\Desktop\LucasBrain\30_Projects\Whale_Tracking\大戶籌碼追蹤.md"
 
 FIELDS = [
     "date", "whale_id", "ticker", "name", "position_type",
