@@ -1,8 +1,9 @@
 ---
 type: industry
+garden_type: theme
 title: AI電力與算力需求瓶頸 (Tokenomics)
 created: 2026-06-24
-updated: 2026-07-09
+updated: 2026-07-11
 review_by: 2026-09-24
 tags: [ai/power, compute/constraints, tokenomics]
 source_type: image_capture
