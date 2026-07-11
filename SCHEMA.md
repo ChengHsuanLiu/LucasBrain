@@ -40,7 +40,7 @@
   * **`30_Projects/Daily_Report/`**：存放盤後大盤日報（命名為 `{當天日期}_DailyReport.md`），內容涵蓋大盤指數/技術指標/融資/三大法人/外資期貨等大盤情況，未來將擴充族群強度掃描、大戶籌碼整合、個股買賣訊號。
   * **`30_Projects/Stock_Reports/`**：個股深入研報與分析（命名為 `{當天日期}_{股票代號}{股票名稱}_個股研報.md`）。
   * **`30_Projects/Garden_Reports/`**：產業深入研究報告（命名為 `{當天日期}_{產業名稱}_產業研報.md`）。
-  * **`30_Projects/Invest_Timeline/`**：存放投資重點時間軸報告（命名為 `{當天日期}_投資時間軸.md`）。
+  * **`30_Projects/Invest_Timeline/`**：存放 `generate_invest_timeline.py` 產生的投資事件行事曆（命名為 `{當天日期}_宇宙資本_投資事件行事曆.md`），即時掃描 `10_Stocks/*.md` 的預估時間軸區塊、依日期精細度分桶，取代舊版同名資料夾下一次性彙整、不會自動更新的做法。
   * **`30_Projects/Whale_Tracking/`**：存放 `大戶籌碼追蹤.md`——由 `track_whale_positions.py` 每次執行覆蓋產生的大戶持股彙總儀表板，非產業知識筆記，故獨立於 `20_Garden/` 之外管理。
   * **`30_Projects/Financial_Screen/`**：存放 `scan_financial_score.py` 產生的全市場財務指標篩選報告（命名為 `{當天日期}_財務指標篩選.md`），依 `[[財務指標篩選機制]]` 10 項指標 100 分制規則掃描全上市櫃個股，區分「新發現標的」與「既有追蹤標的評分」。
 * **`98_Archives/`**：已處理完成的原始素材與歷史報告存檔區，細分目錄如下：

@@ -78,6 +78,45 @@ def load_momentum_criteria(settings_path=SETTINGS_PATH):
     return criteria
 
 
+def load_report_display_settings(settings_path=SETTINGS_PATH):
+    """讀取「報告顯示設定」表，回傳 {scan_new, top_n_concepts, top_n_tracked, top_n_new,
+    tracked_min_score, concept_min_avg}。scan_new=False 時代表只掃 10_Stocks/ 既有追蹤個股，
+    不額外掃全市場找新標的；top_n_* 為 0 代表不限（該區塊最多顯示前幾名，0=全部列出）。
+    讀取失敗或缺列時使用預設值。"""
+    settings = {"scan_new": True, "top_n_concepts": 0, "top_n_tracked": 0, "top_n_new": 0,
+                "tracked_min_score": 80, "concept_min_avg": 60}
+    try:
+        with open(settings_path, 'r', encoding='utf-8') as f:
+            lines = f.read().split('\n')
+    except Exception as e:
+        print(f"Warning: Failed to read momentum report display settings: {e}")
+        return settings
+
+    rows = _parse_markdown_table(lines, lambda cols: cols[:2] == ['設定項', '目前值'])
+    label_map = {
+        '啟用新標的掃描': 'scan_new',
+        '產業/題材動能排行分數門檻': 'concept_min_avg',
+        '產業/題材動能排行最多顯示前幾名': 'top_n_concepts',
+        '資料庫個股動能排行顯示前幾名': 'top_n_tracked',
+        '新發現動能標的顯示前幾名': 'top_n_new',
+        '資料庫個股動能排行分數門檻': 'tracked_min_score',
+    }
+    for r in rows:
+        item = r.get('設定項', '').strip()
+        key = label_map.get(item)
+        if not key:
+            continue
+        value = r.get('目前值', '').strip()
+        if key == 'scan_new':
+            settings[key] = value.upper() == 'Y'
+        else:
+            try:
+                settings[key] = int(value)
+            except ValueError:
+                pass
+    return settings
+
+
 # ==========================================
 # 批次資料抓取 (市場快照，逐交易日累積)
 # ==========================================
@@ -86,11 +125,12 @@ def fetch_price_history(ticker, lookback_trading_days=PRICE_LOOKBACK_TRADING_DAY
     注意：此函式改為逐檔查詢而非批次——批次查詢 (data_id="") 實測在同一 session 內大量
     呼叫後會間歇性回傳 HTTP 402 (即使加大重試次數也未必能恢復，推測是批次查詢有獨立於
     逐檔查詢速率限制之外的用量上限)，逐檔查詢整個 session 皆穩定，故改用逐檔以確保可靠性。
-    回傳依日期由舊到新排序的 [{date, close, volume, high}, ...]。"""
+    回傳依日期由舊到新排序的 [{date, close, volume, high, open}, ...]。"""
     start = (datetime.now() - timedelta(days=int(lookback_trading_days * 1.6) + 20)).strftime("%Y-%m-%d")
     records = _finmind_request_with_retry("TaiwanStockPrice", ticker, start)
     time.sleep(rate_limit_sec)
-    out = [{"date": r["date"], "close": r.get("close"), "volume": r.get("Trading_Volume"), "high": r.get("max")}
+    out = [{"date": r["date"], "close": r.get("close"), "volume": r.get("Trading_Volume"),
+             "high": r.get("max"), "open": r.get("open")}
            for r in records]
     out.sort(key=lambda e: e["date"])
     return out[-lookback_trading_days:]
@@ -199,6 +239,7 @@ def compute_momentum_score(ticker, price_series, taiex_series, institutional_ser
     closes = [p["close"] for p in price_series if p["close"] is not None]
     volumes = [p["volume"] for p in price_series if p["volume"] is not None]
     highs = [p["high"] for p in price_series if p["high"] is not None]
+    opens = [p["open"] for p in price_series if p.get("open") is not None]
 
     data_complete = len(closes) >= 61 and len(institutional_series) >= 2
 
@@ -247,9 +288,17 @@ def compute_momentum_score(ticker, price_series, taiex_series, institutional_ser
             daily_gain is not None and daily_gain >= 9.5
             and today_high is not None and current_price >= today_high
         )
+
+        # 扣分項：長黑K棒 (收盤 < 開盤 且 (開盤-收盤)/開盤 > 6%)
+        today_open = opens[-1] if opens else None
+        earned["long_bear_candle"] = (
+            today_open is not None and today_open > 0 and current_price < today_open
+            and (today_open - current_price) / today_open * 100.0 > 6
+        )
     else:
         for k in ("price_60d_high", "ma_bullish_alignment", "price_above_5ma", "ma5_up",
-                   "ma20_up", "ma60_up", "price_up_volume_up", "daily_gain_5pct", "limit_up_locked"):
+                   "ma20_up", "ma60_up", "price_up_volume_up", "daily_gain_5pct", "limit_up_locked",
+                   "long_bear_candle"):
             earned[k] = False
 
     # 10. RS強度

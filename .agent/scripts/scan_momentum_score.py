@@ -7,8 +7,9 @@
     python scan_momentum_score.py --tickers 2330,3443   # 只掃指定個股，略過題材彙總
     python scan_momentum_score.py --min-score 40    # 個股報告只保留分數 >= 40 的個股
 
-規則依據 `97_Settings/動能篩選門檻.md` 的 14 項個股指標 (0分起累加，無上限)。
-題材/產業位置動能 = 彙總該分類全部成員的個股 momentum_score（平均分/廣度/最高分成員），
+規則依據 `97_Settings/動能篩選門檻.md` 的個股指標 (0分起累加，無上限) 與「報告顯示設定」
+（啟用新標的掃描開關、各區塊顯示前幾名、資料庫個股分數門檻）。
+題材/產業位置動能 = 彙總該分類全部成員的個股 momentum_score（平均分/前3高分成員），
 成員清單直接讀 `97_Settings/概念股FPE合理區間.md`（與個股全市場掃描不同，題材成員不受
 流動性門檻限制，因為部分題材成員本身就是規模較小的供應鏈個股）。輸出報告至
 30_Projects/Momentum_Screen/。
@@ -25,6 +26,7 @@ from lib.momentum_screen import (
     load_momentum_criteria, compute_momentum_score, fetch_taiex_history,
     fetch_price_history, fetch_institutional_flow, fetch_revenue_history,
     fetch_quarterly_gross_margin, fetch_whale_holding_ratio,
+    load_report_display_settings,
 )
 from lib.financial_screen import fetch_stock_universe, apply_liquidity_filter, load_liquidity_settings
 from lib.stock_signals import load_concept_fpe_table
@@ -32,9 +34,16 @@ from lib.report_pdf import render_markdown_to_pdf
 
 STOCK_DIR = r"C:\Users\User\Desktop\LucasBrain\10_Stocks"
 OUTPUT_DIR = r"C:\Users\User\Desktop\LucasBrain\30_Projects\Momentum_Screen"
-BREADTH_THRESHOLD = 40  # 題材廣度指標：成員動能分數 >= 此值視為「該股正在動」
-CONCEPT_MIN_AVG = 60  # 題材/產業位置動能排行：平均動能分數需超過此值才列入報告
-TRACKED_MIN_SCORE = 80  # 個股動能 - 既有追蹤標的：動能分數需 >= 此值才列入報告
+CONCEPT_TOP_MEMBERS = 3  # 每個分類顯示前幾高分成員
+
+# 三個表格欄位寬度統一：兩張表恰好都是 3 欄，且第1/2欄是短標籤+分數、第3欄是長列表
+# (通過指標 / 最高分成員)，套同一組寬度比例即可。
+MOMENTUM_TABLE_CSS = """
+        table { table-layout: fixed; font-size: 8.3pt; }
+        th:nth-child(1), td:nth-child(1) { width: 20%; } /* 分類 / 股票 */
+        th:nth-child(2), td:nth-child(2) { width: 13%; } /* 平均分數 / 動能分數 */
+        th:nth-child(3), td:nth-child(3) { width: 67%; } /* 最高分成員 / 通過指標 */
+"""
 
 
 def get_tracked_ticker_names():
@@ -51,6 +60,34 @@ def get_tracked_ticker_names():
 
 def _fmt_score(v):
     return f"{v:g}"
+
+
+def _apply_top_n(rows, top_n):
+    return rows if not top_n or top_n <= 0 else rows[:top_n]
+
+
+def _display_concept_label(concept):
+    """拿掉產業位置分類檔名開頭的 Tier 編號與第一個底線，例如 "2_晶片層_感測_MCU"
+    顯示成 "晶片層_感測_MCU"；題材/其他類分類（不是數字開頭）維持原樣不動。"""
+    return re.sub(r'^\d+_', '', concept)
+
+
+def _stock_cell(ticker, name):
+    """股票欄位顯示成「代號」換行「名稱」兩行；沒有名稱時（如新發現標的裡查不到
+    公司名稱者）只顯示代號。"""
+    return f"{ticker}<br>{name}" if name else ticker
+
+
+def _format_breakdown(breakdown):
+    """把命中的指標整理成顯示字串：加分項只顯示名稱（跟以往一致），扣分項（如長黑K棒）
+    額外標註分數，避免使用者誤以為那是加分條件。"""
+    items = []
+    for b in breakdown:
+        if b["points_earned"] > 0:
+            items.append(b["criterion"])
+        elif b["points_earned"] < 0:
+            items.append(f"{b['criterion']}({_fmt_score(b['points_earned'])}分)")
+    return '、'.join(items)
 
 
 def score_all(tickers, taiex_series, criteria, rate_limit_sec, progress_callback=None):
@@ -76,7 +113,7 @@ def score_all(tickers, taiex_series, criteria, rate_limit_sec, progress_callback
     return scores
 
 
-def build_concept_section(concepts, scores, ticker_names):
+def build_concept_section(concepts, scores, ticker_names, top_n, min_avg):
     """彙總每個題材/產業位置的動能分數，回傳依平均分排序的 markdown 行。"""
     rows = []
     for c in concepts:
@@ -85,60 +122,80 @@ def build_concept_section(concepts, scores, ticker_names):
             continue
         total = sum(s["total_score"] for _, s in member_scores)
         avg = total / len(member_scores)
-        hot_count = sum(1 for _, s in member_scores if s["total_score"] >= BREADTH_THRESHOLD)
-        breadth_pct = hot_count / len(member_scores) * 100.0
-        top_ticker, top_score_obj = max(member_scores, key=lambda x: x[1]["total_score"])
-        top_name = ticker_names.get(top_ticker, "")
+        member_scores.sort(key=lambda x: x[1]["total_score"], reverse=True)
+        top_members = member_scores[:CONCEPT_TOP_MEMBERS]
         rows.append({
-            "concept": c["concept"], "avg": avg, "breadth_pct": breadth_pct,
-            "member_count": len(member_scores), "hot_count": hot_count,
-            "top_ticker": top_ticker, "top_name": top_name, "top_score": top_score_obj["total_score"],
+            "concept": c["concept"], "avg": avg, "member_count": len(member_scores),
+            "top_members": [(t, ticker_names.get(t, ""), s["total_score"]) for t, s in top_members],
         })
-    rows = [r for r in rows if r["avg"] > CONCEPT_MIN_AVG]
+    rows = [r for r in rows if r["avg"] > min_avg]
     rows.sort(key=lambda r: r["avg"], reverse=True)
+    total_qualified = len(rows)
+    rows = _apply_top_n(rows, top_n)
 
-    lines = ["## 🔥 題材/產業位置動能排行", "",
-             f"> 廣度計算門檻：成員個股動能分數 >= {BREADTH_THRESHOLD} 分視為「該股正在動」。"
-             f"只列出平均動能分數 > {CONCEPT_MIN_AVG} 分的分類。", "",
-             "| 分類 | 平均動能分數 | 廣度 | 最高分成員 |",
-             "| :--- | :--- | :--- | :--- |"]
+    lines = [f"## 🔥 產業/題材 動能排行（共 {total_qualified} 個分類）", "",
+             "| 分類 | 平均分數 | 最高分成員 |",
+             "| :--- | :--- | :--- |"]
     for r in rows:
-        lines.append(f"| `[[{r['concept']}]]` | {_fmt_score(round(r['avg'], 1))} | "
-                      f"{r['hot_count']}/{r['member_count']} ({r['breadth_pct']:.0f}%) | "
-                      f"{r['top_ticker']}{r['top_name']} ({_fmt_score(r['top_score'])}分) |")
+        top_str = "、".join(f"{t}{name} ({_fmt_score(score)}分)" for t, name, score in r["top_members"])
+        lines.append(f"| `[[{r['concept']}|{_display_concept_label(r['concept'])}]]` | "
+                      f"{_fmt_score(round(r['avg'], 1))} | {top_str} |")
+    if not rows:
+        lines.append("| (無) | | |")
     lines.append("")
     return lines
 
 
-def build_individual_section(scores, universe_tickers, tracked_names):
+def build_tracked_section(scores, universe_tickers, tracked_names, top_n, min_score):
+    complete = [scores[t] for t in universe_tickers if t in scores]
+    complete.sort(key=lambda r: r["total_score"], reverse=True)
+
+    tracked_ticker_set = set(tracked_names.keys())
+    tracked_scored = [r for r in complete if r["ticker"] in tracked_ticker_set and r["total_score"] >= min_score]
+    total_qualified = len(tracked_scored)
+    rows = _apply_top_n(tracked_scored, top_n)
+
+    lines = [f"## 📌 資料庫個股 動能排行（共 {total_qualified} 檔，動能分數 >= {min_score} 分）", ""]
+    lines.append("| 股票 | 動能分數 | 通過指標 |")
+    lines.append("| :--- | :--- | :--- |")
+    for r in rows:
+        name = tracked_names.get(r["ticker"], "")
+        lines.append(f"| {_stock_cell(r['ticker'], name)} | {_fmt_score(r['total_score'])} | {_format_breakdown(r['breakdown'])} |")
+    if not rows:
+        lines.append("| (無) | | |")
+    lines.append("")
+    return lines
+
+
+def build_new_section(scores, universe_tickers, tracked_names, top_n, market_ticker_names):
     complete = [scores[t] for t in universe_tickers if t in scores]
     complete.sort(key=lambda r: r["total_score"], reverse=True)
 
     tracked_ticker_set = set(tracked_names.keys())
     new_candidates = [r for r in complete if r["ticker"] not in tracked_ticker_set]
-    tracked_scored = [r for r in complete if r["ticker"] in tracked_ticker_set and r["total_score"] >= TRACKED_MIN_SCORE]
+    total_qualified = len(new_candidates)
+    rows = _apply_top_n(new_candidates, top_n)
 
-    lines = [f"## 🆕 個股動能 - 新發現標的（不在現有 10_Stocks/ 追蹤清單中，共 {len(new_candidates)} 檔）", "",
-              "| 股票 | 動能分數 | 通過指標 |", "| :--- | :--- | :--- |"]
-    for r in new_candidates[:50]:
-        passed = [b["criterion"] for b in r["breakdown"] if b["points_earned"] > 0]
-        lines.append(f"| {r['ticker']} | {_fmt_score(r['total_score'])} | {'、'.join(passed)} |")
-    if not new_candidates:
-        lines.append("| (無) | | |")
-    lines.append("")
-
-    lines.append(f"## 📌 個股動能 - 既有追蹤標的（10_Stocks/ 已收錄，動能分數 >= {TRACKED_MIN_SCORE} 分，共 {len(tracked_scored)} 檔）")
-    lines.append("")
+    lines = [f"## 🆕 新發現動能標的（共 {total_qualified} 檔，不在現有 10_Stocks/ 追蹤清單中）", ""]
     lines.append("| 股票 | 動能分數 | 通過指標 |")
     lines.append("| :--- | :--- | :--- |")
-    for r in tracked_scored:
-        name = tracked_names.get(r["ticker"], "")
-        passed = [b["criterion"] for b in r["breakdown"] if b["points_earned"] > 0]
-        lines.append(f"| {r['ticker']}{name} | {_fmt_score(r['total_score'])} | {'、'.join(passed)} |")
-    if not tracked_scored:
+    for r in rows:
+        name = market_ticker_names.get(r["ticker"], "")
+        lines.append(f"| {_stock_cell(r['ticker'], name)} | {_fmt_score(r['total_score'])} | {_format_breakdown(r['breakdown'])} |")
+    if not rows:
         lines.append("| (無) | | |")
     lines.append("")
     return lines
+
+
+def build_title_block(today):
+    return ["# 宇宙資本 動能篩選股", "", f"**{today}**", ""]
+
+
+def build_note_block(market_ticker_count, concept_count, concept_member_count):
+    return [f"> 依 `[[動能篩選門檻]]` 個股指標 (0分起累加無上限)。個股全市場掃描 {market_ticker_count} 檔"
+            f"（已排除殭屍股）；題材/產業位置動能彙總涵蓋 `[[概念股FPE合理區間]]` 全部 {concept_count} 個分類、"
+            f"{concept_member_count} 檔不重複成員（不受流動性門檻限制）。"]
 
 
 def main():
@@ -158,15 +215,26 @@ def main():
     criteria = load_momentum_criteria()
     print(f"Loaded {len(criteria)} momentum criteria.")
 
+    display_settings = load_report_display_settings()
+    print(f"Report display settings: {display_settings}")
+
     print("Fetching TAIEX index history...")
     taiex_series = fetch_taiex_history()
 
     do_concepts = not args.tickers
     concepts = load_concept_fpe_table() if do_concepts else []
 
+    tracked_names = get_tracked_ticker_names()
+    market_ticker_names = {}
+
     if args.tickers:
         market_tickers = [t.strip() for t in args.tickers.split(",") if t.strip()]
         print(f"Scanning {len(market_tickers)} specified tickers (no liquidity filter, no concept rollup)...")
+    elif not display_settings["scan_new"]:
+        market_tickers = sorted(tracked_names.keys())
+        if args.limit:
+            market_tickers = market_tickers[:args.limit]
+        print(f"啟用新標的掃描=N，只掃描資料庫既有 {len(market_tickers)} 檔追蹤個股（略過全市場新標的掃描）...")
     else:
         print("Fetching stock universe from FinMind...")
         universe = fetch_stock_universe()
@@ -182,6 +250,7 @@ def main():
         if args.limit:
             universe = universe[:args.limit]
         market_tickers = [s["stock_id"] for s in universe]
+        market_ticker_names = {s["stock_id"]: s.get("stock_name", "") for s in universe}
         print(f"Market scan universe size: {len(market_tickers)}")
 
     concept_member_tickers = set()
@@ -202,38 +271,61 @@ def main():
     else:
         market_tickers_for_report = market_tickers
 
-    tracked_names = get_tracked_ticker_names()
-
     today = datetime.now().strftime("%Y-%m-%d")
-    lines = [f"# 動能篩選 momentum_score 全市場掃描 ({today})", "",
-              f"> 依 `[[動能篩選門檻]]` 14 項個股指標 (0分起累加無上限)。個股全市場掃描 {len(market_tickers)} 檔"
-              f"（已排除殭屍股）；題材/產業位置動能彙總涵蓋 `[[概念股FPE合理區間]]` 全部 {len(concepts)} 個分類、"
-              f"{len(concept_member_tickers)} 檔不重複成員（不受流動性門檻限制）。", "",
-              "---", ""]
 
+    title_block = build_title_block(today)
+    note_block = build_note_block(len(market_tickers), len(concepts), len(concept_member_tickers))
+
+    body = []
     if do_concepts:
-        lines += build_concept_section(concepts, scores, tracked_names)
-        lines.append("---")
-        lines.append("")
+        body += build_concept_section(concepts, scores, tracked_names,
+                                       display_settings["top_n_concepts"], display_settings["concept_min_avg"])
+        body.append("---")
+        body.append("")
 
-    lines += build_individual_section(scores, market_tickers_for_report, tracked_names)
+    body += build_tracked_section(scores, market_tickers_for_report, tracked_names,
+                                   display_settings["top_n_tracked"], display_settings["tracked_min_score"])
 
-    lines.append("---")
-    lines.append("")
-    lines.append("## 📄 原始文件與連結 (Original Documents)")
-    lines.append("- 規則定義：`[[動能篩選門檻]]`")
-    lines.append(f"- 產生腳本：`.agent/scripts/scan_momentum_score.py`（{today} 執行）")
-    lines.append("")
+    # 啟用新標的掃描=N 時，market_tickers 本來就只含資料庫既有個股，這裡永遠是 0 檔——
+    # 與其顯示一個空區塊，乾脆整段（標題+空表格）都不輸出，比較乾淨。
+    if display_settings["scan_new"]:
+        body.append("---")
+        body.append("")
+        body += build_new_section(scores, market_tickers_for_report, tracked_names,
+                                   display_settings["top_n_new"], market_ticker_names)
+
+    original_docs = [
+        "---", "",
+        "## 📄 原始文件與連結 (Original Documents)",
+        "- 規則定義：`[[動能篩選門檻]]`",
+        f"- 產生腳本：`.agent/scripts/scan_momentum_score.py`（{today} 執行）",
+        "",
+    ]
+
+    # .md 檔保留說明區塊與原始文件連結給自己看；PDF 版拿掉這兩段，避免每次印出來都
+    # 先看到一長串技術性說明文字，且原始文件連結在紙本報告上沒有意義。
+    md_lines = list(title_block)
+    md_lines += note_block
+    md_lines.append("")
+    md_lines.append("---")
+    md_lines.append("")
+    md_lines += body
+    md_lines += original_docs
+
+    pdf_lines = list(title_block)
+    pdf_lines.append("---")
+    pdf_lines.append("")
+    pdf_lines += body
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     filename_stem = f"{datetime.now().strftime('%Y%m%d')}_動能篩選"
     output_path = os.path.join(OUTPUT_DIR, f"{filename_stem}.md")
     with io.open(output_path, "w", encoding="utf-8") as f:
-        f.write("\n".join(lines))
+        f.write("\n".join(md_lines))
     print(f"\nGenerated report at: {output_path}")
 
     try:
-        render_markdown_to_pdf(lines, OUTPUT_DIR, filename_stem)
+        render_markdown_to_pdf(pdf_lines, OUTPUT_DIR, filename_stem, extra_css=MOMENTUM_TABLE_CSS)
         print(f"Generated PDF at: {os.path.join(OUTPUT_DIR, filename_stem + '.pdf')}")
     except Exception as e:
         print(f"Warning: Failed to generate PDF: {e}")
