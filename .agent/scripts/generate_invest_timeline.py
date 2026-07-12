@@ -19,7 +19,7 @@ from lib.catalyst_calendar import (
     scan_catalyst_calendar, bucket_entries, load_display_window,
     load_bucket_toggles, format_period_label,
 )
-from lib.report_pdf import render_markdown_to_pdf
+from lib.report_pdf import render_markdown_to_pdf, assemble_report
 
 OUTPUT_DIR = r"C:\Users\User\Desktop\LucasBrain\30_Projects\Invest_Timeline"
 
@@ -171,29 +171,20 @@ def main():
     note_block = build_note_block(window_start, window_end)
     body = build_body(buckets, toggles)
 
+    frontmatter = [
+        "---",
+        "type: catalyst_calendar",
+        f"date: {today.strftime('%Y-%m-%d')}",
+        "author: LucasBrain AI",
+        "tags: [report/catalyst-calendar]",
+        "---",
+        "",
+    ]
+
     # .md 檔保留 NOTE 說明區塊給自己看；PDF 版拿掉，避免每次印出來都先看到一大段
     # 技術性說明文字。
-    md_lines = []
-    md_lines.append("---")
-    md_lines.append("type: catalyst_calendar")
-    md_lines.append(f"date: {today.strftime('%Y-%m-%d')}")
-    md_lines.append("author: LucasBrain AI")
-    md_lines.append("tags: [report/catalyst-calendar]")
-    md_lines.append("---")
-    md_lines.append("")
-    md_lines += title_block
-    md_lines.append("")
-    md_lines += note_block
-    md_lines.append("")
-    md_lines.append("---")
-    md_lines.append("")
-    md_lines += body
-
-    pdf_lines = list(title_block)
-    pdf_lines.append("")
-    pdf_lines.append("---")
-    pdf_lines.append("")
-    pdf_lines += body
+    md_lines, pdf_lines = assemble_report(title_block, body, note_block=note_block)
+    md_lines = frontmatter + md_lines
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     stem = f"{today.strftime('%Y%m%d')}_宇宙資本_投資事件行事曆"

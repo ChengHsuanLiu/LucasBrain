@@ -18,6 +18,8 @@ import os
 import re
 from datetime import date
 
+from .financial_screen import _parse_markdown_table
+
 STOCK_DIR = r"C:\Users\User\Desktop\LucasBrain\10_Stocks"
 GARDEN_DIR = r"C:\Users\User\Desktop\LucasBrain\20_Garden"
 SETTINGS_PATH = r"C:\Users\User\Desktop\LucasBrain\97_Settings\催化劑日曆設定.md"
@@ -421,14 +423,9 @@ def load_display_window(settings_path=SETTINGS_PATH, default_start=None, default
     except Exception:
         return start, end
 
-    for line in lines:
-        line = line.strip()
-        if not line.startswith('|'):
-            continue
-        cols = [c.strip() for c in line.split('|')[1:-1]]
-        if len(cols) < 2:
-            continue
-        label, value = cols[0], cols[1]
+    rows = _parse_markdown_table(lines, lambda cols: cols[:2] == ['設定項', '目前值'])
+    for r in rows:
+        label, value = r.get('設定項', '').strip(), r.get('目前值', '').strip()
         m = re.match(r'^(\d{4})-(\d{1,2})-(\d{1,2})$', value)
         if label == '開始日期' and m:
             start = date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
@@ -458,17 +455,11 @@ def load_bucket_toggles(settings_path=SETTINGS_PATH):
     except Exception:
         return toggles
 
-    for line in lines:
-        line = line.strip()
-        if not line.startswith('|'):
-            continue
-        cols = [c.strip() for c in line.split('|')[1:-1]]
-        if len(cols) < 2:
-            continue
-        label, value = cols[0], cols[1]
-        key = _BUCKET_TOGGLE_LABELS.get(label)
+    rows = _parse_markdown_table(lines, lambda cols: cols[:2] == ['設定項', '目前值'])
+    for r in rows:
+        key = _BUCKET_TOGGLE_LABELS.get(r.get('設定項', '').strip())
         if key:
-            toggles[key] = value.strip().upper() == 'Y'
+            toggles[key] = r.get('目前值', '').strip().upper() == 'Y'
 
     return toggles
 

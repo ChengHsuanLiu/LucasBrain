@@ -15,6 +15,36 @@ import subprocess
 
 EDGE_PATH = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
 
+
+def assemble_report(title_block, body, note_block=None, original_docs=None):
+    """組合「md 版保留說明/原始文件連結、PDF 版拿掉」這個在多份報告腳本裡重複出現的
+    版面組裝邏輯（見 generate_invest_timeline.py、scan_momentum_score.py），
+    回傳 (md_lines, pdf_lines)。
+
+    md_lines  = title_block + [""] + note_block(選填) + ["", "---", ""] + body + original_docs(選填)
+    pdf_lines = title_block + ["---", ""] + body
+
+    note_block/original_docs 通常放技術性說明或給自己看的原始檔案連結，紙本 PDF 不需要。
+    title_block 結尾是否已經留了空行不重要——這裡一律補一個空行分隔，即使因此連續
+    兩個空行也無妨（markdown 渲染上等同一個空行），但絕不能讓 note_block 跟上一段文字黏在一起。"""
+    md_lines = list(title_block)
+    if note_block:
+        md_lines.append("")
+        md_lines += note_block
+        md_lines.append("")
+    md_lines.append("---")
+    md_lines.append("")
+    md_lines += body
+    if original_docs:
+        md_lines += original_docs
+
+    pdf_lines = list(title_block)
+    pdf_lines.append("---")
+    pdf_lines.append("")
+    pdf_lines += body
+
+    return md_lines, pdf_lines
+
 CSS = """
     @page {
         size: a4;

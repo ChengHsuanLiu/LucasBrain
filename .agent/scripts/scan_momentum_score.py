@@ -30,7 +30,7 @@ from lib.momentum_screen import (
 )
 from lib.financial_screen import fetch_stock_universe, apply_liquidity_filter, load_liquidity_settings
 from lib.stock_signals import load_concept_fpe_table
-from lib.report_pdf import render_markdown_to_pdf
+from lib.report_pdf import render_markdown_to_pdf, assemble_report
 
 STOCK_DIR = r"C:\Users\User\Desktop\LucasBrain\10_Stocks"
 OUTPUT_DIR = r"C:\Users\User\Desktop\LucasBrain\30_Projects\Momentum_Screen"
@@ -304,18 +304,7 @@ def main():
 
     # .md 檔保留說明區塊與原始文件連結給自己看；PDF 版拿掉這兩段，避免每次印出來都
     # 先看到一長串技術性說明文字，且原始文件連結在紙本報告上沒有意義。
-    md_lines = list(title_block)
-    md_lines += note_block
-    md_lines.append("")
-    md_lines.append("---")
-    md_lines.append("")
-    md_lines += body
-    md_lines += original_docs
-
-    pdf_lines = list(title_block)
-    pdf_lines.append("---")
-    pdf_lines.append("")
-    pdf_lines += body
+    md_lines, pdf_lines = assemble_report(title_block, body, note_block=note_block, original_docs=original_docs)
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     filename_stem = f"{datetime.now().strftime('%Y%m%d')}_動能篩選"

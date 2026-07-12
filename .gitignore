@@ -4,3 +4,4 @@ __pycache__/
 *.pyc
 40_Library/AISupplyChain網站資料/產業地圖資料個人擷取/
 .agent/data/financial_cache/
+.agent/scheduled_logs/
