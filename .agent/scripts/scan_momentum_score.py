@@ -15,6 +15,7 @@
 30_Projects/Momentum_Screen/。
 """
 import argparse
+import csv
 import io
 import os
 import re
@@ -27,13 +28,18 @@ from lib.momentum_screen import (
     fetch_price_history, fetch_institutional_flow, fetch_revenue_history,
     fetch_quarterly_gross_margin, fetch_whale_holding_ratio,
     load_report_display_settings,
+    load_momentum_history, concept_appearance_sets, stock_appearance_sets,
+    compute_streak, compute_score_delta, _clean_concept_key, _clean_stock_key,
+    HISTORY_LOOKBACK_REPORTS,
 )
 from lib.financial_screen import fetch_stock_universe, apply_liquidity_filter, load_liquidity_settings
 from lib.stock_signals import load_concept_fpe_table
 from lib.report_pdf import render_markdown_to_pdf, assemble_report
+from lib.report_style import flag_red, colorize_signed
 
 STOCK_DIR = r"C:\Users\User\Desktop\LucasBrain\10_Stocks"
 OUTPUT_DIR = r"C:\Users\User\Desktop\LucasBrain\30_Projects\Momentum_Screen"
+TRACKED_SCORES_CSV_PATH = r"C:\Users\User\Desktop\LucasBrain\.agent\data\momentum_scores_latest.csv"
 CONCEPT_TOP_MEMBERS = 3  # 每個分類顯示前幾高分成員
 
 # 三個表格欄位寬度統一：兩張表恰好都是 3 欄，且第1/2欄是短標籤+分數、第3欄是長列表
@@ -113,8 +119,11 @@ def score_all(tickers, taiex_series, criteria, rate_limit_sec, progress_callback
     return scores
 
 
-def build_concept_section(concepts, scores, ticker_names, top_n, min_avg):
-    """彙總每個題材/產業位置的動能分數，回傳依平均分排序的 markdown 行。"""
+def build_concept_section(concepts, scores, ticker_names, top_n, min_avg, history=None):
+    """彙總每個題材/產業位置的動能分數，回傳依平均分排序的 markdown 行。history 為
+    load_momentum_history() 的輸出（不含今天）；提供時會把「連N日」「新進榜」「分數變化」
+    直接內嵌進「分類」「平均分數」欄位，不提供時（例如 --tickers 模式略過題材彙總）行為
+    等同舊版、不顯示追蹤徽章。"""
     rows = []
     for c in concepts:
         member_scores = [(t, scores[t]) for t in c["members"] if t in scores]
@@ -133,20 +142,40 @@ def build_concept_section(concepts, scores, ticker_names, top_n, min_avg):
     total_qualified = len(rows)
     rows = _apply_top_n(rows, top_n)
 
+    prev_concepts, appearance = {}, []
+    if history:
+        prev_concepts = {_clean_concept_key(r['分類']): r for r in history[-1][0]}
+        appearance = concept_appearance_sets(history)
+
     lines = [f"## 🔥 產業/題材 動能排行（共 {total_qualified} 個分類）", "",
              "| 分類 | 平均分數 | 最高分成員 |",
              "| :--- | :--- | :--- |"]
     for r in rows:
         top_str = "、".join(f"{t}{name} ({_fmt_score(score)}分)" for t, name, score in r["top_members"])
-        lines.append(f"| `[[{r['concept']}|{_display_concept_label(r['concept'])}]]` | "
-                      f"{_fmt_score(round(r['avg'], 1))} | {top_str} |")
+        concept_key = f"`[[{r['concept']}|{_display_concept_label(r['concept'])}]]`"
+        avg_rounded = round(r['avg'], 1)
+        badge, delta_str = "", ""
+        if history:
+            n = compute_streak(concept_key, appearance)
+            if n >= 2:
+                badge = f"<br>{flag_red(f'連{n}日')}"
+            delta, is_new = compute_score_delta(avg_rounded, prev_concepts.get(concept_key), '平均分數')
+            if is_new:
+                delta_str = f"<br>{flag_red('新進榜')}"
+            elif delta is not None and abs(delta) >= 0.05:
+                delta_str = f"（{colorize_signed(delta, '{:+.1f}', bold=False)}）"
+            elif delta is not None:
+                delta_str = "（持平）"
+        lines.append(f"| {concept_key}{badge} | {_fmt_score(avg_rounded)}{delta_str} | {top_str} |")
     if not rows:
         lines.append("| (無) | | |")
     lines.append("")
     return lines
 
 
-def build_tracked_section(scores, universe_tickers, tracked_names, top_n, min_score):
+def build_tracked_section(scores, universe_tickers, tracked_names, top_n, min_score, history=None):
+    """history 為 load_momentum_history() 的輸出（不含今天）；提供時會把「連N日」「新進榜」
+    「分數變化」內嵌進「股票」「動能分數」欄位，不提供時行為等同舊版。"""
     complete = [scores[t] for t in universe_tickers if t in scores]
     complete.sort(key=lambda r: r["total_score"], reverse=True)
 
@@ -155,12 +184,29 @@ def build_tracked_section(scores, universe_tickers, tracked_names, top_n, min_sc
     total_qualified = len(tracked_scored)
     rows = _apply_top_n(tracked_scored, top_n)
 
+    prev_stocks, appearance = {}, []
+    if history:
+        prev_stocks = {_clean_stock_key(r['股票']): r for r in history[-1][1]}
+        appearance = stock_appearance_sets(history)
+
     lines = [f"## 📌 資料庫個股 動能排行（共 {total_qualified} 檔，動能分數 >= {min_score} 分）", ""]
     lines.append("| 股票 | 動能分數 | 通過指標 |")
     lines.append("| :--- | :--- | :--- |")
     for r in rows:
         name = tracked_names.get(r["ticker"], "")
-        lines.append(f"| {_stock_cell(r['ticker'], name)} | {_fmt_score(r['total_score'])} | {_format_breakdown(r['breakdown'])} |")
+        badge, delta_str = "", ""
+        if history:
+            n = compute_streak(r["ticker"], appearance)
+            if n >= 2:
+                badge = f"<br>{flag_red(f'連{n}日')}"
+            delta, is_new = compute_score_delta(r["total_score"], prev_stocks.get(r["ticker"]), '動能分數')
+            if is_new:
+                delta_str = f"<br>{flag_red('新進榜')}"
+            elif delta is not None and abs(delta) >= 0.05:
+                delta_str = f"（{colorize_signed(delta, '{:+.1f}', bold=False)}）"
+            elif delta is not None:
+                delta_str = "（持平）"
+        lines.append(f"| {_stock_cell(r['ticker'], name)}{badge} | {_fmt_score(r['total_score'])}{delta_str} | {_format_breakdown(r['breakdown'])} |")
     if not rows:
         lines.append("| (無) | | |")
     lines.append("")
@@ -186,6 +232,22 @@ def build_new_section(scores, universe_tickers, tracked_names, top_n, market_tic
         lines.append("| (無) | | |")
     lines.append("")
     return lines
+
+
+def write_tracked_scores_csv(scores, tracked_names, today, csv_path=TRACKED_SCORES_CSV_PATH):
+    """把資料庫全部追蹤個股（10_Stocks/ 現有清單）的實際動能分數寫成一份不受
+    「資料庫個股動能排行」>=80分顯示門檻限制的完整快照，每次執行覆蓋。
+    generate_daily_report.py 的「四、個股買賣訊號」動能欄讀這份 CSV，而不是解析
+    Momentum_Screen 報告裡被門檻篩過的表格——否則 BUY 訊號股只要分數 <80 就查不到
+    分數，動能欄會誤顯示「-」，讓人誤以為沒算過動能分數。"""
+    os.makedirs(os.path.dirname(csv_path), exist_ok=True)
+    with open(csv_path, "w", encoding="utf-8", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(["date", "ticker", "name", "total_score"])
+        for ticker in sorted(tracked_names.keys()):
+            if ticker not in scores:
+                continue
+            writer.writerow([today, ticker, tracked_names.get(ticker, ""), scores[ticker]["total_score"]])
 
 
 def build_title_block(today):
@@ -266,6 +328,8 @@ def main():
 
     scores = score_all(union_tickers, taiex_series, criteria, args.rate_limit, progress_callback=progress)
 
+    write_tracked_scores_csv(scores, tracked_names, today=datetime.now().strftime("%Y-%m-%d"))
+
     if args.min_score is not None:
         market_tickers_for_report = [t for t in market_tickers if scores.get(t, {}).get("total_score", 0) >= args.min_score]
     else:
@@ -273,18 +337,24 @@ def main():
 
     today = datetime.now().strftime("%Y-%m-%d")
 
+    # 讀取既有歷史報告（不含今天，今天的還沒寫檔），供「連N日／新進榜／分數變化」比對用。
+    history = load_momentum_history(OUTPUT_DIR, lookback=HISTORY_LOOKBACK_REPORTS)
+    print(f"Loaded {len(history)} historical report(s) for streak/delta comparison.")
+
     title_block = build_title_block(today)
     note_block = build_note_block(len(market_tickers), len(concepts), len(concept_member_tickers))
 
     body = []
     if do_concepts:
         body += build_concept_section(concepts, scores, tracked_names,
-                                       display_settings["top_n_concepts"], display_settings["concept_min_avg"])
+                                       display_settings["top_n_concepts"], display_settings["concept_min_avg"],
+                                       history=history)
         body.append("---")
         body.append("")
 
     body += build_tracked_section(scores, market_tickers_for_report, tracked_names,
-                                   display_settings["top_n_tracked"], display_settings["tracked_min_score"])
+                                   display_settings["top_n_tracked"], display_settings["tracked_min_score"],
+                                   history=history)
 
     # 啟用新標的掃描=N 時，market_tickers 本來就只含資料庫既有個股，這裡永遠是 0 檔——
     # 與其顯示一個空區塊，乾脆整段（標題+空表格）都不輸出，比較乾淨。

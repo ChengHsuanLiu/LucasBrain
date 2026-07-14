@@ -4,7 +4,8 @@ import sys
 from datetime import datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from lib.stock_metrics import parse_target_eps, refresh_stock_data
+from lib.stock_metrics import parse_valuation_eps, refresh_stock_data
+from lib.stock_signals import load_valuation_mode
 from lib.report_pdf import render_markdown_to_pdf
 
 def extract_core_points(filepath):
@@ -125,7 +126,8 @@ def generate_weekly_report(target_date=None):
     dest_filepath = os.path.join(dest_dir, f"{filename_prefix}.md")
     
     target_year = date_obj.year + 1 # Next year PE
-    
+    valuation_mode = load_valuation_mode()
+
     add_stocks = []
     sell_stocks = []
     
@@ -206,8 +208,8 @@ def generate_weekly_report(target_date=None):
             elif len(parts) == 1:
                 ma_rating = parts[0].strip()
                 
-        # Parse EPS
-        eps = parse_target_eps(fp, target_year)
+        # Parse EPS (依估值模式取明年或明年後年平均)
+        eps = parse_valuation_eps(fp, target_year, valuation_mode)
         eps_str = f"{eps:.2f}" if eps is not None else "待補充"
         
         # Extract 2 core points

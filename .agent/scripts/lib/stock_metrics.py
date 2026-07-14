@@ -489,8 +489,64 @@ def compute_tactical_score(ma_metrics, valuation_rating):
 # ==========================================
 # 5. Note Parsing Helpers
 # ==========================================
+# 機構別名表：同一機構對同一年度出新估計時，舊估計視為「已被該機構更新取代」，
+# 不再參與平均（見 parse_target_eps 的去重邏輯）。比對對象是該列「情境/假設 +
+# 來源」欄位的合併文字，依序比對、首個命中即定案，因此撰寫順序有意義——
+# 例如 Wallace 的報告常註記「與優分析對齊」，Wallace 要排在優分析前面才不會被誤歸。
+# 認不出機構的列不參與去重（各自視為獨立估計保留），寧可多算不誤刪。
+_INSTITUTION_ALIASES = [
+    ("高盛", ("高盛", "Goldman")),
+    ("大摩", ("大摩", "摩根士丹利", "Morgan Stanley")),
+    ("花旗", ("花旗", "Citi")),
+    ("大和", ("大和", "Daiwa")),
+    ("野村", ("野村", "Nomura")),
+    ("麥格理", ("麥格理", "Macquarie", "CLSA", "里昂")),
+    ("瑞銀", ("瑞銀", "UBS")),
+    ("匯豐", ("匯豐", "HSBC")),
+    ("凱基", ("凱基", "KGI")),
+    ("統一", ("統一",)),
+    ("國票", ("國票",)),
+    ("元大", ("元大",)),
+    ("富邦", ("富邦",)),
+    ("福邦", ("福邦",)),
+    ("永豐", ("永豐", "SinoPac")),
+    ("定錨", ("定錨",)),
+    ("Wallace", ("Wallace",)),
+    ("優分析", ("優分析", "uanalyze")),
+    ("公司指引", ("法說", "股東會", "公司指引", "法人說明會")),
+]
+
+
+def _parse_eps_cell_value(eps_cell):
+    """單一 EPS 儲存格轉數值。含 '=' 時取等號後的總和（如 '9(E貢獻)+17(Q貢獻)=26' → 26，
+    等號前的是組成項不是並列估計）；否則取所有數字的平均（如 '30.00 - 35.00' → 32.5）。
+    「（原 25.27）」這類上修/下修前的舊值註記先剔除，那是歷史對照不是並列估計。
+    無法解析（'待補充'、'-'、'淨損' 等）回傳 None。"""
+    source = re.sub(r'[（(]原[^）)]*[）)]', '', eps_cell)
+    source = source.split('=')[-1] if '=' in source else source
+    nums = re.findall(r'\d+(?:\.\d+)?', source)
+    if not nums:
+        return None
+    floats = [float(n) for n in nums]
+    return sum(floats) / len(floats)
+
+
+def _identify_institution(row_text):
+    for canonical, keywords in _INSTITUTION_ALIASES:
+        if any(k in row_text for k in keywords):
+            return canonical
+    return None
+
+
 def parse_target_eps(filepath, target_year):
-    """從個股筆記的「財務數據與 EPS 預估比對」表格中，取出指定年度所有並列估計值的平均。"""
+    """從個股筆記的「財務數據與 EPS 預估比對」表格中，取出指定年度估計值的平均。
+
+    年份欄接受 '2027'/'2027F'/'2027E' 寫法。「估算日期」欄開頭為 YYYY-MM-DD 的估計
+    優先採計——同一機構同一年度有多筆時只取日期最新的一筆（機構出了新報告，
+    舊觀點退場不再參與平均），且只要該年度存在任何帶日期的估計，無日期的列一律不計
+    （頁面上標「舊預估值」的無日期列、以及其他碰巧同欄數的表格因此自然被排除）。
+    僅當該年度完全沒有帶日期的估計時，才 fallback 用無日期列的平均（如三福化那種
+    三情境估計沒寫日期的頁面，不至於整檔失去目標價）。"""
     try:
         with open(filepath, 'r', encoding='utf-8', errors='replace') as f:
             content = f.read()
@@ -498,24 +554,56 @@ def parse_target_eps(filepath, target_year):
         print(f"Failed to read {filepath}: {e}")
         return None
 
-    eps_values = []
-    for line in content.split('\n'):
+    dated_rows = []    # (機構 or 唯一鍵, 估算日期, eps值)
+    undated_values = []
+    for idx, line in enumerate(content.split('\n')):
         line = line.strip()
-        if line.startswith('|'):
-            cols = [c.strip() for c in line.split('|')]
-            if len(cols) >= 5:
-                year = cols[2].strip()
-                eps_val = cols[3].strip()
-                if year == str(target_year):
-                    nums = re.findall(r'(\d+(?:\.\d+)?)', eps_val)
-                    if nums:
-                        floats = [float(n) for n in nums]
-                        avg_val = sum(floats) / len(floats)
-                        eps_values.append(avg_val)
+        if not line.startswith('|'):
+            continue
+        cols = [c.strip() for c in line.split('|')]
+        if len(cols) < 5:
+            continue
+        year_m = re.fullmatch(r'(\d{4})[EF]?', cols[2])
+        if not year_m or year_m.group(1) != str(target_year):
+            continue
+        eps_value = _parse_eps_cell_value(cols[3])
+        if eps_value is None:
+            continue
+        if re.match(r'\d{4}-\d{2}-\d{2}', cols[1]):
+            institution = _identify_institution(' '.join(cols[4:]))
+            dated_rows.append((institution or f'_row{idx}', cols[1], eps_value))
+        else:
+            undated_values.append(eps_value)
 
-    if eps_values:
-        return sum(eps_values) / len(eps_values)
+    if dated_rows:
+        latest_date = {}
+        for inst, date_str, _ in dated_rows:
+            if date_str > latest_date.get(inst, ''):
+                latest_date[inst] = date_str
+        surviving = [v for inst, d, v in dated_rows if d == latest_date[inst]]
+        return sum(surviving) / len(surviving)
+
+    if undated_values:
+        return sum(undated_values) / len(undated_values)
     return None
+
+
+def parse_valuation_eps(filepath, base_year, mode="明年"):
+    """依「估值EPS年度模式」回傳用於目標價/forward_pe 計算的 EPS。
+
+    - `明年`：只用 base_year（即 N+1 年）的估計平均，維持原始行為。
+    - `明年後年平均`：取 (明年EPS平均 + 後年EPS平均) / 2——市場對強勢產業的估值常
+      提前反映到後年（法人報告以 2028E P/E 給目標價已成常態）；後年沒有任何估計
+      時自動退回只用明年，兩年都沒有時退回有值的那一年。
+    mode 由 97_Settings/概念股FPE合理區間.md「目標價估值設定」表控制
+    （見 stock_signals.load_valuation_mode）。"""
+    eps_next = parse_target_eps(filepath, base_year)
+    if mode != "明年後年平均":
+        return eps_next
+    eps_after = parse_target_eps(filepath, base_year + 1)
+    if eps_next is not None and eps_after is not None:
+        return (eps_next + eps_after) / 2
+    return eps_next if eps_next is not None else eps_after
 
 
 # ==========================================

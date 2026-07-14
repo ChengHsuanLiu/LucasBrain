@@ -195,6 +195,13 @@ CSS = """
         page-break-before: always;
         break-before: page;
     }
+    /* 全報告共用「漲橘跌綠」配色慣例，見 lib/report_style.py 的 colorize/flag_* 函式 */
+    .num-up { color: #d6480f; font-weight: 700; }
+    .num-down { color: #15803d; font-weight: 700; }
+    .flag-red { color: #dc2626; font-weight: 800; }
+    .text-green { color: #15803d; }
+    .text-blue { color: #2563eb; }
+    .text-purple { color: #9333ea; }
 """
 
 _EMOJI_PATTERN = re.compile(

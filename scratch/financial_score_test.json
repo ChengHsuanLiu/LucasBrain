@@ -1,0 +1,374 @@
+[
+  {
+    "ticker": "2330",
+    "name": "台積電",
+    "total_score": 100,
+    "max_possible_score": 100,
+    "latest_quarter": "2026-03-31",
+    "breakdown": [
+      {
+        "criterion": "營收YoY",
+        "points_earned": 15,
+        "points_max": 15,
+        "value": 35.1323787607557,
+        "note": "vs 去年同季"
+      },
+      {
+        "criterion": "營收QoQ",
+        "points_earned": 15,
+        "points_max": 15,
+        "value": 8.413519255425818,
+        "note": "vs 上一季"
+      },
+      {
+        "criterion": "本業獲利YoY",
+        "points_earned": 10,
+        "points_max": 10,
+        "value": 61.87600325289715,
+        "note": "vs 去年同季"
+      },
+      {
+        "criterion": "本業獲利QoQ",
+        "points_earned": 10,
+        "points_max": 10,
+        "value": 16.651323633131657,
+        "note": "vs 上一季"
+      },
+      {
+        "criterion": "毛利率YoY變動",
+        "points_earned": 5,
+        "points_max": 5,
+        "value": 7.456014604167109,
+        "note": "百分點變動，vs 去年同季"
+      },
+      {
+        "criterion": "毛利率QoQ變動",
+        "points_earned": 5,
+        "points_max": 5,
+        "value": 3.919708330158876,
+        "note": "百分點變動，vs 上一季"
+      },
+      {
+        "criterion": "ROE單季",
+        "points_earned": 10,
+        "points_max": 10,
+        "value": 9.7233944806457,
+        "note": "單季稅後淨利/歸屬母公司權益"
+      },
+      {
+        "criterion": "FCF",
+        "points_earned": 10,
+        "points_max": 10,
+        "value": 348213466000.0,
+        "note": "營業現金流 + 資本支出(原始值為負)"
+      },
+      {
+        "criterion": "負債比率",
+        "points_earned": 10,
+        "points_max": 10,
+        "value": 31.504175214475914,
+        "note": "負債總額/資產總額"
+      },
+      {
+        "criterion": "存貨銷售比vs上季",
+        "points_earned": 5,
+        "points_max": 5,
+        "value": [
+          0.2746252661044746,
+          0.27541547003612227
+        ],
+        "note": "存貨/營收比"
+      },
+      {
+        "criterion": "存貨銷售比vs去年",
+        "points_earned": 5,
+        "points_max": 5,
+        "value": [
+          0.2746252661044746,
+          0.34958157179996535
+        ],
+        "note": "存貨/營收比"
+      }
+    ],
+    "data_complete": true
+  },
+  {
+    "ticker": "3443",
+    "name": "創意",
+    "total_score": 60,
+    "max_possible_score": 100,
+    "latest_quarter": "2026-03-31",
+    "breakdown": [
+      {
+        "criterion": "營收YoY",
+        "points_earned": 15,
+        "points_max": 15,
+        "value": 62.9896389965095,
+        "note": "vs 去年同季"
+      },
+      {
+        "criterion": "營收QoQ",
+        "points_earned": 0,
+        "points_max": 15,
+        "value": -7.676322128150563,
+        "note": "vs 上一季"
+      },
+      {
+        "criterion": "本業獲利YoY",
+        "points_earned": 10,
+        "points_max": 10,
+        "value": 66.64684274330212,
+        "note": "vs 去年同季"
+      },
+      {
+        "criterion": "本業獲利QoQ",
+        "points_earned": 10,
+        "points_max": 10,
+        "value": 45.17734340243705,
+        "note": "vs 上一季"
+      },
+      {
+        "criterion": "毛利率YoY變動",
+        "points_earned": 0,
+        "points_max": 5,
+        "value": -0.8896989860682183,
+        "note": "百分點變動，vs 去年同季"
+      },
+      {
+        "criterion": "毛利率QoQ變動",
+        "points_earned": 5,
+        "points_max": 5,
+        "value": 8.152999078607856,
+        "note": "百分點變動，vs 上一季"
+      },
+      {
+        "criterion": "ROE單季",
+        "points_earned": 10,
+        "points_max": 10,
+        "value": 11.288085133489574,
+        "note": "單季稅後淨利/歸屬母公司權益"
+      },
+      {
+        "criterion": "FCF",
+        "points_earned": 10,
+        "points_max": 10,
+        "value": 1550279000.0,
+        "note": "營業現金流 + 資本支出(原始值為負)"
+      },
+      {
+        "criterion": "負債比率",
+        "points_earned": 0,
+        "points_max": 10,
+        "value": 58.48869349283257,
+        "note": "負債總額/資產總額"
+      },
+      {
+        "criterion": "存貨銷售比vs上季",
+        "points_earned": 0,
+        "points_max": 5,
+        "value": [
+          1.2002233265186395,
+          0.8184121179559195
+        ],
+        "note": "存貨/營收比"
+      },
+      {
+        "criterion": "存貨銷售比vs去年",
+        "points_earned": 0,
+        "points_max": 5,
+        "value": [
+          1.2002233265186395,
+          0.6232662133786963
+        ],
+        "note": "存貨/營收比"
+      }
+    ],
+    "data_complete": true
+  },
+  {
+    "ticker": "2454",
+    "name": "聯發科",
+    "total_score": 20,
+    "max_possible_score": 100,
+    "latest_quarter": "2026-03-31",
+    "breakdown": [
+      {
+        "criterion": "營收YoY",
+        "points_earned": 0,
+        "points_max": 15,
+        "value": -2.714543262453342,
+        "note": "vs 去年同季"
+      },
+      {
+        "criterion": "營收QoQ",
+        "points_earned": 0,
+        "points_max": 15,
+        "value": -0.6908008169227358,
+        "note": "vs 上一季"
+      },
+      {
+        "criterion": "本業獲利YoY",
+        "points_earned": 0,
+        "points_max": 10,
+        "value": -23.832484768473442,
+        "note": "vs 去年同季"
+      },
+      {
+        "criterion": "本業獲利QoQ",
+        "points_earned": 0,
+        "points_max": 10,
+        "value": 4.76394748430727,
+        "note": "vs 上一季"
+      },
+      {
+        "criterion": "毛利率YoY變動",
+        "points_earned": 0,
+        "points_max": 5,
+        "value": -1.8441428110859022,
+        "note": "百分點變動，vs 去年同季"
+      },
+      {
+        "criterion": "毛利率QoQ變動",
+        "points_earned": 0,
+        "points_max": 5,
+        "value": 0.16965284157290483,
+        "note": "百分點變動，vs 上一季"
+      },
+      {
+        "criterion": "ROE單季",
+        "points_earned": 10,
+        "points_max": 10,
+        "value": 6.245868304441323,
+        "note": "單季稅後淨利/歸屬母公司權益"
+      },
+      {
+        "criterion": "FCF",
+        "points_earned": 0,
+        "points_max": 10,
+        "value": -21916855000.0,
+        "note": "營業現金流 + 資本支出(原始值為負)"
+      },
+      {
+        "criterion": "負債比率",
+        "points_earned": 10,
+        "points_max": 10,
+        "value": 46.066612307659014,
+        "note": "負債總額/資產總額"
+      },
+      {
+        "criterion": "存貨銷售比vs上季",
+        "points_earned": 0,
+        "points_max": 5,
+        "value": [
+          0.5730476013793047,
+          0.4476692846519506
+        ],
+        "note": "存貨/營收比"
+      },
+      {
+        "criterion": "存貨銷售比vs去年",
+        "points_earned": 0,
+        "points_max": 5,
+        "value": [
+          0.5730476013793047,
+          0.35572774924678713
+        ],
+        "note": "存貨/營收比"
+      }
+    ],
+    "data_complete": true
+  },
+  {
+    "ticker": "2317",
+    "name": "鴻海",
+    "total_score": 40,
+    "max_possible_score": 100,
+    "latest_quarter": "2026-03-31",
+    "breakdown": [
+      {
+        "criterion": "營收YoY",
+        "points_earned": 15,
+        "points_max": 15,
+        "value": 28.900646487404195,
+        "note": "vs 去年同季"
+      },
+      {
+        "criterion": "營收QoQ",
+        "points_earned": 0,
+        "points_max": 15,
+        "value": -18.67878533673351,
+        "note": "vs 上一季"
+      },
+      {
+        "criterion": "本業獲利YoY",
+        "points_earned": 10,
+        "points_max": 10,
+        "value": 62.68548563545062,
+        "note": "vs 去年同季"
+      },
+      {
+        "criterion": "本業獲利QoQ",
+        "points_earned": 0,
+        "points_max": 10,
+        "value": -11.615642070912356,
+        "note": "vs 上一季"
+      },
+      {
+        "criterion": "毛利率YoY變動",
+        "points_earned": 0,
+        "points_max": 5,
+        "value": 0.06477782185052305,
+        "note": "百分點變動，vs 去年同季"
+      },
+      {
+        "criterion": "毛利率QoQ變動",
+        "points_earned": 0,
+        "points_max": 5,
+        "value": 0.29691463239635496,
+        "note": "百分點變動，vs 上一季"
+      },
+      {
+        "criterion": "ROE單季",
+        "points_earned": 10,
+        "points_max": 10,
+        "value": 3.199916270425901,
+        "note": "單季稅後淨利/歸屬母公司權益"
+      },
+      {
+        "criterion": "FCF",
+        "points_earned": 0,
+        "points_max": 10,
+        "value": -32557191000.0,
+        "note": "營業現金流 + 資本支出(原始值為負)"
+      },
+      {
+        "criterion": "負債比率",
+        "points_earned": 0,
+        "points_max": 10,
+        "value": 61.97674355399537,
+        "note": "負債總額/資產總額"
+      },
+      {
+        "criterion": "存貨銷售比vs上季",
+        "points_earned": 0,
+        "points_max": 5,
+        "value": [
+          0.5708228538117898,
+          0.42034456618268484
+        ],
+        "note": "存貨/營收比"
+      },
+      {
+        "criterion": "存貨銷售比vs去年",
+        "points_earned": 5,
+        "points_max": 5,
+        "value": [
+          0.5708228538117898,
+          0.637112002448401
+        ],
+        "note": "存貨/營收比"
+      }
+    ],
+    "data_complete": true
+  }
+]

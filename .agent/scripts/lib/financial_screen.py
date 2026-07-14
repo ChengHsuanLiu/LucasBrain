@@ -38,6 +38,13 @@ _OPERATORS = {
 # ==========================================
 # 設定表讀取 (97_Settings/財務指標篩選門檻.md)
 # ==========================================
+def _split_table_row(line):
+    """依 | 切欄，但保護 [[頁面|別名]] wikilink 內部的 |——那是別名語法的分隔符，
+    不是表格欄位分隔符，naive split('|') 會誤切成多一欄，導致欄位錯位。"""
+    protected = re.sub(r'\[\[([^\]|]+)\|([^\]]+)\]\]', lambda m: f'[[{m.group(1)}\x00{m.group(2)}]]', line)
+    return [c.replace('\x00', '|') for c in protected.split('|')]
+
+
 def _parse_markdown_table(lines, header_predicate):
     """從整份 markdown 中找出所有符合 header_predicate 的表格 (文件內可能有多張同欄位
     表頭的表格，例如本設定檔有三張「設定項/目前值/說明」表)，回傳所有表格資料列的
@@ -49,7 +56,7 @@ def _parse_markdown_table(lines, header_predicate):
         if not stripped.startswith('|'):
             header = None  # 表格結束 (空行/非表格列)，重置以便偵測下一張表
             continue
-        cols = [c.strip() for c in stripped.split('|')[1:-1]]
+        cols = [c.strip() for c in _split_table_row(stripped)[1:-1]]
         if header is None:
             if header_predicate(cols):
                 header = cols

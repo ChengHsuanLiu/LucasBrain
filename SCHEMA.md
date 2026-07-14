@@ -43,6 +43,7 @@
   * **`30_Projects/Invest_Timeline/`**：存放 `generate_invest_timeline.py` 產生的投資事件行事曆（命名為 `{當天日期}_宇宙資本_投資事件行事曆.md`），即時掃描 `10_Stocks/*.md` 的預估時間軸區塊、依日期精細度分桶，取代舊版同名資料夾下一次性彙整、不會自動更新的做法。
   * **`30_Projects/Whale_Tracking/`**：存放 `大戶籌碼追蹤.md`——由 `track_whale_positions.py` 每次執行覆蓋產生的大戶持股彙總儀表板，非產業知識筆記，故獨立於 `20_Garden/` 之外管理。
   * **`30_Projects/Financial_Screen/`**：存放 `scan_financial_score.py` 產生的全市場財務指標篩選報告（命名為 `{當天日期}_財務指標篩選.md`），依 `[[財務指標篩選機制]]` 10 項指標 100 分制規則掃描全上市櫃個股，區分「新發現標的」與「既有追蹤標的評分」。
+* **`33_Ingest_Records/`**：存放每次 Ingest 結束後產生的單次異動摘要（命名為 `{YYYYMMDDHHmmss}_ingest.md`），方便 Lucas 事後回顧單一次 ingest 具體更新了哪些頁面與內容，不用回頭翻 `log.md` 的精簡摘要。詳見「Ingest 標準流程」步驟 7。
 * **`98_Archives/`**：已處理完成的原始素材與歷史報告存檔區，細分目錄如下：
   * **`98_Archives/Expert_Meetings/`**：專家會議與專家訪談相關的原始檔案（如：南亞專家會議、CCL產業專家會議）。
   * **`98_Archives/Research_Report/`**：各券商與研究機構出具的正式法人研報（如：摩根士丹利台積電報告、統一證券CCL研究報告、HSBC聯發科研究報告、大和證券MLCC產業報告）通常是 pdf 檔案，如果不是 pdf 檔案的可以放去 Stock_Memo。
@@ -108,7 +109,7 @@
 
 ---
 
-### 2. 📥 Ingest (整理與匯入) 標準七步驟流程
+### 2. 📥 Ingest (整理與匯入) 標準八步驟流程
 
 > [!IMPORTANT]
 > 流程核心精神：**自由調用 Python/Git/Cmd 工具，無損疊加，時間近的在上，絕不覆蓋舊數據。**
@@ -141,8 +142,32 @@
 在 [log.md](file:///c:/Users/User/Desktop/LucasBrain/log.md) 的尾端追加一行紀錄，格式如下：
 `## [YYYY-MM-DD] ingest | 檔案名稱 | 影響的 Stocks 及 Garden`
 
-#### 步驟 7：版本管理與回報 (Commit & Push)
-* **回報檔案變化**：在回報整理成果時，必須清楚列出 `10_Stocks/` 或 `20_Garden/` 底下的檔案有什麼變化（例如新增了哪些重點、修改了哪些數據或段落等）。
+#### 步驟 7：產生本次 Ingest 摘要記錄 (Ingest Record)
+在 `33_Ingest_Records/` 建立一個新檔案，檔名為當下時間戳記 `{YYYYMMDDHHmmss}_ingest.md`（例如 `20260712213755_ingest.md`），內容彙整本次處理了哪些原始檔案、更新了哪些 `10_Stocks/`、`20_Garden/` 頁面、以及每個頁面實際新增了什麼重點，讓 Lucas 事後能只看這一個檔案就掌握單次 ingest 的完整異動，不必自己比對 git diff 或翻 `log.md` 的精簡摘要。格式如下：
+
+```markdown
+# Ingest 紀錄 {YYYY-MM-DD HH:mm:ss}
+
+## 本次處理原始檔案
+- `檔名1`
+- `檔名2`
+
+## 更新內容
+
+### [[頁面名稱1]]
+- 重點1
+- 重點2
+
+### [[頁面名稱2]]
+- 重點1
+
+## 歸檔
+- `檔名1` → `98_Archives/對應分類/`
+- `檔名2` → `98_Archives/對應分類/`
+```
+
+#### 步驟 8：版本管理與回報 (Commit & Push)
+* **回報檔案變化**：在回報整理成果時，必須清楚列出 `10_Stocks/` 或 `20_Garden/` 底下的檔案有什麼變化（例如新增了哪些重點、修改了哪些數據或段落等），內容應與步驟 7 產生的 Ingest 記錄檔一致。
 * **版本管理**：主動為 Lucas 整理本次 commit 的簡短標題，詢問是否執行 `git commit` 與 `git push`。
 
 ---

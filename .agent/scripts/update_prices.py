@@ -9,8 +9,9 @@ from lib.stock_metrics import (
     get_historical_prices_fallback,
     compute_ma_metrics,
     compute_tactical_score,
-    parse_target_eps,
+    parse_valuation_eps,
 )
+from lib.stock_signals import load_valuation_mode
 
 # ==========================================
 # 1. Lossless Markdown Note Rewriter
@@ -242,7 +243,8 @@ if __name__ == "__main__":
 
     current_year = datetime.now().year
     target_year = current_year + 1
-    print(f"[{datetime.now().strftime('%H:%M:%S')}] Target Year for Forward P/E: {target_year}")
+    valuation_mode = load_valuation_mode()
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] Target Year for Forward P/E: {target_year} (估值模式: {valuation_mode})")
 
     # 1. Download and parse TDCC data once
     tdcc_cache = download_and_parse_tdcc()
@@ -266,8 +268,8 @@ if __name__ == "__main__":
             continue
         current_price = prices[-1]
 
-        # 2. Parse target EPS (e.g. 2027)
-        avg_target_eps = parse_target_eps(fp, target_year)
+        # 2. Parse valuation EPS (依估值模式取明年或明年後年平均)
+        avg_target_eps = parse_valuation_eps(fp, target_year, valuation_mode)
 
         # 3. Compute Forward P/E & Valuation Rating
         if avg_target_eps is not None and avg_target_eps > 0:

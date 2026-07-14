@@ -21,6 +21,9 @@ TaiwanStockMonthRevenue，皆逐檔查詢 (單檔一次呼叫可回傳一段日�
 - compute_momentum_score : 評分規則，消費 fetch_* 與 load_* 的輸出
 - scan_momentum_market : 迴圈全市場並回傳排序後的分數清單
 """
+import glob
+import os
+import re
 import time
 from datetime import datetime, timedelta
 
@@ -42,6 +45,95 @@ SETTINGS_PATH = r"C:\Users\User\Desktop\LucasBrain\97_Settings\動能篩選門�
 INSTITUTIONAL_LOOKBACK_TRADING_DAYS = 20
 PRICE_LOOKBACK_TRADING_DAYS = 75  # 60日新高/60MA需要至少61天算斜率，抓75天留餘裕
 REVENUE_START_MONTHS_BACK = 16
+HISTORY_LOOKBACK_REPORTS = 10  # 連續上榜/分數比對回看的歷史報告檔數上限
+
+
+# ==========================================
+# 歷史報告比對 (連N日上榜 / 新進榜 / 分數增減)
+# ==========================================
+#
+# 重要設計note：報告寫檔時會把「連N日」「新進榜」「▲/▼分數變化」直接內嵌進「分類」/
+# 「股票」/「平均分數」/「動能分數」儲存格的顯示文字裡（例如「62.5（+1.3）」「95<br>新進榜」），
+# 這樣報告單獨打開就能看到追蹤資訊，不用依賴 DailyReport 才看得到。但這代表下面兩個
+# extract 函式是必要的：明天要拿今天這份報告當「歷史」比對時，不能直接把裝飾過的顯示
+# 文字當成 key 或分數用（會比對不到/parse失敗），必須先把裝飾去掉，還原乾淨的識別碼與
+# 數字。往後如果改了徽章的顯示格式，這兩個函式要跟著同步更新。
+def _clean_concept_key(cell_text):
+    """從「分類」儲存格取出乾淨的識別碼（純 wikilink，例如 `[[concept|label]]`），
+    去掉後面可能內嵌的「連N日」徽章。"""
+    m = re.match(r'^(`\[\[[^\]]+\]\]`)', cell_text.strip())
+    return m.group(1) if m else cell_text.strip()
+
+
+def _clean_stock_key(cell_text):
+    """從「股票」儲存格取出乾淨的股票代號，去掉換行後可能內嵌的「連N日」徽章
+    （儲存格格式固定是「代號<br>名稱」，代號的部分不受徽章影響）。"""
+    return cell_text.split('<br>')[0].strip()
+
+
+def _extract_leading_score(cell_text):
+    """從已內嵌徽章的分數儲存格（例如「62.5（+1.3）」「95<br>新進榜」「110（持平）」）
+    取出開頭的乾淨數字，供下次比對分數增減時使用。抓不到時回傳 None。"""
+    m = re.match(r'^\s*([\d.]+)', cell_text.strip())
+    return float(m.group(1)) if m else None
+
+
+def load_momentum_history(output_dir, lookback=HISTORY_LOOKBACK_REPORTS):
+    """讀取 output_dir 底下依日期排序、既有的歷史 *_動能篩選.md 報告（呼叫時今天的報告
+    通常還沒寫檔，讀到的自然就是「不含今天」的歷史），回傳依日期由舊到新排序的
+    [(concept_rows, stock_rows), ...]，每份報告的兩張表格分別解析自「分類/平均分數/
+    最高分成員」與「股票/動能分數/通過指標」表頭（儲存格為原始文字，可能已內嵌徽章，
+    使用端需搭配 _clean_concept_key/_clean_stock_key/_extract_leading_score 取乾淨值）。"""
+    candidates = sorted(glob.glob(os.path.join(output_dir, "*_動能篩選.md")))
+    series = []
+    for p in candidates[-lookback:]:
+        try:
+            with open(p, "r", encoding="utf-8") as f:
+                md_lines = f.read().split("\n")
+        except Exception:
+            continue
+        concept_rows = _parse_markdown_table(md_lines, lambda cols: cols[:3] == ['分類', '平均分數', '最高分成員'])
+        stock_rows = _parse_markdown_table(md_lines, lambda cols: cols[:3] == ['股票', '動能分數', '通過指標'])
+        series.append((concept_rows, stock_rows))
+    return series
+
+
+def concept_appearance_sets(history):
+    """把 load_momentum_history() 的輸出轉成「每天出現過的乾淨分類key集合」清單，
+    供 compute_streak() 使用。"""
+    return [{_clean_concept_key(r['分類']) for r in concepts} for concepts, _ in history]
+
+
+def stock_appearance_sets(history):
+    """把 load_momentum_history() 的輸出轉成「每天出現過的乾淨股票代號集合」清單，
+    供 compute_streak() 使用。"""
+    return [{_clean_stock_key(r['股票']) for r in stocks} for _, stocks in history]
+
+
+def compute_streak(key, history_appearance_sets):
+    """計算某個 key（乾淨的分類識別碼或股票代號，見 _clean_concept_key/_clean_stock_key）
+    截至今天的連續上榜天數。history_appearance_sets 是由舊到新排序的「當天出現過的 key
+    集合」清單（不含今天）。呼叫時 key 本身就是今天榜單裡的項目，所以從 1 起算，再往回
+    累加連續出現的天數。"""
+    streak = 1
+    for appeared in reversed(history_appearance_sets):
+        if key in appeared:
+            streak += 1
+        else:
+            break
+    return streak
+
+
+def compute_score_delta(current_score, prev_row, field):
+    """回傳 (delta, is_new)：prev_row=None 代表前一份報告沒有這個 key（新進榜），
+    delta=None 時代表算不出來（前一份報告的分數欄位缺失/格式異常）。prev_row[field]
+    可能是已內嵌徽章的裝飾文字，用 _extract_leading_score 還原乾淨數字後再相減。"""
+    if prev_row is None:
+        return None, True
+    prev_score = _extract_leading_score(prev_row.get(field, ''))
+    if prev_score is None:
+        return None, False
+    return current_score - prev_score, False
 
 
 # ==========================================
