@@ -71,7 +71,7 @@ tags: [report/daily, market-overview]
 
 **融資餘額與維持率**
 
-* 上市：6,183 億（<span class="num-down">-13.5 億</span>）
+* 上市：6,040 億（<span class="num-down">-142.7 億</span>）
 * 上櫃：3,711 億（<span class="num-up">+3.9 億</span>）
 * 維持率：158.6%（<span class="num-down">-2.6pp</span>）
 
@@ -81,9 +81,9 @@ tags: [report/daily, market-overview]
 **三大法人現貨買賣超**
 
 * 外資：<span class="num-down">-518.9 億</span>
-* 投信：<span class="num-up">+148.2 億</span>
+* 投信：<span class="num-up">+110.0 億</span>
 * 自營商：<span class="num-down">-382.9 億</span>
-* 合計：<span class="num-down">-753.6 億</span>
+* 合計：<span class="num-down">-791.8 億</span>
 
 </div>
 <div class="idx-col" markdown="1">
@@ -187,12 +187,12 @@ tags: [report/daily, market-overview]
 
 #### <span class="text-blue">各大戶當日買進/賣出重點</span>
 
-* **大戶A**（2026-07-13）：加碼［已追蹤］ 2327國巨（<span class="num-up">+25,000股</span>）
+* **大戶A**（2026-07-14）：<span class="text-green">出清［已追蹤］ 2303聯電</span>；加碼［已追蹤］ 2327國巨（<span class="num-up">+10,000股</span>）
 * **大戶B**（2026-07-09）：尚無前次快照可比較（共 23 檔持股，總市值 480,676,000）
 * **大戶C**（2026-07-09）：尚無前次快照可比較（共 8 檔持股，總市值 957,850,000）
 * **大戶D**（2026-07-09）：尚無前次快照可比較（共 6 檔持股，總市值 610,038,000）
 * **大戶E**（2026-07-09）：尚無前次快照可比較（共 5 檔持股，總市值 395,495,300）
-* **大戶F**（2026-07-13）：<span class="flag-red">新建倉 8039台虹（市值 1,023,000）</span>；<span class="text-green">出清［已追蹤］ 3443創意</span>；<span class="text-green">出清 2449京元電子</span>；<span class="text-green">出清［已追蹤］ 3374精材</span>；<span class="text-green">出清［已追蹤］ 2301光寶科</span>；減碼［已追蹤］ 2308台達電（<span class="num-down">-26,000股</span>）；減碼［已追蹤］ 6213聯茂（<span class="num-down">-22,000股</span>）；減碼 6271同欣電（<span class="num-down">-8,000股</span>）
+* **大戶F**（2026-07-14）：無明顯變化
 
 #### <span class="text-blue">共識標的（2位以上大戶同時持有）</span>
 
@@ -200,8 +200,8 @@ tags: [report/daily, market-overview]
 
 | 股票 | 當前價格 | 持有大戶 | 總市值 | 目標價上緣 | 買進/加碼提醒 | 賣出/減碼提醒 |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 2303<br>聯電 | 151.00 | A、B、C、F (4位) | 1.2 億 | TP 292<br>(30x EPS 9.8)<br>(期望值 <span class="num-up">+94%</span>) | - | 回檔觀察：<br>跌破5日線、5日線下彎 |
 | 3450<br>聯鈞 | 476.00 | A、B、C (3位) | 1.2 億 | TP 765<br>(34x EPS 22.5)<br>(期望值 <span class="num-up">+61%</span>) | - | 回檔觀察：<br>跌破5日線、5日線下彎 |
+| 2303<br>聯電 | 151.00 | B、C、F (3位) | 0.9 億 | TP 292<br>(30x EPS 9.8)<br>(期望值 <span class="num-up">+94%</span>) | - | 回檔觀察：<br>跌破5日線、5日線下彎 |
 | 2327<br>國巨 | 778.00 | A、B、F (3位) | 0.7 億 | TP 1,297<br>(30x EPS 43.2)<br>(期望值 <span class="num-up">+67%</span>) | - | 回檔觀察：<br>跌破5日線、5日線下彎、月線下彎 |
 | 3443<br>創意 | 4020.00 | B、C (2位) | 3.2 億 | TP 8,020<br>(40x EPS 200.5)<br>(期望值 <span class="num-up">+99%</span>) | - | 回檔觀察：<br>跌破5日線、5日線下彎、月線下彎 |
 | 8299<br>群聯 | 2050.00 | A、C (2位) | 2.5 億 | - | - | 跌破5日線<br>5日線下彎<br>月線下彎 |
