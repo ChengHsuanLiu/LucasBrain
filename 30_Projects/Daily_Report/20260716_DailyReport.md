@@ -72,8 +72,8 @@ tags: [report/daily, market-overview]
 **融資餘額與維持率**
 
 * 上市：6,156 億（<span class="num-up">+1.9 億</span>）
-* 上櫃：3,668 億（<span class="num-up">+67.1 億</span>）
-* 維持率：161.3%（<span class="num-up">+6.1pp</span>）
+* 上櫃：3,663 億（<span class="num-down">-4.1 億</span>）
+* 維持率：157.4%（<span class="num-down">-3.9pp</span>）
 
 </div>
 <div class="idx-col" markdown="1">
@@ -190,7 +190,7 @@ tags: [report/daily, market-overview]
 #### <span class="text-blue">各大戶當日買進/賣出重點</span>
 
 * **大戶A**（2026-07-16）：無明顯變化
-* **大戶B**（2026-07-15）：<span class="flag-red">新建倉 6693廣閎科（市值 9,765,000）</span>；<span class="flag-red">新建倉［已追蹤］ 6173信昌電（市值 13,007,500）</span>；<span class="flag-red">新建倉 8039台虹（市值 11,190,000）</span>；<span class="flag-red">新建倉［已追蹤］ 8150南茂（市值 18,190,000）</span>；<span class="flag-red">新建倉［已追蹤］ 3624光頡（市值 20,790,000）</span>；<span class="flag-red">新建倉［已追蹤］ 6488環球晶（市值 22,050,000）</span>；<span class="text-green">出清［已追蹤］ 3163波若威</span>；<span class="text-green">出清［已追蹤］ 6147頎邦</span>；<span class="text-green">出清［已追蹤］ 6691洋基工程</span>；<span class="text-green">出清［已追蹤］ 3450聯鈞</span>；<span class="text-green">出清［已追蹤］ 2404漢唐</span>；<span class="text-green">出清［已追蹤］ 6187萬潤</span>；加碼［已追蹤］ 1303南亞（<span class="num-up">+260,000股</span>）；加碼［已追蹤］ 2303聯電（<span class="num-up">+150,000股</span>）；加碼［已追蹤］ 3211順達（<span class="num-up">+30,000股</span>）；減碼［已追蹤］ 3675德微（<span class="num-down">-38,000股</span>）；減碼［已追蹤］ 6139亞翔（<span class="num-down">-2,000股</span>）
+* **大戶B**（2026-07-15）：<span class="flag-red">新建倉［已追蹤］ 6488環球晶（市值 22,050,000）</span>；<span class="flag-red">新建倉［已追蹤］ 8150南茂（市值 18,190,000）</span>；<span class="flag-red">新建倉 8039台虹（市值 11,190,000）</span>；<span class="flag-red">新建倉［已追蹤］ 6173信昌電（市值 13,007,500）</span>；<span class="flag-red">新建倉［已追蹤］ 3624光頡（市值 20,790,000）</span>；<span class="flag-red">新建倉 6693廣閎科（市值 9,765,000）</span>；<span class="text-green">出清［已追蹤］ 3163波若威</span>；<span class="text-green">出清［已追蹤］ 6187萬潤</span>；<span class="text-green">出清［已追蹤］ 3450聯鈞</span>；<span class="text-green">出清［已追蹤］ 6147頎邦</span>；<span class="text-green">出清［已追蹤］ 2404漢唐</span>；<span class="text-green">出清［已追蹤］ 6691洋基工程</span>；加碼［已追蹤］ 1303南亞（<span class="num-up">+260,000股</span>）；加碼［已追蹤］ 2303聯電（<span class="num-up">+150,000股</span>）；加碼［已追蹤］ 3211順達（<span class="num-up">+30,000股</span>）；減碼［已追蹤］ 3675德微（<span class="num-down">-38,000股</span>）；減碼［已追蹤］ 6139亞翔（<span class="num-down">-2,000股</span>）
 * **大戶C**（2026-07-09）：尚無前次快照可比較（共 8 檔持股，總市值 957,850,000）
 * **大戶D**（2026-07-15）：減碼 2363矽統（<span class="num-down">-1,550,000股</span>）
 * **大戶E**（2026-07-15）：<span class="text-green">出清 3149正達</span>；加碼 7734印能科技（<span class="num-up">+15,000股</span>）；減碼 3167大量（<span class="num-down">-60,000股</span>）

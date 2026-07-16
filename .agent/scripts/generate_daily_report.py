@@ -364,7 +364,14 @@ def build_market_stats_section():
             latest_maint = maint[-1]
             prev_maint = maint[-2] if len(maint) >= 2 else None
             change_str = f"（{colorize_signed(latest_maint['ratio'] - prev_maint['ratio'], '{:+.1f}pp')}）" if prev_maint else ""
-            lines.append(f"* 維持率：{latest_maint['ratio']:.1f}%{change_str}")
+            # FinMind 此資料集常有 1 個交易日以上的發布延遲，抓到的「最後一筆」不一定是報告當天的
+            # 資料。若日期對不上，明確標註實際資料日期，避免把舊資料誤標成當天數字。
+            today_str = datetime.now().strftime("%Y-%m-%d")
+            staleness_note = ""
+            maint_date = latest_maint.get("date")
+            if maint_date and maint_date != today_str:
+                staleness_note = f"（{flag_red(maint_date + '資料，尚未更新至最新交易日')}）"
+            lines.append(f"* 維持率：{latest_maint['ratio']:.1f}%{change_str}{staleness_note}")
             summary["margin_maintenance_ratio"] = latest_maint["ratio"]
     except Exception as e:
         lines.append(f"* 維持率：抓取失敗 ({e})")
