@@ -72,7 +72,7 @@ tags: [report/daily, market-overview]
 **融資餘額與維持率**
 
 * 上市：5,880 億（<span class="num-down">-276.1 億</span>）
-* 上櫃：3,367 億（<span class="num-down">-3.3 億</span>）
+* 上櫃：3,183 億（<span class="num-down">-184.0 億</span>）
 * 維持率：157.4%（<span class="num-down">-3.9pp</span>）（<span class="flag-red">2026-07-16資料，尚未更新至最新交易日</span>）
 
 </div>
@@ -80,7 +80,10 @@ tags: [report/daily, market-overview]
 
 **三大法人現貨買賣超**
 
-*抓取失敗 (The read operation timed out)*
+* 外資：<span class="num-down">-1,883.1 億</span>
+* 投信：<span class="num-up">+73.5 億</span>
+* 自營商：<span class="num-down">-821.8 億</span>
+* 合計：<span class="num-down">-2,631.5 億</span>
 
 </div>
 <div class="idx-col" markdown="1">
@@ -116,11 +119,11 @@ tags: [report/daily, market-overview]
 
 ---
 
-<span class="text-blue">**大盤技術分析評分：-5.0 分（弱勢）**</span>
+<span class="text-blue">**大盤技術分析評分：-10.0 分（弱勢）**</span>
 
 <span class="flag-red">加分</span>：60MA上彎
 
-<span class="text-green">扣分</span>：跌幅 6.47%（>=5%） | 5MA下彎 | 5MA跌破 | 20MA下彎 | 20MA跌破 | 60MA跌破 | KD交叉往下 | MACD交叉往下 | 指數下跌且成交量增 | 資料庫個股月線以上家數 12%（<50%） | 下跌家數 > 上漲家數
+<span class="text-green">扣分</span>：跌幅 6.47%（>=5%） | 5MA下彎 | 5MA跌破 | 20MA下彎 | 20MA跌破 | 60MA跌破 | KD交叉往下 | MACD交叉往下 | 指數下跌且成交量增 | 資料庫個股月線以上家數 12%（<50%） | 下跌家數 > 上漲家數 | 三大法人賣超 且 外資期貨空單增加
 
 <div class="step-page-break"></div>
 
@@ -185,11 +188,11 @@ tags: [report/daily, market-overview]
 #### <span class="text-blue">各大戶當日買進/賣出重點</span>
 
 * **大戶A**（2026-07-16）：無明顯變化
-* **大戶B**（2026-07-15）：<span class="flag-red">新建倉［已追蹤］ 3624光頡（市值 20,790,000）</span>；<span class="flag-red">新建倉 6693廣閎科（市值 9,765,000）</span>；<span class="flag-red">新建倉 8039台虹（市值 11,190,000）</span>；<span class="flag-red">新建倉［已追蹤］ 6488環球晶（市值 22,050,000）</span>；<span class="flag-red">新建倉［已追蹤］ 8150南茂（市值 18,190,000）</span>；<span class="flag-red">新建倉［已追蹤］ 6173信昌電（市值 13,007,500）</span>；<span class="text-green">出清［已追蹤］ 3163波若威</span>；<span class="text-green">出清［已追蹤］ 6187萬潤</span>；<span class="text-green">出清［已追蹤］ 2404漢唐</span>；<span class="text-green">出清［已追蹤］ 3450聯鈞</span>；<span class="text-green">出清［已追蹤］ 6147頎邦</span>；<span class="text-green">出清［已追蹤］ 6691洋基工程</span>；加碼［已追蹤］ 1303南亞（<span class="num-up">+260,000股</span>）；加碼［已追蹤］ 2303聯電（<span class="num-up">+150,000股</span>）；加碼［已追蹤］ 3211順達（<span class="num-up">+30,000股</span>）；減碼［已追蹤］ 3675德微（<span class="num-down">-38,000股</span>）；減碼［已追蹤］ 6139亞翔（<span class="num-down">-2,000股</span>）
+* **大戶B**（2026-07-15）：<span class="flag-red">新建倉［已追蹤］ 6488環球晶（市值 22,050,000）</span>；<span class="flag-red">新建倉［已追蹤］ 6173信昌電（市值 13,007,500）</span>；<span class="flag-red">新建倉［已追蹤］ 3624光頡（市值 20,790,000）</span>；<span class="flag-red">新建倉［已追蹤］ 8150南茂（市值 18,190,000）</span>；<span class="flag-red">新建倉 8039台虹（市值 11,190,000）</span>；<span class="flag-red">新建倉 6693廣閎科（市值 9,765,000）</span>；<span class="text-green">出清［已追蹤］ 2404漢唐</span>；<span class="text-green">出清［已追蹤］ 3163波若威</span>；<span class="text-green">出清［已追蹤］ 6187萬潤</span>；<span class="text-green">出清［已追蹤］ 3450聯鈞</span>；<span class="text-green">出清［已追蹤］ 6691洋基工程</span>；<span class="text-green">出清［已追蹤］ 6147頎邦</span>；加碼［已追蹤］ 1303南亞（<span class="num-up">+260,000股</span>）；加碼［已追蹤］ 2303聯電（<span class="num-up">+150,000股</span>）；加碼［已追蹤］ 3211順達（<span class="num-up">+30,000股</span>）；減碼［已追蹤］ 3675德微（<span class="num-down">-38,000股</span>）；減碼［已追蹤］ 6139亞翔（<span class="num-down">-2,000股</span>）
 * **大戶C**（2026-07-09）：尚無前次快照可比較（共 8 檔持股，總市值 957,850,000）
 * **大戶D**（2026-07-15）：減碼 2363矽統（<span class="num-down">-1,550,000股</span>）
 * **大戶E**（2026-07-15）：<span class="text-green">出清 3149正達</span>；加碼 7734印能科技（<span class="num-up">+15,000股</span>）；減碼 3167大量（<span class="num-down">-60,000股</span>）
-* **大戶F**（2026-07-16）：<span class="text-green">出清［已追蹤］ 6213聯茂</span>；<span class="text-green">出清［已追蹤］ 3481群創</span>；<span class="text-green">出清［已追蹤］ 4958臻鼎-KY</span>；加碼［已追蹤］ 2330台積電（<span class="num-up">+8,000股</span>）
+* **大戶F**（2026-07-17）：無明顯變化
 * **大戶G**（2026-07-15）：尚無前次快照可比較（共 5 檔持股，總市值 737,732,400）
 
 #### <span class="text-blue">共識標的（2位以上大戶同時持有）</span>
@@ -200,7 +203,7 @@ tags: [report/daily, market-overview]
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | 2330<br>台積電 | 2290.00 | A、F、G (3位) | 4.6 億 | TP 4,004<br>(25x EPS 160.2)<br>(期望值 <span class="num-up">+75%</span>) | <span class="flag-red">急跌至上升中的季線支撐</span> | 回檔觀察：<br>跌破5日線、5日線下彎、月線下彎 |
 | 3450<br>聯鈞 | 432.00 | A、C、G (3位) | 1.7 億 | TP 765<br>(34x EPS 22.5)<br>(期望值 <span class="num-up">+77%</span>) | - | 回檔觀察：<br>跌破5日線、5日線下彎、月線下彎 |
-| 2303<br>聯電 | 144.00 | B、C、F (3位) | 1.2 億 | TP 310<br>(30x EPS 10.3)<br>(期望值 <span class="num-up">+115%</span>) | - | 回檔觀察：<br>跌破5日線、5日線下彎 |
+| 2303<br>聯電 | 144.00 | B、C、F (3位) | 1.1 億 | TP 310<br>(30x EPS 10.3)<br>(期望值 <span class="num-up">+115%</span>) | - | 回檔觀察：<br>跌破5日線、5日線下彎 |
 | 2327<br>國巨 | 699.00 | A、B、F (3位) | 0.7 億 | TP 1,297<br>(30x EPS 43.2)<br>(期望值 <span class="num-up">+86%</span>) | <span class="flag-red">急跌至上升中的季線支撐</span> | 回檔觀察：<br>跌破5日線、5日線下彎、月線下彎 |
 | 3443<br>創意 | 3835.00 | B、C (2位) | 3.2 億 | TP 8,020<br>(40x EPS 200.5)<br>(期望值 <span class="num-up">+109%</span>) | - | 回檔觀察：<br>跌破5日線、5日線下彎、月線下彎 |
 | 8299<br>群聯 | 1785.00 | A、C (2位) | 2.5 億 | - | - | 跌破5日線<br>5日線下彎<br>月線下彎 |
