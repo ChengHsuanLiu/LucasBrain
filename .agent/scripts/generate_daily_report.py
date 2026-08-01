@@ -1,7 +1,8 @@
 """
-生成盤後大盤日報 (DailyReport)。五大區塊：
+生成盤後大盤日報 (DailyReport)。六大區塊：
 一、大盤情況　二、族群強度（含連N日上榜延續性）　三、大戶籌碼（共識表賣出提醒有EV閘門）
 四、個股買賣訊號（估值EPS年度模式可調、BUY表含動能分數與轉強置頂）　五、動能篩選重點（含分數變化/連續上榜）
+六、消息面更新（從當天 ingest record 抽取評等/目標價/EPS異動與分歧訊號，當天無 ingest 則不顯示）
 
 用法：
     python generate_daily_report.py [YYYY-MM-DD]
@@ -62,6 +63,7 @@ from lib.whale_tracking import (
     get_consensus_stocks_latest,
 )
 from lib.sector_trend import top_gaining_industries_with_stocks, TWSE_SYMBOL, TPEX_SYMBOL
+from lib.ingest_digest import build_digest_for_date
 from lib.report_pdf import render_markdown_to_pdf
 from lib.financial_screen import _parse_markdown_table
 from lib.report_style import (
@@ -180,6 +182,47 @@ DAILY_REPORT_EXTRA_CSS = """
     .sector-trend-table table th:nth-child(4), .sector-trend-table table td:nth-child(4) {
         width: 55%;
     }
+    .ingest-card {
+        border: 1px solid #d1d5db;
+        border-left: 4px solid #2563eb;
+        border-radius: 4px;
+        padding: 8px 14px 10px 14px;
+        margin: 0 0 12px 0;
+        background-color: #f9fafb;
+    }
+    .ingest-card.divergence {
+        border-left-color: #b45309;
+        background-color: #fffbeb;
+    }
+    .ingest-card.whale-alert {
+        border-left-color: #b91c1c;
+        background-color: #fef2f2;
+    }
+    .ingest-card-title {
+        font-weight: 700;
+        font-size: 9.6pt;
+        color: #111827;
+        margin-bottom: 2px;
+    }
+    .ingest-card-theme {
+        font-weight: 400;
+        color: #6b7280;
+        font-size: 8.4pt;
+        margin: 0 0 6px 0;
+    }
+    .ingest-card ul {
+        margin: 4px 0 0 0;
+        padding-left: 18px;
+    }
+    .ingest-card li {
+        margin-bottom: 4px;
+        font-size: 8.8pt;
+        line-height: 1.45;
+    }
+    .ingest-tag {
+        display: inline-block;
+        margin-right: 6px;
+    }
 """
 
 
@@ -262,6 +305,25 @@ def build_index_section(title, index_id, lookback_days=200):
     prev_money_yi = (ohlc[-2].get("money") or 0) / 1e8 if len(ohlc) >= 2 else None
 
     lines = [f"#### {title}", ""]
+
+    # 月線/季線首次跌破偵測：今日收盤 < 當日均線，且前一日收盤未跌破前一日均線，
+    # 代表是「連續下跌區間的第一天」跌破，特別標註超級警訊（沿用避免同一波修正每天重複提醒的邏輯）。
+    closes = [r["close"] for r in ohlc]
+    break_labels = {20: "月線(20MA)", 60: "季線(60MA)"}
+    for p, label in break_labels.items():
+        m = ma.get(p)
+        if not m or m["val"] is None:
+            continue
+        today_below = closes[-1] < m["val"]
+        if not today_below:
+            continue
+        prev_val = m.get("val_prev")
+        if prev_val is not None and len(closes) >= 2:
+            prev_below = closes[-2] < prev_val
+        else:
+            prev_below = False
+        if not prev_below:
+            lines.append(f"* {flag_red(f'⚠️ 超級警訊：{title} 今日首度跌破{label}')}")
     lines.append(
         f"* **收盤價**：{latest['close']:,.2f}（{colorize_signed(spread, '{:+,.2f}')}，{colorize_signed(change_pct)}）"
     )
@@ -918,6 +980,36 @@ def build_momentum_section():
     return lines
 
 
+def build_ingest_digest_section(date_str):
+    """六、消息面更新：從當天的 ingest record 抽取重點（評等/目標價/EPS異動、
+    結構性新訊息、分歧訊號），過濾掉原始檔案清單/歸檔分類等稽核用途內容。
+    每個主題/個股群組用一張卡片呈現（左側色條區分一般/分歧/籌碼異常），
+    當天沒有 ingest record 時，整個區塊不輸出。"""
+    cards = build_digest_for_date(date_str)
+    if not cards:
+        return []
+
+    lines = ["### 六、消息面更新（Ingest Digest）", ""]
+    lines.append(f"*本區塊彙整 {date_str} 當天 ingest 紀錄中的評等/目標價/EPS異動與重要結構性訊息，"
+                 "籌碼細節請見「三、主力大戶籌碼動向」與「五、動能篩選重點」。*")
+    lines.append("")
+    for card in cards:
+        css_class = "ingest-card" + (f" {card['style']}" if card["style"] else "")
+        lines.append(f'<div class="{css_class}" markdown="1">')
+        lines.append("")
+        title = " ".join(f"[[{t}]]" for t in card["tickers"]) or card["theme"]
+        lines.append(f'<p class="ingest-card-title">{title}</p>')
+        if card["theme"] and card["tickers"]:
+            lines.append(f'<p class="ingest-card-theme">{card["theme"]}</p>')
+        for text, tag_label, tag_class in card["bullets"]:
+            tag_html = f'<span class="ingest-tag badge {tag_class}">{tag_label}</span>' if tag_label else ""
+            lines.append(f"- {tag_html}{text}")
+        lines.append("")
+        lines.append("</div>")
+        lines.append("")
+    return lines
+
+
 def generate_report():
     today_str = datetime.now().strftime("%Y-%m-%d")
     report = []
@@ -974,6 +1066,12 @@ def generate_report():
     report.append('<div class="step-page-break"></div>')
     report.append("")
     report.extend(build_momentum_section())
+
+    ingest_digest_lines = build_ingest_digest_section(today_str)
+    if ingest_digest_lines:
+        report.append('<div class="step-page-break"></div>')
+        report.append("")
+        report.extend(ingest_digest_lines)
 
     filename_stem = f"{today_str.replace('-', '')}_DailyReport"
     os.makedirs(OUTPUT_DIR, exist_ok=True)
