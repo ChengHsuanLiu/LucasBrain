@@ -4,7 +4,7 @@ garden_type: industry
 title: "ASIC 客製晶片"
 tier: "2_晶片層"
 created: 2026-07-10
-updated: 2026-07-11
+updated: 2026-08-25
 review_by: 2026-10-11
 tags: [industry/category, industry/asic]
 ---
@@ -14,6 +14,8 @@ tags: [industry/category, industry/asic]
 ## 🎯 產業投資點評與核心結論 (Summary & Insights)
 * **產業 So What？（這為什麼重要）**：
   - Hyperscaler 與科技巨頭（Google、Tesla、Microsoft）自研 ASIC 晶片浪潮持續擴大，帶動專業 ASIC 設計服務商（創意/GUC）同步受惠；同時，先進封裝周邊的關鍵 IP/材料供應商（愛普的 Si-Cap）也隨自研晶片放量吃到訂單紅利。
+* **⚠️ 2026-08-23 更新：外資伺服器CPU/GPU/ASIC出貨量截圖(2023-2027年)，ASIC/TPU 2027年YoY+111%成長遠超AI GPU的+25%**：截圖數據(單位：百萬顆)——Server CPU：General/AI CPU總量2025年28.40M→2026年36.10M(YoY+27%)→2027年52.60M(YoY+46%)，其中AI Server CPU年增最快(2026+42%/2027+93%)；x86/ARM CPU拆分中ARM CPU成長最猛(2026 YoY+81%/2027 YoY+89%)，佔比由2025年19%快速提升至2027年35%。個別廠商中Nvidia Grace/Vera/Rosa 2026年YoY+124%最為突出，Google Axion 2026年YoY+117%/2027年YoY+208%。AI GPU：2025-2027年6.567M→8.539M→10.689M顆，YoY分別+31%/+30%/+25%，成長動能逐年放緩；Nvidia佔比由2026年49%降至2027年35%(份額被稀釋)。**ASIC/TPU：2025-2027年5.085M→7.238M→15.262M顆，YoY分別+42%/+111%(2027年成長率遠超AI GPU)**，其中Google TPU 2027年YoY+134%最猛，Meta/Msft/China CSP/Cambricon/Others合計2027年YoY+130%；AI GPU與ASIC/TPU合計佔比中，Google TPU由2025年20%提升至2027年31%，Nvidia則由51%降至35%——反映客製化ASIC/TPU相對merchant GPU的成長率優勢持續擴大，對`[[3443創意]]`等ASIC設計服務鏈為結構性利多訊號。此為外資研究截圖摘要，未附出處券商名稱，完整報告待後續取得補齊。
+* **⚠️ 2026-08-25 更新：Morgan Stanley《AI Supply Chain: Google ASIC, who gets what for design services?》，完整拆解Google/AWS/Microsoft/Meta四大CSP ASIC設計服務分工**：Google TPU側：`[[2454聯發科]]`(MediaTek)仍為TPU v10(Icefish)主要整合商，職責含I/O die設計+封裝整合，2029年TPU營收估上看700億美元(佔聯發科總營收65%)；`[[3443創意]]`(GUC)協助Microsoft Maia 200/Cobalt 200且2027年需求估倍增以上，並有望取得Meta ASIC(MTIA 600)專案，MS上修創意TP至6,388元。AWS Trainium側：世芯電子(Alchip，3661，**未追蹤**)管理層表示Trainium4 TAM可能與Google TPU相當，MS估2028年Trainium4出貨至少250萬顆、營收貢獻80億美元(原估40億美元上修一倍)，MS上修Alchip目標價至5,888元(隱含上漲空間逾50%，並有機會拿下第二家CSP客戶)。TPU各世代出貨量預估(千顆)：v8i(Broadcom)2026年4,000/2027年2,500；v8t(MediaTek)2026年3,000/2027年1,000；v9(MediaTek)2027年3,000起量；v10(MediaTek)量尚未知。此報告完整揭露美系CSP自研晶片設計服務市場的三方分工全貌(MediaTek/GUC創意/Alchip世芯)，為觀察ASIC供應鏈的重要基準報告。
 * **關鍵洞察**：
   - 創意（3443）身兼 Tesla AI5（ADAS）與 Google Axion CPU 後端設計服務雙引擎，2H27 起 3nm 下一代 CPU 專案 ASP 將調漲 60-80%。
   - 愛普（6531）的 S-SiCap（矽電容）是先進封裝 ASIC（如聯發科 TPU）電磁雜訊與供電穩定的關鍵材料，隨 ASIC 放量同步受惠。
@@ -86,5 +88,7 @@ tags: [industry/category, industry/asic]
 ---
 
 ## 📄 原始文件與連結 (Original Documents)
+* `[[20260825_161144_file.pdf]]` - Morgan Stanley《AI Supply Chain: Google ASIC》：Google/AWS/Microsoft/Meta四大CSP設計服務分工全貌 (2026-08-25)
+* `[[20260823_145544_image.jpeg]]`、`[[20260823_145547_image.jpeg]]` - 外資伺服器CPU/GPU/ASIC出貨量截圖(2023-2027年)：ASIC/TPU成長率遠超AI GPU (2026-08-23)
 * `[[20260525_004344_text.md]]`、`[[20260620_213639_text.md]]`、`[[20260701_004426_image.jpeg]]`、`[[20260615_150136_text.md]]` - 創意 (3443) Tesla AI5/Google CPU 相關研究
 * `[[20260601_000014_text.md]]`、`[[20260525_003700_text (1).md]]` - 愛普 (6531) Si-Cap 產能與法說會備忘錄
