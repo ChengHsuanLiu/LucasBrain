@@ -1,0 +1,191 @@
+# =============================================================================
+# 南亞 1303 損益推估模型 v1
+#
+# ⚠️ 本檔與聯茂/富世達有本質差異，使用前務必先讀這段：
+#
+# 南亞的稅後淨利有 56-79% 來自「權益法投資收益」，主要是南亞科技(2408, DRAM)
+# 與台塑石化(6505)。也就是說——
+#
+#     替南亞建模 ≠ 替南亞的本業建模，而是「南亞本業 + 南亞科技 + 台塑化」三個模型。
+#     而且其中變動最劇烈的是南亞科技的 DRAM 獲利（2025Q3 EPS 0.50 → 2026Q2 EPS 14.66）。
+#
+# 因此本模型把權益法收益獨立成 equity_income 區塊逐季驅動，
+# 而不是塞進「業外」當常數。持股比例由 1H26 實際認列數反解。
+# =============================================================================
+
+meta:
+  ticker: "1303"
+  name: 南亞
+  archetype: A                    # 本業為產能/價格驅動，但以 direct 給營收（採用JPM分季預估）
+  version: v1
+  base_quarter: 2026Q2
+  as_of_month: "2026-10"
+  price_source: auto
+  price: 225.5
+  independent_observations: 16    # 26Q1/Q2財報各3個 + 月營收 + 2408/6505各自財報 + 分部門揭露
+  unit_note: 營收獲利=億元、股數=億股
+
+horizon:
+  start: 2026Q1
+  end: 2027Q4
+
+# ----------------------------------------------------------------- 實績
+actuals:
+  2026Q1:
+    revenue: 686.0
+    gross_margin: 0.1194
+    op_margin: 0.0545
+    eps: 1.80
+    source: FinMind 26Q1財報
+  2026Q2:
+    revenue: 836.5
+    gross_margin: 0.1892
+    op_margin: 0.1358
+    eps: 3.37
+    source: FinMind 26Q2財報（國泰論壇Call Memo交叉確認）
+
+# ----------------------------------------------------------------- 外部錨
+consensus:
+  source: JPMorgan 2026-09-01（TP 350元，6x P/B，2027 ROE 46%）
+  as_of: 2026-09-01
+  eps:
+    2026: 13.38
+    2027: 24.18
+  note: >
+    JPM 於 0901 大幅上修（原 10.94/17.75），主因「意外發現南亞握有 PTFE CCL 產品線」
+    與銅箔加工費調漲。本模型採用 JPM 的分季營收路徑作為本業錨；
+    分歧不在本業，而在南亞科技的 DRAM 獲利假設（見 scenarios）。
+
+# ----------------------------------------------------------------- Layer 1
+layer1:
+  revenue:
+    method: direct
+    # 採用 JPM 0901 報告 Figure 2 的分季預估（該表 1Q26/2Q26 與實績完全吻合，可信）
+    direct:
+      2026Q1: {value: 686.0,   source: 26Q1實績, confidence: 硬}
+      2026Q2: {value: 836.5,   source: 26Q2實績, confidence: 硬}
+      2026Q3: {value: 906.9,   source: JPM 0901分季預估（7月實績306億已佔33.7%）, confidence: 軟}
+      2026Q4: {value: 1019.2,  source: JPM 0901分季預估, confidence: 軟}
+      2027Q1: {value: 1128.4,  source: JPM 0901分季預估, confidence: 軟}
+      2027Q2: {value: 1230.0,  source: JPM 0901分季預估, confidence: 軟}
+      2027Q3: {value: 1346.8,  source: JPM 0901分季預估, confidence: 軟}
+      2027Q4: {value: 1514.7,  source: JPM 0901分季預估（2027四季合計5,220億＝JPM FY27E）, confidence: 軟}
+
+  gross_margin:
+    2026Q1: {value: 0.1194, source: 26Q1實績, confidence: 硬}
+    2026Q2: {value: 0.1892, source: 26Q2實績, confidence: 硬}
+    2026Q3: {value: 0.198,  source: 由JPM FY26E EBIT 433.5億反推2H26營益率＋費用率回加, confidence: 反解}
+    2026Q4: {value: 0.203,  source: 同上, confidence: 反解}
+    2027Q1: {value: 0.228,  source: JPM FY27E EBIT margin 20.2%分季爬坡（CCL OPM 19%→26%、銅箔14%→20%）, confidence: 推估}
+    2027Q2: {value: 0.248,  source: 同上, confidence: 推估}
+    2027Q3: {value: 0.263,  source: 同上, confidence: 推估}
+    2027Q4: {value: 0.278,  source: 同上, confidence: 推估}
+
+  opex_ratio:
+    2026Q1: {value: 0.0649, source: 26Q1實績反解（11.94%－5.45%）, confidence: 反解}
+    2026Q2: {value: 0.0534, source: 26Q2實績反解（18.92%－13.58%）, confidence: 反解}
+    2026Q3: {value: 0.0530, source: 營收放大後費用率大致持平, confidence: 推估}
+
+  # 其他業外（財務成本、匯兌等），不含權益法
+  non_operating:
+    default: {value: -25.0, source: 由26Q1/Q2實績反解（權益法與營益已知，殘差歸此）, confidence: 反解}
+
+  # ★ 本模型的核心：權益法投資收益逐季驅動
+  equity_income:
+    taxable: false          # 國內轉投資權益法收益不再課稅
+    investees:
+      南亞科技:
+        ticker: "2408"
+        note: >
+          DRAM。獲利波動極大：2025Q3 淨利 15.5億 → 2026Q2 454.5億（一年約29倍）。
+          大摩(0804)估2026-28 EPS 62.13/112.32/74.33元，**2028年較2027年衰退34%**，
+          即DRAM循環預期在2027年見頂。這是南亞EPS最大的單一變數。
+        stake:
+          value: 0.322
+          source: 1H26認列230.4億 ÷ 南亞科1H26淨利715.2億 反解
+          confidence: 反解
+        net_income:
+          2026Q1: {value: 260.7, source: 2408財報(EPS 8.41×31億股), confidence: 硬}
+          2026Q2: {value: 454.5, source: 2408財報(EPS 14.66×31億股), confidence: 硬}
+          2026Q3: {value: 570.0, source: 大摩2026 EPS 62.13反推2H26共1,211億，依Daiwa「3Q營收季增約60%」分配, confidence: 軟}
+          2026Q4: {value: 641.0, source: 同上, confidence: 軟}
+          2027Q1: {value: 820.0, source: 大摩2027 EPS 112.32（全年3,482億）分季爬坡, confidence: 推估}
+          2027Q2: {value: 900.0, source: 同上, confidence: 推估}
+          2027Q3: {value: 900.0, source: 同上（假設年中見頂）, confidence: 推估}
+          2027Q4: {value: 862.0, source: 同上（開始反轉，銜接2028年-34%）, confidence: 推估}
+
+      台塑石化:
+        ticker: "6505"
+        note: 煉化。獲利相對平穩，2026年前兩季淨利 203.9 / 207.8 億。
+        stake:
+          value: 0.253
+          source: 1H26認列104.0億 ÷ 台塑化1H26淨利411.7億 反解
+          confidence: 反解
+        net_income:
+          2026Q1: {value: 203.9, source: 6505財報(EPS 2.14×95.3億股), confidence: 硬}
+          2026Q2: {value: 207.8, source: 6505財報(EPS 2.18×95.3億股), confidence: 硬}
+          2026Q3: {value: 200.0, source: 假設維持近兩季水準（本庫無台塑化預估素材）, confidence: 推估}
+
+  tax_rate:
+    default: {value: 0.20, source: 法定稅率（權益法收益已排除於課稅基礎外）, confidence: 軟}
+
+  shares:
+    value: 79.31
+    source: JPM報告 Shares O/S 7,931百萬股
+    confidence: 硬
+
+  month_weights:
+    default: [0.33, 0.33, 0.34]
+    2026Q1: [0.333, 0.271, 0.396]   # 農曆年效應，反解自實際月營收
+    2026Q3: [0.337, 0.331, 0.332]   # 7月實績306億已知，鎖定第一個月權重
+    2027Q1: [0.333, 0.271, 0.396]
+
+# ----------------------------------------------------------------- Layer 2
+layer2:
+  enabled: false
+  # 不啟用。本業雖可再拆成電子材料/聚酯/化工/塑膠加工四大部門，
+  # 但南亞不逐季揭露分部門損益，只有年度比重與零星法人推估；
+  # 而且即使把本業拆到再細，也只影響 EPS 的 1/3。
+  # 對本案而言，「把南亞科技的 DRAM 獲利假設做對」的價值，
+  # 遠高於「把本業分部門拆細」。資源該花在前者。
+
+# ----------------------------------------------------------------- 三情境
+# ★ 情境軸刻意設在南亞科技的 DRAM 獲利，不是南亞本業。
+#   因為業外佔淨利六成以上，本業毛利率上下3pp的影響遠小於DRAM循環轉折。
+scenarios:
+  bull:
+    label: 多頭：DRAM超級循環延續至2027全年
+    prob: 0.25
+    note: 南亞科2027淨利較基準高25%（漲價延續、未見頂）＋本業毛利率再高2pp
+    overrides:
+      equity_income.南亞科技.net_income.2027Q1: {mul: 1.25}
+      gross_margin.2027Q1: {add: 0.02}
+
+  base:
+    label: 基準：DRAM 2027年中見頂
+    prob: 0.45
+    note: 南亞科2027淨利3,482億（大摩EPS 112.32），本業依JPM路徑
+
+  bear:
+    label: 保守：DRAM反轉提前至2027上半年
+    prob: 0.30
+    note: >
+      大摩自己就估2028年南亞科EPS較2027衰退34%；本情境假設該轉折提前一年發生，
+      南亞科2027淨利較基準低35%，同時CCL漲價回吐使本業毛利率低3pp
+    overrides:
+      equity_income.南亞科技.net_income.2027Q1: {mul: 0.65}
+      gross_margin.2027Q1: {add: -0.03}
+
+# ----------------------------------------------------------------- 對帳設定
+backtest:
+  monthly_tolerance: 0.10
+  consecutive_alert: 2
+
+# ----------------------------------------------------------------- 失效條件
+invalidation:
+  - "**南亞科技(2408) 單季淨利低於模型 20% 以上** → 權益法假設失效，直接重估（2408財報，領先南亞公告）"
+  - "**DRAM 現貨價自高點回落 >20%** → 啟動保守情境（月度追蹤）"
+  - "**月營收連兩月低於模型 10% 以上** → 本業營收路徑失效（每月10日 MOPS）"
+  - "**3Q26 毛利率 < 18%** → 本業毛利率爬坡假設失效（2026/11 Q3財報）"
+  - "**台塑化(6505) 單季淨利低於 150 億** → 該項推估值須重設（6505財報）"
+  - "**南亞科技或台塑化持股比例變動**（減持/增資稀釋） → stake 參數須重新反解（重訊追蹤）"

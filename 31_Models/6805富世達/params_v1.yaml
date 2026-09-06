@@ -1,0 +1,191 @@
+# =============================================================================
+# 富世達 6805 損益推估模型 v1
+#
+# 原型 B（專案／客戶驅動）：營收由分部門建構，不走產能×稼動率。
+# 三個部門：伺服器(QD/滑軌/Manifold)、摺疊機(鉸鏈)、NB及其他。
+#
+# 本檔為第二個 pilot，用途是驗證引擎在非產能驅動的股票上也成立。
+# Layer 2 刻意「不」啟用——理由見下方 layer2 區塊。
+# =============================================================================
+
+meta:
+  ticker: "6805"
+  name: 富世達
+  archetype: B
+  version: v1
+  base_quarter: 2026Q2
+  as_of_month: "2026-10"
+  price_source: auto
+  price: 2200.0
+  independent_observations: 14    # 26Q1/Q2財報各約3個 + 月營收趨勢 + 7月自結 + 分部門佔比揭露
+  unit_note: 營收獲利=億元、股數=億股
+
+horizon:
+  start: 2026Q1
+  end: 2027Q4
+
+# ----------------------------------------------------------------- 實績
+actuals:
+  2026Q1:
+    revenue: 41.83
+    gross_margin: 0.323
+    eps: 13.38
+    source: FinMind月營收加總＋Daiwa 0804報告(1Q26毛利率32.3%)、1H26 EPS 25.77減2Q26 12.39
+  2026Q2:
+    revenue: 37.39
+    gross_margin: 0.340
+    op_margin: 0.279
+    eps: 12.39
+    source: 26Q2財報（凱基/Daiwa 0804交叉確認）
+
+# ----------------------------------------------------------------- 外部錨
+consensus:
+  source: 凱基投顧 2026-09-02 memo（TP 2,385元 = 2027E EPS × 26x）
+  as_of: 2026-09-02
+  eps:
+    2026: 59.69
+    2027: 91.75
+  note: >
+    Daiwa(0804) 2026-28E EPS 59.00/91.21/115.72、TP 2,615元(32x 2027F)。
+    兩家對 2026/2027 幾乎一致（差<1%），代表賣方對「VR200放量」這件事已有共識，
+    分歧只在該給幾倍 PE。這種情況下模型的價值不在猜 EPS，而在界定下檔。
+
+# ----------------------------------------------------------------- Layer 1
+layer1:
+  revenue:
+    method: segments
+
+    segments:
+      伺服器:
+        note: >
+          QD(快接頭)、滑軌、Manifold。2026年主引擎：NVIDIA GB300→VR200平台，
+          4Q26起部分位置導入 ZQD(Zero Drip QD，ASP高於傳統QD)；
+          2027年再加 Meta 等 ASIC 客戶與 LPU/ASIC CPU 平台。
+          產能約30萬顆/月，公司規劃年底再增約50%。
+        revenue:
+          2026Q1: {value: 23.60, source: 1H26伺服器佔比55.7%反解, confidence: 反解}
+          2026Q2: {value: 20.53, source: 26Q2揭露伺服器佔比54.9%, confidence: 硬}
+          2026Q3: {value: 36.50, source: 7月伺服器佔比「九成以上」(約12.2億/月)外推8-9月續增, confidence: 軟}
+          2026Q4: {value: 44.00, source: 凱基0804「4Q26營收季增21%」＋VR200 ZQD導入, confidence: 軟}
+          2027Q1: {value: 42.00, source: 1Q季節性小幅回落後全年爬坡, confidence: 推估}
+          2027Q2: {value: 46.00, source: 同上, confidence: 推估}
+          2027Q3: {value: 53.00, source: ASIC客戶(Meta等)貢獻放大, confidence: 推估}
+          2027Q4: {value: 58.00, source: 同上, confidence: 推估}
+        gross_margin:
+          default:  {value: 0.400, source: 由7月「伺服器佔比>90%、毛利率36-38%」反解, confidence: 反解}
+          2027Q1:   {value: 0.420, source: ZQD規格升級帶動ASP與毛利率, confidence: 推估}
+
+      摺疊機:
+        note: >
+          手機鉸鏈。出貨領先新機發表，故 Q2 為旺季、Q3 明顯回落。
+          2Q26 年減20.5%，屬結構性衰退中的成熟業務。
+        revenue:
+          2026Q1: {value: 15.52, source: 依2Q26非伺服器結構比例拆分, confidence: 推估}
+          2026Q2: {value: 14.32, source: 26Q2揭露摺疊機佔比38.3%, confidence: 硬}
+          2026Q3: {value: 3.50,  source: 7月伺服器佔比升至九成，隱含摺疊機大幅回落, confidence: 軟}
+          2026Q4: {value: 4.00,  source: 陸系摺疊機小幅回補, confidence: 推估}
+          2027Q1: {value: 8.00,  source: 新機備貨循環回升, confidence: 推估}
+          2027Q2: {value: 10.00, source: 旺季, confidence: 推估}
+          2027Q3: {value: 7.00,  source: 淡季, confidence: 推估}
+          2027Q4: {value: 10.00, source: 旺季, confidence: 推估}
+        gross_margin:
+          default: {value: 0.250, source: 由2Q26混合毛利率34.0%與伺服器40%反解, confidence: 反解}
+
+      NB及其他:
+        note: NB 鉸鏈與其他雜項，佔比低且穩定。
+        revenue:
+          2026Q1: {value: 2.72, source: 依2Q26非伺服器結構比例拆分, confidence: 推估}
+          2026Q2: {value: 2.51, source: 26Q2揭露NB 6.0%＋其他0.7%, confidence: 硬}
+          2026Q3: {value: 2.00, source: 維持低檔, confidence: 推估}
+          2026Q4: {value: 2.80, source: 維持低檔, confidence: 推估}
+          2027Q1: {value: 2.50, source: 維持低檔, confidence: 推估}
+          2027Q2: {value: 2.70, source: 維持低檔, confidence: 推估}
+          2027Q3: {value: 2.80, source: 維持低檔, confidence: 推估}
+          2027Q4: {value: 3.00, source: 維持低檔, confidence: 推估}
+        gross_margin:
+          default: {value: 0.220, source: 推估（低於摺疊機）, confidence: 推估}
+
+  # 已公布季度用實績毛利率；未來季度由分部門加權自動推導（引擎行為）
+  gross_margin:
+    2026Q1: {value: 0.323, source: 26Q1實績（Daiwa 0804）, confidence: 硬}
+    2026Q2: {value: 0.340, source: 26Q2實績, confidence: 硬}
+
+  opex_ratio:
+    2026Q1: {value: 0.059, source: 26Q1實績反解（32.3%－26.4%）, confidence: 反解}
+    2026Q2: {value: 0.061, source: 26Q2實績反解（34.0%－27.9%）, confidence: 反解}
+    2026Q3: {value: 0.060, source: 營收放大後費用率大致持平, confidence: 推估}
+
+  non_operating:
+    default: {value: 0.15, source: 近四季業外平均, confidence: 軟}
+
+  tax_rate:
+    default: {value: 0.196, source: 26Q2實績反解（營益10.43＋業外0.15→淨利8.51）, confidence: 反解}
+
+  shares:
+    value: 0.6867
+    source: 7月自結反解（淨利3.77億÷EPS 5.49元）
+    confidence: 反解
+
+  month_weights:
+    default: [0.33, 0.33, 0.34]
+    2026Q1: [0.336, 0.282, 0.382]   # 農曆年效應，反解自實際月營收
+    2026Q3: [0.324, 0.330, 0.346]   # 7月實績13.60億已知，鎖定第一個月權重
+    2027Q1: [0.336, 0.282, 0.382]
+
+# ----------------------------------------------------------------- Layer 2
+layer2:
+  enabled: false
+  # 不啟用的理由（依 31_Models/README.md 的開啟條件）：
+  # 現有 QD 一手數據只有「產能約30萬顆/月、年底+50%」與「全年出貨約300萬件」，
+  # 缺少 QD／ZQD 分品項的 ASP 與各平台出貨拆分。
+  # 在沒有這些一手資料的情況下開 Layer 2，只是把「伺服器營收一個推估」
+  # 拆成「顆數 × 單價」兩個推估，出錯的地方變多而非變少。
+  #
+  # 開啟條件（下次法說/私訪拿到任一項即可）：
+  #   1. QD vs ZQD 的 ASP 差距（目前只知「ZQD ASP > QD」，無數字）
+  #   2. VR200 單機櫃 QD 用量與富世達市占率
+  #   3. ASIC 客戶(Meta等)的專案別出貨量與時程
+
+# ----------------------------------------------------------------- 三情境
+# 分歧點集中在「伺服器 2027 營收」與「伺服器毛利率」——這是本案方差最大的變數。
+# 摺疊機雖然佔比不低，但它是成熟衰退業務，不確定性遠小於伺服器。
+scenarios:
+  bull:
+    label: 多頭：市占提升＋ASIC客戶超預期
+    prob: 0.25
+    note: >
+      競品QD漏水/良率事件使富世達在VR200市占進一步提升，ASIC客戶放量快於預期；
+      伺服器2027營收較基準高25%，ZQD帶動伺服器毛利率至44%
+    overrides:
+      segments.伺服器.revenue.2027Q1: {mul: 1.25}
+      segments.伺服器.gross_margin.2027Q1: {set: 0.44}
+
+  base:
+    label: 基準：VR200如期放量
+    prob: 0.45
+    note: 伺服器2027營收199億(年增約60%)，毛利率42%，全年營收年增約42%（貼近Daiwa口徑）
+
+  bear:
+    label: 保守：VR200遞延、市占未提升
+    prob: 0.30
+    note: >
+      VR200機櫃組裝進度遞延、競品良率問題解決使市占未如預期提升；
+      伺服器2027營收較基準低20%，毛利率回到38%，摺疊機衰退加速
+    overrides:
+      segments.伺服器.revenue.2027Q1: {mul: 0.80}
+      segments.伺服器.gross_margin.2027Q1: {set: 0.38}
+      segments.摺疊機.revenue.2027Q1: {mul: 0.80}
+
+# ----------------------------------------------------------------- 對帳設定
+backtest:
+  monthly_tolerance: 0.10
+  consecutive_alert: 2
+
+# ----------------------------------------------------------------- 失效條件
+invalidation:
+  - "**月營收連兩月低於模型 10% 以上** → 伺服器爬坡假設失效（每月10日 MOPS）"
+  - "**3Q26 毛利率 < 36%** → 伺服器毛利率 40% 假設下修（2026/11 Q3財報）"
+  - "**4Q26 ZQD 未如期於 VR200 導入** → 2027 伺服器毛利率 42% 假設失效（法說追蹤）"
+  - "**競品 QD 良率問題解決且富世達市占未提升** → 移除多頭情境（供應鏈查核）"
+  - "**摺疊機單季營收年減 >30%** → 本業拖累超出模型（每季財報分部門揭露）"
+  - "**2027 上半年仍無 ASIC 客戶量產訂單** → 2027Q3/Q4 伺服器營收假設失效（法說追蹤）"
