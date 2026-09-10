@@ -573,32 +573,40 @@ def compute_market_score(index_summary, stats_summary, settings=None):
 # ==========================================
 # 8. 市場寬度 (全市場上漲/下跌/漲停/跌停家數)
 # ==========================================
-def fetch_market_breadth(date, credentials_path=CREDENTIALS_PATH):
-    """回傳當日全市場(上市+上櫃合計，以4碼純數字代號近似排除ETF/權證/受益憑證等非普通股)
-    {up, down, flat, limit_up, limit_down, total} 家數統計。用 FinMind 批次查詢
-    (data_id="") 一次取得全市場當日價格，比逐檔查詢省下上千次 API 呼叫。
+def fetch_market_breadth(date=None, credentials_path=CREDENTIALS_PATH):
+    """回傳全市場(上市+上櫃合計，以4碼純數字代號近似排除ETF/權證/受益憑證等非普通股)
+    {up, down, flat, limit_up, limit_down, total} 家數統計。
+
+    資料來源：Fugle 熱力圖公開API（見 sector_trend.fetch_heatmap，免登入免token），同時取
+    TWSE_SYMBOL(上市)與TPEX_SYMBOL(上櫃)兩張熱力圖的 EQUITY 列合併統計。改用此來源是因為
+    原本的 FinMind TaiwanStockPrice 批次查詢(data_id="")屬於 FinMind Sponsor(付費)專屬
+    功能，免費 register 等級呼叫會直接被 API 擋下(HTTP 400 "Your level is register")，
+    並非官方資料真的停止更新——2026-09-10 debug 時以現行 token 實測確認過(見對話紀錄)。
+
+    熱力圖沒有指定歷史日期的參數，永遠回傳「當下最新」一份快照，故 date 參數目前不使用，
+    僅保留於函式簽章供呼叫端相容（呼叫端通常也是在收盤後立即產生當天報告，語意上等於「最新」）。
     漲跌停以當日漲跌幅 >= +9.5% / <= -9.5% 近似判定（見 LIMIT_MOVE_THRESHOLD_PCT 註解）。"""
-    records = _finmind_request("TaiwanStockPrice", "", date, credentials_path)
+    from sector_trend import fetch_heatmap, TWSE_SYMBOL, TPEX_SYMBOL
+
+    rows = fetch_heatmap(TWSE_SYMBOL) + fetch_heatmap(TPEX_SYMBOL)
     up = down = flat = limit_up = limit_down = 0
-    for r in records:
-        stock_id = r.get("stock_id", "")
-        if not re.fullmatch(r"\d{4}", stock_id):
+    for r in rows:
+        if r.get("type") != "EQUITY":
             continue
-        spread = r.get("spread")
-        close = r.get("close")
-        if spread is None or close is None:
+        symbol = r.get("symbol", "")
+        if not re.fullmatch(r"\d{4}", symbol):
             continue
-        if spread > 0:
+        pct = r.get("changePercent")
+        if pct is None:
+            continue
+        if pct > 0:
             up += 1
-        elif spread < 0:
+        elif pct < 0:
             down += 1
         else:
             flat += 1
-        prev_close = close - spread
-        if prev_close:
-            pct = spread / prev_close * 100
-            if pct >= LIMIT_MOVE_THRESHOLD_PCT:
-                limit_up += 1
-            elif pct <= -LIMIT_MOVE_THRESHOLD_PCT:
-                limit_down += 1
+        if pct >= LIMIT_MOVE_THRESHOLD_PCT:
+            limit_up += 1
+        elif pct <= -LIMIT_MOVE_THRESHOLD_PCT:
+            limit_down += 1
     return {"up": up, "down": down, "flat": flat, "limit_up": limit_up, "limit_down": limit_down, "total": up + down + flat}

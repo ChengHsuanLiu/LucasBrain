@@ -29,7 +29,6 @@ from lib.market_data import (
     detect_simple_divergence,
     fetch_twse_margin_total,
     fetch_tpex_margin_total,
-    fetch_margin_maintenance_ratio,
     fetch_institutional_investors_total,
     fetch_foreign_futures_position,
     fetch_market_breadth,
@@ -398,7 +397,7 @@ def build_market_stats_section():
 
     lines.append('<div class="idx-col" markdown="1">')
     lines.append("")
-    lines.append("**融資餘額與維持率**")
+    lines.append("**融資餘額**")
     lines.append("")
     try:
         twse = fetch_twse_margin_total()
@@ -412,31 +411,6 @@ def build_market_stats_section():
         summary["margin_change_tpex"] = tpex["change_money"]
     except Exception as e:
         lines.append(f"* 上櫃：抓取失敗 ({e})")
-    try:
-        start_date = (datetime.now() - timedelta(days=14)).strftime("%Y-%m-%d")
-        maint = fetch_margin_maintenance_ratio(start_date)
-        if maint:
-            # FinMind TaiwanTotalExchangeMarginMaintenance 與 MacroMicro 圖表53117(市場慣用參考來源)
-            # 口徑不同（分子是否計入ETF等未知），Lucas 對過15個交易日後，觀察到穩定落差約25.5pp，
-            # 因此在這裡扣減校正，讓顯示值貼近市場慣用的 MacroMicro 數字。這是經驗校正值，非官方
-            # 換算公式；若 Lucas 回報數字對不上，第一件事應該是重新比對這個 25.5 是否還成立。
-            MACROMICRO_ADJUSTMENT = -25.5
-            for row in maint:
-                row["ratio"] = round(row["ratio"] + MACROMICRO_ADJUSTMENT, 1)
-            latest_maint = maint[-1]
-            prev_maint = maint[-2] if len(maint) >= 2 else None
-            change_str = f"（{colorize_signed(latest_maint['ratio'] - prev_maint['ratio'], '{:+.1f}pp')}）" if prev_maint else ""
-            # FinMind 此資料集常有 1 個交易日以上的發布延遲，抓到的「最後一筆」不一定是報告當天的
-            # 資料。若日期對不上，明確標註實際資料日期，避免把舊資料誤標成當天數字。
-            today_str = datetime.now().strftime("%Y-%m-%d")
-            staleness_note = ""
-            maint_date = latest_maint.get("date")
-            if maint_date and maint_date != today_str:
-                staleness_note = f"（{flag_red(maint_date + '資料，尚未更新至最新交易日')}）"
-            lines.append(f"* 維持率：{latest_maint['ratio']:.1f}%{change_str}{staleness_note}")
-            summary["margin_maintenance_ratio"] = latest_maint["ratio"]
-    except Exception as e:
-        lines.append(f"* 維持率：抓取失敗 ({e})")
     lines.append("")
     lines.append('</div>')
 
