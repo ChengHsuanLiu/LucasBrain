@@ -76,6 +76,10 @@ from lib.report_style import (
     flag_purple,
 )
 
+# 2026-09-10 Lucas 要求暫時隱藏「賣出/減碼訊號」區塊（不產出該標題與表格），計算邏輯與
+# 資料本身不受影響，之後想恢復顯示的話把這個改回 True 即可。
+SHOW_SELL_SIGNALS_SECTION = False
+
 OUTPUT_DIR = r"C:\Users\User\Desktop\LucasBrain\30_Projects\Daily_Report"
 STOCK_DIR = r"C:\Users\User\Desktop\LucasBrain\10_Stocks"
 MOMENTUM_DIR = r"C:\Users\User\Desktop\LucasBrain\30_Projects\Momentum_Screen"
@@ -275,7 +279,10 @@ def short_rating_badge(rating_text):
 
 def build_index_section(title, index_id, lookback_days=200):
     start_date = (datetime.now() - timedelta(days=lookback_days)).strftime("%Y-%m-%d")
-    ohlc = fetch_index_history(index_id, start_date)
+    try:
+        ohlc = fetch_index_history(index_id, start_date)
+    except Exception as e:
+        return [f"#### {title}", f"*抓取失敗 ({e})*", ""], None
     if not ohlc:
         return [f"#### {title}", "*無法取得資料。*", ""], None
 
@@ -858,37 +865,38 @@ def build_stock_signals_section(results, valuation_mode):
         lines.append("*今日無符合門檻的買進訊號。*")
     lines.append("")
 
-    lines.append(
-        f"#### {flag_blue(f'賣出/減碼訊號（期望值<{SELL_EV_THRESHOLD_TRIM:.0f}% 或 期望值<{SELL_EV_THRESHOLD_BREAK_5MA:.0f}%且跌破5日線）')}"
-    )
-    lines.append("")
-    if sell_list:
-        lines.append('<div class="stock-sell-table" markdown="1">')
+    if SHOW_SELL_SIGNALS_SECTION:
+        lines.append(
+            f"#### {flag_blue(f'賣出/減碼訊號（期望值<{SELL_EV_THRESHOLD_TRIM:.0f}% 或 期望值<{SELL_EV_THRESHOLD_BREAK_5MA:.0f}%且跌破5日線）')}"
+        )
         lines.append("")
-        lines.append("| 股票 | 現價 | 目標價上緣 | 均線 | 乖離 | 觸發原因 |")
-        lines.append("| :--- | :--- | :--- | :--- | :--- | :--- |")
-        for r in sell_list:
-            fpe_used = r["fpe_range"]["high"] if r["fpe_range"] else None
-            if r["target_price"] is not None and fpe_used is not None and r["target_eps"] is not None:
-                target_str = (
-                    f"TP {r['target_price']:,.0f}<br>"
-                    f"({fpe_used:.0f}x EPS {r['target_eps']:.1f})<br>"
-                    f"(期望值 {colorize_signed(r['expected_value_pct'], '{:+.0f}%')})"
+        if sell_list:
+            lines.append('<div class="stock-sell-table" markdown="1">')
+            lines.append("")
+            lines.append("| 股票 | 現價 | 目標價上緣 | 均線 | 乖離 | 觸發原因 |")
+            lines.append("| :--- | :--- | :--- | :--- | :--- | :--- |")
+            for r in sell_list:
+                fpe_used = r["fpe_range"]["high"] if r["fpe_range"] else None
+                if r["target_price"] is not None and fpe_used is not None and r["target_eps"] is not None:
+                    target_str = (
+                        f"TP {r['target_price']:,.0f}<br>"
+                        f"({fpe_used:.0f}x EPS {r['target_eps']:.1f})<br>"
+                        f"(期望值 {colorize_signed(r['expected_value_pct'], '{:+.0f}%')})"
+                    )
+                elif r["target_price"] is not None:
+                    target_str = f"TP {r['target_price']:,.0f}"
+                else:
+                    target_str = "待補充"
+                reason_str = "<br>".join(highlight_break_5ma_note(reason) for reason in r["reasons"]) if r["reasons"] else "-"
+                lines.append(
+                    f"| {r['ticker']}<br>{r['name']} | {r['current_price']:.2f} | {target_str} | "
+                    f"{short_rating_badge(r['ma_rating'])} | {short_rating_badge(r['bias_rating'])} | {reason_str} |"
                 )
-            elif r["target_price"] is not None:
-                target_str = f"TP {r['target_price']:,.0f}"
-            else:
-                target_str = "待補充"
-            reason_str = "<br>".join(highlight_break_5ma_note(reason) for reason in r["reasons"]) if r["reasons"] else "-"
-            lines.append(
-                f"| {r['ticker']}<br>{r['name']} | {r['current_price']:.2f} | {target_str} | "
-                f"{short_rating_badge(r['ma_rating'])} | {short_rating_badge(r['bias_rating'])} | {reason_str} |"
-            )
+            lines.append("")
+            lines.append("</div>")
+        else:
+            lines.append("*今日無觸發賣出/減碼條件的個股。*")
         lines.append("")
-        lines.append("</div>")
-    else:
-        lines.append("*今日無觸發賣出/減碼條件的個股。*")
-    lines.append("")
 
     return lines
 

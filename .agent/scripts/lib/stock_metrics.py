@@ -19,9 +19,11 @@ import sys
 import urllib.request
 import io
 import csv
+from datetime import datetime
 
 MA_PERIODS = [5, 10, 20, 60, 120, 240]
 CREDENTIALS_PATH = r"C:\Users\User\Desktop\LucasBrain\.agent\credentials.json"
+FINMIND_CACHE_DIR = r"C:\Users\User\Desktop\LucasBrain\.agent\data\cache\finmind"
 
 
 def _load_finmind_token(credentials_path=CREDENTIALS_PATH):
@@ -35,8 +37,21 @@ def _load_finmind_token(credentials_path=CREDENTIALS_PATH):
     return None
 
 
+def _finmind_cache_path(dataset, data_id):
+    safe_id = data_id if data_id else "_ALL_"
+    safe_id = re.sub(r'[^A-Za-z0-9_.-]', '_', safe_id)
+    return os.path.join(FINMIND_CACHE_DIR, f"{dataset}__{safe_id}.json")
+
+
 def _finmind_request(dataset, data_id, start_date, credentials_path=CREDENTIALS_PATH, timeout=15):
-    """呼叫 FinMind v4 API 並回傳 data list，統一 token/header 組裝與錯誤處理。"""
+    """呼叫 FinMind v4 API 並回傳 data list，統一 token/header 組裝與錯誤處理。
+
+    2026-09-10 新增磁碟快取備援：每次成功呼叫都把回應寫入
+    .agent/data/cache/finmind/{dataset}__{data_id}.json（覆蓋式，只留最近一次成功結果，
+    不是完整歷史快取）。當本次呼叫失敗（額度用盡 402、等級不足 400 等）時，改讀該筆
+    快取並印出警告（含快取時間），讓呼叫端仍能拿到「最近一次成功抓到的資料」繼續運作，
+    而不是整支腳本直接崩潰；沒有可用快取時才把原始例外往上拋。"""
+    cache_path = _finmind_cache_path(dataset, data_id)
     token = _load_finmind_token(credentials_path)
     url = f"https://api.finmindtrade.com/api/v4/data?dataset={dataset}&data_id={data_id}&start_date={start_date}"
     if token:
@@ -47,9 +62,27 @@ def _finmind_request(dataset, data_id, start_date, credentials_path=CREDENTIALS_
         headers["Authorization"] = f"Bearer {token}"
 
     req = urllib.request.Request(url, headers=headers)
-    with urllib.request.urlopen(req, timeout=timeout) as response:
-        res_data = json.loads(response.read().decode('utf-8'))
-        return res_data.get('data', [])
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as response:
+            res_data = json.loads(response.read().decode('utf-8'))
+            data = res_data.get('data', [])
+            try:
+                os.makedirs(FINMIND_CACHE_DIR, exist_ok=True)
+                with open(cache_path, 'w', encoding='utf-8') as cf:
+                    json.dump({"cached_at": datetime.now().isoformat(), "start_date": start_date, "data": data}, cf, ensure_ascii=False)
+            except Exception:
+                pass  # 快取寫入失敗不影響本次正常回傳
+            return data
+    except Exception as e:
+        if os.path.exists(cache_path):
+            try:
+                with open(cache_path, 'r', encoding='utf-8') as cf:
+                    cached = json.load(cf)
+                print(f"Warning: FinMind 即時抓取失敗 ({e})，改用 {cached.get('cached_at', '未知時間')} 的快取資料 ({dataset}/{data_id or '(全市場)'})")
+                return cached.get("data", [])
+            except Exception:
+                pass
+        raise
 
 
 # ==========================================
