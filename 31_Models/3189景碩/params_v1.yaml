@@ -1,0 +1,232 @@
+# =============================================================================
+# 景碩 3189 損益推估模型 v1
+#
+# 診斷結果（g Diagnose 3189，2026-09-10）：毛利率效應佔變異40.4%、費用率效應37.2%
+# 為前二大來源，業外僅12.5%（依賴度平均24%，未達look-through門檻）→ 不啟用
+# equity_income，情境軸放在毛利率＋費用率（opex_ratio）。
+#
+# ⚠️ 建模時的關鍵發現：景碩合併子公司晶碩(6491，隱形眼鏡)存在少數股權，
+# 「稅後淨利」與「歸屬母公司淨利(EPS基礎)」之間有缺口，且缺口比例逐季不同
+# （反解 parent_ratio：26Q1約86.8%、26Q2約99.2%），研判與晶碩自身獲利占比
+# 波動有關。本模型未取得精確流通股數之一手來源，以2Q26實績反解之6.5億股
+# 為估計值（confidence: 推估），forward parent_ratio 亦取兩季平均。此為本模型
+# 目前最脆弱的參數，若後續能取得公司股本/晶碩損益之一手資料應優先修正。
+# =============================================================================
+
+meta:
+  ticker: "3189"
+  name: 景碩
+  archetype: A
+  version: v1
+  base_quarter: 2026Q2
+  as_of_month: "2026-09"
+  price_source: auto
+  price: 795.0
+  independent_observations: 10   # 6/21調研、6/26座談、6/29買進報告、6/30 Citi、6/30福邦、7/12 GS、7/21-22凱基(x2)、8/3 GS更新、8/6 GS AT&S read-across、8/25國泰Call Memo(最詳盡)
+  unit_note: 營收獲利=億元、股數=億股
+
+horizon:
+  start: 2026Q1
+  end: 2028Q4
+
+# ----------------------------------------------------------------- 實績
+actuals:
+  2026Q1:
+    revenue: 111.05
+    gross_margin: 0.2116
+    op_margin: 0.0802
+    eps: 1.17
+    source: FinMind 26Q1財報（Revenue 111.05億、GrossProfit 23.495億、OperatingIncome 8.906億，TAX/PreTax反解有效稅率9.19%）
+  2026Q2:
+    revenue: 124.96
+    gross_margin: 0.2610
+    op_margin: 0.1343
+    eps: 2.57
+    source: FinMind 26Q2財報，與國泰證期8/25 Call Memo「2Q26合併營收124.96億元、毛利率26.1%、費用率12.7%、EPS 2.57元」完全吻合，交叉驗證通過
+
+# ----------------------------------------------------------------- 外部錨
+consensus:
+  source: Goldman Sachs 2026-08-03《2Q26法說後追蹤電話會議》（TP 1,125元，16.5x 2028E P/E，本庫最新且逐年最完整之估計）
+  as_of: 2026-08-03
+  eps:
+    2026: 11.79
+    2027: 35.10
+    2028: 68.29
+    2029: 118.18
+  note: >
+    國泰證期8/25 Call Memo（公司自身House座談，非獨立法人estimate）給出「2026年營收
+    YoY+35%、毛利率26-27%、EPS約10元」，略低於GS的11.79元，兩者可視為同一時點下的
+    保守/略樂觀區間對照。凱基(7/21-22，TP935)與Citi(6/30，TP1,100)兩份報告皆早於
+    8月正式2Q26財報公布與GS 8/3電話會議更新，時效性已被後續資訊超越，視為stale
+    不納入consensus錨點，僅作為Notes&Memos歷史對照。
+
+# ----------------------------------------------------------------- Layer 1
+layer1:
+  revenue:
+    method: direct
+    direct:
+      2026Q1: {value: 111.05, source: 26Q1實績, confidence: 硬}
+      2026Q2: {value: 124.96, source: 26Q2實績, confidence: 硬}
+      # 3Q/4Q26：國泰(8/25)與GS(8/3)皆guide QoQ+10%，兩獨立來源一致
+      2026Q3: {value: 137.5,  source: 國泰+GS一致guidance「QoQ+約10%」, confidence: 軟}
+      2026Q4: {value: 151.2,  source: 國泰+GS一致guidance「QoQ+約10%」, confidence: 軟}
+      # 2027FY目標＝2026FY(524.7億，由上列四季加總)×1.30，反映國泰「2027-28年
+      # 營收YoY成長目標維持30%以上」與GS「若不計潛在漲價，2027/28營收年增至少30%」；
+      # 季度分配反映1Q27 ABF月產能+25%(4,000萬→5,000萬單位)到位後之爬坡曲線，
+      # 年初新產能稼動率尚未拉滿，逐季加速。
+      2027Q1: {value: 153.5,  source: 2027FY目標682億×23%權重(新產能剛到位、稼動率爬坡中), confidence: 推估}
+      2027Q2: {value: 167.1,  source: 2027FY目標682億×24.5%權重, confidence: 推估}
+      2027Q3: {value: 177.3,  source: 2027FY目標682億×26%權重, confidence: 推估}
+      2027Q4: {value: 184.2,  source: 2027FY目標682億×27%權重(稼動率接近滿載), confidence: 推估}
+      # 2028FY目標＝2027FY×1.30，反映同一組「30%+」guidance延續至2028年；
+      # 季節性權重略平緩（無同等級之單季產能跳升事件，2028年6,500萬單位為
+      # 全年度漸進擴充而非單季階梯式到位）
+      2028Q1: {value: 208.4,  source: 2028FY目標887億×23.5%權重, confidence: 推估}
+      2028Q2: {value: 217.2,  source: 2028FY目標887億×24.5%權重, confidence: 推估}
+      2028Q3: {value: 226.1,  source: 2028FY目標887億×25.5%權重, confidence: 推估}
+      2028Q4: {value: 235.0,  source: 2028FY目標887億×26.5%權重, confidence: 推估}
+
+  gross_margin:
+    2026Q1: {value: 0.2116, source: 26Q1實績反解, confidence: 硬}
+    2026Q2: {value: 0.2610, source: 26Q2實績反解, confidence: 硬}
+    2026Q3: {value: 0.275,  source: 國泰「27-28%」與GS「27-28%」guidance取中值, confidence: 軟}
+    2026Q4: {value: 0.2875, source: 國泰「29%」與GS「28-29%」guidance取偏保守值, confidence: 軟}
+    # 2027-28：凱基(7/22)「每年改善4-5個百分點」、GS(8/3)「每年改善5個百分點」，
+    # 本模型逐季拆分、全年淨改善略低於guidance上緣(偏保守)，反映ABF高階佔比
+    # 提升與BT轉單毛利率突破20%兩股力道疊加，但T-Glass缺料仍是持續變數
+    2027Q1: {value: 0.295,  source: 延續改善趨勢+ABF新產能開出初期稼動爬坡, confidence: 推估}
+    2027Q2: {value: 0.305,  source: 同上，BT轉單效應完整反映(欣興年底裁減15%產能轉單), confidence: 推估}
+    2027Q3: {value: 0.315,  source: 同上, confidence: 推估}
+    2027Q4: {value: 0.325,  source: 全年較26Q4之28.75%改善約+3.75ppt(略低於guidance4-5ppt), confidence: 推估}
+    2028Q1: {value: 0.335,  source: 延續改善趨勢，AI substrate佔比續升(GS估AI營收占比27%), confidence: 推估}
+    2028Q2: {value: 0.345,  source: 同上, confidence: 推估}
+    2028Q3: {value: 0.355,  source: 同上, confidence: 推估}
+    2028Q4: {value: 0.365,  source: 全年再改善約+4ppt，趨近GS 2028E隱含較高毛利率水準, confidence: 推估}
+
+  # 費用率隨規模持續攤薄，診斷腳本標示費用率效應佔變異37.2%（僅次於毛利率），
+  # 惟現有素材未揭露明確之固定/變動費用拆分數字，故沿用單一opex_ratio序列
+  # （比照台光電v1模板做法），以逐季小幅下降反映規模效益，而非強行拆
+  # opex_fixed+opex_ratio造成無來源支撐的假參數。
+  opex_ratio:
+    2026Q1: {value: 0.1314, source: 26Q1實績反解(毛利率-營益率), confidence: 反解}
+    2026Q2: {value: 0.1267, source: 26Q2實績反解，與國泰memo「費用率12.7%」完全吻合, confidence: 硬}
+    2026Q3: {value: 0.122,  source: 規模效益延續小幅攤薄, confidence: 推估}
+    2026Q4: {value: 0.118,  source: 同上, confidence: 推估}
+    2027Q1: {value: 0.115,  source: 同上, confidence: 推估}
+    2027Q2: {value: 0.112,  source: 同上, confidence: 推估}
+    2027Q3: {value: 0.110,  source: 同上, confidence: 推估}
+    2027Q4: {value: 0.108,  source: 同上, confidence: 推估}
+    2028Q1: {value: 0.106,  source: 邊際效益遞減後趨緩, confidence: 推估}
+    2028Q2: {value: 0.104,  source: 同上, confidence: 推估}
+    2028Q3: {value: 0.102,  source: 同上, confidence: 推估}
+    2028Q4: {value: 0.100,  source: 同上, confidence: 推估}
+
+  non_operating:
+    default: {value: 1.0, source: 近兩季實績0.738/1.057億元，取平均概估, confidence: 軟}
+
+  # 有效稅率明顯低於20%法定稅率（近兩季9.19%/5.65%），推測與資本支出相關之
+  # 投資抵減或研發稅額扣抵有關；前瞻季度取近兩季均值，惟需留意抵減用罄後
+  # 可能回升至更接近法定稅率的風險（見下方失效條件）
+  tax_rate:
+    2026Q1: {value: 0.0919, source: 26Q1實績反解, confidence: 反解}
+    2026Q2: {value: 0.0565, source: 26Q2實績反解, confidence: 反解}
+    2026Q3: {value: 0.08,   source: 近兩季均值, confidence: 推估}
+    2026Q4: {value: 0.08,   source: 同上, confidence: 推估}
+    2027Q1: {value: 0.09,   source: 假設抵減效果逐步收斂、小幅上移, confidence: 推估}
+    2027Q2: {value: 0.10,   source: 同上, confidence: 推估}
+    2027Q3: {value: 0.10,   source: 同上, confidence: 推估}
+    2027Q4: {value: 0.10,   source: 同上, confidence: 推估}
+    2028Q1: {value: 0.12,   source: 假設持續正常化，惟仍低於法定稅率20%, confidence: 推估}
+    2028Q2: {value: 0.12,   source: 同上, confidence: 推估}
+    2028Q3: {value: 0.12,   source: 同上, confidence: 推估}
+    2028Q4: {value: 0.12,   source: 同上, confidence: 推估}
+
+  # 子公司晶碩(6491)存在少數股權，稅後淨利與歸屬母公司淨利(EPS基礎)有缺口；
+  # 缺口比例反解自2Q26實績（見檔頭說明），forward取兩季平均值
+  parent_ratio:
+    2026Q1: {value: 0.868, source: 26Q1實績反解(假設流通股數6.5億股), confidence: 反解}
+    2026Q2: {value: 0.992, source: 26Q2實績反解(假設流通股數6.5億股), confidence: 反解}
+    default: {value: 0.93, source: 26Q1/Q2反解值之平均，晶碩損益占比波動為本模型最大不確定性來源, confidence: 推估}
+
+  shares:
+    value: 6.5
+    source: 無精確一手股本資料，由2Q26實績(稅後淨利16.834億÷EPS 2.57)反解概估，未計入少數股權調整前粗估約6.55億股，取整6.5億股並以parent_ratio吸收少數股權缺口
+    confidence: 推估
+
+  month_weights:
+    default: [0.32, 0.33, 0.35]
+
+# ----------------------------------------------------------------- Layer 2
+layer2:
+  enabled: false
+  # 不啟用segments拆分。景碩雖有ABF(44.7%)/BT(38.4%)/隱形眼鏡(16.9%子公司晶碩)
+  # 三塊業務，但晶碩為獨立上市公司(6491)、無獨立逐季營收指引可用於本模型，
+  # 強行拆segments只會在完全沒有一手資料的區塊(隱形眼鏡)填入瞎猜數字，
+  # 反而讓誤差來源變多。現行以公司層級direct revenue + 單一毛利率序列已能
+  # 捕捉診斷腳本指出的兩大變異來源(毛利率40%+費用率37%)，Layer 2報酬率偏低。
+  #
+  # 開啟條件：取得晶碩(6491)獨立財測，或景碩法說明確拆分ABF/BT各自季營收
+  # 與毛利率數字（目前僅有「BT毛利率15%→20%+」等定性/區間描述）。
+
+# ----------------------------------------------------------------- 三情境
+# 診斷腳本指出毛利率(40.4%)與費用率(37.2%)為前二大變異來源，情境分歧點
+# 同時涵蓋兩者；營收變動幅度較小(僅反映T-Glass缺料/ABF擴產時程之上下限)。
+scenarios:
+  bull:
+    label: 多頭：BT轉單+ABF漲價超預期、T-Glass缺料提前緩解
+    prob: 0.25
+    note: 欣興轉單效應強於預期帶動BT毛利率提前突破20%，ABF競標溢價高於guidance基本幅，2028年AI substrate市占率達GS樂觀情境27%上緣
+    overrides:
+      direct.2027Q1: {mul: 1.05}
+      direct.2027Q2: {mul: 1.05}
+      direct.2027Q3: {mul: 1.05}
+      direct.2027Q4: {mul: 1.05}
+      direct.2028Q1: {mul: 1.05}
+      direct.2028Q2: {mul: 1.05}
+      direct.2028Q3: {mul: 1.05}
+      direct.2028Q4: {mul: 1.05}
+      gross_margin.2026Q4: {add: 0.02}
+      gross_margin.2027Q1: {add: 0.02}
+      opex_ratio.2026Q4: {add: -0.01}
+      opex_ratio.2027Q1: {add: -0.01}
+
+  base:
+    label: 基準：延續國泰/GS guidance路徑，BT轉單與ABF擴產按時程兌現
+    prob: 0.45
+    note: 3-4Q26 QoQ+10%營收成長兌現，2027-28年營收YoY+30%目標達成，毛利率按guidance漸進改善但略保守於上緣
+
+  bear:
+    label: 保守：T-Glass缺料惡化、Vera CPU放量遞延
+    prob: 0.30
+    note: 缺料對營收之影響擴大超過現有10-15%區間，ABF稼動率年底未拉滿至95%，BT轉單效應遞延至2027年、毛利率未能突破20%
+    overrides:
+      direct.2026Q4: {mul: 0.92}
+      direct.2027Q1: {mul: 0.90}
+      direct.2027Q2: {mul: 0.90}
+      direct.2027Q3: {mul: 0.90}
+      direct.2027Q4: {mul: 0.90}
+      direct.2028Q1: {mul: 0.90}
+      direct.2028Q2: {mul: 0.90}
+      direct.2028Q3: {mul: 0.90}
+      direct.2028Q4: {mul: 0.90}
+      gross_margin.2026Q4: {add: -0.02}
+      gross_margin.2027Q1: {add: -0.03}
+      gross_margin.2027Q2: {add: -0.03}
+      gross_margin.2027Q3: {add: -0.03}
+      gross_margin.2027Q4: {add: -0.03}
+      opex_ratio.2026Q4: {add: 0.01}
+      opex_ratio.2027Q1: {add: 0.01}
+
+# ----------------------------------------------------------------- 對帳設定
+backtest:
+  monthly_tolerance: 0.10
+  consecutive_alert: 2
+
+# ----------------------------------------------------------------- 失效條件
+invalidation:
+  - "**3Q26營收<130億元（未達QoQ+10%guidance下限）** → 動能弱於國泰/GS一致guidance，base情境降級（10月MOPS）"
+  - "**3Q26毛利率<27%** → 未達guidance下緣，ABF/BT漲價與組合升級速度假設失效（法說/財報）"
+  - "**T-Glass缺料對營收影響擴大超過15%（現況10-15%）** → ABF稼動率年底無法拉滿至95%，revenue路徑下修（供應鏈查核）"
+  - "**欣興(3037) BT產能裁減/轉單時程延後至2027年後** → 景碩BT毛利率突破20%假設落空，2027年毛利率路徑下修（法說追蹤）"
+  - "**Nvidia Vera CPU市佔率年底未達80%以上（現目標100%）** → AI營收占比成長路徑不如預期，2027-28年營收/毛利率雙雙下修（供應鏈查核）"
+  - "**有效稅率回升至接近法定稅率20%（現況5-10%）** → 投資抵減用罄，EPS路徑系統性下修約10-15%（財報追蹤）"

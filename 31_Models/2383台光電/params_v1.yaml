@@ -1,0 +1,185 @@
+# =============================================================================
+# 台光電 2383 損益推估模型 v1
+#
+# 診斷結果（g Diagnose 2383）：營收/產能效應佔變異48%，遠大於毛利率21%
+# → 情境軸放在營收（量/產能），毛利率用相對簡單的路徑即可。
+#
+# ⚠️ 建模時的關鍵發現：7、8月實際月營收（192.07/201.46億）加總已達393.53億，
+# 相當於官方guidance（26Q3 QoQ+15~20%＝543.7~567.4億）下限的72%，只要9月不
+# 大幅衰退，26Q3實際極可能顯著優於guidance。這與過去在6213聯茂/1709和益模型
+# 中反覆出現的模式一致：管理層的口頭guidance經常是「下限」而非「點估計」。
+# =============================================================================
+
+meta:
+  ticker: "2383"
+  name: 台光電
+  archetype: A
+  version: v1
+  base_quarter: 2026Q2
+  as_of_month: "2026-10"
+  price_source: auto
+  price: 5415.0
+  independent_observations: 14   # 26Q1/Q2財報各3個+7/8月營收+guidance+分材料等級佔比揭露
+  unit_note: 營收獲利=億元、股數=億股
+
+horizon:
+  start: 2026Q1
+  end: 2027Q4
+
+# ----------------------------------------------------------------- 實績
+actuals:
+  2026Q1:
+    revenue: 330.67
+    gross_margin: 0.2942
+    op_margin: 0.2156
+    eps: 14.90
+    source: FinMind 26Q1財報
+  2026Q2:
+    revenue: 472.75
+    gross_margin: 0.3385
+    op_margin: 0.2694
+    eps: 27.55
+    source: FinMind 26Q2財報；33.85%毛利率同時是`[[6274台燿]]`v11模型引用之全產業毛利率紀錄錨點
+
+# ----------------------------------------------------------------- 外部錨
+consensus:
+  source: Goldman Sachs 2026-07-20《Taiwan CCL》（TP 9,500元，本庫最新一份逐年EPS估計）
+  as_of: 2026-07-20
+  eps:
+    2026: 118
+    2027: 250
+    2028: 457
+  note: >
+    凱基(2026-06-12，88-96/155-180)與福邦(2026-06-30，85.8/174/323)皆早於26Q2正式
+    財報公布（8月）且早於guidance上修，其時效性已被7月Daiwa/8月國泰論壇/8月小型
+    法說等後續資訊超越，視為**stale**不納入consensus錨點，僅Goldman(7/20)為近期
+    且逐年完整揭露之估計。惟Goldman本身也早於7/8月實際營收數據，仍可能偏保守。
+
+# ----------------------------------------------------------------- Layer 1
+layer1:
+  revenue:
+    method: direct
+    direct:
+      2026Q1: {value: 330.67, source: 26Q1實績, confidence: 硬}
+      2026Q2: {value: 472.75, source: 26Q2實績, confidence: 硬}
+      # 26Q3：7+8月實際393.53億(硬)+9月推估。三情境對9月的推估幅度不同，
+      # 直接反映「guidance是否為下限」這個未解問題。
+      2026Q3: {value: 599.0,  source: 7-8月實績393.53億＋9月假設較8月+2%(205.5億，延續5-6-7-8月遞減式月增趨勢), confidence: 反解}
+      2026Q4: {value: 647.0,  source: 26Q3基礎上QoQ+8%(產能585→615萬張+5.1%＋M7+組合續升), confidence: 推估}
+      2027Q1: {value: 685.8,  source: QoQ+6%(農曆年效應，同期歷史模式), confidence: 推估}
+      2027Q2: {value: 774.9,  source: QoQ+13%(無錫/新產能路徑上修修正對照930萬張/月2027年底目標分季爬坡), confidence: 推估}
+      2027Q3: {value: 867.9,  source: QoQ+12%, confidence: 推估}
+      2027Q4: {value: 946.0,  source: QoQ+9%(2027年底產能930萬張/月目標對應之季度營收), confidence: 推估}
+
+  gross_margin:
+    2026Q1: {value: 0.2942, source: 26Q1實績, confidence: 硬}
+    2026Q2: {value: 0.3385, source: 26Q2實績, confidence: 硬}
+    2026Q3: {value: 0.3575, source: 0827法說guidance「35-36.5%」取中值, confidence: 軟}
+    2026Q4: {value: 0.365,  source: M7+佔比2H26目標65-70%(0825論壇)，續升至guidance上緣, confidence: 軟}
+    2027Q1: {value: 0.370,  source: M7+佔比2027年目標70-75%持續提升(0827法說), confidence: 推估}
+    2027Q2: {value: 0.375,  source: 同上，M9出貨佔比10-20%逐步兌現, confidence: 推估}
+    2027Q3: {value: 0.380,  source: 同上, confidence: 推估}
+    2027Q4: {value: 0.385,  source: M7+佔比上緣75-80%情境, confidence: 推估}
+
+  # 費用率隨規模持續攤薄：26Q1 7.86%→26Q2 6.92%，趨勢延續但邊際效果遞減
+  opex_ratio:
+    2026Q1: {value: 0.0786, source: 26Q1實績反解, confidence: 反解}
+    2026Q2: {value: 0.0692, source: 26Q2實績反解, confidence: 反解}
+    2026Q3: {value: 0.065,  source: 規模效益延續, confidence: 推估}
+    2026Q4: {value: 0.063,  source: 同上, confidence: 推估}
+    2027Q1: {value: 0.060,  source: 邊際效益遞減後持平, confidence: 推估}
+
+  non_operating:
+    default: {value: 0.5, source: 近兩季業外約0.5-0.7億, confidence: 軟}
+
+  # 近三季有效稅率19.14%/25.79%/22.79%波動明顯，Q1/Q2各自反解以通過基期校準，
+  # 前瞻季度取近兩季均值
+  tax_rate:
+    2026Q1: {value: 0.2579, source: 26Q1實績反解, confidence: 反解}
+    2026Q2: {value: 0.2279, source: 26Q2實績反解, confidence: 反解}
+    2026Q3: {value: 0.23,   source: 近兩季均值，惟波動度較大需留意, confidence: 反解}
+
+  shares:
+    value: 3.584
+    source: 26Q1/Q2財報反解一致(3.580/3.584億股)
+    confidence: 硬
+
+  month_weights:
+    default: [0.33, 0.33, 0.34]
+    2026Q1: [0.329, 0.308, 0.363]   # 反解自實際月營收(108.63/101.94/120.11)
+    2026Q3: [0.321, 0.336, 0.343]   # 7/8月實績(192.07/201.46)已知，鎖定前兩月權重
+
+# ----------------------------------------------------------------- Layer 2
+layer2:
+  enabled: false
+  # 不啟用。診斷結果顯示毛利率僅佔變異21%（次要變數），且公司僅揭露M7+佔比區間
+  # (55-60%/60-65%/65-70%/70-80%)與定性敘述(「M7以上都有30%以上毛利率、每升一級
+  # 毛利率增加3-5個百分點」)，無精確的逐級距ASP/毛利率數字可供交叉驗證。
+  # 在營收才是主要變數的情況下，投入心力拆解毛利率細節報酬率偏低。
+  #
+  # 開啟條件：拿到M6/M7/M8/M9/M10各級距明確的毛利率或ASP數字（而非僅定性區間）。
+
+# ----------------------------------------------------------------- 三情境
+# 分歧點集中在「9月營收落點」與「M7+組合升級速度」兩者的複合效果，
+# 用26Q3營收路徑直接體現，而非拆成兩個獨立參數。
+scenarios:
+  bull:
+    label: 多頭：Q3動能延續、M7+組合升級快於guidance
+    prob: 0.25
+    note: 9月維持8月動能(+4.9% MoM)，2027年M7+佔比達75-80%上緣，毛利率2027Q4達41%
+    overrides:
+      direct.2026Q3: {set: 604.8}
+      direct.2026Q4: {set: 665.3}
+      direct.2027Q1: {set: 718.5}
+      direct.2027Q2: {set: 833.5}
+      direct.2027Q3: {set: 950.2}
+      direct.2027Q4: {set: 1054.7}
+      gross_margin.2026Q3: {set: 0.365}
+      gross_margin.2026Q4: {set: 0.380}
+      gross_margin.2027Q1: {set: 0.390}
+      gross_margin.2027Q2: {set: 0.395}
+      gross_margin.2027Q3: {set: 0.400}
+      gross_margin.2027Q4: {set: 0.410}
+      opex_ratio.2026Q3: {set: 0.063}
+      opex_ratio.2026Q4: {set: 0.060}
+      opex_ratio.2027Q1: {set: 0.058}
+
+  base:
+    label: 基準：延續guidance隱含之下限之上、7-8月動能溫和遞減
+    prob: 0.45
+    note: 9月MoM+2%(較7-8月遞減趨勢溫和放緩)，M7+佔比循guidance路徑穩定提升至75%附近
+
+  bear:
+    label: 保守：guidance為真實上限、9月明顯回落
+    prob: 0.30
+    note: 9月回落至滿足guidance下限(+15% QoQ)所需水準，毛利率不再進一步升級(持平35%附近)
+    overrides:
+      direct.2026Q3: {set: 543.7}
+      direct.2026Q4: {set: 570.9}
+      direct.2027Q1: {set: 588.0}
+      direct.2027Q2: {set: 635.1}
+      direct.2027Q3: {set: 679.5}
+      direct.2027Q4: {set: 720.3}
+      gross_margin.2026Q3: {set: 0.350}
+      gross_margin.2026Q4: {set: 0.355}
+      gross_margin.2027Q1: {set: 0.350}
+      gross_margin.2027Q2: {set: 0.350}
+      gross_margin.2027Q3: {set: 0.350}
+      gross_margin.2027Q4: {set: 0.350}
+      opex_ratio.2026Q3: {set: 0.068}
+      opex_ratio.2026Q4: {set: 0.066}
+      opex_ratio.2027Q1: {set: 0.064}
+
+# ----------------------------------------------------------------- 對帳設定
+backtest:
+  monthly_tolerance: 0.10
+  consecutive_alert: 2
+
+# ----------------------------------------------------------------- 失效條件
+invalidation:
+  - "**9月營收<205億元（較8月MoM衰退逾-15%）** → 26Q3落在guidance下限附近，base情境降級（9/10 MOPS）"
+  - "**9月營收>211億元（延續8月動能）** → 實績優於本模型base，應上調至接近bull（9/10 MOPS）"
+  - "**26Q3毛利率<35%** → 未達guidance下緣，M7+組合升級速度假設失效（法說/財報）"
+  - "**M7+佔比2H26未達65%** → 2027年70-75%目標路徑存疑（法說追蹤）"
+  - "**南亞(1303)M7/M8/M10在Rosalind/Orchid/Kyber的Second Source份額顯著擴大** → 台光電份額被侵蝕，營收路徑下修（供應鏈查核）"
+  - "**生益科技M8/M9出貨佔比持續擴大且進一步切入Nvidia核心供應鏈** → 高階份額競爭壓力上升（供應鏈查核）"
