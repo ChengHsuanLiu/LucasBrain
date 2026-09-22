@@ -1,0 +1,89 @@
+# 致茂_20260915
+**這份檔案由 AlphaMemo.ai 製作，歡迎到網站了解更多：https://alphamemo.ai。**
+
+**警語：此 Memo 和逐字稿為 AI 生成，可能因為音檔品質導致轉錄逐字稿有誤，或是 AI 曲解原意／幻覺導致 Memo 內容有誤，請以原始音檔為準。**
+
+## Memo
+
+### 亮點
+- 去年我們 power business 成長 50%，主要來自 power density 增加，功率提升導致數量增加，客戶因此需要擴產。但因為空間有限，必須改變現有 power 架構，導入 HVDC，這是結構性大改變。（去年指 25 年，推估為 25Q1-25Q4，推斷自音檔日期 2026-09-15） [(00:03:36) 簡瑞瑩]
+- 今年全球成長率及內部成長率均亮眼，因為我們客戶不僅有 NVIDIA，還有其他 CSP 與 HPC 客戶，今年成長非常亮麗。（今年指 26 年，推斷自音檔日期 2026-09-15） [(00:05:52) 簡瑞瑩]
+- 明年開始 AI 有兩大驅動力：市場從 training infrastructure 逐漸轉向 edge AI，即 end application 部分。我們發現客戶需求主要是 CPU 與 AC 卡。CPU 與 AC 卡需求最大，許多訊號告訴我們明年 inference 市場將會成長。（明年指 27 年，推斷自音檔日期 2026-09-15） [(00:08:06) 簡瑞瑩]
+- 今年最大的差異是 HVDC 從零開始，對 capacity spending 需求持續上升。設備業對 conversion 沒有負面影響，過去三季（含九月）出貨預估每月穩定，未受 conversion 影響。（今年指 26 年，推斷自音檔日期 2026-09-15） [(00:04:31) 簡瑞瑩]
+
+### 地緣政治
+- 半導體 turnkey solution 部分，年初提到中國基建發展帶動 power grid 儲能需求。我們因為在中國大陸，主要放在海外事業體，為了降低成本提升毛利率，並非全部在台灣製造，而是在中國大陸製造並 local source 零件。 [(00:06:46) 簡瑞瑩]
+
+### 產業循環週期
+- 過去幾年 AI 發展多聚焦於 data center server infrastructure 及 training 市場，主要玩家是 NVIDIA。隨著需求提升，其他同業如 AMD 與 Google 也加入，帶動今年全球成長率及內部成長率均亮眼。 [(00:05:34) 簡瑞瑩]
+
+### 產業供需
+- AI power devices 主要有三大零組件：PSU、BBU 與 High Power Density Capacitor。去年我們 power business 成長 50%，主要來自 power density 增加，功率提升導致數量增加，客戶因此需要擴產。但因為空間有限，必須改變現有 power 架構，導入 HVDC。 [(00:03:36) 簡瑞瑩]
+- 今年最大的差異是 HVDC 從零開始，對 capacity spending 需求持續上升。設備業對 conversion 沒有負面影響，過去三季（含九月）出貨預估每月穩定，未受 conversion 影響。 [(00:04:31) 簡瑞瑩]
+
+### 產業狀況
+- 今年全球成長率及內部成長率均亮眼，因為我們客戶不僅有 NVIDIA，還有其他 CSP 與 HPC 客戶，今年成長非常亮麗。 [(00:05:52) 簡瑞瑩]
+- photonics 光學元件，主要是 pluggable transceiver 需求持續增長。今年配合 NVIDIA 進行 pattern rock，這部分今年也有成長。 [(00:06:20) 簡瑞瑩]
+
+### 獲利
+- 為了降低成本提升毛利率，並非全部在台灣製造，而是在中國大陸製造並 local source 零件。 [(00:07:15) 簡瑞瑩]
+
+### 公司展望、未來成長動能
+- 明年開始 AI 有兩大驅動力：市場從 training infrastructure 逐漸轉向 edge AI，即 end application 部分。我們發現客戶需求主要是 CPU 與 AC 卡。CPU 與 AC 卡需求最大，許多訊號告訴我們明年 inference 市場將會成長。 [(00:08:06) 簡瑞瑩]
+- 明年我們聚焦幾個驅動力，除了 power 部分需求持續外，因 conversion 到 HVDC 不會太快。同時我們準備 SSD 新技術。半導體部分有幾項驅動力，第一是 system level testers。第二是 photonics，這是 CPU 與 NPU 主要 OE 製造商及設備供應商。第三是明年開始客戶陸續導入 burning，新型 burning 因功率與尺寸增加，且目前採用板級製造，無法再用過去 burning 方式，需改用 die burning。 [(00:14:34) 簡瑞瑩]
+
+### 市場競爭策略
+- 28 奈米 legacy 測試設備，基本上與 Advantest 和 Teradyne 的機台相似，但我們取其優勢。 [(00:00:31) 簡瑞瑩]
+- 過去幾年 AI 發展多聚焦於 data center server infrastructure 及 training 市場，主要玩家是 NVIDIA。隨著需求提升，其他同業如 AMD 與 Google 也加入。 [(00:05:34) 簡瑞瑩]
+
+### 公司對市場觀點的看法
+- 我建議，因為目前沒看到分析師正確指出，training 市場過去走 content value 增長，例如 Hopper、Hub 玩 GB，Ruban Brainspan 看 spec 與 content value 增長。過去 infrastructure 走 content value 增長，但 inference 不同，因為不需要大型機器或昂貴晶片。Google 與 CSP maker 的晶片功率較小，但數量驚人。inference 市場走數量路線。 [(00:08:51) 簡瑞瑩]
+
+### 營收
+- 去年我們 power business 成長 50%，主要來自 power density 增加，功率提升導致數量增加，客戶因此需要擴產。（去年指 25 年，推斷自音檔日期 2026-09-15） [(00:03:36) 簡瑞瑩]
+- 合併營收因訂單龐大，分多月交貨，不會像過去電動車電池認證在某月爆衝，今年不打算走爆衝方式。 [(00:07:15) 簡瑞瑩]
+
+### 訂單
+- 合併營收因訂單龐大，分多月交貨，不會像過去電動車電池認證在某月爆衝，今年不打算走爆衝方式。 [(00:07:15) 簡瑞瑩]
+
+### 產品組合
+- 我們是做測試設備，過去 40 多年來專注於電力電池的測試。Power testing 這部分的檢測，後面 20 年則切入半導體領域。在半導體領域，主要做四種測試設備：28 奈米 legacy 測試設備、System-Level Tester、先進封裝 RDL metrology tool、compound semi 混合化合物光學設備。 [(00:00:04) 簡瑞瑩]
+- 從今年開始，大家較關注的部分是 CPU 與 NPU。目前隨著 AI 需求增長，我們的 power testing 與 semiconductor testing 約各佔 50%。 [(00:02:36) 簡瑞瑩]
+
+### 下游客戶
+- 我們從 20 年前開始成為 NVIDIA 主要的 System-Level Tester 供應商。隨著晶片複雜度提升，實境或物理測試需求增加。隨著 AI 增長，System-Level Tester 需求日益增加，目前涵蓋大部分 CSP 與 HPC 製造商。 [(00:01:07) 簡瑞瑩]
+
+### 同業
+- 28 奈米 legacy 測試設備，基本上與 Advantest 和 Teradyne 的機台相似，但我們取其優勢。 [(00:00:31) 簡瑞瑩]
+- 過去幾年 AI 發展多聚焦於 data center server infrastructure 及 training 市場，主要玩家是 NVIDIA。隨著需求提升，其他同業如 AMD 與 Google 也加入。 [(00:05:34) 簡瑞瑩]
+
+### 出貨週期與交期
+- 合併營收因訂單龐大，分多月交貨，不會像過去電動車電池認證在某月爆衝，今年不打算走爆衝方式。 [(00:07:15) 簡瑞瑩]
+
+### 新產品／新技術
+- 我們主要針對先進封裝 RDL（Redistribution Layer）部分的 metrology tools，主要用於先進封裝。先進封裝分兩種型態：圓形和較熟悉的 CoWoS 方形部分。 [(00:01:41) 簡瑞瑩]
+- 今年配合 NVIDIA 進行 pattern rock，這部分今年也有成長。 [(00:06:20) 簡瑞瑩]
+- 明年我們準備 SSD 新技術。半導體部分有幾項驅動力，第一是 system level testers。第二是 photonics，這是 CPU 與 NPU 主要 OE 製造商及設備供應商。第三是明年開始客戶陸續導入 burning，新型 burning 因功率與尺寸增加，且目前採用板級製造，無法再用過去 burning 方式，需改用 die burning。 [(00:15:02) 簡瑞瑩]
+
+### 出貨量
+- 過去三季（含九月）出貨預估每月穩定，未受 conversion 影響。（今年指 26 年，推斷自音檔日期 2026-09-15） [(00:04:50) 簡瑞瑩]
+
+### 成本毛利
+- 為了降低成本提升毛利率，並非全部在台灣製造，而是在中國大陸製造並 local source 零件。 [(00:07:15) 簡瑞瑩]
+
+## Transcript
+
+**簡瑞瑩 - 致茂, 投資人關係處長**
+(00:00:04) 好，各位大家午安，提前祝大家中秋節快樂。因為我們需要申報，所以我先簡單介紹我們公司，並針對每個 sector 做簡單說明與介紹，還有目前的狀況。基本上，我們是做測試設備，過去 40 多年來專注於電力電池的測試。Power testing 這部分的檢測，後面 20 年則切入半導體領域。在半導體領域，我們算是 lay common，主要做四種測試設備。第一種是 28 奈米的 legacy 測試設備，基本上與 Advantest 和 Teradyne 的機台相似，但我們取其優勢。這部分已經非常有市場，也就是 28 奈米 legacy 部分，產品主要用於 MCU 和 pinning。第二部分主打 System-Level Tester。我們從 20 年前開始成為 NVIDIA 主要的 System-Level Tester 供應商。隨著晶片複雜度提升，實境或物理測試需求增加。隨著 AI 增長，System-Level Tester 需求日益增加，目前涵蓋大部分 CSP 與 HPC 製造商。第三種產品主要是在前年開始。Foundry qualify 我們的 metrology tool for RDL，我們不做所有 metrology tool，主要針對先進封裝 RDL（Redistribution Layer）部分的 metrology tools，主要用於先進封裝。先進封裝分兩種型態：圓形和較熟悉的 CoWoS 方形部分。
+
+(00:02:08) 第三、四種機材主要針對 compound semi 混合化合物部分，我們著重於 optics 光學部分，擁有超過 10 年以上經驗，從 3D sensing 開始，接著是 pluggable transceiver 部分，近年來持續發展。從今年開始，大家較關注的部分是 CPU 與 NPU。目前隨著 AI 需求增長，我們的 power testing 與 semiconductor testing 約各佔 50%。先從量測及自動化測試設備開始說明，我們分三種產品線：第一是量測及自動化檢測設備，主要是 power testing；第二是半導體；第三是 turnkey solution，這是一個整合性項目，必須搭配 automation 及一級 integrated project。第一部分主要與 power testing 相關，過去主要應用於消費性電子產品，後來轉向 EV ESS，隨著新應用產生，也有新的 power components 與 devices 需要檢測。近年來驅動力主要來自 AI power devices。AI power devices 主要有三大零組件：PSU、BBU 與 High Power Density Capacitor。去年我們 power business 成長 50%，主要來自 power density 增加，功率提升導致數量增加，客戶因此需要擴產。但因為空間有限，必須改變現有 power 架構。
+
+(00:04:06) 因此導入 HVDC。今年最大的差異是，過去在消費性電子產品換 iPhone 充電器從 USB Type-C 不需繁瑣驗證，但改變 AI rack server 架構則需客戶認證。客戶認證時間從去年底開始，今年才正式導入 HVDC。這是結構性大改變，HVDC 從零開始，對 capacity spending 需求持續上升。設備業對 conversion 沒有負面影響。客戶 conversion 快慢、市場接受度高低，對資本支出沒有減少影響。過去三季（含九月）出貨預估每月穩定，未受 conversion 影響。半導體部分，我之前提過，我們在半導體領域做四種測試設備。若以營收貢獻排名，前兩大是系統層級測試。首推系統層級測試。年初提過，過去幾年 AI 發展多聚焦於 data center server infrastructure 及 training 市場，主要玩家是 NVIDIA。隨著需求提升，其他同業如 AMD 與 Google 也加入。今年全球成長率及內部成長率均亮眼，因為我們客戶不僅有 NVIDIA，還有其他 CSP 與 HPC 客戶，今年成長非常亮麗。第二部分是 photonics 光學元件，主要是 pluggable transceiver 需求持續增長。今年配合 NVIDIA 進行 pattern rock，這部分今年也有成長。
+
+(00:06:46) 若以成長率看，photonics 首推，但金額因 system level test 太大。半導體 turnkey solution 部分，年初提到中國基建發展帶動 power grid 儲能需求。我們因為在中國大陸，主要放在海外事業體，為了降低成本提升毛利率，並非全部在台灣製造，而是在中國大陸製造並 local source 零件。合併營收因訂單龐大，分多月交貨。不會像過去電動車電池認證在某月爆衝，今年不打算走爆衝方式。這是我們目前看法。知道大家對幾項議題有興趣，稍微談談 AI 發展。明年開始 AI 有兩大驅動力：市場從 training infrastructure 逐漸轉向 edge AI，即 end application 部分。我們發現客戶需求主要是 CPU 與 AC 卡。CPU 與 AC 卡需求最大，許多訊號告訴我們明年 inference 市場將會成長。我建議，因為目前沒看到分析師正確指出，training 市場過去走 content value 增長，例如 Hopper、Hub 玩 GB，Ruban Brainspan 看 spec 與 content value 增長。
+
+(00:09:06) 過去 infrastructure 走 content value 增長，但 inference 不同，因為不需要大型機器或昂貴晶片。Google 與 CSP maker 的晶片功率較小，但數量驚人。inference 市場走數量路線。另一變化是 networking communication devices，目前熟悉多為 pluggable transceiver。明年會看到更多種類。Jensen 提到兩到三年內光通逼近，種類不只限於 pluggable transceiver，還包含 CPO 與 POPC，兩到三年內會同時存在於每個 rack。簡單說明 CPU 與 NPU。目前 CPU 技術與 KUB 技術多由 NVIDIA、Marvell、Broadcom 等掌握，其他尚未看到更多 CPU 技術設置者。很多人想進入 CPU 市場，因為量大，但尚未成為標準品。NVIDIA 有自行設計，Marvell 與 Broadcom 亦然，未抓到這三者就不算 CPU。NPU 市場最大來自中國。中國無法評估 KUB 技術，目前 KUB 由 TSMC 與 GlobalFoundries 掌握。TSMC 有 pattern gradient KUB，GlobalFoundries 有 edge KUB。NPO 即 near package，對使用 CPU 者而言是 plain B，因效率 CPU 遠優於 NBO。
+
+(00:11:52) CPU 比 NBO 好很多，若已有 CPU 技術，無需大量使用 NBO。今年 CPU 已有四個製程：insertion 1、2、3、4。CPU insertion 1 主要是 PIC wafer。說明一下，CPU 是 silicon photonics 的一部分，silicon photonics 是基於 silicon 的光子技術，但材料可自選。NVIDIA 選擇 Germanium，故為 silicon germanium。insertion 1 決定使用何種 P-wafers 材料，P 指 PIC wafer。insertion 2 是 move onto COUPE，將 E-PIC 堆疊，E-IC 即簡單 DSP wafer。insertion 3 是切割 die，依 NVIDIA 設計貼上 reciprocal。因為不想在此階段連接 FAU，連接 FAU 會增加 additive，NVIDIA 認為 additive 在效果與風險上太大，故選擇 passive 方案，貼上 reciprocal。整體 OE 設計是切割 die 加 reciprocal，即為 OE。所有 CPU 與 NPO 關鍵零組件皆做 OE，僅設計不同。NVIDIA 未來五年無論 spectrum quantum scale 或 scale out 均使用同款 OE，且皆為 switch 設計。
+
+(00:13:57) insertion 4 是將測試好的 die 裝上 CPU 板，即 insertion 4。E 為 PISC wafer。insertion tool 是 EPIC river，insertion 3 為切割 die 並連接 reciprocal 成為 OE，處理單顆單顆。insertion 4 則是 CPU 板相關，板做好後裝上 switch，再進行 FAU 練習，這是目前 CPU 流程。NPU 則稍有不同。NPU 較大顆，為 next near package optics，較易製作，因只需 near。明年我們聚焦幾個驅動力，除了 power 部分需求持續外，因 conversion 到 HVDC 不會太快。同時我們準備 SSD 新技術。半導體部分有幾項驅動力，第一是 system level testers。第二是 photonics，這是 CPU 與 NPU 主要 OE 製造商及設備供應商。第三是明年開始客戶陸續導入 burning，新型 burning 因功率與尺寸增加，且目前採用板級製造，無法再用過去 burning 方式，需改用 die burning。這就是我今天的 presentation，到此結束。
