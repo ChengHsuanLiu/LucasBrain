@@ -105,14 +105,42 @@ def recommend(qs, share):
     rev_vol = statistics.pstdev(rev_growths) * 100 if len(rev_growths) > 1 else 0.0
 
     recs, notes = [], []
-    if nonop_dep > 0.40 or share["業外"] > 0.35:
+    # 業外要分兩種情況處理，兩者的對策完全相反：
+    #   結構性（平均依賴度高 + 變異貢獻高）→ 建 equity_income look-through
+    #   一次性（平均依賴度低 + 變異貢獻高）→ 反而要「辨識並剔除」，建 look-through 是錯的
+    structural = nonop_dep > 0.40 and share["業外"] > 0.30
+    episodic = nonop_dep < 0.30 and share["業外"] > 0.30
+    if structural:
         recs.append("**必須啟用 `equity_income` look-through**")
         notes.append(
-            f"業外佔稅前淨利平均 {nonop_dep*100:.0f}%、佔變異來源 {share['業外']*100:.0f}%。"
+            f"業外佔稅前淨利平均 {nonop_dep*100:.0f}%、佔變異來源 {share['業外']*100:.0f}%，"
+            "兩者皆高 ⇒ 屬**結構性**轉投資獲利。"
             "把業外當常數會讓模型系統性失真——替這家公司建模＝替它的轉投資建模。")
+    elif episodic:
+        recs.append("⚠️ **業外屬一次性/波動性，先辨識來源再決定處理方式**")
+        notes.append(
+            f"平均依賴度僅 {nonop_dep*100:.0f}% 但佔變異來源 {share['業外']*100:.0f}%——"
+            "這個落差是**一次性業外**的特徵（平常不重要，偶爾爆一次），"
+            "與結構性轉投資（兩者皆高）不同。")
+        notes.append(
+            "對策不是建 look-through，而是先查明該季業外構成"
+            "（處分利益／金融資產評價／股利收入／匯兌），判斷是否具持續性；"
+            "不具持續性者應在建模時**排除於基準情境之外**，只放進情境帶。"
+            "若直接把某季的高業外外推，會系統性高估未來 EPS。")
+    elif nonop_dep > 0.40:
+        recs.append("**建議啟用 `equity_income` look-through**")
+        notes.append(
+            f"業外佔稅前淨利平均 {nonop_dep*100:.0f}%，比重高但近期變異不大；"
+            "仍應拆出被投資公司逐季驅動，避免未來轉折被當成常數。")
     # 業外主導時，情境軸必須放在被投資公司的獲利，而非本業三率——
     # 本業毛利率上下幾個百分點的影響，遠小於被投資公司的循環轉折。
-    if share["業外"] >= max(share["營收"], share["毛利率"]):
+    if episodic:
+        recs.append("情境軸放在**本業**（業外另以一次性項目處理）")
+        core = "營收" if share["營收"] >= share["毛利率"] else "毛利率"
+        notes.append(
+            f"排除業外後，本業變異以{core}效應為主"
+            f"（營收 {share['營收']*100:.0f}%／毛利率 {share['毛利率']*100:.0f}%）。")
+    elif share["業外"] >= max(share["營收"], share["毛利率"]):
         recs.append("情境軸放在**被投資公司獲利**（非本業三率）")
         notes.append(
             f"業外效應佔變異 {share['業外']*100:.0f}%，是最大單一來源。"

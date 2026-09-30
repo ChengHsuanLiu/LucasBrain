@@ -4,18 +4,18 @@
 
 Lucas 在對話中打出以下純文字指令時（不用斜線，直接打在訊息裡），代表要產生對應報告，直接執行對應腳本即可，不用先確認要不要跑：
 
-| 指令 | 對應腳本 | 說明 |
-| :--- | :--- | :--- |
-| `g Daily_Report` | `.agent/scripts/generate_daily_report.py` | 盤後大盤日報 |
-| `g Financial_Screen` | `.agent/scripts/scan_financial_score.py` | 全市場財務指標篩選 |
-| `g Invest_Timeline` | `.agent/scripts/generate_invest_timeline.py` | 投資事件行事曆 |
-| `g Momentum_Screen` | `.agent/scripts/scan_momentum_score.py` | 全市場動能篩選 |
-| `g Weekly_Focus` | `.agent/scripts/generate_weekly_focus.py` | 週度投資決策（估值/均線/乖離率篩出ADD/SELL清單） |
-| `g WeeklyReport` | `.agent/scripts/generate_weekly_report.py` | 週報（本週個股/產業更新彙整，narrative格式，與 Weekly_Focus 是分開的兩個功能） |
-| `g Stock_Reports {股票代號}` | `.agent/scripts/generate_stock_report.py {股票代號}` | 單一個股深入研報（例如 `g Stock_Reports 2330`） |
-| `g Diagnose {股票代號}` | `.agent/scripts/diagnose_model.py {股票代號}` | 建模前診斷：EPS變異來源拆解，建議模型原型與情境軸 |
-| `g Model {股票代號}` | `.agent/scripts/build_pnl_model.py {股票代號}` | 損益推估模型：月/季損益表、三情境、滾動12M forward PE |
-| `g Backtest {股票代號}` | `.agent/scripts/backtest_model.py {股票代號}` | 模型對帳：模型月營收 vs MOPS 實績，偏離示警 |
+| 指令                       | 對應腳本                                             | 說明                                                  |
+| :----------------------- | :----------------------------------------------- | :-------------------------------------------------- |
+| `g Daily_Report`         | `.agent/scripts/generate_daily_report.py`        | 盤後大盤日報                                              |
+| `g Financial_Screen`     | `.agent/scripts/scan_financial_score.py`         | 全市場財務指標篩選                                           |
+| `g Invest_Timeline`      | `.agent/scripts/generate_invest_timeline.py`     | 投資事件行事曆                                             |
+| `g Momentum_Screen`      | `.agent/scripts/scan_momentum_score.py`          | 全市場動能篩選                                             |
+| `g Weekly_Focus`         | `.agent/scripts/generate_weekly_focus.py`        | 週度投資決策（估值/均線/乖離率篩出ADD/SELL清單）                       |
+| `g WeeklyReport`         | `.agent/scripts/generate_weekly_report.py`       | 週報（本週個股/產業更新彙整，narrative格式，與 Weekly_Focus 是分開的兩個功能） |
+| `g Stock_Reports {股票代號}` | `.agent/scripts/generate_stock_report.py {股票代號}` | 單一個股深入研報（例如 `g Stock_Reports 2330`）                 |
+| `g Diagnose {股票代號}`      | `.agent/scripts/diagnose_model.py {股票代號}`        | 建模前診斷：EPS變異來源拆解，建議模型原型與情境軸                          |
+| `g Model {股票代號}`         | `.agent/scripts/build_pnl_model.py {股票代號}`       | 損益推估模型：月/季損益表、三情境、滾動12M forward PE                  |
+| `g Backtest {股票代號}`      | `.agent/scripts/backtest_model.py {股票代號}`        | 模型對帳：模型月營收 vs MOPS 實績，偏離示警                          |
 
 執行規則：
 1. **只打 `g`（沒有帶報告類型）**：用 AskUserQuestion 工具列出上述 9 個報告類型讓 Lucas 選一個；選到 Stock_Reports / Model / Backtest 的話再追問一次股票代號。選完/回答完才執行。

@@ -14,6 +14,8 @@ tags: [industry/category, industry/asic]
 ## 🎯 產業投資點評與核心結論 (Summary & Insights)
 * **產業 So What？（這為什麼重要）**：
   - Hyperscaler 與科技巨頭（Google、Tesla、Microsoft）自研 ASIC 晶片浪潮持續擴大，帶動專業 ASIC 設計服務商（創意/GUC）同步受惠；同時，先進封裝周邊的關鍵 IP/材料供應商（愛普的 Si-Cap）也隨自研晶片放量吃到訂單紅利。
+* **⚠️ 2026-09-15 更新：巨有科技(8227)新增追蹤——台灣首家ASIC設計服務(Turnkey)公司，強力買進/TP230元**：華南投顧報告(2026-09-09)，2Q26營收創新高(YoY+121.7%)但毛利率17.1%不如預期(公司模型18.1%/市場共識22.3%)。12nm(SerDes/PCIe Extender)為2026年主力，受台積電晶圓配額限制而非需求不足；6nm鎖定中國網通「白名單」客戶(PCIe Retimer/SerDes)多項NRE專案，預期2027年才有實質量產貢獻(2027F營收YoY+41%)；CoWoS/OSAT已認證但佔比仍低於1%，隨台積電白名單OSAT寬限期2026年底到期，預期2027年起放量。與`[[3443創意]]`同屬台積電Design Center Alliance之ASIC設計服務商，但客戶結構(中國網通白名單+美系FPGA)與創意(Google/Tesla/Microsoft)明顯不同，可視為互補而非直接競爭關係。詳見`[[8227巨有科技]]`個股頁面。
+* **⚠️ 2026-09-15 更新：外資伺服器CPU/GPU/ASIC出貨量表補上公司別拆分數字，填補08-23筆記「未附出處券商」缺口**：另一份截圖(單位：百萬顆)提供Nvidia/AMD/Google/AWS/MSFT/Meta逐家拆分數字，與既有08-23筆記之總量級大致吻合(2025年Nvidia+AMD＝565.7+90=655.7萬顆 vs 既有筆記AI GPU總量656.7萬顆，誤差<1%；2027年850+180=1,030萬顆 vs 既有1,068.9萬顆)，判斷為同一份原始報告之不同呈現方式，可互相佐證但仍未附券商/分析師署名。**Nvidia GPU**出貨量2025年565.7萬顆→2026年650萬顆(YoY+17%)→2027年850萬顆(YoY+34%)；**AMD**由2025年90萬顆→2026年120萬顆→2027年180萬顆。**ASIC總出貨量**2025年380萬顆→2026年725萬顆(YoY+91%)→2027年1,360萬顆(YoY+88%)，成長速度明顯高於GPU；公司別拆分：**Google**仍為最大ASIC使用者，2027年用量估達800萬顆；**AWS**增至320萬顆；Microsoft與Meta同步擴大部署(2027年分別350萬/700萬顆)。分析師觀點：資料中心電力逐漸成為算力擴張瓶頸下，CSP將更重視每瓦運算效能與整體運算成本，ASIC針對特定運算工作之效率優勢有望推升滲透率，惟GPU憑通用性與軟體生態系優勢仍將維持重要地位。仍未附券商/分析師出處，與既有08-23/08-25兩則筆記併列存查。
 * **⚠️ 2026-08-23 更新：外資伺服器CPU/GPU/ASIC出貨量截圖(2023-2027年)，ASIC/TPU 2027年YoY+111%成長遠超AI GPU的+25%**：截圖數據(單位：百萬顆)——Server CPU：General/AI CPU總量2025年28.40M→2026年36.10M(YoY+27%)→2027年52.60M(YoY+46%)，其中AI Server CPU年增最快(2026+42%/2027+93%)；x86/ARM CPU拆分中ARM CPU成長最猛(2026 YoY+81%/2027 YoY+89%)，佔比由2025年19%快速提升至2027年35%。個別廠商中Nvidia Grace/Vera/Rosa 2026年YoY+124%最為突出，Google Axion 2026年YoY+117%/2027年YoY+208%。AI GPU：2025-2027年6.567M→8.539M→10.689M顆，YoY分別+31%/+30%/+25%，成長動能逐年放緩；Nvidia佔比由2026年49%降至2027年35%(份額被稀釋)。**ASIC/TPU：2025-2027年5.085M→7.238M→15.262M顆，YoY分別+42%/+111%(2027年成長率遠超AI GPU)**，其中Google TPU 2027年YoY+134%最猛，Meta/Msft/China CSP/Cambricon/Others合計2027年YoY+130%；AI GPU與ASIC/TPU合計佔比中，Google TPU由2025年20%提升至2027年31%，Nvidia則由51%降至35%——反映客製化ASIC/TPU相對merchant GPU的成長率優勢持續擴大，對`[[3443創意]]`等ASIC設計服務鏈為結構性利多訊號。此為外資研究截圖摘要，未附出處券商名稱，完整報告待後續取得補齊。
 * **⚠️ 2026-08-25 更新：Morgan Stanley《AI Supply Chain: Google ASIC, who gets what for design services?》，完整拆解Google/AWS/Microsoft/Meta四大CSP ASIC設計服務分工**：Google TPU側：`[[2454聯發科]]`(MediaTek)仍為TPU v10(Icefish)主要整合商，職責含I/O die設計+封裝整合，2029年TPU營收估上看700億美元(佔聯發科總營收65%)；`[[3443創意]]`(GUC)協助Microsoft Maia 200/Cobalt 200且2027年需求估倍增以上，並有望取得Meta ASIC(MTIA 600)專案，MS上修創意TP至6,388元。AWS Trainium側：世芯電子(Alchip，3661，**未追蹤**)管理層表示Trainium4 TAM可能與Google TPU相當，MS估2028年Trainium4出貨至少250萬顆、營收貢獻80億美元(原估40億美元上修一倍)，MS上修Alchip目標價至5,888元(隱含上漲空間逾50%，並有機會拿下第二家CSP客戶)。TPU各世代出貨量預估(千顆)：v8i(Broadcom)2026年4,000/2027年2,500；v8t(MediaTek)2026年3,000/2027年1,000；v9(MediaTek)2027年3,000起量；v10(MediaTek)量尚未知。此報告完整揭露美系CSP自研晶片設計服務市場的三方分工全貌(MediaTek/GUC創意/Alchip世芯)，為觀察ASIC供應鏈的重要基準報告。
 * **關鍵洞察**：
@@ -34,6 +36,7 @@ tags: [industry/category, industry/asic]
 | :--- | :--- | :--- | :--- |
 | `[[3443創意]]` | 是（本產業核心追蹤個股） | [待補充，現有研究素材未提供具體百分比] | Hyperscaler ASIC 設計服務（Design House）龍頭，獨家綁定 Google Axion CPU、Tesla AI5 ADAS、Microsoft 第二代 CPU 三大專案後端設計，專屬與台積電 CoWoS/3D 封裝合作，採 NRE+Turnkey 模式收費 |
 | `[[6531愛普]]` | 是（本產業核心追蹤個股） | [待補充，現有研究素材未提供具體百分比；筆記顯示為北美客戶首家通過驗證的 Embedded IPD 供應商，暗示先發優勢] | 先進封裝 S-SiCap（矽電容）關鍵材料/IP 供應商，供應聯發科 TPU、Broadcom 平台、Nvidia Feynman、AWS T4、Intel EMIB 等客戶 |
+| `[[8227巨有科技]]` | 是（2026-09-15新增） | [待補充，現有研究素材未提供具體百分比] | 台灣首家ASIC設計服務(Turnkey)公司，台積電Design Center Alliance成員；12nm主攻SerDes/PCIe Extender，6nm鎖定中國網通白名單客戶，客戶結構與創意(Google/Tesla/MSFT)互補而非直接競爭 |
 | `[[2330台積電]]` | 是（追蹤個股，但屬代工角色，非本產業分類 FPE 估值成員） | [待補充] | 創意與愛普唯一先進製程（3nm/2nm）與 CoWoS/SoIC 先進封裝供應商，具獨佔性議價權 |
 | `[[2303聯電]]` | 是（追蹤個股，但屬代工協力角色，非本產業分類 FPE 估值成員） | [待補充] | 協力代工愛普 S-SiCap 矽電容晶圓，分散台積電產能風險 |
 | Broadcom | 否（非追蹤個股，僅供比較） | [待補充，現有研究素材未提供具體百分比] | TPU 競爭方案「Whalefish」研發商，與創意/GUC 所服務之 Google/Tesla/Microsoft ASIC 設計服務業務形成潛在客戶爭奪關係 |
@@ -82,12 +85,14 @@ tags: [industry/category, industry/asic]
 ---
 
 ## 🔗 相關概念與個股連結 (Related Concepts)
-* **關聯個股 (Stocks)**：`[[2330台積電]]`、`[[2303聯電]]`
+* **關聯個股 (Stocks)**：`[[2330台積電]]`、`[[2303聯電]]`、`[[8227巨有科技]]`
 * **關聯產業 (Garden)**：`[[2_晶片層_封裝測試]]`、`[[CoPoS與玻璃基板]]`（題材）、`[[3_上游_測試與探針卡]]`
 
 ---
 
 ## 📄 原始文件與連結 (Original Documents)
+* `[[20260915_111246_file.pdf]]` - 華南投顧《巨有科技(8227)》：強力買進，TP230元，台灣首家ASIC設計服務Turnkey公司 (2026-09-09)
+* `[[20260914_234858_image.jpeg]]` - 外資伺服器CPU/GPU/ASIC出貨量表：Nvidia/AMD/Google/AWS/MSFT/Meta公司別拆分數字 (未附券商出處)
 * `[[20260825_161144_file.pdf]]` - Morgan Stanley《AI Supply Chain: Google ASIC》：Google/AWS/Microsoft/Meta四大CSP設計服務分工全貌 (2026-08-25)
 * `[[20260823_145544_image.jpeg]]`、`[[20260823_145547_image.jpeg]]` - 外資伺服器CPU/GPU/ASIC出貨量截圖(2023-2027年)：ASIC/TPU成長率遠超AI GPU (2026-08-23)
 * `[[20260525_004344_text.md]]`、`[[20260620_213639_text.md]]`、`[[20260701_004426_image.jpeg]]`、`[[20260615_150136_text.md]]` - 創意 (3443) Tesla AI5/Google CPU 相關研究
