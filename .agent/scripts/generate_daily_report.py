@@ -60,6 +60,7 @@ from lib.whale_tracking import (
     get_latest_snapshot_per_whale,
     compute_position_deltas,
     get_consensus_stocks_latest,
+    get_snapshot,
 )
 from lib.sector_trend import top_gaining_industries_with_stocks, TWSE_SYMBOL, TPEX_SYMBOL
 from lib.ingest_digest import build_digest_for_date
@@ -79,6 +80,25 @@ from lib.report_style import (
 # 2026-09-10 Lucas 要求暫時隱藏「賣出/減碼訊號」區塊（不產出該標題與表格），計算邏輯與
 # 資料本身不受影響，之後想恢復顯示的話把這個改回 True 即可。
 SHOW_SELL_SIGNALS_SECTION = False
+
+# 2026-10-01 Lucas 要求暫時隱藏「二、股票族群情況」與「四、資料庫個股買進/賣出訊號」
+# 兩個整區塊（不產出該標題與表格），計算邏輯與資料本身不受影響，之後想恢復顯示的話把這兩個改回 True 即可。
+SHOW_SECTOR_TREND_SECTION = False
+SHOW_STOCK_SIGNALS_SECTION = False
+
+# 2026-10-01 Lucas 要求「三、主力大戶籌碼動向」區塊內的大戶名稱改用代稱顯示（僅限這份
+# 報告的呈現層，.agent/data/whale_positions.csv 與 30_Projects/Whale_Tracking/ 彙總筆記
+# 仍用原本的「安/林/高大戶」當 whale_id，兩邊互不影響）。
+WHALE_DISPLAY_NAMES = {
+    "安大戶": "A大戶",
+    "林大戶": "L大戶",
+    "高大戶": "G大戶",
+}
+
+
+def display_whale(whale_id):
+    return WHALE_DISPLAY_NAMES.get(whale_id, whale_id)
+
 
 OUTPUT_DIR = r"C:\Users\User\Desktop\LucasBrain\30_Projects\Daily_Report"
 STOCK_DIR = r"C:\Users\User\Desktop\LucasBrain\10_Stocks"
@@ -227,18 +247,6 @@ DAILY_REPORT_EXTRA_CSS = """
         margin-right: 6px;
     }
 """
-
-
-def get_tracked_tickers():
-    """回傳資料庫 10_Stocks/ 現有的個股代號集合，供大戶持股/共識標的比對是否為已追蹤個股。"""
-    tickers = set()
-    for filename in os.listdir(STOCK_DIR):
-        if not filename.endswith('.md'):
-            continue
-        m = re.match(r'^([0-9]+(?:\.[a-zA-Z0-9]+)?)', filename)
-        if m:
-            tickers.add(m.group(1))
-    return tickers
 
 
 def get_tracked_ticker_filepaths():
@@ -405,6 +413,7 @@ def build_market_stats_section():
     lines.append('<div class="idx-col" markdown="1">')
     lines.append("")
     lines.append("**融資餘額**")
+    lines.append("<small>(為前日資料)</small>")
     lines.append("")
     try:
         twse = fetch_twse_margin_total()
@@ -642,10 +651,9 @@ def build_sector_trend_section():
 
 def build_whale_section():
     lines = ["### 三、主力大戶（Whale）籌碼動向", ""]
-    tracked_tickers = get_tracked_tickers()
 
     _, latest_date_by_whale = get_latest_snapshot_per_whale()
-    lines.append(f"#### {flag_blue('各大戶當日買進/賣出重點')}")
+    lines.append(f"#### {flag_blue('各大戶持股與變動')}")
     lines.append("")
     if not latest_date_by_whale:
         lines.append("*尚無大戶持股資料，請先執行「更新大戶持股」。*")
@@ -653,40 +661,86 @@ def build_whale_section():
     else:
         for whale_id in sorted(latest_date_by_whale.keys()):
             whale_date = latest_date_by_whale[whale_id]
+            whale_date_slash = whale_date.replace("-", "/")
             deltas = compute_position_deltas(whale_id, whale_date)
+            total_now = deltas["total_value_now"]
 
-            if not deltas["prev_date"]:
-                # 首次記錄，沒有前一筆快照可比較，deltas["new"] 會把整個庫存都列為「新建倉」——
-                # 這種情況下逐檔列出並非真正的「當日重點」，只需標註尚無比較基準即可。
-                holdings_cnt = len(deltas["new"])
-                lines.append(
-                    f"* **{whale_id}**（{whale_date}）：尚無前次快照可比較"
-                    f"（共 {holdings_cnt} 檔持股，總市值 {deltas['total_value_now']:,.0f}）"
+            # 標題獨立一行、字體比內文稍大但不借用h3(會帶出該級距的上邊框樣式)，
+            # 市值變化另起一行，兩者都比原本擠在同一行的括號式寫法好讀。
+            lines.append(
+                f'<span style="font-size: 11.5pt; font-weight: 700;">'
+                f"{display_whale(whale_id)} (資料日期：{whale_date_slash})</span>"
+            )
+            lines.append("")
+            if deltas["prev_date"] and deltas["total_value_prev"]:
+                prev_date_slash = deltas["prev_date"].replace("-", "/")
+                diff = total_now - deltas["total_value_prev"]
+                diff_pct = (diff / deltas["total_value_prev"] * 100) if deltas["total_value_prev"] else 0
+                market_value_line = (
+                    f"總市值 {total_now:,.0f} 元（較 {prev_date_slash} 市值變化："
+                    f"{colorize_signed(diff, '{:+,.0f}')} 元，{colorize_signed(diff_pct, '{:+.2f}%')}）"
                 )
-                continue
+            else:
+                market_value_line = f"總市值 {total_now:,.0f} 元"
 
-            highlights = []
-            for entry in deltas["new"]:
-                mark = "［已追蹤］" if entry["ticker"] in tracked_tickers else ""
-                highlights.append(flag_red(f"新建倉{mark} {entry['ticker']}{entry['name']}（市值 {entry['market_value']:,.0f}）"))
-            for entry in deltas["closed"]:
-                mark = "［已追蹤］" if entry["ticker"] in tracked_tickers else ""
-                highlights.append(flag_green(f"出清{mark} {entry['ticker']}{entry['name']}"))
+            # 同一段落裡連續兩行 markdown 純文字換行會被轉HTML時接成同一行，
+            # 要接著出清提醒時得在行尾補一個明確的 <br> 才會真的斷行。
+            if deltas["closed"]:
+                prev_date_slash = deltas["prev_date"].replace("-", "/")
+                closed_labels = [flag_green(f"{e['ticker']}{e['name']}") for e in deltas["closed"]]
+                lines.append(f"{market_value_line}<br>")
+                lines.append(f"較 {prev_date_slash} 已出清：{'、'.join(closed_labels)}")
+            else:
+                lines.append(market_value_line)
+            lines.append("")
 
-            top_increased = sorted(deltas["increased"], key=lambda e: e["market_value"], reverse=True)[:3]
-            for entry in top_increased:
-                mark = "［已追蹤］" if entry["ticker"] in tracked_tickers else ""
-                highlights.append(f"加碼{mark} {entry['ticker']}{entry['name']}（{colorize_signed(entry['shares_delta'], '{:+,.0f}股')}）")
-            top_decreased = sorted(deltas["decreased"], key=lambda e: e["shares_delta"])[:3]
-            for entry in top_decreased:
-                mark = "［已追蹤］" if entry["ticker"] in tracked_tickers else ""
-                highlights.append(f"減碼{mark} {entry['ticker']}{entry['name']}（{colorize_signed(entry['shares_delta'], '{:+,.0f}股')}）")
+            # 把漲跌幅計算結果轉成每檔的「較前次變動」標籤，渲染表格時直接查表帶入
+            change_label = {}
+            for e in deltas["new"]:
+                change_label[e["ticker"]] = flag_red("🆕 新建倉")
+            for e in deltas["increased"]:
+                change_label[e["ticker"]] = colorize_signed(e["shares_delta"], "▲ {:+,.0f}股")
+            for e in deltas["decreased"]:
+                change_label[e["ticker"]] = colorize_signed(e["shares_delta"], "▼ {:+,.0f}股")
+            for e in deltas["unchanged"]:
+                change_label[e["ticker"]] = "-"
 
-            summary = "；".join(highlights) if highlights else "無明顯變化"
-            lines.append(f"* **{whale_id}**（{whale_date}）：{summary}")
-        lines.append("")
+            current_rows = sorted(
+                (r for r in get_snapshot(whale_date) if r["whale_id"] == whale_id),
+                key=lambda r: r["market_value"], reverse=True,
+            )
+            is_pct_type = bool(current_rows) and "%" in current_rows[0]["position_type"]
 
-    lines.append(f"#### {flag_blue('共識標的（2位以上大戶同時持有）')}")
+            if is_pct_type:
+                lines.append("| 股票 | 持股比例 | 市值(元) | 較前次變動 |")
+                lines.append("| :--- | :--- | :--- | :--- |")
+                for r in current_rows:
+                    pct = (r["market_value"] / total_now * 100) if total_now else 0
+                    chg = change_label.get(r["ticker"], "-")
+                    lines.append(f"| {r['ticker']}{r['name']} | {pct:.1f}% | {r['market_value']:,.0f} | {chg} |")
+            else:
+                lines.append("| 股票 | 庫存股數 | 成本價 | 現價 | 市值(元) | 損益% | 較前次變動 |")
+                lines.append("| :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
+                for r in current_rows:
+                    chg = change_label.get(r["ticker"], "-")
+                    pnl_str = colorize_signed(r["pnl_pct"], "{:+.1f}%")
+                    lines.append(
+                        f"| {r['ticker']}{r['name']} | {r['shares']:,.0f} | {r['cost_price']:,.2f} | "
+                        f"{r['market_price']:,.2f} | {r['market_value']:,.0f} | {pnl_str} | {chg} |"
+                    )
+
+            lines.append("")
+            # 三個大戶的表格緊接著排版會太擠，用一個明確的間距 div 隔開——純markdown空行
+            # 在轉HTML時連續空行會被收斂成同一個區塊間距，視覺上看不出差異，所以要用HTML元素撐開。
+            lines.append('<div style="margin-top: 14px;"></div>')
+            lines.append("")
+
+    lines.append('<div style="margin-top: 20px;"></div>')
+    lines.append("")
+    lines.append(
+        '<span style="font-size: 11.5pt; font-weight: 700;" class="text-blue">'
+        '共識標的（2位以上大戶同時持有）</span>'
+    )
     lines.append("")
     consensus, _ = get_consensus_stocks_latest(min_whales=2)
     if consensus:
@@ -697,8 +751,8 @@ def build_whale_section():
 
         lines.append('<div class="whale-consensus" markdown="1">')
         lines.append("")
-        lines.append("| 股票 | 當前價格 | 持有大戶 | 總市值 | 目標價上緣 | 買進/加碼提醒 | 賣出/減碼提醒 |")
-        lines.append("| :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
+        lines.append("| 股票 | 當前價格 | 持有大戶 | 總市值 | 買進/加碼提醒 | 賣出/減碼提醒 |")
+        lines.append("| :--- | :--- | :--- | :--- | :--- | :--- |")
         for c in consensus:
             ticker = c["ticker"]
             tech = None
@@ -707,8 +761,8 @@ def build_whale_section():
 
             current_price_str = f"{tech['current_price']:.2f}" if tech else "-"
 
-            # 先算估值期望值，後面的賣出提醒要拿它當閘門
-            target_upper_str = "-"
+            # 期望值(proi)拿掉了顯示用的「目標價上緣」欄位，但下面賣出提醒的降級判斷
+            # (回檔觀察 vs 真賣出訊號)仍要用到，所以估值計算本身留著、只是不印出來。
             proi = None
             filepath = ticker_filepaths.get(ticker)
             if filepath and tech and tech["current_price"]:
@@ -718,11 +772,6 @@ def build_whale_section():
                     fpe_used = fpe_range["high"]
                     target_price_upper = target_eps * fpe_used
                     proi = (target_price_upper / tech["current_price"] - 1) * 100
-                    target_upper_str = (
-                        f"TP {target_price_upper:,.0f}<br>"
-                        f"({fpe_used:.0f}x EPS {target_eps:.1f})<br>"
-                        f"(期望值 {colorize_signed(proi, '{:+.0f}%')})"
-                    )
 
             buy_str, sell_str = "-", "-"
             if tech:
@@ -739,12 +788,12 @@ def build_whale_section():
                     else:
                         sell_str = "<br>".join(sell_reasons)
 
-            whale_letters = "、".join(w.replace("大戶", "") for w in c["whale_ids"])
+            whale_letters = "、".join(display_whale(w).replace("大戶", "") for w in c["whale_ids"])
             whale_combined = f"{whale_letters} ({c['whale_count']}位)"
             market_value_yi = f"{c['total_market_value'] / 1e8:.1f} 億"
             lines.append(
                 f"| {ticker}<br>{c['name']} | {current_price_str} | {whale_combined} | "
-                f"{market_value_yi} | {target_upper_str} | {buy_str} | {sell_str} |"
+                f"{market_value_yi} | {buy_str} | {sell_str} |"
             )
         lines.append("")
         lines.append('</div>')
@@ -916,17 +965,6 @@ def build_momentum_section():
         return lines
 
     latest_path = candidates[-1]
-    filename_stem = os.path.splitext(os.path.basename(latest_path))[0]
-    report_date = filename_stem[:8]
-    report_date_fmt = f"{report_date[:4]}-{report_date[4:6]}-{report_date[6:8]}"
-    today_str = datetime.now().strftime("%Y-%m-%d")
-
-    staleness_note = ""
-    if report_date_fmt != today_str:
-        staleness_note = f"（{flag_red('非當日資料')}，最新一份為 {report_date_fmt}，可能是當天 15:00 排程未執行成功，請檢查 `.agent/scheduled_logs/`）"
-
-    lines.append(f"完整報告見 `[[{filename_stem}]]`{staleness_note}")
-    lines.append("")
 
     with open(latest_path, "r", encoding="utf-8") as f:
         md_lines = f.read().split("\n")
@@ -1033,17 +1071,19 @@ def generate_report():
     report.append("")
     report.extend(build_market_overview_summary(taiex_summary, tpex_summary, stats_summary))
 
-    report.append('<div class="step-page-break"></div>')
-    report.append("")
-    report.extend(build_sector_trend_section())
+    if SHOW_SECTOR_TREND_SECTION:
+        report.append('<div class="step-page-break"></div>')
+        report.append("")
+        report.extend(build_sector_trend_section())
 
     report.append('<div class="step-page-break"></div>')
     report.append("")
     report.extend(build_whale_section())
 
-    report.append('<div class="step-page-break"></div>')
-    report.append("")
-    report.extend(build_stock_signals_section(stock_signal_results, valuation_mode))
+    if SHOW_STOCK_SIGNALS_SECTION:
+        report.append('<div class="step-page-break"></div>')
+        report.append("")
+        report.extend(build_stock_signals_section(stock_signal_results, valuation_mode))
 
     report.append('<div class="step-page-break"></div>')
     report.append("")

@@ -72,8 +72,8 @@ tags: [report/daily, market-overview]
 **融資餘額**
 <small>(為前日資料)</small>
 
-* 上市：抓取失敗 (The read operation timed out)
-* 上櫃：抓取失敗 (IncompleteRead(376436 bytes read, 173687 more expected))
+* 上市：6,299 億（<span class="num-up">+75.7 億</span>）
+* 上櫃：4,301 億（<span class="num-up">+41.3 億</span>）
 
 </div>
 <div class="idx-col" markdown="1">
@@ -112,7 +112,7 @@ tags: [report/daily, market-overview]
 
 **資料庫個股月線(20MA)以上家數**
 
-* <span class="num-up">79%</span> （165 / 210 檔）
+* <span class="num-up">80%</span> （167 / 210 檔）
 
 </div>
 </div>
@@ -134,7 +134,7 @@ tags: [report/daily, market-overview]
 <span style="font-size: 11.5pt; font-weight: 700;">A大戶 (資料日期：2026/10/02)</span>
 
 總市值 282,600,000 元（較 2026/10/01 市值變化：<span class="num-down">-1,200,000</span> 元，<span class="num-down">-0.42%</span>）<br>
-較 2026/10/01 已出清：<span class="text-green">3529力旺</span>、<span class="text-green">BLTE(Belite Bio)</span>
+較 2026/10/01 已出清：<span class="text-green">BLTE(Belite Bio)</span>、<span class="text-green">3529力旺</span>
 
 | 股票 | 持股比例 | 市值(元) | 較前次變動 |
 | :--- | :--- | :--- | :--- |
@@ -170,29 +170,33 @@ tags: [report/daily, market-overview]
 
 <div style="margin-top: 14px;"></div>
 
-<span style="font-size: 11.5pt; font-weight: 700;">G大戶 (資料日期：2026/10/01)</span>
+<span style="font-size: 11.5pt; font-weight: 700;">G大戶 (資料日期：2026/10/02)</span>
 
-總市值 274,617,100 元（較 2026/09/29 市值變化：<span class="num-up">+27,563,800</span> 元，<span class="num-up">+11.16%</span>）
+總市值 312,927,500 元（較 2026/10/01 市值變化：<span class="num-up">+38,310,400</span> 元，<span class="num-up">+13.95%</span>）<br>
+較 2026/10/01 已出清：<span class="text-green">2388威盛</span>
 
 | 股票 | 庫存股數 | 成本價 | 現價 | 市值(元) | 損益% | 較前次變動 |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 3665貿聯 | 25,300 | 2,365.28 | 2,575.00 | 65,147,500 | <span class="num-up">+8.9%</span> | <span class="num-up">▲ +4,000股</span> |
-| 3105穩懋 | 104,000 | 436.22 | 542.00 | 56,368,000 | <span class="num-up">+24.0%</span> | - |
-| 2303聯電 | 236,000 | 143.95 | 163.00 | 38,468,000 | <span class="num-up">+13.2%</span> | - |
-| 6182合晶 | 180,000 | 103.54 | 131.50 | 23,670,000 | <span class="num-up">+27.0%</span> | - |
-| 2449京元電 | 66,000 | 294.51 | 296.50 | 19,569,000 | <span class="num-up">+0.7%</span> | - |
-| 3533嘉澤 | 8,000 | 1,837.25 | 1,867.00 | 14,936,000 | <span class="num-up">+1.6%</span> | <span class="flag-red">🆕 新建倉</span> |
-| 3653健策 | 1,500 | 5,869.99 | 6,900.00 | 10,350,000 | <span class="num-up">+17.6%</span> | - |
-| 5274信驊 | 500 | 20,270.00 | 19,270.00 | 9,635,000 | <span class="num-down">-4.9%</span> | - |
-| 2330台積電 | 3,500 | 2,395.74 | 2,530.00 | 8,855,000 | <span class="num-up">+5.6%</span> | - |
-| 8046南電 | 6,000 | 1,061.49 | 1,434.00 | 8,604,000 | <span class="num-up">+35.1%</span> | - |
-| 3189景碩 | 4,000 | 806.03 | 1,022.00 | 4,088,000 | <span class="num-up">+26.8%</span> | - |
-| 2327國巨 | 6,000 | 589.00 | 609.00 | 3,654,000 | <span class="num-up">+3.4%</span> | - |
-| 2455全新 | 6,000 | 519.29 | 547.00 | 3,282,000 | <span class="num-up">+5.3%</span> | - |
-| 8358金居 | 6,000 | 494.51 | 503.00 | 3,018,000 | <span class="num-up">+1.7%</span> | - |
-| 2454聯發科 | 500 | 4,618.05 | 5,030.00 | 2,515,000 | <span class="num-up">+8.9%</span> | - |
-| 6488環球晶 | 2,000 | 897.98 | 1,082.00 | 2,164,000 | <span class="num-up">+20.5%</span> | - |
-| 2388威盛 | 4,000 | 73.93 | 73.40 | 293,600 | <span class="num-down">-0.7%</span> | - |
+| 3665貿聯 | 25,300 | 2,365.28 | 2,545.00 | 64,388,500 | <span class="num-up">+7.6%</span> | - |
+| 3105穩懋 | 104,000 | 436.22 | 596.00 | 61,984,000 | <span class="num-up">+36.6%</span> | - |
+| 2303聯電 | 236,000 | 143.95 | 162.50 | 38,350,000 | <span class="num-up">+12.9%</span> | - |
+| 6182合晶 | 180,000 | 103.54 | 135.50 | 24,390,000 | <span class="num-up">+30.9%</span> | - |
+| 2449京元電 | 66,000 | 294.51 | 297.00 | 19,602,000 | <span class="num-up">+0.8%</span> | - |
+| 3533嘉澤 | 8,000 | 1,837.25 | 1,868.00 | 14,944,000 | <span class="num-up">+1.7%</span> | - |
+| 2345智邦 | 6,000 | 1,952.33 | 1,979.00 | 11,874,000 | <span class="num-up">+1.4%</span> | <span class="flag-red">🆕 新建倉</span> |
+| 2308台達電 | 6,000 | 1,898.33 | 1,893.00 | 11,358,000 | <span class="num-down">-0.3%</span> | <span class="flag-red">🆕 新建倉</span> |
+| 2330台積電 | 4,500 | 2,423.35 | 2,520.00 | 11,340,000 | <span class="num-up">+4.0%</span> | <span class="num-up">▲ +1,000股</span> |
+| 3653健策 | 1,500 | 5,869.99 | 6,835.00 | 10,252,500 | <span class="num-up">+16.4%</span> | - |
+| 5274信驊 | 500 | 20,270.00 | 19,000.00 | 9,500,000 | <span class="num-down">-6.3%</span> | - |
+| 8046南電 | 6,000 | 1,061.49 | 1,468.00 | 8,808,000 | <span class="num-up">+38.3%</span> | - |
+| 3189景碩 | 4,000 | 806.03 | 1,052.00 | 4,208,000 | <span class="num-up">+30.5%</span> | - |
+| 2327國巨 | 6,000 | 589.00 | 631.00 | 3,786,000 | <span class="num-up">+7.1%</span> | - |
+| 2455全新 | 6,000 | 519.29 | 583.00 | 3,498,000 | <span class="num-up">+12.3%</span> | - |
+| 4958臻鼎-KY | 6,000 | 557.67 | 565.00 | 3,390,000 | <span class="num-up">+1.3%</span> | <span class="flag-red">🆕 新建倉</span> |
+| 6274台燿 | 2,000 | 1,613.00 | 1,625.00 | 3,250,000 | <span class="num-up">+0.7%</span> | <span class="flag-red">🆕 新建倉</span> |
+| 8358金居 | 6,000 | 494.51 | 522.00 | 3,132,000 | <span class="num-up">+5.6%</span> | - |
+| 2454聯發科 | 500 | 4,618.05 | 4,985.00 | 2,492,500 | <span class="num-up">+8.0%</span> | - |
+| 6488環球晶 | 2,000 | 897.98 | 1,190.00 | 2,380,000 | <span class="num-up">+32.5%</span> | - |
 
 <div style="margin-top: 14px;"></div>
 
@@ -204,7 +208,9 @@ tags: [report/daily, market-overview]
 
 | 股票 | 當前價格 | 持有大戶 | 總市值 | 買進/加碼提醒 | 賣出/減碼提醒 |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| 3665<br>貿聯-KY | 2540.00 | L、G (2位) | 1.0 億 | <span class="flag-red">已站上5日線</span><br><span class="flag-red">5日線上彎</span> | - |
+| 3665<br>貿聯 | 2540.00 | L、G (2位) | 0.9 億 | <span class="flag-red">已站上5日線</span><br><span class="flag-red">5日線上彎</span> | - |
+| 4958<br>臻鼎-KY | 561.00 | L、G (2位) | 0.6 億 | <span class="flag-red">已站上5日線</span><br><span class="flag-red">5日線上彎</span> | - |
+| 6274<br>台燿 | 1620.00 | L、G (2位) | 0.6 億 | <span class="flag-red">已站上5日線</span><br><span class="flag-red">5日線上彎</span> | - |
 | 3653<br>健策 | 6800.00 | L、G (2位) | 0.5 億 | <span class="flag-red">5日線上彎</span> | 跌破5日線 |
 | 6488<br>環球晶 | 1190.00 | L、G (2位) | 0.4 億 | <span class="flag-red">已站上5日線</span><br><span class="flag-red">5日線上彎</span> | - |
 | 8358<br>金居 | 519.00 | L、G (2位) | 0.2 億 | <span class="flag-red">已站上5日線</span><br><span class="flag-red">5日線扣抵偏低現價1.5%以內</span><br><span class="flag-red">5日線上彎</span> | - |
