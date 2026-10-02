@@ -99,11 +99,12 @@ def compute_position_deltas(whale_id, current_date, data_path=DATA_PATH):
     prev_date = prior_dates[0] if prior_dates else None
 
     current_rows = [r for r in get_snapshot(current_date, data_path) if r["whale_id"] == whale_id]
-    current_by_ticker = defaultdict(lambda: {"shares": 0.0, "market_value": 0.0, "name": ""})
+    current_by_ticker = defaultdict(lambda: {"shares": 0.0, "market_value": 0.0, "name": "", "position_type": ""})
     for r in current_rows:
         current_by_ticker[r["ticker"]]["shares"] += r["shares"]
         current_by_ticker[r["ticker"]]["market_value"] += r["market_value"]
         current_by_ticker[r["ticker"]]["name"] = r["name"]
+        current_by_ticker[r["ticker"]]["position_type"] = r["position_type"]
 
     total_value_now = sum(v["market_value"] for v in current_by_ticker.values())
 
@@ -115,11 +116,12 @@ def compute_position_deltas(whale_id, current_date, data_path=DATA_PATH):
         }
 
     prev_rows = [r for r in get_snapshot(prev_date, data_path) if r["whale_id"] == whale_id]
-    prev_by_ticker = defaultdict(lambda: {"shares": 0.0, "market_value": 0.0, "name": ""})
+    prev_by_ticker = defaultdict(lambda: {"shares": 0.0, "market_value": 0.0, "name": "", "position_type": ""})
     for r in prev_rows:
         prev_by_ticker[r["ticker"]]["shares"] += r["shares"]
         prev_by_ticker[r["ticker"]]["market_value"] += r["market_value"]
         prev_by_ticker[r["ticker"]]["name"] = r["name"]
+        prev_by_ticker[r["ticker"]]["position_type"] = r["position_type"]
 
     total_value_prev = sum(v["market_value"] for v in prev_by_ticker.values())
 
@@ -133,13 +135,20 @@ def compute_position_deltas(whale_id, current_date, data_path=DATA_PATH):
         elif prev and not cur:
             closed.append({"ticker": t, **prev})
         else:
+            # 估算(%)類大戶沒有股數資料(shares恆為0)，股數差永遠是0、無法反映加減碼；
+            # 這種情況改以市值差(直接對應持股比例變化)判斷加碼/減碼，share-based大戶
+            # (融資/股票期貨)則維持用股數差，避免單純股價漲跌被誤判成加減碼。
+            is_pct_type = cur["shares"] == 0 and prev["shares"] == 0
             diff = cur["shares"] - prev["shares"]
+            value_diff = cur["market_value"] - prev["market_value"]
             entry = {"ticker": t, "name": cur["name"], "shares": cur["shares"],
                      "shares_prev": prev["shares"], "shares_delta": diff,
-                     "market_value": cur["market_value"]}
-            if diff > 0:
+                     "market_value": cur["market_value"], "market_value_prev": prev["market_value"],
+                     "value_delta": value_diff, "is_pct_type": is_pct_type}
+            compare_diff = value_diff if is_pct_type else diff
+            if compare_diff > 0:
                 increased.append(entry)
-            elif diff < 0:
+            elif compare_diff < 0:
                 decreased.append(entry)
             else:
                 unchanged.append(entry)

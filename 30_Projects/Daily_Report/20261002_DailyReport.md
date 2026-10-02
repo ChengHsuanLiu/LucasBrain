@@ -13,7 +13,7 @@ tags: [report/daily, market-overview]
 #### 上市加權指數 (TAIEX)
 
 * **收盤價**：48,475.74（<span class="num-up">+122.25</span>，<span class="num-up">+0.25%</span>）
-* **成交量**：9,332 億（較前日 8,740億量增 <span class="num-up">+2.90%</span>；5日均量線 <span class="num-up">站上</span>，5日均量 <span class="num-up">上彎</span>）
+* **成交量**：9,382 億（較前日 8,740億量增 <span class="num-up">+3.05%</span>；5日均量線 <span class="num-up">站上</span>，5日均量 <span class="num-up">上彎</span>）
 
 <div class="idx-flex" markdown="1">
 <div class="idx-col" markdown="1">
@@ -134,19 +134,19 @@ tags: [report/daily, market-overview]
 <span style="font-size: 11.5pt; font-weight: 700;">A大戶 (資料日期：2026/10/02)</span>
 
 總市值 282,600,000 元（較 2026/10/01 市值變化：<span class="num-down">-1,200,000</span> 元，<span class="num-down">-0.42%</span>）<br>
-較 2026/10/01 已出清：<span class="text-green">BLTE(Belite Bio)</span>、<span class="text-green">3529力旺</span>
+▲ 加碼：7729仲恩生醫(<span class="num-up">+8.9pp</span>)、1303南亞(<span class="num-up">+0.1pp</span>)、6213聯茂(<span class="num-up">+0.3pp</span>)<br>▼ 減碼：6870騰雲(<span class="num-down">-0.1pp</span>)、00631L台灣50正2(<span class="num-down">-0.0pp</span>)、6696仁新(<span class="num-down">-8.7pp</span>)、0052富邦科技(<span class="num-down">-0.4pp</span>)、SPAL(<span class="num-down">-0.1pp</span>)、6669緯穎(<span class="num-down">-0.1pp</span>)<br>🔚 已出清：<span class="text-green">BLTE(Belite Bio)</span>、<span class="text-green">3529力旺</span>
 
 | 股票 | 持股比例 | 市值(元) | 較前次變動 |
 | :--- | :--- | :--- | :--- |
-| 0052富邦科技 | 29.6% | 83,600,000 | - |
-| 6696仁新 | 26.6% | 75,200,000 | - |
-| 7729仲恩生醫 | 14.4% | 40,800,000 | - |
-| 1303南亞 | 7.2% | 20,400,000 | - |
-| 00631L台灣50正2 | 6.9% | 19,400,000 | - |
-| 6213聯茂 | 5.9% | 16,600,000 | - |
-| 6870騰雲 | 4.8% | 13,600,000 | - |
-| 6669緯穎 | 2.5% | 7,000,000 | - |
-| SPALSPAL | 2.1% | 6,000,000 | - |
+| 0052富邦科技 | 29.6% | 83,600,000 | <span class="num-down">▼ -0.4pp</span> |
+| 6696仁新 | 26.6% | 75,200,000 | <span class="num-down">▼ -8.7pp</span> |
+| 7729仲恩生醫 | 14.4% | 40,800,000 | <span class="num-up">▲ +8.9pp</span> |
+| 1303南亞 | 7.2% | 20,400,000 | <span class="num-up">▲ +0.1pp</span> |
+| 00631L台灣50正2 | 6.9% | 19,400,000 | <span class="num-down">▼ -0.0pp</span> |
+| 6213聯茂 | 5.9% | 16,600,000 | <span class="num-up">▲ +0.3pp</span> |
+| 6870騰雲 | 4.8% | 13,600,000 | <span class="num-down">▼ -0.1pp</span> |
+| 6669緯穎 | 2.5% | 7,000,000 | <span class="num-down">▼ -0.1pp</span> |
+| SPAL | 2.1% | 6,000,000 | <span class="num-down">▼ -0.1pp</span> |
 
 <div style="margin-top: 14px;"></div>
 
@@ -173,7 +173,7 @@ tags: [report/daily, market-overview]
 <span style="font-size: 11.5pt; font-weight: 700;">G大戶 (資料日期：2026/10/02)</span>
 
 總市值 312,927,500 元（較 2026/10/01 市值變化：<span class="num-up">+38,310,400</span> 元，<span class="num-up">+13.95%</span>）<br>
-較 2026/10/01 已出清：<span class="text-green">2388威盛</span>
+🆕 新建倉：<span class="flag-red">6274台燿</span>、<span class="flag-red">4958臻鼎-KY</span>、<span class="flag-red">2345智邦</span>、<span class="flag-red">2308台達電</span><br>▲ 加碼：2330台積電(<span class="num-up">+1,000股</span>)<br>🔚 已出清：<span class="text-green">2388威盛</span>
 
 | 股票 | 庫存股數 | 成本價 | 現價 | 市值(元) | 損益% | 較前次變動 |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |

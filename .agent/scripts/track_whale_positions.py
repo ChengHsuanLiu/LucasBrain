@@ -104,10 +104,18 @@ def generate_summary_markdown(as_of_date):
             items = "、".join(f"{i['ticker']}{i['name']}" for i in delta["new"])
             lines.append(f"* **新增部位**：{items}")
         if delta["increased"]:
-            items = "、".join(f"{i['ticker']}{i['name']}(+{i['shares_delta']:,.0f}股)" for i in delta["increased"])
+            items = "、".join(
+                f"{i['ticker']}{i['name']}(+{i['value_delta']:,.0f}元)" if i.get("is_pct_type")
+                else f"{i['ticker']}{i['name']}(+{i['shares_delta']:,.0f}股)"
+                for i in delta["increased"]
+            )
             lines.append(f"* **加碼**：{items}")
         if delta["decreased"]:
-            items = "、".join(f"{i['ticker']}{i['name']}({i['shares_delta']:,.0f}股)" for i in delta["decreased"])
+            items = "、".join(
+                f"{i['ticker']}{i['name']}({i['value_delta']:,.0f}元)" if i.get("is_pct_type")
+                else f"{i['ticker']}{i['name']}({i['shares_delta']:,.0f}股)"
+                for i in delta["decreased"]
+            )
             lines.append(f"* **減碼**：{items}")
         if delta["closed"]:
             items = "、".join(f"{i['ticker']}{i['name']}" for i in delta["closed"])

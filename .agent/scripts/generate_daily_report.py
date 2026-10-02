@@ -683,13 +683,44 @@ def build_whale_section():
             else:
                 market_value_line = f"總市值 {total_now:,.0f} 元"
 
+            # 估算(%)類大戶(安大戶)沒有股數，加減碼要看市值占比的百分點變化；
+            # 融資/股票期貨類大戶(林/高大戶)則看股數差，避免純股價漲跌被誤判成加減碼。
+            total_prev = deltas.get("total_value_prev")
+
+            def _pp_delta(e):
+                cur_pct = (e["market_value"] / total_now * 100) if total_now else 0
+                prev_pct = (e["market_value_prev"] / total_prev * 100) if total_prev else 0
+                return cur_pct - prev_pct
+
             # 同一段落裡連續兩行 markdown 純文字換行會被轉HTML時接成同一行，
-            # 要接著出清提醒時得在行尾補一個明確的 <br> 才會真的斷行。
+            # 要接續新增/加碼/減碼/出清提醒時得在行尾補一個明確的 <br> 才會真的斷行。
+            summary_extra_lines = []
+            if deltas["new"]:
+                labels = [flag_red(f"{e['ticker']}{e['name']}") for e in deltas["new"]]
+                summary_extra_lines.append(f"🆕 新建倉：{'、'.join(labels)}")
+            if deltas["increased"]:
+                labels = []
+                for e in deltas["increased"]:
+                    if e.get("is_pct_type"):
+                        labels.append(f"{e['ticker']}{e['name']}({colorize_signed(_pp_delta(e), '{:+.1f}pp')})")
+                    else:
+                        labels.append(f"{e['ticker']}{e['name']}({colorize_signed(e['shares_delta'], '{:+,.0f}股')})")
+                summary_extra_lines.append(f"▲ 加碼：{'、'.join(labels)}")
+            if deltas["decreased"]:
+                labels = []
+                for e in deltas["decreased"]:
+                    if e.get("is_pct_type"):
+                        labels.append(f"{e['ticker']}{e['name']}({colorize_signed(_pp_delta(e), '{:+.1f}pp')})")
+                    else:
+                        labels.append(f"{e['ticker']}{e['name']}({colorize_signed(e['shares_delta'], '{:+,.0f}股')})")
+                summary_extra_lines.append(f"▼ 減碼：{'、'.join(labels)}")
             if deltas["closed"]:
-                prev_date_slash = deltas["prev_date"].replace("-", "/")
-                closed_labels = [flag_green(f"{e['ticker']}{e['name']}") for e in deltas["closed"]]
+                labels = [flag_green(f"{e['ticker']}{e['name']}") for e in deltas["closed"]]
+                summary_extra_lines.append(f"🔚 已出清：{'、'.join(labels)}")
+
+            if summary_extra_lines:
                 lines.append(f"{market_value_line}<br>")
-                lines.append(f"較 {prev_date_slash} 已出清：{'、'.join(closed_labels)}")
+                lines.append("<br>".join(summary_extra_lines))
             else:
                 lines.append(market_value_line)
             lines.append("")
@@ -699,9 +730,15 @@ def build_whale_section():
             for e in deltas["new"]:
                 change_label[e["ticker"]] = flag_red("🆕 新建倉")
             for e in deltas["increased"]:
-                change_label[e["ticker"]] = colorize_signed(e["shares_delta"], "▲ {:+,.0f}股")
+                if e.get("is_pct_type"):
+                    change_label[e["ticker"]] = colorize_signed(_pp_delta(e), "▲ {:+.1f}pp")
+                else:
+                    change_label[e["ticker"]] = colorize_signed(e["shares_delta"], "▲ {:+,.0f}股")
             for e in deltas["decreased"]:
-                change_label[e["ticker"]] = colorize_signed(e["shares_delta"], "▼ {:+,.0f}股")
+                if e.get("is_pct_type"):
+                    change_label[e["ticker"]] = colorize_signed(_pp_delta(e), "▼ {:+.1f}pp")
+                else:
+                    change_label[e["ticker"]] = colorize_signed(e["shares_delta"], "▼ {:+,.0f}股")
             for e in deltas["unchanged"]:
                 change_label[e["ticker"]] = "-"
 
