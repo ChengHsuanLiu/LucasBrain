@@ -13,7 +13,7 @@ tags: [report/daily, market-overview]
 #### 上市加權指數 (TAIEX)
 
 * **收盤價**：49,712.04（<span class="num-up">+1,236.30</span>，<span class="num-up">+2.55%</span>）
-* **成交量**：12,034 億（較前日 9,382億量增 <span class="num-up">+31.38%</span>；5日均量線 <span class="num-up">站上</span>，5日均量 <span class="num-up">上彎</span>）
+* **成交量**：12,110 億（較前日 9,382億量增 <span class="num-up">+31.52%</span>；5日均量線 <span class="num-up">站上</span>，5日均量 <span class="num-up">上彎</span>）
 
 <div class="idx-flex" markdown="1">
 <div class="idx-col" markdown="1">
@@ -72,8 +72,8 @@ tags: [report/daily, market-overview]
 **融資餘額**
 <small>(為前日資料)</small>
 
-* 上市：6,351 億（<span class="num-up">+52.4 億</span>）
-* 上櫃：4,414 億（<span class="num-up">+35.8 億</span>）
+* 上市：6,334 億（<span class="num-down">-17.5 億</span>）
+* 上櫃：4,436 億（<span class="num-up">+22.6 億</span>）
 
 </div>
 <div class="idx-col" markdown="1">
@@ -81,9 +81,9 @@ tags: [report/daily, market-overview]
 **三大法人現貨買賣超**
 
 * 外資：<span class="num-up">+719.0 億</span>
-* 投信：<span class="num-down">-63.9 億</span>
+* 投信：<span class="num-down">-52.9 億</span>
 * 自營商：<span class="num-up">+109.5 億</span>
-* 合計：<span class="num-up">+764.5 億</span>
+* 合計：<span class="num-up">+775.5 億</span>
 
 </div>
 <div class="idx-col" markdown="1">
@@ -112,7 +112,7 @@ tags: [report/daily, market-overview]
 
 **資料庫個股月線(20MA)以上家數**
 
-* <span class="num-up">83%</span> （174 / 210 檔）
+* <span class="num-up">82%</span> （173 / 210 檔）
 
 </div>
 </div>
@@ -131,22 +131,23 @@ tags: [report/daily, market-overview]
 
 #### <span class="text-blue">各大戶持股與變動</span>
 
-<span style="font-size: 11.5pt; font-weight: 700;">A大戶 (資料日期：2026/10/02)</span>
+<span style="font-size: 11.5pt; font-weight: 700;">A大戶 (資料日期：2026/10/05)</span>
 
-總市值 282,600,000 元（較 2026/10/01 市值變化：<span class="num-down">-1,200,000</span> 元，<span class="num-down">-0.42%</span>）<br>
-▲ 加碼：1303南亞(<span class="num-up">+0.1pp</span>)、7729仲恩生醫(<span class="num-up">+8.9pp</span>)、6213聯茂(<span class="num-up">+0.3pp</span>)<br>▼ 減碼：00631L台灣50正2(<span class="num-down">-0.0pp</span>)、6696仁新(<span class="num-down">-8.7pp</span>)、6870騰雲(<span class="num-down">-0.1pp</span>)、6669緯穎(<span class="num-down">-0.1pp</span>)、0052富邦科技(<span class="num-down">-0.4pp</span>)、SPAL(<span class="num-down">-0.1pp</span>)<br>🔚 已出清：<span class="text-green">3529力旺</span>、<span class="text-green">BLTE(Belite Bio)</span>
+總市值 310,600,000 元（較 2026/10/02 市值變化：<span class="num-up">+28,000,000</span> 元，<span class="num-up">+9.91%</span>）<br>
+🆕 新建倉：<span class="flag-red">SPCX(SpaceX)</span><br>▲ 加碼：6870騰雲(<span class="num-down">-0.4pp</span>)、0052富邦科技(<span class="num-down">-2.1pp</span>)、6669緯穎(<span class="num-up">+4.5pp</span>)、00631L台灣50正2(<span class="num-up">+8.5pp</span>)、SPAL(<span class="num-up">+0.1pp</span>)、1303南亞(<span class="num-down">-0.1pp</span>)、6213聯茂(<span class="num-up">+0.6pp</span>)<br>▼ 減碼：6696仁新(<span class="num-down">-10.4pp</span>)、7729仲恩生醫(<span class="num-down">-2.3pp</span>)
 
 | 股票 | 持股比例 | 市值(元) | 較前次變動 |
 | :--- | :--- | :--- | :--- |
-| 0052富邦科技 | 29.6% | 83,600,000 | <span class="num-down">▼ -0.4pp</span> |
-| 6696仁新 | 26.6% | 75,200,000 | <span class="num-down">▼ -8.7pp</span> |
-| 7729仲恩生醫 | 14.4% | 40,800,000 | <span class="num-up">▲ +8.9pp</span> |
-| 1303南亞 | 7.2% | 20,400,000 | <span class="num-up">▲ +0.1pp</span> |
-| 00631L台灣50正2 | 6.9% | 19,400,000 | <span class="num-down">▼ -0.0pp</span> |
-| 6213聯茂 | 5.9% | 16,600,000 | <span class="num-up">▲ +0.3pp</span> |
-| 6870騰雲 | 4.8% | 13,600,000 | <span class="num-down">▼ -0.1pp</span> |
-| 6669緯穎 | 2.5% | 7,000,000 | <span class="num-down">▼ -0.1pp</span> |
-| SPAL | 2.1% | 6,000,000 | <span class="num-down">▼ -0.1pp</span> |
+| 0052富邦科技 | 27.5% | 85,400,000 | <span class="num-down">▲ -2.1pp</span> |
+| 6696仁新 | 16.2% | 50,400,000 | <span class="num-down">▼ -10.4pp</span> |
+| 00631L台灣50正2 | 15.4% | 47,800,000 | <span class="num-up">▲ +8.5pp</span> |
+| 7729仲恩生醫 | 12.1% | 37,600,000 | <span class="num-down">▼ -2.3pp</span> |
+| 1303南亞 | 7.1% | 22,200,000 | <span class="num-down">▲ -0.1pp</span> |
+| 6669緯穎 | 7.0% | 21,600,000 | <span class="num-up">▲ +4.5pp</span> |
+| 6213聯茂 | 6.5% | 20,200,000 | <span class="num-up">▲ +0.6pp</span> |
+| 6870騰雲 | 4.4% | 13,800,000 | <span class="num-down">▲ -0.4pp</span> |
+| SPAL | 2.2% | 6,800,000 | <span class="num-up">▲ +0.1pp</span> |
+| SPCX(SpaceX) | 1.5% | 4,800,000 | <span class="flag-red">🆕 新建倉</span> |
 
 <div style="margin-top: 14px;"></div>
 
@@ -170,33 +171,32 @@ tags: [report/daily, market-overview]
 
 <div style="margin-top: 14px;"></div>
 
-<span style="font-size: 11.5pt; font-weight: 700;">G大戶 (資料日期：2026/10/02)</span>
+<span style="font-size: 11.5pt; font-weight: 700;">G大戶 (資料日期：2026/10/05)</span>
 
-總市值 312,927,500 元（較 2026/10/01 市值變化：<span class="num-up">+38,310,400</span> 元，<span class="num-up">+13.95%</span>）<br>
-🆕 新建倉：<span class="flag-red">2345智邦</span>、<span class="flag-red">6274台燿</span>、<span class="flag-red">2308台達電</span>、<span class="flag-red">4958臻鼎-KY</span><br>▲ 加碼：2330台積電(<span class="num-up">+1,000股</span>)<br>🔚 已出清：<span class="text-green">2388威盛</span>
+總市值 301,364,300 元（較 2026/10/02 市值變化：<span class="num-down">-11,563,200</span> 元，<span class="num-down">-3.70%</span>）<br>
+▲ 加碼：2303聯電(<span class="num-up">+122,000股</span>)<br>▼ 減碼：2330台積電(<span class="num-down">-2,000股</span>)、3105穩懋(<span class="num-down">-18,000股</span>)、2308台達電(<span class="num-down">-2,000股</span>)<br>🔚 已出清：<span class="text-green">2345智邦</span>
 
 | 股票 | 庫存股數 | 成本價 | 現價 | 市值(元) | 損益% | 較前次變動 |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 3665貿聯 | 25,300 | 2,365.28 | 2,545.00 | 64,388,500 | <span class="num-up">+7.6%</span> | - |
-| 3105穩懋 | 104,000 | 436.22 | 596.00 | 61,984,000 | <span class="num-up">+36.6%</span> | - |
-| 2303聯電 | 236,000 | 143.95 | 162.50 | 38,350,000 | <span class="num-up">+12.9%</span> | - |
-| 6182合晶 | 180,000 | 103.54 | 135.50 | 24,390,000 | <span class="num-up">+30.9%</span> | - |
-| 2449京元電 | 66,000 | 294.51 | 297.00 | 19,602,000 | <span class="num-up">+0.8%</span> | - |
-| 3533嘉澤 | 8,000 | 1,837.25 | 1,868.00 | 14,944,000 | <span class="num-up">+1.7%</span> | - |
-| 2345智邦 | 6,000 | 1,952.33 | 1,979.00 | 11,874,000 | <span class="num-up">+1.4%</span> | <span class="flag-red">🆕 新建倉</span> |
-| 2308台達電 | 6,000 | 1,898.33 | 1,893.00 | 11,358,000 | <span class="num-down">-0.3%</span> | <span class="flag-red">🆕 新建倉</span> |
-| 2330台積電 | 4,500 | 2,423.35 | 2,520.00 | 11,340,000 | <span class="num-up">+4.0%</span> | <span class="num-up">▲ +1,000股</span> |
-| 3653健策 | 1,500 | 5,869.99 | 6,835.00 | 10,252,500 | <span class="num-up">+16.4%</span> | - |
-| 5274信驊 | 500 | 20,270.00 | 19,000.00 | 9,500,000 | <span class="num-down">-6.3%</span> | - |
-| 8046南電 | 6,000 | 1,061.49 | 1,468.00 | 8,808,000 | <span class="num-up">+38.3%</span> | - |
-| 3189景碩 | 4,000 | 806.03 | 1,052.00 | 4,208,000 | <span class="num-up">+30.5%</span> | - |
-| 2327國巨 | 6,000 | 589.00 | 631.00 | 3,786,000 | <span class="num-up">+7.1%</span> | - |
-| 2455全新 | 6,000 | 519.29 | 583.00 | 3,498,000 | <span class="num-up">+12.3%</span> | - |
-| 4958臻鼎-KY | 6,000 | 557.67 | 565.00 | 3,390,000 | <span class="num-up">+1.3%</span> | <span class="flag-red">🆕 新建倉</span> |
-| 6274台燿 | 2,000 | 1,613.00 | 1,625.00 | 3,250,000 | <span class="num-up">+0.7%</span> | <span class="flag-red">🆕 新建倉</span> |
-| 8358金居 | 6,000 | 494.51 | 522.00 | 3,132,000 | <span class="num-up">+5.6%</span> | - |
-| 2454聯發科 | 500 | 4,618.05 | 4,985.00 | 2,492,500 | <span class="num-up">+8.0%</span> | - |
-| 6488環球晶 | 2,000 | 897.98 | 1,190.00 | 2,380,000 | <span class="num-up">+32.5%</span> | - |
+| 3665貿聯 | 25,300 | 2,365.36 | 2,491.00 | 63,022,300 | <span class="num-up">+5.3%</span> | - |
+| 2303聯電 | 358,000 | 147.57 | 154.00 | 55,132,000 | <span class="num-up">+4.4%</span> | <span class="num-up">▲ +122,000股</span> |
+| 3105穩懋 | 86,000 | 436.37 | 622.00 | 53,492,000 | <span class="num-up">+42.5%</span> | <span class="num-down">▼ -18,000股</span> |
+| 6182合晶 | 180,000 | 103.55 | 132.50 | 23,850,000 | <span class="num-up">+28.0%</span> | - |
+| 2449京元電 | 66,000 | 294.53 | 295.50 | 19,503,000 | <span class="num-up">+0.3%</span> | - |
+| 3533嘉澤 | 8,000 | 1,837.29 | 1,853.00 | 14,824,000 | <span class="num-up">+0.8%</span> | - |
+| 3653健策 | 1,500 | 5,870.26 | 7,255.00 | 10,882,500 | <span class="num-up">+23.6%</span> | - |
+| 5274信驊 | 500 | 20,270.55 | 19,540.00 | 9,770,000 | <span class="num-down">-3.6%</span> | - |
+| 8046南電 | 6,000 | 1,061.52 | 1,497.00 | 8,982,000 | <span class="num-up">+41.0%</span> | - |
+| 2308台達電 | 4,000 | 1,897.55 | 2,027.00 | 8,108,000 | <span class="num-up">+6.8%</span> | <span class="num-down">▼ -2,000股</span> |
+| 2330台積電 | 2,500 | 2,441.44 | 2,595.00 | 6,487,500 | <span class="num-up">+6.3%</span> | <span class="num-down">▼ -2,000股</span> |
+| 3189景碩 | 4,000 | 806.05 | 1,091.00 | 4,364,000 | <span class="num-up">+35.4%</span> | - |
+| 2327國巨 | 6,000 | 589.16 | 632.00 | 3,792,000 | <span class="num-up">+7.3%</span> | - |
+| 2455全新 | 6,000 | 519.31 | 613.00 | 3,678,000 | <span class="num-up">+18.0%</span> | - |
+| 6274台燿 | 2,000 | 1,613.04 | 1,787.00 | 3,574,000 | <span class="num-up">+10.8%</span> | - |
+| 4958臻鼎-KY | 6,000 | 557.69 | 582.00 | 3,492,000 | <span class="num-up">+4.4%</span> | - |
+| 8358金居 | 6,000 | 494.53 | 574.00 | 3,444,000 | <span class="num-up">+16.1%</span> | - |
+| 2454聯發科 | 500 | 4,618.29 | 5,210.00 | 2,605,000 | <span class="num-up">+12.8%</span> | - |
+| 6488環球晶 | 2,000 | 898.15 | 1,181.00 | 2,362,000 | <span class="num-up">+31.5%</span> | - |
 
 <div style="margin-top: 14px;"></div>
 

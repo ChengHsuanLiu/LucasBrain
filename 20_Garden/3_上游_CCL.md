@@ -4,7 +4,7 @@ garden_type: industry
 title: "CCL 銅箔基板"
 tier: "3_上游"
 created: 2026-07-11
-updated: 2026-09-22
+updated: 2026-10-04
 review_by: 2026-10-11
 tags: [industry/ccl, technology/high-speed]
 aliases: [CCL銅箔基板, CCL]
@@ -16,6 +16,17 @@ aliases: [CCL銅箔基板, CCL]
 > 本頁原與「ABF載板(IC載板)」、「PCB」合併為 `3_上游_載板PCB_CCL`，2026-07-11 因單頁成員數過多（22檔個股塞入同一分類）拆分回三個獨立頁面：`[[3_上游_CCL]]`（本頁，CCL 板材與上游樹脂/玻纖布/銅箔材料鏈）、`[[3_上游_載板]]`（ABF/BT IC載板）、`[[3_上游_PCB]]`（下游多層板/交換器板）。三者在供應鏈上緊密相連，內容互有交叉引用。
 
 ## 🎯 產業投資點評與核心結論 (Summary & Insights)
+* **⚠️ 2026-10-04 新增：ALETHEIA CAPITAL(阿爾法資本)恢復覆蓋PCB/CCL產業，聚焦Google TPU供應鏈深度分析，提出「Goldilocks」論點**（來源：分析師Shaotang Lee/Warren Lau/Skye Chen，《Advanced Materials - PCB & CCL: Goldilocks》，2026-10-04，附ISU Petasys/TTM Technologies/台光電三份個股報告）：核心論點為Google TPU供應鏈將在**2028年及之後**實現產業中最強勁且最永續的成長——TPU出貨量預估2026年360萬台→2027年850萬台→2028年1,200萬台(三倍以上增長，含內部部署+經Broadcom代工分配給Anthropic等第三方AI實驗室之用量)，佐證指標為Google雲端服務積壓訂單2Q26已達5,200億美元；TPU單位內含價值(content value)預計未來3-4年隨邏輯/HBM晶片整合增加5-10倍，連帶PCB內含價值2026-2029年可能翻增四倍。
+  - **GPU/ASIC全產業出貨量預估(百萬顆)**：總量2025年12.9M→2026E 15.0M→2027E 24.0M→2028E 34.4M(2026E-28E約50% CAGR)，細分：Nvidia GPU 5.4M(25)→11.4M(28E)；**Google TPU 3.3M(25)→3.6M(26E)→8.5M(27E)→12.0M(28E)**；AWS Trainium維持2.0M左右；AMD 2.0M(27E起)；OpenAI(經Broadcom代工Jalapeno)0.2M(26E)→3.5M(28E)；Meta MTIA 0.2M(25)→2.0M(28E，為Meta第二次嘗試自研晶片，前次2025/26計畫已遭縮編延後)。**算力角度**：OpenAI直接採購算力預估2026年1GW→2028年11GW；Anthropic算力2027年6GW→2028年13GW(多數經Broadcom取得)。
+  - **⚠️ 與既有筆記之GAP——兩份數字並列存查，不強行覆蓋或擇一採信**：此處Google TPU出貨量(千顆)與`[[2_晶片層_ASIC客製晶片]]`頁面2026-08-25 Morgan Stanley筆記揭露的TPU世代出貨量(v8i 2026年4,000千顆+v8t 2026年3,000千顆=7.0M，v8i 2027年2,500千顆+v8t 1,000千顆+v9 3,000千顆=6.5M)存在明顯落差(ALETHEIA 2026E僅3.6M、2027E已達8.5M，與MS口徑的量級與成長節奏都不同)。已與Lucas當面確認(2026-10-04)：目前無法判斷兩者孰是孰非(可能是TPU出貨量定義範圍不同，如是否含Anthropic經Broadcom代工之第三方量)，**Lucas決定兩份數字先並列記錄保留，不互相覆蓋，待未來有更明確消息(如Google/Broadcom自結數字、其他法人報告佐證)出現後再回頭釐清何者較貼近實情**。後續若更新TPU出貨量相關筆記，應延續此並列呈現方式，不要只取其一。
+  - **TPU世代規格演進(V8i→V8.5→V9→V10)**：V8i(2H26/27量產)TDP約1,300W；V9(2028年中)邏輯die增至4x N2P、HBM堆疊增至12組，reticle size達9.5x，TDP躍升至約4,500W；V10(2029年)邏輯die再增至16x N2P、HBM堆疊16組，reticle size達15x，TDP估上看10,000W以上。PCB設計同步由Multi-layer結構演進至N+M(V8i/V8.5)、最終至HDI(V9/V10)。TPU v8每機架PCB內含價值達US$30,000-40,000、CCL達US$12,000-18,000(較v7僅US$20,000/US$7,000大幅跳升)，v9隨HDI導入再增40-50%；TPU PCB ASP自v5至v8已上漲2.5倍。
+  - **交換器PCB/CCL規格與ASP全表**：100Gbps(M6，12-18層，ASP $180)→400Gbps(M7，26-28層，ASP $400，+122%)→800Gbps(M8，36-40層，ASP $1,500-2,000，+275%，2Q26量產)→1.6Tbps(M8/M9，44-50層，ASP $3,000-4,000，+94%，2Q27量產)。
+  - **PCB/CCL規格與供應商矩陣**(節錄跨平台對比)：Nvidia Vera Rubin(2H26)用M8/M4(交換板Doosan+Shengyi/EMC)，Rubin Ultra(2H27)升至26層HDI；Google TPU v8i/v8t(4Q26-1Q27)M8/M6(供應商ISU/LCS/WUS/TTM，CCL供應商Panasonic/EMC/南亞)，TPU v9(2028)升至M9/M8、34層N+M；Amazon Trainium 3為M8(EMC/TUC)，Trainium 4升至M9？(48層)；AMD MI450為M8(48層)，MI500升至M9(48-52層)；**Nvidia LPU(2H26)規格最高達52層，M9/M8材料，CCL供應商Shengyi/EMC**。
+  - **mSAP產業化進度**：mSAP可將線寬/線距縮至30μm以下(傳統蝕刻法30-50μm)，800G世代為選用、**1.6T起成為強制標準**；關鍵瓶頸在日系上游材料(三井金屬載體銅箔、日東紡低CTE玻纖布)與雷射鑽孔/LDI設備，交期拉長至10-12個月(正常4-6個月)；受惠者SCC(近期RMB43.7億私募擴產)、ZDT/Avary(目標數年內擴產5倍)、Unimicron(欣興，2026資本支出由台幣250億上修至340億，70%投ABF、30%投HDI/mSAP/泰國新廠)、Compeq(已通過800G/1.6T mSAP認證)。
+  - **CPO對CCL去規格化風險——「影響可控」，與Lucas個人分析結論方向一致**：ALETHEIA認為CPO短期對CCL產業「可控」，理由(1) CPO設計未定案，仍面臨製造成本/良率/可靠性挑戰；(2) 僅Nvidia積極推動CPO，Google等仍維持現有方案；(3) CCL產業整體仍供不應求，非CPO應用材料升級需求強勁。**此結論與下方2026-09-20 Lucas個人分析筆記(CPO為局部替代、板件間重分配，非全面取代)方向一致，為獨立來源佐證**，進一步支持「2028年前CPO不足以推翻CCL升級曲線」之判斷。
+  - **PTFE評估——第三份獨立來源指向EMC+台虹為Second source**：Nvidia評估Rubin Ultra switch tray採用PTFE+M9混合方案，但加工良率低、成本高、認證週期長，ALETHEIA認為PTFE短期不會成為主流材料；供應鏈推測生益科技(Shengyi)為First source，**EMC(台光電)+台虹(Taiflex)組合為潛在Second source**——與頁面既有09-10 GF Securities、08-25 SemiAnalysis兩筆PTFE Second source推測完全一致，形成三份獨立外資來源的交叉印證(但與台光電/台虹管理層自身保守表態存在解讀落差，並列保留，詳見`[[2383台光電]]`、`[[8039台虹]]`)。
+  - **LTA可能成為新常態**：報告指出PCB/CCL供應鏈與CSP間長期協議討論日益增加，模式類似記憶體產業LTA，若確認將透過預付款改善供應鏈資本支出壓力、提升訂單能見度，料推升供應鏈估值倍數。
+  - **個股評等矩陣**：ISU Petasys(南韓007660.KRX，網通PCB佔營收50-60%、Google佔營收50%+，**非追蹤個股僅供比較**)——買進，TP KRW270,000(123%上漲空間，30x FY27/28E PER)；TTM Technologies(美股TTMI，美國最大PCB廠+A&D航太國防解決方案商，**非追蹤個股僅供比較**)——首次覆蓋買進，TP US$236(79%上漲空間，27x FY27/28E SOTP)；`[[2383台光電]]`(EMC)——買進，TP NT$10,000(93%上漲空間，30x FY27/28E PER，EMC產能預估2028年底較2025年翻倍)。完整EMC財務模型、TPU世代規格全表(Figure 6/9/10/14)、EMC專屬PTFE/CPO分析詳見`[[2383台光電]]`個股頁面同日筆記。
 * **⚠️ 2026-09-20 新增：個人分析——CPO對高階CCL是「局部替代、板件間重分配」，非全面取代，2028年前論述未被推翻**（來源：Lucas個人分析筆記，2026-09-20）：針對市場流傳「CPO後主機板只剩PCIe Gen5、CCL可全面降到M4」之極端推論提出反駁，核心結論：CPO直接縮短的僅是交換器ASIC到光引擎的高速SerDes走線，並非把GPU/CPU/HBM/NVLink/PCIe全部光化；即使把UBB與一般主機板全部假設降規，兩者合計僅占GPU PCB TAM約2.1%(2028E)，不足以撼動整體高階PCB/CCL邏輯；交換板占21.2%為CPO最直接風險池，但屬「理論上限」而非「可能損失率」；OAM+midplane+backplane合計占72.5%，目前cableless與rack-scale整合反而推升此部分面積、層數與材料要求(Vera Rubin Ultra midplane採M9、78層以上，單價約US$225,000/組)。**分板件影響判讀**：OAM近期高階化(遠期optical I/O才構成風險)；Midplane因cableless將部分線纜改為高層數PCB，2027-2028明顯正向；Backplane因高密度機櫃互連帶動M9/高層數需求，近期正向；Switch board受CPO直接縮短走線影響局部負面，但不會整張板降成M4；IC載板因CPO封裝增加整合難度，ABF/玻璃核心載板相對受惠。**時間軸判斷**：2028年前，cableless、高層數、HDI升階、ASIC平台擴張仍是CCL主力成長動能，Spectrum-X CPO量產本身不足以推翻此曲線(AI伺服器CCL TAM預估2025年US$2.477bn→2028E US$47.546bn，M8+M9以上占2028E TAM約78.4%)；2029-2030年後才需要在終值評價中加入CPO折價，觸發條件為：①NVIDIA/主要CSP正式將CPO導入NVLink scale-up或GPU optical I/O、②新平台BOM顯示midplane/backplane/OAM高速CCL面積或等級實際下降、③CCL廠M9/M10營收占比、ASP及毛利率同步停止上升。此分析與既有筆記「NVIDIA機架架構調整對材料需求的影響」中M10材料因Kyber延期而放量推遲、但Oberon Racks增量出貨拉動M8/M9需求之判斷方向一致，屬於同一邏輯的總體性補充論證。
 * **⚠️ 2026-09-15 更新：Morgan Stanley估算四大AI平台每機櫃CCL/PCB/銅箔內容值，補齊AMD/Google TPU/Trainium三個既有筆記未涵蓋的世代**：截圖(Exhibit 12-15)提供Nvidia、AMD、Google TPU、Amazon Trainium四大平台逐世代每機櫃內容值(美元)，與既有GF Securities報告(僅涵蓋Nvidia GB300/VR200/VR300/Oberon，單位為$/GPU)為不同單位、不同平台範圍，互補而非重複：
   - **Nvidia**：GB300每機櫃銅箔$1,697／CCL$6,695／PCB$37,491；VR200銅箔$5,164(+204%)／CCL$18,750(+180%)／PCB$91,227(+143%)；VR300銅箔$5,705(+10%)／CCL$35,601(+90%)／PCB$154,377(+69%)。
@@ -68,6 +79,8 @@ aliases: [CCL銅箔基板, CCL]
 | `[[6213聯茂]]` | 是 | 2026 年底總月產能約 570 萬張；10 月 M7 出貨占比預估達 15.9-22.8%；全球特殊基板市占約 15.5%（ITEQ 口徑，2026-09-09 新增，來源：兆豐投顧） | 通用伺服器 PCIe 6.0 換代直接受益者，泰國廠切入 SpaceX |
 | `[[1809中釉]]` | 是 | `[待補充，佔位頁面尚無詳細研究素材]` | `[待補充]` |
 | 斗山 (Doosan) | 否 (僅供比較) | Nvidia 高階 CCL 原龍頭；GB300 世代單櫃產值仍為台光電 4 倍 | 2H26 起被台光電反超，但在既有機種上份額仍龐大 |
+| ISU Petasys (南韓007660.KRX) | 否 (僅供比較，2026-10-04新增) | 網通PCB佔營收50-60%、Google TPU PCB佔營收50%+ | ALETHEIA買進，TP KRW270,000(123%上漲空間)；Fab 6於1Q27提前量產(+25%產能)，Fab 5擴產HDI於2Q28再增20-25%產能 |
+| TTM Technologies (美股TTMI) | 否 (僅供比較，2026-10-04新增) | 美國最大PCB廠(No.1)，兼A&D航太國防解決方案商 | ALETHEIA首次覆蓋買進，TP US$236(79%上漲空間)；data center/networking部門2026-28預估CAGR達79%，為TPU v8主要PCB供應商之一 |
 | EMC / TUC / SYTECH / Panasonic / Mitsubishi Gas Chemical / Kingboard / Resonac / Rogers / AGC / Isola | 否 (僅供比較，2026-09-09 新增) | 全球特殊基板(高速/封裝/射頻基板)市占依序約 20.3% / 11.4% / 12.1% / 5.7% / 2.7% / 2.4% / 2.4% / 1.5% / 1.3% / 0.8%（總市場195M m²，Others佔7.1%） | 來源：兆豐投顧《聯茂(6213)》報告市占圖，公司與兆豐投顧整理；完整原始圖表見 `[[6213聯茂]]` 個股頁面 Notes & Memos |
 | 生益科技 (Shengyi) | 否 (僅供比較) | 高階 M8/M9 月出貨達 100 萬張 | 已切入 Nvidia 供應鏈，對台光電/台燿高階市場構成新競爭 |
 | 建滔集團 (KB) | 否 (僅供比較) | 全球玻纖布月產能約 60,000 千米，全球第二 | 大陸玻纖布龍頭之一，產能規模略遜巨石 |
@@ -226,6 +239,9 @@ aliases: [CCL銅箔基板, CCL]
 ---
 
 ## 📅 產業趨勢與產品迭代時間軸 (Timeline)
+* **[2026-10-04]** `[法人報告]` ALETHEIA CAPITAL恢復覆蓋PCB/CCL產業，聚焦Google TPU供應鏈，台光電(EMC)TP升至10,000元；TPU出貨量預估2026年360萬台→2028年1,200萬台，與既有MS筆記口徑存在落差待確認。
+* **[2027-2028]** `[量產放量]` TPU v9(Humufish)量產，PCB升級至HDI、CCL升至M9/M8，1.6T交換器(44-50層，M8/M9)2Q27量產。
+* **[2028年]** `[量產放量]` TPU v10量產前夕，TDP估上看10,000W，HBM堆疊增至16組；Nvidia LPU(52層，M9/M8)2H26即先行量產。
 * **[2026-09-10]** `[內部模型稽核]` 投資幕僚團隊發布「聯茂6213假設檢核備忘」，將內部v49M模型與09-09兩份法人報告(兆豐/第一金)交叉驗證：2027年營收結構(967.7億)可由「稼動率2H27往90%」+「通用伺服器M6→M7換代」兩件公司自述的事填滿，不需M9或續漲價；90%UTR一手出處可追溯至08/18 Nomura法說memo；但稼動率增量主要來自稼動率仍低、且以低階LEO(M4/M6)產品為主的泰國廠，與高階產品組合呈負相關，是v49M尚未表達的結構。法人EPS與v49M主案的差距經拆解後定位在「價格方向」（若補上2027年-5%/季價格回吐，v49M 2027 EPS約收斂至43-45元，貼近第一金/元富估值）而非量或組合分歧。詳見 `[[6213聯茂]]` 個股頁面。
 * **[2026-09-09]** `[法人報告]` GF Securities(廣發證券香港，分析師Michelle Jing/Jeff Pu)發布《PCB: Content Upside & PTFE Adoption》：Nvidia Rubin平台驅動PCB內容價值(content value)結構性擴張，PTFE採用可能帶動下一波升級週期進入Rubin Ultra。
   - **PCB內容價值路徑**：GB300 Bianca每GPU約440美元 → VR200約750美元 → VR300潛在達1,000美元 → VR300 Oberon Rack(若採用PTFE)潛在超過1,500美元。
@@ -254,6 +270,8 @@ aliases: [CCL銅箔基板, CCL]
 ---
 
 ## 📄 原始文件與連結 (Original Documents)
+* `[[20261004_200441_file.pdf]]` - ALETHEIA CAPITAL《Advanced Materials - PCB & CCL: Goldilocks》完整報告：Google TPU供應鏈深度分析，含ISU Petasys/TTM Technologies/台光電三份個股報告 (2026-10-04)
+* `[[20261004_200422_text.md]]` - 同報告中文摘要 (2026-10-04)
 * `[[20260920_170628_text.md]]` - 個人分析：CPO對AI伺服器板材與CCL長期價值——局部替代、板件間重分配，非全面取代 (2026-09-20)
 * `[[20260914_110126_image.jpeg]]` - Morgan Stanley估算Nvidia/AMD/Google TPU/Amazon Trainium四大平台每機櫃CCL/PCB/銅箔內容值(Exhibit 12-15) (2026-09-15 ingest)
 * `[[20260915_154211_text.md]]` - 巨石(Jushi) E布產能拆解：2026年11億米→2027年13億米，擴產集中在薄布 (2026-09-15)
