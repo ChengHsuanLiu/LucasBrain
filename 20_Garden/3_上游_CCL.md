@@ -4,7 +4,7 @@ garden_type: industry
 title: "CCL 銅箔基板"
 tier: "3_上游"
 created: 2026-07-11
-updated: 2026-10-04
+updated: 2026-10-06
 review_by: 2026-10-11
 tags: [industry/ccl, technology/high-speed]
 aliases: [CCL銅箔基板, CCL]
@@ -16,6 +16,7 @@ aliases: [CCL銅箔基板, CCL]
 > 本頁原與「ABF載板(IC載板)」、「PCB」合併為 `3_上游_載板PCB_CCL`，2026-07-11 因單頁成員數過多（22檔個股塞入同一分類）拆分回三個獨立頁面：`[[3_上游_CCL]]`（本頁，CCL 板材與上游樹脂/玻纖布/銅箔材料鏈）、`[[3_上游_載板]]`（ABF/BT IC載板）、`[[3_上游_PCB]]`（下游多層板/交換器板）。三者在供應鏈上緊密相連，內容互有交叉引用。
 
 ## 🎯 產業投資點評與核心結論 (Summary & Insights)
+* **⚠️ 2026-10-06 新增：Daiwa《Taiwan Copper Clad Laminate》9月營收點評，台光電/台燿/聯茂三率全面優於預期，低階CCL全年漲幅看近100%、高階40-50%，PTFE/CPO負面消息「過度解讀」**（來源：Daiwa分析師Sheng Cheng/Thomas Kim，2026-10-05盤後）：10/5盤後EMC(台光電)/TUC(台燿)/ITEQ(聯茂)三大CCL廠同步公告9月營收，皆以5-15%幅度優於Daiwa與Bloomberg共識，驅動力為更佳定價與持續規格升級。Daiwa產業論點：強勁AI需求外溢至整個CCL產業，**低階CCL 2026年全年累計漲幅看近100%、高階CCL因成本通膨看40-50%**；展望4Q26E，高階/低階CCL預期再分別上漲約10%/20%，可能成為股價催化劑。**明確駁斥PTFE與CPO/NPO利空「過度解讀」**：PTFE目前僅限特定高階PCB內有限層數、仍在認證中，對高階CCL TAM衝擊有限；CPO/NPO方面，依EMC自身預估**CPO採用時點落在2030年**，屆時CPO scale-up交換器內部PCB仍需支援800G/1.6T傳輸(最高透過光學可達3.2T)，CCL規格最差情境不會降到M4、至少維持M6，且此類CPO連接AI伺服器預計僅存在於最高階訓練情境，總量不大。此2030年時點與`[[2383台光電]]`頁面既有判讀、以及本頁09-20 Lucas個人分析筆記、ALETHEIA CAPITAL報告「CPO影響可控」之結論方向一致，為第三份獨立來源的交叉印證。個股層面：TUC(台燿)新增揭露**東南亞淹水導致部分3Q26出貨遞延至4Q26**；ITEQ(聯茂)三率優於預期中居三者之首，E-glass供給改善可望拉升稼動率(現況75%)，並透露**正與新終端客戶進行M9認證，有望成為2028年關鍵成長動能**。三者Daiwa目標價：EMC 7,200元(38x)、TUC 2,320元(35x)，皆較既有GS/元富/ALETHEIA等機構估值明顯保守，估值方法論不同，並列參考不覆蓋。
 * **⚠️ 2026-10-04 新增：ALETHEIA CAPITAL(阿爾法資本)恢復覆蓋PCB/CCL產業，聚焦Google TPU供應鏈深度分析，提出「Goldilocks」論點**（來源：分析師Shaotang Lee/Warren Lau/Skye Chen，《Advanced Materials - PCB & CCL: Goldilocks》，2026-10-04，附ISU Petasys/TTM Technologies/台光電三份個股報告）：核心論點為Google TPU供應鏈將在**2028年及之後**實現產業中最強勁且最永續的成長——TPU出貨量預估2026年360萬台→2027年850萬台→2028年1,200萬台(三倍以上增長，含內部部署+經Broadcom代工分配給Anthropic等第三方AI實驗室之用量)，佐證指標為Google雲端服務積壓訂單2Q26已達5,200億美元；TPU單位內含價值(content value)預計未來3-4年隨邏輯/HBM晶片整合增加5-10倍，連帶PCB內含價值2026-2029年可能翻增四倍。
   - **GPU/ASIC全產業出貨量預估(百萬顆)**：總量2025年12.9M→2026E 15.0M→2027E 24.0M→2028E 34.4M(2026E-28E約50% CAGR)，細分：Nvidia GPU 5.4M(25)→11.4M(28E)；**Google TPU 3.3M(25)→3.6M(26E)→8.5M(27E)→12.0M(28E)**；AWS Trainium維持2.0M左右；AMD 2.0M(27E起)；OpenAI(經Broadcom代工Jalapeno)0.2M(26E)→3.5M(28E)；Meta MTIA 0.2M(25)→2.0M(28E，為Meta第二次嘗試自研晶片，前次2025/26計畫已遭縮編延後)。**算力角度**：OpenAI直接採購算力預估2026年1GW→2028年11GW；Anthropic算力2027年6GW→2028年13GW(多數經Broadcom取得)。
   - **⚠️ 與既有筆記之GAP——兩份數字並列存查，不強行覆蓋或擇一採信**：此處Google TPU出貨量(千顆)與`[[2_晶片層_ASIC客製晶片]]`頁面2026-08-25 Morgan Stanley筆記揭露的TPU世代出貨量(v8i 2026年4,000千顆+v8t 2026年3,000千顆=7.0M，v8i 2027年2,500千顆+v8t 1,000千顆+v9 3,000千顆=6.5M)存在明顯落差(ALETHEIA 2026E僅3.6M、2027E已達8.5M，與MS口徑的量級與成長節奏都不同)。已與Lucas當面確認(2026-10-04)：目前無法判斷兩者孰是孰非(可能是TPU出貨量定義範圍不同，如是否含Anthropic經Broadcom代工之第三方量)，**Lucas決定兩份數字先並列記錄保留，不互相覆蓋，待未來有更明確消息(如Google/Broadcom自結數字、其他法人報告佐證)出現後再回頭釐清何者較貼近實情**。後續若更新TPU出貨量相關筆記，應延續此並列呈現方式，不要只取其一。
@@ -270,6 +271,7 @@ aliases: [CCL銅箔基板, CCL]
 ---
 
 ## 📄 原始文件與連結 (Original Documents)
+* `[[20261006_082050_file.pdf]]` - Daiwa《Taiwan Copper Clad Laminate》：EMC/TUC/ITEQ 9月營收全面優於預期，PTFE/CPO利空過度解讀 (2026-10-05)
 * `[[20261004_200441_file.pdf]]` - ALETHEIA CAPITAL《Advanced Materials - PCB & CCL: Goldilocks》完整報告：Google TPU供應鏈深度分析，含ISU Petasys/TTM Technologies/台光電三份個股報告 (2026-10-04)
 * `[[20261004_200422_text.md]]` - 同報告中文摘要 (2026-10-04)
 * `[[20260920_170628_text.md]]` - 個人分析：CPO對AI伺服器板材與CCL長期價值——局部替代、板件間重分配，非全面取代 (2026-09-20)
