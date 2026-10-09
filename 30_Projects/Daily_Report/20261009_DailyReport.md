@@ -32,7 +32,7 @@ tags: [report/daily, market-overview]
 **動能指標**
 
 * **KD**：K=85.3／D=86.5（死亡交叉／無背離／交叉往下）
-* **MACD**：DIF=953.9／DEA=785.5（無交叉／無背離／交叉往上）
+* **MACD**：DIF=955.5／DEA=788.0（無交叉／無背離／交叉往上）
 
 </div>
 </div>
@@ -72,7 +72,7 @@ tags: [report/daily, market-overview]
 **融資餘額**
 <small>(為前日資料)</small>
 
-* 上市：6,400 億（<span class="num-up">+23.4 億</span>）
+* 上市：6,464 億（<span class="num-up">+64.0 億</span>）
 * 上櫃：4,367 億（<span class="num-down">-27.6 億</span>）
 
 </div>
@@ -81,9 +81,9 @@ tags: [report/daily, market-overview]
 **三大法人現貨買賣超**
 
 * 外資：<span class="num-down">-758.5 億</span>
-* 投信：<span class="num-up">+46.9 億</span>
+* 投信：<span class="num-up">+30.1 億</span>
 * 自營商：<span class="num-down">-187.3 億</span>
-* 合計：<span class="num-down">-899.0 億</span>
+* 合計：<span class="num-down">-915.7 億</span>
 
 </div>
 <div class="idx-col" markdown="1">
@@ -136,7 +136,7 @@ tags: [report/daily, market-overview]
 <span style="font-size: 11.5pt; font-weight: 700;">A大戶 (資料日期：2026/10/08)</span>
 
 總市值 335,600,000 元（較 2026/10/07 市值變化：<span class="num-up">+1,800,000</span> 元，<span class="num-up">+0.54%</span>）<br>
-▲ 加碼：6213聯茂(<span class="num-up">+0.1pp</span>)、0052富邦科技(<span class="num-down">-0.1pp</span>)、6669緯穎(<span class="num-up">+0.1pp</span>)、6870騰雲(<span class="num-up">+0.0pp</span>)、6696仁新(<span class="num-up">+0.4pp</span>)<br>▼ 減碼：SPCX(SpaceX)(<span class="num-down">-0.1pp</span>)、SPAL(<span class="num-down">-0.1pp</span>)、00631L台灣50正2(<span class="num-down">-0.3pp</span>)
+▲ 加碼：6213聯茂(<span class="num-up">+0.1pp</span>)、0052富邦科技(<span class="num-down">-0.1pp</span>)、6696仁新(<span class="num-up">+0.4pp</span>)、6870騰雲(<span class="num-up">+0.0pp</span>)、6669緯穎(<span class="num-up">+0.1pp</span>)<br>▼ 減碼：SPCX(SpaceX)(<span class="num-down">-0.1pp</span>)、SPAL(<span class="num-down">-0.1pp</span>)、00631L台灣50正2(<span class="num-down">-0.3pp</span>)
 
 | 股票 | 持股比例 | 市值(元) | 較前次變動 |
 | :--- | :--- | :--- | :--- |
@@ -176,7 +176,7 @@ tags: [report/daily, market-overview]
 <span style="font-size: 11.5pt; font-weight: 700;">G大戶 (資料日期：2026/10/08)</span>
 
 總市值 151,295,000 元（較 2026/10/07 市值變化：<span class="num-down">-148,150,300</span> 元，<span class="num-down">-49.47%</span>）<br>
-▲ 加碼：4958臻鼎-KY(<span class="num-up">+20,000股</span>)<br>▼ 減碼：3105穩懋(<span class="num-down">-20,000股</span>)、6182合晶(<span class="num-down">-40,000股</span>)<br>🔚 已出清：<span class="text-green">3653健策</span>、<span class="text-green">2303聯電</span>、<span class="text-green">2330台積電</span>、<span class="text-green">3665貿聯</span>、<span class="text-green">2308台達電</span>、<span class="text-green">2327國巨</span>
+▲ 加碼：4958臻鼎-KY(<span class="num-up">+20,000股</span>)<br>▼ 減碼：3105穩懋(<span class="num-down">-20,000股</span>)、6182合晶(<span class="num-down">-40,000股</span>)<br>🔚 已出清：<span class="text-green">3653健策</span>、<span class="text-green">2303聯電</span>、<span class="text-green">2330台積電</span>、<span class="text-green">2327國巨</span>、<span class="text-green">3665貿聯</span>、<span class="text-green">2308台達電</span>
 
 | 股票 | 庫存股數 | 成本價 | 現價 | 市值(元) | 損益% | 較前次變動 |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
