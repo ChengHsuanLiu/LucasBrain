@@ -1067,6 +1067,18 @@ def build_ingest_digest_section(date_str):
     return lines
 
 
+def build_earnings_calls_block():
+    """七、法說會時程：與 `g EarningsCalls` 同一份內容（追蹤個股/近7天異動/全市場），接在日報最後。
+    回傳 (lines, css)。內容產生邏輯在 generate_earnings_calls_report.build_embedded_section()：
+    資料過舊會先自動更新、任何例外都不外拋；這裡再多包一層，連 import 本身失敗都不能拖垮日報其他六節。"""
+    try:
+        from generate_earnings_calls_report import build_embedded_section
+        return build_embedded_section()
+    except Exception as e:  # noqa: BLE001
+        print(f"Warning: 法說會時程區塊載入失敗，已略過: {e}")
+        return ["### 七、法說會時程", "", f"*（法說會時程區塊載入失敗，本次略過：{e}）*", ""], ""
+
+
 def generate_report():
     today_str = datetime.now().strftime("%Y-%m-%d")
     report = []
@@ -1132,6 +1144,11 @@ def generate_report():
         report.append("")
         report.extend(ingest_digest_lines)
 
+    earnings_lines, earnings_css = build_earnings_calls_block()
+    report.append('<div class="step-page-break"></div>')
+    report.append("")
+    report.extend(earnings_lines)
+
     filename_stem = f"{today_str.replace('-', '')}_DailyReport"
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     output_path = os.path.join(OUTPUT_DIR, f"{filename_stem}.md")
@@ -1140,7 +1157,7 @@ def generate_report():
 
     print(f"Generated Daily Report at: {output_path}")
 
-    render_markdown_to_pdf(report, OUTPUT_DIR, filename_stem, extra_css=DAILY_REPORT_EXTRA_CSS)
+    render_markdown_to_pdf(report, OUTPUT_DIR, filename_stem, extra_css=DAILY_REPORT_EXTRA_CSS + earnings_css)
 
     return output_path
 

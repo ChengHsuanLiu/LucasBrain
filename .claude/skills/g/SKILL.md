@@ -1,6 +1,6 @@
 ---
 name: g
-description: 產生投資報告（Daily_Report / Financial_Screen / Invest_Timeline / Momentum_Screen / Weekly_Focus / Stock_Reports）。使用者輸入 /g 或 /g <報告類型> 或 /g Stock_Reports <股票代號> 時觸發。
+description: 產生投資報告（Daily_Report / EarningsCalls / Financial_Screen / Invest_Timeline / Momentum_Screen / Weekly_Focus / Stock_Reports）。使用者輸入 /g 或 /g <報告類型> 或 /g Stock_Reports <股票代號> 時觸發。
 ---
 
 使用者呼叫了這個 skill，附帶的參數是本次訊息裡 `/g` 後面的文字（可能為空）。
@@ -9,7 +9,8 @@ description: 產生投資報告（Daily_Report / Financial_Screen / Invest_Timel
 
 | 報告類型 | 腳本 | 說明 |
 | :--- | :--- | :--- |
-| Daily_Report | `.agent/scripts/generate_daily_report.py` | 盤後大盤日報 |
+| Daily_Report | `.agent/scripts/generate_daily_report.py` | 盤後大盤日報（最後一節含法說會時程） |
+| EarningsCalls | `.agent/scripts/generate_earnings_calls_report.py` | 法說會時程（追蹤個股/近7天異動/全市場），讀資料庫、前景執行即可；報告頂端若警告資料過期，加 `--refresh` 重跑 |
 | Financial_Screen | `.agent/scripts/scan_financial_score.py` | 全市場財務指標篩選 |
 | Invest_Timeline | `.agent/scripts/generate_invest_timeline.py` | 投資事件行事曆 |
 | Momentum_Screen | `.agent/scripts/scan_momentum_score.py` | 全市場動能篩選 |
@@ -18,7 +19,7 @@ description: 產生投資報告（Daily_Report / Financial_Screen / Invest_Timel
 
 執行規則：
 
-1. **沒有帶參數**（使用者只打了 `/g`）：用 AskUserQuestion 工具列出上述 6 個報告類型讓使用者選一個。如果選到 Stock_Reports，再追問一次股票代號（純文字輸入，例如 2330）。使用者選完/回答完之後，才執行對應腳本。
+1. **沒有帶參數**（使用者只打了 `/g`）：用 AskUserQuestion 工具列出上述 7 個報告類型讓使用者選一個。如果選到 Stock_Reports，再追問一次股票代號（純文字輸入，例如 2330）。使用者選完/回答完之後，才執行對應腳本。
 
 2. **參數明確對應到某個報告類型**（例如 `Daily_Report`、`Financial_Screen` 等，允許忽略大小寫與底線/空格差異做寬鬆比對）：直接執行對應腳本，不用再問。
 

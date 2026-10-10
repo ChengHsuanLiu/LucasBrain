@@ -6,7 +6,8 @@ Lucas 在對話中打出以下純文字指令時（不用斜線，直接打在�
 
 | 指令                       | 對應腳本                                             | 說明                                                  |
 | :----------------------- | :----------------------------------------------- | :-------------------------------------------------- |
-| `g Daily_Report`         | `.agent/scripts/generate_daily_report.py`        | 盤後大盤日報                                              |
+| `g Daily_Report`         | `.agent/scripts/generate_daily_report.py`        | 盤後大盤日報（最後一節「七、法說會時程」併入 EarningsCalls 內容）           |
+| `g EarningsCalls`        | `.agent/scripts/generate_earnings_calls_report.py` | 法說會時程：追蹤個股未來30天、近7天異動、全市場未來14天（資料庫由排程每天18:30更新）  |
 | `g Financial_Screen`     | `.agent/scripts/scan_financial_score.py`         | 全市場財務指標篩選                                           |
 | `g Invest_Timeline`      | `.agent/scripts/generate_invest_timeline.py`     | 投資事件行事曆                                             |
 | `g Momentum_Screen`      | `.agent/scripts/scan_momentum_score.py`          | 全市場動能篩選                                             |
@@ -18,7 +19,7 @@ Lucas 在對話中打出以下純文字指令時（不用斜線，直接打在�
 | `g Backtest {股票代號}`      | `.agent/scripts/backtest_model.py {股票代號}`        | 模型對帳：模型月營收 vs MOPS 實績，偏離示警                          |
 
 執行規則：
-1. **只打 `g`（沒有帶報告類型）**：用 AskUserQuestion 工具列出上述 9 個報告類型讓 Lucas 選一個；選到 Stock_Reports / Model / Backtest 的話再追問一次股票代號。選完/回答完才執行。
+1. **只打 `g`（沒有帶報告類型）**：用 AskUserQuestion 工具列出上述 11 個報告類型讓 Lucas 選一個；選到 Stock_Reports / Model / Backtest 的話再追問一次股票代號。選完/回答完才執行。
 2. **`g` 後面帶的文字明確對應到某個報告類型**（忽略大小寫、底線/空格差異做寬鬆比對，例如 `g daily report`、`g weekly_focus` 都算數）：直接執行對應腳本，不用再問。
 3. **`g Stock_Reports` / `g Model` / `g Backtest` 後面帶了股票代號**：直接執行對應腳本；沒帶代號則追問。
 4. **`g` 後面的文字看不出對應到哪個報告類型**：比照規則1跳出選單，不要用猜的執行錯誤的腳本。
@@ -27,6 +28,14 @@ Lucas 在對話中打出以下純文字指令時（不用斜線，直接打在�
 - 在 repo 根目錄下用 Bash 工具執行 `python .agent/scripts/{腳本檔名}`。Financial_Screen、Momentum_Screen 這種全市場掃描通常要跑幾分鐘到幾十分鐘，用 `run_in_background: true`；其他幾種較快，前景執行即可。
 - 執行完回報產出檔案路徑（.md 與 .pdf）與簡短重點摘要，不用整份貼出來。
 - 若該報告會覆蓋今天已產生過的正式報告檔案，執行前用 `git status`/`git diff --stat` 快速確認一下是否有未提交的異動；有的話提醒一聲即可，不用阻擋執行。
+
+### EarningsCalls 專屬說明
+
+- 報告只讀 `.agent/data/earnings_calls.db`，不連網；資料庫由 Task Scheduler 任務 `LucasBrain_EarningsCalls` 每天 18:30 更新（`fetch_earnings_calls.py`）。
+- 報告頂端會標示資料更新時間；若出現「資料已超過 36 小時未成功更新」警告，回報時要提醒 Lucas，並可改跑 `python .agent/scripts/generate_earnings_calls_report.py --refresh`（先更新再產生，約多 30 秒）。
+- 回報重點：追蹤個股（◆）近期場次、近 7 天異動（尤其是「疑似取消」與「改時間」）。「疑似取消」只是推論，不要當成已確認取消。
+- 同一份內容也會併入 `g Daily_Report` 的最後一節「七、法說會時程」：日報產生時若資料庫超過 3 小時沒更新會先自動更新；該節出錯只會顯示「本次略過」，不影響日報其他部分。
+- 排程是否正常用 `python .agent/scripts/fetch_earnings_calls.py --status` 查（`scheduled_logs` 內的中文是亂碼，不要用它判斷）。細節見 `.agent/tasks/fetch_earnings_calls.md`。
 
 ### Model / Backtest 專屬規則
 
