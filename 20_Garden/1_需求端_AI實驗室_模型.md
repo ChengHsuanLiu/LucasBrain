@@ -4,7 +4,7 @@ garden_type: industry
 title: "AI 實驗室 / 模型"
 tier: "1_需求端"
 created: 2026-07-11
-updated: 2026-07-11
+updated: 2026-10-12
 review_by: 2026-10-11
 tags: [industry/category]
 source_type: manual_note
@@ -36,7 +36,7 @@ source_type: manual_note
 ---
 
 ## 🔗 相關個股連結 (Related Stocks)
-* (目前無)
+* `[[SPCX SpaceX]]` - SpaceX(含xAI/Grok/X/Cursor，2026-02併入)：Colossus算力租賃給Anthropic/Google，Grok自研模型；2026-10-12建頁(JudyInsight報告)
 
 ---
 
