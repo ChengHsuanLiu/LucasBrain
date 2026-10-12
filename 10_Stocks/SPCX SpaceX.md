@@ -5,7 +5,7 @@ name: "SpaceX"
 market: "US-NASDAQ"
 industry: "太空發射／LEO寬頻(Starlink)／AI運算基礎設施與模型(Colossus、Grok、X、Cursor)"
 created: 2026-10-12
-updated: 2026-10-12
+updated: 2026-10-13
 review_by: 2026-11-10
 tags: [investment/watchlist, us-stock, space, leo, starlink, ai-compute, starship]
 aliases: [SpaceX, SPCX, Space Exploration Technologies, Starlink, Starship, Colossus]
@@ -166,6 +166,10 @@ valuation_rating: "SELL"
 ---
 
 ## 📝 歷史筆記與會議紀要 (Notes & Memos)
+
+### 📌 [2026-10-12] 大戶籌碼註記：安大戶SPCX由約5.3%降為0% (來源: [[20261012_155904_image.jpeg]]，安大戶持股截圖；歷史數字見`[[大戶籌碼追蹤]]`)
+* 安大戶(估算%口徑，基準約NT$2億)：2026-10-05 4.8M(2.4%)、10/06 11.0M(5.5%)、10/07 10.8M(5.4%)、**10/08 10.6M(5.3%)，10/12截圖列示SPCX 0.0%(同圖另列SPAL 0.0%、總計172.5%)**。
+* 解讀謹慎：本記錄只代表**安大戶截圖當日SPCX顯示為0.0%**(可能為出清，也可能為持倉口徑/帳戶範圍變動)，原因與賣價未知；與本頁Judy報告REDUCE評等、鎖定期10/24與12/8-9等催化劑日期並列觀察，不作因果推論。
 
 ### 📌 [2026-10-11] JudyInsight《SpaceX (SPCX) 美股深度研究報告》更新版 (來源: [[20261012_004035_file.pdf]]，40頁)
 **更新內容(相對9/28初版)**：納入Flight 14結果(9/28)、FCC D2D核准(10/6)、賣方首次覆蓋(GS 7/8、JPM 7/7)與國防太空報告(Bloomberg Intelligence 2026-09-23、Deutsche Bank 2026-08-14)對照、最新價量與共識、同業估值倍數、鎖定期S-1/A原文；EPS模型假設維持2Q26基準，**未重新估算**。以下為各章重點(本頁其餘段落已含大部分數字，此處補充未列於上方者)。
