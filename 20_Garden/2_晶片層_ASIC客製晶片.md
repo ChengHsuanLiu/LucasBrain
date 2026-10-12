@@ -4,7 +4,7 @@ garden_type: industry
 title: "ASIC 客製晶片"
 tier: "2_晶片層"
 created: 2026-07-10
-updated: 2026-10-04
+updated: 2026-10-13
 review_by: 2026-10-11
 tags: [industry/category, industry/asic]
 ---
@@ -12,6 +12,7 @@ tags: [industry/category, industry/asic]
 # ASIC 客製晶片
 
 ## 🎯 產業投資點評與核心結論 (Summary & Insights)
+* **⚠️ 2026-10-13 新增：安聯投信10/2026簡報引用Alethia：GPU+ASIC全球出貨(百萬顆)2025/26E/27E/28E 12.9/15.0/24.0/34.4(2026E-28E CAGR約50%)；Google TPU 3.3/3.6/8.5/12.0(含Anthropic經AVGO量，v8i+t 2027年8.2、2028年10.5、v9 2028年1.5)；Nvidia 5.4/7.6/9.5/11.4(Rubin 2027年6.5、Rubin Ultra 2027年2.0)；AMD 1.9/1.6/2.0/3.0；Trainium 1.9/1.6/2.0/2.0；OpenAI 0/0.2/1.0/3.5；MTIA 0.2/0.2/0.7/2.0；Nvidia市占隨客戶自研ASIC下降，但GPU/CPU/LPU/storage/networking整合能力仍最強**（來源：`[[20261012_120421_file.pdf]]`第10頁，單位百萬顆(推測)、資料日期2026/10；與下方既有「外資伺服器CPU/GPU/ASIC出貨量」截圖(2026-08-23、09-15)口徑可能不同，並列存查不合併）：備註——AMD 2028年OAI與Anthropic近期上調訂單；Google TPU 2027年V8i&t各半、V9(Whalefish)HVM預計2028年中；OpenAI 2027/2028年1.3/5GW部署；CY27約1M顆GB300在產，CY28 Rubin Ultra占比(雙/四GPU與Feynman設計)待定。
 * **產業 So What？（這為什麼重要）**：
   - Hyperscaler 與科技巨頭（Google、Tesla、Microsoft）自研 ASIC 晶片浪潮持續擴大，帶動專業 ASIC 設計服務商（創意/GUC）同步受惠；同時，先進封裝周邊的關鍵 IP/材料供應商（愛普的 Si-Cap）也隨自研晶片放量吃到訂單紅利。
 * **⚠️ 2026-09-15 更新：巨有科技(8227)新增追蹤——台灣首家ASIC設計服務(Turnkey)公司，強力買進/TP230元**：華南投顧報告(2026-09-09)，2Q26營收創新高(YoY+121.7%)但毛利率17.1%不如預期(公司模型18.1%/市場共識22.3%)。12nm(SerDes/PCIe Extender)為2026年主力，受台積電晶圓配額限制而非需求不足；6nm鎖定中國網通「白名單」客戶(PCIe Retimer/SerDes)多項NRE專案，預期2027年才有實質量產貢獻(2027F營收YoY+41%)；CoWoS/OSAT已認證但佔比仍低於1%，隨台積電白名單OSAT寬限期2026年底到期，預期2027年起放量。與`[[3443創意]]`同屬台積電Design Center Alliance之ASIC設計服務商，但客戶結構(中國網通白名單+美系FPGA)與創意(Google/Tesla/Microsoft)明顯不同，可視為互補而非直接競爭關係。詳見`[[8227巨有科技]]`個股頁面。
@@ -92,6 +93,7 @@ tags: [industry/category, industry/asic]
 ---
 
 ## 📄 原始文件與連結 (Original Documents)
+* `[[20261012_120421_file.pdf]]` - 安聯投信《台股展望報告》(2026/10)：GPU/ASIC出貨預估(Alethia)、PCB/CCL規格對照、TrendForce缺貨表 (2026-10)
 * `[[20261004_154432_file.pdf]]` - UBS《Broadcom Inc.: Highlights From Virtual NDR Call With Mgmt》：確認TPU/XPU專案能見度至2029年，4-die→8-die→16-die晶片路線圖 (2026-10-02)
 * `[[20260915_111246_file.pdf]]` - 華南投顧《巨有科技(8227)》：強力買進，TP230元，台灣首家ASIC設計服務Turnkey公司 (2026-09-09)
 * `[[20260914_234858_image.jpeg]]` - 外資伺服器CPU/GPU/ASIC出貨量表：Nvidia/AMD/Google/AWS/MSFT/Meta公司別拆分數字 (未附券商出處)
