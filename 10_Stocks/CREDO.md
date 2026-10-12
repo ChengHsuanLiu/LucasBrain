@@ -5,7 +5,7 @@ name: "Credo Technology"
 market: "US-NASDAQ"
 industry: "AI資料中心高速互連晶片（AEC銅纜/SerDes IP/光學DSP/矽光子）"
 created: 2026-09-21
-updated: 2026-09-21
+updated: 2026-10-12
 review_by: 2026-10-21
 tags: [investment/target, us-stock, aec, optical, serdes, ai-interconnect]
 aliases: [Credo, CRDO, Credo Technology, Credo Technology Group]
@@ -23,6 +23,7 @@ valuation_rating: "HOLD"
 
 ## 🎯 投資建議與核心結論 (Executive Summary)
 * **核心論點**：
+  - **⚠️ 2026-10-12 新增（一手管理層溝通，補足本頁原本僅有的公開網路資料）：2026-10-07 Credo管理層Call Memo(Judy Hsiao)——1.6T AEC營收2027財年Q4(約4-5月)或2028財年初開始、2027日曆年中明顯放量，首個1.6T商業訂單為Scale-Up銅纜Retimer(未來9-12個月US$5,000萬採購單)，ZeroFlap Optics以專屬遙測/診斷為差異化，BizLink「非Credo業績代理指標」**（來源：`[[20261011_182620_file.docx]]`，中英雙語call memo；與談內容為Credo管理層對投資人問答，原文標題「202610.07 CREDO callmemo」）：**1.6T AEC**：確認1.6T AEC營收將於**FY27 Q4(約2027年4-5月)或FY28初期**開始，預期2027日曆年中起顯著放量；預計由**多家超大型雲端客戶**共同部署而非單一客戶；1.6T成本增幅低於ASP提升幅度→毛利率比前幾代更好；最長傳輸約6公尺(800G世代為7公尺)；800G(100G/lane)近期才躍升為AEC主要營收來源，25G/50G/lane仍貢獻相當比重；絕大多數AEC纜線≤3公尺，6-7公尺僅個位數百分比；1.6T產品家族橫跨光學(Scale-Out)、AEC(Scale-Out)、Retimer(Scale-Up)與PIC(Scale-Up)。**首個1.6T商業捷報**：Scale-Up**銅纜Retimer**取得**未來9-12個月高達US$5,000萬採購訂單**。**ZeroFlap Optics差異化**：市場上唯一能在光收發器提供豐富診斷與即時鏈路健康數據(可辨識ESD損傷、系統整合時光纖未對準、光纖灰塵造成光子反射等根因，由Credo專用DSP偵測)，同業(旭創、易飛揚、AOI、Coherent/Lumentum)缺乏專用DSP/軟體/韌體；僅買獨立PIC無法享有此功能(診斷能力來自整顆收發器內嵌的DSP/軟體/韌體)；Marvell理論上可複製但會侵蝕自家DSP業務與損害客戶(Inphi/Eoptolink)關係→Credo約有一年先發優勢。**客戶價值**：商品化光模組叢集上線需4-6週(鏈路抖動與試錯)、AEC/ZeroFlap約1週；以US$6/GPU/小時(每週US$1,000)計，節省3-5週=每張GPU多創造約US$3,000-5,000租金；主動監測可在模組完全故障前關閉問題節點。**PIC業務**：US$1億+的PIC營收目標**100%來自外售給其他光收發器廠商的獨立PIC**(不含整合於自家ZeroFlap的PIC)；已拿下**兩個大型NPO客戶的design win**，預計FY28貢獻營收；第一代ZeroFlap使用第三方PIC，收購DustPhotonics之PIC整合進自家模組預計再約9個月(收購後約3個月時談話)。**庫存/供應鏈**：近兩季原物料占比顯著上升，主因為ZeroFlap備料(雷射、DSP、PIC、時脈元件、微控制器)；最長交期是台積電IC晶圓13-14週，Credo採購晶圓後存為裸晶庫(die bank)，收單後封裝約1週、組裝成AEC/ZeroFlap約1個月；LNP(薄膜鋰鈮酸鹽)供應吃緊，Credo稱已兩年預先佈局鎖定產能，但「成長潛力大、非無限」。**客戶**：4家營收占比>10%的超大型雲端客戶+正在成長的第5家(細節因保密協議不公開)；目前營收多來自2-3年前開發的產品，現在的開發將於未來1-2年落地。**Micro-LED vs Micro-VCSEL**(英文原稿「micro-vixel」為VCSEL之誤植/音譯)：依應用情境兩者並提，無特定偏好。**活動**：次週(10/13)OCP大會展出新技術並發布新聞稿。**⚠️與本頁既有內容的並列(待確認)**：①本頁寫「FY2026前十大客戶約90%、兩家個別>10%」，本memo稱現有「4家營收占比>10%的超大型客戶+第5家」——可能是客戶集中度從FY26到現在的變化(或口徑不同)，**待下次財報客戶別揭露核實**；②本頁「貿聯為Credo線材組裝」，本memo稱**BizLink僅為多家合約製造商之一，不應用BizLink業績作為Credo業務指標**，兩者並列；③本頁寫ALC「FY2027送樣、FY2028量產」，memo未提ALC時程，僅提1.6T AEC/Retimer/PIC時程；④本memo的「US$5,000萬Retimer訂單」「兩個NPO design win(FY28貢獻)」為管理層說法，非財報揭露數字。**待確認項目(memo列示)**：ZeroFlap與ALC的合約製造商尚未揭露；1.6T AEC首批部署客戶明細未確認(保密)；自家PIC整合進ZeroFlap約9個月內；LNP供應吃緊是否限制超出財測的上行。
   - **AI資料中心「電轉光」互連的關鍵供應商**：Credo是AEC（Active Electrical Cable，主動式銅纜）品類的開創者，客戶涵蓋Amazon(AWS)、Microsoft、xAI等超大型雲端業者；核心技術優勢是用**成熟製程節點**（12nm/28nm，業界多在5nm）做SerDes/DSP晶片，同時**不生產switch ASIC**、被視為中立供應商——超大型業者不論選Broadcom或Astera Labs的switch，都可以搭配Credo的線材/晶片，這是結構性的護城河論述。
   - **正從單一AEC產品，轉型為「電＋光」全連接矩陣**：2026年陸續透過收購Hyperlume（MicroLED光學互連，2025-09-29完成）、DustPhotonics（矽光子PIC，2026-05-28完成，總代價約13億美元）補齊光學版圖，目前產品線已涵蓋AEC銅纜、SerDes IP授權、PCIe Retimer、光學DSP、矽光子PIC、以及尚在樣品階段的ALC（Active Light Cable，MicroLED主動光纜，FY2027送樣、FY2028量產）。
   - **FY2027(2026/5~2027/4)財測：全年營收年增85%以上，成長引擎正在切換**：Q1 FY27(2026-09-01公布)營收4.79億美元創新高(QoQ+10%/YoY+115%)，優於財測；但值得注意管理層自己講的成長结构——**FY27新增的營收成長，光學業務約佔一半、AEC約佔另一半**，而近期(2026-09-17)已有媒體以「Credo Expands Into Optics as AEC Growth Slows」為題，點出AEC這個核心原始產品成長动能正在放緩、光學是接棒的第二引擎，這跟股價從6月高點(>300美元)拉回約37%的時間點大致吻合，值得持續觀察是「健康的產品組合多元化」還是「核心業務動能見頂」。
@@ -125,12 +126,28 @@ valuation_rating: "HOLD"
 ---
 
 ## 🤝 供應鏈與vault既有交叉引用 (Supply Chain Cross-References)
+- **⚠️ 2026-10-12 補充(Credo管理層10/7 call memo)**：管理層指出**BizLink(貿聯)只是Credo多家AEC合約製造商之一，投資人不應把貿聯的表現視為Credo業務的代理指標**；與上一條「貿聯負責Credo線材相關組裝/貿聯2Q26前十大客戶之一」並列(貿聯端數字確屬其營收占比，但反向推Credo需求不宜直接等同)。
 - **[[3665貿聯]]（貿聯-KY）**：Credo是貿聯2Q26前十大客戶之一，營收占比約8-9%（貿聯負責Credo線材相關的組裝製造）。貿聯筆記裡已有UBS於2026-07-08參加「Credo台灣NDR(Non-Deal Roadshow)」後的既有記錄：**Credo對AEC TAM持續看多，8-10月OCP展會展示ALC，且MediaTek/AUO開始評估ALC方案**——這則MediaTek/AUO評估ALC的細節，本次網路搜尋並未能獨立查證到公開報導，屬於Lucas既有分析師資源才拿得到的資訊，正好印證「vault既有一手資料 vs. AI公開網路搜尋」的深度落差，建議後續若有機會可向同一批分析師追問ALC最新進度。
 - **概念上相關但vault尚未追蹤的個股**：[[3081聯亞]]（雷射元件）、[[3363上詮]]（FAU光纖陣列）、[[2345智邦]]（交換器系統整合）——這幾檔台股都在同一個「AI資料中心高速互連」供應鏈上，但屬於不同環節（Credo是連接晶片/線材設計端，這幾檔多是上游元件或下游系統整合），非直接同業競爭關係。
 
 ---
 
+## 📝 管理層/法人溝通紀要 (Call Memos)
+
+### 📌 [2026-10-07] Credo Call Memo by Judy Hsiao(中英雙語) (來源: [[20261011_182620_file.docx]])
+**文件性質**：Word檔，前半為英文call memo(Key Outcomes / Decisions Made / 各主題要點，並於句尾以數字標註對應的發言來源序號)，後半為同內容之繁體中文會議紀錄；標題「202610.07 CREDO 會議紀錄 (Call Memo by Judy Hsiao)」。內容為Credo管理層對投資人之問答整理，屬**一手管理層說法**，與本頁其他以公開網路資料為主的段落不同可信度層級；惟memo為第三方整理、未附逐字稿，數字(US$5,000萬訂單、US$1億PIC目標)為管理層口頭說法。
+**一、關鍵成果與重大決策**：管理層對AEC、光學(Optics)與重定時器(Retimer)產品線的多年成長表達強烈信心。①1.6T AEC營收將於**2027財年第四季(約4-5月)或2028財年初**開始，預計日曆年2027年中起顯著放量；多家超大型雲端客戶共同部署，非單一客戶；②ZeroFlap Optics因獨家遙測/診斷能力列為關鍵競爭優勢；③已取得Scale-Up銅纜Retimer**未來9至12個月高達US$5,000萬採購訂單**，為1.6T世代首個商業捷報；④BizLink非業績唯一指標：AEC採用多家代工製造商，BizLink僅為其中之一；⑤Micro-LED與Micro-VCSEL依應用情境並提，無特定偏好；⑥目標US$1億以上的PIC營收100%來自外售給其他光收發器廠商的Discrete PIC。
+**二、AEC業務與產品路線圖**：AEC仍占營收絕大部分、預期FY27與FY28持續成長；單通道100G(800G，4×100G或8×100G)近期才躍升為AEC主要營收來源，25G/50G仍貢獻相當比重；絕大多數AEC纜線長度在3公尺以內，6-7公尺僅占個位數%營收。**1.6T AEC(單通道200G)**：成本增幅低於ASP提升幅度，毛利率優於前幾代；最長可達6公尺(800G為7公尺)；產品家族涵蓋光學(Scale-Out)、AEC(Scale-Out)、Retimer(Scale-Up)與PIC(Scale-Up)。
+**三、Design Win轉化與ZeroFlap壁壘**：非所有design win都轉化為營收(半導體產業常態)，從取得到產生營收可從一季到數年不等，一旦部署具極高黏性。**ZeroFlap Optics**：唯一能在光收發器提供豐富診斷與即時鏈路健康數據的產品；根因識別涵蓋ESD損傷、系統整合時光纖未對準、光纖灰塵(灰塵使光子反射回彈，可由Credo專用DSP偵測)；傳統商品化光模組廠(旭創、易飛揚、AOI、Coherent/Lumentum)缺乏專用DSP/軟體/韌體。AEC遙測與ZeroFlap本質相似；僅買獨立PIC無法享有此功能。競爭壁壘：Marvell等理論上可開發，但會侵蝕既有DSP業務並損害與Inphi/Eoptolink等客戶關係，給Credo約一年先發優勢。**客戶價值**：商品化光模組叢集需4-6週建置，AEC/ZeroFlap可縮至1週；以每GPU每小時US$6(每週US$1,000)計，節省3-5週=每GPU多US$3,000-5,000租金收益；主動監測可在模組完全故障前關閉問題節點，提高叢集稼動。
+**四、PIC、庫存策略與供應鏈**：獨立PIC已拿下兩家大型NPO客戶的design win，預計FY28貢獻營收；第一代ZeroFlap使用第三方PIC，收購之DustPhotonics PIC整合預計9個月內推出搭載自家PIC的ZeroFlap產品。近兩季原物料比例顯著增加，主因為ZeroFlap量產備料(雷射、DSP、PIC、時脈元件、微控制器)。交期最長者為台積電IC晶圓(約13-14週)；Credo採購晶圓後存於裸晶庫(die bank)，收到訂單後封裝約1週、組裝成AEC或ZeroFlap約1個月，約一個月內可交貨。Credo稱已多年佈局供應鏈，信心滿足財測目標與潛在超額需求；針對LNP產能緊張，兩年前即預先佈局鎖定產能，成長「潛力大但非無限」。
+**五、客戶關係與待確認事項**：4家營收占比≥10%的超大型雲端客戶，另有第5家正在成長，細節因保密協議不公開；目前營收主要來自2-3年前開發的產品，當前開發將於未來1-2年落地；資料中心部署本質緩慢複雜。**活動**：次週OCP大會(Credo將展示並發布新聞稿)。**Action Items**：Credo IR團隊發布OCP展示新聞稿；營運團隊持續確保供應鏈供給；工程團隊9個月內完成DUST PIC整合進ZeroFlap。**待確認**：ZeroFlap與ALC合約製造商未揭露；1.6T AEC首批客戶明細未確認；自家PIC整合時程；LNP供應是否限制超出財測的成長。
+**與本頁既有內容的關係**：本頁原有「FY27新增成長光學約占一半、AEC一半」「AEC成長是否放緩待驗證」「客戶集中度」「貿聯為Credo線材組裝」等；本memo補充1.6T AEC時程(FY27 Q4~FY28)、Retimer US$5,000萬單、ZeroFlap差異化與PIC外售定義，**但並未揭露AEC營收成長率**，故「AEC成長是否放緩」仍無定論；客戶集中度「4家>10%」與本頁「2家>10%」並列待核實。
+
+---
+
 ## 📅 近期重大事件時間軸 (Recent Events Timeline)
+- **2026-10-07**：Credo管理層call memo(Judy Hsiao整理)：1.6T AEC營收FY27 Q4或FY28初開始、Scale-Up銅纜Retimer取得未來9-12個月US$5,000萬採購單、兩個NPO PIC design win預計FY28貢獻營收、DUST PIC整合進ZeroFlap約9個月內(見上方「管理層/法人溝通紀要」)。
+- **2026-10-13(預計)**：OCP大會，Credo展示新品並發布新聞稿(同週貿聯等供應鏈廠亦於OCP展出光互連方案)。
 - **2025-09-29**：完成收購Hyperlume（MicroLED光學互連技術），為後續ALC(Active Light Cable)產品線鋪路。
 - **2026-04-13**：宣布收購DustPhotonics（矽光子PIC技術）。
 - **2026-05-28**：完成DustPhotonics收購，總代價約13億美元。
@@ -143,6 +160,7 @@ valuation_rating: "HOLD"
 
 ## 📄 原始文件與參考來源 (Sources)
 > 以下皆為2026-09-21透過WebSearch/WebFetch取得之公開網路資料，非vault既有付費研報/一手記錄；標記日期為資料本身內容所屬時間，非查詢時間。
+- `[[20261011_182620_file.docx]]` — 2026-10-07 Credo管理層Call Memo(Judy Hsiao，英文+繁中)：1.6T AEC時程、US$5,000萬Retimer訂單、ZeroFlap遙測差異化、PIC外售US$1億+、die bank庫存策略(**一手管理層說法**，與下列公開網路資料可信度層級不同)
 - [Credo (CRDO) Q1 2027 Earnings Call Transcript](https://www.theglobeandmail.com/investing/markets/stocks/CRDO-Q/pressreleases/4501263/credo-crdo-q1-2027-earnings-call-transcript/) — Q1 FY27財報電話會議逐字稿
 - [Credo Technology Group Holding Ltd Reports First Quarter of Fiscal Year 2027 Financial Results](https://investors.credosemi.com/news-events/news/news-details/2026/Credo-Technology-Group-Holding-Ltd-Reports-First-Quarter-of-Fiscal-Year-2027-Financial-Results/) — 公司官方Q1 FY27法說新聞稿
 - [Credo Technology Group Holding (CRDO) Stock Price & Overview - stockanalysis.com](https://stockanalysis.com/stocks/crdo/) — 估值/財務數字（2026-09-18時點）
