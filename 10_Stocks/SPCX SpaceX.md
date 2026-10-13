@@ -5,7 +5,7 @@ name: "SpaceX"
 market: "US-NASDAQ"
 industry: "太空發射／LEO寬頻(Starlink)／AI運算基礎設施與模型(Colossus、Grok、X、Cursor)"
 created: 2026-10-12
-updated: 2026-10-13
+updated: 2026-10-14
 review_by: 2026-11-10
 tags: [investment/watchlist, us-stock, space, leo, starlink, ai-compute, starship]
 aliases: [SpaceX, SPCX, Space Exploration Technologies, Starlink, Starship, Colossus]
@@ -23,6 +23,7 @@ valuation_rating: "SELL"
 
 ## 🎯 投資建議與核心結論 (Summary)
 * **核心論點**：
+  - **⚠️ 2026-10-14 新增：台新投顧《美股投資週報》(2026-10-12)——SpaceX擬再籌資US$400億元(US$300億投資級債券＋US$100億銀行貸款)，由Apollo主導、Pimco等分銷，預計2027年完成，用於採購NVIDIA晶片、全面押注Vera Rubin架構；2056年到期債券已跌至面值約85美分、利差逼近垃圾債(長天期債券殖利率比美債高約2.27個百分點)；10/9收盤US$162.6(+1.2%)，華爾街目標價US$217(隱含+33.5%)，52週區間US$104.8–225.6**（來源：`[[20261013_142320_file.pdf]]`第3頁，資料來源FactSet/Refinitiv，二手整理）：**融資背景**：6月上市後獲BBB投資級評級、已完成US$250億元投資級債券；本次400億元由Apollo主導，有助補強先前簡短簡報導致的機構信心不足、提升債券與貸款分銷效率；NVIDIA與華爾街聯合提供5,000億美元融資平台(最高25%晶片價值背書)是否惠及SpaceX為觀察點；馬斯克8月業績會表示公司已決定完全基於NVIDIA平台建設、重點採購Vera Rubin。**關注重點(報告列示)**：①400億元融資的定價與認購熱度、②NVIDIA融資平台背書、③財務揭露與BBB評級能否維持。**與頁面既有資料並列**：本頁Judy 10/11版Forward EV/Sales約25x、自估REDUCE，與台新週報「華爾街評等Buy、目標價217」並列，不合併；週報價格(10/9收盤162.6)與本頁10/11報告價162.57一致。
   - **⚠️ 2026-10-12 首次建頁（JudyInsight 10/11更新版）：SpaceX是全球唯一把「可重複使用發射(Falcon→Starship)、LEO寬頻(Starlink)、AI運算基礎設施與模型(Colossus/Grok/X/Cursor)」整合在同一家上市公司的業者**：2Q26營收**$7.8B(+92% YoY)**、Adjusted EBITDA **$3.5B(+191%)**、營業損失縮至**−$143M(−1.8%)**、淨損$541M；**Backlog季增72%至$47.5B**；2026-06完成史上最大IPO(淨額$85.7B，$135/股，2026-06-12上市，首日收$160.95)。成長由**Starlink(2025年營收$11.4B、營業利益$4.4B)**與**AI算力租賃**(Anthropic約$15B/年＋Google約$11B/年＋7月新簽$67億/6個月，已簽約年化約$39B)雙引擎驅動；2026-08-14完成$600億股票併購Cursor；2026-09-28 Starship Flight 14首度入軌並部署26顆V3；2026-10-06 FCC部分核准15,000顆D2D衛星。**估值面**：現價**$162.57**(2026-10-09收盤)→市值約**$2.21兆**(vendor 13.57B股，含1.30B股未歸屬Musk受限股；經濟股數約12.27B→$2.0兆)；**Forward EV/Sales約25.1x**(同業NVDA 10.2x/TSLA 13.1x/GOOG 7.5x/NBIS 8.7x/IRDM 6.8x平均約9.3x，**溢價約170%**)；TTM EV/Sales約93x；自估FY2026E/FY2027E GAAP EPS約**$0.22/$1.90**(共識−$0.08/$1.99，調整後口徑，信心度低)；分部加總(SOTP)區間約**$68–108/股**，「17–20倍未來12個月營收」參考區間約**$111–130**；**分析師共識目標價均值$221.07(38位：22強買、8買、5持有、3強賣)**，與Judy結論方向相反(GS Buy $205、JPM OW $225皆建立在2028–2029年AI/軌道算力兌現；MS $300、Barclays $254、Bernstein $248、RBC $225)。**Judy最終評等：REDUCE**(逢高減碼/不追價，非清倉)：同業溢價約170%、AI營收集中(客戶B占2Q26營收19.5%且合約90天可終止)、ARR $1,000億目標與已簽約約$75–85B有$15–25B缺口、2027年資本支出/融資缺口(約$260–320B)、鎖定期供給。
 * **評價裁決 (Valuation)**：`SELL`（本vault機械門檻：Forward P/E 85.6x>35；⚠️此門檻校準給台股供應鏈，套在極高成長美股意義有限；**並列**：Judy框架REDUCE、賣方共識目標價均值$221.07(偏多)、本頁不強行給單一結論，留待Lucas判斷）。更新日期：2026-10-12（資料時點：價量2026-10-09收盤）。
 * **操作裁決 (Tactical)**：技術面依Judy基準日2026-10-09收盤——**中性偏多(突破後回測)**：現價$162.57高於MA20($154.40，+5.3%)與MA50($144.24，+12.7%)，RSI(14) 58.3，MACD柱+0.94(自10-07的+1.82收斂)；須守住$158–160；詳下方技術面。
@@ -194,6 +195,7 @@ valuation_rating: "SELL"
 ---
 
 ## 📄 原始文件與連結 (Original Documents)
+* `[[20261013_142320_file.pdf]]` - 台新投顧《美股投資週報》(2026-10-12)：SpaceX US$400億元融資(Apollo主導)、Vera Rubin、2056年債券折價；另含Oracle、Marvell、Strategy、Google (2026-10-12)
 * `[[20261012_004035_file.pdf]]` - JudyInsight《SpaceX (SPCX) 美股深度研究報告》更新版，40頁，REDUCE (2026-10-11；初版2026-09-28)
 * `[[20261011_182730_file.txt]]` - JudyInsight 初版HTML簡報(Presentation_20260928_SPCXSpaceX_個股研報.html，zip封裝，副檔名為.txt) (2026-09-28)
 * 報告內引用之原始來源(**不在本vault**，Judy的vault檔案，未核對)：SEC EDGAR(CIK 0001181412)10-Q(2026-06-30)/8-K/S-1/A #1；2Q26法說會逐字稿(2026-08-04)；JPM《SpaceX: The Next Frontier》(2026-07-07，168頁)；Goldman Sachs首次覆蓋(2026-07-08，33頁)；Bloomberg Intelligence(2026-09-23)；Deutsche Bank(2026-08-14)；FCC DA 26-1078(2026-10-06)；US-SPCX-財務報表.xlsx(財報狗)。
