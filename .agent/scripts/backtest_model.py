@@ -48,13 +48,12 @@ def latest(pattern, d):
 
 
 def fetch_actual_monthly(ticker):
-    """FinMind TaiwanStockMonthRevenue → {'2026-07': 47.49(億元), ...}"""
-    from lib.momentum_screen import fetch_revenue_history
-    out = {}
-    for r in fetch_revenue_history(str(ticker)):
-        key = f"{r['revenue_year']}-{r['revenue_month']:02d}"
-        out[key] = r["revenue"] / 1e8      # 元 → 億元
-    return out
+    """TWMD monthly_revenue（MOPS t187ap05 官方月營收）→ {'2026-07': 47.49(億元), ...}
+    2026-10-19 起由 FinMind 改用 TWMD；兩者同月數字逐月核對完全一致（聯茂 6213，16/16 個月）。
+    點數是每次呼叫固定計點，單檔約 1~2 次呼叫；即時抓取失敗時 lib.twmd_client 會退回最近一次快取。"""
+    from lib.twmd_client import monthly_revenue_history
+    return {r["year_month"]: r["revenue"] / 1e8      # 元 → 億元
+            for r in monthly_revenue_history(str(ticker))}
 
 
 def run(model_dir, quiet=False):
