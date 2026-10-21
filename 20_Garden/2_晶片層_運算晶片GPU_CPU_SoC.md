@@ -4,7 +4,7 @@ garden_type: industry
 title: "運算晶片 GPU/CPU/SoC"
 tier: "2_晶片層"
 created: 2026-07-11
-updated: 2026-07-11
+updated: 2026-10-14
 review_by: 2026-10-11
 tags: [industry/category, industry/asic]
 ---
@@ -12,6 +12,7 @@ tags: [industry/category, industry/asic]
 # 運算晶片 GPU/CPU/SoC
 
 ## 🎯 產業投資點評與核心結論 (Summary & Insights)
+* **⚠️ 2026-10-14 新增：大摩10/12 roadshow——中國國產GPU與Rubin出貨口述**（來源：`[[20261013_181351_file.docx]]`，口述性質、含語音式誤植，公司名/代號待核對，中國標的皆非追蹤個股）：**Rubin**——Q4每日目標15K、單季1.3M、全年接近2.6M(單位未標，與Alethia 2026E Rubin 2.0M口徑可能不同)；CPU代理首選KYEC勝過GUC(`[[2449京元電]]`、`[[3443創意]]`)。**中國國產GPU**——3Q營收預估較弱(36億 vs 市場40億+)，主因「690」恢復週期長：580因價格問題交不出多少、590與Q2差不多、690開始續上線但實際確認收入要等Q4；明年樂觀(價格上漲空間、共識4.1x)：需求推算「DMSI自己30萬顆＋騰訊10萬顆＋換產能10–15萬顆＝50萬顆」，920卡單價20萬+；瓶頸在HBM3(SK Hynix採購困難、中國近期價格US$4,600/顆、單GPU加HBM成本人民幣500–600萬元)；「潮汐」(原文)供應展望明年300–400萬顆HBM3(12-Hi)÷4可推算80萬顆國產卡；看好**寒武紀**(確定性佳、跌深反彈標的)與拼多多，**天數**仍在自測、未到灰度測試階段(若進字節可能2–3倍空間、不進則回到政府訂單市場而不賺錢)；**Nara(China GPU)**Q3收入約130億、利潤可能低於20億(R&D高)，市場可能失望，後續仍有多個催化劑、可能是concentrated short機會。(以上多處為轉述式摘要，單位/幣別與公司對應待確認。)
 * **產業 So What？（這為什麼重要）**：
   - 聯發科在 Google TPU 戰略地位大幅躍升：Google 取消 Broadcom 的 Pumafish 專案後，聯發科的 Humufish (A5922, 2nm+HBM4e) 成為 TPU 戰略核心，是台廠中少數具備自研運算晶片(而非純設計服務)地位的公司。
 * **關鍵洞察**：
@@ -72,4 +73,5 @@ tags: [industry/category, industry/asic]
 ---
 
 ## 📄 原始文件與連結 (Original Documents)
+* `[[20261013_181351_file.docx]]` - 大摩Charlie Chan roadshow會議紀要：Rubin出貨、中國國產GPU (2026-10-12)
 * `[[20260702_143957_file.pdf]]`、`[[20260702_144121_file.pdf]]`、`[[20260525_004631_file.pdf.txt]]`、`[[20260710_002418_file.pdf]]` - 聯發科 (2454) Google TPU 相關研究報告
